@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="StoryTeller.UserInterface.Queue.QueueView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel>
+        <DockPanel Background="Silver" DockPanel.Dock="Top">
+            <Button Name="clearAll" DockPanel.Dock="Right">Clear All</Button>
+            <Label FontWeight="Bold" DockPanel.Dock="Left">Test Execution Queue</Label>
+            <Label Name="noTests">(No tests are queued)</Label>
+        </DockPanel>
+        <StackPanel Name="executing" Orientation="Horizontal" DockPanel.Dock="Top" Background="LightGray">
+            <Button Name="stop" ClickMode="Release" Width="25" Height="25" ToolTip="Click to abort this test">
+                <Image Source="../Icons/stop.png"></Image>
+            </Button>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical" Name="mainPanel">
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </DockPanel>
+    
+
+</UserControl>

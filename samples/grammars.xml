@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileName>C:\code\StoryTeller\samples\grammars.xml</FileName>
+  <BinaryFolder>..\source\StoryTeller.Samples\bin\debug</BinaryFolder>
+  <TestFolder>..\source\StoryTeller.Samples\Tests</TestFolder>
+  <TimeoutInSeconds>30</TimeoutInSeconds>
+  <TestRunnerTypeName>StoryTeller.Samples.Grammars.GrammarRunner, StoryTeller.Samples, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TestRunnerTypeName>
+  <Name>Grammars</Name>
+</Project>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="StoryTeller.UserInterface.Tests.TestHeaderView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    >
+    <DockPanel MinWidth="500" Background="Silver" Margin="2 2 2 2">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+            <Label FontWeight="Bold">Test:</Label>
+            <Label Name="path">suite/suite/suite/</Label>
+            <TextBox Name="name">some text</TextBox>
+            <Label Name="status" Margin="25 0 10 0">some status</Label>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Background="Silver" DockPanel.Dock="Right" HorizontalAlignment="Right">
+            <Label>Lifecycle: </Label>
+            <Button Name="lifecycle">Some text</Button>
+        </StackPanel>
+        
+    </DockPanel>
+
+</UserControl>

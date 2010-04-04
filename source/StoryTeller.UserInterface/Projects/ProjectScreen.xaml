@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="StoryTeller.UserInterface.Projects.ProjectScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:StoryTeller.UserInterface.Controls"
+    >
+    <DockPanel Background="Silver">
+        <Controls:ValidationSummary DockPanel.Dock="Top" x:Name="validation"></Controls:ValidationSummary>
+        <Grid ShowGridLines="False" Margin="25" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Background="Silver" FontWeight="Bold" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Name</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+                <TextBox Name="name" Width="200"></TextBox>
+            </StackPanel>
+
+            <Label Background="Silver" FontWeight="Bold" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">File Name</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+                <TextBox Name="fileName" Width="300"></TextBox>
+                <Button Name="findFileName" Width="40">...</Button>
+            </StackPanel>
+
+            <Label Background="Silver" FontWeight="Bold" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Test Runner Type Name</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+                <TextBox Name="typeRunnerName" Width="340">Assembly Qualified Name</TextBox>
+            </StackPanel>
+
+            <Label Background="Silver" FontWeight="Bold" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Test Folder</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+                <TextBox Name="testFolder" Width="300"></TextBox>
+                <Button Name="findTestFolder" Width="40">...</Button>
+            </StackPanel>
+
+            <Label Background="Silver" FontWeight="Bold" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Binary Folder</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                <TextBox Name="binaryFolder" Width="300"></TextBox>
+                <Button Name="findBinaryFolder" Width="40">...</Button>
+            </StackPanel>
+
+            <Label Background="Silver" FontWeight="Bold" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Configuration File Name</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="5">
+                <TextBox Name="configurationFile" Width="300"></TextBox>
+                <Button Name="findConfigurationFile" Width="40">...</Button>
+            </StackPanel>
+
+            <Label Background="Silver" FontWeight="Bold" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Timeout in Seconds</Label>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6">
+                <TextBox Name="timeoutInSeconds" Width="50"></TextBox>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+
+</UserControl>

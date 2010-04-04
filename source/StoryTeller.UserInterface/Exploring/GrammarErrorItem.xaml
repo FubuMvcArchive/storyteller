@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="StoryTeller.UserInterface.Exploring.GrammarErrorItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border BorderBrush="Black" BorderThickness="0 2 0 0" Margin="0 20 0 0">
+    <DockPanel>
+        <Label Name="label" Background="Silver" FontWeight="Bold" DockPanel.Dock="Top" HorizontalAlignment="Stretch">the error text</Label>
+
+            <TextBox Name="errorText" Background="LightPink" Height="200" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+          <![CDATA[
+error text
+ more text
+            ]]>
+</TextBox>
+    </DockPanel>
+    </Border>
+</UserControl>

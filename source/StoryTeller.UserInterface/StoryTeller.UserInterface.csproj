@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32304F08-A7DD-4788-B606-C19350B59417}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StoryTeller.UserInterface</RootNamespace>
+    <AssemblyName>StoryTeller.UserInterface</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="FubuCore, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\HtmlTags\FubuCore.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\HtmlTags\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.Core, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.Core.Presentation, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.Core.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.Core.WinForms, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.Core.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpDevelop, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.SharpDevelop.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.TextEditor, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.TextEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ShadeTree, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\ShadeTree\ShadeTree.dll</HintPath>
+    </Reference>
+    <Reference Include="ShadeTree.Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\ShadeTree\ShadeTree.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.5.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\StructureMap\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="XmlEditor, Version=4.0.0.3967, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\SharpDevelop\XmlEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\ActionCommand.cs" />
+    <Compile Include="Actions\ScreenObjectRegistry.cs" />
+    <Compile Include="Actions\IActionExpression.cs" />
+    <Compile Include="Actions\IBindingExpression.cs" />
+    <Compile Include="Actions\ShellService.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Commands\ActionMenuItem.cs" />
+    <Compile Include="Commands\AddSuiteCommand.cs" />
+    <Compile Include="Commands\AddTestCommand.cs" />
+    <Compile Include="Commands\CloneTestCommand.cs" />
+    <Compile Include="Commands\CollapseAllCommand.cs" />
+    <Compile Include="Commands\DeleteTestCommand.cs" />
+    <Compile Include="Commands\IContextualAction.cs" />
+    <Compile Include="Commands\MarkAcceptanceCommand.cs" />
+    <Compile Include="Commands\MarkLifecycleCommand.cs" />
+    <Compile Include="Commands\MarkRegressionCommand.cs" />
+    <Compile Include="Commands\RunSuiteCommand.cs" />
+    <Compile Include="Commands\RunTestCommand.cs" />
+    <Compile Include="Controls\CommandBar.cs" />
+    <Compile Include="Controls\OptionsMenu.cs" />
+    <Compile Include="Controls\ITestFilterObserver.cs" />
+    <Compile Include="Controls\TestStopConditionsView.xaml.cs">
+      <DependentUpon>TestStopConditionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TestFilterBar.xaml.cs">
+      <DependentUpon>TestFilterBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ToggleBar.cs" />
+    <Compile Include="Controls\ValidationSummary.cs" />
+    <Compile Include="Dialogs\AddSuite.xaml.cs">
+      <DependentUpon>AddSuite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AddTest.xaml.cs">
+      <DependentUpon>AddTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Dialog.cs" />
+    <Compile Include="Dialogs\DialogLauncher.cs" />
+    <Compile Include="Dialogs\ICommandDialog.cs" />
+    <Compile Include="Dialogs\IDialogLauncher.cs" />
+    <Compile Include="Editing\HTML\CellBuilderLibrary.cs" />
+    <Compile Include="Editing\HTML\CellTag.cs" />
+    <Compile Include="Editing\HTML\DropdownCellBuilder.cs" />
+    <Compile Include="Editing\HTML\GrammarSelector.cs" />
+    <Compile Include="Editing\HTML\HolderTag.cs" />
+    <Compile Include="Editing\HTML\ICellBuilderLibrary.cs" />
+    <Compile Include="Editing\HTML\RemoveLinkTag.cs" />
+    <Compile Include="Editing\HTML\CommentTag.cs" />
+    <Compile Include="Editing\HTML\FixtureTag.cs" />
+    <Compile Include="Editing\HTML\GrammarConstants.cs" />
+    <Compile Include="Editing\HTML\GrammarTag.cs" />
+    <Compile Include="Editing\HTML\GrammarWriter.cs" />
+    <Compile Include="Editing\HTML\HeaderTag.cs" />
+    <Compile Include="Editing\HTML\ICellBuilder.cs" />
+    <Compile Include="Editing\HTML\SentenceWriter.cs" />
+    <Compile Include="Editing\HTML\TableTemplateTag.cs" />
+    <Compile Include="Editing\HTML\TestEditorTag.cs" />
+    <Compile Include="Editing\HTML\TextboxBuilder.cs" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\tableEditor.js" />
+    <Compile Include="Editing\Scripts\Embeds.cs" />
+    <Compile Include="Editing\TestEditorBuilder.cs" />
+    <Compile Include="Editing\VersionHistory.cs" />
+    <Compile Include="Exploring\GrammarErrorItem.xaml.cs">
+      <DependentUpon>GrammarErrorItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\IHandler.cs" />
+    <Compile Include="Handlers\ShellPresenter.cs" />
+    <Compile Include="Projects\BinaryFailureHandler.cs" />
+    <Compile Include="Handlers\RenameTestHandler.cs" />
+    <Compile Include="Projects\BinaryFailure.xaml.cs">
+      <DependentUpon>BinaryFailure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\IFileDialogPicker.cs" />
+    <Compile Include="Projects\NewProjectPresenter.cs" />
+    <Compile Include="Projects\ProjectLoadFailure.xaml.cs">
+      <DependentUpon>ProjectLoadFailure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\ProjectLoadFailureHandler.cs" />
+    <Compile Include="Projects\ProjectLoadFailureMessage.cs" />
+    <Compile Include="Projects\ProjectScreen.xaml.cs">
+      <DependentUpon>ProjectScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Projects\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Recycling\BinaryRecyclingDialog.xaml.cs">
+      <DependentUpon>BinaryRecyclingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Recycling\RecyclingHandler.cs" />
+    <Compile Include="Screens\ScreenLocator.cs" />
+    <Compile Include="Controls\Link.xaml.cs">
+      <DependentUpon>Link.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EventAggregatorInterceptor.cs" />
+    <Compile Include="Eventing\EventAggregator.cs" />
+    <Compile Include="Eventing\FilteredListener.cs" />
+    <Compile Include="Examples\FixtureNodePresenter.cs" />
+    <Compile Include="Examples\FixtureNodeSubject.cs" />
+    <Compile Include="Examples\FixtureNodeView.xaml.cs">
+      <DependentUpon>FixtureNodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Examples\IFixtureNodeView.cs" />
+    <Compile Include="Exploring\FixtureExplorer.cs" />
+    <Compile Include="Exploring\GrammarErrorsSubject.cs" />
+    <Compile Include="Exploring\GrammarErrorsView.xaml.cs">
+      <DependentUpon>GrammarErrorsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Icon.cs" />
+    <Compile Include="Exploring\IExplorerView.cs" />
+    <Compile Include="Exploring\ISuitePresenter.cs" />
+    <Compile Include="Exploring\ISuiteView.cs" />
+    <Compile Include="Exploring\ITestExplorer.cs" />
+    <Compile Include="Exploring\SuiteNodeCache.cs" />
+    <Compile Include="Exploring\SuitePresenter.cs" />
+    <Compile Include="Exploring\SuiteView.xaml.cs">
+      <DependentUpon>SuiteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exploring\TestExplorer.cs" />
+    <Compile Include="Exploring\TestIconChanged.cs" />
+    <Compile Include="Exploring\TestLineDriver.cs" />
+    <Compile Include="Exploring\TestLinePanel.xaml.cs">
+      <DependentUpon>TestLinePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exploring\TestNodeCache.cs" />
+    <Compile Include="Exploring\TreeBuilder.cs" />
+    <Compile Include="Exploring\TreeNode.cs" />
+    <Compile Include="Exploring\TreeViewController.cs" />
+    <Compile Include="IApplicationShell.cs" />
+    <Compile Include="Icons\IconMarker.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="Queue\QueuedItemFactory.cs" />
+    <Compile Include="Queue\QueuedTestItem.xaml.cs">
+      <DependentUpon>QueuedTestItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Queue\QueuePresenter.cs" />
+    <Compile Include="Queue\QueueSubject.cs" />
+    <Compile Include="Queue\QueueView.xaml.cs">
+      <DependentUpon>QueueView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Running\ExecutionQueue.cs" />
+    <Compile Include="Running\IExecutionQueue.cs" />
+    <Compile Include="IScreenObjectLocator.cs" />
+    <Compile Include="IScreenConductor.cs" />
+    <Compile Include="Screens\IScreenFactory.cs" />
+    <Compile Include="Screens\ScreenFactory.cs" />
+    <Compile Include="TestRunEvent.cs" />
+    <Compile Include="Screens\IScreen.cs" />
+    <Compile Include="Screens\IScreenCollection.cs" />
+    <Compile Include="IStartable.cs" />
+    <Compile Include="Projects\IProjectPersistor.cs" />
+    <Compile Include="Projects\IProjectController.cs" />
+    <Compile Include="Messages.cs" />
+    <Compile Include="Projects\ProjectHistory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Projects\ProjectController.cs" />
+    <Compile Include="Screens\IScreenLocator.cs" />
+    <Compile Include="Screens\ScreenCollection.cs" />
+    <Compile Include="Screens\ScreenSubject.cs" />
+    <Compile Include="Exploring\ExplorerView.cs" />
+    <Compile Include="SharedExtensions.cs" />
+    <Compile Include="Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ScreenConductor.cs" />
+    <Compile Include="Actions\Command.cs" />
+    <Compile Include="Actions\IScreenObjectRegistry.cs" />
+    <Compile Include="Actions\ScreenAction.cs" />
+    <Compile Include="StatusPresenter.cs" />
+    <Compile Include="Controls\StoryTellerStatusBar.xaml.cs">
+      <DependentUpon>StoryTellerStatusBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemActions.cs" />
+    <Compile Include="TestService.cs" />
+    <Compile Include="Controls\TestStatusBar.xaml.cs">
+      <DependentUpon>TestStatusBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\EditMode.cs" />
+    <Compile Include="Tests\EditTestMode.cs" />
+    <Compile Include="Tests\HtmlView.cs" />
+    <Compile Include="Tests\IEditTestController.cs" />
+    <Compile Include="Tests\ITestView.cs" />
+    <Compile Include="Tests\Mode.cs" />
+    <Compile Include="Tests\ModeCommand.cs" />
+    <Compile Include="Tests\Outline\IOutlineView.cs" />
+    <Compile Include="Tests\Outline\OutlineView.cs" />
+    <Compile Include="Tests\Outline\OutlineNode.cs" />
+    <Compile Include="Tests\PreviewMode.cs" />
+    <Compile Include="Tests\ResultsMode.cs" />
+    <Compile Include="Tests\TestHeaderView.xaml.cs">
+      <DependentUpon>TestHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\TestHeaderViewModel.cs" />
+    <Compile Include="Tests\TestMode.cs" />
+    <Compile Include="Tests\TestPresenter.cs" />
+    <Compile Include="Tests\TestScreen.cs" />
+    <Compile Include="Tests\TestScreenCloser.cs" />
+    <Compile Include="Tests\TestStateManager.cs" />
+    <Compile Include="Tests\TestView.xaml.cs">
+      <DependentUpon>TestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\XmlMode.cs" />
+    <Compile Include="Tests\XmlView.cs" />
+    <Compile Include="UserInterfaceRegistry.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StoryTeller\StoryTeller.csproj">
+      <Project>{96C1F8D5-FB46-4F3E-8CB7-A53A919BB424}</Project>
+      <Name>StoryTeller</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\TestStopConditionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TestFilterBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\AddSuite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AddTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Exploring\GrammarErrorItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Projects\BinaryFailure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Projects\ProjectLoadFailure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Projects\ProjectScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Projects\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Link.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Examples\FixtureNodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Exploring\GrammarErrorsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Exploring\SuiteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Exploring\TestLinePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Queue\QueuedTestItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Queue\QueueView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Recycling\BinaryRecyclingDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StoryTellerStatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TestStatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tests\TestHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tests\TestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\category.png" />
+    <EmbeddedResource Include="Icons\delete.png" />
+    <EmbeddedResource Include="Icons\filter.png" />
+    <EmbeddedResource Include="Icons\pending.gif" />
+    <EmbeddedResource Include="Icons\refresh.png" />
+    <Resource Include="Icons\run.png" />
+    <Resource Include="Icons\runAll.png" />
+    <EmbeddedResource Include="Icons\running.gif" />
+    <EmbeddedResource Include="Icons\runningError.gif" />
+    <EmbeddedResource Include="Icons\statusAborted.png" />
+    <EmbeddedResource Include="Icons\statusAll.png" />
+    <EmbeddedResource Include="Icons\statusFailed.png" />
+    <EmbeddedResource Include="Icons\statusIgnored.png" />
+    <EmbeddedResource Include="Icons\statusSuccess.png" />
+    <EmbeddedResource Include="Icons\statusUnknown.png" />
+    <Resource Include="Icons\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\runEmbedded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\comment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\stopIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Editing\Scripts\Controls\cellInput.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\commentEditor.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\Paragraph.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\sectionEditor.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\selector.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\Sentence.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\stepHolder.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\testEditor.js" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\validation.js" />
+    <EmbeddedResource Include="Editing\Scripts\Core\Step.js" />
+    <EmbeddedResource Include="Editing\Scripts\Core\StoryTeller.js" />
+    <EmbeddedResource Include="Editing\Scripts\External\jquery-1.3.2.js" />
+    <EmbeddedResource Include="Editing\Scripts\External\jquery.metadata.js" />
+    <EmbeddedResource Include="Editing\Scripts\External\jquery.validate.js" />
+    <EmbeddedResource Include="Editing\Scripts\External\json2.js" />
+    <EmbeddedResource Include="Editing\Scripts\testEditor.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Editing\Scripts\Core\bootstrapper.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

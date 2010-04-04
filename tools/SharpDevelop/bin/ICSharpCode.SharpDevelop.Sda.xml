@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ICSharpCode.SharpDevelop.Sda</name>
+    </assembly>
+    <members>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.Document">
+            <summary>
+            Wraps a file opened in SharpDevelop.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.Document.Close(System.Boolean)">
+            <summary>
+            Closes the document.
+            </summary>
+            <param name="force">If true, the window is closed without giving the user
+            a change to save changes if there were modifications.</param>
+            <returns>true, if the window has been closed</returns>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.Document.FileName">
+            <summary>
+            Gets the file name assigned to this document. Can be null.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.Document.Text">
+            <summary>
+            Gets/Sets the text displayed in the document.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.Document.IsDisposed">
+            <summary>
+            Gets if the document tab has been disposed because the document has been closed.
+            </summary>
+        </member>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost">
+            <summary>
+            This class can host an instance of SharpDevelop inside another
+            AppDomain.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.CreateDomain">
+            <summary>
+            Create an AppDomain capable of hosting SharpDevelop.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.CreateDomainSetup">
+            <summary>
+            Creates an AppDomainSetup specifying properties for an AppDomain capable of
+            hosting SharpDevelop.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.#ctor(ICSharpCode.SharpDevelop.Sda.StartupSettings)">
+            <summary>
+            Create a new AppDomain to host SharpDevelop.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.#ctor(System.AppDomain,ICSharpCode.SharpDevelop.Sda.StartupSettings)">
+            <summary>
+            Host SharpDevelop in the existing AppDomain.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.RunWorkbench(ICSharpCode.SharpDevelop.Sda.WorkbenchSettings)">
+            <summary>
+            Initializes the workbench (create the MainForm instance, construct menu from AddInTree etc.)
+            and runs it using the supplied settings.
+            This starts a new message loop for the workbench. By default the message loop
+            is created on a new thread, but you can change the settings so that
+            it is created on the thread calling RunWorkbench.
+            In that case, RunWorkbench will block until SharpDevelop is shut down!
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.OpenDocument(System.String)">
+            <summary>
+            Opens the document with the specified file name.
+            Requires that the workbench is running.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.OpenProject(System.String)">
+            <summary>
+            Opens the project or solution with the specified file name.
+            Requires that the workbench is running.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.IsSolutionOrProject(System.String)">
+            <summary>
+            Gets if the specified file is a project or solution file.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.CloseWorkbench(System.Boolean)">
+            <summary>
+            Closes and unloads the workbench. The user is asked to save his work
+            and can abort closing.
+            Requires that the workbench is running.
+            </summary>
+            <param name="force">When force is used (=true), unsaved changes to documents
+            are lost, but SharpDevelop still terminates correctly and saves changed
+            settings.</param>
+            <returns>True when the workbench was closed.</returns>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.UnloadDomain">
+            <summary>
+            Unload the SharpDevelop AppDomain. This will force SharpDevelop to close
+            without saving open files or changed settings.
+            Call CloseWorkbench before UnloadDomain to prompt the user to save documents and settings.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.CreateInstanceInTargetDomain``1(System.Object[])">
+            <summary>
+            Creates an instance of the specified type argument in the target AppDomain.
+            </summary>
+            <param name="arguments">Arguments to pass to the constructor of <paramref name="type"/>.</param>
+            <returns>The constructed object.</returns>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.CreateInstanceInTargetDomain(System.Type,System.Object[])">
+            <summary>
+            Creates an instance of the specified type in the target AppDomain.
+            </summary>
+            <param name="type">Type to create an instance of.</param>
+            <param name="arguments">Arguments to pass to the constructor of <paramref name="type"/>.</param>
+            <returns>The constructed object.</returns>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.OpenDocuments">
+            <summary>
+            Gets the list of currently opened documents.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.WorkbenchVisible">
+            <summary>
+            Gets/Sets whether the workbench is visible.
+            Requires that the workbench is running.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.AppDomain">
+            <summary>
+            Gets the AppDomain used to host SharpDevelop.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.InvokeTarget">
+            <summary>
+            Gets/Sets an object to use to synchronize all events with a thread.
+            Use null (default) to handle all events on the thread they were
+            raised on.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.BeforeRunWorkbench">
+            <summary>
+            Event before the workbench starts running.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.WorkbenchClosed">
+            <summary>
+            Event after the workbench has been unloaded.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.StartBuild">
+            <summary>
+            Event when SharpDevelop starts to compile a project or solution.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.EndBuild">
+            <summary>
+            Event when SharpDevelop finishes to compile a project or solution.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.SolutionLoaded">
+            <summary>
+            Event when a solution was loaded inside SharpDevelop.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.SolutionClosed">
+            <summary>
+            Event when the current solution was closed.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.SolutionConfigurationChanged">
+            <summary>
+            Event when the active solution configuration was changed.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.FileLoaded">
+            <summary>
+            Event when a file was loaded inside SharpDevelop.
+            </summary>
+        </member>
+        <member name="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.FileSaved">
+            <summary>
+            Event when a file was saved inside SharpDevelop.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.CallHelper.OpenDocument(System.String)">
+            <summary>
+            Opens the document with the specified file name.
+            </summary>
+        </member>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder">
+            <summary>
+            Records log4net log messages to a cyclic buffer for the purpose of creating better error reports.
+            </summary>
+        </member>
+        <member name="F:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder.DefaultBufferSize">
+            <summary>
+            Gets the default buffer size used by the recorder.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder"/> class.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder.Append(log4net.Core.LoggingEvent)">
+            <summary>
+            Records a logging event.
+            </summary>
+            <param name="loggingEvent">The event to append.</param>
+            <remarks>
+            This method is already thread-safe because the caller base.DoAppend
+            holds a lock on this.
+            </remarks>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder.AppendRecentLogMessages(System.Text.StringBuilder,log4net.ILog)">
+            <summary>
+            Appends the recent log messages recorded by the <see cref="T:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder"/>
+            to the specified <see cref="T:System.Text.StringBuilder"/>.
+            </summary>
+            <param name="sb">The <see cref="T:System.Text.StringBuilder"/> to append the rendered log messages to.</param>
+            <param name="log">An <see cref="T:log4net.ILog"/> that points to a logger which is in the repository that contains the <see cref="T:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder"/> appender.</param>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder.BufferSize">
+            <summary>
+            Specifies how many log messages the recorder stores.
+            </summary>
+            <value>The size of the cyclic buffer for the recent log messages.</value>
+            <remarks>Setting this property clears the buffer.</remarks>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.LogMessageRecorder.RecordedEvents">
+            <summary>
+            Gets a read-only snapshot of the recorded events
+            currently stored in the buffer.
+            The returned collection contains the events
+            in the same order as they have been appended.
+            </summary>
+        </member>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.WorkbenchSettings">
+            <summary>
+            This class contains properties to control how the SharpDevelop
+            workbench is being run.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.WorkbenchSettings.RunOnNewThread">
+            <summary>
+            Gets/Sets whether to create a new thread to run the workbench on.
+            The default value is true.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.WorkbenchSettings.InitialFileList">
+            <summary>
+            Put files to open at workbench startup into this collection.
+            </summary>
+        </member>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.RunWorkbenchException">
+            <summary>
+            Exception used when there's an unhandled exception running the workbench.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.RunWorkbenchException.#ctor">
+            <summary>
+            Create a new RunWorkbenchException instance.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.RunWorkbenchException.#ctor(System.String)">
+            <summary>
+            Create a new RunWorkbenchException instance.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.RunWorkbenchException.#ctor(System.String,System.Exception)">
+            <summary>
+            Create a new RunWorkbenchException instance.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.RunWorkbenchException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Create a new RunWorkbenchException instance.
+            </summary>
+        </member>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.StartupSettings">
+            <summary>
+            This class contains properties you can use to control how SharpDevelop is launched.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.StartupSettings.AddAddInsFromDirectory(System.String)">
+            <summary>
+            Find AddIns by searching all .addin files recursively in <paramref name="addInDir"/>.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.StartupSettings.AddAddInFile(System.String)">
+            <summary>
+            Add the specified .addin file.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.ResourceAssemblyName">
+            <summary>
+            Gets/Sets the name of the assembly to load the BitmapResources
+            and English StringResources from.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.UseSharpDevelopErrorHandler">
+            <summary>
+            Gets/Sets whether the SharpDevelop exception box should be used for
+            unhandled exceptions. The default is true.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.AllowAddInConfigurationAndExternalAddIns">
+            <summary>
+            Use the file <see cref="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.ConfigDirectory"/>\AddIns.xml to maintain
+            a list of deactivated AddIns and list of AddIns to load from
+            external locations.
+            The default value is true.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.AllowUserAddIns">
+            <summary>
+            Allow user AddIns stored in the "application data" directory.
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.ApplicationName">
+            <summary>
+            Gets/Sets the application name used by the MessageService and some
+            SharpDevelop windows. The default is "SharpDevelop".
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.ApplicationRootPath">
+            <summary>
+            Gets/Sets the application root path to use.
+            Use null (default) to use the base directory of the SharpDevelop AppDomain.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.ConfigDirectory">
+            <summary>
+            Gets/Sets the directory used to store SharpDevelop properties,
+            settings and user AddIns.
+            Use null (default) to use "ApplicationData\ApplicationName"
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.DataDirectory">
+            <summary>
+            Sets the data directory used to load resources.
+            Use null (default) to use the default path "ApplicationRootPath\data".
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.PropertiesName">
+            <summary>
+            Sets the name used for the properties file (without path or extension).
+            Use null (default) to use the default name.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.StartupSettings.DomPersistencePath">
+            <summary>
+            Sets the directory used to store the code completion cache.
+            Use null (default) to disable the code completion cache.
+            </summary>
+        </member>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.FileEventArgs">
+            <summary>
+            EventArgs for the <see cref="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.FileLoaded">SharpDevelopHost.FileLoaded</see>
+            and <see cref="E:ICSharpCode.SharpDevelop.Sda.SharpDevelopHost.FileSaved">SharpDevelopHost.FileSaved</see> events.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.FileEventArgs.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the FileEventArgs class.
+            </summary>
+        </member>
+        <member name="P:ICSharpCode.SharpDevelop.Sda.FileEventArgs.FileName">
+            <summary>
+            Gets the file name.
+            </summary>
+        </member>
+        <member name="T:ICSharpCode.SharpDevelop.Sda.ExceptionBox">
+            <summary>
+            Form used to display display unhandled errors in SharpDevelop.
+            </summary>
+        </member>
+        <member name="M:ICSharpCode.SharpDevelop.Sda.ExceptionBox.#ctor(System.Exception,System.String,System.Boolean)">
+            <summary>
+            Creates a new ExceptionBox instance.
+            </summary>
+            <param name="exception">The exception to display</param>
+            <param name="message">An additional message to display</param>
+            <param name="mustTerminate">If <paramref name="mustTerminate"/> is true, the
+            continue button is not available.</param>
+        </member>
+    </members>
+</doc>

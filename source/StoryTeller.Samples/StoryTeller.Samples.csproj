@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{104DFFDD-2229-4F23-AE66-D8BC4AF622AB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StoryTeller.Samples</RootNamespace>
+    <AssemblyName>StoryTeller.Samples</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Grammars\CompositeFixture.cs" />
+    <Compile Include="Grammars\DecoratedGrammarFixture.cs" />
+    <Compile Include="Grammars\EmbeddedFixture.cs" />
+    <Compile Include="Grammars\FailureFixture.cs" />
+    <Compile Include="Grammars\GrammarRunner.cs" />
+    <Compile Include="Grammars\SelectionListFixture.cs" />
+    <Compile Include="Grammars\SentenceFixture.cs" />
+    <Compile Include="Grammars\SetsFixture.cs" />
+    <Compile Include="Grammars\TableFixture.cs" />
+    <Compile Include="MathFixture.cs" />
+    <Compile Include="MathTestRunner.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StoryTeller\StoryTeller.csproj">
+      <Project>{96C1F8D5-FB46-4F3E-8CB7-A53A919BB424}</Project>
+      <Name>StoryTeller</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tests\Composite with Errors.xml" />
+    <Content Include="Tests\Decision Table.xml" />
+    <Content Include="Tests\Embeds.xml" />
+    <Content Include="Tests\Facts.xml" />
+    <Content Include="Tests\Ordered Set.xml" />
+    <Content Include="Tests\OrderedStringsSuccess.xml" />
+    <Content Include="Tests\Selection List Values.xml" />
+    <Content Include="Tests\Sentences.xml" />
+    <Content Include="Tests\SetWithError.xml" />
+    <Content Include="Tests\Simple Composite.xml" />
+    <Content Include="Tests\Tables with Errors.xml" />
+    <Content Include="Tests\Tables.xml" />
+    <Content Include="Tests\Test with Bad Grammar Name.xml" />
+    <Content Include="Tests\Test with Missing Fixture Name.xml" />
+    <Content Include="Tests\Unordered Set.xml" />
+    <Content Include="Tests\Unsuccessful Ordering.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

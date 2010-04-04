@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BinaryFolder>C:\code\StoryTeller\source\Examples\bin\Debug</BinaryFolder>
+  <TestFolder>C:\code\StoryTeller\source\Examples\Tests</TestFolder>
+  <FileName>C:\code\StoryTeller\source\Examples\Examples.xml</FileName>
+  <TimeoutInSeconds>30</TimeoutInSeconds>
+  <TestRunnerTypeName>Examples.ExampleRunner,Examples</TestRunnerTypeName>
+  <Name>Examples</Name>
+</Project>
