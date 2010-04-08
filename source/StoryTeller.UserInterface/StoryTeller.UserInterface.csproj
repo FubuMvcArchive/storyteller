@@ -109,6 +109,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Actions\ActionCommand.cs" />
     <Compile Include="Actions\ScreenObjectRegistry.cs" />
     <Compile Include="Actions\IActionExpression.cs" />

@@ -117,9 +117,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="AbortTestSmokeTester.cs" />
     <Compile Include="CommentTester.cs" />
-    <Compile Include="CommonAssemblyInfo.cs" />
     <Compile Include="DataMother.cs" />
     <Compile Include="Debugging.cs" />
     <Compile Include="Diagnostics.cs" />

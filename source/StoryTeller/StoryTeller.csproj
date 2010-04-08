@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Assertions\StorytellerAssertionException.cs" />
     <Compile Include="DecoratedLineGrammar.cs" />
     <Compile Include="Domain\Comment.cs" />
@@ -150,7 +153,6 @@
     <Compile Include="Engine\ReflectionAssertion.cs" />
     <Compile Include="Engine\ReflectionValueCheck.cs" />
     <Compile Include="Engine\Cell.cs" />
-    <Compile Include="CommonAssemblyInfo.cs" />
     <Compile Include="Engine\ReflectionAction.cs" />
     <Compile Include="Engine\Fixture.cs" />
     <Compile Include="Engine\ReflectionGrammar.cs" />
