@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Grammars\CompositeFixture.cs" />
     <Compile Include="Grammars\DecoratedGrammarFixture.cs" />
     <Compile Include="Grammars\EmbeddedFixture.cs" />

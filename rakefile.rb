@@ -1,7 +1,8 @@
 COMPILE_TARGET = "debug"
 require "BuildUtils.rb"
+require 'albacore'
 
-BUILD_NUMBER = "0.9.0."
+BUILD_NUMBER_BASE = "0.9.0"
 PRODUCT = "StoryTeller"
 COPYRIGHT = 'Released under the Apache 2.0 License';
 COMMON_ASSEMBLY_INFO = 'source/CommonAssemblyInfo.cs';
@@ -12,10 +13,30 @@ versionNumber = ENV["CCNetLabel"].nil? ? 0 : ENV["CCNetLabel"]
 
 task :default => [:compile, :unit_test]
 
-task :version do
-  builder = AsmInfoBuilder.new(BUILD_NUMBER, {'Product' => PRODUCT, 'Copyright' => COPYRIGHT})
-  puts "The build number is #{builder.buildnumber}"
-  builder.write COMMON_ASSEMBLY_INFO  
+desc "Update the version information for the build"
+assemblyinfo :version do |asm|
+  asm_version = BUILD_NUMBER_BASE + ".0"
+  
+  begin
+	gittag = `git describe --long --tags`.chomp 	# looks something like v0.1.0-63-g92228f4
+    gitnumberpart = /-(\d+)-/.match(gittag)
+    gitnumber = gitnumberpart.nil? ? '0' : gitnumberpart[1]
+    commit = (ENV["BUILD_VCS_NUMBER"].nil? ? `git log -1 --pretty=format:%H` : ENV["BUILD_VCS_NUMBER"])
+  rescue
+    commit = "git unavailable"
+    gitnumber = "0"
+  end
+  build_number = "#{BUILD_NUMBER_BASE}.#{gitnumber}"
+  tc_build_number = ENV["BUILD_NUMBER"]
+  puts "##teamcity[buildNumber '#{build_number}-#{tc_build_number}']" unless tc_build_number.nil?
+  asm.trademark = commit
+  asm.product_name = "#{PRODUCT} #{gittag}"
+  asm.description = build_number
+  asm.version = asm_version
+  asm.file_version = build_number
+  asm.custom_attributes :AssemblyInformationalVersion => asm_version
+  asm.copyright = COPYRIGHT
+  asm.output_file = COMMON_ASSEMBLY_INFO
 end
 
 task :compile => :version do

@@ -5,4 +5,3 @@ using System.Reflection;
 // associated with an assembly.
 
 [assembly: AssemblyTitle("StoryTeller")]
-[assembly: AssemblyDescription("")]
