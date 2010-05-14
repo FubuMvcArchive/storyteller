@@ -123,45 +123,6 @@ namespace StoryTeller.Engine
 
         #region Nested type: Frame
 
-        [Serializable]
-        public class Frame
-        {
-            private string _exceptionText = string.Empty;
-            private Frame _next;
-            public string ExceptionText { get { return _exceptionText; } }
-
-            public bool HasErrors()
-            {
-                return _exceptionText != string.Empty;
-            }
-
-            public void Clear()
-            {
-                _next = null;
-                _exceptionText = string.Empty;
-            }
-
-            public void AppendException(string text)
-            {
-                if (_exceptionText != string.Empty)
-                {
-                    _exceptionText += "\n";
-                }
-
-                _exceptionText += text;
-            }
-
-            public Frame Next()
-            {
-                if (_next == null)
-                {
-                    _next = new Frame();
-                }
-
-                return _next;
-            }
-        }
-
         #endregion
 
 
@@ -215,6 +176,12 @@ namespace StoryTeller.Engine
         public bool HasActual(string key)
         {
             return _actuals.Has(key);
+        }
+
+        public void Collapse()
+        {
+            _root.Collapse();
+            _current = _root;
         }
     }
 }

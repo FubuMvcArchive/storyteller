@@ -33,22 +33,36 @@ namespace StoryTeller.Html
             if (!_cell.IsResult)
             {
                 WritePreview(context);
+
+                if (results.IsInException(_cell.Key))
+                {
+                    AddClass(HtmlClasses.EXCEPTION);
+                }
+
                 return;
             }
 
-            var actual = results.HasActual(_cell.Key) ? results.GetActual(_cell.Key) : "MISSING";
-
+            var expected = _step.Get(_cell.Key);
             if (results.IsInException(_cell.Key))
             {
-                Text("Error!");
+                Text(expected);
                 AddClass(HtmlClasses.EXCEPTION);
 
                 return;
             }
 
+            bool hasResult = results.HasActual(_cell.Key);
+            if (!hasResult)
+            {
+                Text("{0} (no result)".ToFormat(expected));
+                AddClass(HtmlClasses.EXCEPTION);
+                return;
+            }
+
+            var actual = results.GetActual(_cell.Key);
+
             if (results.IsFailure(_cell.Key))
             {
-                var expected = _step.Get(_cell.Key);
                 string text = "{0}, but was '{1}'".ToFormat(expected, actual);
                 Text(text);
                 AddClass(HtmlClasses.FAIL);

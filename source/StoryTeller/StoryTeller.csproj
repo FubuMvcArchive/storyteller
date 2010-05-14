@@ -70,6 +70,7 @@
     <Compile Include="Domain\IStepResults.cs" />
     <Compile Include="Domain\PropertyError.cs" />
     <Compile Include="Domain\PropertyErrorCode.cs" />
+    <Compile Include="Engine\Frame.cs" />
     <Compile Include="Engine\NulloFixtureObserver.cs" />
     <Compile Include="Engine\StepResults.cs" />
     <Compile Include="Domain\IHolder.cs" />
@@ -133,7 +134,7 @@
     <Compile Include="Engine\FactGrammar.cs" />
     <Compile Include="Engine\GrammarBuilder.cs" />
     <Compile Include="Engine\ITestObserver.cs" />
-    <Compile Include="Engine\ReadGrammar.cs" />
+    <Compile Include="Engine\CheckGrammar.cs" />
     <Compile Include="Engine\TeamCityTestListener.cs" />
     <Compile Include="Execution\Example.cs" />
     <Compile Include="Execution\BinaryRecycleFinished.cs" />

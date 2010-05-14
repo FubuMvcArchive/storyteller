@@ -206,7 +206,7 @@ namespace StoryTeller.Testing.Html
         [Test]
         public void should_have_the_parsed_display_of_the_actual()
         {
-            tag.Text().ShouldEqual("Jeremy, but was 'MISSING'");
+            tag.Text().ShouldEqual("Jeremy (no result)");
         }
     }
 
@@ -234,9 +234,9 @@ namespace StoryTeller.Testing.Html
         }
 
         [Test]
-        public void the_text_should_just_be_Error()
+        public void the_text_should_just_be_the_expected_text()
         {
-            tag.Text().ShouldEqual("Error!");
+            tag.Text().ShouldEqual("Jeremy");
         }
 
 

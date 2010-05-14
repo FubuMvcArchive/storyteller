@@ -150,6 +150,7 @@
     <Compile Include="Engine\FactGrammarTester.cs" />
     <Compile Include="Engine\FixtureRegistryTester.cs" />
     <Compile Include="Engine\FixtureTester.cs" />
+    <Compile Include="Engine\FrameTester.cs" />
     <Compile Include="Engine\LibraryBuilderTester.cs" />
     <Compile Include="Engine\SelectionListTester.cs" />
     <Compile Include="Engine\SelectionValueAttributeTester.cs" />

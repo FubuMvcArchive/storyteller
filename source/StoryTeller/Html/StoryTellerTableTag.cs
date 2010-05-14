@@ -60,9 +60,6 @@ namespace StoryTeller.Html
 
         public void WriteResults(ITestContext context)
         {
-            // This code Dru.  If there's an exception in the results, call
-            // back to the writeExceptionText(string) method to write in 
-            // the exception
             context.ResultsFor(_step).ForExceptionText(writeExceptionText);
 
             rows().Each(row => writeResultsRow(row, context));
@@ -72,17 +69,20 @@ namespace StoryTeller.Html
         {
             AddBodyRow(row =>
             {
+                StepResults results = context.ResultsFor(step);
+                results.Collapse();
+
                 _table.Cells.Each(cell =>
                 {
-                    StepResults results = context.ResultsFor(step);
-                    var tag = new CellTag(cell, _step);
+                    
+                    var tag = new CellTag(cell, step);
+                    tag.TagName("td");
+                    row.Child(tag);
+
                     tag.WriteResults(results, context);
-
-                    // Ditto this line of code
-                    results.ForExceptionText(writeExceptionText);
-
-                    row.Cell().Child(tag);
                 });
+
+                results.ForExceptionText(writeExceptionText);
             });
         }
 
