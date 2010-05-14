@@ -1,7 +1,9 @@
 using System;
+using System.Diagnostics;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Workspace;
+using System.Collections.Generic;
 
 namespace StoryTeller.Testing.Integration
 {
@@ -44,6 +46,7 @@ namespace StoryTeller.Testing.Integration
         [Test]
         public void loads_the_suites_at_the_top_level()
         {
+            hierarchy.ChildSuites.Each(x => Debug.WriteLine(x.Name));
             hierarchy.ChildSuites.ShouldHaveSuiteNames("Adding", "EmptySuite", "Mixed", "Multiplication");
         }
 

@@ -16,6 +16,13 @@ namespace StoryTeller.Testing
 
         public static Project MathProject()
         {
+            var directory = Path.GetDirectoryName(THE_MATH_FILE);
+            var empty = Path.Combine(directory, "EmptySuite");
+            if (!Directory.Exists(empty))
+            {
+                Directory.CreateDirectory(empty);
+            }
+
             return Project.LoadFromFile(THE_MATH_FILE);
         }
 
