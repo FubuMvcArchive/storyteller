@@ -364,6 +364,15 @@ namespace StoryTeller.Engine
             return new ActionGrammar(text, action);
         }
 
+        /// <summary>
+        /// Use to create a simple "Fact" grammar that asserts
+        /// that a condition is true
+        /// </summary>
+        /// <example>
+        /// this["ThisFactIsTrue"] = Fact("This fact is always true").VerifiedBy(() => true);
+        /// </example>
+        /// <param name="title"></param>
+        /// <returns></returns>
         protected FactExpression Fact(string title)
         {
             return new FactExpression(title);
@@ -422,6 +431,12 @@ namespace StoryTeller.Engine
                 _title = title;
             }
 
+            /// <summary>
+            /// Register the Func that can be evaluated as a boolean
+            /// to determine the success or failure of this Fact
+            /// </summary>
+            /// <param name="test"></param>
+            /// <returns></returns>
             public IGrammar VerifiedBy(Func<bool> test)
             {
                 return new FactGrammar(test, _title);
