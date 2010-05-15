@@ -29,7 +29,7 @@ namespace StoryTeller.Testing.Integration
             var library = runner.Library;
             var writer = new HtmlWriter(library);
             //writer.WritePreview(test).OpenInBrowser();
-            //test.OpenResultsInBrowser();
+            test.OpenResultsInBrowser();
 
             return test.LastResult.Counts;
         }

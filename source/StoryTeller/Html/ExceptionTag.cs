@@ -7,9 +7,8 @@ namespace StoryTeller.Html
         public ExceptionTag(string text) : base("div")
         {
             AddClass(HtmlClasses.EXCEPTION);
-            Add("hr");
+            AddClass("exception-zone");
             Add("pre").Text(text);
-            Add("hr");
         }
 
         public string ExceptionText()

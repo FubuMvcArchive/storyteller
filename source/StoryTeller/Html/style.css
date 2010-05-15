@@ -27,7 +27,12 @@ SPAN.pass
 .fail
 {
 	background-color: #FFAAAA;
-	padding-left: 5px;
+
+}
+
+SPAN.fail
+{
+    padding-left: 5px;
 	padding-right: 5px;
 }
 
@@ -416,4 +421,25 @@ div.paragraph > div.step
 .column-selector
 {
 	padding-left: 10px;
+}
+
+.sentence
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+DIV .exception-zone
+{
+    padding-top: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: solid thin black;
+    border-top: solid thin black;
+}
+
+.exception-zone > PRE
+{
+    padding-top: 0px;
+    padding-bottom: 2px;
 }
