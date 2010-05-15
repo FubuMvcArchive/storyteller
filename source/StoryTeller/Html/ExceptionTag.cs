@@ -13,7 +13,7 @@ namespace StoryTeller.Html
 
         public string ExceptionText()
         {
-            return Children[1].Text();
+            return FirstChild().Text();
         }
     }
 }

@@ -69,7 +69,6 @@ namespace StoryTeller.Workspace
                     _projectFolder = Path.GetFullPath(".");
                 }
 
-                Console.WriteLine("The Project Folder is " + ProjectFolder);
             }
         }
 
@@ -180,7 +179,6 @@ namespace StoryTeller.Workspace
 
         private string getCorrectPath(string folder)
         {
-            Console.WriteLine("Resolving path for " + folder);
 
             if (folder.IsEmpty()) return string.Empty;
 
@@ -189,13 +187,11 @@ namespace StoryTeller.Workspace
                 return folder;
             }
 
-            Console.WriteLine("Determining the correct path for the Project folder at " + ProjectFolder);
 
             string projectFolder = Path.IsPathRooted(ProjectFolder)
                                        ? ProjectFolder
                                        : Path.GetFullPath(ProjectFolder);
 
-            Console.WriteLine("The Project folder is " + projectFolder);
 
             string path = Path.Combine(projectFolder, folder);
             return Path.GetFullPath(path);

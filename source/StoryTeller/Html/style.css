@@ -149,6 +149,13 @@ div.embedded > div > div.step-holder
 	font-weight: bold;
 }
 
+.section-header > .section-title
+{
+	font-size: 90%;
+	color:#E17009;
+	margin-bottom: 5px;
+}
+
 
 
 .TitledAndIndented
@@ -394,11 +401,26 @@ div.paragraph > div.step
 }
 
 
-.section-header > .section-title
+.section-header > .section-title, .paragraph > .section-title
 {
 	font-size: 90%;
 	color:#E17009;
 	margin-bottom: 5px;
+}
+
+.section-title{
+
+	-moz-background-clip:border;
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:6px;
+	background-color:#EBEAEA;
+	border-color:#FAFAFA #DDDDDD #D2D2D2;
+	border-style:solid;
+	border-width:1px;
+	margin: 0;
+	padding: 5px;
+	font-size: 100%;
+	font-weight: bold;
 }
 
 .table-editor > .section-header > .section-title

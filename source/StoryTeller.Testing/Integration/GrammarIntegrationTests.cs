@@ -29,7 +29,7 @@ namespace StoryTeller.Testing.Integration
             var library = runner.Library;
             var writer = new HtmlWriter(library);
             //writer.WritePreview(test).OpenInBrowser();
-            test.OpenResultsInBrowser();
+            //test.OpenResultsInBrowser();
 
             return test.LastResult.Counts;
         }
@@ -122,6 +122,12 @@ namespace StoryTeller.Testing.Integration
         public void Unordered_Set()
         {
             running("Unordered Set").ShouldEqual(1, 3, 0, 1);
+        }
+
+        [Test]
+        public void check_properties()
+        {
+            running("Check properties").ShouldEqual(3, 3, 0, 0);
         }
     }
 
