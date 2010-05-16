@@ -4,6 +4,9 @@ using StoryTeller.Engine;
 
 namespace StoryTeller
 {
+    /// <summary>
+    /// Used to wrap an existing LineGrammar to apply before and/or after effects
+    /// </summary>
     public class DecoratedLineGrammar : LineGrammar
     {
         private readonly LineGrammar _inner;

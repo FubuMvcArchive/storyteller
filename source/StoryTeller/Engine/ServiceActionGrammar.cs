@@ -3,7 +3,6 @@ using StoryTeller.Domain;
 
 namespace StoryTeller.Engine
 {
-    // TODO -- harden against service can't be found errors
     public abstract class ServiceActionGrammar<TService, TCellType> : LineGrammar
     {
         protected ServiceActionGrammar(string key, string template)

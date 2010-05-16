@@ -3,7 +3,7 @@ using StoryTeller.Domain;
 
 namespace StoryTeller.Engine
 {
-    public abstract class ServiceAssertionGrammar<SERVICE, CELLTYPE> : LineGrammar
+    public abstract class ServiceAssertionGrammar<TService, TCellType> : LineGrammar
     {
         public ServiceAssertionGrammar(string key, string template)
             : base(template)
@@ -17,7 +17,7 @@ namespace StoryTeller.Engine
 
         public override void Execute(IStep containerStep, ITestContext context)
         {
-            var service = context.Retrieve<SERVICE>();
+            var service = context.Retrieve<TService>();
             object actualValue = getActualValue(service);
 
             cell().RecordActual(actualValue, containerStep, context);
@@ -31,11 +31,11 @@ namespace StoryTeller.Engine
             };
         }
 
-        protected abstract object getActualValue(SERVICE service);
+        protected abstract object getActualValue(TService service);
 
         private Cell cell()
         {
-            return new Cell(key, typeof (CELLTYPE))
+            return new Cell(key, typeof (TCellType))
             {
                 IsResult = true
             };

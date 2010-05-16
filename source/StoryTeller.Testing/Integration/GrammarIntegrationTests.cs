@@ -129,6 +129,12 @@ namespace StoryTeller.Testing.Integration
         {
             running("Check properties").ShouldEqual(3, 3, 0, 0);
         }
+
+        [Test]
+        public void service_grammars()
+        {
+            running("Services").ShouldEqual(1, 1, 0, 1);
+        }
     }
 
 
