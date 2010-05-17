@@ -32,7 +32,10 @@ namespace StoryTeller.Engine.Sets
             var actualRows = buildActualRows(actualObjects);
             var expectedRows = buildExpectedRows(context, containerStep);
 
-            var matcher = new SetRowMatcher(expectedRows, actualRows, context);
+            var valueMatcher = new RowValueMatcher(context);
+            _comparer.Columns.Each(x => x.ConfigureMatcher(valueMatcher));
+
+            var matcher = new SetRowMatcher(expectedRows, actualRows, valueMatcher);
             IList<SetRow> results = Ordered ? matcher.CompareOrdered() : matcher.Compare();
 
             markCounts(context, results);

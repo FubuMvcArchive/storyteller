@@ -7,5 +7,6 @@ namespace StoryTeller.Engine.Sets
         Cell Cell { get; }
         void ReadExpected(ITestContext context, IStep step, SetRow row);
         void ReadActual(object target, SetRow row);
+        void ConfigureMatcher(RowValueMatcher matcher);
     }
 }

@@ -9,19 +9,29 @@ namespace StoryTeller.Engine.Sets
 {
     public interface IDataRowComparer
     {
-        DataRowComparer MatchOn<T>(string columnName);
+        DataColumnMatch MatchOn<T>(string columnName);
+        DataColumnMatch MatchOn<T>(string columnName, Func<T, T, bool> comparer) where T : class;
     }
 
     public class DataRowComparer : ISetComparer, IDataRowComparer
     {
         private readonly IList<ISetColumn> _columns = new List<ISetColumn>();
 
-        public DataRowComparer MatchOn<T>(string columnName)
+        public DataColumnMatch MatchOn<T>(string columnName)
         {
             var match = new DataColumnMatch(columnName, typeof (T));
             _columns.Add(match);
 
-            return this;
+            return match;
+        }
+
+        public DataColumnMatch MatchOn<T>(string columnName, Func<T, T, bool> matcher) where T : class
+        {
+            var match = new DataColumnMatch(columnName, typeof(T));
+            match.Matcher = (one, two) => matcher(one as T, two as T);
+            _columns.Add(match);
+
+            return match;
         }
 
         public IEnumerable<ISetColumn> Columns
@@ -34,14 +44,17 @@ namespace StoryTeller.Engine.Sets
     {
         private readonly string _columnName;
         private readonly Type _columnType;
+        private readonly Cell _cell;
 
         public DataColumnMatch(string columnName, Type columnType)
         {
             _columnName = columnName;
             _columnType = columnType;
+
+            _cell = new Cell(columnName, _columnType);
         }
 
-        public Cell Cell
+        Cell ISetColumn.Cell
         {
             get 
             {
@@ -49,20 +62,36 @@ namespace StoryTeller.Engine.Sets
             } 
         }
 
-        public void ReadExpected(ITestContext context, IStep step, SetRow row)
+        public DataColumnMatch Header(string header)
         {
-            Cell.ReadArgument(context, step, x =>
+            _cell.Header = header;
+            return this;
+        }
+
+        public Func<object, object, bool> Matcher { get; set; }
+
+        void ISetColumn.ReadExpected(ITestContext context, IStep step, SetRow row)
+        {
+            _cell.ReadArgument(context, step, x =>
             {
                 row.Values[_columnName] = x;
             });
         }
 
-        public void ReadActual(object target, SetRow row)
+        void ISetColumn.ReadActual(object target, SetRow row)
         {
             var dataRow = target.As<DataRow>();
             assertColumnExists(dataRow);
             
             row.Values[_columnName] = dataRow[_columnName] == DBNull.Value ? null : dataRow[_columnName];
+        }
+
+        void ISetColumn.ConfigureMatcher(RowValueMatcher matcher)
+        {
+            if (Matcher != null)
+            {
+                matcher.RegisterMatcher(_cell.Key, Matcher);
+            }
         }
 
         private void assertColumnExists(DataRow row)

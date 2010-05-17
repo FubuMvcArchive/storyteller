@@ -7,13 +7,13 @@ namespace StoryTeller.Engine.Sets
     {
         private readonly IList<SetRow> _expecteds;
         private readonly IList<SetRow> _actuals;
-        private readonly ITestContext _context;
+        private readonly RowValueMatcher _matcher;
 
-        public SetRowMatcher(IList<SetRow> expected, IList<SetRow> actual, ITestContext context)
+        public SetRowMatcher(IList<SetRow> expected, IList<SetRow> actual, RowValueMatcher matcher)
         {
             _expecteds = expected;
             _actuals = actual;
-            _context = context;
+            _matcher = matcher;
 
             for (int i = 0; i < _expecteds.Count; i++)
             {
@@ -30,7 +30,7 @@ namespace StoryTeller.Engine.Sets
         {
             foreach (var actual in _actuals)
             {
-                var expected = _expecteds.FirstOrDefault(x => x.Matches(_context, actual));
+                var expected = _expecteds.FirstOrDefault(x => x.Matches(_matcher, actual));
                 if (expected != null)
                 {
                     actual.Result = expected.Result = SetMatch.Match;

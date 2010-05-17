@@ -72,6 +72,7 @@
     <Compile Include="Domain\PropertyErrorCode.cs" />
     <Compile Include="Engine\Frame.cs" />
     <Compile Include="Engine\NulloFixtureObserver.cs" />
+    <Compile Include="Engine\Sets\RowValueMatcher.cs" />
     <Compile Include="Engine\StepResults.cs" />
     <Compile Include="Domain\IHolder.cs" />
     <Compile Include="Domain\ITestPart.cs" />

@@ -16,10 +16,45 @@ namespace StoryTeller.Samples.Grammars
     {
         private DataTable _table = new DataTable();
 
-        //public DataTableFixture()
-        //{
-        //    this["TheDataIs"] = 
-        //}
+        public DataTableFixture()
+        {
+            Title = "Set Verification with DataTable's";
+        }
+
+        [Hidden]
+        public void AddData(string firstName, string lastName)
+        {
+            _table.Rows.Add(firstName, lastName);
+        }
+
+        public IGrammar TheDataIs()
+        {
+            return this["AddData"].AsTable("If the data is").Before(() =>
+            {
+                _table = new DataTable();
+                _table.Columns.Add("First", typeof (string));
+                _table.Columns.Add("Last", typeof (string));
+            });
+        }
+
+        public IGrammar CheckDataLiteral()
+        {
+            return VerifyDataTable(() => _table).Titled("The data should match").Columns(x =>
+            {
+                x.MatchOn<string>("First").Header("First Name");
+                x.MatchOn<string>("Last").Header("Last Name");
+            });
+        }
+
+        public IGrammar CheckDataSubstring()
+        {
+            return VerifyDataTable(() => _table).Titled("The first name should contain").Columns(x =>
+            {
+                x.MatchOn<string>("First", (s1, s2) => s2.Contains(s1));
+            });
+        }
+
+
     }
 
     public class SetsFixture : Fixture

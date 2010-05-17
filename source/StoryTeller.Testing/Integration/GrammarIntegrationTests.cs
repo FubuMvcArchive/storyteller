@@ -135,6 +135,24 @@ namespace StoryTeller.Testing.Integration
         {
             running("Services").ShouldEqual(1, 1, 0, 1);
         }
+
+        [Test]
+        public void successful_data_table_comparison()
+        {
+            running("Data Table Verification Happy Path").ShouldEqual(3, 0, 0, 0);
+        }
+
+        [Test]
+        public void sad_path_data_table_comparison()
+        {
+            running("Data Table Verification Sad Path").ShouldEqual(2, 2, 0, 0);
+        }
+
+        [Test]
+        public void data_table_comparison_with_overriden_matcher()
+        {
+            running("Data Table Verification with Overridden Matchers").ShouldEqual(2, 2, 0, 0);
+        }
     }
 
 

@@ -39,7 +39,7 @@ namespace StoryTeller.Testing.Engine.Sets
         [Test]
         public void get_cell()
         {
-            Cell cell = _matchCity.Cell;
+            Cell cell = _matchCity.As<ISetColumn>().Cell;
             cell.Key.ShouldEqual("City");
             cell.Type.ShouldEqual(typeof(string));
         }
@@ -53,8 +53,8 @@ namespace StoryTeller.Testing.Engine.Sets
 
             var context = new TestContext();
 
-            _matchCity.ReadExpected(context, step, row);
-            _matchDistance.ReadExpected(context, step, row);
+            _matchCity.As<ISetColumn>().ReadExpected(context, step, row);
+            _matchDistance.As<ISetColumn>().ReadExpected(context, step, row);
 
             row.Values["City"].ShouldEqual("Dallas");
             row.Values["Distance"].ShouldEqual(189);
@@ -65,8 +65,8 @@ namespace StoryTeller.Testing.Engine.Sets
         {
             var row = new SetRow();
 
-            _matchCity.ReadActual(table.Rows[0], row);
-            _matchDistance.ReadActual(table.Rows[0], row);
+            _matchCity.As<ISetColumn>().ReadActual(table.Rows[0], row);
+            _matchDistance.As<ISetColumn>().ReadActual(table.Rows[0], row);
 
             row.Values["City"].ShouldEqual("Austin");
             row.Values["Distance"].ShouldEqual(16);

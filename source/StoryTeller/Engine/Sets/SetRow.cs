@@ -1,4 +1,3 @@
-using System;
 using StoryTeller.Domain;
 
 namespace StoryTeller.Engine.Sets
@@ -19,14 +18,14 @@ namespace StoryTeller.Engine.Sets
         public int ActualOrder { get; set; }
         public bool MissingValues { get; set; }
 
-        public bool Matches(ITestContext context, SetRow other)
+        public bool Matches(RowValueMatcher matcher, SetRow other)
         {
             if (MissingValues) return false;
 
             foreach (var key in Values.Keys)
             {
                 if (!other.Values.Has(key)) return false;
-                if (!context.Matches(Values[key], other.Values[key])) return false;
+                if (!matcher.Matches(key, Values[key], other.Values[key])) return false;
             }
 
             return true;

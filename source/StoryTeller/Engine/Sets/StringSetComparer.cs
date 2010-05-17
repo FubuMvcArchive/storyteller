@@ -28,6 +28,10 @@ namespace StoryTeller.Engine.Sets
             row.Values[EXPECTED] = target;
         }
 
+        public void ConfigureMatcher(RowValueMatcher matcher)
+        {
+        }
+
         private static Cell cell()
         {
             return Cell.For<string>(EXPECTED);

@@ -280,7 +280,7 @@ a=3;b=4
             {
                 if (_checked == null)
                 {
-                    _checked = new SetRowMatcher(_expected, _actual, new TestContext()).Compare();
+                    _checked = new SetRowMatcher(_expected, _actual, new RowValueMatcher(new TestContext())).Compare();
                 }
 
                 return _checked;
@@ -291,7 +291,7 @@ a=3;b=4
         {
             get
             {
-                return new SetRowMatcher(_expected, _actual, new TestContext()).CompareOrdered();
+                return new SetRowMatcher(_expected, _actual, new RowValueMatcher(new TestContext())).CompareOrdered();
             }
         }
 

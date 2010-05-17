@@ -1,3 +1,4 @@
+using System;
 using FubuCore.Reflection;
 using StoryTeller.Domain;
 
@@ -25,6 +26,10 @@ namespace StoryTeller.Engine.Sets
         public void ReadActual(object target, SetRow row)
         {
             row.Values[_accessor.InnerProperty.Name] = _accessor.GetValue(target);
+        }
+
+        public void ConfigureMatcher(RowValueMatcher matcher)
+        {
         }
     }
 }
