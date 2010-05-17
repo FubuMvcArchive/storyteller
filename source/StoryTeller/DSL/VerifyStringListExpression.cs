@@ -10,7 +10,7 @@ namespace StoryTeller.DSL
         private readonly Func<ITestContext, IEnumerable<string>> _dataSource;
         private readonly ISetComparer _comparer = new StringSetComparer();
         private string _description = string.Empty;
-        private string _stepName = "Rows";
+        private string _leafName = "Rows";
         private string _title = "Verify Set of Strings";
         private bool _ordered;
 
@@ -38,17 +38,17 @@ namespace StoryTeller.DSL
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="stepName"></param>
+        /// <param name="leafName"></param>
         /// <returns></returns>
-        public VerifyStringListExpression StepNameIs(string stepName)
+        public VerifyStringListExpression LeafNameIs(string leafName)
         {
-            _stepName = stepName;
+            _leafName = leafName;
             return this;
         }
 
         public SetVerificationGrammar Grammar()
         {
-            var grammar = new SetVerificationGrammar(_stepName, _title, _comparer)
+            var grammar = new SetVerificationGrammar(_leafName, _title, _comparer)
             {
                 Description = _description,
                 Ordered = _ordered

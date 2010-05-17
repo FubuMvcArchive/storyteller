@@ -140,13 +140,12 @@ namespace StoryTeller.Testing.Engine
             var grammar = new EmbeddedSectionGrammar<ArithmeticFixture>
             {
                 Label = "The embedded section",
-                LeafName = "step name",
                 Style = EmbedStyle.Inline
-            };
+            }.LeafName("step name");
             var embeddedSection = grammar.ToStructure(library).ShouldBeOfType<EmbeddedSection>();
 
 
-            embeddedSection.ShouldEqual(new EmbeddedSection(fixture, grammar.Label, grammar.LeafName));
+            embeddedSection.ShouldEqual(new EmbeddedSection(fixture, grammar.Label, grammar.LeafName()));
         }
 
         [Test]
@@ -226,9 +225,8 @@ namespace StoryTeller.Testing.Engine
             var grammar = new EmbeddedSectionGrammar<ArithmeticFixture>
             {
                 Label = "The embedded section",
-                LeafName = "step name",
                 Style = EmbedStyle.Inline
-            };
+            }.LeafName("step name");
             var embeddedSection = grammar.ToStructure(library).ShouldBeOfType<EmbeddedSection>();
 
             embeddedSection.Style.ShouldEqual(EmbedStyle.Inline);
@@ -238,7 +236,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void the_child_step_name_is_the_fixture_alias()
         {
-            new EmbeddedSectionGrammar<ArithmeticFixture>().LeafName
+            new EmbeddedSectionGrammar<ArithmeticFixture>().LeafName()
                 .ShouldEqual(typeof(ArithmeticFixture).GetFixtureAlias());
         }
 

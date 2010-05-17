@@ -62,7 +62,7 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
             };
 
             var writer = new SentenceWriter(grammarTag, new CellBuilderLibrary());
-            writer.TextInput(new TextInput(cell));
+            writer.Input(new TextInput(cell));
 
             select = grammarTag.Children.First();
         }
@@ -146,7 +146,7 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
             {
                 if (tag == null)
                 {
-                    writer.TextInput(new TextInput(cell));
+                    writer.Input(new TextInput(cell));
                     tag = grammarTag.Children.First();
                 }
 

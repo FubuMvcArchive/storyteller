@@ -276,7 +276,7 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
             var grammar = fixture["EmbeddedMath"].As<EmbeddedSectionGrammar<MathFixture>>();
 
             theSectionNode.MetaData(GrammarConstants.FIXTURE).ShouldEqual(typeof(MathFixture).GetFixtureAlias());
-            theSectionNode.MetaData(GrammarConstants.LEAF_NAME).ShouldEqual(grammar.LeafName);
+            theSectionNode.MetaData(GrammarConstants.LEAF_NAME).ShouldEqual(grammar.LeafName());
         }
 
         [Test]

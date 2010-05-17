@@ -115,7 +115,7 @@ namespace StoryTeller.Testing.Model
             {
                 this["theStates"] = VerifyDataTable(c => new DataTable())
                     .Titled("The states were admitted in")
-                    .StepNameIs("states")
+                    .LeafNameIs("states")
                     .Columns(x =>
                     {
                         x.MatchOn<string>("state");

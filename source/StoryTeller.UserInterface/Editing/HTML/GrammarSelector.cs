@@ -80,7 +80,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             _link.Label(label.Text);
         }
 
-        public void TextInput(TextInput input)
+        public void Input(TextInput input)
         {
             _link.Input(input.Cell.Header);
         }

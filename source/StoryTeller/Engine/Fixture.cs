@@ -292,9 +292,8 @@ namespace StoryTeller.Engine
         {
             return new EmbeddedSectionGrammar<T>
             {
-                Label = label,
-                LeafName = leafName
-            };
+                Label = label
+            }.LeafName(leafName);
         }
 
         // TODO: tests!

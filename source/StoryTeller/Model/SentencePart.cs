@@ -8,6 +8,6 @@ namespace StoryTeller.Model
     public interface ISentenceVisitor
     {
         void Label(Label label);
-        void TextInput(TextInput input);
+        void Input(TextInput input);
     }
 }

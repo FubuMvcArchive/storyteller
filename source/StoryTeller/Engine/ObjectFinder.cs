@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Assertions;
 using StoryTeller.Domain;
-using StructureMap;
-using StructureMap.TypeRules;
 
 namespace StoryTeller.Engine
 {
@@ -49,7 +47,7 @@ namespace StoryTeller.Engine
                 return createArrayFinder(type);
             }
 
-            if(type.IsGenericEnumerable())
+            if (type.IsGenericEnumerable())
             {
                 return createGenericEnumerableFinder(type);
             }
@@ -69,13 +67,14 @@ namespace StoryTeller.Engine
 
         private Func<string, object> createArrayFinder(Type type)
         {
-            var innerType = type.GetElementType();
+            Type innerType = type.GetElementType();
 
             return createEnumerableFinder(innerType);
         }
 
-        private Func<string, object> createEnumerableFinder(Type innerType) {
-            var singleObjectFinder = _froms[innerType];
+        private Func<string, object> createEnumerableFinder(Type innerType)
+        {
+            Func<string, object> singleObjectFinder = _froms[innerType];
 
             return stringValue =>
             {
@@ -84,12 +83,12 @@ namespace StoryTeller.Engine
                     return Array.CreateInstance(innerType, 0);
                 }
 
-                var strings = stringValue.ToDelimitedArray();
-                var array = Array.CreateInstance(innerType, strings.Length);
+                string[] strings = stringValue.ToDelimitedArray();
+                Array array = Array.CreateInstance(innerType, strings.Length);
 
-                for (var i = 0; i < strings.Length; i++)
+                for (int i = 0; i < strings.Length; i++)
                 {
-                    var value = singleObjectFinder(strings[i]);
+                    object value = singleObjectFinder(strings[i]);
                     array.SetValue(value, i);
                 }
 

@@ -12,11 +12,22 @@ namespace StoryTeller.Engine
         public EmbeddedSectionGrammar()
         {
             Style = EmbedStyle.TitledAndIndented;
-            LeafName = Label = typeof(T).GetFixtureAlias();
+            _leafName = Label = typeof(T).GetFixtureAlias();
             Description = DescriptionAttribute.GetDescription(GetType());
         }
 
-        public string LeafName { get; set; }
+        private string _leafName;
+
+        public EmbeddedSectionGrammar<T> LeafName(string value)
+        {
+            _leafName = value;
+            return this;
+        }
+
+        public string LeafName()
+        {
+            return _leafName;
+        }
 
         public string Label { get; set; }
         public EmbedStyle Style { get; set; }
@@ -26,13 +37,13 @@ namespace StoryTeller.Engine
         public void Execute(IStep containerStep, ITestContext context)
         {
             context.PerformAction(containerStep, _before);
-            context.ExecuteWithFixture<T>(containerStep.LeafFor(LeafName), containerStep);
+            context.ExecuteWithFixture<T>(containerStep.LeafFor(LeafName()), containerStep);
         }
 
         public GrammarStructure ToStructure(FixtureLibrary library)
         {
             FixtureGraph fixture = library.FixtureFor(typeof(T).GetFixtureAlias());
-            return new EmbeddedSection(fixture, Label, LeafName)
+            return new EmbeddedSection(fixture, Label, LeafName())
             {
                 Style = Style
             };
@@ -41,12 +52,6 @@ namespace StoryTeller.Engine
         public string Description { get; set; }
 
         #endregion
-
-        public EmbeddedSectionGrammar<T> LeafNamed(string leafName)
-        {
-            LeafName = leafName;
-            return this;
-        }
 
         public EmbeddedSectionGrammar<T> Before(GrammarAction action)
         {

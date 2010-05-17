@@ -71,7 +71,7 @@ namespace StoryTeller.Html
                 _tag.Add("span").Text(label.Text);
             }
 
-            public void TextInput(TextInput input)
+            public void Input(TextInput input)
             {
                 var cellTag = new CellTag(input.Cell, _step);
                 cellTag.WritePreview(_context);
@@ -99,7 +99,7 @@ namespace StoryTeller.Html
                 _tag.Add("span").Text(label.Text);
             }
 
-            public void TextInput(TextInput input)
+            public void Input(TextInput input)
             {
                 var cellTag = new CellTag(input.Cell, _step);
                 cellTag.WriteResults(_results, _context);

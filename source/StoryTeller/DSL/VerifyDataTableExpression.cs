@@ -9,7 +9,7 @@ namespace StoryTeller.DSL
     {
         private readonly Func<ITestContext, DataTable> _dataSource;
         private string _description = string.Empty;
-        private string _stepName = "Rows";
+        private string _leafName = "Rows";
         private string _title = "Verify Set of Strings";
 
         public VerifyDataTableExpression()
@@ -36,11 +36,11 @@ namespace StoryTeller.DSL
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="stepName"></param>
+        /// <param name="leafName"></param>
         /// <returns></returns>
-        public VerifyDataTableExpression StepNameIs(string stepName)
+        public VerifyDataTableExpression LeafNameIs(string leafName)
         {
-            _stepName = stepName;
+            _leafName = leafName;
             return this;
         }
 
@@ -49,7 +49,7 @@ namespace StoryTeller.DSL
             var comparer = new DataRowComparer();
             action(comparer);
 
-            var grammar = new SetVerificationGrammar(_stepName, _title, comparer)
+            var grammar = new SetVerificationGrammar(_leafName, _title, comparer)
             {
                 Description = _description
             };

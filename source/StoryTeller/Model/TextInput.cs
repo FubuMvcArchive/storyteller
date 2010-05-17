@@ -21,7 +21,7 @@ namespace StoryTeller.Model
 
         public void AcceptVisitor(ISentenceVisitor visitor)
         {
-            visitor.TextInput(this);
+            visitor.Input(this);
         }
 
         #endregion

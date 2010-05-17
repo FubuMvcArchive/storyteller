@@ -23,7 +23,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             _grammar.Add("span").Text(label.Text);
         }
 
-        public void TextInput(TextInput input)
+        public void Input(TextInput input)
         {
             _builders.AddCell(_grammar, input.Cell);
         }

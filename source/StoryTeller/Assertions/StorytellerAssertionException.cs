@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.Serialization;
+using FubuCore;
 
 namespace StoryTeller.Assertions
 {
@@ -41,6 +42,14 @@ namespace StoryTeller.Assertions
             }
         }
 
+        public static void Fail(Func<bool> condition, string message, params object[] args)
+        {
+            if (condition())
+            {
+                Fail(message.ToFormat(args));
+            }
+        }
+            
         public static void Fail(bool condition, string message)
         {
             if (condition)

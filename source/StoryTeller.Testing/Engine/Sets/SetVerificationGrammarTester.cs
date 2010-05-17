@@ -23,7 +23,7 @@ namespace StoryTeller.Testing.Engine.Sets
         {
             grammar =
                 Fixture.VerifyStringList(() => { throw new NotImplementedException(); }).Titled(
-                    "The list of strings should be").StepNameIs("row").Grammar();
+                    "The list of strings should be").LeafNameIs("row").Grammar();
 
             step = new Step("anything").WithChildren("row", new Step(), new Step(), new Step());
 

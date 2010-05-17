@@ -15,9 +15,9 @@ namespace StoryTeller.Engine.Sets
         private readonly string _labelName;
         private string _leafName;
 
-        public SetVerificationGrammar(string stepName, string labelName, ISetComparer comparer)
+        public SetVerificationGrammar(string leafName, string labelName, ISetComparer comparer)
         {
-            _leafName = stepName;
+            _leafName = leafName;
             _labelName = labelName;
             _comparer = comparer;
         }
