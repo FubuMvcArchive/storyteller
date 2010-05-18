@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using StoryTeller.Domain;
@@ -32,6 +33,12 @@ namespace StoryTeller.Testing
 
         #endregion
 
+        [Test]
+        public void open_the_application()
+        {
+            var project = Project.LoadFromFile(@"c:\svn\blue\storyteller.xml");
+
+        }
 
         [Test]
         public void try_to_write_grammar_report_for_dovetail()

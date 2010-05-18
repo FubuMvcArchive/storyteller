@@ -11,7 +11,7 @@ namespace StoryTeller.Engine
         private Action<object> _callback;
         protected MethodInfo _method;
 
-
+        // TODO -- this needs to be build separately.  Need an ObjectFinder here.
         public ReflectionGrammar(MethodInfo method, object target)
             : base(method.GetTemplate())
         {

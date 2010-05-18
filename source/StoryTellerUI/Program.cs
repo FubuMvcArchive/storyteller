@@ -5,7 +5,7 @@ using StoryTeller.UserInterface;
 
 namespace StoryTellerUI
 {
-    internal class Program
+    public class Program
     {
         [STAThread]
         public static void Main(params string[] args)

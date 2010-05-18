@@ -40,7 +40,7 @@ assemblyinfo :version do |asm|
 end
 
 task :compile => :version do
-  MSBuildRunner.compile :compilemode => COMPILE_TARGET, :solutionfile => 'source/StoryTeller.sln'
+  MSBuildRunner.compile :compilemode => COMPILE_TARGET, :solutionfile => 'source/StoryTeller.sln', :clrversion => 'v4.0'
 end
 
 task :unit_test => :compile do

@@ -8,57 +8,18 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Engine/d:Sets/f:DataRowSetTesting.cs" caret="3631" fromTop="31" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:GrammarRunner.cs" caret="89" fromTop="3" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Engine/d:Sets/f:DataColumnMatchTester.cs" caret="1775" fromTop="37" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:FailureFixture.cs" caret="193" fromTop="8" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:SetsFixture.cs" caret="747" fromTop="29" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Integration/f:GrammarIntegrationTests.cs" caret="3463" fromTop="19" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:Sentence.cs" caret="1624" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/f:LineGrammar.cs" caret="883" fromTop="20" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestRunner.cs" caret="3520" fromTop="16" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:ObjectFinder.cs" caret="223" fromTop="7" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Engine/f:ObjectFinderTester.cs" caret="1955" fromTop="28" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestContext.cs" caret="10065" fromTop="15" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:LibraryBuilder.cs" caret="1894" fromTop="11" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureLibrary.cs" caret="217" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureGraph.cs" caret="3674" fromTop="0" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:IFixtureNode.cs" caret="324" fromTop="11" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:Project.cs" caret="3405" fromTop="0" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:InProcessTestEngine.cs" caret="153" fromTop="6" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:FixtureLibraryErrorWriter.cs" caret="442" fromTop="15" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:ProjectLoaded.cs" caret="331" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestRunnerDomain.cs" caret="1821" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/f:IEventAggregator.cs" caret="580" fromTop="7" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/f:Debugging.cs" caret="1044" fromTop="20" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestEngine.cs" caret="2946" fromTop="16" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestPresenter.cs" caret="559" fromTop="8" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestScreen.cs" caret="610" fromTop="16" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestRunnerProxy.cs" caret="2053" fromTop="49" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="493" fromTop="0" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Commands/f:CollapseAllCommand.cs" caret="32" fromTop="0" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Screens/f:Tab_within_screen_collection_tests.cs" caret="2173" fromTop="20" />
+      <File id="F750C0C0-EC9A-4690-831F-CC5FDB4A28E5/d:Fixtures/f:StoryTellerUIFixture.cs" caret="308" fromTop="10" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Bootstrapper.cs" caret="1210" fromTop="37" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="1523" fromTop="26" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="241" fromTop="4" />
     </RecentFiles>
     <RecentEdits>
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:ObjectFinder.cs" caret="4148" fromTop="13" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Engine/f:ObjectFinderTester.cs" caret="1642" fromTop="18" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureGraph.cs" caret="923" fromTop="25" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:LibraryBuilder.cs" caret="1216" fromTop="11" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:LibraryBuilder.cs" caret="1908" fromTop="12" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureLibrary.cs" caret="258" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureGraph.cs" caret="1472" fromTop="5" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureGraph.cs" caret="1948" fromTop="3" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureGraph.cs" caret="3570" fromTop="3" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:FixtureGraph.cs" caret="3658" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:FixtureLibraryErrorWriter.cs" caret="950" fromTop="25" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:FixtureLibraryErrorWriter.cs" caret="957" fromTop="25" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:FixtureLibraryErrorWriter.cs" caret="1556" fromTop="32" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:FixtureLibraryErrorWriter.cs" caret="1367" fromTop="24" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:FixtureLibraryErrorWriter.cs" caret="694" fromTop="9" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:FixtureLibraryErrorWriter.cs" caret="435" fromTop="13" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestEngine.cs" caret="846" fromTop="22" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/f:Debugging.cs" caret="1127" fromTop="21" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/f:IEventAggregator.cs" caret="352" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/f:IEventAggregator.cs" caret="580" fromTop="7" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Bootstrapper.cs" caret="0" fromTop="0" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Bootstrapper.cs" caret="246" fromTop="10" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Bootstrapper.cs" caret="1207" fromTop="37" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="1523" fromTop="26" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="241" fromTop="4" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -82,19 +43,19 @@
       <Item value="Func" priority="5" />
       <Item value="params" priority="0" />
       <Item value="object" priority="4" />
-      <Item value="if" priority="2" />
+      <Item value="if" priority="3" />
       <Item value="condition" priority="0" />
       <Item value="Fail`0" priority="0" />
       <Item value="message" priority="1" />
-      <Item value="return" priority="10" />
-      <Item value="this" priority="2" />
+      <Item value="return" priority="11" />
+      <Item value="this" priority="3" />
       <Item value="leafName" priority="0" />
       <Item value="class" priority="2" />
       <Item value="ITestContext`0" priority="0" />
       <Item value="bool" priority="0" />
       <Item value="string" priority="9" />
       <Item value="private" priority="3" />
-      <Item value="new" priority="19" />
+      <Item value="new" priority="20" />
       <Item value="Cache&lt;string,Func&lt;object,object,bool&gt;&gt;" priority="0" />
       <Item value="readonly" priority="0" />
       <Item value="_matchers" priority="3" />
@@ -159,7 +120,7 @@
       <Item value="HtmlDocument`0" priority="1" />
       <Item value="document" priority="12" />
       <Item value="library" priority="2" />
-      <Item value="f" priority="4" />
+      <Item value="f" priority="5" />
       <Item value="Obsolete" priority="0" />
       <Item value="IEnumerable" priority="1" />
       <Item value="false" priority="0" />
@@ -176,7 +137,7 @@
       <Item value="ul" priority="2" />
       <Item value="FixtureGraph`0" priority="1" />
       <Item value="writeFailedFixture`0" priority="1" />
-      <Item value="grammar" priority="1" />
+      <Item value="grammar" priority="2" />
       <Item value="Message" priority="0" />
       <Item value="HtmlClasses`0" priority="0" />
       <Item value="Project`0" priority="0" />
@@ -193,17 +154,23 @@
       <Item value="MarshalByRefObject`0" priority="0" />
       <Item value="null" priority="0" />
       <Item value="IHtmlView" priority="0" />
-      <Item value="_view" priority="2" />
+      <Item value="_view" priority="3" />
       <Item value="true" priority="0" />
       <Item value="IListener" priority="0" />
-      <Item value="FixtureLibrary" priority="0" />
+      <Item value="FixtureLibrary" priority="1" />
+      <Item value="makeSingleton`1" priority="0" />
+      <Item value="GrammarErrorPresenter`0" priority="0" />
+      <Item value="IStartable`0" priority="0" />
+      <Item value="_structures" priority="0" />
+      <Item value="Any`1" priority="0" />
+      <Item value="Template" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.EmbeddedSectionGrammar`1">
       <Item value="LeafName`0" priority="3" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:FubuCore.Util.Cache`2">
       <Item value="OnMissing" priority="0" />
-      <Item value="GetAll`0" priority="0" />
+      <Item value="GetAll`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.ITestContext">
       <Item value="Matches`0" priority="0" />
@@ -217,6 +184,7 @@
       <Item value="Contains`0" priority="0" />
       <Item value="ShouldEqual`0" priority="0" />
       <Item value="IsNotEmpty`0" priority="1" />
+      <Item value="ToFormat`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.Sets.SetRow">
       <Item value="Values" priority="1" />
@@ -231,7 +199,7 @@
     <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
       <Item value="Each`0" priority="5" />
       <Item value="Each`1" priority="1" />
-      <Item value="Any`1" priority="1" />
+      <Item value="Any`1" priority="2" />
       <Item value="Where`1" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.Cell">
@@ -305,9 +273,11 @@
       <Item value="Text`0" priority="3" />
       <Item value="Modify`0" priority="0" />
       <Item value="Add`0" priority="1" />
+      <Item value="Child`1" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Model.GrammarStructure">
-      <Item value="AllErrors`0" priority="1" />
+      <Item value="AllErrors`0" priority="2" />
+      <Item value="Name" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@StoryTeller.Html.HtmlClasses">
       <Item value="CSS`0" priority="0" />
@@ -336,7 +306,7 @@
       <Item value="Library" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.UserInterface.Tests.IHtmlView">
-      <Item value="Html" priority="0" />
+      <Item value="Html" priority="1" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>
