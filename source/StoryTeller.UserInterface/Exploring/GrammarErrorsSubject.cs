@@ -2,7 +2,7 @@ using StoryTeller.UserInterface.Screens;
 
 namespace StoryTeller.UserInterface.Exploring
 {
-    public class GrammarErrorsSubject : SingletonScreenSubject<GrammarErrorsView>
+    public class GrammarErrorsSubject : SingletonScreenSubject<GrammarErrorPresenter>
     {
         public bool Equals(GrammarErrorsSubject obj)
         {

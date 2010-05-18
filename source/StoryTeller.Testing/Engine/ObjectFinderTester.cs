@@ -55,6 +55,14 @@ namespace StoryTeller.Testing.Engine
         private ObjectFinder finder;
 
         [Test]
+        public void a_guid()
+        {
+            finder.CanBeParsed(typeof(Guid)).ShouldBeTrue();
+            string stringValue = Guid.NewGuid().ToString();
+            finder.FromString<Guid>(stringValue).ShouldBeOfType<Guid>().ToString().ShouldEqual(stringValue);
+        }
+
+        [Test]
         public void array_of_non_simple_type_that_does_not_have_a_finder_cannot_be_parsed()
         {
             finder.CanBeParsed(typeof (Service[])).ShouldBeFalse();

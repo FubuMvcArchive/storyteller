@@ -131,6 +131,7 @@ namespace StoryTeller.Engine
             _froms[typeof (string)] = parseString;
             _froms[typeof (DateTime)] = key => GetDateTime(key);
             _froms[typeof (TimeSpan)] = key => GetTimeSpan(key);
+            _froms[typeof (Guid)] = key => new Guid(key);
         }
 
         public virtual object FromString(string stringValue, Type type)

@@ -7,6 +7,8 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
+using StoryTeller.Execution;
+using StoryTeller.Html;
 using StoryTeller.Model;
 using StoryTeller.Samples;
 using StoryTeller.UserInterface;
@@ -30,6 +32,17 @@ namespace StoryTeller.Testing
 
         #endregion
 
+
+        [Test]
+        public void try_to_write_grammar_report_for_dovetail()
+        {
+            var project = Project.LoadFromFile(@"C:\svn\blue\storyteller.xml");
+            var writer = new FixtureLibraryErrorWriter();
+            var engine = new TestEngine();
+            engine.Handle(new ProjectLoaded(project));
+            engine.WaitForProcessing();
+            writer.BuildReport(engine.Library).OpenInBrowser();
+        }
 
         [Test]
         public void write_and_open_a_test_editor()

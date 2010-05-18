@@ -17,8 +17,9 @@ namespace StoryTeller.Engine
         private FixtureLibrary _library = new FixtureLibrary();
         private int _number = 1;
         private int _total;
-        
-        
+        private ObjectFinder _finder = new ObjectFinder();
+
+
         public LibraryBuilder(IFixtureObserver observer)
         {
             _observer = observer;
@@ -26,7 +27,7 @@ namespace StoryTeller.Engine
 
         public FixtureLibrary Library { get { return _library; } }
 
-        public ObjectFinder Finder { set { _library.Finder = value; } }
+        public ObjectFinder Finder { set { _finder = value; } }
 
         #region IFixtureVisitor Members
 
@@ -37,6 +38,7 @@ namespace StoryTeller.Engine
             sendMessage(fixtureName);
 
             FixtureGraph fixtureGraph = _library.FixtureFor(fixtureName);
+            fixtureGraph.FixtureClassName = fixture.GetType().FullName;
             fixtureGraph.Policies = fixture.Policies;
             fixtureGraph.Description = fixture.Description;
             fixtureGraph.Title = fixture.Title.IsEmpty() ? fixtureName : fixture.Title;
@@ -53,14 +55,20 @@ namespace StoryTeller.Engine
         public void LogFixtureFailure(string fixtureName, Exception exception)
         {
             sendMessage(fixtureName);
-            _library.FixtureFor(fixtureName).LogError(exception);
+
+            FixtureGraph fixtureGraph = _library.FixtureFor(fixtureName);
+            
+            fixtureGraph.LogError(exception);
         }
 
         #endregion
 
         public FixtureLibrary Build(ITestContext context)
         {
-            _library = new FixtureLibrary();
+            _library = new FixtureLibrary()
+            {
+                Finder = _finder
+            };
 
             context.VisitFixtures(this);
 

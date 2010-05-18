@@ -464,4 +464,5 @@ DIV .exception-zone
 {
     padding-top: 0px;
     padding-bottom: 2px;
+    overflow: visible;
 }

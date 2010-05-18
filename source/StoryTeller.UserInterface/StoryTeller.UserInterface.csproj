@@ -173,9 +173,29 @@
     <Compile Include="Editing\Scripts\Embeds.cs" />
     <Compile Include="Editing\TestEditorBuilder.cs" />
     <Compile Include="Editing\VersionHistory.cs" />
-    <Compile Include="Exploring\GrammarErrorItem.xaml.cs">
-      <DependentUpon>GrammarErrorItem.xaml</DependentUpon>
+    <Compile Include="Exploring\ExplorerView.cs" />
+    <Compile Include="Exploring\FixtureExplorer.cs" />
+    <Compile Include="Exploring\GrammarErrorPresenter.cs" />
+    <Compile Include="Exploring\GrammarErrorsSubject.cs" />
+    <Compile Include="Exploring\IExplorerView.cs" />
+    <Compile Include="Exploring\ISuitePresenter.cs" />
+    <Compile Include="Exploring\ISuiteView.cs" />
+    <Compile Include="Exploring\ITestExplorer.cs" />
+    <Compile Include="Exploring\SuiteNodeCache.cs" />
+    <Compile Include="Exploring\SuitePresenter.cs" />
+    <Compile Include="Exploring\SuiteView.xaml.cs">
+      <DependentUpon>SuiteView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Exploring\TestExplorer.cs" />
+    <Compile Include="Exploring\TestIconChanged.cs" />
+    <Compile Include="Exploring\TestLineDriver.cs" />
+    <Compile Include="Exploring\TestLinePanel.xaml.cs">
+      <DependentUpon>TestLinePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exploring\TestNodeCache.cs" />
+    <Compile Include="Exploring\TreeBuilder.cs" />
+    <Compile Include="Exploring\TreeNode.cs" />
+    <Compile Include="Exploring\TreeViewController.cs" />
     <Compile Include="Handlers\IHandler.cs" />
     <Compile Include="Handlers\ShellPresenter.cs" />
     <Compile Include="Projects\BinaryFailureHandler.cs" />
@@ -213,31 +233,7 @@
       <DependentUpon>FixtureNodeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Examples\IFixtureNodeView.cs" />
-    <Compile Include="Exploring\FixtureExplorer.cs" />
-    <Compile Include="Exploring\GrammarErrorsSubject.cs" />
-    <Compile Include="Exploring\GrammarErrorsView.xaml.cs">
-      <DependentUpon>GrammarErrorsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Icon.cs" />
-    <Compile Include="Exploring\IExplorerView.cs" />
-    <Compile Include="Exploring\ISuitePresenter.cs" />
-    <Compile Include="Exploring\ISuiteView.cs" />
-    <Compile Include="Exploring\ITestExplorer.cs" />
-    <Compile Include="Exploring\SuiteNodeCache.cs" />
-    <Compile Include="Exploring\SuitePresenter.cs" />
-    <Compile Include="Exploring\SuiteView.xaml.cs">
-      <DependentUpon>SuiteView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Exploring\TestExplorer.cs" />
-    <Compile Include="Exploring\TestIconChanged.cs" />
-    <Compile Include="Exploring\TestLineDriver.cs" />
-    <Compile Include="Exploring\TestLinePanel.xaml.cs">
-      <DependentUpon>TestLinePanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Exploring\TestNodeCache.cs" />
-    <Compile Include="Exploring\TreeBuilder.cs" />
-    <Compile Include="Exploring\TreeNode.cs" />
-    <Compile Include="Exploring\TreeViewController.cs" />
     <Compile Include="IApplicationShell.cs" />
     <Compile Include="Icons\IconMarker.cs" />
     <Compile Include="MainWindow.cs" />
@@ -269,7 +265,6 @@
     <Compile Include="Screens\IScreenLocator.cs" />
     <Compile Include="Screens\ScreenCollection.cs" />
     <Compile Include="Screens\ScreenSubject.cs" />
-    <Compile Include="Exploring\ExplorerView.cs" />
     <Compile Include="SharedExtensions.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
@@ -338,9 +333,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Exploring\GrammarErrorItem.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Exploring\SuiteView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Exploring\TestLinePanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Projects\BinaryFailure.xaml">
       <SubType>Designer</SubType>
@@ -363,18 +362,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Examples\FixtureNodeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Exploring\GrammarErrorsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Exploring\SuiteView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Exploring\TestLinePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

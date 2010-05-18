@@ -113,7 +113,7 @@ namespace StoryTeller.UserInterface
             makeSingleton<ITestExplorer>();
             makeSingleton<ITestService>();
             makeSingleton<IScreenCollection>();
-
+            makeSingleton<GrammarErrorPresenter>();
             makeSingleton<IExecutionQueue>();
             makeSingleton<IProjectController>();
             makeSingleton<IExecutionQueue>();

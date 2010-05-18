@@ -21,9 +21,8 @@ namespace StoryTeller.Execution
 
 
         public TestEngine()
-            : this(null, new TestStopConditions())
+            : this(new TestRunnerDomain(new NulloEventPublisher()), new TestStopConditions())
         {
-            throw new NotImplementedException();
         }
 
         public TestEngine(ITestRunnerDomain domain, TestStopConditions stopConditions)

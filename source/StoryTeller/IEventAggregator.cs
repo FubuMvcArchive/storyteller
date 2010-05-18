@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 namespace StoryTeller
 {
@@ -14,6 +15,19 @@ namespace StoryTeller
     public interface IEventPublisher
     {
         void Publish(object message);
+    }
+
+    public class NulloEventPublisher : MarshalByRefObject,IEventPublisher
+    {
+        public void Publish(object message)
+        {
+            Debug.WriteLine(message);
+        }
+
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
     }
 
     public static class EventPublisherExtensions

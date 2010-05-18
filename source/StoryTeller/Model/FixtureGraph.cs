@@ -30,6 +30,7 @@ namespace StoryTeller.Model
             Title = name;
         }
 
+        public string FixtureClassName { get; set; }
         public int GrammarCount { get { return _structures.Count; } }
         public IPolicies Policies { get { return _policies; } set { _policies = value; } }
 
@@ -45,6 +46,7 @@ namespace StoryTeller.Model
             });
         }
 
+        [Obsolete("Wanna kill this")]
         public IEnumerable<GrammarError> AllErrors()
         {
             foreach (GrammarError error in _errors)
@@ -58,6 +60,14 @@ namespace StoryTeller.Model
                 {
                     yield return error;
                 }
+            }
+        }
+
+        public IEnumerable<GrammarError> Errors
+        {
+            get
+            {
+                return _errors;
             }
         }
 
@@ -109,6 +119,14 @@ namespace StoryTeller.Model
         public bool HasGrammar(string key)
         {
             return _structures.Has(key);
+        }
+
+        public IEnumerable<GrammarStructure> Grammars
+        {
+            get
+            {
+                return _structures.GetAll();
+            }
         }
 
         public bool Equals(FixtureGraph obj)
@@ -163,6 +181,11 @@ namespace StoryTeller.Model
             if (_policies.SelectionMode != SelectionMode.MandatoryAutoSelect) return false;
 
             return structure.Name == _policies.AutoSelectGrammarKey;
+        }
+
+        public bool HasGrammarErrors()
+        {
+            return _structures.GetAll().Any(x => x.AllErrors().Any());
         }
     }
 }

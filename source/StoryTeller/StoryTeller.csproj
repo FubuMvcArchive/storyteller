@@ -124,6 +124,7 @@
     <Compile Include="Html\CommentTag.cs" />
     <Compile Include="Html\EmbeddedSectionTag.cs" />
     <Compile Include="Html\ExceptionTag.cs" />
+    <Compile Include="Html\FixtureLibraryErrorWriter.cs" />
     <Compile Include="Html\HtmlClasses.cs" />
     <Compile Include="Html\ParagraphTag.cs" />
     <Compile Include="Html\PreviewWriter.cs" />

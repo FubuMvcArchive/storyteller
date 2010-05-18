@@ -14,7 +14,7 @@ namespace StoryTeller.UserInterface.Tests
     public class HtmlView : ContentControl, IHtmlView
     {
         private readonly WebBrowser _browser = new WebBrowser();
-        private string _html = string.Empty;
+        private string _html = "<html></html>";
 
         public HtmlView()
         {

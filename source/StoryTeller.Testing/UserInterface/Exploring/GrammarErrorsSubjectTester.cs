@@ -22,8 +22,8 @@ namespace StoryTeller.Testing.UserInterface.Exploring
         public void create_screen_should_build_the_GrammarErrorsView()
         {
             var factory = MockRepository.GenerateMock<IScreenFactory>();
-            var theView = new GrammarErrorsView();
-            factory.Expect(x => x.Build<GrammarErrorsView>()).Return(theView);
+            var theView = new GrammarErrorPresenter(null);
+            factory.Expect(x => x.Build<GrammarErrorPresenter>()).Return(theView);
 
             var subject = new GrammarErrorsSubject();
             subject.CreateScreen(factory).ShouldBeTheSameAs(theView);
@@ -35,7 +35,7 @@ namespace StoryTeller.Testing.UserInterface.Exploring
             var subject = new GrammarErrorsSubject();
             subject.Matches(new StubScreen()).ShouldBeFalse();
 
-            subject.Matches(new GrammarErrorsView());
+            subject.Matches(new GrammarErrorPresenter(null));
         }
     }
 }
