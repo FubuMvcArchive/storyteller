@@ -71,6 +71,7 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="GrammarMarker.cs" />
+    <Compile Include="GrammarSystem.cs" />
     <Compile Include="Grammars\CheckObjectFixture.cs" />
     <Compile Include="Grammars\CompositeFixture.cs" />
     <Compile Include="Grammars\DecoratedGrammarFixture.cs" />

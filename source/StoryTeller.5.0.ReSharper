@@ -1,0 +1,13 @@
+<Configuration>
+  <SharedSolutionTemplateManager>
+    <LiveTemplates>
+      <Template uid="b25eec2b-3d6e-498e-bc5e-f0509c1a4d86" shortcut="pvt" description="unit test" text="[Test]&#xD;&#xA;public void $METHOD$()&#xD;&#xA;{&#xD;&#xA;	&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+        <Categories />
+        <Variables>
+          <Variable name="METHOD" expression="" initialRange="0" />
+        </Variables>
+        <CustomProperties />
+      </Template>
+    </LiveTemplates>
+  </SharedSolutionTemplateManager>
+</Configuration>
