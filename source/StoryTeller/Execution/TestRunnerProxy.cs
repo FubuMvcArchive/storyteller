@@ -1,13 +1,32 @@
 using System;
+using System.Runtime.Remoting;
 using StoryTeller.Engine;
 using StoryTeller.Model;
+using System.Collections.Generic;
 
 namespace StoryTeller.Execution
 {
-    public class TestRunnerProxy : MarshalByRefObject
+    public interface ITestRunnerProxy
+    {
+        void Dispose();
+        void RecycleEnvironment();
+        TestResult RunTest(TestExecutionRequest request);
+        void AbortCurrentTest();
+        bool IsExecuting();
+        object InitializeLifetimeService();
+
+        FixtureLibrary StartSystem(string systemType, MarshalByRefObject remotePublisher);
+
+        object GetLifetimeService();
+        ObjRef CreateObjRef(Type requestedType);
+    }
+
+    public class TestRunnerProxy : MarshalByRefObject, ITestRunnerProxy
     {
         private TestRunner _runner;
+        private SystemLifecycle _lifecycle;
         private IEventPublisher _publisher;
+        private ISystem _system;
 
         public void Dispose()
         {
@@ -25,7 +44,7 @@ namespace StoryTeller.Execution
         {
             try
             {
-                if (_runner != null) _runner.RecycleEnvironment();
+                if (_runner != null) _lifecycle.RecycleEnvironment();
             }
             catch (TestEngineFailureException)
             {
@@ -43,11 +62,48 @@ namespace StoryTeller.Execution
             return _runner.RunTest(request);
         }
 
-        public FixtureLibrary BuildFixtureLibrary()
+        public void AbortCurrentTest()
         {
+            if (_runner != null) _runner.Abort();
+        }
+
+        public bool IsExecuting()
+        {
+            if (_runner != null) return _runner.IsExecuting();
+
+            return false;
+        }
+
+        public override object InitializeLifetimeService()
+        {
+            return null;
+        }
+
+        public FixtureLibrary StartSystem(string systemType, MarshalByRefObject remotePublisher)
+        {
+            _publisher = (IEventPublisher)remotePublisher;
+
+            // TODO -- if fails, do a Thread.Sleep and try again
+            Type type = Type.GetType(systemType);
+            _system = (ISystem)Activator.CreateInstance(type);
+
+            _lifecycle = new SystemLifecycle(_system);
+            _lifecycle.StartApplication();
+
             try
             {
-                return _runner.Library;
+                var registry = new FixtureRegistry();
+                registry.AddFixturesFromAssembly(type.Assembly);
+                var container = registry.BuildContainer();
+                
+
+                var observer = new FixtureObserver(_publisher);
+                
+                var library = TestRunnerBuilder.BuildLibrary(_system, observer, container);
+                var containerSource = new FixtureContainerSource(container);
+                _runner = new TestRunner(_lifecycle, library, containerSource);
+
+                return library;
             }
             catch (TestEngineFailureException)
             {
@@ -57,30 +113,6 @@ namespace StoryTeller.Execution
             {
                 throw new TestEngineFailureException(e.ToString());
             }
-        }
-
-        public void AbortCurrentTest()
-        {
-            _runner.Abort();
-        }
-
-        public bool IsExecuting()
-        {
-            return _runner.IsExecuting();
-        }
-
-        public override object InitializeLifetimeService()
-        {
-            return null;
-        }
-
-        public void StartRunner(string runnerType, MarshalByRefObject remotePublisher)
-        {
-            // TODO -- if fails, do a Thread.Sleep and try again
-            Type type = Type.GetType(runnerType);
-            _runner = (TestRunner)Activator.CreateInstance(type);
-            _publisher = (IEventPublisher)remotePublisher;
-            _runner.FixtureObserver = new FixtureObserver(_publisher);
         }
     }
 }

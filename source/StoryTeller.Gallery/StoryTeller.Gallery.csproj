@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="Application\Calculator.cs" />
     <Compile Include="Fixtures\CalculatorFixture.cs" />
-    <Compile Include="GalleryTestRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StoryTeller\StoryTeller.csproj">

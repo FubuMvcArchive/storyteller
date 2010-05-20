@@ -8,31 +8,6 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.Testing.Workspace
 {
-    [TestFixture]
-    public class when_creating_a_local_TestRunner
-    {
-        #region Setup/Teardown
-
-        [SetUp]
-        public void SetUp()
-        {
-            project = DataMother.MathProject();
-            project.TimeoutInSeconds = 20;
-            runner = project.LocalRunner();
-        }
-
-        #endregion
-
-        private Project project;
-        private ITestRunner runner;
-
-
-        [Test]
-        public void uses_the_named_class()
-        {
-            runner.ShouldBeOfType<MathTestRunner>();
-        }
-    }
 
 
     [TestFixture]

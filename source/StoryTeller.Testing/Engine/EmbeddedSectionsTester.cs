@@ -56,12 +56,13 @@ namespace StoryTeller.Testing.Engine
 
 ");
 
-            runner = new TestRunner(x => { x.AddFixturesFromThisAssembly(); });
+            runner = TestRunnerBuilder.For(x => x.AddFixturesFromThisAssembly());
+                
         }
 
         #endregion
 
-        private TestRunner runner;
+        private ITestRunner runner;
         private Test test;
 
         [Test]

@@ -15,7 +15,7 @@ namespace StoryTeller.Testing
         [SetUp]
         public void SetUp()
         {
-            runner = new TestRunner(x => x.AddFixture<SlowFixture>());
+            runner = TestRunnerBuilder.ForFixture<SlowFixture>();
             test = new Test("slow test").With(Section.For<SlowFixture>().WithStep("GoSlow"));
 
             var reset = new ManualResetEvent(false);
@@ -52,7 +52,7 @@ namespace StoryTeller.Testing
 
         #endregion
 
-        private TestRunner runner;
+        private ITestRunner runner;
         private Test test;
 
         [Test, Explicit]

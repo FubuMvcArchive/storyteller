@@ -121,15 +121,14 @@ namespace StoryTeller.Testing
         }
 
         [Test]
-        public void write_out_the_project_file_for_match()
+        public void write_out_the_project_file_for_math()
         {
             var project = new Project
             {
                 BinaryFolder = @"..\..\source\StoryTeller.Samples\bin\debug",
                 FileName = "math.xml",
                 Name = "Math",
-                TestFolder = "math",
-                TestRunnerTypeName = typeof(MathTestRunner).AssemblyQualifiedName
+                TestFolder = "math"
             };
 
             project.Save(@"C:\code\StoryTeller\samples\math.xml");
@@ -194,22 +193,7 @@ namespace StoryTeller.Testing
     [TestFixture]
     public class monkey_around
     {
-        [Test]
-        public void get_example_out_of_fixture1()
-        {
-            var runner = new TestRunner(x =>
-            {
-                x.AddFixture<Fixture1>();
-                x.AddFixture<Fixture2>();
-            });
 
-            var fixture = new Fixture1();
-
-            GrammarStructure paragraph = fixture["EditAndGo"].ToStructure(runner.Library);
-            IStep example = paragraph.CreateExample();
-
-            Debug.WriteLine(example);
-        }
 
         [Test]
         public void look_at_illegal_characters()

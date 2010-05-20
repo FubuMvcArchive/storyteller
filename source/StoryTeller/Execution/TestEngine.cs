@@ -97,6 +97,7 @@ namespace StoryTeller.Execution
             _latch.Reset();
 
             var thread = new Thread(performReload);
+            thread.Name = "StoryTeller-Reload-Library";
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
         }

@@ -67,7 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExampleRunner.cs" />
+    <Compile Include="ExampleSystem.cs" />
     <Compile Include="Fixtures\SimpleActionsFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

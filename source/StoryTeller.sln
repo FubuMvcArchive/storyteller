@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTellerUI", "StoryTelle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTellerRunner", "StoryTellerRunner\StoryTellerRunner.csproj", "{34238910-0826-44D1-B2C3-DC990230A1A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.AcceptanceTesting", "StoryTeller.AcceptanceTesting\StoryTeller.AcceptanceTesting.csproj", "{F750C0C0-EC9A-4690-831F-CC5FDB4A28E5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.Gallery", "StoryTeller.Gallery\StoryTeller.Gallery.csproj", "{CAE54634-A689-4CF2-979E-CCBCCA8A3644}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{B52EADC1-DDD4-452C-83ED-4A148302D424}"
@@ -54,10 +52,6 @@ Global
 		{34238910-0826-44D1-B2C3-DC990230A1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34238910-0826-44D1-B2C3-DC990230A1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34238910-0826-44D1-B2C3-DC990230A1A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F750C0C0-EC9A-4690-831F-CC5FDB4A28E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F750C0C0-EC9A-4690-831F-CC5FDB4A28E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F750C0C0-EC9A-4690-831F-CC5FDB4A28E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F750C0C0-EC9A-4690-831F-CC5FDB4A28E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CAE54634-A689-4CF2-979E-CCBCCA8A3644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CAE54634-A689-4CF2-979E-CCBCCA8A3644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAE54634-A689-4CF2-979E-CCBCCA8A3644}.Release|Any CPU.ActiveCfg = Release|Any CPU

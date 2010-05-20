@@ -34,11 +34,14 @@ namespace StoryTeller.Testing.Engine
         public void SetUp()
         {
             var registry = new FixtureRegistry();
-            registry.AliasFixture<ExampleFixture>("Example");
-            registry.AliasFixture<ArithmeticFixture>("Arithmetic");
 
 
-            var runner = new TestRunner(registry);
+
+            var runner = TestRunnerBuilder.For(x =>
+            {
+                registry.AliasFixture<ExampleFixture>("Example");
+                registry.AliasFixture<ArithmeticFixture>("Arithmetic");
+            });
 
             test = runner.CreateExample();
         }

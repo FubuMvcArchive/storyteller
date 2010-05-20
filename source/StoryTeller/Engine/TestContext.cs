@@ -116,8 +116,8 @@ namespace StoryTeller.Engine
             Finder = new ObjectFinder();
         }
 
-        public TestContext(FixtureRegistry registry)
-            : this(registry.BuildContainer(), new Test("FAKE"), new ConsoleListener())
+        public TestContext(IContainer container)
+            : this(container, new Test("FAKE"), new ConsoleListener())
         {
         }
 

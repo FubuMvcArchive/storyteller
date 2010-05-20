@@ -22,7 +22,7 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
         [SetUp]
         public void SetUp()
         {
-            var runner = new TestRunner(fixturesAre);
+            var runner = TestRunnerBuilder.For(fixturesAre);
             library = runner.Library;
             templates = new GrammarWriter(library).Build();
         }

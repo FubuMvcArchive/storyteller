@@ -15,7 +15,8 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            runner = new TestRunner(x => x.AddFixture<TimeoutFixture>());
+            runner = TestRunnerBuilder.ForFixture<TimeoutFixture>();
+                
             test = new Test("fake").Section<TimeoutFixture>(x => { x.WithStep("Go"); });
 
             runner.RunTest(new TestExecutionRequest()
@@ -27,7 +28,7 @@ namespace StoryTeller.Testing.Engine
 
         #endregion
 
-        private TestRunner runner;
+        private ITestRunner runner;
         private Test test;
 
         [Test]

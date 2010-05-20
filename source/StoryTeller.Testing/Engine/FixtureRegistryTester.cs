@@ -27,7 +27,7 @@ namespace StoryTeller.Testing.Engine
             {
                 if (_context == null)
                 {
-                    _context = new TestContext(registry);
+                    _context = new TestContext(registry.BuildContainer());
                 }
 
                 return _context;

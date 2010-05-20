@@ -16,15 +16,15 @@ namespace StoryTeller.Testing
 {
     public static class TestUtility
     {
-        public static TestRunner GetRunner()
+        public static ITestRunner GetRunner()
         {
-            return new TestRunner(x => { x.AddFixturesFromThisAssembly(); });
+            return TestRunnerBuilder.For(x => x.AddFixturesFromThisAssembly());
         }
 
         public static Test RunTest(string xml)
         {
             Test test = ReadTest(xml);
-            TestRunner runner = GetRunner();
+            ITestRunner runner = GetRunner();
 
             test.LastResult = runner.RunTest(test);
 

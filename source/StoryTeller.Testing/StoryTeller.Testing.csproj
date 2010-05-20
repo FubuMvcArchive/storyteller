@@ -205,7 +205,6 @@
     <Compile Include="Engine\TimeoutFixture.cs" />
     <Compile Include="ErrorsTester.cs" />
     <Compile Include="Execution\DirectoryRunnerTester.cs" />
-    <Compile Include="Execution\ExampleSourceIntegrationTester.cs" />
     <Compile Include="Execution\TestEngineIntegrationTester.cs" />
     <Compile Include="HierarchyTester.cs" />
     <Compile Include="Integration\ProjectIntegratedTester.cs" />

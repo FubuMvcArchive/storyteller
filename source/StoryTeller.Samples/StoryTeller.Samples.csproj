@@ -70,19 +70,18 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="GrammarMarker.cs" />
     <Compile Include="Grammars\CheckObjectFixture.cs" />
     <Compile Include="Grammars\CompositeFixture.cs" />
     <Compile Include="Grammars\DecoratedGrammarFixture.cs" />
     <Compile Include="Grammars\EmbeddedFixture.cs" />
     <Compile Include="Grammars\FailureFixture.cs" />
-    <Compile Include="Grammars\GrammarRunner.cs" />
     <Compile Include="Grammars\SelectionListFixture.cs" />
     <Compile Include="Grammars\SentenceFixture.cs" />
     <Compile Include="Grammars\ServiceFixture.cs" />
     <Compile Include="Grammars\SetsFixture.cs" />
     <Compile Include="Grammars\TableFixture.cs" />
     <Compile Include="MathFixture.cs" />
-    <Compile Include="MathTestRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

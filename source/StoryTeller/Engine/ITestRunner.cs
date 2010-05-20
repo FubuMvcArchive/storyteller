@@ -15,5 +15,6 @@ namespace StoryTeller.Engine
         void RunTests(IEnumerable<Test> tests, IBatchListener listener);
 
         TestResult RunTest(TestExecutionRequest request);
+        void Abort();
     }
 }

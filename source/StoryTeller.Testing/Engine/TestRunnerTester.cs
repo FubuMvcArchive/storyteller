@@ -1,169 +1,414 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using NUnit.Framework;
+using Rhino.Mocks;
 using StoryTeller.Assertions;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Engine.Constraints;
+using StoryTeller.Execution;
 using StoryTeller.Model;
+using System.Linq;
+using StructureMap;
 
 namespace StoryTeller.Testing.Engine
 {
-    [TestFixture]
-    public class TestRunnerTester : AAAMockingContext<TestContext>
+
+    public class RecordingSystem : ISystem
     {
-        [Test]
-        public void call_both_setup_and_teardown()
+        private readonly List<string> _messages = new List<string>();
+
+        public void Record(string message)
         {
+            _messages.Add(message);
+        }
+
+        public string[] Messages
+        {
+            get
+            {
+                return _messages.ToArray();
+            }
+        }
+
+        public void Clear()
+        {
+            _messages.Clear();
+        }
+
+        public T Get<T>() where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegisterServices(ITestContext context)
+        {
+            Record("RegisterServices");
+            context.Store(this);
+        }
+
+        public void SetupEnvironment()
+        {
+            Record("SetupEnvironment");
+        }
+
+        public void TeardownEnvironment()
+        {
+            Record("TeardownEnvironment");
+        }
+
+        public void Setup()
+        {
+            Record("Setup");
+        }
+
+        public void Teardown()
+        {
+            Record("Teardown");
+        }
+    }
+
+    public class RecordingFixture : Fixture
+    {
+        private readonly RecordingSystem _system;
+
+        public RecordingFixture(RecordingSystem system)
+        {
+            _system = system;
+        }
+
+        public void Execute()
+        {
+            _system.Record("Execute");
+        }        
+    }
+
+    [TestFixture]
+    public class when_executing_a_test
+    {
+        private RecordingSystem system;
+        private TestRunner runner;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var library = FixtureLibrary.For(x => x.AddFixture<RecordingFixture>());
+            system = new RecordingSystem();
+            var fixtureContainerSource = new FixtureContainerSource(new Container(x => x.For<IFixture>().Add<RecordingFixture>().Named("Recording")));
+            fixtureContainerSource.RegisterFixture("Recording", typeof (RecordingFixture));
+
+            runner = new TestRunner(system, library, fixtureContainerSource);
+
             var test = new Test("something");
-            var runner = new MockTestRunner();
+            test.Add(new Section("Recording").WithStep("Execute"));
 
-            runner.RunTest(test);
+            runner.RunTest(new TestExecutionRequest()
+            {
+                Test = test,
+                TimeoutInSeconds = 1200
+            });
 
-            runner.AssertSetUpAndTearDownWereExecutedInCorrectOrder();
         }
 
         [Test]
-        public void dispose_should_call_the_environment_teardown()
+        public void should_start_the_application_because_it_has_not_already_been_started()
         {
-            bool wasTorndown = false;
-            var runner = new MockTestRunner();
+            system.Messages.ShouldContain("SetupEnvironment");
+        }
 
-            runner.EnvironmentTeardown = () => wasTorndown = true;
+        [Test]
+        public void should_register_services()
+        {
+            system.Messages.ShouldContain("RegisterServices");
+        }
+
+        [Test]
+        public void should_setup_the_execution()
+        {
+            system.Messages.ShouldContain("Setup");
+        }
+
+        [Test]
+        public void should_have_executed_the_fixture()
+        {
+            system.Messages.ShouldContain("Execute");
+        }
+
+        [Test]
+        public void should_teardown_after_the_test()
+        {
+            system.Messages.ShouldContain("Teardown");
+        }
+
+        [Test]
+        public void should_not_teardown_the_environment()
+        {
+            system.Messages.ShouldNotContain("TeardownEnvironment");
+        }
+
+        [Test]
+        public void should_do_the_steps_in_the_proper_order()
+        {
+            system.Messages.Length.ShouldEqual(5);
+
+            system.Messages[0].ShouldEqual("SetupEnvironment");
+            system.Messages[1].ShouldEqual("RegisterServices");
+            system.Messages[2].ShouldEqual("Setup");
+            system.Messages[3].ShouldEqual("Execute");
+            system.Messages[4].ShouldEqual("Teardown");
+        }
+    }
+
+    [TestFixture]
+    public class starting_the_application_only_happens_on_the_first_Test_if_necessary
+    {
+        private RecordingSystem system;
+        private TestRunner runner;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var library = FixtureLibrary.For(x => x.AddFixture<RecordingFixture>());
+            system = new RecordingSystem();
+            var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
+            {
+                x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
+            }));
+            fixtureContainerSource.RegisterFixture("Recording", typeof(RecordingFixture));
+
+            runner = new TestRunner(system, library, fixtureContainerSource);
+
+            var test = new Test("something");
+            test.Add(new Section("Recording").WithStep("Execute"));
+
+            runner.RunTest(new TestExecutionRequest()
+            {
+                Test = test,
+                TimeoutInSeconds = 1200
+            });
+
+            runner.RunTest(new TestExecutionRequest()
+            {
+                Test = test,
+                TimeoutInSeconds = 1200
+            });
+
+        }
+
+        [Test]
+        public void setup_environment_should_only_be_called_once()
+        {
+            system.Messages[0].ShouldEqual("SetupEnvironment");
+            system.Messages.Count(x => x == "SetupEnvironment").ShouldEqual(1);
+        }
+    }
+
+    [TestFixture]
+    public class when_executing_a_test_after_the_application_has_been_started
+    {
+        private RecordingSystem system;
+        private TestRunner runner;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var library = FixtureLibrary.For(x => x.AddFixture<RecordingFixture>());
+            system = new RecordingSystem();
+
+
+            var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
+            {
+                x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
+            }));
+            fixtureContainerSource.RegisterFixture("Recording", typeof(RecordingFixture));
+
+            
+
+            runner = new TestRunner(system, library, fixtureContainerSource);
+            runner.Lifecycle.StartApplication();
+
+            var test = new Test("something");
+            test.Add(new Section("Recording").WithStep("Execute"));
+
+            runner.RunTest(new TestExecutionRequest()
+            {
+                Test = test,
+                TimeoutInSeconds = 1200
+            });
+
+        }
+
+        [Test]
+        public void should_do_the_steps_in_the_proper_order_and_not_repeat_SetupEnvironment()
+        {
+            system.Messages.Length.ShouldEqual(5);
+
+            system.Messages[0].ShouldEqual("SetupEnvironment");
+            system.Messages[1].ShouldEqual("RegisterServices");
+            system.Messages[2].ShouldEqual("Setup");
+            system.Messages[3].ShouldEqual("Execute");
+            system.Messages[4].ShouldEqual("Teardown");
+        }
+    }
+
+    [TestFixture]
+    public class when_recycling_the_test_runner_environment
+    {
+        private RecordingSystem system;
+        private TestRunner runner;
+        private SystemLifecycle lifecycle;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var library = FixtureLibrary.For(x => x.AddFixture<RecordingFixture>());
+            system = new RecordingSystem();
+
+
+            var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
+            {
+                x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
+            }));
+            fixtureContainerSource.RegisterFixture("Recording", typeof(RecordingFixture));
+
+            lifecycle = new SystemLifecycle(system);
+            runner = new TestRunner(system, library, fixtureContainerSource);
+            lifecycle.StartApplication();
+
+            lifecycle.RecycleEnvironment();
+
+            var test = new Test("something");
+            test.Add(new Section("Recording").WithStep("Execute"));
+
+            runner.RunTest(new TestExecutionRequest()
+            {
+                Test = test,
+                TimeoutInSeconds = 1200
+            });
+
+        }
+
+        [Test]
+        public void should_do_the_steps_in_the_proper_order_and_not_repeat_SetupEnvironment()
+        {
+            system.Messages.Length.ShouldEqual(7);
+
+            system.Messages[0].ShouldEqual("SetupEnvironment");
+            system.Messages[1].ShouldEqual("TeardownEnvironment");
+            system.Messages[2].ShouldEqual("SetupEnvironment");
+
+            system.Messages[3].ShouldEqual("RegisterServices");
+            system.Messages[4].ShouldEqual("Setup");
+            system.Messages[5].ShouldEqual("Execute");
+            system.Messages[6].ShouldEqual("Teardown");
+        }
+    }
+
+    [TestFixture]
+    public class when_disposing_a_test_runner
+    {
+        private RecordingSystem system;
+        private TestRunner runner;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var library = FixtureLibrary.For(x => x.AddFixture<RecordingFixture>());
+            system = new RecordingSystem();
+
+
+            var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
+            {
+                x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
+            }));
+            fixtureContainerSource.RegisterFixture("Recording", typeof(RecordingFixture));
+
+            runner = new TestRunner(system, library, fixtureContainerSource);
 
             runner.Dispose();
 
-            wasTorndown.ShouldBeTrue();
+
         }
 
         [Test]
-        public void environment_setup_should_only_be_called_for_the_very_first_test_run()
+        public void should_teardown_the_environment()
         {
-            var test = new Test("something");
-            var runner = new MockTestRunner();
-
-            runner.EnvironmentSetUpRunCount.ShouldEqual(0);
-
-
-            runner.RunTest(test);
-            runner.EnvironmentSetUpRunCount.ShouldEqual(1);
-
-            runner.RunTest(test);
-            runner.EnvironmentSetUpRunCount.ShouldEqual(1);
-
-            runner.RunTest(test);
-            runner.EnvironmentSetUpRunCount.ShouldEqual(1);
+            system.Messages.ShouldHaveTheSameElementsAs("TeardownEnvironment");
         }
+    }
+
+
+    [TestFixture]
+    public class TestRunnerTester : AAAMockingContext<TestContext>
+    {
+
 
         [Test]
         public void run_a_test_when_setup_blows_up_do_not_rethrow_exception_and_log_the_exception_to_the_test()
         {
+            var runner = TestRunnerBuilder.ForSystem<SystemThatBlowsUpInSetup>();
+
             var test = new Test("Some test");
-            var runner = new TestRunnerThatBlowsUpInSetup();
 
             runner.RunTest(test);
 
             test.LastResult.ExceptionText.ShouldContain("NotImplementedException");
         }
+
+        [Test]
+        public void run_a_test_when_teardown_blows_up_do_not_rethrow_exception_and_log_the_exception_to_the_test()
+        {
+            var system = MockRepository.GenerateMock<ISystem>();
+            var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
+            {
+                x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
+            }));
+            var runner = new TestRunner(system, new FixtureLibrary(), fixtureContainerSource);
+
+            system.Expect(x => x.Teardown()).Throw(new NotImplementedException());
+
+            var test = new Test("something");
+            runner.RunTest(test);
+
+            test.LastResult.ExceptionText.ShouldContain("NotImplementedException");
+
+
+        }
     }
 
 
-    public class MockTestRunner : TestRunner, IGrammar, IFixture
+    public class SystemThatBlowsUpInSetup : ISystem
     {
-        private int _environmentSetUpRunCount;
-        private bool _setupRan;
-        private bool _tearDownRan;
-        public Action EnvironmentTeardown = () => { };
-
-        public MockTestRunner()
-            : base(new FixtureRegistry())
-        {
-            registry.AddFixture(this, "Mock");
-        }
-
-        public int EnvironmentSetUpRunCount { get { return _environmentSetUpRunCount; } }
-
-        public IEnumerable<IGrammar> Grammars { get { throw new NotImplementedException(); } }
-
-        #region IFixture Members
-
-        public string Title { get; set; }
-
-        public string Name { get { throw new NotImplementedException(); } }
-
-        public void ForEachGrammar(Action<string, IGrammar> action)
-        {
-        }
-
-        public void SetUp(ITestContext context)
-        {
-        }
-
-        public void TearDown()
-        {
-        }
-
-        public IPolicies Policies { get { return new Policies(); } }
-
-        public IEnumerable<GrammarError> Errors { get { throw new NotImplementedException(); } }
-
-        public IGrammar this[string key] { get { return this; } set { throw new NotImplementedException(); } }
-
-        #endregion
-
-        #region IGrammar Members
-
-        public void Execute(IStep containerStep, ITestContext context)
-        {
-            _setupRan.ShouldBeTrue();
-            _tearDownRan.ShouldBeFalse();
-        }
-
-        public GrammarStructure ToStructure(FixtureLibrary library)
+        public T Get<T>() where T : class
         {
             throw new NotImplementedException();
         }
 
-        public string Description { get { return string.Empty; } }
-
-        #endregion
-
-        protected override void setUpEnvironment()
+        public void RegisterServices(ITestContext context)
         {
-            _environmentSetUpRunCount++;
         }
 
-        protected override void tearDownEnvironment()
+        public void SetupEnvironment()
         {
-            EnvironmentTeardown();
         }
 
-        public IList<Cell> GetCells()
+        public void TeardownEnvironment()
+        {
+        }
+
+        public void Setup()
         {
             throw new NotImplementedException();
         }
 
-        public IGrammar FindGrammar(string key)
+        public void Teardown()
         {
-            return this;
-        }
-
-        public void AssertSetUpAndTearDownWereExecutedInCorrectOrder()
-        {
-            _tearDownRan.ShouldBeTrue();
-        }
-
-        protected override void setUp(ITestContext context)
-        {
-            _setupRan = true;
-        }
-
-        protected override void tearDown(ITestContext context)
-        {
-            _setupRan.ShouldBeTrue();
-            _tearDownRan = true;
         }
     }
+
+
+
 
     public class GrammarThatAssertsFailure : IGrammar
     {
@@ -184,16 +429,4 @@ namespace StoryTeller.Testing.Engine
         #endregion
     }
 
-    public class TestRunnerThatBlowsUpInSetup : TestRunner
-    {
-        public TestRunnerThatBlowsUpInSetup()
-            : base(new FixtureRegistry())
-        {
-        }
-
-        protected override void setUp(ITestContext context)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

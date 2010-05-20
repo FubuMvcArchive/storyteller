@@ -28,7 +28,7 @@ namespace StoryTeller.UserInterface.Projects
             _binder.Bind(x => x.TestFolder).To(testFolder);
             _binder.Bind(x => x.BinaryFolder).To(binaryFolder);
             _binder.Bind(x => x.ConfigurationFileName).To(configurationFile);
-            _binder.Bind(x => x.TestRunnerTypeName).To(typeRunnerName);
+            _binder.Bind(x => x.SystemTypeName).To(typeRunnerName);
             _binder.Bind(x => x.TimeoutInSeconds).To(timeoutInSeconds);
 
             findFileName.Click += (x, y) => OpenFileDialogAndBindToInput(fileName);

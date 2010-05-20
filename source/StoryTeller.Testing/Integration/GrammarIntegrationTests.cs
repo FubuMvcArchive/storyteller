@@ -3,6 +3,7 @@ using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Html;
 using StoryTeller.Persistence;
+using StoryTeller.Samples;
 using StoryTeller.Samples.Grammars;
 
 namespace StoryTeller.Testing.Integration
@@ -10,13 +11,13 @@ namespace StoryTeller.Testing.Integration
     [TestFixture]
     public class GrammarIntegrationTests
     {
-        private GrammarRunner runner;
+        private ITestRunner runner;
         private Hierarchy hierarchy;
 
         [TestFixtureSetUp]
         public void SetUp()
         {
-            runner = new GrammarRunner();
+            runner = TestRunnerBuilder.For(x => x.AddFixturesFromAssemblyContaining<GrammarMarker>());
             hierarchy = DataMother.GrammarProject().LoadTests();
         }
 
@@ -159,13 +160,13 @@ namespace StoryTeller.Testing.Integration
     [TestFixture]
     public class JSonGrammarIntegrationTests
     {
-        private GrammarRunner runner;
+        private ITestRunner runner;
         private Hierarchy hierarchy;
 
         [TestFixtureSetUp]
         public void SetUp()
         {
-            runner = new GrammarRunner();
+            runner = TestRunnerBuilder.For(x => x.AddFixturesFromAssemblyContaining<GrammarMarker>());
             hierarchy = DataMother.GrammarProject().LoadTests();
         }
 

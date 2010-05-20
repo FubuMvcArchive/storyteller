@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using StoryTeller.Domain;
+using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.Samples;
 
@@ -13,7 +14,12 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            var runner = new MathTestRunner();
+            var runner = TestRunnerBuilder.For(x =>
+            {
+                x.AddFixture<MathFixture>();
+                x.AddFixture<AnotherFixture>();
+                x.AddFixture<DoSomeMathFixture>();
+            });
             library = runner.Library;
         }
 

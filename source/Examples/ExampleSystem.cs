@@ -3,16 +3,33 @@ using StoryTeller.Engine;
 
 namespace Examples
 {
-    public class ExampleRunner : TestRunner
+    public class ExampleSystem : ISystem
     {
-        public ExampleRunner()
-            : base(x => x.AddFixturesFromThisAssembly())
+        public T Get<T>() where T : class
+        {
+            return null;
+        }
+
+        public void RegisterServices(ITestContext context)
+        {
+            context.Store<IBrowserDriver>(new SeleniumBrowserDriver());
+        }
+
+        public void SetupEnvironment()
+        {
+
+        }
+
+        public void TeardownEnvironment()
         {
         }
 
-        protected override void registerServices(ITestContext context)
+        public void Setup()
         {
-            context.Store<IBrowserDriver>(new SeleniumBrowserDriver());
+        }
+
+        public void Teardown()
+        {
         }
     }
 

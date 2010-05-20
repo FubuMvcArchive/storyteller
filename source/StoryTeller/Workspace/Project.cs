@@ -13,7 +13,7 @@ namespace StoryTeller.Workspace
         string Name { get; set; }
         string FileName { get; }
         string ConfigurationFileName { get; }
-        string TestRunnerTypeName { get; }
+        string SystemTypeName { get; }
         int TimeoutInSeconds { get; set; }
         string GetBinaryFolder();
         Hierarchy LoadTests();
@@ -86,7 +86,7 @@ namespace StoryTeller.Workspace
 
         public int TimeoutInSeconds { get { return _timeoutInSeconds > 0 ? _timeoutInSeconds : 5; } set { _timeoutInSeconds = value; } }
 
-        public string TestRunnerTypeName { get; set; }
+        public string SystemTypeName { get; set; }
         public string Name { get; set; }
 
         public string ConfigurationFileName { get; set; }
@@ -130,7 +130,7 @@ namespace StoryTeller.Workspace
 
         public ITestRunner LocalRunner()
         {
-            Type type = Type.GetType(TestRunnerTypeName);
+            Type type = Type.GetType(SystemTypeName);
             var runner = Activator.CreateInstance(type).As<ITestRunner>();
 
             return runner;

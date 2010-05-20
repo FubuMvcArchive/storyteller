@@ -24,7 +24,7 @@ namespace StoryTeller.Testing.Engine.Sets
         private HtmlDocument writePreview(string xml)
         {
             Test test = TestUtility.ReadTest(xml);
-            var runner = new TestRunner(x => { x.AddFixture<AddressCheckFixture>(); });
+            var runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
 
             return runner.WritePreview(test);
         }
@@ -32,7 +32,7 @@ namespace StoryTeller.Testing.Engine.Sets
         private string writeResults(string xml)
         {
             Test test = TestUtility.ReadTest(xml);
-            var runner = new TestRunner(x => { x.AddFixture<AddressCheckFixture>(); });
+            var runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
 
             runner.RunTest(test);
 
@@ -59,7 +59,6 @@ namespace StoryTeller.Testing.Engine.Sets
     </AddressCheck>
 </Test>
 ");
-
             test.LastResult.Counts.ShouldEqual(5, 0, 0, 0);
         }
 
@@ -209,7 +208,7 @@ namespace StoryTeller.Testing.Engine.Sets
         [Test]
         public void smoke_test_get_example()
         {
-            var runner = new TestRunner(x => { x.AddFixture<AddressCheckFixture>(); });
+            var runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
 
             XmlDocument xml = runner.CreateExampleXml();
             Debug.WriteLine(xml.OuterXml);
@@ -277,7 +276,7 @@ namespace StoryTeller.Testing.Engine.Sets
         [Test]
         public void the_context_should_not_show_up_in_example()
         {
-            TestRunner runner = TestRunner.For<AddressCheckFixture>();
+            ITestRunner runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
             FixtureLibrary library = runner.Library;
             IStep step = library.FixtureFor("AddressCheck").GrammarFor("LoadList1").CreateExample();
             step.Has("context").ShouldBeFalse();

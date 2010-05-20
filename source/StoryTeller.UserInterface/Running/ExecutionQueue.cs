@@ -58,6 +58,7 @@ namespace StoryTeller.UserInterface.Running
             resetThread();
             _continue = true;
             _workerThread = new Thread(runTests);
+            _workerThread.Name = "StoryTeller-ExecutionQueue";
 
             // TEMP
             _workerThread.SetApartmentState(ApartmentState.STA);
@@ -174,6 +175,7 @@ namespace StoryTeller.UserInterface.Running
 
         #region IListener<ProjectLoaded> Members
 
+        // TODO -- do this async
         public void Handle(ProjectLoaded message)
         {
             CancelAll();

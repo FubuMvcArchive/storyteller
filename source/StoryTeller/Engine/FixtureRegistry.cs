@@ -23,7 +23,7 @@ namespace StoryTeller.Engine
         public void AddFixturesFromThisAssembly()
         {
             Assembly assembly = findTheCallingAssembly();
-            addFixturesFromAssembly(assembly);
+            AddFixturesFromAssembly(assembly);
         }
 
         private static Assembly findTheCallingAssembly()
@@ -45,7 +45,7 @@ namespace StoryTeller.Engine
             return callingAssembly;
         }
 
-        private void addFixturesFromAssembly(Assembly assembly)
+        public void AddFixturesFromAssembly(Assembly assembly)
         {
             _registry.Scan(x =>
             {
@@ -68,7 +68,7 @@ namespace StoryTeller.Engine
         public void AddFixturesFromAssemblyContaining<T>()
         {
             Assembly assembly = typeof(T).Assembly;
-            addFixturesFromAssembly(assembly);
+            AddFixturesFromAssembly(assembly);
         }
 
         public IContainer BuildContainer()
@@ -84,11 +84,6 @@ namespace StoryTeller.Engine
         public void AddFixture(IFixture fixture, string name)
         {
             _registry.For<IFixture>().Add(fixture).Named(name);
-        }
-
-        public void Register(Action<Registry> action)
-        {
-            action(_registry);
         }
 
         public static IContainer ContainerFor(Action<FixtureRegistry> action)

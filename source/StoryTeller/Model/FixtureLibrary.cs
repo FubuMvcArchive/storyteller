@@ -55,7 +55,7 @@ namespace StoryTeller.Model
 
         public static FixtureLibrary For(Action<FixtureRegistry> configure)
         {
-            var runner = new TestRunner(configure);
+            var runner = TestRunnerBuilder.For(configure);
             return runner.Library;
         }
 
