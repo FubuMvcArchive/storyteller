@@ -158,7 +158,6 @@
     <Compile Include="DSL\ObjectVerificationExpressionTester.cs" />
     <Compile Include="Engine\ActionGrammarTester.cs" />
     <Compile Include="Engine\AutoPerformingTestContext.cs" />
-    <Compile Include="Engine\BatchRunnerTester.cs" />
     <Compile Include="Engine\BooleanReturnTester.cs" />
     <Compile Include="Engine\CheckGrammarTester.cs" />
     <Compile Include="Engine\ConfigureObjectGrammarTester.cs" />
@@ -181,6 +180,7 @@
     <Compile Include="Engine\StepResultsTester.cs" />
     <Compile Include="Engine\TableLineGrammarTester.cs" />
     <Compile Include="EventPublisherTester.cs" />
+    <Compile Include="Execution\FixtureAssemblyTester.cs" />
     <Compile Include="Execution\FixtureObserverTester.cs" />
     <Compile Include="Execution\TestEngineTester.cs" />
     <Compile Include="Html\CellTagTester.cs" />

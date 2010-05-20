@@ -37,6 +37,8 @@ namespace StoryTeller.Workspace
     {
         public FilterType Type { get; set;}
         public string Name { get; set; }
+
+
     }
 
 
