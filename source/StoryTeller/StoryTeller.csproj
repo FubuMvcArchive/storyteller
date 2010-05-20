@@ -139,6 +139,7 @@
     <Compile Include="Engine\TestRunnerExtensions.cs" />
     <Compile Include="Execution\DirectoryRunner.cs" />
     <Compile Include="Examples\ExampleSource.cs" />
+    <Compile Include="Execution\FixtureAssembly.cs" />
     <Compile Include="Execution\FixtureLibraryWatcher.cs" />
     <Compile Include="Execution\FixtureObserver.cs" />
     <Compile Include="Execution\InProcessTestEngine.cs" />

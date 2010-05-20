@@ -61,11 +61,10 @@ namespace StoryTeller.Engine
             Stopwatch timer = Stopwatch.StartNew();
 
             _context = new TestContext(_fetchContainer.Build(), _request.Test, _listener);
+            _reset = new ManualResetEvent(false);
 
             try
             {
-                _reset = new ManualResetEvent(false);
-
                 startThread();
 
                 recordTimeout();
@@ -89,9 +88,18 @@ namespace StoryTeller.Engine
         {
             _testThread = new Thread(() =>
             {
-                _lifecycle.ExecuteContext(_context, executeContext);
-
-                _reset.Set();
+                try
+                {
+                    _lifecycle.ExecuteContext(_context, executeContext);
+                }
+                catch (Exception e)
+                {
+                    captureException(e);
+                }
+                finally
+                {
+                    _reset.Set();
+                }
             });
 
             _testThread.SetApartmentState(ApartmentState.STA);

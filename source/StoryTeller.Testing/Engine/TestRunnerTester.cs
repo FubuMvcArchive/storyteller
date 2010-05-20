@@ -273,7 +273,7 @@ namespace StoryTeller.Testing.Engine
             fixtureContainerSource.RegisterFixture("Recording", typeof(RecordingFixture));
 
             lifecycle = new SystemLifecycle(system);
-            runner = new TestRunner(system, library, fixtureContainerSource);
+            runner = new TestRunner(lifecycle, library, fixtureContainerSource);
             lifecycle.StartApplication();
 
             lifecycle.RecycleEnvironment();
@@ -287,6 +287,7 @@ namespace StoryTeller.Testing.Engine
                 TimeoutInSeconds = 1200
             });
 
+            system.Messages.Each(x => Debug.WriteLine(x));
         }
 
         [Test]

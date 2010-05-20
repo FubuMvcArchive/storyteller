@@ -169,7 +169,6 @@
     <Compile Include="Engine\EmbeddedSectionGrammarTester.cs" />
     <Compile Include="Engine\EmbeddedSectionsTester.cs" />
     <Compile Include="Engine\EquivalenceCheckerTester.cs" />
-    <Compile Include="Engine\ExampleWriterTester.cs" />
     <Compile Include="Engine\FactGrammarTester.cs" />
     <Compile Include="Engine\FixtureRegistryTester.cs" />
     <Compile Include="Engine\FixtureTester.cs" />

@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
@@ -44,6 +45,7 @@ namespace StoryTeller.Engine
             return source.ExampleTest.ToXml();
         }
 
+        [Obsolete]
         public static Test CreateExample(this ITestRunner runner)
         {
             return ExampleSource.For(runner).ExampleTest;

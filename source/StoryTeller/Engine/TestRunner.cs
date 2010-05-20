@@ -17,9 +17,9 @@ namespace StoryTeller.Engine
 
     public class SystemLifecycle : IDisposable
     {
-        private readonly ManualResetEvent _environmentGate = new ManualResetEvent(true);
         private readonly ISystem _system;
         private bool _environmentIsInitialized;
+        private readonly object _locker = new object();
 
         public SystemLifecycle(ISystem system)
         {
@@ -28,37 +28,40 @@ namespace StoryTeller.Engine
 
         protected void ensureEnvironmentInitialized()
         {
-            _environmentGate.WaitOne();
             if (!_environmentIsInitialized)
             {
-                StartApplication();
+                lock (_locker)
+                {
+                    if (!_environmentIsInitialized)
+                    {
+                        _system.SetupEnvironment();
+                        _environmentIsInitialized = true;
+                    }
+                }
             }
-            _environmentGate.WaitOne();
         }
 
         public void StartApplication()
         {
-            _environmentGate.Reset();
-            ThreadPool.QueueUserWorkItem(o =>
+            lock (_locker)
             {
                 _system.SetupEnvironment();
                 _environmentIsInitialized = true;
-                _environmentGate.Set();
-            });
+            }
         }
 
         protected void tearDownEnvironment()
         {
-            _system.TeardownEnvironment();
+            lock (_locker)
+            {
+                _system.TeardownEnvironment();
+                _environmentIsInitialized = false;
+            }
         }
 
         public void RecycleEnvironment()
         {
-            _environmentGate.WaitOne();
-            _environmentGate.Reset();
             tearDownEnvironment();
-            _environmentIsInitialized = false;
-            _environmentGate.Set();
             ensureEnvironmentInitialized();
         }
 

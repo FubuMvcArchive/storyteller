@@ -15,6 +15,7 @@ namespace StoryTeller.Workspace
         string ConfigurationFileName { get; }
         string SystemTypeName { get; }
         int TimeoutInSeconds { get; set; }
+        string FixtureAssembly { get; set; }
         string GetBinaryFolder();
         Hierarchy LoadTests();
         void Save(Test test);
@@ -43,6 +44,7 @@ namespace StoryTeller.Workspace
         }
 
 
+        public string FixtureAssembly { get; set; }
         public string BinaryFolder { get; set; }
 
         public string TestFolder { get; set; }

@@ -3,25 +3,12 @@ using System.Runtime.Remoting;
 using StoryTeller.Engine;
 using StoryTeller.Model;
 using System.Collections.Generic;
+using FubuCore;
 
 namespace StoryTeller.Execution
 {
-    public interface ITestRunnerProxy
-    {
-        void Dispose();
-        void RecycleEnvironment();
-        TestResult RunTest(TestExecutionRequest request);
-        void AbortCurrentTest();
-        bool IsExecuting();
-        object InitializeLifetimeService();
 
-        FixtureLibrary StartSystem(string systemType, MarshalByRefObject remotePublisher);
-
-        object GetLifetimeService();
-        ObjRef CreateObjRef(Type requestedType);
-    }
-
-    public class TestRunnerProxy : MarshalByRefObject, ITestRunnerProxy
+    public class TestRunnerProxy : MarshalByRefObject
     {
         private TestRunner _runner;
         private SystemLifecycle _lifecycle;
@@ -79,21 +66,23 @@ namespace StoryTeller.Execution
             return null;
         }
 
-        public FixtureLibrary StartSystem(string systemType, MarshalByRefObject remotePublisher)
+        public FixtureLibrary StartSystem(FixtureAssembly fixtureAssembly, MarshalByRefObject remotePublisher)
         {
             _publisher = (IEventPublisher)remotePublisher;
 
+
             // TODO -- if fails, do a Thread.Sleep and try again
-            Type type = Type.GetType(systemType);
-            _system = (ISystem)Activator.CreateInstance(type);
+            _system = fixtureAssembly.System;
 
             _lifecycle = new SystemLifecycle(_system);
+
+            // TODO -- make this be async
             _lifecycle.StartApplication();
 
             try
             {
                 var registry = new FixtureRegistry();
-                registry.AddFixturesFromAssembly(type.Assembly);
+                registry.AddFixturesFromAssembly(fixtureAssembly.Assembly);
                 var container = registry.BuildContainer();
                 
 

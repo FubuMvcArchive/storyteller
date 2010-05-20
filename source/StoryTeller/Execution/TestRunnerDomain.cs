@@ -29,7 +29,7 @@ namespace StoryTeller.Execution
                 {
                     _publisher.Publish<BinaryRecycleStarted>();
                     _proxy = BuildProxy(project);
-                    _library = _proxy.StartSystem(project.SystemTypeName, (MarshalByRefObject) _publisher);
+                    _library = _proxy.StartSystem(new FixtureAssembly(project), (MarshalByRefObject) _publisher);
                     _publisher.Publish(new BinaryRecycleFinished(_library));
                 }
                 catch (FileNotFoundException ex)
@@ -78,8 +78,6 @@ namespace StoryTeller.Execution
             var proxy =
                 (TestRunnerProxy)
                 _domain.CreateInstanceAndUnwrap(proxyType.Assembly.FullName, proxyType.FullName);
-
-            proxy.StartSystem(project.SystemTypeName, (MarshalByRefObject) _publisher);
 
             return proxy;
         }
