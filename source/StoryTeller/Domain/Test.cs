@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using FubuCore;
 using StoryTeller.Engine;
@@ -24,17 +26,70 @@ namespace StoryTeller.Domain
         }
     }
 
+    
+    public interface ITestPartCollection : IEnumerable<ITestPart>
+    {
+        void Add(ITestPart testPart);
+        void RemoveAll(Predicate<ITestPart> filter);
+        void Clear();
+        void AddRange(IEnumerable<ITestPart> parts);
+        ITestPart Find(Predicate<ITestPart> func);
+    }
+
+    public class DefaultTestPartcollection : ITestPartCollection
+    {
+        private readonly List<ITestPart> _parts = new List<ITestPart>();
+        public IEnumerator<ITestPart> GetEnumerator()
+        {
+            return _parts.GetEnumerator();
+        }
+
+        public void Add(ITestPart testPart)
+        {
+            _parts.Add(testPart);
+        }
+
+        public void RemoveAll(Predicate<ITestPart> filter)
+        {
+            _parts.RemoveAll(filter);
+        }
+
+        public void Clear()
+        {
+            _parts.Clear();
+        }
+
+        public void AddRange(IEnumerable<ITestPart> parts)
+        {
+            _parts.AddRange(parts);
+        }
+
+        public ITestPart Find(Predicate<ITestPart> func)
+        {
+            return _parts.Find(func);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
     public class Test : INamedItem, ITestPart
     {
-        protected readonly List<ITestPart> _parts = new List<ITestPart>();
+        protected readonly ITestPartCollection _parts;
         private string _fileName;
         private Lifecycle _lifecycle = Lifecycle.Acceptance;
         private string _name;
 
-
-        public Test(string name)
+        public Test(string name, ITestPartCollection parts)
         {
-            Name = name;
+            _parts = parts;
+            _name = name;
+        }
+
+        public Test(string name) : this(name, new DefaultTestPartcollection())
+        {
         }
 
 
@@ -68,7 +123,7 @@ namespace StoryTeller.Domain
         }
 
 
-        public ReadOnlyCollection<ITestPart> Parts { get { return new ReadOnlyCollection<ITestPart>(_parts); } }
+        public ReadOnlyCollection<ITestPart> Parts { get { return new ReadOnlyCollection<ITestPart>(_parts.ToList()); } }
         public IEnumerable<ITestPart> AllParts { get { return new List<ITestPart>(allParts); } }
 
         private IEnumerable<ITestPart> allParts
@@ -116,7 +171,7 @@ namespace StoryTeller.Domain
 
         public void AcceptVisitor(ITestVisitor visitor)
         {
-            _parts.ForEach(x => x.AcceptVisitor(visitor));
+            _parts.Each(x => x.AcceptVisitor(visitor));
         }
 
         #endregion

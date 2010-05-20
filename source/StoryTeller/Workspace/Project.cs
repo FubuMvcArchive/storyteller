@@ -32,6 +32,7 @@ namespace StoryTeller.Workspace
         private string _fileName;
         private string _projectFolder;
         private int _timeoutInSeconds;
+        private readonly List<Workspace> _workspaces = new List<Workspace>();
 
         public Project()
         {
@@ -42,6 +43,24 @@ namespace StoryTeller.Workspace
             : this()
         {
             FileName = filename;
+        }
+
+        public void AddWorkspace(Workspace workspace)
+        {
+            _workspaces.Add(workspace);
+        }
+
+        public Workspace[] Workspaces
+        {
+            get
+            {
+                return _workspaces.ToArray();
+            }
+            set
+            {
+                _workspaces.Clear();
+                _workspaces.AddRange(value);
+            }
         }
 
 
