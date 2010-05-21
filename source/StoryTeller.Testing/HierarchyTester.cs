@@ -1,5 +1,7 @@
 using NUnit.Framework;
 using StoryTeller.Domain;
+using StoryTeller.Workspace;
+using System.Linq;
 
 namespace StoryTeller.Testing
 {
@@ -55,6 +57,34 @@ namespace StoryTeller.Testing
         public void get_path_is_just_an_empty_string()
         {
             hierarchy.GetPath().Locator.ShouldBeEmpty();
+        }
+
+        [Test]
+        public void find_all_workspaces_from_a_project()
+        {
+            hierarchy =
+DataMother.BuildHierarchy(
+@"
+s1/t4,Success
+s1/t5,Success
+s1/t6,Failure
+s1/s2/t7,Success
+s1/s2/t8,Failure
+s1/s2/s3/t9,Success
+s1/s2/s3/t10,Success
+s1/s2/s3/s4/t11,Success
+s5/t12,Failure
+s5/s6/t13,Success
+s5/s6/s7/t14,Success
+s5/s6/s7/s8/t15,Success
+s9/t16,Success
+s9/t17,Success
+s9/t18,Failure
+");
+
+            var project = new Project();
+            hierarchy.FindAllWorkspaces(project).Select(x => x.Name).ShouldHaveTheSameElementsAs("s1", "s5", "s9");
+
         }
     }
 }

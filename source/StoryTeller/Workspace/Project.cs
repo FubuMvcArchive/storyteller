@@ -31,6 +31,7 @@ namespace StoryTeller.Workspace
         void CreateDirectory(Suite suite);
         WorkspaceFilter CurrentFixtureFilter();
         void SelectWorkspaces(IEnumerable<string > workspaceNames);
+        WorkspaceFilter WorkspaceFor(string workspaceName);
     }
 
     public class Project : IProject
@@ -56,7 +57,7 @@ namespace StoryTeller.Workspace
             FileName = filename;
         }
 
-        public WorkspaceFilter FilterFor(string workspaceName)
+        public WorkspaceFilter WorkspaceFor(string workspaceName)
         {
             return _workspaces[workspaceName];
         }
@@ -293,7 +294,7 @@ namespace StoryTeller.Workspace
         // TODO -- this needs to be called on project loading
         public void SelectWorkspaces(IEnumerable<string > workspaceNames)
         {
-            _selectedWorkspaces = workspaceNames.Select(x => FilterFor(x));
+            _selectedWorkspaces = workspaceNames.Select(x => WorkspaceFor(x));
         }
 
         public IEnumerable<WorkspaceFilter> SelectedWorkspaces

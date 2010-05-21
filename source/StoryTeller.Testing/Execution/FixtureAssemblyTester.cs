@@ -32,12 +32,12 @@ namespace StoryTeller.Testing.Execution
                 FixtureAssembly = typeof (GrammarMarker).Assembly.GetName().Name
             };
 
-            project.FilterFor("1").AddFilter(new FixtureFilter()
+            project.WorkspaceFor("1").AddFilter(new FixtureFilter()
             {
                 Name = "North", Type = FilterType.Fixture
             });
 
-            project.FilterFor("2").AddFilter(new FixtureFilter()
+            project.WorkspaceFor("2").AddFilter(new FixtureFilter()
             {
                 Name = "South",
                 Type = FilterType.Fixture

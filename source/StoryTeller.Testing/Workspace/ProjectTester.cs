@@ -220,7 +220,7 @@ s1/s2/t3,Success
         public void get_workspace_for_a_name_returns_the_same()
         {
             var project = new Project();
-            project.FilterFor("Main").ShouldBeTheSameAs(project.FilterFor("Main"));
+            project.WorkspaceFor("Main").ShouldBeTheSameAs(project.WorkspaceFor("Main"));
         }
 
         
@@ -236,20 +236,20 @@ s1/s2/t3,Success
         public void SetUp()
         {
             project = new Project();
-            project.FilterFor("States").AddFilter(new FixtureFilter()
+            project.WorkspaceFor("States").AddFilter(new FixtureFilter()
             {
                 Name = "StateFixtures",
                 Type = FilterType.Namespace
             });
 
 
-            project.FilterFor("North").AddFilter(new FixtureFilter()
+            project.WorkspaceFor("North").AddFilter(new FixtureFilter()
             {
                 Name = "North",
                 Type = FilterType.Fixture
             });
 
-            project.FilterFor("South").AddFilter(new FixtureFilter()
+            project.WorkspaceFor("South").AddFilter(new FixtureFilter()
             {
                 Name = "South",
                 Type = FilterType.Fixture

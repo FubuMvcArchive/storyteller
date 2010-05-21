@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using StoryTeller.Workspace;
+using System.Linq;
 
 namespace StoryTeller.Domain
 {
@@ -34,6 +36,11 @@ namespace StoryTeller.Domain
         public void ClearResults()
         {
             GetAllTests().Each(x => x.Reset());
+        }
+
+        public IEnumerable<WorkspaceFilter> FindAllWorkspaces(IProject project)
+        {
+            return ChildSuites.Select(x => project.WorkspaceFor(x.Name));
         }
     }
 }

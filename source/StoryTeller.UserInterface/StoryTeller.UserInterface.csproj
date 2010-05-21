@@ -194,6 +194,12 @@
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
     <Compile Include="Workspace\IWorkspaceSelectorDialog.cs" />
+    <Compile Include="Workspace\IWorkspaceSelectorMenu.cs" />
+    <Compile Include="Workspace\WorkspaceItem.cs" />
+    <Compile Include="Workspace\WorkspaceSelectionDialog.xaml.cs">
+      <DependentUpon>WorkspaceSelectionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workspace\WorkspaceSelector.cs" />
     <EmbeddedResource Include="Editing\Scripts\Controls\tableEditor.js" />
     <Compile Include="Editing\Scripts\Embeds.cs" />
     <Compile Include="Editing\TestEditorBuilder.cs" />
@@ -461,6 +467,10 @@
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Workspace\WorkspaceSelectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
