@@ -15,6 +15,7 @@ namespace StoryTeller.Execution
 
         [NonSerialized] private Assembly _assembly;
         [NonSerialized] private ISystem _system;
+        private WorkspaceFilter _filter;
 
         // For serialization
         public FixtureAssembly(){}
@@ -25,11 +26,17 @@ namespace StoryTeller.Execution
             _fixtureAssembly = fixtureAssembly;
         }
 
-        // TODO -- need to pull off the current 
         public FixtureAssembly(IProject project)
         {
             _systemTypeName = project.SystemTypeName;
             _fixtureAssembly = project.FixtureAssembly;
+            _filter = project.CurrentFixtureFilter();
+        }
+
+        public WorkspaceFilter Filter
+        {
+            get { return _filter; }
+            set { _filter = value; }
         }
 
         private void find()

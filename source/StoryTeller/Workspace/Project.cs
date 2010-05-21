@@ -28,6 +28,8 @@ namespace StoryTeller.Workspace
 
         ITestRunner LocalRunner();
         void CreateDirectory(Suite suite);
+        WorkspaceFilter CurrentFixtureFilter();
+        void SelectWorkspaces(IEnumerable<string > workspaceNames);
     }
 
     public class Project : IProject
