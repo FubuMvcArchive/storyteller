@@ -26,6 +26,10 @@ namespace StoryTeller.UserInterface.Workspace
             cancel.Click += (x, y) => close();
             all.Click += (x, y) => items.Each(i => i.Selected = true);
             none.Click += (x, y) => items.Each(i => i.Selected = false);
+
+            Add("workspace 1", true);
+            Add("workspace 2", false);
+            Add("workspace 3", false);
         }
 
         private void close()

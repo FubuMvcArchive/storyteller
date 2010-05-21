@@ -12,7 +12,7 @@
             <Button Name="select" Width="50" Margin="5 2 5 2">Select</Button>
             <Button Name="cancel" Width="50" Margin="5 2 5 2">Cancel</Button>
         </StackPanel>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Padding="10">
             <StackPanel Name="container"></StackPanel>
         </ScrollViewer>
 

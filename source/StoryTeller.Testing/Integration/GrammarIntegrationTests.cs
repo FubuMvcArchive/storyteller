@@ -5,6 +5,7 @@ using StoryTeller.Html;
 using StoryTeller.Persistence;
 using StoryTeller.Samples;
 using StoryTeller.Samples.Grammars;
+using System.Linq;
 
 namespace StoryTeller.Testing.Integration
 {
@@ -23,7 +24,7 @@ namespace StoryTeller.Testing.Integration
 
         private Counts running(string name)
         {
-            Test test = hierarchy.FindTest(name);
+            Test test = hierarchy.GetAllTests().FirstOrDefault(x => x.Name == name);
             test.ShouldNotBeNull();
             test.LastResult = runner.RunTest(test);
 
@@ -172,7 +173,7 @@ namespace StoryTeller.Testing.Integration
 
         private Counts running(string name)
         {
-            Test test = hierarchy.FindTest(name);
+            Test test = hierarchy.GetAllTests().FirstOrDefault(x => x.Name == name);
 
             string json = new TestWriter().WriteToJson(test);
             Test test2 = new TestReader().ReadFromJson(json);
