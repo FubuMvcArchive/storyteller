@@ -7,7 +7,7 @@ namespace StoryTeller.Execution
 {
     public interface ITestRunnerDomain : IDisposable
     {
-        void Start(IProject project);
+        void LoadProject(IProject project);
         void Teardown();
         void RecycleEnvironment();
         bool HasStarted();

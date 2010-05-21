@@ -19,7 +19,7 @@ namespace StoryTeller.Execution
             _publisher = publisher;
         }
 
-        public void Start(IProject project)
+        public void LoadProject(IProject project)
         {
             lock (_locker)
             {

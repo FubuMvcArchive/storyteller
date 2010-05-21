@@ -106,7 +106,7 @@ namespace StoryTeller.Execution
         {
             try
             {
-                _domain.Start(_project);
+                _domain.LoadProject(_project);
             }
             finally
             {

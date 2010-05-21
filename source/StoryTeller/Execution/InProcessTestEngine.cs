@@ -12,7 +12,7 @@ namespace StoryTeller.Execution
             throw new NotImplementedException();
         }
 
-        public void Start(IProject project)
+        public void LoadProject(IProject project)
         {
             throw new NotImplementedException();
         }

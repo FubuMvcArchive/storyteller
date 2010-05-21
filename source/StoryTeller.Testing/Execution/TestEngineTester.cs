@@ -55,7 +55,7 @@ namespace StoryTeller.Testing.Execution
         [Test]
         public void should_then_start_the_test_app_domain()
         {
-            MockFor<ITestRunnerDomain>().AssertWasCalled(x => x.Start(project));
+            MockFor<ITestRunnerDomain>().AssertWasCalled(x => x.LoadProject(project));
         }
 
         [Test]
