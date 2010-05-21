@@ -37,6 +37,7 @@ namespace StoryTeller.Testing
             return GetRunner().WritePreview(test);
         }
 
+
         public static Test ReadTest(string xml)
         {
             xml = xml.Replace("'", "\"");

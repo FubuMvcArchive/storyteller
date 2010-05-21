@@ -97,6 +97,7 @@
     <Compile Include="Engine\IFixtureContainerSource.cs" />
     <Compile Include="Engine\IStartupAction.cs" />
     <Compile Include="Engine\ISystem.cs" />
+    <Compile Include="Engine\LibraryLifecycle.cs" />
     <Compile Include="Engine\NulloFixtureObserver.cs" />
     <Compile Include="Engine\NulloSystem.cs" />
     <Compile Include="Engine\Sets\RowValueMatcher.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Engine\Sets\SetVerificationGrammar.cs" />
     <Compile Include="Engine\Sets\SimpleDictionary.cs" />
     <Compile Include="Engine\Sets\StringSetComparer.cs" />
+    <Compile Include="Engine\SystemLifecycle.cs" />
     <Compile Include="Engine\TestResult.cs" />
     <Compile Include="Engine\TestRun.cs" />
     <Compile Include="Engine\TestRunnerBuilder.cs" />
@@ -257,13 +259,15 @@
     <Compile Include="TestConverter.cs" />
     <Compile Include="Execution\UserInterfaceTestObserver.cs" />
     <Compile Include="Workspace\FileSystem.cs" />
+    <Compile Include="Workspace\FilterType.cs" />
+    <Compile Include="Workspace\FixtureFilter.cs" />
     <Compile Include="Workspace\Project.cs" />
     <Compile Include="Workspace\ProjectLoaded.cs" />
     <Compile Include="Persistence\FileSystem.cs" />
     <Compile Include="Persistence\TestReader.cs" />
     <Compile Include="Persistence\TestWriter.cs" />
     <Compile Include="Workspace\ForceBinaryRecycle.cs" />
-    <Compile Include="Workspace\Workspace.cs" />
+    <Compile Include="Workspace\WorkspaceFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Html\jquery.js" />

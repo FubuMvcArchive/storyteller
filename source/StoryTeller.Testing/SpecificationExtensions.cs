@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
@@ -33,6 +35,20 @@ namespace StoryTeller.Testing
         public static void ShouldHave<T>(this IEnumerable<T> values, Func<T, bool> func)
         {
             values.FirstOrDefault(func).ShouldNotBeNull();
+        }
+
+        public static object ShouldBeSerializable(this object target)
+        {
+            var stream = new MemoryStream();
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(stream, target);
+
+            stream.Position = 0;
+
+            object returnValue = formatter.Deserialize(stream);
+            returnValue.ShouldNotBeNull();
+
+            return returnValue;
         }
 
         //public static void ShouldNotBeValid(this object target)

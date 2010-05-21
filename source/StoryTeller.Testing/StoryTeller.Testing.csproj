@@ -338,6 +338,7 @@
     <Compile Include="UserInterface\Tests\TestScreenTester.cs" />
     <Compile Include="UserInterface\Tests\TestStateManagerTester.cs" />
     <Compile Include="UserInterface\Tests\XmlModeTester.cs" />
+    <Compile Include="Workspace\FixtureFilterTester.cs" />
     <Compile Include="Workspace\ProjectTester.cs" />
     <Compile Include="Workspace\FileSystemTester.cs" />
     <Compile Include="Xml\XmlReadingTester.cs" />

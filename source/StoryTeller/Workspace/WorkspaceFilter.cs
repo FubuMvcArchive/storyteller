@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
+using FubuCore.Util;
 
 namespace StoryTeller.Workspace
 {
-    public class Workspace
+    [Serializable]
+    public class WorkspaceFilter
     {
         private readonly List<FixtureFilter> _filters = new List<FixtureFilter>();
 
@@ -20,24 +23,23 @@ namespace StoryTeller.Workspace
             }
         }
 
+        public int FilterCount
+        {
+            get { return _filters.Count; }
+        }
+
         public void AddFilter(FixtureFilter filter)
         {
             _filters.Add(filter);
         }
+
+        public CompositeFilter<Type> CreateFilter()
+        {
+            var filter = new CompositeFilter<Type>();
+
+            _filters.Each(x => x.Apply(filter));
+
+            return filter;
+        }
     }
-
-    public enum FilterType
-    {
-        Namespace,
-        Fixture
-    }
-    
-
-    public class FixtureFilter
-    {
-        public FilterType Type { get; set;}
-        public string Name { get; set; }
-    }
-
-
 }
