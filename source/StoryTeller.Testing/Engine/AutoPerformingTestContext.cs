@@ -68,10 +68,6 @@ namespace StoryTeller.Testing.Engine
             }
         }
 
-        public void VisitFixtures(IFixtureVisitor visitor)
-        {
-        }
-
         private readonly Cache<ITestPart, StepResults> _results = new Cache<ITestPart, StepResults>(step => new StepResults());
         public StepResults ResultsFor(ITestPart part)
         {

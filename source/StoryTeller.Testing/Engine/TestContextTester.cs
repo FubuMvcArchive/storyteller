@@ -413,53 +413,6 @@ namespace StoryTeller.Testing.Engine
             context.TraceText.ShouldContain("debug2");
         }
 
-        [Test]
-        public void set_the_total_number_of_fixtures_on_the_visitor()
-        {
-            var context = new TestContext(x =>
-            {
-                x.AddFixture<SomethingFixture>();
-                x.AddFixture<SomethingElseFixture>();
-            });
-
-            var visitor = MockRepository.GenerateMock<IFixtureVisitor>();
-
-            context.VisitFixtures(visitor);
-
-            visitor.AssertWasCalled(x => x.FixtureCount = 2);
-        }
-
-        [Test]
-        public void visit_a_fixture_that_blows_up_in_its_constructor()
-        {
-            var context = new TestContext(x => x.AddFixture<FixtureThatBlowsUpFixture>());
-
-            var visitor = MockRepository.GenerateMock<IFixtureVisitor>();
-
-            context.VisitFixtures(visitor);
-
-            visitor.AssertWasCalled(x => x.LogFixtureFailure("FixtureThatBlowsUp", null),
-                                    x => x.Constraints(Is.Equal("ThatBlowsUp"), Is.TypeOf<StructureMapException>()));
-        }
-
-        [Test]
-        public void visit_a_successful_fixture()
-        {
-            var context = new TestContext(x =>
-            {
-                x.AddFixture<SomethingFixture>();
-                x.AddFixture<SomethingElseFixture>();
-            });
-
-            var visitor = MockRepository.GenerateMock<IFixtureVisitor>();
-
-            context.VisitFixtures(visitor);
-
-            visitor.AssertWasCalled(x => x.ReadFixture(null, null),
-                                    x => x.Constraints(Is.Equal("Something"), Is.TypeOf<SomethingFixture>()));
-            visitor.AssertWasCalled(x => x.ReadFixture(null, null),
-                                    x => x.Constraints(Is.Equal("TheSomethingElse"), Is.TypeOf<SomethingElseFixture>()));
-        }
     }
 
     public class TracedTest : Test

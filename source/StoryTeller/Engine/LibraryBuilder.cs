@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using FubuCore;
+using FubuCore.Util;
 using StoryTeller.Model;
+using System.Linq;
+using StructureMap.Query;
 
 namespace StoryTeller.Engine
 {
@@ -14,15 +17,17 @@ namespace StoryTeller.Engine
     public class LibraryBuilder : IFixtureVisitor
     {
         private readonly IFixtureObserver _observer;
+        private readonly CompositeFilter<Type> _filter;
         private FixtureLibrary _library = new FixtureLibrary();
         private int _number = 1;
         private int _total;
         private ObjectFinder _finder = new ObjectFinder();
 
 
-        public LibraryBuilder(IFixtureObserver observer)
+        public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter)
         {
             _observer = observer;
+            _filter = filter;
         }
 
         public FixtureLibrary Library { get { return _library; } }
@@ -63,16 +68,31 @@ namespace StoryTeller.Engine
 
         #endregion
 
-        public FixtureLibrary Build(ITestContext context)
+        // TODO -- needs to change to IContainer
+        public FixtureLibrary Build(TestContext context)
         {
             _library = new FixtureLibrary()
             {
                 Finder = _finder
             };
 
-            context.VisitFixtures(this);
+            context.Container.Model.For<IFixture>().Instances.Where(i => _filter.Matches(i.ConcreteType)).Each(readInstance);
+
 
             return _library;
+        }
+
+        private void readInstance(InstanceRef instance)
+        {
+            try
+            {
+                var fixture = instance.Get<IFixture>();
+                ReadFixture(instance.Name, fixture);
+            }
+            catch (Exception e)
+            {
+                LogFixtureFailure(instance.Name, e);
+            }
         }
 
         private void readGrammar(IGrammar grammar, FixtureGraph fixtureGraph, string key)

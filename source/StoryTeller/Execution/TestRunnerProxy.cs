@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.Remoting;
+using FubuCore.Util;
 using StoryTeller.Engine;
 using StoryTeller.Model;
 using System.Collections.Generic;
@@ -88,7 +89,8 @@ namespace StoryTeller.Execution
 
                 var observer = new FixtureObserver(_publisher);
                 
-                var library = TestRunnerBuilder.BuildLibrary(_system, observer, container);
+                // TODO -- filter here needs to be coming in some how.  Maybe off FixtureAssembly?
+                var library = TestRunnerBuilder.BuildLibrary(_system, observer, container, new CompositeFilter<Type>());
                 var containerSource = new FixtureContainerSource(container);
                 _runner = new TestRunner(_lifecycle, library, containerSource);
 

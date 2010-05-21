@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FubuCore.Util;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Engine;
@@ -8,6 +9,51 @@ using StoryTeller.Model;
 
 namespace StoryTeller.Testing.Engine
 {
+    [TestFixture]
+    public class when_building_a_library_with_a_non_inclusive_filter
+    {
+        #region Setup/Teardown
+
+        [SetUp]
+        public void SetUp()
+        {
+            observer = MockRepository.GenerateMock<IFixtureObserver>();
+            var filter = new CompositeFilter<Type>();
+            filter.Includes += t => t.Name.StartsWith("M");
+
+
+            builder = new LibraryBuilder(observer, filter);
+
+            library = builder.Build(new TestContext(x => x.AddFixturesFromThisAssembly()));
+        }
+
+        #endregion
+
+        private LibraryBuilder builder;
+        private IFixtureObserver observer;
+        private FixtureLibrary library;
+
+        [Test]
+        public void should_contain_fixtures_that_match_the_filter()
+        {
+            library.HasFixture("Missouri").ShouldBeTrue();
+            library.HasFixture("Michigan").ShouldBeTrue();
+            library.HasFixture("Montana").ShouldBeTrue();
+        }
+
+        [Test]
+        public void should_exclude_fixtures_present_in_the_container_that_do_not_match_the_filter()
+        {
+            library.HasFixture("Arkansas").ShouldBeFalse();
+        }
+    }
+
+    public class MissouriFixture : Fixture{}
+    public class ArkansasFixture : Fixture{}
+    public class MontanaFixture : Fixture{}
+    public class MichiganFixture : Fixture{}
+
+
     [TestFixture]
     public class LibraryBuilderTester
     {
@@ -17,7 +63,7 @@ namespace StoryTeller.Testing.Engine
         public void SetUp()
         {
             observer = MockRepository.GenerateMock<IFixtureObserver>();
-            builder = new LibraryBuilder(observer);
+            builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
 
             builder.FixtureCount = 23;
         }
@@ -104,7 +150,7 @@ namespace StoryTeller.Testing.Engine
 
 
     [TestFixture]
-    public class creating_constraint_models_for_fixtures
+    public class creating_policies_for_fixtures
     {
         #region Setup/Teardown
 
@@ -114,7 +160,7 @@ namespace StoryTeller.Testing.Engine
             var context = new TestContext(x => { x.AddFixture<FixtureWithHiddenGrammarsFixture>(); });
 
             var observer = MockRepository.GenerateMock<IFixtureObserver>();
-            var builder = new LibraryBuilder(observer);
+            var builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
             builder.Build(context);
 
             library = builder.Library;
@@ -125,7 +171,7 @@ namespace StoryTeller.Testing.Engine
         private FixtureLibrary library;
 
         [Test]
-        public void fixture_graph_should_have_the_constraint_model_from_the_original_fixture()
+        public void fixture_graph_should_have_the_policies_from_the_original_fixture()
         {
             FixtureGraph fixture = library.FixtureFor(typeof (FixtureWithHiddenGrammarsFixture).GetFixtureAlias());
 

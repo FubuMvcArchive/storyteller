@@ -47,7 +47,6 @@ namespace StoryTeller.Engine
         void RunStep(IGrammar grammar, IStep step);
 
         void PerformAction(IStep step, GrammarAction action);
-        void VisitFixtures(IFixtureVisitor visitor);
 
         StepResults ResultsFor(ITestPart part);
         string GetDisplay(object value);
@@ -124,6 +123,11 @@ namespace StoryTeller.Engine
         public TestContext(Action<FixtureRegistry> action)
             : this(FixtureRegistry.ContainerFor(action), new Test("FAKE"), new ConsoleListener())
         {
+        }
+
+        public IContainer Container
+        {
+            get { return _container; }
         }
 
         public string TraceText { get { return _traceWriter.GetStringBuilder().ToString(); } }
@@ -315,26 +319,6 @@ namespace StoryTeller.Engine
                 IncrementExceptions();
                 ResultsFor(part).CaptureException(ex.ToString());
             }
-        }
-
-        public void VisitFixtures(IFixtureVisitor visitor)
-        {
-            IEnumerable<InstanceRef> instances = _container.Model.InstancesOf<IFixture>();
-
-            visitor.FixtureCount = instances.Count();
-
-            instances.Each(i =>
-            {
-                try
-                {
-                    var fixture = i.Get<IFixture>();
-                    visitor.ReadFixture(i.Name, fixture);
-                }
-                catch (Exception e)
-                {
-                    visitor.LogFixtureFailure(i.Name, e);
-                }
-            });
         }
 
         public StepResults ResultsFor(ITestPart part)
