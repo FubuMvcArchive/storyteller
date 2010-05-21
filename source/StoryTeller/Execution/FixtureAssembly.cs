@@ -25,6 +25,7 @@ namespace StoryTeller.Execution
             _fixtureAssembly = fixtureAssembly;
         }
 
+        // TODO -- need to pull off the current 
         public FixtureAssembly(IProject project)
         {
             _systemTypeName = project.SystemTypeName;

@@ -1,10 +1,14 @@
+using System;
 using System.IO;
+using DirectionFixtures;
 using NUnit.Framework;
+using StateFixtures;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Persistence;
 using StoryTeller.Samples;
 using StoryTeller.Workspace;
+using System.Linq;
 
 namespace StoryTeller.Testing.Workspace
 {
@@ -211,5 +215,112 @@ s1/s2/t3,Success
             Test test2 = new TestReader().ReadFromFile("New Name.xml");
             test2.Parts[0].ShouldBeOfType<Comment>().Text.ShouldEqual("some comment");
         }
+
+        [Test]
+        public void get_workspace_for_a_name_returns_the_same()
+        {
+            var project = new Project();
+            project.FilterFor("Main").ShouldBeTheSameAs(project.FilterFor("Main"));
+        }
+
+        
     }
+
+    
+    [TestFixture]
+    public class when_creating_the_combined_workflow_filter_for_selected_workspaces
+    {
+        private Project project;
+
+        [SetUp]
+        public void SetUp()
+        {
+            project = new Project();
+            project.FilterFor("States").AddFilter(new FixtureFilter()
+            {
+                Name = "StateFixtures",
+                Type = FilterType.Namespace
+            });
+
+
+            project.FilterFor("North").AddFilter(new FixtureFilter()
+            {
+                Name = "North",
+                Type = FilterType.Fixture
+            });
+
+            project.FilterFor("South").AddFilter(new FixtureFilter()
+            {
+                Name = "South",
+                Type = FilterType.Fixture
+            });
+
+
+        }
+
+        private void fixturesShouldBe(params string[] names)
+        {
+            var builder = new LibraryBuilder(new NulloFixtureObserver(), project.CurrentFixtureFilter().CreateFilter());
+            var library = builder.Build(new TestContext(x =>
+            {
+                x.AddFixture<OhioFixture>();
+                x.AddFixture<WisconsinFixture>();
+                x.AddFixture<IllinoisFixture>();
+                x.AddFixture<NorthFixture>();
+                x.AddFixture<SouthFixture>();
+            }));
+
+            Array.Sort(names);
+
+            library.AllFixtures.Select(x => x.Name).ShouldHaveTheSameElementsAs(names);
+        }
+
+        [Test]
+        public void no_workspaces_selected_so_all_fixtures_should_be_available()
+        {
+            fixturesShouldBe("Ohio", "Wisconsin", "Illinois", "North", "South");
+        }
+
+        [Test]
+        public void select_a_single_workspace()
+        {
+            project.SelectWorkspaces(new string[] {"States"});
+            fixturesShouldBe("Ohio", "Wisconsin", "Illinois");
+
+            project.SelectWorkspaces(new string[]{"North"});
+            fixturesShouldBe("North");
+        }
+
+
+        [Test]
+        public void clear_workspace_filter_sets_back_to_no_filters()
+        {
+            project.SelectWorkspaces(new string[] { "States" });
+            project.SelectWorkspaces(new string[0]);
+
+            fixturesShouldBe("Ohio", "Wisconsin", "Illinois", "North", "South");
+        }
+
+        [Test]
+        public void should_use_a_union_of_the_selected_workspace_filters()
+        {
+            project.SelectWorkspaces(new string[]{"States", "North"});
+
+            fixturesShouldBe("Ohio", "Wisconsin", "Illinois", "North");
+        }
+    }
+
+}
+
+namespace StateFixtures
+{
+    public class OhioFixture : Fixture{}
+    public class WisconsinFixture : Fixture{}
+    public class IllinoisFixture : Fixture{}
+}
+
+namespace DirectionFixtures
+{
+    public class NorthFixture : Fixture{}
+    public class SouthFixture : Fixture{}
 }

@@ -29,6 +29,7 @@ namespace StoryTeller.Execution
                 {
                     _publisher.Publish<BinaryRecycleStarted>();
                     _proxy = BuildProxy(project);
+
                     _library = _proxy.StartSystem(new FixtureAssembly(project), (MarshalByRefObject) _publisher);
                     _publisher.Publish(new BinaryRecycleFinished(_library));
                 }

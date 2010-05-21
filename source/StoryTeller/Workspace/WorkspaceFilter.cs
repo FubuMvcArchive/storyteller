@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FubuCore.Util;
 
 namespace StoryTeller.Workspace
@@ -7,7 +8,16 @@ namespace StoryTeller.Workspace
     [Serializable]
     public class WorkspaceFilter
     {
-        private readonly List<FixtureFilter> _filters = new List<FixtureFilter>();
+        private readonly IList<FixtureFilter> _filters = new List<FixtureFilter>();
+
+        public WorkspaceFilter(IEnumerable<WorkspaceFilter> workspaceFilters)
+        {
+            _filters.AddRange(workspaceFilters.SelectMany(x => x.Filters));
+        }
+
+        public WorkspaceFilter()
+        {
+        }
 
         public string Name { get; set; }
         public FixtureFilter[] Filters

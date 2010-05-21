@@ -93,5 +93,33 @@ namespace StoryTeller.Testing.Workspace
 
             workspace.ShouldBeSerializable().ShouldBeOfType<WorkspaceFilter>().FilterCount.ShouldEqual(2);
         }
+
+        [Test]
+        public void create_a_merged_workspace_filter()
+        {
+            var workspace1 = new WorkspaceFilter();
+            workspace1.AddFilter(new FixtureFilter()
+            {
+                Name = typeof(MathFixture).GetFixtureAlias(),
+                Type = FilterType.Fixture
+            });
+
+            var workspace2 = new WorkspaceFilter();
+            workspace2.AddFilter(new FixtureFilter()
+            {
+                Name = typeof(AnotherFixture).GetFixtureAlias(),
+                Type = FilterType.Fixture
+            });
+
+            var combined = new WorkspaceFilter(new WorkspaceFilter[]{ workspace1, workspace2});
+
+            var filter = combined.CreateFilter();
+
+            filter.Matches(typeof(MathFixture)).ShouldBeTrue();
+
+            filter.Matches(typeof(AnotherFixture)).ShouldBeTrue();
+
+            filter.Matches(GetType()).ShouldBeFalse();
+        }
     }
 }

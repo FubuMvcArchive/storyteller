@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using FubuCore;
+using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
+using StoryTeller.Engine.Sets;
 using StoryTeller.Persistence;
+using System.Linq;
 
 namespace StoryTeller.Workspace
 {
@@ -32,7 +35,12 @@ namespace StoryTeller.Workspace
         private string _fileName;
         private string _projectFolder;
         private int _timeoutInSeconds;
-        private readonly List<WorkspaceFilter> _workspaces = new List<WorkspaceFilter>();
+        private readonly Cache<string, WorkspaceFilter> _workspaces = new Cache<string, WorkspaceFilter>(name => new WorkspaceFilter()
+        {
+            Name = name
+        });
+
+        private IEnumerable<WorkspaceFilter> _selectedWorkspaces = new WorkspaceFilter[0];
 
         public Project()
         {
@@ -45,21 +53,23 @@ namespace StoryTeller.Workspace
             FileName = filename;
         }
 
-        public void AddWorkspace(WorkspaceFilter workspace)
+        public WorkspaceFilter FilterFor(string workspaceName)
         {
-            _workspaces.Add(workspace);
+            return _workspaces[workspaceName];
         }
 
         public WorkspaceFilter[] Workspaces
         {
             get
             {
-                return _workspaces.ToArray();
+                return _workspaces.GetAll();
             }
             set
             {
-                _workspaces.Clear();
-                _workspaces.AddRange(value);
+                value.Each(w =>
+                {
+                    _workspaces[w.Name] = w;
+                });
             }
         }
 
@@ -271,5 +281,16 @@ namespace StoryTeller.Workspace
         }
 
         #endregion
+
+        public WorkspaceFilter CurrentFixtureFilter()
+        {
+            return new WorkspaceFilter(_selectedWorkspaces);
+        }
+
+        // TODO -- this needs to be called on project loading
+        public void SelectWorkspaces(IEnumerable<string > workspaceNames)
+        {
+            _selectedWorkspaces = workspaceNames.Select(x => FilterFor(x));
+        }
     }
 }
