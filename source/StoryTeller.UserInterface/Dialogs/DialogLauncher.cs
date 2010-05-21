@@ -1,5 +1,6 @@
 using System;
 using StructureMap;
+using FubuCore;
 
 namespace StoryTeller.UserInterface.Dialogs
 {
@@ -14,7 +15,7 @@ namespace StoryTeller.UserInterface.Dialogs
 
         #region IDialogLauncher Members
 
-        public void Launch<TCommand>(TCommand command)
+        public void LaunchForCommand<TCommand>(TCommand command)
         {
             Dialog dialog = BuildDialog(command);
 
@@ -23,13 +24,13 @@ namespace StoryTeller.UserInterface.Dialogs
 
 
 
-        public void Launch<TCommand>()
+        public void LaunchForCommand<TCommand>()
         {
             var command = _container.GetInstance<TCommand>();
-            Launch(command);
+            LaunchForCommand(command);
         }
 
-        public void Launch(ICommandDialog dialog)
+        public void LaunchDialog(ICommandDialog dialog)
         {
             Dialog d = _container.With(dialog).GetInstance<Dialog>();
             d.ShowDialog();

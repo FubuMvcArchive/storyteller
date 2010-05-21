@@ -169,21 +169,21 @@ s9/t18,Failure
         [Test]
         public void should_clear_out_the_dialog_first()
         {
-            MockFor<IWorkspaceSelectorDialog>().AssertWasCalled(x => x.Clear());
+            MockFor<IWorkspaceSelectionDialog>().AssertWasCalled(x => x.Clear());
         }
 
         [Test]
         public void should_register_a_control_for_each_workspace()
         {
-            MockFor<IWorkspaceSelectorDialog>().AssertWasCalled(x => x.Add("s1", true));
-            MockFor<IWorkspaceSelectorDialog>().AssertWasCalled(x => x.Add("s5", true));
-            MockFor<IWorkspaceSelectorDialog>().AssertWasCalled(x => x.Add("s9", false));
+            MockFor<IWorkspaceSelectionDialog>().AssertWasCalled(x => x.Add("s1", true));
+            MockFor<IWorkspaceSelectionDialog>().AssertWasCalled(x => x.Add("s5", true));
+            MockFor<IWorkspaceSelectionDialog>().AssertWasCalled(x => x.Add("s9", false));
         }
 
         [Test]
         public void should_show_the_dialog()
         {
-            MockFor<IDialogLauncher>().AssertWasCalled(x => x.Launch(MockFor<IWorkspaceSelectorDialog>()));
+            MockFor<IDialogLauncher>().AssertWasCalled(x => x.LaunchDialog(MockFor<IWorkspaceSelectionDialog>()));
         }
     }
 
@@ -228,7 +228,7 @@ s9/t18,Failure
 
             selections = new string[] { "s1", "s9" };
 
-            MockFor<IWorkspaceSelectorDialog>().Expect(x => x.GetSelections()).Return(selections);
+            MockFor<IWorkspaceSelectionDialog>().Expect(x => x.GetSelections()).Return(selections);
 
 
             ClassUnderTest.SelectWorkspaces();
@@ -243,7 +243,7 @@ s9/t18,Failure
         [Test]
         public void should_find_the_selections_from_the_dialog()
         {
-            MockFor<IWorkspaceSelectorDialog>().VerifyAllExpectations();
+            MockFor<IWorkspaceSelectionDialog>().VerifyAllExpectations();
         }
 
         [Test]

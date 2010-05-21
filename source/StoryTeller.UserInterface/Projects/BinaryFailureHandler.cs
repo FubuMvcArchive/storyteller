@@ -54,7 +54,7 @@ namespace StoryTeller.UserInterface.Projects
 
         public void Open()
         {
-            _launcher.Launch<IBinaryFailureHandler>(this);
+            _launcher.LaunchForCommand<IBinaryFailureHandler>(this);
         }
 
         #endregion

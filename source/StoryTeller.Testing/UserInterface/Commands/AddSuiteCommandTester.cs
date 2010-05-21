@@ -23,7 +23,7 @@ namespace StoryTeller.Testing.UserInterface.Commands
         [Test]
         public void should_launch_a_dialog_with_itself()
         {
-            MockFor<IDialogLauncher>().AssertWasCalled(x => x.Launch<IAddSuiteCommand>(ClassUnderTest));
+            MockFor<IDialogLauncher>().AssertWasCalled(x => x.LaunchForCommand<IAddSuiteCommand>(ClassUnderTest));
         }
     }
 

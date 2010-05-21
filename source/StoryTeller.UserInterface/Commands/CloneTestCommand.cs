@@ -35,7 +35,7 @@ namespace StoryTeller.UserInterface.Commands
 
         public override void Execute()
         {
-            _launcher.Launch<IAddTestCommand>(this);
+            _launcher.LaunchForCommand<IAddTestCommand>(this);
         }
     }
 }

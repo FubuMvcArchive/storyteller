@@ -28,7 +28,7 @@ namespace StoryTeller.Testing.UserInterface.Commands
         {
             ClassUnderTest.Execute();
 
-            MockFor<IDialogLauncher>().AssertWasCalled(x => x.Launch<IAddTestCommand>(ClassUnderTest));
+            MockFor<IDialogLauncher>().AssertWasCalled(x => x.LaunchForCommand<IAddTestCommand>(ClassUnderTest));
         }
     }
 

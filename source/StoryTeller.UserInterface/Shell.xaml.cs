@@ -6,6 +6,7 @@ using StoryTeller.UserInterface.Controls;
 using StoryTeller.UserInterface.Exploring;
 using StoryTeller.UserInterface.Projects;
 using StoryTeller.UserInterface.Screens;
+using StoryTeller.UserInterface.Workspace;
 using StructureMap.Configuration.DSL;
 
 namespace StoryTeller.UserInterface
@@ -102,6 +103,7 @@ namespace StoryTeller.UserInterface
             registry.For<IOptionsMenu>().Use(options);
             registry.For<TestStopConditionsView>().Use(settings.TestStopConditionsView);
             registry.For<IProjectExplorerView>().Use(settings);
+            registry.For<IWorkspaceSelectorMenu>().Use(workspaces);
 
             registry.For<TreeView>().AddInstances(x =>
             {

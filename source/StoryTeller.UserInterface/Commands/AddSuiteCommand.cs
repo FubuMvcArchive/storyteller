@@ -39,7 +39,7 @@ namespace StoryTeller.UserInterface.Commands
 
         public override void Execute()
         {
-            _launcher.Launch<IAddSuiteCommand>(this);
+            _launcher.LaunchForCommand<IAddSuiteCommand>(this);
         }
     }
 }

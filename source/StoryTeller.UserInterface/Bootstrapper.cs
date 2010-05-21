@@ -1,6 +1,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using StructureMap;
 
@@ -33,10 +34,10 @@ namespace StoryTeller.UserInterface
 
             // Find all the possible services in the main application
             // IoC Container that implement an "IStartable" interface
-            container.Model.GetAllPossible<IStartable>().Each(x => x.Start());
+            container.Model.GetAllPossible<IStartable>().ToArray().Each(x => x.Start());
 
             // Build up
-            container.Model.GetAllPossible<INeedBuildUp>().Each(x => container.BuildUp(x));
+            container.Model.GetAllPossible<INeedBuildUp>().ToArray().Each(x => container.BuildUp(x));
 
             // Wire up the event bubbling to the event aggregator
             var shell = container.GetInstance<Shell>();

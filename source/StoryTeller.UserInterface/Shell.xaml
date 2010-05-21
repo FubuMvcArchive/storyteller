@@ -3,10 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:UserInterface="clr-namespace:StoryTeller.UserInterface"
     xmlns:Controls="clr-namespace:StoryTeller.UserInterface.Controls"
-    xmlns:Projects="clr-namespace:StoryTeller.UserInterface.Projects" MinHeight="600" MinWidth="800" >
+    xmlns:Projects="clr-namespace:StoryTeller.UserInterface.Projects" xmlns:Workspace="clr-namespace:StoryTeller.UserInterface.Workspace" MinHeight="600" MinWidth="800" >
     <DockPanel SnapsToDevicePixels="False">
         <DockPanel Name="topBar" DockPanel.Dock="Top" Background="Silver" >
             <Controls:TestFilterBar x:Name="filterBar" DockPanel.Dock="Left" Height="40" Padding="2 5 2 5"></Controls:TestFilterBar>
+            <Workspace:WorkspaceSelectorMenu x:Name="workspaces" DockPanel.Dock="Left" Height="30" Margin="20 5 2 5"></Workspace:WorkspaceSelectorMenu>
             <Controls:OptionsMenu x:Name="options" DockPanel.Dock="Right" Margin="30 0 0 0"></Controls:OptionsMenu>
             <Controls:CommandBar x:Name="commandBar" DockPanel.Dock="Right"></Controls:CommandBar>
             

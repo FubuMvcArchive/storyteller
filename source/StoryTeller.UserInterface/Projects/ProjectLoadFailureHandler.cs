@@ -23,7 +23,7 @@ namespace StoryTeller.UserInterface.Projects
         {
             ErrorText = projectLoadFailureMessage.ErrorMessage;
             ProjectToken = projectLoadFailureMessage.ProjectToken;
-            _launcher.Launch<IProjectLoadFailureHandler>(this);
+            _launcher.LaunchForCommand<IProjectLoadFailureHandler>(this);
         }
 
         public ProjectToken ProjectToken { get; private set; }

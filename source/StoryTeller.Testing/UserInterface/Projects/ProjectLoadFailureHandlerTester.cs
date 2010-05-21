@@ -28,7 +28,7 @@ namespace StoryTeller.Testing.UserInterface.Projects
             }
 
             [Test]
-            public void should_launch_a_dialog_with_itself() { MockFor<IDialogLauncher>().AssertWasCalled(x => x.Launch<IProjectLoadFailureHandler>(ClassUnderTest)); }
+            public void should_launch_a_dialog_with_itself() { MockFor<IDialogLauncher>().AssertWasCalled(x => x.LaunchForCommand<IProjectLoadFailureHandler>(ClassUnderTest)); }
 
             [Test]
             public void should_store_the_message() { ClassUnderTest.ErrorText.ShouldEqual(message.ErrorMessage); }

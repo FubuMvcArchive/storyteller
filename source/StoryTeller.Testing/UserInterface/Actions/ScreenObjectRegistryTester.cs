@@ -116,7 +116,7 @@ namespace StoryTeller.Testing.UserInterface.Shortcuts
         {
             registry.CommandForDialog<AddTestCommand>().Execute(null);
 
-            container.GetInstance<IDialogLauncher>().AssertWasCalled(x => x.Launch<AddTestCommand>());
+            container.GetInstance<IDialogLauncher>().AssertWasCalled(x => x.LaunchForCommand<AddTestCommand>());
         }
 
         [Test]

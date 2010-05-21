@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace StoryTeller.UserInterface.Workspace
 {
@@ -28,6 +29,7 @@ namespace StoryTeller.UserInterface.Workspace
             {
                 return _checkbox.IsChecked.GetValueOrDefault(false);
             }
+            set { _checkbox.IsChecked = value; }
         }
     }
 }

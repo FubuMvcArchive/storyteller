@@ -20,6 +20,7 @@ using StoryTeller.UserInterface.Projects;
 using StoryTeller.UserInterface.Running;
 using StoryTeller.UserInterface.Screens;
 using StoryTeller.UserInterface.Tests;
+using StoryTeller.UserInterface.Workspace;
 using StoryTeller.Workspace;
 using StructureMap.Configuration.DSL;
 using StructureMap.TypeRules;
@@ -125,6 +126,8 @@ namespace StoryTeller.UserInterface
             makeSingleton<IScreenObjectRegistry>();
             makeSingleton<IShellService>();
             makeSingleton<ITestEditorBuilder>();
+
+            makeSingleton<WorkspaceSelector>();
         }
 
         private void fakeValidDefaultsForExplicitArguments()

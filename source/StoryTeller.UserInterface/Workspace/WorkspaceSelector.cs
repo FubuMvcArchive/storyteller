@@ -9,11 +9,11 @@ namespace StoryTeller.UserInterface.Workspace
     public class WorkspaceSelector : IStartable, IListener<ProjectLoaded>, IListener<Hierarchy>
     {
         private readonly IDialogLauncher _launcher;
-        private readonly IWorkspaceSelectorDialog _dialog;
+        private readonly IWorkspaceSelectionDialog _dialog;
         private readonly IWorkspaceSelectorMenu _menu;
         private readonly IEventAggregator _events;
 
-        public WorkspaceSelector(IDialogLauncher launcher, IWorkspaceSelectorDialog dialog, IWorkspaceSelectorMenu menu, IEventAggregator events)
+        public WorkspaceSelector(IDialogLauncher launcher, IWorkspaceSelectionDialog dialog, IWorkspaceSelectorMenu menu, IEventAggregator events)
         {
             _launcher = launcher;
             _dialog = dialog;
@@ -44,7 +44,12 @@ namespace StoryTeller.UserInterface.Workspace
                 _dialog.Add(x, isSelected);
             });
 
-            _launcher.Launch(_dialog);
+            if (!selected.Any())
+            {
+                _dialog.SelectAll();
+            }
+
+            _launcher.LaunchDialog(_dialog);
         }
 
         public void Start()

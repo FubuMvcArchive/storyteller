@@ -70,7 +70,7 @@ namespace StoryTeller.UserInterface.Actions
 
         public ICommand CommandForDialog<T>()
         {
-            return command<IDialogLauncher>(x => x.Launch<T>());
+            return command<IDialogLauncher>(x => x.LaunchForCommand<T>());
         }
 
         public ICommand CommandForScreen<T>() where T : IScreen
