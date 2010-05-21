@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using FubuCore.Util;
+using System.Linq;
 
 namespace StoryTeller.Domain
 {
@@ -23,7 +25,9 @@ namespace StoryTeller.Domain
 
         private Predicate<Test> _lifecycleMatch;
         private Predicate<Test> _resultMatch;
+        private Predicate<Test> _workspaceMatch = t => true;
         private ResultStatus _resultStatus;
+        private IEnumerable<string> _workspaces;
 
         public TestFilter()
         {
@@ -61,9 +65,28 @@ namespace StoryTeller.Domain
             }
         }
 
+        public IEnumerable<string> Workspaces
+        {
+            get {
+                return _workspaces;
+            }
+            set {
+                if (value.Any())
+                {
+                    _workspaceMatch = t => value.Any(w => t.IsInWorkspace(w));
+                }
+                else
+                {
+                    _workspaceMatch = t => true;
+                }
+
+                _workspaces = value;
+            }
+        }
+
         public bool Matches(Test test)
         {
-            return _resultMatch(test) && _lifecycleMatch(test);
+            return _resultMatch(test) && _lifecycleMatch(test) && _workspaceMatch(test);
         }
 
         public bool ShowEmptySuites()

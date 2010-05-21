@@ -347,5 +347,11 @@ namespace StoryTeller.Domain
         {
             _parts.Add(comment);
         }
+
+        public bool IsInWorkspace(string workspace)
+        {
+            if (Parent == null) return false;
+            return GetPath().Workspace == workspace;
+        }
     }
 }

@@ -22,6 +22,14 @@ namespace StoryTeller.Domain
             _parts = parts;
         }
 
+        public string Workspace
+        {
+            get
+            {
+                return _parts[0];
+            }
+        }
+
         public string Next { get { return _parts.First(); } }
 
         public string Name { get { return _parts.Last(); } }

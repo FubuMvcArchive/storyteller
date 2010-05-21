@@ -1,5 +1,7 @@
+using System;
 using NUnit.Framework;
 using StoryTeller.Domain;
+using System.Linq;
 
 namespace StoryTeller.Testing.Domain
 {
@@ -172,6 +174,80 @@ namespace StoryTeller.Testing.Domain
             filter.Matches(failedRegressionTest).ShouldBeTrue();
             filter.Matches(successfulAcceptanceTest).ShouldBeTrue();
             filter.Matches(successfulRegressionTest).ShouldBeTrue();
+        }
+    }
+
+    [TestFixture]
+    public class when_combining_filters_with_workspace_filters
+    {
+        private Hierarchy hierarchy;
+        private TestFilter filter;
+
+        [SetUp]
+        public void SetUp()
+        {
+            hierarchy =
+    DataMother.BuildHierarchy(
+        @"
+t1,Success
+t2,Failure
+t3,Success
+s1/t4,Success
+s1/t5,Success
+s1/t6,Failure
+s1/s2/t7,Success
+s1/s2/t8,Failure
+s1/s2/s3/t9,Success
+s1/s2/s3/t10,Success
+s1/s2/s3/s4/t11,Success
+s5/t12,Failure
+s5/s6/t13,Success
+s5/s6/s7/t14,Success
+s5/s6/s7/s8/t15,Success
+s9/t16,Success
+s9/t17,Success
+s9/t18,Failure
+");
+
+            filter = new TestFilter();
+        }
+
+        private void matchingTestsShouldBe(params string[] names)
+        {
+            Array.Sort(names);
+
+            hierarchy.GetAllTests().Where(t => filter.Matches(t)).OrderBy(t => t.Name).Select(t => t.Name)
+                .ShouldHaveTheSameElementsAs(names);
+        }
+
+        [Test]
+        public void no_workspace_filter_and_failure()
+        {
+            filter.Workspaces = new string[0];
+            filter.ResultStatus = ResultStatus.Failed;
+            matchingTestsShouldBe("t2", "t6", "t8", "t12", "t18");
+        }
+
+        [Test]
+        public void one_workspace_filter()
+        {
+            filter.Workspaces = new string[] {"s9"};
+            matchingTestsShouldBe("t16", "t17", "t18");
+        }
+
+        [Test]
+        public void multiple_workspace_filter()
+        {
+            filter.Workspaces = new string[] {"s5", "s9"};
+            matchingTestsShouldBe("t12", "t13", "t14", "t15", "t16", "t17", "t18");
+        }
+
+        [Test]
+        public void multiple_workspace_filter_and_result_filter()
+        {
+            filter.Workspaces = new string[] { "s5", "s9" };
+            filter.ResultStatus = ResultStatus.Failed;
+            matchingTestsShouldBe("t12", "t18");
         }
     }
 }

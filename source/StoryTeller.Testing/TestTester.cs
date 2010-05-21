@@ -79,6 +79,30 @@ namespace StoryTeller.Testing
         }
 
         [Test]
+        public void is_in_workspace()
+        {
+            var hierarchy = new Hierarchy("project");
+            hierarchy.AddTest("s1/t1");
+            hierarchy.AddTest("s1/s2/t2");
+            hierarchy.AddTest("s1/s2/s3/t3");
+
+            var test = hierarchy.FindTest("s1/t1");
+            test.IsInWorkspace("s1").ShouldBeTrue();
+            test.IsInWorkspace("s2").ShouldBeFalse();
+            test.IsInWorkspace("s3").ShouldBeFalse();
+
+            var test2 = hierarchy.FindTest("s1/s2/t2");
+            test2.IsInWorkspace("s1").ShouldBeTrue();
+            test2.IsInWorkspace("s2").ShouldBeFalse();
+            test2.IsInWorkspace("s3").ShouldBeFalse();
+
+            var test3 = hierarchy.FindTest("s1/s2/s3/t3");
+            test3.IsInWorkspace("s1").ShouldBeTrue();
+            test3.IsInWorkspace("s2").ShouldBeFalse();
+            test3.IsInWorkspace("s3").ShouldBeFalse();
+        }
+
+        [Test]
         public void get_path_with_parent()
         {
             var suite = new Suite("s1");
