@@ -1,3 +1,4 @@
+using System;
 using StructureMap;
 
 namespace StoryTeller.UserInterface.Dialogs
@@ -13,24 +14,34 @@ namespace StoryTeller.UserInterface.Dialogs
 
         #region IDialogLauncher Members
 
-        public void Launch<COMMAND>(COMMAND command)
+        public void Launch<TCommand>(TCommand command)
         {
             Dialog dialog = BuildDialog(command);
 
             dialog.ShowDialog();
         }
 
-        public void Launch<COMMAND>()
+
+
+        public void Launch<TCommand>()
         {
-            var command = _container.GetInstance<COMMAND>();
+            var command = _container.GetInstance<TCommand>();
             Launch(command);
         }
 
+        public void Launch(ICommandDialog dialog)
+        {
+            Dialog d = _container.With(dialog).GetInstance<Dialog>();
+            d.ShowDialog();
+        }
+
+
+
         #endregion
 
-        public Dialog BuildDialog<COMMAND>(COMMAND command)
+        public Dialog BuildDialog<TCommand>(TCommand command)
         {
-            var control = _container.With(command).GetInstance<ICommandDialog<COMMAND>>();
+            var control = _container.With(command).GetInstance<ICommandDialog<TCommand>>();
 
             return _container.With<ICommandDialog>(control).GetInstance<Dialog>();
         }

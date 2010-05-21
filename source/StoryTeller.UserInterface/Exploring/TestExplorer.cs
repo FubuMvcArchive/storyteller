@@ -16,6 +16,7 @@ namespace StoryTeller.UserInterface.Exploring
                                 , IListener<DeleteTestMessage>
                                 , IListener<TestRenamed>
                                 , IListener<SuiteAddedMessage>
+                                , IListener<ProjectLoaded>
     {
         private readonly IEventAggregator _events;
         private readonly TestFilter _filter = new TestFilter();
@@ -218,6 +219,11 @@ namespace StoryTeller.UserInterface.Exploring
         {
             _suiteNodes.Each(action);
             _testNodes.Each(action);
+        }
+
+        public void Handle(ProjectLoaded message)
+        {
+            _filter.Workspaces = message.Project.SelectedWorkspaces.Select(x => x.Name);
         }
     }
 }

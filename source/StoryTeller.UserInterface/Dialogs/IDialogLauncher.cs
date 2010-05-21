@@ -2,7 +2,8 @@ namespace StoryTeller.UserInterface.Dialogs
 {
     public interface IDialogLauncher
     {
-        void Launch<COMMAND>(COMMAND command);
-        void Launch<COMMAND>();
+        void Launch<TCommand>(TCommand command);
+        void Launch<TCommand>();
+        void Launch(ICommandDialog window);
     }
 }

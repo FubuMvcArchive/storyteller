@@ -5,7 +5,7 @@ namespace StoryTeller.UserInterface.Dialogs
         string Title { get; }
     }
 
-    public interface ICommandDialog<COMMAND> : ICommandDialog
+    public interface ICommandDialog<TCommand> : ICommandDialog
     {
     }
 }

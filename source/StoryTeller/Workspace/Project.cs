@@ -20,6 +20,7 @@ namespace StoryTeller.Workspace
         string SystemTypeName { get; }
         int TimeoutInSeconds { get; set; }
         string FixtureAssembly { get; set; }
+        IEnumerable<WorkspaceFilter> SelectedWorkspaces { get; }
         string GetBinaryFolder();
         Hierarchy LoadTests();
         void Save(Test test);
@@ -293,6 +294,11 @@ namespace StoryTeller.Workspace
         public void SelectWorkspaces(IEnumerable<string > workspaceNames)
         {
             _selectedWorkspaces = workspaceNames.Select(x => FilterFor(x));
+        }
+
+        public IEnumerable<WorkspaceFilter> SelectedWorkspaces
+        {
+            get { return _selectedWorkspaces; }
         }
     }
 }

@@ -10,6 +10,7 @@ namespace StoryTeller.UserInterface.Recycling
         public BinaryRecyclingDialog()
         {
             InitializeComponent();
+            Hide();
         }
 
         public void Start()

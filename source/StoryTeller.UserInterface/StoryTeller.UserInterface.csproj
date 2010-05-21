@@ -193,6 +193,7 @@
     <Compile Include="Editing\HTML\TableTemplateTag.cs" />
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
+    <Compile Include="Workspace\IWorkspaceSelectorDialog.cs" />
     <EmbeddedResource Include="Editing\Scripts\Controls\tableEditor.js" />
     <Compile Include="Editing\Scripts\Embeds.cs" />
     <Compile Include="Editing\TestEditorBuilder.cs" />

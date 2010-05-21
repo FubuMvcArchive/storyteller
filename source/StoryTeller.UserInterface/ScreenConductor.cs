@@ -132,6 +132,7 @@ namespace StoryTeller.UserInterface
 
         #region IScreenConductor Members
 
+        [Obsolete("This really shouldn't be here")]
         public void LoadHierarchy(Func<Hierarchy> func)
         {
             Hierarchy hierarchy = func();
