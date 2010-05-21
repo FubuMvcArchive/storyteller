@@ -14,9 +14,9 @@ namespace StoryTeller.Html
             document.Title = "Fixture / Grammar Report Writer";
             document.AddStyle(HtmlClasses.CSS());
 
-            library.AllFixtures.Where(f => f.Errors.Any()).Each(f => writeFailedFixture(document, f));
+            library.ActiveFixtures.Where(f => f.Errors.Any()).Each(f => writeFailedFixture(document, f));
 
-            library.AllFixtures.Where(f => f.HasGrammarErrors()).Each(f =>
+            library.ActiveFixtures.Where(f => f.HasGrammarErrors()).Each(f =>
             {
                 writeGrammarErrorsFromFixture(document, f);
             });

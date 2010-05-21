@@ -46,6 +46,24 @@ namespace StoryTeller.Testing.Engine
         {
             library.HasFixture("Arkansas").ShouldBeFalse();
         }
+
+        [Test]
+        public void still_has_dtos_for_each_possible_fixture()
+        {
+            var allNames = library.AllFixtures.OrderBy(x => x.Name).Select(x => x.Name).ToList();
+            allNames.ShouldContain("Arkansas");
+            allNames.ShouldContain("Michigan");
+            allNames.ShouldContain("Missouri");
+            allNames.ShouldContain("Montana");
+        }
+
+        [Test]
+        public void fixture_dto_has_all_the_properties()
+        {
+            var dto = library.AllFixtures.FirstOrDefault(x => x.Name == "Arkansas");
+            dto.Namespace.ShouldEqual(typeof (ArkansasFixture).Namespace);
+            dto.Fullname.ShouldEqual(typeof (ArkansasFixture).FullName);
+        }
     }
 
     public class MissouriFixture : Fixture{}

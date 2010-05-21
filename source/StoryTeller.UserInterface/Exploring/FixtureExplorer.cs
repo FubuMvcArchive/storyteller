@@ -42,7 +42,7 @@ namespace StoryTeller.UserInterface.Exploring
         {
             var top = new TreeNode(library);
 
-            library.AllFixtures.Each(fixtureGraph =>
+            library.ActiveFixtures.Each(fixtureGraph =>
             {
                 var node = new TreeNode(fixtureGraph);
                 top.Add(node);

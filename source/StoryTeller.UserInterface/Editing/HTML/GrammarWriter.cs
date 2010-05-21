@@ -22,7 +22,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             FixtureGraph topFixture = _library.BuildTopLevelGraph();
             writeFixture(topFixture);
 
-            _library.AllFixtures.Each(writeFixture);
+            _library.ActiveFixtures.Each(writeFixture);
 
             return _top;
         }

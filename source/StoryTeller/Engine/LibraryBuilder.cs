@@ -68,7 +68,7 @@ namespace StoryTeller.Engine
 
         #endregion
 
-        // TODO -- needs to change to IContainer
+        // TODO -- needs to change to IContainer child container
         public FixtureLibrary Build(TestContext context)
         {
             _library = new FixtureLibrary()
@@ -76,8 +76,14 @@ namespace StoryTeller.Engine
                 Finder = _finder
             };
 
-            context.Container.Model.For<IFixture>().Instances.Where(i => _filter.Matches(i.ConcreteType)).Each(readInstance);
-
+            var fixtureConfiguration = context.Container.Model.For<IFixture>();
+            fixtureConfiguration.Instances.Where(i => _filter.Matches(i.ConcreteType)).Each(readInstance);
+            _library.AllFixtures = fixtureConfiguration.Instances.Select(x => new FixtureDto
+            {
+                Fullname = x.ConcreteType.FullName,
+                Name = x.ConcreteType.GetFixtureAlias(),
+                Namespace = x.ConcreteType.Namespace
+            }).ToArray();
 
             return _library;
         }

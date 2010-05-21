@@ -272,7 +272,7 @@ s1/s2/t3,Success
 
             Array.Sort(names);
 
-            library.AllFixtures.Select(x => x.Name).ShouldHaveTheSameElementsAs(names);
+            library.ActiveFixtures.Select(x => x.Name).ShouldHaveTheSameElementsAs(names);
         }
 
         [Test]
