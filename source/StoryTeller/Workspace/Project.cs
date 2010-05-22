@@ -137,7 +137,7 @@ namespace StoryTeller.Workspace
         {
             var hierarchy = new Hierarchy(this);
 
-            new HierarchyLoader(GetTestFolder(), hierarchy).Load();
+            new HierarchyLoader(GetTestFolder(), hierarchy, this).Load();
 
             return hierarchy;
         }
@@ -250,14 +250,16 @@ namespace StoryTeller.Workspace
         public class HierarchyLoader
         {
             private readonly Hierarchy _hierarchy;
+            private readonly IProject _project;
             private readonly ITestReader _reader = new TestReader();
             private readonly FileSystem _system = new FileSystem();
             private readonly string _topFolder;
 
-            public HierarchyLoader(string topFolder, Hierarchy hierarchy)
+            public HierarchyLoader(string topFolder, Hierarchy hierarchy, IProject project)
             {
                 _topFolder = topFolder;
                 _hierarchy = hierarchy;
+                _project = project;
             }
 
             public void Load()
@@ -276,7 +278,8 @@ namespace StoryTeller.Workspace
                 // load the tests from the sub folders
                 foreach (string subFolder in _system.GetSubFolders(folder))
                 {
-                    var child = new Suite(Path.GetFileName(subFolder));
+                    string name = Path.GetFileName(subFolder);
+                    var child = parent is Hierarchy ? new WorkspaceSuite(name){Filter = _project.WorkspaceFor(name)} : new Suite(name);
                     parent.AddSuite(child);
 
                     loadTestsInFolder(subFolder, child);

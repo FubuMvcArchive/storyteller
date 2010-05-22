@@ -25,6 +25,22 @@ namespace StoryTeller.Testing.Integration
         private Hierarchy hierarchy;
 
         [Test]
+        public void the_top_level_suites_should_all_be_workspace_suites()
+        {
+            hierarchy.ChildSuites.Each(
+                x => x.ShouldBeOfType<WorkspaceSuite>().Filter.ShouldBeTheSameAs(project.WorkspaceFor(x.Name)));
+        }
+
+        [Test]
+        public void all_the_other_suites_below_workspace_should_just_be_suites()
+        {
+            hierarchy.ChildSuites.Each(x =>
+            {
+                x.ChildSuites.Each(s => s.ShouldBeOfType<Suite>());
+            });
+        }
+
+        [Test]
         public void child_suite_has_its_child_suites()
         {
             hierarchy.FindSuite("Mixed").FindSuite("SubMixed").Tests.ShouldHaveTestNames("Sub Mixed 1", "Sub Mixed 2",
