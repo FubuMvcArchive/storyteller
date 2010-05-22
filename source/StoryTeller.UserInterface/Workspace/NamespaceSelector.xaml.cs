@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Workspace
@@ -28,9 +20,26 @@ namespace StoryTeller.UserInterface.Workspace
 
             selected.Checked += (o, y) =>
             {
-                var fixtureSelectors = children;
+                IEnumerable<IFixtureSelector> fixtureSelectors = children;
                 fixtureSelectors.Each(x => x.Enable(!IsSelected()));
             };
+        }
+
+        public NamespaceSelector(string @namespace) : this()
+        {
+            _ns = @namespace;
+            label.WireUp(@namespace, () =>
+            {
+                Visibility visibility = container.Visibility == Visibility.Visible
+                                            ? Visibility.Collapsed
+                                            : Visibility.Visible;
+
+                container.Visibility = visibility;
+            });
+
+            label.ToolTip =
+                selected.ToolTip =
+                new ToolTip {Content = "All fixtures in namespace " + @namespace + "\nClick to show/hide fixtures"};
         }
 
         private IEnumerable<IFixtureSelector> children
@@ -38,24 +47,12 @@ namespace StoryTeller.UserInterface.Workspace
             get { return container.Children.Cast<IFixtureSelector>(); }
         }
 
-        public NamespaceSelector(string @namespace) : this()
-        {
-            _ns = @namespace;
-            label.Content = @namespace;
-
-            label.ToolTip = selected.ToolTip = new ToolTip() {Content = "All fixtures in namespace " + @namespace};
-        }
-
         public CheckBox Selected
         {
             get { return selected; }
         }
 
-        public void Add(IFixtureSelector selector)
-        {
-            container.Children.Add((UIElement)selector);
-        }
-
+        #region IFixtureSelector Members
 
         public IEnumerable<FixtureFilter> GetFilters()
         {
@@ -65,13 +62,11 @@ namespace StoryTeller.UserInterface.Workspace
             }
             else
             {
-                foreach (var fixtureFilter in children.SelectMany(x => x.GetFilters()))
+                foreach (FixtureFilter fixtureFilter in children.SelectMany(x => x.GetFilters()))
                 {
                     yield return fixtureFilter;
                 }
-
             }
-            
         }
 
         public bool IsSelected()
@@ -86,6 +81,23 @@ namespace StoryTeller.UserInterface.Workspace
             bool childrenShouldBeEnabled = enabled && !IsSelected();
 
             children.Each(x => x.Enable(childrenShouldBeEnabled));
+        }
+
+        #endregion
+
+        public void Open()
+        {
+            container.Visibility = Visibility.Visible;
+        }
+
+        public void Add(IFixtureSelector selector)
+        {
+            container.Children.Add((UIElement) selector);
+        }
+
+        public void Select(bool isSelected)
+        {
+            selected.IsChecked = isSelected;
         }
     }
 }

@@ -1,16 +1,11 @@
 using System;
 using System.Windows.Forms;
 using FubuCore;
+using StoryTeller.Domain;
 using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Projects
 {
-    public interface IProjectExplorerView
-    {
-        void ShowProjects(ProjectToken[] projects);
-    }
-
-
     public class ProjectController : IProjectController, IListener<SaveTestMessage>, IListener<ReloadTestsMessage>,
                                      IListener<DeleteTestMessage>, IListener<RenameTestRequest>,
                                      IListener<SuiteAddedMessage>, IListener<RemoveProjectFromHistoryMessage>
@@ -171,6 +166,11 @@ namespace StoryTeller.UserInterface.Projects
                     });
                 }                
             }
+        }
+
+        public void SaveWorkspace(WorkspaceSuite suite)
+        {
+            throw new NotImplementedException();
         }
 
         public void Start()

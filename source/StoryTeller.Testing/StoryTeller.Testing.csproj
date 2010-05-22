@@ -339,6 +339,8 @@
     <Compile Include="UserInterface\Tests\TestStateManagerTester.cs" />
     <Compile Include="UserInterface\Tests\XmlModeTester.cs" />
     <Compile Include="UserInterface\Workspace\FixtureSelectorTester.cs" />
+    <Compile Include="UserInterface\Workspace\NamespaceSelectorTester.cs" />
+    <Compile Include="UserInterface\Workspace\WorkspaceEditorTester.cs" />
     <Compile Include="UserInterface\Workspace\WorkspaceItemTester.cs" />
     <Compile Include="UserInterface\Workspace\WorkspaceSelectorDialogTester.cs" />
     <Compile Include="Workspace\FixtureFilterTester.cs" />

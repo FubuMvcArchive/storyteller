@@ -1,3 +1,4 @@
+using System;
 using StoryTeller.Domain;
 using StoryTeller.Execution;
 using StoryTeller.Model;
@@ -14,6 +15,20 @@ namespace StoryTeller.UserInterface
         void Save(Test test);
         void DeleteTest(Test test);
         void RenameTest(Test test, string newName);
+    }
+
+    public class LibraryContext : IListener<BinaryRecycleFinished>, IStartable
+    {
+        public void Handle(BinaryRecycleFinished message)
+        {
+            Library = message.Library;
+        }
+
+        public FixtureLibrary Library { get; set; }
+        public void Start()
+        {
+            
+        }
     }
 
     public class TestService : ITestService, IListener<BinaryRecycleFinished>

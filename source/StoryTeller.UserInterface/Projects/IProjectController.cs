@@ -1,3 +1,4 @@
+using StoryTeller.Domain;
 using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Projects
@@ -8,5 +9,6 @@ namespace StoryTeller.UserInterface.Projects
         void StartNewProject(IProject project);
         void CreateNewProject();
         void LoadExistingProject();
+        void SaveWorkspace(WorkspaceSuite suite);
     }
 }

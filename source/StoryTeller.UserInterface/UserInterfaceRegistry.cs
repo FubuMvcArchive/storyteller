@@ -87,6 +87,8 @@ namespace StoryTeller.UserInterface
 
                 return dialog;
             });
+
+            For<FixtureLibrary>().Use(c => c.GetInstance<LibraryContext>().Library);
         }
 
         private void registerEventAggregator()
@@ -126,6 +128,7 @@ namespace StoryTeller.UserInterface
             makeSingleton<IScreenObjectRegistry>();
             makeSingleton<IShellService>();
             makeSingleton<ITestEditorBuilder>();
+            makeSingleton<LibraryContext>();
 
             makeSingleton<WorkspaceSelector>();
         }
