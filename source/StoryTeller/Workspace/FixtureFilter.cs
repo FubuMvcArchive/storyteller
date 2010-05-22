@@ -23,6 +23,24 @@ namespace StoryTeller.Workspace
             }
         }
 
+        public static FixtureFilter Namespace(string ns)
+        {
+            return new FixtureFilter()
+            {
+                Name = ns,
+                Type = FilterType.Namespace
+            };
+        }
+
+        public static FixtureFilter Fixture(string name)
+        {
+            return new FixtureFilter()
+            {
+                Name = name,
+                Type = FilterType.Fixture
+            };
+        }
+
         public bool Equals(FixtureFilter other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -44,6 +62,11 @@ namespace StoryTeller.Workspace
             {
                 return (Type.GetHashCode()*397) ^ (Name != null ? Name.GetHashCode() : 0);
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Type: {0}, Name: {1}", Type, Name);
         }
     }
 }

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="StoryTeller.UserInterface.Workspace.NamespaceSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" >
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <CheckBox Name="selected"></CheckBox>
+            <Label Name="label"></Label>
+        </StackPanel>
+        <StackPanel Name="container" Orientation="Vertical" MinWidth="200">
+            
+        </StackPanel>
+    </DockPanel>
+</UserControl>

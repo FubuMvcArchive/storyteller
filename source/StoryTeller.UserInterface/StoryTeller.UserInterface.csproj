@@ -193,8 +193,13 @@
     <Compile Include="Editing\HTML\TableTemplateTag.cs" />
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
+    <Compile Include="Workspace\FixtureSelector.cs" />
+    <Compile Include="Workspace\IFixtureSelector.cs" />
     <Compile Include="Workspace\IWorkspaceSelectionDialog.cs" />
     <Compile Include="Workspace\IWorkspaceSelectorMenu.cs" />
+    <Compile Include="Workspace\NamespaceSelector.xaml.cs">
+      <DependentUpon>NamespaceSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Workspace\WorkspaceItem.cs" />
     <Compile Include="Workspace\WorkspaceSelectionDialog.xaml.cs">
       <DependentUpon>WorkspaceSelectionDialog.xaml</DependentUpon>
@@ -468,6 +473,10 @@
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Workspace\NamespaceSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Workspace\WorkspaceSelectionDialog.xaml">
       <SubType>Designer</SubType>
