@@ -11,6 +11,37 @@ using StoryTeller.Workspace;
 namespace StoryTeller.Testing.UserInterface.Projects
 {
     [TestFixture]
+    public class when_saving_workspace_filters_for_the_project : InteractionContext<ProjectController>
+    {
+        private IProject theProject;
+
+        protected override void beforeEach()
+        {
+            ClassUnderTest.Project = theProject = MockFor<IProject>();
+            ClassUnderTest.SaveWorkspace(new WorkspaceSuite("some name"));
+
+        }
+
+        [Test]
+        public void should_save_the_project_file()
+        {
+            MockFor<IProjectPersistor>().AssertWasCalled(x => x.SaveProject(theProject));
+        }
+
+        [Test]
+        public void has_to_issue_a_binary_recycle_request()
+        {
+            MockFor<IEventAggregator>().SendMessage(new ForceBinaryRecycle());
+        }
+
+        [Test]
+        public void should_publish_a_workspace_filters_changed_message()
+        {
+            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(new WorkflowFiltersChanged(theProject)));
+        }
+    }
+
+    [TestFixture]
     public class when_responding_to_a_new_suite : InteractionContext<ProjectController>
     {
         private Suite suite;

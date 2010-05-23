@@ -170,7 +170,9 @@ namespace StoryTeller.UserInterface.Projects
 
         public void SaveWorkspace(WorkspaceSuite suite)
         {
-            throw new NotImplementedException();
+            _persistor.SaveProject(_project);
+            _events.SendMessage(new ForceBinaryRecycle());
+            _events.SendMessage(new WorkflowFiltersChanged(_project));
         }
 
         public void Start()

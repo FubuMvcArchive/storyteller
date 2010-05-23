@@ -12,12 +12,12 @@ namespace StoryTeller.UserInterface.Workspace
     public class WorkspaceEditor : IScreen<WorkspaceSuite>, IListener<BinaryRecycleFinished>
     {
         private readonly WorkspaceSuite _suite;
-        private readonly LibraryContext _context;
+        private readonly ProjectContext _context;
         private readonly IWorkspaceEditorView _view;
         private readonly IProjectController _controller;
         private readonly IFixtureSelectorOrganizer _organizer;
 
-        public WorkspaceEditor(WorkspaceSuite suite, LibraryContext context, IWorkspaceEditorView view, IProjectController controller, IFixtureSelectorOrganizer organizer)
+        public WorkspaceEditor(WorkspaceSuite suite, ProjectContext context, IWorkspaceEditorView view, IProjectController controller, IFixtureSelectorOrganizer organizer)
         {
             _suite = suite;
             _context = context;

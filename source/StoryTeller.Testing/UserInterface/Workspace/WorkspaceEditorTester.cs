@@ -106,7 +106,7 @@ namespace StoryTeller.Testing.UserInterface.Workspace
         protected override sealed void beforeEach()
         {
             library = new FixtureLibrary();
-            Services.Inject(new LibraryContext() {Library = library});
+            Services.Inject(new ProjectContext() {Library = library});
 
             suite = new WorkspaceSuite("some suite");
             suite.Filter = new WorkspaceFilter();

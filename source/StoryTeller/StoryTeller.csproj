@@ -262,6 +262,7 @@
     <Compile Include="Workspace\FileSystem.cs" />
     <Compile Include="Workspace\FilterType.cs" />
     <Compile Include="Workspace\FixtureFilter.cs" />
+    <Compile Include="Workspace\IProject.cs" />
     <Compile Include="Workspace\Project.cs" />
     <Compile Include="Workspace\ProjectLoaded.cs" />
     <Compile Include="Persistence\FileSystem.cs" />

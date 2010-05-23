@@ -3,6 +3,7 @@ using StoryTeller.Domain;
 using StoryTeller.Execution;
 using StoryTeller.Model;
 using StoryTeller.UserInterface.Running;
+using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface
 {
@@ -17,7 +18,7 @@ namespace StoryTeller.UserInterface
         void RenameTest(Test test, string newName);
     }
 
-    public class LibraryContext : IListener<BinaryRecycleFinished>, IStartable
+    public class ProjectContext : IListener<BinaryRecycleFinished>, IListener<ProjectLoaded>, IListener<WorkflowFiltersChanged>, IStartable
     {
         public void Handle(BinaryRecycleFinished message)
         {
@@ -25,9 +26,23 @@ namespace StoryTeller.UserInterface
         }
 
         public FixtureLibrary Library { get; set; }
+        public WorkspaceFilter WorkspaceFilter { get; set; }
+        public IProject Project { get; set; }
+
+        public void Handle(ProjectLoaded message)
+        {
+            Project = message.Project;
+            WorkspaceFilter = message.Project.CurrentFixtureFilter();
+        }
+
         public void Start()
         {
             
+        }
+
+        public void Handle(WorkflowFiltersChanged message)
+        {
+            WorkspaceFilter = message.Project.CurrentFixtureFilter();
         }
     }
 
