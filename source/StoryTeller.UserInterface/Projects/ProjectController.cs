@@ -6,9 +6,16 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Projects
 {
-    public class ProjectController : IProjectController, IListener<SaveTestMessage>, IListener<ReloadTestsMessage>,
-                                     IListener<DeleteTestMessage>, IListener<RenameTestRequest>,
-                                     IListener<SuiteAddedMessage>, IListener<RemoveProjectFromHistoryMessage>
+
+    public class ProjectController : IProjectController
+                                        , IListener<SaveTestMessage>
+                                        , IListener<ReloadTestsMessage>
+                                        , IListener<DeleteTestMessage>
+                                        , IListener<RenameTestRequest>
+                                        , IListener<SuiteAddedMessage>
+                                        , IListener<RemoveProjectFromHistoryMessage>
+                                        , IListener<WorkflowFiltersChanged>
+                                    
     {
         private readonly IScreenConductor _conductor;
         private readonly IEventAggregator _events;
@@ -83,6 +90,9 @@ namespace StoryTeller.UserInterface.Projects
                     handleProjectLoadFailure(token);
                     return false;
                 }
+
+                project.SelectWorkspaces(token.SelectedWorkspaces ?? new string[0]);
+
                 ActivateProject(project);
                 _history.MarkAsLastAccessed(token);
                 _persistor.SaveHistory(_history);
@@ -217,45 +227,20 @@ namespace StoryTeller.UserInterface.Projects
         private void reloadProjectList()
         {
             _view.ShowProjects(_history.Projects);
-        }        
-    }
+        }
 
-    public class RemoveProjectFromHistoryMessage
-    {
-        public bool Equals(RemoveProjectFromHistoryMessage other)
+        public void Handle(WorkflowFiltersChanged message)
         {
-            if (ReferenceEquals(null, other))
+            _history.MarkAsLastAccessed(new ProjectToken()
             {
-                return false;
-            }
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-            return Equals(other.ProjectToken, ProjectToken);
-        }
+                Name = Project.Name,
+                Filename = Project.FileName,
+                SelectedWorkspaces = Project.SelectedWorkspaceNames
+            });
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-            if (obj.GetType() != typeof (RemoveProjectFromHistoryMessage))
-            {
-                return false;
-            }
-            return Equals((RemoveProjectFromHistoryMessage) obj);
-        }
+            _persistor.SaveHistory(_history);
 
-        public override int GetHashCode() {
-            return (ProjectToken != null ? ProjectToken.GetHashCode() : 0);
+            _events.SendMessage(new ForceBinaryRecycle());
         }
-
-        public ProjectToken ProjectToken { get; set; }            
     }
 }

@@ -73,8 +73,15 @@ namespace StoryTeller.UserInterface.Projects
 
     public class ProjectToken
     {
+        public ProjectToken()
+        {
+            SelectedWorkspaces = new string[0];
+        }
+
         public string Name { get; set; }
         public string Filename { get; set; }
+
+        public string[] SelectedWorkspaces { get; set; }
 
         public bool Equals(ProjectToken obj)
         {

@@ -194,6 +194,7 @@
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
     <Compile Include="Projects\IProjectExplorerView.cs" />
+    <Compile Include="Projects\RemoveProjectFromHistoryMessage.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
     <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />
     <Compile Include="Workspace\IFixtureSelector.cs" />
