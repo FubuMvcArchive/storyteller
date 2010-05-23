@@ -181,7 +181,6 @@ namespace StoryTeller.UserInterface.Projects
         public void SaveWorkspace(WorkspaceSuite suite)
         {
             _persistor.SaveProject(_project);
-            _events.SendMessage(new ForceBinaryRecycle());
             _events.SendMessage(new WorkflowFiltersChanged(_project));
         }
 

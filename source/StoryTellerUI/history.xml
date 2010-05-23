@@ -10,6 +10,9 @@
   <ProjectToken>
     <Name>Grammars</Name>
     <Filename>..\..\..\..\samples\grammars.xml</Filename>
+    <SelectedWorkspaces>
+      <string>Embedded</string>
+    </SelectedWorkspaces>
   </ProjectToken>
   <ProjectToken>
     <Name>Gallery</Name>

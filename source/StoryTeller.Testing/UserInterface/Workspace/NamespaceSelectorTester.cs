@@ -64,6 +64,7 @@ namespace StoryTeller.Testing.UserInterface.Workspace
         public void select_the_top_level_disables_all_children()
         {
             selector.Selected.IsChecked = true;
+            selector.EnableChildren();
 
             child1.IsEnabled.ShouldBeFalse();
             child2.IsEnabled.ShouldBeFalse();
@@ -78,6 +79,7 @@ namespace StoryTeller.Testing.UserInterface.Workspace
         public void selecting_the_top_level_results_in_a_single_filter()
         {
             selector.Selected.IsChecked = true;
+            selector.EnableChildren();
 
             // Doesn't matter, namespace rules
             f1.Select(true);
@@ -91,6 +93,7 @@ namespace StoryTeller.Testing.UserInterface.Workspace
         public void enabling_a_namespace_does_not_enable_children_if_it_is_already_selected()
         {
             child1.Selected.IsChecked = true;
+            selector.EnableChildren();
 
             f2.IsEnabled.ShouldBeFalse();
             f3.IsEnabled.ShouldBeFalse();

@@ -57,12 +57,13 @@ namespace StoryTeller.UserInterface.Workspace
             List<NamespaceSelector> topLevels = new List<NamespaceSelector>();
 
             var parents = new List<string>(names);
+            parents.Sort();
             parents.Reverse();
 
-            for (int i = 0; i < names.Length; i++)
+            for (int i = 0; i < parents.Count; i++)
             {
-                var ns = names[i];
-                var parent = parents.FirstOrDefault(x => x.StartsWith(ns) && x != ns);
+                var ns = parents[i];
+                var parent = parents.FirstOrDefault(x => ns.StartsWith(x) && x != ns);
                 if (parent == null)
                 {
                     topLevels.Add(namespaces[ns]);

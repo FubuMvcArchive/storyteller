@@ -20,10 +20,15 @@ namespace StoryTeller.UserInterface.Workspace
 
             selected.Click += (o, y) =>
             {
-                IEnumerable<IFixtureSelector> fixtureSelectors = children;
-                fixtureSelectors.Each(x => x.Enable(!IsSelected()));
+                EnableChildren();
             };
 
+        }
+
+        public void EnableChildren()
+        {
+            IEnumerable<IFixtureSelector> fixtureSelectors = children;
+            fixtureSelectors.Each(x => x.Enable(!IsSelected()));
         }
 
         public NamespaceSelector(string @namespace) : this()
