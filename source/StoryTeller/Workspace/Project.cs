@@ -277,10 +277,9 @@ namespace StoryTeller.Workspace
             return new WorkspaceFilter(_selectedWorkspaces);
         }
 
-        // TODO -- this needs to be called on project loading
         public void SelectWorkspaces(IEnumerable<string > workspaceNames)
         {
-            _selectedWorkspaces = workspaceNames.Select(x => WorkspaceFor(x));
+            _selectedWorkspaces = workspaceNames.Select(x => WorkspaceFor(x)).ToList();
         }
 
         public IEnumerable<WorkspaceFilter> SelectedWorkspaces

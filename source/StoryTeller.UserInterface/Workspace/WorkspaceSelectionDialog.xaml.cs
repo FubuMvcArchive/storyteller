@@ -70,7 +70,7 @@ namespace StoryTeller.UserInterface.Workspace
 
         public string[] GetSelections()
         {
-            return items.Where(x => x.Selected).Select(x => x.Name).ToArray();
+            return items.Where(x => x.Selected).Select(x => x.WorkspaceName).ToArray();
         }
 
         public void SelectAll()

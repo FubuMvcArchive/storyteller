@@ -1,4 +1,5 @@
 using System.Windows;
+using System.Windows.Controls;
 
 namespace StoryTeller.UserInterface.Dialogs
 {
@@ -18,6 +19,12 @@ namespace StoryTeller.UserInterface.Dialogs
             Title = child.Title;
             Content = child;
 
+            Closed += new System.EventHandler(Dialog_Closed);
+        }
+
+        void Dialog_Closed(object sender, System.EventArgs e)
+        {
+            Content = null;
         }
     }
 }

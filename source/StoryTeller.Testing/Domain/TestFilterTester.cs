@@ -2,6 +2,7 @@ using System;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using System.Linq;
+using StoryTeller.Workspace;
 
 namespace StoryTeller.Testing.Domain
 {
@@ -250,4 +251,80 @@ s9/t18,Failure
             matchingTestsShouldBe("t12", "t18");
         }
     }
+
+    [TestFixture]
+    public class when_matching_suites
+    {
+        private TestFilter filter;
+        private WorkspaceSuite suite1;
+        private WorkspaceSuite suite2;
+        private WorkspaceSuite suite3;
+
+        [SetUp]
+        public void SetUp()
+        {
+            filter = new TestFilter();
+            suite1 = new WorkspaceSuite("a");
+            suite2 = new WorkspaceSuite("b");
+            suite3 = new WorkspaceSuite("c");
+        }
+
+        private void theSelectedWorkspacesAre(params string[] names)
+        {
+            filter.Workspaces = names;
+        }
+
+        [Test]
+        public void a_plain_suite_always_matches()
+        {
+            var suite = new Suite("plain");
+
+            filter.Matches(suite);
+
+            theSelectedWorkspacesAre("a");
+
+            filter.Matches(suite);
+        }
+
+        [Test]
+        public void all_suites_match_when_there_are_no_selected_workspaces()
+        {
+            // no selected workspaces
+            theSelectedWorkspacesAre();
+
+            filter.Matches(suite1).ShouldBeTrue();
+            filter.Matches(suite2).ShouldBeTrue();
+            filter.Matches(suite3).ShouldBeTrue();
+        }
+
+        [Test]
+        public void for_one_specific_workspace_selected()
+        {
+            theSelectedWorkspacesAre("b");
+
+            filter.Matches(suite1).ShouldBeFalse();
+            filter.Matches(suite2).ShouldBeTrue();
+            filter.Matches(suite3).ShouldBeFalse();
+        }
+
+        [Test]
+        public void for_two_workspaces_selected()
+        {
+            theSelectedWorkspacesAre("a", "b");
+
+            filter.Matches(suite1).ShouldBeTrue();
+            filter.Matches(suite2).ShouldBeTrue();
+            filter.Matches(suite3).ShouldBeFalse();
+        }
+
+
+
+        [Test]
+        public void METHOD()
+        {
+
+        }
+
+    }
+
 }

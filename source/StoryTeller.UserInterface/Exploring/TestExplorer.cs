@@ -38,10 +38,10 @@ namespace StoryTeller.UserInterface.Exploring
             _navigator = new SuiteNavigator
             {
                 TestFilter = _filter.Matches,
-                SuiteFilter =
-                    suite => suite.GetAllTests().FirstOrDefault(_filter.Matches) != null || _filter.ShowEmptySuites()
+                SuiteFilter = _filter.Matches
             };
         }
+
 
         #region IListener<ClearResultsMessage> Members
 

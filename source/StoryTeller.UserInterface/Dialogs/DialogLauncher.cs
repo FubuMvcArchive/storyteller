@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Controls;
 using StructureMap;
 using FubuCore;
 
@@ -32,7 +33,7 @@ namespace StoryTeller.UserInterface.Dialogs
 
         public void LaunchDialog(ICommandDialog dialog)
         {
-            Dialog d = _container.With(dialog).GetInstance<Dialog>();
+            var d = _container.With(dialog).GetInstance<Dialog>();
             d.ShowDialog();
         }
 
