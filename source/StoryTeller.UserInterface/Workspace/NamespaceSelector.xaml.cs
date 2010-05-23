@@ -18,11 +18,12 @@ namespace StoryTeller.UserInterface.Workspace
         {
             InitializeComponent();
 
-            selected.Checked += (o, y) =>
+            selected.Click += (o, y) =>
             {
                 IEnumerable<IFixtureSelector> fixtureSelectors = children;
                 fixtureSelectors.Each(x => x.Enable(!IsSelected()));
             };
+
         }
 
         public NamespaceSelector(string @namespace) : this()
@@ -83,11 +84,41 @@ namespace StoryTeller.UserInterface.Workspace
             children.Each(x => x.Enable(childrenShouldBeEnabled));
         }
 
+        public void SetInitialState()
+        {
+            count.Text = "(" + FixtureCount + ")";
+
+            if (IsSelected())
+            {
+                Close();
+            }
+            else if (GetFilters().Any())
+            {
+                Open();
+            }
+            else
+            {
+                Close();
+            }
+
+            children.Each(x => x.SetInitialState());
+        }
+
+        public int FixtureCount
+        {
+            get { return children.Sum(x => x.FixtureCount); }
+        }
+
         #endregion
 
         public void Open()
         {
             container.Visibility = Visibility.Visible;
+        }
+
+        public void Close()
+        {
+            container.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         public void Add(IFixtureSelector selector)

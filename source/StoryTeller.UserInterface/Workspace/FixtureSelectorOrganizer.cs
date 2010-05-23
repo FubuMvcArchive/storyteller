@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using FubuCore.Util;
 using StoryTeller.Model;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace StoryTeller.UserInterface.Workspace
 
             selectFixtures(fixtures, workspace);
             selectNamespaces(namespaces, workspace);
+
+            namespaces.Each(x => x.SetInitialState());
 
             return topLevels.ToArray(); 
         }
@@ -53,10 +56,13 @@ namespace StoryTeller.UserInterface.Workspace
         {
             List<NamespaceSelector> topLevels = new List<NamespaceSelector>();
 
+            var parents = new List<string>(names);
+            parents.Reverse();
+
             for (int i = 0; i < names.Length; i++)
             {
                 var ns = names[i];
-                var parent = names.FirstOrDefault(x => x.StartsWith(ns));
+                var parent = parents.FirstOrDefault(x => x.StartsWith(ns) && x != ns);
                 if (parent == null)
                 {
                     topLevels.Add(namespaces[ns]);
@@ -79,7 +85,10 @@ namespace StoryTeller.UserInterface.Workspace
 
             var names = namespaces.GetAllKeys();
             Array.Sort(names);
-            Array.Reverse(names);
+
+            Debug.WriteLine("The namespaces are");
+            names.Each(x => Debug.WriteLine(x));
+
             return names;
         }
     }

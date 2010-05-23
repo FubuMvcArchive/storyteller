@@ -8,6 +8,9 @@ namespace StoryTeller.UserInterface.Workspace
         IEnumerable<FixtureFilter> GetFilters();
         bool IsSelected();
         void Enable(bool enabled);
-        
+
+        void SetInitialState();
+
+        int FixtureCount { get; }
     }
 }

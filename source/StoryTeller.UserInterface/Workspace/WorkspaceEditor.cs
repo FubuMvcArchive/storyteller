@@ -16,6 +16,7 @@ namespace StoryTeller.UserInterface.Workspace
         private readonly IWorkspaceEditorView _view;
         private readonly IProjectController _controller;
         private readonly IFixtureSelectorOrganizer _organizer;
+        private bool _hasUpdatedView = false;
 
         public WorkspaceEditor(WorkspaceSuite suite, ProjectContext context, IWorkspaceEditorView view, IProjectController controller, IFixtureSelectorOrganizer organizer)
         {
@@ -44,12 +45,19 @@ namespace StoryTeller.UserInterface.Workspace
         public void Activate(IScreenObjectRegistry screenObjects)
         {
             screenObjects.Action("Save Filters and Actions").Bind(ModifierKeys.Control, Key.S).To(Save).Icon = Icon.Save;
+        
+            if (!_hasUpdatedView)
+            {
+                BuildView();
+            }
         }
 
         public void BuildView()
         {
             Selectors = _organizer.Organize(_context.Library, _suite.Filter);
             _view.ShowFixtureNamespaces(Selectors);
+
+            _hasUpdatedView = true;
         }
 
         public IEnumerable<IFixtureSelector> Selectors { get; set; }

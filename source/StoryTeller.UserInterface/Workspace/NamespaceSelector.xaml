@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Controls="clr-namespace:StoryTeller.UserInterface.Controls" mc:Ignorable="d" >
-    <DockPanel>
+    <DockPanel Margin="0 10 0 0">
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <CheckBox Name="selected"></CheckBox>
-            <Controls:Link x:Name="label"></Controls:Link>
+            <CheckBox Name="selected" Margin="0 2 0 0"></CheckBox>
+            <Controls:Link x:Name="label" Margin="5 0 0 5"></Controls:Link>
+            <TextBlock Name="count" Margin="5 0 0 0">(count)</TextBlock>
         </StackPanel>
-        <StackPanel Name="container" Orientation="Vertical" MinWidth="200">
+        <StackPanel Name="container" Orientation="Vertical" MinWidth="200" Margin="20 0 0 0">
             
         </StackPanel>
     </DockPanel>

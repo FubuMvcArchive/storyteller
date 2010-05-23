@@ -57,5 +57,15 @@ namespace StoryTeller.UserInterface.Workspace
         {
             IsEnabled = enabled;
         }
+
+        public void SetInitialState()
+        {
+            // no op
+        }
+
+        public int FixtureCount
+        {
+            get { return 1; }
+        }
     }
 }
