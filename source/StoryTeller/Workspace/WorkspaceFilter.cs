@@ -24,7 +24,7 @@ namespace StoryTeller.Workspace
         {
             get
             {
-                return _filters.ToArray();
+                return _filters.Any() ? _filters.ToArray() : new FixtureFilter[]{FixtureFilter.All()};
             }
             set
             {

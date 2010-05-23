@@ -12,6 +12,18 @@ namespace StoryTeller.Testing.Workspace
     public class FixtureFilterTester
     {
         [Test]
+        public void apply_the_always_filter()
+        {
+            var composite = new CompositeFilter<Type>();
+            FixtureFilter.All().Apply(composite);
+
+            composite.Matches(typeof(MathFixture)).ShouldBeTrue();
+            composite.Matches(typeof(AnotherFixture)).ShouldBeTrue();
+            composite.Matches(this.GetType()).ShouldBeTrue();
+        }
+
+
+        [Test]
         public void apply_a_filter_at_namespace_level()
         {
             var filter = new FixtureFilter
@@ -120,6 +132,15 @@ namespace StoryTeller.Testing.Workspace
             filter.Matches(typeof(AnotherFixture)).ShouldBeTrue();
 
             filter.Matches(GetType()).ShouldBeFalse();
+        }
+
+        [Test]
+        public void workspace_filter_returns_always_when_it_has_no_explicit_filters()
+        {
+            var workspace = new WorkspaceFilter();
+            workspace.FilterCount.ShouldEqual(0);
+
+            workspace.Filters.ShouldHaveTheSameElementsAs(FixtureFilter.All());
         }
     }
 }

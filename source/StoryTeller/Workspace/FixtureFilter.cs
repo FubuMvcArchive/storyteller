@@ -17,6 +17,10 @@ namespace StoryTeller.Workspace
             {
                 filter.Includes += t => t.GetFixtureAlias() == Name;
             }
+            else if (Type == FilterType.All)
+            {
+                filter.Includes += t => true;
+            }
             else
             {
                 filter.Includes += t => t.IsInNamespace(Name);
@@ -29,6 +33,15 @@ namespace StoryTeller.Workspace
             {
                 Name = ns,
                 Type = FilterType.Namespace
+            };
+        }
+
+        public static FixtureFilter All()
+        {
+            return new FixtureFilter()
+            {
+                Name = "ALL",
+                Type = FilterType.All
             };
         }
 

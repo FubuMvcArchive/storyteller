@@ -3,6 +3,7 @@
     public enum FilterType
     {
         Namespace,
-        Fixture
+        Fixture,
+        All
     }
 }
