@@ -93,6 +93,7 @@
     <Compile Include="Domain\PropertyError.cs" />
     <Compile Include="Domain\PropertyErrorCode.cs" />
     <Compile Include="Domain\WorkspaceSuite.cs" />
+    <Compile Include="Engine\BasicSystem.cs" />
     <Compile Include="Engine\FixtureContainerSource.cs" />
     <Compile Include="Engine\Frame.cs" />
     <Compile Include="Engine\IFixtureContainerSource.cs" />

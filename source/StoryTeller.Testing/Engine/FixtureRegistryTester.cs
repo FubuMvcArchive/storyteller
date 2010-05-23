@@ -1,5 +1,8 @@
+using System.Linq;
 using NUnit.Framework;
 using StoryTeller.Engine;
+using StoryTeller.Samples;
+using StructureMap.Query;
 
 namespace StoryTeller.Testing.Engine
 {
@@ -32,6 +35,23 @@ namespace StoryTeller.Testing.Engine
 
                 return _context;
             }
+        }
+
+        [Test]
+        public void adds_all_the_startup_actions_from_the_requested_assembly()
+        {
+            registry.AddFixturesFromAssemblyContaining<SetUserAction>();
+            var container = registry.BuildContainer();
+
+            var actions = container.Model.For<IStartupAction>();
+
+            var setupAction = actions.Instances.FirstOrDefault(i => i.ConcreteType == typeof(SetUserAction));
+            setupAction.ShouldNotBeNull();
+            setupAction.Name.ShouldEqual("SetUser");
+
+            var startWebApp = actions.Instances.FirstOrDefault(i => i.ConcreteType == typeof (StartWebAppAction));
+            startWebApp.Name.ShouldEqual("StartWebApp");
+
         }
 
         [Test]

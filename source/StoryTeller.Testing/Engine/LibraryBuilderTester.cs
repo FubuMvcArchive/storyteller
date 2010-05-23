@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Engine;
 using StoryTeller.Model;
+using StoryTeller.Samples;
 
 namespace StoryTeller.Testing.Engine
 {
@@ -213,6 +214,32 @@ namespace StoryTeller.Testing.Engine
             fixture.Policies.Tags("Go1").Count().ShouldEqual(0);
             fixture.Policies.Tags("Go2").ShouldHaveTheSameElementsAs("a", "b");
             fixture.Policies.Tags("Go3").ShouldHaveTheSameElementsAs("c");
+        }
+    }
+
+    [TestFixture]
+    public class when_reading_startup_actions_into_the_library
+    {
+        private FixtureLibrary library;
+
+        [SetUp]
+        public void SetUp()
+        {
+            var builder = new LibraryBuilder(new NulloFixtureObserver(), new CompositeFilter<Type>());
+            var registry = new FixtureRegistry();
+            registry.AddFixturesFromAssemblyContaining<SetUserAction>();
+
+            var container = registry.BuildContainer();
+            var context = new TestContext(container);
+
+
+            library = builder.Build(context);
+        }
+
+        [Test]
+        public void library_startup_action_names_should_include_the_names_of_the_registered_startup_actions()
+        {
+            library.StartupActions.ShouldHaveTheSameElementsAs("SetUser", "StartWebApp");
         }
     }
 

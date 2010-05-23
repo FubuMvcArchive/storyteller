@@ -4,6 +4,7 @@ using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Model;
 using System.Linq;
+using StructureMap;
 using StructureMap.Query;
 
 namespace StoryTeller.Engine
@@ -76,6 +77,19 @@ namespace StoryTeller.Engine
                 Finder = _finder
             };
 
+            readFixtures(context);
+            readActions(context.Container);
+
+            return _library;
+        }
+
+        private void readActions(IContainer container)
+        {
+            _library.StartupActions = container.Model.For<IStartupAction>().Instances.Select(x => x.Name).ToArray();
+        }
+
+        private void readFixtures(TestContext context)
+        {
             var fixtureConfiguration = context.Container.Model.For<IFixture>();
             fixtureConfiguration.Instances.Where(i => _filter.Matches(i.ConcreteType)).Each(readInstance);
             _library.AllFixtures = fixtureConfiguration.Instances.Select(x => new FixtureDto
@@ -84,8 +98,6 @@ namespace StoryTeller.Engine
                 Name = x.ConcreteType.GetFixtureAlias(),
                 Namespace = x.ConcreteType.Namespace
             }).ToArray();
-
-            return _library;
         }
 
         private void readInstance(InstanceRef instance)

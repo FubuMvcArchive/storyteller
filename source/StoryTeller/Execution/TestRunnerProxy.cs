@@ -89,7 +89,6 @@ namespace StoryTeller.Execution
 
                 var observer = new FixtureObserver(_publisher);
                 
-                // TODO -- filter here needs to be coming in some how.  Maybe off FixtureAssembly?
                 var library = TestRunnerBuilder.BuildLibrary(_system, observer, container, fixtureAssembly.Filter.CreateFilter());
                 var containerSource = new FixtureContainerSource(container);
                 _runner = new TestRunner(_lifecycle, library, containerSource);

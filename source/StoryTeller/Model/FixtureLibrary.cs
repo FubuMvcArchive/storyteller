@@ -58,7 +58,7 @@ namespace StoryTeller.Model
         }
 
         public FixtureDto[] AllFixtures { get; set; }
-
+        public string[] StartupActions { get; set; }
         public IEnumerable<FixtureGraph> ActiveFixtures { get { return _fixtures.OrderBy(x => x.Name); } }
         public ObjectFinder Finder { get { return _finder; } set { _finder = value; } }
 
