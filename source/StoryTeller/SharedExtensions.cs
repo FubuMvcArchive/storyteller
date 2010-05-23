@@ -59,9 +59,10 @@ namespace StoryTeller
             return value is bool ? (bool) value : value.ToString().IsTrue();
         }
 
+        [Obsolete("HOAKUM")]
         public static bool IsSuite(this object target)
         {
-            return target == null ? false : target.GetType() == typeof (Suite);
+            return target == null ? false : target.GetType() == typeof (Suite) || target.GetType() == typeof(WorkspaceSuite);
         }
 
         public static int ToInt(this string stringValue)

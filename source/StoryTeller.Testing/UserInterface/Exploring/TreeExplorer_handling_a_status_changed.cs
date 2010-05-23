@@ -42,7 +42,7 @@ s9/t18,Unknown
 ");
             events = new NulloEventAggregator();
             view = new StubExplorerView();
-            explorer = new TestExplorer(view, events, new TestFilterBar());
+            explorer = new TestExplorer(view, events, new TestFilterBar(), new TestFilter());
             explorer.Handle(hierarchy);
         }
 

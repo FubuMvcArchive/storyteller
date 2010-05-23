@@ -40,6 +40,11 @@ namespace StoryTeller.Workspace
             return _workspaces[workspaceName];
         }
 
+        public string[] SelectedWorkspaceNames
+        {
+            get { return _selectedWorkspaces.Select(x => x.Name).ToArray(); }
+        }
+
         public WorkspaceFilter[] Workspaces
         {
             get

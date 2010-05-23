@@ -26,6 +26,7 @@ s2/t7,Failure
 ");
             view = new StubExplorerView();
             Services.Inject<IExplorerView>(view);
+            Services.Inject<ITestFilter>(new TestFilter());
 
             ClassUnderTest.Handle(hierarchy);
 
@@ -73,6 +74,7 @@ s2/t7,Failure
 ");
             view = new StubExplorerView();
             Services.Inject<IExplorerView>(view);
+            Services.Inject<ITestFilter>(new TestFilter());
 
             ClassUnderTest.Handle(hierarchy);
         }
@@ -128,7 +130,7 @@ s1/t6,Failure
 
             events = MockRepository.GenerateMock<IEventAggregator>();
             view = new StubExplorerView();
-            explorer = new TestExplorer(view, events, null);
+            explorer = new TestExplorer(view, events, null, new TestFilter());
             explorer.Handle(hierarchy);
         }
 
@@ -179,7 +181,7 @@ s1/t6,Failure
 ");
             events = MockRepository.GenerateMock<IEventAggregator>();
             view = new StubExplorerView();
-            explorer = new TestExplorer(view, events, null);
+            explorer = new TestExplorer(view, events, null, new TestFilter());
             explorer.Handle(hierarchy);
 
 
@@ -251,7 +253,7 @@ s9/t18,Success
 ");
             events = MockRepository.GenerateMock<IEventAggregator>();
             view = new StubExplorerView();
-            explorer = new TestExplorer(view, events, null);
+            explorer = new TestExplorer(view, events, null, new TestFilter());
             explorer.Handle(hierarchy);
         }
 
@@ -355,6 +357,7 @@ s2/t7,Failure
 ");
             view = new StubExplorerView();
             Services.Inject<IExplorerView>(view);
+            Services.Inject<ITestFilter>(new TestFilter());
 
             ClassUnderTest.Handle(hierarchy);
 

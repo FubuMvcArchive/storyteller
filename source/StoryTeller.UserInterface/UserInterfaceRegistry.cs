@@ -79,6 +79,7 @@ namespace StoryTeller.UserInterface
             For<Comment>().Use(c => new Comment());
             For<SetVerification>().Use(c => new SetVerification());
             For<FixtureGraph>().Use(c => new FixtureGraph());
+            For<ITestFilter>().Use<TestFilter>();
 
             IfTypeMatches(x => x.CanBeCastTo(typeof(Window))).InterceptWith((c, dialog) =>
             {

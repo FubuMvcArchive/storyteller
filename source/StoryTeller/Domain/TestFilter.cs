@@ -14,7 +14,16 @@ namespace StoryTeller.Domain
     }
 
 
-    public class TestFilter
+    public interface ITestFilter
+    {
+        ResultStatus ResultStatus { get; set; }
+        Lifecycle Lifecycle { get; set; }
+        IEnumerable<string> Workspaces { get; set; }
+        bool Matches(Test test);
+        bool ShowEmptySuites();
+    }
+
+    public class TestFilter : ITestFilter
     {
         private readonly Cache<Lifecycle, Predicate<Test>> _lifecycleFilters = new Cache<Lifecycle, Predicate<Test>>();
 

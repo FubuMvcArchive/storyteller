@@ -80,18 +80,18 @@ namespace StoryTeller.Testing.UserInterface.IntegrationTests
             shell.HierarchyNode.ShouldNotBeNull();
             new TreeNodeSpecification(
                 @"
-suite:Adding
+workspacesuite:Adding
 test:Adding/Bad Add 1
 test:Adding/Good Add 1
 test:Adding/Good Add 2
-suite:EmptySuite
-suite:Mixed
+workspacesuite:EmptySuite
+workspacesuite:Mixed
 suite:Mixed/SubMixed
 test:Mixed/SubMixed/Sub Mixed 1
 test:Mixed/SubMixed/Sub Mixed 2
 test:Mixed/SubMixed/SubMixedThatThrows
 test:Mixed/Mixed 1
-suite:Multiplication
+workspacesuite:Multiplication
 test:Multiplication/Bad Multiply 1
 test:Multiplication/Good Multiply 1
 test:Multiplication/Good Multiply 2

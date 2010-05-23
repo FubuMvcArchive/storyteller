@@ -24,5 +24,7 @@ namespace StoryTeller.Workspace
         WorkspaceFilter CurrentFixtureFilter();
         void SelectWorkspaces(IEnumerable<string > workspaceNames);
         WorkspaceFilter WorkspaceFor(string workspaceName);
+
+        string[] SelectedWorkspaceNames { get; }
     }
 }

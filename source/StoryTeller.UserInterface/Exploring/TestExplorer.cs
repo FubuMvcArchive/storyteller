@@ -17,9 +17,10 @@ namespace StoryTeller.UserInterface.Exploring
                                 , IListener<TestRenamed>
                                 , IListener<SuiteAddedMessage>
                                 , IListener<ProjectLoaded>
+                                , IListener<WorkflowFiltersChanged>
     {
         private readonly IEventAggregator _events;
-        private readonly TestFilter _filter = new TestFilter();
+        private readonly ITestFilter _filter;
         private readonly SuiteNavigator _navigator;
         private readonly SuiteNodeCache _suiteNodes = new SuiteNodeCache();
         private readonly TestNodeCache _testNodes = new TestNodeCache();
@@ -27,12 +28,13 @@ namespace StoryTeller.UserInterface.Exploring
         private readonly IExplorerView _view;
         private Hierarchy _hierarchy;
 
-        public TestExplorer(IExplorerView view, IEventAggregator events, ITestFilterBar filter)
+        public TestExplorer(IExplorerView view, IEventAggregator events, ITestFilterBar filterBar, ITestFilter filter)
         {
             _view = view;
             _events = events;
+            _filter = filter;
 
-            if (filter != null) filter.Observer = this;
+            if (filterBar != null) filterBar.Observer = this;
             _navigator = new SuiteNavigator
             {
                 TestFilter = _filter.Matches,
@@ -157,7 +159,7 @@ namespace StoryTeller.UserInterface.Exploring
 
         public Hierarchy CurrentHierarchy { get { return _hierarchy; } }
 
-        public void ResetFilter()
+        public virtual void ResetFilter()
         {
             clear();
 
@@ -223,7 +225,13 @@ namespace StoryTeller.UserInterface.Exploring
 
         public void Handle(ProjectLoaded message)
         {
-            _filter.Workspaces = message.Project.SelectedWorkspaces.Select(x => x.Name);
+            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
+        }
+
+        public void Handle(WorkflowFiltersChanged message)
+        {
+            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
+            ResetFilter();
         }
     }
 }
