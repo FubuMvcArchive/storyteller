@@ -1,5 +1,47 @@
 <?xml version="1.0"?>
 <Project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Workspaces>
+    <WorkspaceFilter Name="Embedded">
+      <Actions>
+        <StartupAction Name="SetUser" />
+        <StartupAction Name="StartWebApp" />
+      </Actions>
+      <Filters>
+        <FixtureFilter Type="Fixture" Name="Another" />
+        <FixtureFilter Type="Fixture" Name="Math" />
+      </Filters>
+    </WorkspaceFilter>
+    <WorkspaceFilter Name="General">
+      <Actions />
+      <Filters>
+        <FixtureFilter Type="All" Name="ALL" />
+      </Filters>
+    </WorkspaceFilter>
+    <WorkspaceFilter Name="Paragraphs">
+      <Actions />
+      <Filters>
+        <FixtureFilter Type="Fixture" Name="Another" />
+      </Filters>
+    </WorkspaceFilter>
+    <WorkspaceFilter Name="Sentences">
+      <Actions />
+      <Filters>
+        <FixtureFilter Type="All" Name="ALL" />
+      </Filters>
+    </WorkspaceFilter>
+    <WorkspaceFilter Name="Sets">
+      <Actions />
+      <Filters>
+        <FixtureFilter Type="All" Name="ALL" />
+      </Filters>
+    </WorkspaceFilter>
+    <WorkspaceFilter Name="Tables">
+      <Actions />
+      <Filters>
+        <FixtureFilter Type="All" Name="ALL" />
+      </Filters>
+    </WorkspaceFilter>
+  </Workspaces>
   <FixtureAssembly>Storyteller.Samples</FixtureAssembly>
   <BinaryFolder>..\source\StoryTeller.Samples\bin\debug</BinaryFolder>
   <TestFolder>..\source\StoryTeller.Samples\Tests</TestFolder>

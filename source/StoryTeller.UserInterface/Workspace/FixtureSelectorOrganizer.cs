@@ -31,7 +31,7 @@ namespace StoryTeller.UserInterface.Workspace
 
         public IEnumerable<IStartupActionSelector> GetActionSelectors(FixtureLibrary library, WorkspaceFilter filter)
         {
-            throw new NotImplementedException();
+            return library.StartupActions.Select(x => new StartupActionSelector(x, filter.StartupActions.Contains(x))).ToArray();
         }
 
         private void selectNamespaces(Cache<string, NamespaceSelector> namespaces, WorkspaceFilter workspace)

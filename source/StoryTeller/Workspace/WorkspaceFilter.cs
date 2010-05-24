@@ -6,6 +6,12 @@ using FubuCore.Util;
 
 namespace StoryTeller.Workspace
 {
+    public class StartupAction
+    {
+        [XmlAttribute]
+        public string Name { get; set; }
+    }
+
     [Serializable]
     public class WorkspaceFilter
     {
@@ -21,7 +27,20 @@ namespace StoryTeller.Workspace
             StartupActions = new string[0];
         }
 
-        [XmlArray("Action")]
+        // Only here to make the XMl prettier
+        public StartupAction[] Actions
+        {
+            get
+            {
+                return (StartupActions ?? new string[0]).Select(x => new StartupAction() {Name = x}).ToArray();
+            }
+            set
+            {
+                StartupActions = value.Select(x => x.Name).ToArray();
+            }
+        }
+
+        [XmlIgnore]
         public string[] StartupActions { get; set; }
 
         [XmlAttribute]
