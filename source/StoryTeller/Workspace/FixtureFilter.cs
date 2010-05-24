@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Engine;
@@ -8,7 +9,10 @@ namespace StoryTeller.Workspace
     [Serializable]
     public class FixtureFilter
     {
+        [XmlAttribute]
         public FilterType Type { get; set;}
+
+        [XmlAttribute]
         public string Name { get; set; }
 
         public void Apply(CompositeFilter<Type> filter)

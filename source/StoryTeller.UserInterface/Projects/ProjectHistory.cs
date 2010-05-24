@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace StoryTeller.UserInterface.Projects
 {
@@ -81,6 +82,7 @@ namespace StoryTeller.UserInterface.Projects
         public string Name { get; set; }
         public string Filename { get; set; }
 
+        [XmlArray("Workspace")]
         public string[] SelectedWorkspaces { get; set; }
 
         public bool Equals(ProjectToken obj)

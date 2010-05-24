@@ -4,13 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="600">
     <DockPanel>
-        <Label DockPanel.Dock="Top" Background="Silver" FontWeight="Bold">Fixtures</Label>
-        <ScrollViewer>
-            <StackPanel Name="fixtureSelectors" Orientation="Vertical">
-                
-            </StackPanel>
-        </ScrollViewer>
+
+        <DockPanel DockPanel.Dock="Right" Width="300">
+            <Label DockPanel.Dock="Top" Background="Silver" FontWeight="Bold">Startup Actions</Label>
+            <ScrollViewer>
+                <StackPanel Name="actionSelectors" Orientation="Vertical">
+
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+        <DockPanel>
+            <Label DockPanel.Dock="Top" Background="Silver" FontWeight="Bold">Fixtures</Label>
+            <ScrollViewer>
+                <StackPanel Name="fixtureSelectors" Orientation="Vertical">
+
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
     </DockPanel>
 </UserControl>

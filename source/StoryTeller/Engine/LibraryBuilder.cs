@@ -85,7 +85,7 @@ namespace StoryTeller.Engine
 
         private void readActions(IContainer container)
         {
-            _library.StartupActions = container.Model.For<IStartupAction>().Instances.Select(x => x.Name).ToArray();
+            _library.StartupActions = container.Model.For<IStartupAction>().Instances.OrderBy(x => x.Name).Select(x => x.Name).ToArray();
         }
 
         private void readFixtures(TestContext context)

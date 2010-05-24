@@ -7,5 +7,6 @@ namespace StoryTeller.UserInterface.Workspace
     public interface IFixtureSelectorOrganizer
     {
         IEnumerable<IFixtureSelector> Organize(FixtureLibrary library, WorkspaceFilter workspace);
+        IEnumerable<IStartupActionSelector> GetActionSelectors(FixtureLibrary library, WorkspaceFilter filter);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Serialization;
 using FubuCore.Util;
 
 namespace StoryTeller.Workspace
@@ -20,8 +21,10 @@ namespace StoryTeller.Workspace
             StartupActions = new string[0];
         }
 
+        [XmlArray("Action")]
         public string[] StartupActions { get; set; }
 
+        [XmlAttribute]
         public string Name { get; set; }
         public FixtureFilter[] Filters
         {

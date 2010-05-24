@@ -29,5 +29,11 @@ namespace StoryTeller.UserInterface.Workspace
             fixtureSelectors.Children.Clear();
             selectors.Each(x => fixtureSelectors.Children.Add((UIElement)x));
         }
+
+        public void ShowActionSelectors(IEnumerable<IStartupActionSelector> selectors)
+        {
+            actionSelectors.Children.Clear();
+            selectors.Each(x => actionSelectors.Children.Add((UIElement) x));
+        }
     }
 }
