@@ -8,6 +8,75 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.Testing.Execution
 {
+
+    [TestFixture]
+    public class when_building_the_test_execution_request : InteractionContext<TestEngine>
+    {
+        private Test theTest;
+        private TestStopConditions stopConditions;
+
+        protected override void beforeEach()
+        {
+            var hierarchy = DataMother.BuildHierarchy(@"
+workspace1/test1,Success
+");
+
+            theTest = hierarchy.FindTest("workspace1/test1");
+            theTest.ShouldNotBeNull();
+
+            stopConditions = new TestStopConditions();
+            Services.Inject(stopConditions);
+
+            ClassUnderTest.Project = new Project();
+            ClassUnderTest.Project.WorkspaceFor("workspace1").StartupActions = new string[]{"a", "b"};
+
+
+
+        }
+
+        [Test]
+        public void propogates_the_startup_actions_from_the_workspace_of_the_test_to_the_request()
+        {
+            ClassUnderTest.GetExecutionRequest(theTest).StartupActions.ShouldHaveTheSameElementsAs("a", "b");
+        }
+
+        [Test]
+        public void includes_the_test()
+        {
+            // Don't laugh, nothing works if this unit test fails
+            ClassUnderTest.GetExecutionRequest(theTest).Test.ShouldBeTheSameAs(theTest);
+        }
+
+        [Test]
+        public void sets_the_stop_conditions_1()
+        {
+            stopConditions.BreakOnExceptions = true;
+            stopConditions.BreakOnWrongs = false;
+            stopConditions.TimeoutInSeconds = 30;
+
+            var request = ClassUnderTest.GetExecutionRequest(theTest);
+
+            request.BreakOnExceptions.ShouldEqual(stopConditions.BreakOnExceptions);
+            request.BreakOnWrongs.ShouldEqual(stopConditions.BreakOnWrongs);
+            request.TimeoutInSeconds.ShouldEqual(stopConditions.TimeoutInSeconds);
+        }
+
+
+        [Test]
+        public void sets_the_stop_conditions_2()
+        {
+            stopConditions.BreakOnExceptions = false;
+            stopConditions.BreakOnWrongs = true;
+            stopConditions.TimeoutInSeconds = 45;
+
+            var request = ClassUnderTest.GetExecutionRequest(theTest);
+
+            request.BreakOnExceptions.ShouldEqual(stopConditions.BreakOnExceptions);
+            request.BreakOnWrongs.ShouldEqual(stopConditions.BreakOnWrongs);
+            request.TimeoutInSeconds.ShouldEqual(stopConditions.TimeoutInSeconds);
+        }
+    }
+
     [TestFixture]
     public class when_running_the_test_and_the_domain_has_not_been_started : InteractionContext<TestEngine>
     {

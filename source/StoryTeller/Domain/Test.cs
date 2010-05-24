@@ -353,5 +353,15 @@ namespace StoryTeller.Domain
             if (Parent == null) return false;
             return GetPath().Workspace == workspace;
         }
+
+        public string Workspace
+        {
+            get
+            {
+                if (Parent == null) return string.Empty;
+
+                return GetPath().Workspace;
+            }
+        }
     }
 }

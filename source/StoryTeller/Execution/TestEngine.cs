@@ -3,6 +3,7 @@ using System.Threading;
 using StoryTeller.Domain;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
+using FubuCore;
 
 namespace StoryTeller.Execution
 {
@@ -60,6 +61,8 @@ namespace StoryTeller.Execution
 
         public IProject Project { get { return _project; } set { _project = value; } }
 
+
+
         public void RunTest(Test test)
         {
             _latch.WaitOne(30000);
@@ -73,8 +76,20 @@ namespace StoryTeller.Execution
 
             lock (_locker)
             {
-                test.LastResult = _domain.RunTest(new TestExecutionRequest(test, _stopConditions));
+                test.LastResult = _domain.RunTest(GetExecutionRequest(test));
             }
+        }
+
+        public TestExecutionRequest GetExecutionRequest(Test test)
+        {
+            var request = new TestExecutionRequest(test, _stopConditions);
+            string workspaceName = test.Workspace;
+            if (workspaceName.IsNotEmpty())
+            {
+                request.StartupActions = Project.WorkspaceFor(workspaceName).StartupActions ?? new string[0];
+            }
+
+            return request;
         }
 
         public void AbortCurrentTest()

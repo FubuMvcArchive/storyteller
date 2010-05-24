@@ -10,14 +10,17 @@ namespace StoryTeller.Workspace
     {
         private readonly IList<FixtureFilter> _filters = new List<FixtureFilter>();
 
-        public WorkspaceFilter(IEnumerable<WorkspaceFilter> workspaceFilters)
+        public WorkspaceFilter(IEnumerable<WorkspaceFilter> workspaceFilters) : this()
         {
             _filters.AddRange(workspaceFilters.SelectMany(x => x.Filters));
         }
 
         public WorkspaceFilter()
         {
+            StartupActions = new string[0];
         }
+
+        public string[] StartupActions { get; set; }
 
         public string Name { get; set; }
         public FixtureFilter[] Filters
