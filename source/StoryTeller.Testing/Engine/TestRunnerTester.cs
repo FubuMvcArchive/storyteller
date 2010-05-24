@@ -37,9 +37,10 @@ namespace StoryTeller.Testing.Engine
             _messages.Clear();
         }
 
-        public T Get<T>() where T : class
+        public object Get(Type type)
         {
-            throw new NotImplementedException();
+            var container = new Container(x => x.For<RecordingSystem>().Use(this));
+            return container.GetInstance(type);
         }
 
         public void RegisterServices(ITestContext context)
@@ -69,6 +70,46 @@ namespace StoryTeller.Testing.Engine
         }
     }
 
+    public class Startup1Action : IStartupAction
+    {
+        private readonly RecordingSystem _system;
+
+        public Startup1Action(RecordingSystem system)
+        {
+            _system = system;
+        }
+
+        public void Startup(ITestContext context)
+        {
+           _system.Record("Setup 1");
+        }
+
+        public void Teardown(ITestContext context)
+        {
+            _system.Record("Teardown 1");
+        }
+    }
+
+    public class Startup2Action : IStartupAction
+    {
+        private readonly RecordingSystem _system;
+
+        public Startup2Action(RecordingSystem system)
+        {
+            _system = system;
+        }
+
+        public void Startup(ITestContext context)
+        {
+            _system.Record("Setup 2");
+        }
+
+        public void Teardown(ITestContext context)
+        {
+            _system.Record("Teardown 2");
+        }
+    }
+
     public class RecordingFixture : Fixture
     {
         private readonly RecordingSystem _system;
@@ -95,7 +136,12 @@ namespace StoryTeller.Testing.Engine
         {
             var library = FixtureLibrary.For(x => x.AddFixture<RecordingFixture>());
             system = new RecordingSystem();
-            var fixtureContainerSource = new FixtureContainerSource(new Container(x => x.For<IFixture>().Add<RecordingFixture>().Named("Recording")));
+            var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
+            {
+                x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
+                x.For<IStartupAction>().Add<Startup1Action>().Named("Startup1");
+                x.For<IStartupAction>().Add<Startup2Action>().Named("Startup2");
+            }));
             fixtureContainerSource.RegisterFixture("Recording", typeof (RecordingFixture));
 
             runner = new TestRunner(system, library, fixtureContainerSource);
@@ -106,9 +152,24 @@ namespace StoryTeller.Testing.Engine
             runner.RunTest(new TestExecutionRequest()
             {
                 Test = test,
-                TimeoutInSeconds = 1200
+                TimeoutInSeconds = 1200,
+                StartupActions = new string[]{"Startup1", "Startup2"}
             });
 
+        }
+
+        [Test]
+        public void should_call_setup_on_both_startup_actions()
+        {
+            system.Messages.ShouldContain("Setup 1");
+            system.Messages.ShouldContain("Setup 2");
+        }
+
+        [Test]
+        public void should_call_teardown_on_both_startup_actions()
+        {
+            system.Messages.ShouldContain("Teardown 1");
+            system.Messages.ShouldContain("Teardown 2");
         }
 
         [Test]
@@ -150,13 +211,20 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_do_the_steps_in_the_proper_order()
         {
-            system.Messages.Length.ShouldEqual(5);
+            system.Messages.Length.ShouldEqual(9);
 
             system.Messages[0].ShouldEqual("SetupEnvironment");
             system.Messages[1].ShouldEqual("RegisterServices");
             system.Messages[2].ShouldEqual("Setup");
-            system.Messages[3].ShouldEqual("Execute");
-            system.Messages[4].ShouldEqual("Teardown");
+            system.Messages[3].ShouldEqual("Setup 1");
+            system.Messages[4].ShouldEqual("Setup 2");
+
+
+            system.Messages[5].ShouldEqual("Execute");
+            system.Messages[6].ShouldEqual("Teardown 1");
+            system.Messages[7].ShouldEqual("Teardown 2");
+
+            system.Messages[8].ShouldEqual("Teardown");
         }
     }
 
@@ -382,6 +450,11 @@ namespace StoryTeller.Testing.Engine
     public class SystemThatBlowsUpInSetup : ISystem
     {
         public T Get<T>() where T : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Get(Type type)
         {
             throw new NotImplementedException();
         }

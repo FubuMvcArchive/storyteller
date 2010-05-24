@@ -87,9 +87,6 @@ namespace StoryTeller.UserInterface.Workspace
             var names = namespaces.GetAllKeys();
             Array.Sort(names);
 
-            Debug.WriteLine("The namespaces are");
-            names.Each(x => Debug.WriteLine(x));
-
             return names;
         }
     }

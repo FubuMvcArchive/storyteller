@@ -135,6 +135,36 @@ namespace StoryTeller.Testing.Engine
         }
 
         [Test]
+        public void get_startup_type_for_a_name()
+        {
+            var container = new Container(x =>
+            {
+                x.For<IStartupAction>().Add<SetUserAction>().Named("SetUser");
+                x.For<IStartupAction>().Add<StartWebAppAction>().Named("StartWebApp");
+            });
+
+            var context = new TestContext(container);
+
+            context.GetStartupType("SetUser").ShouldEqual(typeof (SetUserAction));
+            context.GetStartupType("StartWebApp").ShouldEqual(typeof (StartWebAppAction));
+        }
+
+        [Test]
+        public void get_all_startup_action_types()
+        {
+            var container = new Container(x =>
+            {
+                x.For<IStartupAction>().Add<SetUserAction>().Named("SetUser");
+                x.For<IStartupAction>().Add<StartWebAppAction>().Named("StartWebApp");
+            });
+
+            var context = new TestContext(container);
+            context.StartupActionNames = new string[]{"SetUser", "StartWebApp"};
+
+            context.StartupActionTypes.ShouldHaveTheSameElementsAs(typeof(SetUserAction), typeof(StartWebAppAction));
+        }
+
+        [Test]
         public void context_should_tell_a_fixture_that_it_is_finished_at_the_end()
         {
             var fixture1 = MockRepository.GenerateMock<IFixture>();

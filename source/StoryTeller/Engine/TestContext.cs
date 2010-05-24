@@ -30,6 +30,8 @@ namespace StoryTeller.Engine
 
     public interface ITestContext
     {
+        IEnumerable<Type> StartupActionTypes { get; }
+
         object CurrentObject { get; set; }
         ObjectFinder Finder { get; }
         bool Matches(object expected, object actual);
@@ -113,6 +115,8 @@ namespace StoryTeller.Engine
             _container.Inject(test);
 
             Finder = new ObjectFinder();
+
+            StartupActionNames = new string[0];
         }
 
         public TestContext(IContainer container)
@@ -124,6 +128,8 @@ namespace StoryTeller.Engine
             : this(FixtureRegistry.ContainerFor(action), new Test("FAKE"), new ConsoleListener())
         {
         }
+
+        public string[] StartupActionNames { get; set; }
 
         public IContainer Container
         {
@@ -293,6 +299,11 @@ namespace StoryTeller.Engine
             RevertFixture(exceptionTarget);
         }
 
+        public IEnumerable<Type> StartupActionTypes
+        {
+            get { return StartupActionNames.Select(x => GetStartupType(x)); }
+        }
+
         public object CurrentObject { get; set; }
 
         public void RunStep(IGrammar grammar, IStep step)
@@ -455,6 +466,11 @@ namespace StoryTeller.Engine
                     break;
                 }
             }
+        }
+
+        public Type GetStartupType(string name)
+        {
+            return _container.Model.For<IStartupAction>().Find(name).ConcreteType;
         }
     }
 }

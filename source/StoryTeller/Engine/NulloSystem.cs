@@ -1,10 +1,12 @@
-﻿namespace StoryTeller.Engine
+﻿using System;
+
+namespace StoryTeller.Engine
 {
     public class NulloSystem : ISystem
     {
-        public T Get<T>() where T : class
+        public object Get(Type type)
         {
-            return null;            
+            throw new NotSupportedException("Get<T> is not supported by this ISystem:  " + GetType().FullName);
         }
 
         public void RegisterServices(ITestContext context)

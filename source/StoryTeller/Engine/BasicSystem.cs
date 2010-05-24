@@ -4,7 +4,7 @@ namespace StoryTeller.Engine
 {
     public abstract class BasicSystem : ISystem
     {
-        public virtual T Get<T>() where T : class
+        public object Get(Type type)
         {
             throw new NotSupportedException("Get<T> is not supported by this ISystem:  " + GetType().FullName);
         }

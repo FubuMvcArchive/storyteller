@@ -10,6 +10,11 @@ namespace StoryTeller.Samples
             throw new NotImplementedException();
         }
 
+        public object Get(Type type)
+        {
+            throw new NotImplementedException();
+        }
+
         public void RegisterServices(ITestContext context)
         {
             throw new NotImplementedException();

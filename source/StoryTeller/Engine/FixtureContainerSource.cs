@@ -16,6 +16,11 @@ namespace StoryTeller.Engine
             {
                 RegisterFixture(i.Name, i.ConcreteType);
             });
+
+            container.Model.For<IStartupAction>().Instances.Each(i =>
+            {
+                _registry.For(typeof (IStartupAction)).Use(i.ConcreteType).Named(i.Name);
+            });
         }
 
         public void RegisterFixture(string name, Type fixtureType)

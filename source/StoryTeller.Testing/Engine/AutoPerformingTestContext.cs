@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Domain;
@@ -9,6 +10,11 @@ namespace StoryTeller.Testing.Engine
     public class AutoPerformingTestContext : ITestContext
     {
         #region ITestContext Members
+
+        public IEnumerable<Type> StartupActionTypes
+        {
+            get { throw new NotImplementedException(); }
+        }
 
         public object CurrentObject { get; set; }
 
