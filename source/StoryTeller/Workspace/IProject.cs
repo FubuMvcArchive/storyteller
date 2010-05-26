@@ -26,5 +26,16 @@ namespace StoryTeller.Workspace
         WorkspaceFilter WorkspaceFor(string workspaceName);
 
         string[] SelectedWorkspaceNames { get; }
+
+        CodegenOptions Options { get; }
     }
+
+    public class CodegenOptions
+    {
+        public string FileTemplate { get; set; }
+        public string MethodTemplate { get; set; }
+        public string TargetFile { get; set; }
+    }
+
+
 }

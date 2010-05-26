@@ -23,8 +23,8 @@
                 <ColumnDefinition MinWidth="500" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!-- Add scroll viewer -->        
-            <TabControl  Grid.Row="0" Grid.Column="0" Name="explorerTabs" DockPanel.Dock="Left" TabStripPlacement="Top"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TabItem Header="Tests">
+            <TabControl  Grid.Row="0" Grid.Column="0" Name="explorerTabs" DockPanel.Dock="Left" TabStripPlacement="Top"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Background="Silver">
+                <TabItem Header="Tests" Height="30">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <TreeView Name="testTree" ></TreeView>
                     </ScrollViewer>
@@ -37,7 +37,7 @@
                 </TabItem>
             </TabControl>
             <GridSplitter Grid.Column="1" Grid.Row="0" IsTabStop="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"></GridSplitter>
-            <TabControl Grid.Column="2" Grid.Row="0" Name="mainTabs" TabStripPlacement="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" />
+            <TabControl Grid.Column="2" Grid.Row="0" Name="mainTabs" TabStripPlacement="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Silver" />
         </Grid>        
     </DockPanel>
     

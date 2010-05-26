@@ -27,6 +27,7 @@ namespace StoryTeller.Workspace
         public Project()
         {
             TimeoutInSeconds = 5;
+            Options = new CodegenOptions();
         }
 
         public Project(string filename)
@@ -44,6 +45,8 @@ namespace StoryTeller.Workspace
         {
             get { return _selectedWorkspaces.Select(x => x.Name).ToArray(); }
         }
+
+        public CodegenOptions Options { get; set; }
 
         public WorkspaceFilter[] Workspaces
         {

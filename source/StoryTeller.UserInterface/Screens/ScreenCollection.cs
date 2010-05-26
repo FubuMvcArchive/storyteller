@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Media;
 using FubuCore.Util;
 using StoryTeller.UserInterface.Handlers;
 
@@ -122,6 +123,7 @@ namespace StoryTeller.UserInterface.Screens
             Func<Action<IScreenConductor>, Action> sendMessage = a => () => events.SendMessage(a);
 
             Header = new StackPanel().Horizontal()
+                .Configure(x => x.Height = 25)
                 .AddText(screen.Title, x => _label = x)
                 .IconButton(Icon.Close, sendMessage(s => s.Close(screen)), b => b.SmallerImages());
 

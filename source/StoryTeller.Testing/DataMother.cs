@@ -26,6 +26,11 @@ namespace StoryTeller.Testing
             return Project.LoadFromFile(THE_MATH_FILE);
         }
 
+        public static string MathProjectFile()
+        {
+            return THE_MATH_FILE;
+        }
+
         public static FixtureLibrary MathLibrary()
         {
             return MathProject().LocalRunner().Library;

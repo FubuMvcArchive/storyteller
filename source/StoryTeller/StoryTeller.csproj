@@ -153,6 +153,7 @@
     <Compile Include="Execution\InProcessTestEngine.cs" />
     <Compile Include="Execution\ITestRunnerDomain.cs" />
     <Compile Include="Execution\NulloEventAggregator.cs" />
+    <Compile Include="Codegen\ProjectRunnerCodegenService.cs" />
     <Compile Include="Execution\TestExecutionRequest.cs" />
     <Compile Include="Execution\TestRunnerDomain.cs" />
     <Compile Include="Execution\TestRunnerProxy.cs" />
@@ -298,6 +299,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Codegen\ClassTemplate.txt" />
+    <EmbeddedResource Include="Codegen\MethodTemplate.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
