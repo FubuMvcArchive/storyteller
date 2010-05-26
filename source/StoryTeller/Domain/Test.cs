@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -12,70 +11,6 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.Domain
 {
-    public enum Lifecycle
-    {
-        Acceptance,
-        Regression,
-        Any
-    }
-
-    public static class TestExtensions
-    {
-        public static XmlDocument ToXml(this Test test)
-        {
-            return new TestWriter().Write(test);
-        }
-    }
-
-    
-    public interface ITestPartCollection : IEnumerable<ITestPart>
-    {
-        void Add(ITestPart testPart);
-        void RemoveAll(Predicate<ITestPart> filter);
-        void Clear();
-        void AddRange(IEnumerable<ITestPart> parts);
-        ITestPart Find(Predicate<ITestPart> func);
-    }
-
-    public class DefaultTestPartcollection : ITestPartCollection
-    {
-        private readonly List<ITestPart> _parts = new List<ITestPart>();
-        public IEnumerator<ITestPart> GetEnumerator()
-        {
-            return _parts.GetEnumerator();
-        }
-
-        public void Add(ITestPart testPart)
-        {
-            _parts.Add(testPart);
-        }
-
-        public void RemoveAll(Predicate<ITestPart> filter)
-        {
-            _parts.RemoveAll(filter);
-        }
-
-        public void Clear()
-        {
-            _parts.Clear();
-        }
-
-        public void AddRange(IEnumerable<ITestPart> parts)
-        {
-            _parts.AddRange(parts);
-        }
-
-        public ITestPart Find(Predicate<ITestPart> func)
-        {
-            return _parts.Find(func);
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-    }
-
     public class Test : INamedItem, ITestPart
     {
         protected readonly ITestPartCollection _parts;

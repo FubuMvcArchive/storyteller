@@ -89,9 +89,13 @@
     <Compile Include="Assertions\StorytellerAssertionException.cs" />
     <Compile Include="DecoratedLineGrammar.cs" />
     <Compile Include="Domain\Comment.cs" />
+    <Compile Include="Domain\DefaultTestPartcollection.cs" />
     <Compile Include="Domain\IStepResults.cs" />
+    <Compile Include="Domain\ITestPartCollection.cs" />
+    <Compile Include="Domain\Lifecycle.cs" />
     <Compile Include="Domain\PropertyError.cs" />
     <Compile Include="Domain\PropertyErrorCode.cs" />
+    <Compile Include="Domain\TestExtensions.cs" />
     <Compile Include="Domain\WorkspaceSuite.cs" />
     <Compile Include="Engine\BasicSystem.cs" />
     <Compile Include="Engine\FixtureContainerSource.cs" />
@@ -263,6 +267,7 @@
     <Compile Include="Workspace\FileSystem.cs" />
     <Compile Include="Workspace\FilterType.cs" />
     <Compile Include="Workspace\FixtureFilter.cs" />
+    <Compile Include="Workspace\HierarchyLoader.cs" />
     <Compile Include="Workspace\IProject.cs" />
     <Compile Include="Workspace\Project.cs" />
     <Compile Include="Workspace\ProjectLoaded.cs" />

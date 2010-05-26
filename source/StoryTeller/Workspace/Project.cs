@@ -230,46 +230,6 @@ namespace StoryTeller.Workspace
 
         #region Nested type: HierarchyLoader
 
-        public class HierarchyLoader
-        {
-            private readonly Hierarchy _hierarchy;
-            private readonly IProject _project;
-            private readonly ITestReader _reader = new TestReader();
-            private readonly FileSystem _system = new FileSystem();
-            private readonly string _topFolder;
-
-            public HierarchyLoader(string topFolder, Hierarchy hierarchy, IProject project)
-            {
-                _topFolder = topFolder;
-                _hierarchy = hierarchy;
-                _project = project;
-            }
-
-            public void Load()
-            {
-                loadTestsInFolder(_topFolder, _hierarchy);
-            }
-
-            private void loadTestsInFolder(string folder, Suite parent)
-            {
-                foreach (string file in _system.GetFiles(folder, "xml"))
-                {
-                    Test test = _reader.ReadFromFile(file);
-                    parent.AddTest(test);
-                }
-
-                // load the tests from the sub folders
-                foreach (string subFolder in _system.GetSubFolders(folder))
-                {
-                    string name = Path.GetFileName(subFolder);
-                    var child = parent is Hierarchy ? new WorkspaceSuite(name){Filter = _project.WorkspaceFor(name)} : new Suite(name);
-                    parent.AddSuite(child);
-
-                    loadTestsInFolder(subFolder, child);
-                }
-            }
-        }
-
         #endregion
 
         public WorkspaceFilter CurrentFixtureFilter()

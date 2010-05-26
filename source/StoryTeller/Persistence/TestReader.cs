@@ -52,12 +52,18 @@ namespace StoryTeller.Persistence
 
         public Test ReadTest(INode element)
         {
-            var test = new Test(element["name"]);
-
-            readLifecycle(test, element);
+            Test test = CreateTest(element, new DefaultTestPartcollection());
 
             element.ForEachChild(node => { readFromChildNode(node, test); });
 
+            return test;
+        }
+
+        public static Test CreateTest(INode element, ITestPartCollection parts)
+        {
+            var test = new Test(element["name"], parts);
+
+            readLifecycle(test, element);
             return test;
         }
 
@@ -74,7 +80,7 @@ namespace StoryTeller.Persistence
             }
         }
 
-        private void readLifecycle(Test test, INode element)
+        private static void readLifecycle(Test test, INode element)
         {
             string lifecycleString = element["lifecycle"];
             if (lifecycleString.IsEmpty()) return;
