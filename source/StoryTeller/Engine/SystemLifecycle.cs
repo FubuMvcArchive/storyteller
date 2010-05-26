@@ -82,5 +82,13 @@ namespace StoryTeller.Engine
         {
             tearDownEnvironment();
         }
+
+        public Func<Type, object> Resolver
+        {
+            get
+            {
+                return t => _system.Get(t);
+            }
+        }
     }
 }

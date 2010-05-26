@@ -62,7 +62,8 @@ namespace StoryTeller.Engine
 
             _context = new TestContext(_fetchContainer.Build(), _request.Test, _listener)
             {
-                StartupActionNames = _request.StartupActions ?? new string[0]
+                StartupActionNames = _request.StartupActions ?? new string[0],
+                BackupResolver = _lifecycle.Resolver
             };
 
             _reset = new ManualResetEvent(false);

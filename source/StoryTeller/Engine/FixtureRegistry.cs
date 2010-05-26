@@ -55,6 +55,7 @@ namespace StoryTeller.Engine
             });
         }
 
+
         public void AddFixturesFromNamespaceContaining<T>()
         {
             _registry.Scan(x =>

@@ -74,6 +74,8 @@ namespace StoryTeller.Execution
                 performReload();
             }
 
+            // TODO -- exception handling.  Not sure why it needs to be here,
+            // but stuff is leaking through
             lock (_locker)
             {
                 test.LastResult = _domain.RunTest(GetExecutionRequest(test));

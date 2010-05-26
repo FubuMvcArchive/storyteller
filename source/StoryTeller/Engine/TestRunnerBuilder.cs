@@ -21,8 +21,13 @@ namespace StoryTeller.Engine
         public static ITestRunner ForSystem<T>() where T : ISystem, new()
         {
             var system = new T();
+            return ForSystem(system);
+        }
+
+        private static ITestRunner ForSystem(ISystem system)
+        {
             var registry = new FixtureRegistry();
-            registry.AddFixturesFromAssembly(typeof(T).Assembly);
+            registry.AddFixturesFromAssembly(system.GetType().Assembly);
 
             var builder = new TestRunnerBuilder(system, new NulloFixtureObserver(), registry);
             return builder.Build();
@@ -65,6 +70,7 @@ namespace StoryTeller.Engine
                 observer.RecordStatus("Starting to rebuild the fixture model");
 
                 var context = new TestContext(container);
+                system.SetupEnvironment();
                 system.RegisterServices(context);
 
                 builder.Finder = context.Finder;

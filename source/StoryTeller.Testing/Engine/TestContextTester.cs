@@ -404,6 +404,25 @@ namespace StoryTeller.Testing.Engine
         }
 
         [Test]
+        public void store_and_retrieve_backs_up_by_the_system()
+        {
+            var returnValue = new SomethingThatDoesNotExist();
+
+            var context = new TestContext()
+            {
+                BackupResolver = t =>
+                {
+                    if (t == typeof(ISomethingThatDoesNotExist)) return returnValue;
+
+                    throw new ApplicationException("Unexpected Type:  " + t.FullName);
+                }
+            };
+
+            context.Retrieve(typeof (ISomethingThatDoesNotExist)).ShouldBeTheSameAs(returnValue);
+            context.Retrieve<ISomethingThatDoesNotExist>().ShouldBeTheSameAs(returnValue);
+        }
+
+        [Test]
         public void the_test_is_available_in_the_test_context()
         {
             var test = new Test("some test");
@@ -420,6 +439,9 @@ namespace StoryTeller.Testing.Engine
             context.LoadFixture(fixture, null);
         }
     }
+
+    public interface ISomethingThatDoesNotExist{}
+    public class SomethingThatDoesNotExist : ISomethingThatDoesNotExist {}
 
     [TestFixture]
     public class when_visiting_fixtures

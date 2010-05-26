@@ -117,7 +117,14 @@ namespace StoryTeller.Engine
             Finder = new ObjectFinder();
 
             StartupActionNames = new string[0];
+
+            BackupResolver = t =>
+            {
+                throw new ApplicationException("This service is not registered");
+            };
         }
+
+        public Func<Type, object> BackupResolver { get; set; }
 
         public TestContext(IContainer container)
             : this(container, new Test("FAKE"), new ConsoleListener())
@@ -259,13 +266,23 @@ namespace StoryTeller.Engine
 
         public T Retrieve<T>()
         {
-            return _container.GetInstance<T>();
+            if (typeof(T).IsConcrete())
+            {
+                return _container.GetInstance<T>();
+            }
+
+            return _container.Model.HasDefaultImplementationFor<T>()
+                ? _container.GetInstance<T>()
+                : (T)BackupResolver(typeof(T));
+
         }
 
 
         public object Retrieve(Type type)
         {
-            return _container.GetInstance(type);
+            if (type.IsConcrete()) return _container.GetInstance(type);
+
+            return _container.TryGetInstance(type) ?? BackupResolver(type);
         }
 
         public void IncrementRights()
