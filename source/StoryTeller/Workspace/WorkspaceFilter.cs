@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 using FubuCore.Util;
+using StoryTeller.Model;
 
 namespace StoryTeller.Workspace
 {
@@ -68,9 +69,18 @@ namespace StoryTeller.Workspace
             _filters.Add(filter);
         }
 
-        public CompositeFilter<Type> CreateFilter()
+        public CompositeFilter<Type> CreateTypeFilter()
         {
             var filter = new CompositeFilter<Type>();
+
+            _filters.Each(x => x.Apply(filter));
+
+            return filter;
+        }
+
+        public CompositeFilter<FixtureGraph> CreateFixtureFilter()
+        {
+            var filter = new CompositeFilter<FixtureGraph>();
 
             _filters.Each(x => x.Apply(filter));
 

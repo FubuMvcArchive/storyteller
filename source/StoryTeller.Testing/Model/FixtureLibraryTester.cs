@@ -4,6 +4,7 @@ using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.Samples;
+using System.Linq;
 
 namespace StoryTeller.Testing.Model
 {
@@ -46,6 +47,27 @@ namespace StoryTeller.Testing.Model
         public void Title()
         {
             new FixtureLibrary().Title.ShouldEqual("All Fixtures");
+        }
+    }
+
+    [TestFixture]
+    public class when_filtering_a_fixture_library
+    {
+        private FixtureLibrary library;
+        private FixtureLibrary baseLibrary;
+
+        [SetUp]
+        public void SetUp()
+        {
+            baseLibrary = FixtureLibrary.For(x => x.AddFixturesFromAssemblyContaining<MathFixture>());
+            library = baseLibrary.Filter(f => f.Name == "Sentence" || f.Name == "Sets");
+        }
+
+        [Test]
+        public void filtered_library_is_a_different_library_with_only_the_fixtures_that_matched_the_criteria()
+        {
+            library.ShouldNotBeTheSameAs(baseLibrary);
+            library.ActiveFixtures.Select(x => x.Name).ShouldHaveTheSameElementsAs("Sentence", "Sets");
         }
     }
 

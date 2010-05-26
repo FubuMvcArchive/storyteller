@@ -260,7 +260,7 @@ s1/s2/t3,Success
 
         private void fixturesShouldBe(params string[] names)
         {
-            var builder = new LibraryBuilder(new NulloFixtureObserver(), project.CurrentFixtureFilter().CreateFilter());
+            var builder = new LibraryBuilder(new NulloFixtureObserver(), project.CurrentFixtureFilter().CreateTypeFilter());
             var library = builder.Build(new TestContext(x =>
             {
                 x.AddFixture<OhioFixture>();

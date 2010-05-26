@@ -8,6 +8,7 @@ using System.Xml;
 using FubuCore;
 using StoryTeller.Engine;
 using StoryTeller.Persistence;
+using StoryTeller.Workspace;
 
 namespace StoryTeller.Domain
 {
@@ -354,7 +355,7 @@ namespace StoryTeller.Domain
             return GetPath().Workspace == workspace;
         }
 
-        public string Workspace
+        public string WorkspaceName
         {
             get
             {
@@ -362,6 +363,12 @@ namespace StoryTeller.Domain
 
                 return GetPath().Workspace;
             }
+        }
+
+        public WorkspaceFilter GetWorkspace()
+        {
+            if (Parent == null) return new WorkspaceFilter();
+            return Parent.GetWorkspace();
         }
     }
 }

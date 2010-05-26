@@ -37,7 +37,10 @@ namespace StoryTeller.UserInterface.Editing
 
         public HtmlDocument BuildEditor(Test test)
         {
-            return BuildTestEditor(test, _library);
+            var workspace = test.GetWorkspace();
+            var filteredLibrary = _library.Filter(workspace.CreateFixtureFilter().Matches);
+
+            return BuildTestEditor(test, filteredLibrary);
         }
 
         public void Handle(BinaryRecycleFinished message)

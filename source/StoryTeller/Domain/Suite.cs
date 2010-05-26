@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using StoryTeller.Workspace;
 using StructureMap;
 
 namespace StoryTeller.Domain
@@ -237,5 +238,11 @@ namespace StoryTeller.Domain
         }
 
         #endregion
+
+        public virtual WorkspaceFilter GetWorkspace()
+        {
+            if (Parent == null) return new WorkspaceFilter();
+            return Parent.GetWorkspace();
+        }
     }
 }

@@ -85,7 +85,7 @@ namespace StoryTeller.Execution
         public TestExecutionRequest GetExecutionRequest(Test test)
         {
             var request = new TestExecutionRequest(test, _stopConditions);
-            string workspaceName = test.Workspace;
+            string workspaceName = test.WorkspaceName;
             if (workspaceName.IsNotEmpty())
             {
                 request.StartupActions = Project.WorkspaceFor(workspaceName).StartupActions ?? new string[0];

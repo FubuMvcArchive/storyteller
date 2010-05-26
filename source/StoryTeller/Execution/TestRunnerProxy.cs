@@ -89,7 +89,7 @@ namespace StoryTeller.Execution
 
                 var observer = new FixtureObserver(_publisher);
                 
-                var library = TestRunnerBuilder.BuildLibrary(_system, observer, container, fixtureAssembly.Filter.CreateFilter());
+                var library = TestRunnerBuilder.BuildLibrary(_system, observer, container, fixtureAssembly.Filter.CreateTypeFilter());
                 var containerSource = new FixtureContainerSource(container);
                 _runner = new TestRunner(_lifecycle, library, containerSource);
 

@@ -1,6 +1,7 @@
 using System;
 using FubuCore.Util;
 using NUnit.Framework;
+using StoryTeller.Model;
 using StoryTeller.Samples;
 using StoryTeller.Workspace;
 using FubuCore;
@@ -63,6 +64,43 @@ namespace StoryTeller.Testing.Workspace
         }
 
         [Test]
+        public void apply_a_filter_on_fixture_graph_at_the_type_level()
+        {
+            var filter = new FixtureFilter
+            {
+                Name = typeof(MathFixture).GetFixtureAlias(),
+                Type = FilterType.Fixture
+            };
+
+            var composite = new CompositeFilter<FixtureGraph>();
+            filter.Apply(composite);
+
+            composite.Matches(new FixtureGraph("Math")).ShouldBeTrue();
+            composite.Matches(new FixtureGraph("Math1")).ShouldBeFalse();
+            composite.Matches(new FixtureGraph("SomethingElse")).ShouldBeFalse();
+
+        }
+
+        [Test]
+        public void apply_a_filter_on_fixture_graph_at_the_namespace_level()
+        {
+            var filter = new FixtureFilter()
+            {
+                Name = "ST.Grammars",
+                Type = FilterType.Namespace
+            };
+
+            var composite = new CompositeFilter<FixtureGraph>();
+            filter.Apply(composite);
+
+            composite.Matches(new FixtureGraph(){FixtureNamespace = "ST.Grammars"}).ShouldBeTrue();
+            composite.Matches(new FixtureGraph(){FixtureNamespace = "ST.Grammars.More"}).ShouldBeTrue();
+            composite.Matches(new FixtureGraph(){FixtureNamespace = "More.ST.Grammars.More"}).ShouldBeFalse();
+            composite.Matches(new FixtureGraph(){FixtureNamespace = "SomethingDifferent"}).ShouldBeFalse();
+        }
+
+
+        [Test]
         public void integrate_with_workspace_filter()
         {
             var workspace = new WorkspaceFilter();
@@ -78,7 +116,7 @@ namespace StoryTeller.Testing.Workspace
                 Type = FilterType.Fixture
             });
 
-            var filter = workspace.CreateFilter();
+            var filter = workspace.CreateTypeFilter();
 
             filter.Matches(typeof(MathFixture)).ShouldBeTrue();
 
@@ -125,7 +163,7 @@ namespace StoryTeller.Testing.Workspace
 
             var combined = new WorkspaceFilter(new WorkspaceFilter[]{ workspace1, workspace2});
 
-            var filter = combined.CreateFilter();
+            var filter = combined.CreateTypeFilter();
 
             filter.Matches(typeof(MathFixture)).ShouldBeTrue();
 

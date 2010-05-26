@@ -26,7 +26,7 @@
     <WorkspaceFilter Name="Sentences">
       <Actions />
       <Filters>
-        <FixtureFilter Type="All" Name="ALL" />
+        <FixtureFilter Type="Fixture" Name="Sentence" />
       </Filters>
     </WorkspaceFilter>
     <WorkspaceFilter Name="Sets">

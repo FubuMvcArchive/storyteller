@@ -31,6 +31,7 @@ namespace StoryTeller.Model
         }
 
         public string FixtureClassName { get; set; }
+        public string FixtureNamespace { get; set; }
         public int GrammarCount { get { return _structures.Count; } }
         public IPolicies Policies { get { return _policies; } set { _policies = value; } }
 

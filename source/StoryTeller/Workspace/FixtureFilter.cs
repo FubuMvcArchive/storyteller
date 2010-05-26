@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Engine;
+using StoryTeller.Model;
 
 namespace StoryTeller.Workspace
 {
@@ -28,6 +29,24 @@ namespace StoryTeller.Workspace
             else
             {
                 filter.Includes += t => t.IsInNamespace(Name);
+            }
+        }
+
+        public void Apply(CompositeFilter<FixtureGraph> filter)
+        {
+            switch (Type)
+            {
+                case FilterType.All:
+                    filter.Includes += f => true;
+                    break;
+
+                case FilterType.Fixture:
+                    filter.Includes += f => f.Name == Name;
+                    break;
+
+                case FilterType.Namespace:
+                    filter.Includes += f => f.FixtureNamespace.StartsWith(Name);
+                    break;
             }
         }
 

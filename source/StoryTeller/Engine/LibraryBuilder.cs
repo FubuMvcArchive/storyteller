@@ -45,6 +45,7 @@ namespace StoryTeller.Engine
 
             FixtureGraph fixtureGraph = _library.FixtureFor(fixtureName);
             fixtureGraph.FixtureClassName = fixture.GetType().FullName;
+            fixtureGraph.FixtureNamespace = fixture.GetType().Namespace;
             fixtureGraph.Policies = fixture.Policies;
             fixtureGraph.Description = fixture.Description;
             fixtureGraph.Title = fixture.Title.IsEmpty() ? fixtureName : fixture.Title;
