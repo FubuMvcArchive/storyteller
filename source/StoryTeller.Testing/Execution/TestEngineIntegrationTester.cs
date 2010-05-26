@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using NUnit.Framework;
 using StoryTeller.Domain;
@@ -8,6 +9,7 @@ using StoryTeller.UserInterface.Projects;
 using StoryTeller.Workspace;
 using StructureMap;
 using StoryTeller.Engine;
+using Rhino.Mocks;
 
 namespace StoryTeller.Testing.Execution
 {
@@ -111,6 +113,28 @@ namespace StoryTeller.Testing.Execution
         {
             engine.Library.Find(new TPath("Math/MultiplyBy")).Description.ShouldEqual(
                 "This grammar multiplies two numbers together");
+        }
+    }
+
+    [TestFixture]
+    public class when_running_a_test_that_is_aborted : InteractionContext<TestEngine>
+    {
+        private Test theTest;
+
+        protected override void beforeEach()
+        {
+            MockFor<ITestRunnerDomain>().Expect(x => x.RunTest(null)).IgnoreArguments().Return(new TestResult() { WasCancelled = true });
+
+            theTest = new Test("something");
+            theTest.LastResult.ShouldBeNull();
+
+            ClassUnderTest.RunTest(theTest);
+        }
+
+        [Test]
+        public void should_not_apply_a_test_result_to_the_test_because_it_was_cancelled()
+        {
+            theTest.LastResult.ShouldBeNull();
         }
     }
 

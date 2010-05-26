@@ -14,5 +14,6 @@ namespace StoryTeller.Engine
         public Counts Counts { get; set; }
         public double ExecutionTime { get; set; }
         public string ExceptionText { get; set; }
+        public bool WasCancelled { get; set; }
     }
 }

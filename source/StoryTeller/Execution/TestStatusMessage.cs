@@ -14,5 +14,7 @@ namespace StoryTeller.Execution
 
         public bool IsRunning { get; set; }
         public string Status { get; set; }
+
+        public bool WasCancelled { get; set; }
     }
 }

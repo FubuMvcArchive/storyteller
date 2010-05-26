@@ -64,6 +64,11 @@ namespace StoryTeller.UserInterface.Controls
         {
             progressArea.Visibility = Visibility.Collapsed;
 
+            if (message.WasCancelled)
+            {
+                status.Text = "{0} was cancelled".ToFormat(message.TestPath);
+            }
+
             status.Text = message.Status.IsEmpty() ? string.Empty : "{0} {1}".ToFormat(message.TestPath, message.Status);
         }
     }

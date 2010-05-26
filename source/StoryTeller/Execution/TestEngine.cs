@@ -78,7 +78,11 @@ namespace StoryTeller.Execution
             // but stuff is leaking through
             lock (_locker)
             {
-                test.LastResult = _domain.RunTest(GetExecutionRequest(test));
+                var result = _domain.RunTest(GetExecutionRequest(test));
+                if (!result.WasCancelled)
+                {
+                    test.LastResult = result;
+                }
             }
         }
 
@@ -97,6 +101,8 @@ namespace StoryTeller.Execution
         public void AbortCurrentTest()
         {
             _domain.AbortCurrentTest();
+
+            
         }
 
         public bool IsExecuting()

@@ -36,8 +36,8 @@ namespace StoryTeller.Engine
 
         public void Abort()
         {
+            _result.WasCancelled = true;
             captureException("Test Execution was forcibly aborted");
-
             _listener.Exception("Test Execution was forcibly aborted");
             if (_testThread != null) _testThread.Abort();
         }

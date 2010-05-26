@@ -119,6 +119,11 @@ namespace StoryTeller.Execution
         public void AbortCurrentTest()
         {
             _proxy.AbortCurrentTest();
+            _publisher.Publish(new TestStatusMessage
+            {
+                IsRunning = false,
+                WasCancelled = true
+            });
         }
 
         public bool IsExecuting()

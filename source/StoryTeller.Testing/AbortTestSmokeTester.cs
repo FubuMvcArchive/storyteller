@@ -47,6 +47,9 @@ namespace StoryTeller.Testing
 
             reset.WaitOne(5000);
             test.LastResult.ShouldNotBeNull();
+
+            test.LastResult.WasCancelled.ShouldBeTrue();
+
             Debug.WriteLine("completely done");
         }
 
