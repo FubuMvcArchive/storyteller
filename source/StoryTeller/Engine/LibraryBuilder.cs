@@ -91,8 +91,15 @@ namespace StoryTeller.Engine
 
         private void readFixtures(TestContext context)
         {
+            _observer.RecordStatus("Discovering and filtering fixtures");
+
             var fixtureConfiguration = context.Container.Model.For<IFixture>();
-            fixtureConfiguration.Instances.Where(i => _filter.Matches(i.ConcreteType)).Each(readInstance);
+            var instanceRefs = fixtureConfiguration.Instances.Where(i => _filter.Matches(i.ConcreteType));
+
+            FixtureCount = instanceRefs.Count();
+
+
+            instanceRefs.Each(readInstance);
             _library.AllFixtures = fixtureConfiguration.Instances.Select(x => new FixtureDto
             {
                 Fullname = x.ConcreteType.FullName,
