@@ -24,7 +24,7 @@ namespace StoryTeller.Codegen
             _options = project.Options ?? new CodegenOptions();
         }
 
-        public static string DefaultClassTemplate()
+        public static string DefaultFileTemplate()
         {
             var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(
                 typeof (ProjectRunnerCodegenService), "ClassTemplate.txt");
@@ -66,13 +66,19 @@ namespace StoryTeller.Codegen
             var classText = _options.FileTemplate;
             if (classText.IsEmpty())
             {
-                classText = DefaultClassTemplate();
+                classText = DefaultFileTemplate();
             }
 
             classText = classText.Replace(PROJECT_FILE, _project.FileName);
 
             var methods = tests.Select(x => GenerateMethod(x)).Join(Environment.NewLine + Environment.NewLine);
             return classText.Replace(METHODS, methods);
+        }
+
+        public void GenerateFile(IEnumerable<Test> tests)
+        {
+            var classText = GenerateClass(tests);
+            new FileSystem().WriteStringToFile(classText, _project.GetTargetFile());
         }
     }
 }

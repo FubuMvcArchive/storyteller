@@ -193,7 +193,11 @@
     <Compile Include="Editing\HTML\TableTemplateTag.cs" />
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
+    <Compile Include="Handlers\CodegenHandler.cs" />
     <Compile Include="Projects\IProjectExplorerView.cs" />
+    <Compile Include="Projects\IProjectScreen.cs" />
+    <Compile Include="Projects\NewProjectSubject.cs" />
+    <Compile Include="Projects\ProjectEditorPresenter.cs" />
     <Compile Include="Projects\RemoveProjectFromHistoryMessage.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
     <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />

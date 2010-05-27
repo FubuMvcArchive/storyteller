@@ -28,13 +28,20 @@ namespace StoryTeller.UserInterface.Projects
             _binder.Bind(x => x.TestFolder).To(testFolder);
             _binder.Bind(x => x.BinaryFolder).To(binaryFolder);
             _binder.Bind(x => x.ConfigurationFileName).To(configurationFile);
-            _binder.Bind(x => x.SystemTypeName).To(typeRunnerName);
+            _binder.Bind(x => x.SystemTypeName).To(systemName);
             _binder.Bind(x => x.TimeoutInSeconds).To(timeoutInSeconds);
+
+            _binder.Bind(x => x.FixtureAssembly).To(fixtureAssembly);
+            _binder.Bind(x => x.Options.TargetFile).To(testHarnessFileName);
+            _binder.Bind(x => x.Options.FileTemplate).To(testHarnessFileTemplate);
+            _binder.Bind(x => x.Options.MethodTemplate).To(testHarnessMethodTemplate);
 
             findFileName.Click += (x, y) => OpenFileDialogAndBindToInput(fileName);
             findTestFolder.Click += (x, y) => OpenFolderBrowserDialogAndBindToInput(testFolder);
             findBinaryFolder.Click += (x, y) => OpenFolderBrowserDialogAndBindToInput(binaryFolder);
             findConfigurationFile.Click += (x, y) => OpenFileDialogAndBindToInput(configurationFile);
+            findFixtureAssembly.Click += (x, y) => OpenFileDialogAndBindToInput(fixtureAssembly);
+            findTestHarnessFile.Click += (x, y) => OpenFileDialogAndBindToInput(testHarnessFileName);
         }
 
         public ProjectScreen(IFileDialogPicker fileDialogPicker, IDirectoryDialogPicker folderDialogPicker)

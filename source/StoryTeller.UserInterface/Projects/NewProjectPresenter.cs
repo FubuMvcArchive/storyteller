@@ -6,17 +6,6 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Projects
 {
-    public interface IProjectScreen
-    {
-        void BindTo(Project project);
-        void ShowErrorMessages(Notification notification);
-    }
-
-    public class NewProjectSubject : SingletonScreenSubject<NewProjectPresenter>
-    {
-    }
-
-
     public class NewProjectPresenter : IScreen
     {
         private readonly ICommand _cancel;

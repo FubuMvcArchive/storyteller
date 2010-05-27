@@ -16,9 +16,9 @@ namespace StoryTeller.UserInterface.Tests
         {
             InitializeComponent();
 
-            _binder.Bind(x => x.Name).To(name);
             _binder.Bind(x => x.Path).To(path);
             _binder.Bind(x => x.Status).To(status);
+            _binder.Bind(x => x.AutoRun).To(autoRun);
 
             var element = new ButtonElement(lifecycle);
             element.OnClick(() => _model.ToggleLifecycle());

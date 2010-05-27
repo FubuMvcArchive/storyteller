@@ -1,11 +1,41 @@
 <?xml version="1.0"?>
 <Project xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Options>
+    <FileTemplate>using NUnit.Framework;
+using StoryTeller.Execution;
+
+namespace StoryTellerTestHarness
+{
+    [TestFixture, Explicit]
+    public class Template
+    {
+        private ProjectTestRunner runner;
+
+        [TestFixtureSetUp]
+        public void SetupRunner()
+        {
+            runner = new ProjectTestRunner(@"$PROJECT_FILE$");
+        }
+
+$METHODS$
+
+        [TestFixtureTearDown]
+        public void TeardownRunner()
+        {
+            runner.Dispose();
+        }
+    }
+}</FileTemplate>
+    <MethodTemplate>        [Test]
+        public void $CLEAN_TEST_NAME$()
+        {
+            runner.RunAndAssertTest("$TEST_PATH$");
+        }</MethodTemplate>
+    <TargetFile>..\source\StoryTeller.Samples\StoryTellerDebug.cs</TargetFile>
+  </Options>
   <Workspaces>
     <WorkspaceFilter Name="Embedded">
-      <Actions>
-        <StartupAction Name="SetUser" />
-        <StartupAction Name="StartWebApp" />
-      </Actions>
+      <Actions />
       <Filters>
         <FixtureFilter Type="Fixture" Name="Another" />
         <FixtureFilter Type="Fixture" Name="Math" />

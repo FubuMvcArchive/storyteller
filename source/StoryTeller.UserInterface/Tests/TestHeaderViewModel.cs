@@ -32,6 +32,8 @@ namespace StoryTeller.UserInterface.Tests
 
         public string Lifecycle { get { return _test.Lifecycle.ToString(); } }
 
+        public bool AutoRun { get; set; }
+
         #region ITestHeaderViewModel Members
 
         public void Update()

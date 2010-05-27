@@ -1,5 +1,5 @@
-﻿        [Test] 
-		public void $CLEAN_TEST_NAME$()
+﻿        [Test]
+        public void $CLEAN_TEST_NAME$()
         {
             runner.RunAndAssertTest("$TEST_PATH$");
         }

@@ -151,6 +151,11 @@ namespace StoryTeller.UserInterface.Actions
                 return buildAction(() => _registry.CommandForEvent<T>());
             }
 
+            public ScreenAction PublishEvent<T>(Func<T> func)
+            {
+                return buildAction(() => _registry.command<IEventAggregator>(events => events.SendMessage(func())));
+            }
+
             public ScreenAction To(Action action)
             {
                 return buildAction(() => new ActionCommand(action));

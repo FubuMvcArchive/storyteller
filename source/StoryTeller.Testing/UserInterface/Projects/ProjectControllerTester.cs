@@ -595,6 +595,40 @@ namespace StoryTeller.Testing.UserInterface.Projects
     }
 
     [TestFixture]
+    public class when_the_project_controller_saves_the_project : InteractionContext<ProjectController>
+    {
+        private Project theProject;
+
+        protected override void beforeEach()
+        {
+            theProject = new Project();
+
+
+            ClassUnderTest.SaveProject(theProject);
+        }
+
+        [Test]
+        public void should_persist_the_project()
+        {
+            MockFor<IProjectPersistor>().AssertWasCalled(x => x.SaveProject(theProject));
+        }
+
+        [Test]
+        public void should_refresh_the_code_tree()
+        {
+            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(new ReloadTestsMessage()), x => x.IgnoreArguments());
+        }
+
+        [Test]
+        public void should_reload_the_fixture_library()
+        {
+            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(new ForceBinaryRecycle()), x => x.IgnoreArguments());
+        }
+
+    }
+
+
+    [TestFixture]
     public class when_the_ProjectController_starts_with_projects : InteractionContext<ProjectController>
     {
         private ProjectToken[] tokens;

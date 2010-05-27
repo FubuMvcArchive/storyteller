@@ -47,6 +47,10 @@ namespace StoryTeller.Workspace
         }
 
         public CodegenOptions Options { get; set; }
+        public string GetTargetFile()
+        {
+            return getCorrectPath(Options.TargetFile);
+        }
 
         public WorkspaceFilter[] Workspaces
         {
@@ -230,10 +234,6 @@ namespace StoryTeller.Workspace
             string fileName = test.FileName;
             return Path.Combine(GetTestFolder(), fileName);
         }
-
-        #region Nested type: HierarchyLoader
-
-        #endregion
 
         public WorkspaceFilter CurrentFixtureFilter()
         {

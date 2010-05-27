@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using StoryTeller.Codegen;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 
@@ -8,8 +10,8 @@ namespace StoryTeller.Workspace
     {
         string Name { get; set; }
         string FileName { get; }
-        string ConfigurationFileName { get; }
-        string SystemTypeName { get; }
+        string ConfigurationFileName { get; set; }
+        string SystemTypeName { get; set; }
         int TimeoutInSeconds { get; set; }
         string FixtureAssembly { get; set; }
         IEnumerable<WorkspaceFilter> SelectedWorkspaces { get; }
@@ -28,10 +30,18 @@ namespace StoryTeller.Workspace
         string[] SelectedWorkspaceNames { get; }
 
         CodegenOptions Options { get; }
+        string GetTargetFile();
     }
 
     public class CodegenOptions
     {
+        public CodegenOptions()
+        {
+            FileTemplate = ProjectRunnerCodegenService.DefaultFileTemplate();
+            MethodTemplate = ProjectRunnerCodegenService.DefaultMethodTemplate();
+            TargetFile = "StoryTellerDebug.cs";
+        }
+
         public string FileTemplate { get; set; }
         public string MethodTemplate { get; set; }
         public string TargetFile { get; set; }

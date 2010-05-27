@@ -2,6 +2,7 @@ using System.Windows.Input;
 using FubuCore;
 using StoryTeller.Domain;
 using StoryTeller.UserInterface.Actions;
+using StoryTeller.UserInterface.Handlers;
 using StoryTeller.UserInterface.Screens;
 
 namespace StoryTeller.UserInterface.Tests
@@ -78,6 +79,9 @@ namespace StoryTeller.UserInterface.Tests
             screenObjects.Action("Edit").Bind(ModifierKeys.Control | ModifierKeys.Shift, Key.E).To(
                 _presenter.Modes[Mode.Edit])
                 .Icon = Icon.Unknown;
+
+            screenObjects.Action("xUnit Harness").Bind(ModifierKeys.Control, Key.H).PublishEvent(
+                () => new TestHarnessFileRequested(_test)).Icon = Icon.Unknown;
 
             // TODO -- replace with the test outline
             //screenObjects.PlaceInExplorerPane(_actions, "Actions");

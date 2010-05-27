@@ -184,6 +184,13 @@ namespace StoryTeller.UserInterface.Projects
             _events.SendMessage(new WorkflowFiltersChanged(_project));
         }
 
+        public void SaveProject(IProject project)
+        {
+            _persistor.SaveProject(project);
+            _events.SendMessage(new ForceBinaryRecycle());
+            _events.SendMessage(new ReloadTestsMessage());
+        }
+
         public void Start()
         {
             reloadProjectList();

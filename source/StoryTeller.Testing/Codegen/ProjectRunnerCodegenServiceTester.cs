@@ -12,7 +12,7 @@ namespace StoryTeller.Testing.Codegen
         [Test]
         public void can_get_default_class_template()
         {
-            ProjectRunnerCodegenService.DefaultClassTemplate().ShouldNotBeNull();
+            ProjectRunnerCodegenService.DefaultFileTemplate().ShouldNotBeNull();
         }
 
         [Test]

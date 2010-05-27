@@ -56,6 +56,7 @@ namespace StoryTeller.UserInterface.Controls
         {
             return this.Add<Button>(x =>
             {
+                x.MinWidth = 20;
                 x.VerticalAlignment = VerticalAlignment.Stretch;
                 x.Content = text;
                 x.Click += action.ToRoutedHandler();

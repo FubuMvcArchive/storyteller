@@ -10,5 +10,6 @@ namespace StoryTeller.UserInterface.Projects
         void CreateNewProject();
         void LoadExistingProject();
         void SaveWorkspace(WorkspaceSuite suite);
+        void SaveProject(IProject project);
     }
 }
