@@ -1,3 +1,4 @@
+using System;
 using StoryTeller.Domain;
 using StoryTeller.UserInterface.Dialogs;
 
@@ -6,6 +7,45 @@ namespace StoryTeller.UserInterface.Commands
     public interface IAddSuiteCommand
     {
         void CreateSuite(string suiteName);
+    }
+
+    public interface IAddWorkspaceCommand
+    {
+        void CreateWorkspace(string workspaceName);
+    }
+
+    public class AddWorkspaceCommand : ContextualAction<Hierarchy>, IAddWorkspaceCommand
+    {
+        private readonly IDialogLauncher _launcher;
+        private readonly IEventAggregator _events;
+
+        public AddWorkspaceCommand(Hierarchy subject, IDialogLauncher launcher, IEventAggregator events)
+            : base(subject, Icon.Plus, "Add Workspace")
+        {
+            _launcher = launcher;
+            _events = events;
+        }
+
+        public override bool Enabled
+        {
+            get { return true; }
+        }
+
+        public override void Execute()
+        {
+            _launcher.LaunchForCommand<IAddWorkspaceCommand>(this);
+        }
+
+        public void CreateWorkspace(string workspaceName)
+        {
+            var workspace = new WorkspaceSuite(workspaceName);
+            subject.AddSuite(workspace);
+
+            _events.SendMessage(new SuiteAddedMessage()
+            {
+                NewSuite = workspace
+            });
+        }
     }
 
     public class AddSuiteCommand : ContextualAction<Suite>, IAddSuiteCommand

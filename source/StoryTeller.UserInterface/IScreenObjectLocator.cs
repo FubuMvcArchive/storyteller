@@ -48,7 +48,7 @@ namespace StoryTeller.UserInterface
         // TODO -- need test here
         public IEnumerable<IContextualAction> BuildActions(object subject)
         {
-            if (subject is Hierarchy)
+            if (subject is WorkspaceSuite)
             {
                 return
                     _container.With((Suite) subject)

@@ -15,9 +15,9 @@ namespace StoryTellerTestHarness
         }
 
         [Test]
-        public void Simple_Composite()
+        public void Composite_with_Errors()
         {
-            runner.RunAndAssertTest("Paragraphs/Simple Composite");
+            runner.RunAndAssertTest("Paragraphs/Composite with Errors");
         }
 
         [TestFixtureTearDown]

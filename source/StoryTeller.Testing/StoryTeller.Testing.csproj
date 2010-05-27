@@ -262,6 +262,7 @@
     <Compile Include="UserInterface\Commands\ActionMenuItemTester.cs" />
     <Compile Include="UserInterface\Commands\AddSuiteCommandTester.cs" />
     <Compile Include="UserInterface\Commands\AddTestCommandTester.cs" />
+    <Compile Include="UserInterface\Commands\AddWorkspaceCommandTester.cs" />
     <Compile Include="UserInterface\Commands\CloneTestCommandTester.cs" />
     <Compile Include="UserInterface\Commands\DeleteTestCommandTester.cs" />
     <Compile Include="UserInterface\Commands\MarkAcceptanceCommandTester.cs" />

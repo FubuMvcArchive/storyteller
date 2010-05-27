@@ -26,7 +26,7 @@ namespace StoryTeller.UserInterface.Tests
         }
 
         public string Status { get; set; }
-        public string Path { get { return _test.Parent == null ? string.Empty : _test.Parent.GetPath().Locator; } }
+        public string Path { get { return _test.Parent == null ? string.Empty : _test.Parent.GetPath().Locator + "/" + _test.Name; } }
 
         public string Name { get { return _test.Name; } set { _service.RenameTest(_test, value); } }
 

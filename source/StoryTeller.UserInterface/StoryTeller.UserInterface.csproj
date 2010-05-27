@@ -171,6 +171,9 @@
     <Compile Include="Dialogs\AddTest.xaml.cs">
       <DependentUpon>AddTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\AddWorkspace.xaml.cs">
+      <DependentUpon>AddWorkspace.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\Dialog.cs" />
     <Compile Include="Dialogs\DialogLauncher.cs" />
     <Compile Include="Dialogs\ICommandDialog.cs" />
@@ -389,6 +392,10 @@
     <Page Include="Dialogs\AddTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AddWorkspace.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
