@@ -91,7 +91,8 @@ namespace StoryTeller.UserInterface.Exploring
 
         public void Handle(TestRenamed message)
         {
-            _testNodes[message.Test].ResetText();
+            ResetFilter();
+            _testNodes[message.Test].IsSelected = true;
         }
 
         #endregion

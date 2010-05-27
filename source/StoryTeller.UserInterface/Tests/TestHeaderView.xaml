@@ -2,8 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Padding="2 2 2 2"   >
     <DockPanel MinWidth="500" Background="Silver">
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-            <Label Name="path" FontWeight="Bold">suite/suite/suite/</Label>
+        <StackPanel Name="pathPanel" Orientation="Horizontal" DockPanel.Dock="Left">
+            <Label Name="path" FontWeight="Bold" ToolTip="Click to rename the test">suite/suite/suite/</Label>
+            <TextBox Name="testName" Visibility="Collapsed" Width="300">Name</TextBox>
             <Label Name="status" Margin="25 0 10 0">some status</Label>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Background="Silver" DockPanel.Dock="Right" HorizontalAlignment="Right">

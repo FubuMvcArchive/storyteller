@@ -202,6 +202,9 @@
     <Compile Include="Projects\NewProjectSubject.cs" />
     <Compile Include="Projects\ProjectEditorPresenter.cs" />
     <Compile Include="Projects\RemoveProjectFromHistoryMessage.cs" />
+    <Compile Include="Screens\IScreenFinder.cs" />
+    <Compile Include="Screens\ScreenFinder.cs" />
+    <Compile Include="Screens\StoryTellerTabItem.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
     <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />
     <Compile Include="Workspace\IFixtureSelector.cs" />
@@ -253,7 +256,6 @@
     <Compile Include="Handlers\IHandler.cs" />
     <Compile Include="Handlers\ShellPresenter.cs" />
     <Compile Include="Projects\BinaryFailureHandler.cs" />
-    <Compile Include="Handlers\RenameTestHandler.cs" />
     <Compile Include="Projects\BinaryFailure.xaml.cs">
       <DependentUpon>BinaryFailure.xaml</DependentUpon>
     </Compile>

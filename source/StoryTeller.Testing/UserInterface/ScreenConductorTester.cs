@@ -500,7 +500,7 @@ namespace StoryTeller.Testing.UserInterface
             throw new NotImplementedException();
         }
 
-        public void RenameTab(IScreen screen, string name)
+        public void RefreshScreenHeaders()
         {
             throw new NotImplementedException();
         }

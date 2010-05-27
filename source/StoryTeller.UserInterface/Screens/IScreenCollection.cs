@@ -22,7 +22,6 @@ namespace StoryTeller.UserInterface.Screens
         // Remove this screen from the tabbed display
         void Remove(IScreen screen);
 
-
-        void RenameTab(IScreen screen, string name);
+        void RefreshScreenHeaders();
     }
 }

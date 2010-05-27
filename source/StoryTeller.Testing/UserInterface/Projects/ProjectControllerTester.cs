@@ -842,6 +842,12 @@ namespace StoryTeller.Testing.UserInterface.Projects
         {
             MockFor<IProject>().AssertWasCalled(x => x.RenameTest(test, "new name"));
         }
+
+        [Test]
+        public void should_refresh_the_screen_headers()
+        {
+            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage<RefreshScreenHeaders>());
+        }
     }
 
 

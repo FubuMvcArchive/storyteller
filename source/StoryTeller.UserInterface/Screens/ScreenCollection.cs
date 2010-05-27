@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
 using FubuCore.Util;
@@ -8,29 +7,8 @@ using StoryTeller.UserInterface.Handlers;
 
 namespace StoryTeller.UserInterface.Screens
 {
-    public interface IScreenFinder
-    {
-        IScreen Find(IScreenLocator _locator);
-    }
+    
 
-    public class ScreenFinder : IScreenFinder
-    {
-        private readonly IScreenCollection _screens;
-
-        public ScreenFinder(IScreenCollection screens)
-        {
-            _screens = screens;
-        }
-
-        #region IScreenFinder Members
-
-        public IScreen Find(IScreenLocator _locator)
-        {
-            return _screens.AllScreens.FirstOrDefault(_locator.Matches);
-        }
-
-        #endregion
-    }
 
     public class ScreenCollection : IScreenCollection
     {
@@ -46,9 +24,6 @@ namespace StoryTeller.UserInterface.Screens
 
             // Sends a message when the user select a different tab on the screen
             _tabs.SelectionChanged += (s, c) => events.SendMessage<UserScreenActivation>();
-
-            // Hack.  Sigh.
-            events.AddListener(new RenameTestHandler(new ScreenFinder(this), this));
         }
 
         #region IScreenCollection Members
@@ -94,9 +69,9 @@ namespace StoryTeller.UserInterface.Screens
             _tabs.Items.Remove(tabItem);
         }
 
-        public void RenameTab(IScreen screen, string name)
+        public void RefreshScreenHeaders()
         {
-            _tabItems[screen].HeaderText = name;
+            _tabItems.Each(x => x.RefreshTitle());
         }
 
         public IEnumerable<IScreen> AllScreens { get { return new List<IScreen>(_tabItems.GetAllKeys()); } }
@@ -112,35 +87,5 @@ namespace StoryTeller.UserInterface.Screens
         {
             return tab.As<TabItem>().Tag.As<IScreen>();
         }
-    }
-
-    public class StoryTellerTabItem : TabItem
-    {
-        private Label _label;
-
-        public StoryTellerTabItem(IScreen screen, IEventAggregator events)
-        {
-            Func<Action<IScreenConductor>, Action> sendMessage = a => () => events.SendMessage(a);
-
-            Header = new StackPanel().Horizontal()
-                .Configure(x => x.Height = 25)
-                .AddText(screen.Title, x => _label = x)
-                .IconButton(Icon.Close, sendMessage(s => s.Close(screen)), b => b.SmallerImages());
-
-            Content = new DockPanel().With(screen.View);
-            Tag = screen;
-
-
-            // Sets up a context menu for each tab in the screen that can capture "Close"
-            // messages
-            ContextMenu = new ContextMenu().Configure(o =>
-            {
-                o.AddItem("Close", sendMessage(s => s.Close(screen)));
-                o.AddItem("Close All But This", sendMessage(s => s.CloseAllBut(screen)));
-                o.AddItem("Close All", sendMessage(s => s.CloseAll()));
-            });
-        }
-
-        public string HeaderText { get { return _label.Content as string; } set { _label.Content = value; } }
     }
 }

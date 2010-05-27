@@ -73,11 +73,17 @@ namespace StoryTeller.UserInterface
             set;}
     }
 
+    public class RefreshScreenHeaders
+    {
+        
+    }
+
     public class ScreenConductor : IScreenConductor
                                    , IListener<OpenItemMessage>
                                    , IListener<DeleteTestMessage>
                                    , IListener<UserScreenActivation>
                                    , IListener<ScreenRequested>
+                                   , IListener<RefreshScreenHeaders>
 
     {
         public static readonly string CAN_CLOSE_TITLE = "Is it okay to close StoryTeller?";
@@ -295,6 +301,11 @@ namespace StoryTeller.UserInterface
         void IListener<ScreenRequested>.Handle(ScreenRequested message)
         {
             OpenScreen(message.ScreenLocator);
+        }
+
+        public void Handle(RefreshScreenHeaders message)
+        {
+            _screens.RefreshScreenHeaders();
         }
     }
 }

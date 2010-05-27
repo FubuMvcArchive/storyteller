@@ -190,6 +190,8 @@ namespace StoryTeller.UserInterface.Exploring
             }
         }
 
+        
+
         public void ExpandAll()
         {
             IsExpanded = true;
@@ -207,8 +209,9 @@ namespace StoryTeller.UserInterface.Exploring
         public void ResetText()
         {
             _label.Content = _subject.Name;
-            _label.Background = new SolidColorBrush(Colors.SeaGreen);
+            _label.InvalidateVisual();
             InvalidateVisual();
+            UpdateLayout();
         }
 
         public void Reorder()

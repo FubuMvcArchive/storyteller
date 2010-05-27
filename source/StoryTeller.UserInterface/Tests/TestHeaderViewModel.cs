@@ -14,7 +14,7 @@ namespace StoryTeller.UserInterface.Tests
         void Update();
     }
 
-    public class TestHeaderViewModel : ITestHeaderViewModel, IListener<BinaryRecycleFinished>
+    public class TestHeaderViewModel : ITestHeaderViewModel, IListener<BinaryRecycleFinished>, IListener<TestRenamed>
     {
         private readonly ITestService _service;
         private readonly Test _test;
@@ -28,11 +28,28 @@ namespace StoryTeller.UserInterface.Tests
         }
 
         public string Status { get; set; }
-        public string Path { get { return _test.Parent == null ? string.Empty : _test.Parent.GetPath().Locator + "/" + _test.Name; } }
 
-        public string Name { get { return _test.Name; } set { _service.RenameTest(_test, value); } }
+        public string Path
+        {
+            get { return _test.Parent == null ? string.Empty : _test.Parent.GetPath().Locator + "/" + _test.Name; }
+        }
 
-        public string Lifecycle { get { return _test.Lifecycle.ToString(); } }
+        public string Name
+        {
+            get { return _test.Name; }
+            set
+            {
+                if (value != _test.Name)
+                {
+                    _service.RenameTest(_test, value);
+                }
+            }
+        }
+
+        public string Lifecycle
+        {
+            get { return _test.Lifecycle.ToString(); }
+        }
 
         public bool AutoRun { get; set; }
 
@@ -74,6 +91,14 @@ namespace StoryTeller.UserInterface.Tests
             if (AutoRun)
             {
                 _service.QueueTest(_test);
+            }
+        }
+
+        public void Handle(TestRenamed message)
+        {
+            if (message.Test == _test)
+            {
+                _view.Refresh();
             }
         }
     }

@@ -15,7 +15,7 @@ namespace StoryTeller.UserInterface.Tests
     }
 
     public class TestPresenter : IListener<ClearResultsMessage>, ITestPresenter, IListener<TestRunEvent>,
-                                 IListener<BinaryRecycleFinished>
+                                 IListener<BinaryRecycleFinished>, IListener<TestRenamed>
     {
         private readonly ITestHeaderViewModel _header;
         private readonly IDictionary<Mode, ModeCommand> _modes = new Dictionary<Mode, ModeCommand>();
@@ -140,6 +140,14 @@ namespace StoryTeller.UserInterface.Tests
         public void SetMode(TestMode mode)
         {
             _currentMode = new ModeCommand(mode, this, _test, _view);
+        }
+
+        public void Handle(TestRenamed message)
+        {
+            if (message.Test == _test)
+            {
+                _currentMode.Mode.Refresh();
+            }
         }
     }
 }

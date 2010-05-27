@@ -66,6 +66,8 @@ namespace StoryTeller.UserInterface.Projects
             {
                 Test = message.Test
             });
+
+            _events.SendMessage<RefreshScreenHeaders>();
         }
 
         public void Handle(SaveTestMessage message)

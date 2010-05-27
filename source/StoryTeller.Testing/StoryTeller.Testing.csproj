@@ -303,7 +303,6 @@
     <Compile Include="UserInterface\Exploring\TreeExplorer_responding_to_TestListener_events.cs" />
     <Compile Include="UserInterface\Exploring\TreeNodeSpecification.cs" />
     <Compile Include="UserInterface\Exploring\TreeNodeTester.cs" />
-    <Compile Include="UserInterface\Handlers\RenameTestHandlerTester.cs" />
     <Compile Include="UserInterface\Handlers\ShellPresenterTester.cs" />
     <Compile Include="UserInterface\IntegrationTests\BootstrapperTester.cs" />
     <Compile Include="UserInterface\IntegrationTests\ExecutionEngineIntegratedTester.cs" />
