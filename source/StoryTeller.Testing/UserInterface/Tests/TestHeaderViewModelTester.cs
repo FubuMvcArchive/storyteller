@@ -1,11 +1,46 @@
+using System;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Domain;
+using StoryTeller.Execution;
 using StoryTeller.UserInterface;
+using StoryTeller.UserInterface.Running;
 using StoryTeller.UserInterface.Tests;
 
 namespace StoryTeller.Testing.UserInterface.Tests
 {
+    [TestFixture]
+    public class when_responding_to_binary_recycle_completed : InteractionContext<TestHeaderViewModel>
+    {
+        private Test theTest;
+
+        protected override void beforeEach()
+        {
+            theTest = new Test("something");
+        
+            Services.Inject(theTest);
+        }
+
+        [Test]
+        public void when_the_auto_run_is_false_do_not_run_the_test()
+        {
+            ClassUnderTest.AutoRun = false;
+            ClassUnderTest.HandleMessage(new BinaryRecycleFinished(null));
+
+            MockFor<ITestService>().AssertWasNotCalled(x => x.QueueTest(theTest));
+        }
+
+        [Test]
+        public void when_the_auto_run_is__true_run_the_test()
+        {
+            ClassUnderTest.AutoRun = true;
+            ClassUnderTest.HandleMessage(new BinaryRecycleFinished(null));
+
+            MockFor<ITestService>().AssertWasCalled(x => x.QueueTest(theTest));
+        }
+    }
+
+
     [TestFixture]
     public class when_toggling_the_test_lifecycle : InteractionContext<TestHeaderViewModel>
     {

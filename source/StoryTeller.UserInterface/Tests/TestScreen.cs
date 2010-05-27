@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Input;
 using FubuCore;
 using StoryTeller.Domain;
@@ -14,9 +15,10 @@ namespace StoryTeller.UserInterface.Tests
         private readonly ITestStateManager _stateManager;
         private readonly ITestScreenCloser _closer;
         private readonly IEditTestController _controller;
+        private readonly IEventAggregator _events;
         private readonly ITestView _view;
 
-        public TestScreen(ITestPresenter presenter, ITestView view, Test test, ITestStateManager stateManager, ITestScreenCloser closer, IEditTestController controller)
+        public TestScreen(ITestPresenter presenter, ITestView view, Test test, ITestStateManager stateManager, ITestScreenCloser closer, IEditTestController controller, IEventAggregator events)
         {
             _presenter = presenter;
             _view = view;
@@ -24,6 +26,7 @@ namespace StoryTeller.UserInterface.Tests
             _stateManager = stateManager;
             _closer = closer;
             _controller = controller;
+            _events = events;
         }
 
 
@@ -94,10 +97,11 @@ namespace StoryTeller.UserInterface.Tests
             return _closer.CanClose();
         }
 
+        #endregion
+
         public void Dispose()
         {
+            
         }
-
-        #endregion
     }
 }

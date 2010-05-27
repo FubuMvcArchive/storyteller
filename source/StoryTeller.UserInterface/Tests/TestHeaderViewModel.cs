@@ -1,4 +1,6 @@
+using System;
 using StoryTeller.Domain;
+using StoryTeller.Execution;
 
 namespace StoryTeller.UserInterface.Tests
 {
@@ -12,7 +14,7 @@ namespace StoryTeller.UserInterface.Tests
         void Update();
     }
 
-    public class TestHeaderViewModel : ITestHeaderViewModel
+    public class TestHeaderViewModel : ITestHeaderViewModel, IListener<BinaryRecycleFinished>
     {
         private readonly ITestService _service;
         private readonly Test _test;
@@ -64,6 +66,14 @@ namespace StoryTeller.UserInterface.Tests
 
                 default:
                     return _test.HasResult() ? _test.GetStatus() : string.Empty;
+            }
+        }
+
+        public void Handle(BinaryRecycleFinished message)
+        {
+            if (AutoRun)
+            {
+                _service.QueueTest(_test);
             }
         }
     }
