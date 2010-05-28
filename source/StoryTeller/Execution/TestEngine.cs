@@ -109,6 +109,8 @@ namespace StoryTeller.Execution
         }
     }
 
+    
+
 
     public class TestEngine : ITestEngine
                               , IListener<ProjectLoaded>
@@ -181,7 +183,8 @@ namespace StoryTeller.Execution
             // but stuff is leaking through
             lock (_locker)
             {
-                var result = _domain.RunTest(GetExecutionRequest(test));
+                TestExecutionRequest request = GetExecutionRequest(test);
+                var result = _domain.RunTest(request);
                 if (!result.WasCancelled)
                 {
                     test.LastResult = result;

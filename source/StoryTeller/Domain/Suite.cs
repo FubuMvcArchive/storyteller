@@ -56,6 +56,11 @@ namespace StoryTeller.Domain
             return path;
         }
 
+        IEnumerable<Test> INamedItem.AllTests
+        {
+            get { return GetAllTests(); }
+        }
+
         #endregion
 
         public string GetFolder()

@@ -205,6 +205,7 @@
     <Compile Include="Screens\IScreenFinder.cs" />
     <Compile Include="Screens\ScreenFinder.cs" />
     <Compile Include="Screens\StoryTellerTabItem.cs" />
+    <Compile Include="TreeViewItemExtensions.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
     <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />
     <Compile Include="Workspace\IFixtureSelector.cs" />
@@ -597,6 +598,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Editing\Tree\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

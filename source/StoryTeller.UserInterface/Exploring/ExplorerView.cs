@@ -55,16 +55,9 @@ namespace StoryTeller.UserInterface.Exploring
 
         private void activateNode(TreeNode node, TreeView tree)
         {
-            if (tree.Items.Count > 0)
-            {
-                tree.Items[0].As<TreeNode>().OnSelection = n => { };
-            }
-
             tree.Items.Clear();
             node.IsExpanded = true;
 
-            node.OnSelection = n => SelectNode(n);
-            node.OnRunNodeGesture = n => RunNode(n);
             node.BuildItems = n => BuildMenuItems(n);
 
             tree.Items.Add(node);

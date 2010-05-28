@@ -83,6 +83,11 @@ namespace StoryTeller.Model
             return new TPath(_name);
         }
 
+        public IEnumerable<Test> AllTests
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         #endregion
 
         public Section CreateExample()

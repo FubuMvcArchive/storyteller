@@ -40,39 +40,6 @@ namespace StoryTeller.Testing.UserInterface.Exploring
         }
 
         [Test]
-        public void double_clicking_fires_the_OnSelection_action_on_the_top()
-        {
-            TreeNode nodeThatWasCalled = null;
-
-            var parent = new TreeNode(new Test("name"));
-            parent.Items.Add(node);
-
-            var top = new TreeNode(new Hierarchy("project"));
-            top.Items.Add(parent);
-            top.OnSelection = n => nodeThatWasCalled = n.Top();
-
-            ControlDriver.FireEvent(node, "MouseDoubleClick");
-
-            nodeThatWasCalled.ShouldBeTheSameAs(top);
-        }
-
-        [Test]
-        public void ctrl_left_clicking_the_node_fires_the_on_run_node_gesture()
-        {
-            TreeNode nodeThatWasCalled = null;
-            var parent = new TreeNode(new Test("name"));
-            parent.Items.Add(node);
-
-            var top = new TreeNode(new Hierarchy("project"));
-            top.Items.Add(parent);
-            top.OnRunNodeGesture = n => nodeThatWasCalled = n.Top();
-            
-            ControlDriver.ExecuteMouseGestureCommand(node, new MouseGesture(MouseAction.LeftClick, ModifierKeys.Control));
-            nodeThatWasCalled.ShouldBeTheSameAs(top);
-            
-        }
-
-        [Test]
         public void find_immediate_treenode_parent_as_top()
         {
             var parent = new TreeNode(new Test("name"));

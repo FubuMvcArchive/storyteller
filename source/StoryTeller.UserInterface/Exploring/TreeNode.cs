@@ -6,8 +6,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
+using StoryTeller.Execution;
 using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Commands;
+using StoryTeller.UserInterface.Running;
 
 namespace StoryTeller.UserInterface.Exploring
 {
@@ -19,23 +21,17 @@ namespace StoryTeller.UserInterface.Exploring
         private Icon _icon;
         private Image _image;
         private Label _label;
-        private Action<TreeNode> _onSelection = node => { };
-        private Action<TreeNode> _onRunNodeGesture = node => { };
-        private ICommand _runTest;
 
         public TreeNode(INamedItem item)
         {
             setupHeader(item);
 
             _subject = item;
-            _runTest = new ActionCommand(runTest);
             ContextMenu = new ContextMenu();
             ContextMenuOpening += TreeNode_ContextMenuOpening;
 
-            MouseDoubleClick += (s, args) => Top().OnSelection(this);
-            
-            //TODO: Yuck.  Need to find a better way to do this.
-            InputBindings.Add(new InputBinding(_runTest, new MouseGesture(MouseAction.LeftClick, ModifierKeys.Control)));
+            this.Bind(MouseAction.LeftDoubleClick).ToMessage(() => new OpenItemMessage(item));
+            this.BindControlAnd(MouseAction.LeftClick).ToMessage(() => new ExecuteTestMessage(item.AllTests));
         }
 
         public string Text { get { return (string) _label.Content; } }
@@ -51,14 +47,6 @@ namespace StoryTeller.UserInterface.Exploring
                 updateParentIcon();
             }
         }
-
-        private void runTest()
-        {
-            Top().OnRunNodeGesture(this);
-        }
-
-        public Action<TreeNode> OnSelection { get { return _onSelection; } set { _onSelection = value; } }
-        public Action<TreeNode> OnRunNodeGesture { get { return _onRunNodeGesture; } set { _onRunNodeGesture = value; } }
 
         public Func<TreeNode, IList<ActionMenuItem>> BuildItems { get { return _buildItems; } set { _buildItems = value; } }
 

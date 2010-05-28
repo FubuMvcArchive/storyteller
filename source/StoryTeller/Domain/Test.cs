@@ -101,6 +101,11 @@ namespace StoryTeller.Domain
             return new TPath(Name);
         }
 
+        public IEnumerable<Test> AllTests
+        {
+            get { yield return this; }
+        }
+
         #endregion
 
         #region ITestVisitable Members

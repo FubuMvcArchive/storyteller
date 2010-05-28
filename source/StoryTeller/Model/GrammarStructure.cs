@@ -51,6 +51,11 @@ namespace StoryTeller.Model
             return path;
         }
 
+        public IEnumerable<Test> AllTests
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         public void ModifyExampleTest(Test example)
         {
             Parent.ModifyExampleTest(example);
