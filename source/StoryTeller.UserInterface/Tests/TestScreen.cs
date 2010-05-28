@@ -27,6 +27,8 @@ namespace StoryTeller.UserInterface.Tests
             _closer = closer;
             _controller = controller;
             _events = events;
+
+            _stateManager.RegisterListener(_presenter);
         }
 
 
@@ -85,6 +87,10 @@ namespace StoryTeller.UserInterface.Tests
 
             screenObjects.Action("xUnit Harness").Bind(ModifierKeys.Control, Key.H).PublishEvent(
                 () => new TestHarnessFileRequested(_test)).Icon = Icon.Unknown;
+
+            screenObjects.Action("Undo").Bind(ModifierKeys.Control, Key.Z).To(_stateManager.Undo).Icon = Icon.Unknown;
+            screenObjects.Action("Redo").Bind(ModifierKeys.Control, Key.Y).To(_stateManager.Redo).Icon = Icon.Unknown;
+
 
             // TODO -- replace with the test outline
             //screenObjects.PlaceInExplorerPane(_actions, "Actions");

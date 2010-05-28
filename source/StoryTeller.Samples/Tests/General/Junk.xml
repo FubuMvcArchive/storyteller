@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Test name="Junk" lifecycle="Acceptance">
+  <CheckObject>
+    <IfTheAddressIs isStep="True" Address1="a" Address2="b" />
+  </CheckObject>
+</Test>

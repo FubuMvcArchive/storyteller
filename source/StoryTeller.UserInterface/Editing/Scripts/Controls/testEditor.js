@@ -1,11 +1,10 @@
-ST.testEditor = function(editor, test) {
+ST.testEditor = function (editor, test) {
     editor.isLatched = true;
     editor.inner = $('.container', editor).get(0);
     editor.test = test;
 
-    editor.markDirty = function() {
+    editor.markDirty = function () {
         if (editor.isLatched) return true;
-
         editor.isLatched = true;
 
         editor.inner.update();
@@ -20,7 +19,7 @@ ST.testEditor = function(editor, test) {
     var metadata = $(editor.inner).metadata();
     $(editor.inner).sectionEditor(metadata, test);
 
-    editor.getStepNames = function() {
+    editor.getStepNames = function () {
         return editor.inner.getStepNames();
     }
 

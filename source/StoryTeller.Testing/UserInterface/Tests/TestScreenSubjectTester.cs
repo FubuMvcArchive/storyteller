@@ -49,8 +49,8 @@ namespace StoryTeller.Testing.UserInterface.Tests
             var testView = MockRepository.GenerateMock<ITestView>();
 
             var modes = new TestMode[] {new PreviewMode(null, null, null)};
-            var presenterThatDoesNotMatch = new TestScreen(null, null, otherTest, null, null, null, null);
-            var presenterThatShouldMatch = new TestScreen(null, null, theTest, null, null, null, null);
+            var presenterThatDoesNotMatch = new TestScreen(null, null, otherTest, new TestStateManager(new TestConverter(), otherTest), null, null, null);
+            var presenterThatShouldMatch = new TestScreen(null, null, theTest, new TestStateManager(new TestConverter(), theTest), null, null, null);
             var differentTypeOfPresenter = MockRepository.GenerateMock<IScreen>();
 
             subject.Matches(presenterThatDoesNotMatch).ShouldBeFalse();

@@ -423,7 +423,25 @@ namespace StoryTeller.Testing.UserInterface.Tests
         }
     }
 
+    [TestFixture]
+    public class when_responding_to_test_update_event : TestPresenterInteractionContext
+    {
+        private TestMode mode;
 
+        protected override void setUp()
+        {
+            mode = MockRepository.GenerateMock<TestMode>(Mode.Preview);
+            ClassUnderTest.SetMode(mode);
+
+            ClassUnderTest.Update(null);
+        }
+
+        [Test]
+        public void should_refresh_the_current_mode()
+        {
+            mode.AssertWasCalled(x => x.Refresh());
+        }
+    }
 
     public abstract class TestPresenterInteractionContext : InteractionContext<TestPresenter>
     {

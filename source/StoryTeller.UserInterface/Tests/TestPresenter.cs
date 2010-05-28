@@ -6,7 +6,7 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Tests
 {
-    public interface ITestPresenter
+    public interface ITestPresenter : ITestStateListener
     {
         IReadOnlyDictionary<Mode, ModeCommand> Modes { get; }
         void PerformShutdown();
@@ -147,6 +147,14 @@ namespace StoryTeller.UserInterface.Tests
             if (message.Test == _test)
             {
                 _currentMode.Mode.Refresh();
+            }
+        }
+
+        public void Update(object source)
+        {
+            if (!ReferenceEquals(source, CurrentMode))
+            {
+                CurrentMode.Refresh();
             }
         }
     }

@@ -51,9 +51,9 @@ namespace StoryTeller.Testing.UserInterface.Tests
         [Test]
         public void all_listeners_except_the_source_should_be_updated()
         {
-            listener1.AssertWasCalled(x => x.Update());
-            source.AssertWasNotCalled(x => x.Update());
-            listener3.AssertWasCalled(x => x.Update());
+            listener1.AssertWasCalled(x => x.Update(source));
+            source.AssertWasNotCalled(x => x.Update(source));
+            listener3.AssertWasCalled(x => x.Update(source));
         }
 
         [Test]
@@ -225,9 +225,9 @@ namespace StoryTeller.Testing.UserInterface.Tests
         [Test]
         public void should_alert_all_the_registered_listeners_to_update()
         {
-            listener1.AssertWasCalled(x => x.Update());
-            listener2.AssertWasCalled(x => x.Update());
-            listener3.AssertWasCalled(x => x.Update());
+            listener1.AssertWasCalled(x => x.Update(null));
+            listener2.AssertWasCalled(x => x.Update(null));
+            listener3.AssertWasCalled(x => x.Update(null));
         }
 
         [Test]
@@ -292,9 +292,9 @@ namespace StoryTeller.Testing.UserInterface.Tests
         [Test]
         public void all_listeners_except_the_source_should_be_updated()
         {
-            listener1.AssertWasCalled(x => x.Update());
-            source.AssertWasNotCalled(x => x.Update());
-            listener3.AssertWasCalled(x => x.Update());
+            listener1.AssertWasCalled(x => x.Update(source));
+            source.AssertWasNotCalled(x => x.Update(source));
+            listener3.AssertWasCalled(x => x.Update(source));
         }
 
         [Test]
@@ -369,9 +369,9 @@ namespace StoryTeller.Testing.UserInterface.Tests
         [Test]
         public void all_listeners_except_the_source_should_be_updated()
         {
-            listener1.AssertWasCalled(x => x.Update());
-            source.AssertWasNotCalled(x => x.Update());
-            listener3.AssertWasCalled(x => x.Update());
+            listener1.AssertWasCalled(x => x.Update(source));
+            source.AssertWasNotCalled(x => x.Update(source));
+            listener3.AssertWasCalled(x => x.Update(source));
         }
 
         [Test]

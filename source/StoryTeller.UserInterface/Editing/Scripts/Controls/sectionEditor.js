@@ -1,7 +1,7 @@
 // section -- holding div
 // metadata -- directives
 // step -- the step we're binding to
-ST.sectionEditor = function(section, metadata, step) {
+ST.sectionEditor = function (section, metadata, step) {
     section.step = step;
     section.fixture = metadata.fixture;
 
@@ -22,7 +22,7 @@ ST.sectionEditor = function(section, metadata, step) {
 
     section.stepChangeHandlers = [];
 
-    section.registerStepChangeHandler = function(func) {
+    section.registerStepChangeHandler = function (func) {
         section.stepChangeHandlers.push(func);
     }
 
@@ -30,7 +30,7 @@ ST.sectionEditor = function(section, metadata, step) {
     //    ST.applyValidation(section);
 
     section.isLatched = true;
-    section.stepsChanged = function() {
+    section.stepsChanged = function () {
         for (var i = 0; i < section.stepChangeHandlers.length; i++) {
             section.stepChangeHandlers[i](section);
         }
@@ -41,7 +41,7 @@ ST.sectionEditor = function(section, metadata, step) {
 
     // "key" may be a string denoting the grammar or a 
     // child Step object
-    section.addStep = function(key) {
+    section.addStep = function (key) {
         if (key == null || key == '') return;
 
         var step = new Step(key);
@@ -61,10 +61,10 @@ ST.sectionEditor = function(section, metadata, step) {
         section.isLatched = false;
     };
 
-    section.update = function() {
+    section.update = function () {
         section.leaf.children = [];
 
-        section.eachStep(function(x) {
+        section.eachStep(function (x) {
             section.leaf.children.push(x.update());
         });
 
@@ -82,6 +82,7 @@ ST.sectionEditor = function(section, metadata, step) {
     }
 
     section.stepsChanged();
+    section.isLatched = false;
     section.holder.show();
 }
 

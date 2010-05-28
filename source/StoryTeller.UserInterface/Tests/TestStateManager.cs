@@ -10,7 +10,7 @@ namespace StoryTeller.UserInterface.Tests
 {
     public interface ITestStateListener
     {
-        void Update();
+        void Update(object source);
     }
 
     public interface ITestStateManager
@@ -68,6 +68,8 @@ namespace StoryTeller.UserInterface.Tests
 
         private void undo()
         {
+            if (!_history.CanGoBack) return;
+
             _history.Revert();
             _converter.ApplyJsonChanges(_test, _history.Current);
             enableUndoRedo();
@@ -76,6 +78,8 @@ namespace StoryTeller.UserInterface.Tests
 
         private void redo()
         {
+            if (!_history.CanGoForward) return;
+
             _history.Forward();
             _converter.ApplyJsonChanges(_test, _history.Current);
             enableUndoRedo();
@@ -151,7 +155,7 @@ namespace StoryTeller.UserInterface.Tests
         {
             _listeners
                 .Where(x => !ReferenceEquals(x, source))
-                .Each(x => x.Update());
+                .Each(x => x.Update(source));
         }
 
     }

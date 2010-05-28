@@ -38,6 +38,7 @@ namespace StoryTeller.UserInterface.Tests
         public void CaptureChanges(string json)
         {
             _testState.StoreJson(json, this);
+            _view.CaptureFocus();
         }
 
         public override bool IsEnabled(Test test)
