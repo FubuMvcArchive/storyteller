@@ -521,8 +521,8 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
     {
         protected Test theTest;
         protected FixtureLibrary theLibrary;
-        protected ITreeNodeBuilder nodeBuilder;
-        protected TestTreeBuilder treeBuilder;
+        protected IOutlineConfigurer nodeBuilder;
+        protected OutlineTreeBuilder treeBuilder;
 
         protected void assertCurrentNode(ITestPart part, Icon icon, string text)
         {
@@ -538,9 +538,9 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
             theTest = new Test("something");
             theLibrary = new FixtureLibrary();
 
-            nodeBuilder = MockRepository.GenerateMock<ITreeNodeBuilder>();
+            nodeBuilder = MockRepository.GenerateMock<IOutlineConfigurer>();
 
-            treeBuilder = new TestTreeBuilder(theTest, theLibrary, nodeBuilder);
+            treeBuilder = new OutlineTreeBuilder(theTest, theLibrary, nodeBuilder);
 
             theContextIs();
         }

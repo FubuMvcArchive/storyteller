@@ -8,41 +8,37 @@ using StoryTeller.Model;
 
 namespace StoryTeller.UserInterface.Tests.Outline
 {
-
-
-    
-
-
-    public interface ITreeNodeBuilder
+    public interface IOutlineTreeService
     {
-        // Dunno how this is going to work just yet
-        // Column selector
-        void ConfigureTableColumnSelector(OutlineNode node, Table table, IStep step);
-
-        // Remove, MoveUp, MoveDown
-        void ConfigureRearrangeCommands(OutlineNode node, IPartHolder holder, ITestPart part);
-        
-        // ALT-INS opens the add step / comment dialog -- just let it stay open until closed
-        void ConfigurePartAdders(OutlineNode node, FixtureGraph fixture, IPartHolder holder);
-        void WriteSentenceText(OutlineNode node, Sentence sentence, IStep step);
+        OutlineNode BuildNode(Test test, FixtureLibrary library, IOutlineController controller);
     }
 
+    public class OutlineTreeService : IOutlineTreeService
+    {
+        public OutlineNode BuildNode(Test test, FixtureLibrary library, IOutlineController controller)
+        {
+            var configurer = new OutlineConfigurer(controller);
+            var builder = new OutlineTreeBuilder(test, library, configurer);
 
-    public class TestTreeBuilder : ITestStream
+            return builder.Build();
+        }
+    }
+
+    public class OutlineTreeBuilder : ITestStream
     {
         private readonly FixtureLibrary _library;
         private readonly Stack<OutlineNode> _nodes = new Stack<OutlineNode>();
 
         private OutlineNode _top;
         private readonly Test _test;
-        private readonly ITreeNodeBuilder _builder;
+        private readonly IOutlineConfigurer _configurer;
 
-        public TestTreeBuilder(Test test, FixtureLibrary library, ITreeNodeBuilder builder)
+        public OutlineTreeBuilder(Test test, FixtureLibrary library, IOutlineConfigurer configurer)
         {
             var workspace = test.GetWorkspace();
             _library = library.Filter(workspace.CreateFixtureFilter().Matches);
             _test = test;
-            _builder = builder;
+            _configurer = configurer;
         }
 
         public OutlineNode CurrentNode
@@ -68,7 +64,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         {
             if (CurrentNode.Icon == Icon.Paragraph) return;
 
-            _builder.ConfigureRearrangeCommands(node, CurrentNode.Holder, node.Part);
+            _configurer.ConfigureRearrangeCommands(node, CurrentNode.Holder, node.Part);
         }
 
         private void withNewLeaf(ITestPart part, Icon icon, Action<OutlineNode> configure)
@@ -118,7 +114,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
                 node.ToolTip = fixture.FixtureClassName;
 
                 addRearrangeCommands(node);
-                _builder.ConfigurePartAdders(node, fixture, section);
+                _configurer.ConfigurePartAdders(node, fixture, section);
             });
         }
 
@@ -131,7 +127,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         {
             withNewLeaf(step, Icon.Sentence, node =>
             {
-                _builder.WriteSentenceText(node, sentence, step);
+                _configurer.WriteSentenceText(node, sentence, step);
                 addRearrangeCommands(node);
             });
         }
@@ -185,7 +181,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
                 addRearrangeCommands(node);
                 StepLeaf leaf = section.LeafFor(step);
                 node.Holder = leaf;
-                _builder.ConfigurePartAdders(node, section.Fixture, leaf);
+                _configurer.ConfigurePartAdders(node, section.Fixture, leaf);
             });
         }
 
