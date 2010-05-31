@@ -21,7 +21,7 @@ namespace StoryTeller.Domain
             _loader = new FixtureKeyLoader(fixtureName, this);
         }
 
-        public IList<ITestPart> AllParts
+        public IList<ITestPart> Parts
         {
             get { return _parts; }
         }
@@ -31,7 +31,6 @@ namespace StoryTeller.Domain
         public string FixtureName { get { return _loader.GetName(); } }
 
         public string Label { get; set; }
-        public ReadOnlyCollection<ITestPart> Parts { get { return new ReadOnlyCollection<ITestPart>(_parts); } }
 
 
         #region ITestPart Members

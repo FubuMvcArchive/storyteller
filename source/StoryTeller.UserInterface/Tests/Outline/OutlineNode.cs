@@ -1,37 +1,55 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using StoryTeller.Domain;
-using StoryTeller.Model;
 using Label=System.Windows.Controls.Label;
 
 namespace StoryTeller.UserInterface.Tests.Outline
 {
-    public abstract class OutlineNode : TreeViewItem
+    public class OutlineNode : TreeViewItem
     {
         private Icon _icon;
         private Image _image;
 
-        protected OutlineNode()
+        public OutlineNode(ITestPart part, Icon icon)
         {
+            Part = part;
             IsExpanded = true;
+            Holder = part as IPartHolder;
 
             Header = new StackPanel().Horizontal().Configure(x =>
             {
                 _image = x.Add<Image>();
             });
+
+            Icon = icon;
         }
 
-        public ITestPart TestPart { get; set; }
-        public GrammarStructure Grammar { get; set; }
+        public OutlineNode ParentNode
+        {
+            get
+            {
+                return Parent as OutlineNode;
+            }
+        }
 
-        protected void addText(string text)
+        public ITestPart Part { get; set; }
+
+        public string HeaderText()
+        {
+            return Header.As<StackPanel>().Children.OfType<Label>()
+                .Aggregate(string.Empty, (current, label) => current + label.Content);
+        }
+
+        public void AddText(string text)
         {
             var label = Header.As<StackPanel>().Add<Label>();
             label.Content = text;
         }
 
-        protected void addItalicizedText(string text)
+        public void AddItalicizedText(string text)
         {
             var label = Header.As<StackPanel>().Add<Label>();
             label.Content = text;
@@ -64,16 +82,6 @@ namespace StoryTeller.UserInterface.Tests.Outline
             }
         }
 
-
-        //protected T findDescendent<T>(Predicate<T> filter) where T : class
-        //{
-        //    return Descendents.First(filter);
-        //}
-
-        private void OutlineNode_Selected(object sender, RoutedEventArgs e)
-        {
-            //Select();
-            //e.Handled = true;
-        }
+        public IPartHolder Holder { get; set; }
     }
 }

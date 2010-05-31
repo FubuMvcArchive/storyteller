@@ -34,12 +34,13 @@ namespace StoryTeller.Testing.Model
 
         private readonly Section GoodSection = new Section("good section");
         private ITestVisitor testVisitor;
+        private Section lastSection;
 
         private string theParserShouldBeLatchedByMissingFixture()
         {
             string fixtureName = "FixtureThatDoesNotExist";
-            var section = new Section(fixtureName);
-            parser.CallOn<ITestVisitor>(x => x.StartSection(section));
+            lastSection = new Section(fixtureName);
+            parser.CallOn<ITestVisitor>(x => x.StartSection(lastSection));
             return fixtureName;
         }
 
@@ -101,9 +102,10 @@ namespace StoryTeller.Testing.Model
         {
             testVisitor.StartSection(GoodSection);
             string missingGrammarKey = "GrammarThatDoesNotExist";
-            testVisitor.RunStep(new Step(missingGrammarKey));
+            var step = new Step(missingGrammarKey);
+            testVisitor.RunStep(step);
 
-            stream.AssertWasCalled(x => x.InvalidGrammar(missingGrammarKey));
+            stream.AssertWasCalled(x => x.InvalidGrammar(missingGrammarKey, step));
         }
 
         [Test]
@@ -191,7 +193,7 @@ namespace StoryTeller.Testing.Model
         {
             string fixtureName = theParserShouldBeLatchedByMissingFixture();
 
-            stream.AssertWasCalled(x => x.InvalidSection(fixtureName));
+            stream.AssertWasCalled(x => x.InvalidSection(lastSection));
             stream.AssertWasNotCalled(x => x.StartSection(null, null), x => x.IgnoreArguments());
         }
 

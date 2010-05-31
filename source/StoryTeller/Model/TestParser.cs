@@ -6,11 +6,11 @@ namespace StoryTeller.Model
     public interface ITestStream
     {
         void Comment(Comment comment);
-        void InvalidSection(string fixtureName);
+        void InvalidSection(Section section);
         void StartSection(Section section, FixtureGraph fixture);
         void EndSection(Section section);
         void Sentence(Sentence sentence, IStep step);
-        void InvalidGrammar(string grammarKey);
+        void InvalidGrammar(string grammarKey, IStep step);
         void Table(Table table, IStep step);
         void SetVerification(SetVerification verification, IStep step);
         void StartParagraph(Paragraph paragraph, IStep step);
@@ -105,7 +105,7 @@ namespace StoryTeller.Model
             }
             else
             {
-                _stream.InvalidGrammar(step.GrammarKey);
+                _stream.InvalidGrammar(step.GrammarKey, step);
             }
         }
 
@@ -128,7 +128,7 @@ namespace StoryTeller.Model
             }
             else
             {
-                _stream.InvalidSection(section.FixtureName);
+                _stream.InvalidSection(section);
                 _latchedSection = section;
             }
         }

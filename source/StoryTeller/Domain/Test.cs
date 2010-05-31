@@ -11,7 +11,7 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.Domain
 {
-    public class Test : INamedItem, ITestPart
+    public class Test : INamedItem, ITestPart, IPartHolder
     {
         protected readonly ITestPartCollection _parts;
         private string _fileName;
@@ -59,23 +59,9 @@ namespace StoryTeller.Domain
         }
 
 
-        public ReadOnlyCollection<ITestPart> Parts { get { return new ReadOnlyCollection<ITestPart>(_parts.ToList()); } }
-        public IEnumerable<ITestPart> AllParts { get { return new List<ITestPart>(allParts); } }
-
-        private IEnumerable<ITestPart> allParts
+        public IList<ITestPart> Parts
         {
-            get
-            {
-                foreach (ITestPart part in _parts)
-                {
-                    yield return part;
-
-                    foreach (ITestPart child in part.Children)
-                    {
-                        yield return child;
-                    }
-                }
-            }
+            get { return _parts.GetList(); }
         }
 
         #region INamedItem Members

@@ -120,7 +120,7 @@ namespace StoryTeller.Domain
             this.AllSteps().Each(x => x.Set(key, value));
         }
 
-        public IList<ITestPart> AllParts
+        public IList<ITestPart> Parts
         {
             get { return _parts; }
         }

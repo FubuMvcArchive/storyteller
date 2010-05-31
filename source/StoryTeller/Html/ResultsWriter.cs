@@ -34,9 +34,9 @@ namespace StoryTeller.Html
             _document.Add(new CommentTag(comment));
         }
 
-        void ITestStream.InvalidSection(string fixtureName)
+        void ITestStream.InvalidSection(Section section)
         {
-            _document.Add(new InvalidFixtureTag(fixtureName));
+            _document.Add(new InvalidFixtureTag(section.FixtureName));
         }
 
         void ITestStream.StartSection(Section section, FixtureGraph fixture)
@@ -61,7 +61,7 @@ namespace StoryTeller.Html
             _document.Add(tag);
         }
 
-        void ITestStream.InvalidGrammar(string grammarKey)
+        void ITestStream.InvalidGrammar(string grammarKey, IStep step)
         {
             var tag = new InvalidGrammarTag(grammarKey);
             _document.Add(tag);

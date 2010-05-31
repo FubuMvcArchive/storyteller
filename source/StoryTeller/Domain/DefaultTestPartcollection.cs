@@ -47,6 +47,11 @@ namespace StoryTeller.Domain
             return _parts.Find(func);
         }
 
+        public IList<ITestPart> GetList()
+        {
+            return _parts;
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();

@@ -160,6 +160,11 @@ namespace StoryTeller.Workspace
         {
             return inner.Find(func);
         }
+
+        public IList<ITestPart> GetList()
+        {
+            return inner.GetList();
+        }
     }
 
 

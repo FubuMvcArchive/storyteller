@@ -10,5 +10,6 @@ namespace StoryTeller.Domain
         void Clear();
         void AddRange(IEnumerable<ITestPart> parts);
         ITestPart Find(Predicate<ITestPart> func);
+        IList<ITestPart> GetList();
     }
 }

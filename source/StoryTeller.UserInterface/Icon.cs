@@ -15,6 +15,7 @@ namespace StoryTeller.UserInterface
         public static readonly Icon DownArrow = new Icon("down.png", 6);
         public static readonly Icon Expand = new Icon("statusUnknown.png", 6);
         public static readonly Icon Failed = new Icon("statusFailed.png", 4);
+        public static readonly Icon Invalid = new Icon("statusFailed.png", 4);
         public static readonly Icon Minus = new Icon("minus.png", 6);
         public static readonly Icon Pending = new Icon("pending.gif", 3);
         public static readonly Icon Plus = new Icon("plus.png", 6);
@@ -28,6 +29,13 @@ namespace StoryTeller.UserInterface
         public static readonly Icon UpArrow = new Icon("up.png", 6);
         public static readonly Icon Warning = new Icon("statusIgnored.png", 6);
 
+        public static readonly Icon Sentence = new Icon("statusUnknown.png", 6);
+        public static readonly Icon Table = new Icon("statusUnknown.png", 6);
+        public static readonly Icon SetVerification = new Icon("statusUnknown.png", 6);
+        public static readonly Icon Section = new Icon("statusUnknown.png", 6);
+        public static readonly Icon Test = new Icon("statusUnknown.png", 6);
+        public static readonly Icon Paragraph = new Icon("statusUnknown.png", 6);
+        public static readonly Icon EmbeddedSection = new Icon("statusUnknown.png", 6);
 
         private readonly int _order;
         private readonly string _path;

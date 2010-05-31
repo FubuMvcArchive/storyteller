@@ -31,7 +31,7 @@ namespace StoryTeller.Testing.Workspace
         [Test]
         public void can_load_the_parts_smoke_test()
         {
-            test.AllParts.Any().ShouldBeTrue();
+            test.Parts.Any().ShouldBeTrue();
         }
     }
 }

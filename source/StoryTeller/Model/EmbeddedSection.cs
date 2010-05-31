@@ -15,13 +15,13 @@ namespace StoryTeller.Model
         {
         }
 
-        public EmbeddedSection(FixtureGraph fixture, string label, string childStepName)
+        public EmbeddedSection(FixtureGraph fixture, string label, string leafName)
         {
             Name = label;
             _fixture = fixture;
             _label = label;
             if (_label.IsEmpty()) _label = fixture.Name;
-            _leafName = childStepName;
+            _leafName = leafName;
         }
 
         public string LeafName { get { return _leafName; } set { _leafName = value; } }

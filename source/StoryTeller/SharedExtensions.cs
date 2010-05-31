@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Persistence;
@@ -9,6 +10,24 @@ namespace StoryTeller
 {
     public static class SharedExtensions
     {
+        /// <summary>
+        /// Returns the string unchanged if it is no longer than <paramref name="maxLength"/>.
+        /// If the string is longer, the excess is trimmed off, and <paramref name="replacmentForExcess"/> is appended to the end.
+        /// </summary>
+        /// <remarks>The returned string will be longer than <paramref name="maxLength"/> if <paramref name="replacmentForExcess"/> is not an empty string.</remarks>
+        /// <param name="baseString">The string to work with</param>
+        /// <param name="maxLength">The maximum number of characters from <paramref name="baseString"/> that will be returned.</param>
+        /// <param name="replacmentForExcess">The string that will be appended in place of any trimmed characters</param>
+        [Obsolete("this should be in FubuCore")]
+        public static string TrimToLength(this string baseString, int maxLength, string replacmentForExcess)
+        {
+            if (baseString.IsEmpty()) return string.Empty;
+
+            if (baseString.Length <= maxLength) return baseString;
+
+            return baseString.Substring(0, maxLength - replacmentForExcess.Length) + replacmentForExcess;
+        }
+
         public static IList<IStep> AllSteps(this IEnumerable<ITestPart> parts)
         {
             return parts.Where(x => x is IStep).Select(x => (IStep) x).ToList();
