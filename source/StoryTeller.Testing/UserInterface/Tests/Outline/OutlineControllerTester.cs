@@ -166,7 +166,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void should_redraw_the_tree()
         {
-            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, theSection));
+            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, theTest));
         }
     }
 
