@@ -44,6 +44,22 @@ namespace StoryTeller.Domain
             holder.Parts.RemoveAll(filter);
         }
 
+        public static Section AddSection(this IPartHolder holder, string fixtureName)
+        {
+            var section = new Section(fixtureName);
+            holder.Add(section);
+
+            return section;
+        }
+
+        public static Comment AddComment(this IPartHolder holder)
+        {
+            var comment = new Comment();
+            holder.Add(comment);
+
+            return comment;
+        }
+
         public static void Add(this IPartHolder holder, ITestPart part)
         {
             holder.Parts.Add(part);

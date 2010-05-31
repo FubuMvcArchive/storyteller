@@ -78,7 +78,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
     public interface IOutlineController
     {
         void AddComment(IPartHolder holder);
-        void AddSection(string section);
+        void AddSection(string fixtureName);
         void AddStep(string grammarKey, IPartHolder holder);
         void Remove(ITestPart part, IPartHolder holder);
         void MoveUp(ITestPart part, IPartHolder holder);
@@ -87,13 +87,15 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
     public class OutlineController : ITestStateListener, IOutlineController
     {
+        private readonly ProjectContext _context;
         private readonly Test _test;
         private readonly IOutlineView _view;
         private readonly ITestStateManager _stateManager;
         private readonly IOutlineTreeService _treeService;
 
-        public OutlineController(Test test, IOutlineView view, ITestStateManager stateManager, IOutlineTreeService treeService)
+        public OutlineController(ProjectContext context, Test test, IOutlineView view, ITestStateManager stateManager, IOutlineTreeService treeService)
         {
+            _context = context;
             _test = test;
             _view = view;
             _stateManager = stateManager;
@@ -101,39 +103,51 @@ namespace StoryTeller.UserInterface.Tests.Outline
             stateManager.RegisterListener(this);
         }
 
-        public void AddComment(IPartHolder holder)
+        private void configure(IPartHolder holder, Action<IPartHolder> configure)
         {
-
+            configure(holder);
+            _stateManager.Version(this);
+            _treeService.RedrawNode(TopNode, holder);
         }
 
-        public void AddSection(string section)
+        public void AddComment(IPartHolder holder)
         {
+            configure(holder, h => h.AddComment());
+        }
 
+        public void AddSection(string fixtureName)
+        {
+            configure(_test, h => h.AddSection(fixtureName));
         }
 
         public void AddStep(string grammarKey, IPartHolder holder)
         {
-            
+            configure(holder, h => h.AddStep(grammarKey));
         }
 
         public void Remove(ITestPart part, IPartHolder holder)
         {
-            
+            configure(holder, h => h.Remove(part));
         }
 
         public void MoveUp(ITestPart part, IPartHolder holder)
         {
-            
+            configure(holder, h => h.MoveUp(part));
+            _treeService.SelectNodeFor(part);
         }
 
         public void MoveDown(ITestPart part, IPartHolder holder)
         {
-            
+            configure(holder, h => h.MoveDown(part));
+            _treeService.SelectNodeFor(part);
         }
 
         public void Update(object source)
         {
-
+            TopNode = _treeService.BuildNode(_test, this);
+            _view.ResetTree(TopNode);
         }
+
+        public OutlineNode TopNode { get; set; }
     }
 }
