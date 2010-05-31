@@ -7,7 +7,7 @@ using StoryTeller.Engine;
 
 namespace StoryTeller.Domain
 {
-    public class Section : ITestPart, IStepHolder
+    public class Section : ITestPart, IPartHolder
     {
         private readonly List<ITestPart> _parts = new List<ITestPart>();
         private FixtureLoader _loader;
@@ -21,6 +21,11 @@ namespace StoryTeller.Domain
             _loader = new FixtureKeyLoader(fixtureName, this);
         }
 
+        public IList<ITestPart> AllParts
+        {
+            get { return _parts; }
+        }
+
         public string Description { get; set; }
 
         public string FixtureName { get { return _loader.GetName(); } }
@@ -28,54 +33,6 @@ namespace StoryTeller.Domain
         public string Label { get; set; }
         public ReadOnlyCollection<ITestPart> Parts { get { return new ReadOnlyCollection<ITestPart>(_parts); } }
 
-        #region IStepHolder Members
-
-        public void Add(Comment comment)
-        {
-            _parts.Add(comment);
-        }
-
-        public void Remove(Comment comment)
-        {
-            _parts.Remove(comment);
-        }
-
-        public void MoveUp(Comment t)
-        {
-            _parts.MoveUp(t);
-        }
-
-        public void MoveDown(Comment t)
-        {
-            _parts.MoveDown(t);
-        }
-
-        public void Add(IStep step)
-        {
-            _parts.Add(step);
-        }
-
-        public void Remove(IStep subject)
-        {
-            _parts.Remove(subject);
-        }
-
-        public void MoveUp(IStep t)
-        {
-            _parts.MoveUp(t);
-        }
-
-        public void MoveDown(IStep t)
-        {
-            _parts.MoveDown(t);
-        }
-
-        public IList<IStep> AllSteps()
-        {
-            return _parts.AllSteps();
-        }
-
-        #endregion
 
         #region ITestPart Members
 
@@ -180,22 +137,11 @@ namespace StoryTeller.Domain
             return this;
         }
 
-        public void RemoveParts(Predicate<ITestPart> filter)
-        {
-            _parts.RemoveAll(filter);
-        }
+
 
         public override string ToString()
         {
             return string.Format("Section: {0}", GetName());
-        }
-
-        public Step AddStep(string grammarKey)
-        {
-            var step = new Step(grammarKey);
-            Add(step);
-
-            return step;
         }
 
         #region Nested type: FixtureKeyLoader

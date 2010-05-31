@@ -108,7 +108,7 @@
     <Compile Include="Engine\NulloSystem.cs" />
     <Compile Include="Engine\Sets\RowValueMatcher.cs" />
     <Compile Include="Engine\StepResults.cs" />
-    <Compile Include="Domain\IHolder.cs" />
+    <Compile Include="Domain\IPartHolder.cs" />
     <Compile Include="Domain\ITestPart.cs" />
     <Compile Include="Domain\ITestVisitor.cs" />
     <Compile Include="Engine\SetMatch.cs" />

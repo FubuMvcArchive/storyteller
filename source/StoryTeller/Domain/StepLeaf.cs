@@ -6,7 +6,7 @@ using StoryTeller.Engine;
 
 namespace StoryTeller.Domain
 {
-    public class StepLeaf : IStepHolder, IEnumerable<IStep>
+    public class StepLeaf : IEnumerable<IStep>, IPartHolder
     {
         private readonly List<ITestPart> _parts = new List<ITestPart>();
         private string _defaultChildStepName = "row";
@@ -21,32 +21,18 @@ namespace StoryTeller.Domain
 
         public IEnumerator<IStep> GetEnumerator()
         {
-            return AllSteps().GetEnumerator();
+            return this.AllSteps().GetEnumerator();
         }
 
         #endregion
 
         #region IStepHolder Members
 
-        public virtual void Add(IStep step)
-        {
-            _parts.Add(step);
-        }
-
-        public virtual void Remove(IStep subject)
-        {
-            _parts.Remove(subject);
-        }
-
         public void AcceptVisitor(ITestVisitor visitor)
         {
             _parts.ForEach(p => p.AcceptVisitor(visitor));
         }
 
-        public IList<IStep> AllSteps()
-        {
-            return _parts.AllSteps();
-        }
 
         #endregion
 
@@ -77,7 +63,7 @@ namespace StoryTeller.Domain
 
         public IEnumerable<IStep> StepsWhere(Func<IStep, bool> predicate)
         {
-            return AllSteps().Where(predicate);
+            return this.AllSteps().Where(predicate);
         }
 
         public StepLeaf WithStep(string atts)
@@ -94,7 +80,7 @@ namespace StoryTeller.Domain
 
         public virtual IStep CloneLastStep()
         {
-            IStep last = AllSteps().LastOrDefault();
+            IStep last = this.AllSteps().LastOrDefault();
             if (last == null) return null;
 
             return last.ShallowClone();
@@ -131,7 +117,12 @@ namespace StoryTeller.Domain
 
         public virtual void SetStepValue(string key, string value)
         {
-            AllSteps().Each(x => x.Set(key, value));
+            this.AllSteps().Each(x => x.Set(key, value));
+        }
+
+        public IList<ITestPart> AllParts
+        {
+            get { return _parts; }
         }
     }
 }

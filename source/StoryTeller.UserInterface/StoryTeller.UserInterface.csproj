@@ -196,6 +196,7 @@
     <Compile Include="Editing\HTML\TableTemplateTag.cs" />
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
+    <Compile Include="Editing\Tree\TestTreeBuilder.cs" />
     <Compile Include="Handlers\CodegenHandler.cs" />
     <Compile Include="Projects\IProjectExplorerView.cs" />
     <Compile Include="Projects\IProjectScreen.cs" />
@@ -599,9 +600,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Editing\Tree\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

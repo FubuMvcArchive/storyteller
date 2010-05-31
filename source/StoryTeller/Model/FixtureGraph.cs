@@ -115,7 +115,7 @@ namespace StoryTeller.Model
             return _structures.Where(x => Policies.CanChooseGrammar(x.Name, new IStep[0])).OrderBy(x => x.Label);
         }
 
-        public IEnumerable<GrammarStructure> PossibleGrammarsFor(IStepHolder holder)
+        public IEnumerable<GrammarStructure> PossibleGrammarsFor(IPartHolder holder)
         {
             IList<IStep> preceeding = holder.AllSteps();
             return _structures.Where(x => Policies.CanChooseGrammar(x.Name, preceeding)).OrderBy(x => x.Label);
