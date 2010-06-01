@@ -107,6 +107,11 @@ namespace StoryTeller.Execution
             _engine.Dispose();
             _engine = null;
         }
+
+        public FixtureLibrary GetLibary()
+        {
+            return _engine.Library;
+        }
     }
 
     
@@ -142,6 +147,7 @@ namespace StoryTeller.Execution
         {
             get
             {
+                _latch.WaitOne(30000);
                 return _domain.Library;
             }
         }

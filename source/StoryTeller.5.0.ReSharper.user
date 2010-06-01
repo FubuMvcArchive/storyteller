@@ -9,11 +9,6 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Domain/f:IPartHolder.cs" caret="561" fromTop="21" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Domain/f:ITestVisitor.cs" caret="54" fromTop="1" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Domain/f:INamedItem.cs" caret="160" fromTop="5" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/f:SharedExtensions.cs" caret="1400" fromTop="26" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Icon.cs" caret="841" fromTop="16" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:ResultsWriter.cs" caret="676" fromTop="23" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:PreviewWriter.cs" caret="1060" fromTop="37" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Workspace/f:LazyTestXmlReaderTester.cs" caret="851" fromTop="27" />
@@ -26,7 +21,6 @@
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:LibraryBuilder.cs" caret="1401" fromTop="27" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Domain/f:StepLeaf.cs" caret="0" fromTop="0" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:TestParser.cs" caret="3783" fromTop="19" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineNode.cs" caret="844" fromTop="17" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Model/f:EmbeddedSection.cs" caret="442" fromTop="16" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Model/f:TestParserTester.cs" caret="6467" fromTop="27" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:TestTreeBuilderTester.cs" caret="1012" fromTop="36" />
@@ -39,10 +33,14 @@
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineView.cs" caret="163" fromTop="5" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:IOutlineConfigurer.cs" caret="4297" fromTop="26" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:OutlineControllerTester.cs" caret="1655" fromTop="29" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineNode.cs" caret="1888" fromTop="13" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:OutlineTreeServiceIntegratedTester.cs" caret="1565" fromTop="44" />
+      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:FailureFixture.cs" caret="360" fromTop="16" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:TreeViewItemExtensions.cs" caret="2269" fromTop="22" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestStateManager.cs" caret="4091" fromTop="21" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:Program.cs" caret="525" fromTop="18" />
     </RecentFiles>
     <RecentEdits>
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:IOutlineConfigurer.cs" caret="1176" fromTop="12" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeBuilder.cs" caret="1321" fromTop="32" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:IOutlineConfigurer.cs" caret="3606" fromTop="14" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:IOutlineConfigurer.cs" caret="1304" fromTop="23" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:IOutlineConfigurer.cs" caret="1431" fromTop="28" />
@@ -71,6 +69,8 @@
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:IOutlineConfigurer.cs" caret="4297" fromTop="26" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:OutlineControllerTester.cs" caret="1384" fromTop="16" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:OutlineControllerTester.cs" caret="1919" fromTop="36" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineNode.cs" caret="1888" fromTop="13" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:OutlineTreeServiceIntegratedTester.cs" caret="1565" fromTop="44" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -173,7 +173,7 @@
       <Item value="library" priority="16" />
       <Item value="f" priority="11" />
       <Item value="Obsolete" priority="4" />
-      <Item value="IEnumerable" priority="3" />
+      <Item value="IEnumerable" priority="4" />
       <Item value="false" priority="9" />
       <Item value="Name" priority="17" />
       <Item value="ExceptionTag" priority="1" />
@@ -758,7 +758,7 @@
       <Item value="Icon" priority="0" />
       <Item value="replacmentForExcess" priority="0" />
       <Item value="comment" priority="6" />
-      <Item value="OutlineNode`0" priority="15" />
+      <Item value="OutlineNode`0" priority="16" />
       <Item value="Current" priority="1" />
       <Item value="pushNode`0" priority="2" />
       <Item value="node" priority="23" />
@@ -808,6 +808,7 @@
       <Item value="Items" priority="1" />
       <Item value="_treeService" priority="0" />
       <Item value="ITestStateManager" priority="0" />
+      <Item value="nodeFor`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.EmbeddedSectionGrammar`1">
       <Item value="LeafName`0" priority="3" />
@@ -867,6 +868,7 @@
       <Item value="Select`2" priority="3" />
       <Item value="Join`4" priority="0" />
       <Item value="Cast`1" priority="0" />
+      <Item value="ShouldHaveCount`1" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.Cell">
       <Item value="Key" priority="2" />
@@ -1675,6 +1677,7 @@
       <Item value="Holder" priority="1" />
       <Item value="AddItalicizedText`0" priority="1" />
       <Item value="IsSelected" priority="0" />
+      <Item value="Descendents" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.UserInterface.Tests.Outline.TestTreeBuilder">
       <Item value="Current" priority="7" />

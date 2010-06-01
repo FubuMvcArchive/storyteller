@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
+using StoryTeller.Execution;
 using StoryTeller.Model;
 using StoryTeller.UserInterface.Projects;
 using StoryTeller.Workspace;
@@ -160,6 +161,16 @@ namespace StoryTeller.Testing
             }
 
             return returnValue;
+        }
+
+        public static ProjectTestRunner MathProjectRunner()
+        {
+            return new ProjectTestRunner(THE_MATH_FILE);
+        }
+
+        public static ProjectTestRunner GrammarsProjectRunner()
+        {
+            return new ProjectTestRunner(THE_GRAMMAR_FILE);
         }
     }
 }

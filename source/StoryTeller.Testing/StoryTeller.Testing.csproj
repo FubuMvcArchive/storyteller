@@ -289,6 +289,7 @@
     <Compile Include="UserInterface\Editing\HTML\TextboxBuilderTester.cs" />
     <Compile Include="UserInterface\Tests\Outline\OutlineConfigurerTester.cs" />
     <Compile Include="UserInterface\Tests\Outline\OutlineControllerTester.cs" />
+    <Compile Include="UserInterface\Tests\Outline\OutlineTreeServiceIntegratedTester.cs" />
     <Compile Include="UserInterface\Tests\Outline\TestTreeBuilderTester.cs" />
     <Compile Include="UserInterface\Editing\VersionHistoryTester.cs" />
     <Compile Include="UserInterface\Eventing\EventAggregatorTester.cs" />

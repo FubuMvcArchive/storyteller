@@ -49,6 +49,11 @@ namespace StoryTeller.UserInterface.Tests.Outline
             label.Content = text;
         }
 
+        public string Description()
+        {
+            return string.Format("{0}, Part: {1}, Holder: {2}", base.ToString(), Part, Holder);
+        }
+
         public void AddItalicizedText(string text)
         {
             var label = Header.As<StackPanel>().Add<Label>();
@@ -66,6 +71,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
             }
         }
 
+
         public IEnumerable<OutlineNode> Descendents
         {
             get
@@ -80,6 +86,13 @@ namespace StoryTeller.UserInterface.Tests.Outline
                     }
                 }
             }
+        }
+
+        public OutlineNode Find(Func<OutlineNode, bool> filter)
+        {
+            if (filter(this)) return this;
+
+            return Descendents.FirstOrDefault(filter);
         }
 
         public IPartHolder Holder { get; set; }

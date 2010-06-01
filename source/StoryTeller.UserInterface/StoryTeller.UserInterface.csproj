@@ -197,6 +197,10 @@
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
     <Compile Include="Tests\Outline\IOutlineConfigurer.cs" />
+    <Compile Include="Tests\Outline\IOutlineController.cs" />
+    <Compile Include="Tests\Outline\IOutlineTreeService.cs" />
+    <Compile Include="Tests\Outline\OutlineConfigurer.cs" />
+    <Compile Include="Tests\Outline\OutlineController.cs" />
     <Compile Include="Tests\Outline\OutlineTreeBuilder.cs" />
     <Compile Include="Handlers\CodegenHandler.cs" />
     <Compile Include="Projects\IProjectExplorerView.cs" />
@@ -207,6 +211,7 @@
     <Compile Include="Screens\IScreenFinder.cs" />
     <Compile Include="Screens\ScreenFinder.cs" />
     <Compile Include="Screens\StoryTellerTabItem.cs" />
+    <Compile Include="Tests\Outline\OutlineTreeService.cs" />
     <Compile Include="TreeViewItemExtensions.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
     <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />
