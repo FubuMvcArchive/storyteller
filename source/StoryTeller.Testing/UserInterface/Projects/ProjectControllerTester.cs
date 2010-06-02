@@ -273,7 +273,6 @@ namespace StoryTeller.Testing.UserInterface.Projects
     [TestFixture]
     public class when_reloading_tests : InteractionContext<ProjectController>
     {
-        private StubShellPresenter shell;
         private Hierarchy hierarchy;
         private IProject project;
         private const string theFileName = "some file name";
@@ -281,9 +280,6 @@ namespace StoryTeller.Testing.UserInterface.Projects
 
         protected override void beforeEach()
         {
-            shell = new StubShellPresenter();
-            Services.Inject<IScreenConductor>(shell);
-
             hierarchy = new Hierarchy("something");
             project = MockRepository.GenerateMock<IProject>();
             project.Expect(x => x.LoadTests()).Return(hierarchy);
@@ -293,9 +289,15 @@ namespace StoryTeller.Testing.UserInterface.Projects
         }
 
         [Test]
-        public void loads_the_hierarchy_into_the_shell_presenter()
+        public void should_send_the_hierarchy_message()
         {
-            shell.Hierarchy.ShouldBeTheSameAs(hierarchy);
+            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(hierarchy));
+        }
+
+        [Test]
+        public void should_close_all_open_screens()
+        {
+            MockFor<IScreenConductor>().AssertWasCalled(x => x.CloseAll());
         }
     }
 
@@ -375,9 +377,9 @@ namespace StoryTeller.Testing.UserInterface.Projects
         }
 
         [Test]
-        public void should_not_activate_the_project()
+        public void should_not_load_a_hierarchy()
         {
-            MockFor<IScreenConductor>().AssertWasNotCalled(x=> x.LoadHierarchy(null), x=> x.IgnoreArguments());
+            MockFor<IEventAggregator>().AssertWasNotCalled(x => x.SendMessage(new Hierarchy("soemthing")), x => x.IgnoreArguments());
         }
 
         [Test]
@@ -406,8 +408,7 @@ namespace StoryTeller.Testing.UserInterface.Projects
 
         protected override void beforeEach()
         {
-            _shell = new StubShellPresenter();
-            Services.Inject<IScreenConductor>(_shell);
+
             _tokens = new ProjectToken[0];
             _hierarchy = new Hierarchy("something");
             _project = MockRepository.GenerateMock<IProject>();
@@ -441,7 +442,13 @@ namespace StoryTeller.Testing.UserInterface.Projects
         [Test]
         public void loads_the_hierarchy_into_the_shell_presenter()
         {
-            _shell.Hierarchy.ShouldBeTheSameAs(_hierarchy);
+            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(_hierarchy));
+        }
+
+        [Test]
+        public void closes_all_open_screens()
+        {
+            MockFor<IScreenConductor>().AssertWasCalled(x => x.CloseAll());
         }
 
         [Test]
@@ -729,11 +736,6 @@ namespace StoryTeller.Testing.UserInterface.Projects
         public Hierarchy Hierarchy { get; set; }
 
         #region IScreenConductor Members
-
-        public void LoadHierarchy(Func<Hierarchy> func)
-        {
-            Hierarchy = func();
-        }
 
         public void OpenScreen(IScreenLocator _locator)
         {

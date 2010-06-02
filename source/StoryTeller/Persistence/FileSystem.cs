@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -93,6 +94,5 @@ namespace StoryTeller.Persistence
         {
             return File.ReadAllText(filename);
         }
-
     }
 }

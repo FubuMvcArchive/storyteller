@@ -15,5 +15,6 @@ namespace StoryTeller.Engine
         public double ExecutionTime { get; set; }
         public string ExceptionText { get; set; }
         public bool WasCancelled { get; set; }
+        public string Locator { get; set; }
     }
 }

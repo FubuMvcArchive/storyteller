@@ -55,7 +55,14 @@ namespace StoryTeller.UserInterface.Projects
 
         public void Handle(ReloadTestsMessage message)
         {
-            _conductor.LoadHierarchy(() => { return _project.LoadTests(); });
+            reloadTests();
+        }
+
+        private void reloadTests()
+        {
+            _conductor.CloseAll();
+            Hierarchy hierarchy = _project.LoadTests();
+            _events.SendMessage(hierarchy);
         }
 
 
@@ -223,18 +230,16 @@ namespace StoryTeller.UserInterface.Projects
         {
             if (project != null)
             {
-                _conductor.LoadHierarchy(() =>
-                {
-                    _events.SendMessage(new ProjectLoaded(project));
-
-                    return project.LoadTests();
-                });
+                _events.SendMessage(new ProjectLoaded(project));
+                _project = project;
+                reloadTests();
             }
         }
 
         private void reloadProjectList()
         {
             _view.ShowProjects(_history.Projects);
+            
         }
 
         public void Handle(WorkflowFiltersChanged message)

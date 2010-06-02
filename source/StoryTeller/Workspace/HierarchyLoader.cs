@@ -172,7 +172,6 @@ namespace StoryTeller.Workspace
     {
         private readonly Hierarchy _hierarchy;
         private readonly IProject _project;
-        private readonly ITestReader _reader = new TestReader();
         private readonly FileSystem _system = new FileSystem();
         private readonly string _topFolder;
 

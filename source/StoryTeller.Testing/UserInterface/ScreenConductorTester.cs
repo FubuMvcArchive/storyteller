@@ -216,58 +216,7 @@ namespace StoryTeller.Testing.UserInterface
     }
 
 
-    [TestFixture]
-    public class when_loading_a_new_hierarchy
-    {
-        #region Setup/Teardown
 
-        [SetUp]
-        public void SetUp()
-        {
-            mocks = new MockRepository();
-            shell = mocks.StrictMock<IApplicationShell>();
-            source = mocks.StrictMock<IHierarchySource>();
-            events = mocks.StrictMock<IEventAggregator>();
-            screens = mocks.StrictMock<IScreenCollection>();
-
-            _conductor = new ScreenConductor(events, screens, null, null, null, null);
-        }
-
-        #endregion
-
-        private MockRepository mocks;
-        private IApplicationShell shell;
-        private IHierarchySource source;
-        private IEventAggregator events;
-        private IScreenCollection screens;
-        private ScreenConductor _conductor;
-
-        [Test]
-        public void withing_shell_lock_must_clear_the_screens_and_refill_the_test_explorer()
-        {
-            var hierarchy = new Hierarchy("something");
-
-            using (mocks.Record())
-            {
-                using (mocks.Ordered())
-                {
-
-                    Expect.Call(source.Get()).Return(hierarchy);
-
-                    Expect.Call(screens.AllScreens).Return(new IScreen[0]);
-                    screens.ClearAll();
-
-                    events.SendMessage(hierarchy);
-
-                }
-            }
-
-            using (mocks.Playback())
-            {
-                _conductor.LoadHierarchy(() => source.Get());
-            }
-        }
-    }
 
     [TestFixture]
     public class when_opening_up_a_screen_and_there_are_no_open_screens : ScreenManagementContext

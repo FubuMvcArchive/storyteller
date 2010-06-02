@@ -6,9 +6,6 @@ namespace StoryTeller.UserInterface
 {
     public interface IScreenConductor : IStartable
     {
-        void LoadHierarchy(Func<Hierarchy> func);
-
-
         void OpenScreen(IScreenLocator _locator);
         void OpenScreen(INamedItem subject);
         void OpenScreen<T>() where T : IScreenLocator;

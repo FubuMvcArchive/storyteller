@@ -106,6 +106,7 @@
     <Compile Include="Engine\LibraryLifecycle.cs" />
     <Compile Include="Engine\NulloFixtureObserver.cs" />
     <Compile Include="Engine\NulloSystem.cs" />
+    <Compile Include="Workspace\ResultHistory.cs" />
     <Compile Include="Engine\Sets\RowValueMatcher.cs" />
     <Compile Include="Engine\StepResults.cs" />
     <Compile Include="Domain\IPartHolder.cs" />

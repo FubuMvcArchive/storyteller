@@ -138,18 +138,6 @@ namespace StoryTeller.UserInterface
 
         #region IScreenConductor Members
 
-        [Obsolete("This really shouldn't be here")]
-        public void LoadHierarchy(Func<Hierarchy> func)
-        {
-            Hierarchy hierarchy = func();
-
-            // Clear all tests
-            _screens.AllScreens.Each(s => _events.RemoveListener(s));
-            _screens.ClearAll();
-
-            _events.SendMessage(hierarchy);
-        }
-
         public virtual void OpenScreen(IScreenLocator locator)
         {
             // What if that screen is already open and active?
