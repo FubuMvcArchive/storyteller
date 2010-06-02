@@ -49,8 +49,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void gets_all_the_children()
         {
-            Assert.Fail("Do.");
-            nodeFor("Sentences/Facts").Descendents.ShouldHaveCount(4);
+            nodeFor("Sentences/Facts").Descendents.ShouldHaveCount(7);
             
         }
 
