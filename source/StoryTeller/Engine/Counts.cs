@@ -1,13 +1,18 @@
 using System;
+using System.Xml.Serialization;
 
 namespace StoryTeller.Engine
 {
     [Serializable]
     public class Counts
     {
+        [XmlAttribute]
         public int Rights { get; set; }
+        [XmlAttribute]
         public int Wrongs { get; set; }
+        [XmlAttribute]
         public int Exceptions { get; set; }
+        [XmlAttribute]
         public int SyntaxErrors { get; set; }
 
         public Counts()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -26,7 +27,10 @@ namespace StoryTeller.Workspace
 
         public void DeleteFolder(string folder)
         {
-            Directory.Delete(folder, true);
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true); 
+            }
         }
 
         public void DeleteFile(string filename)
@@ -122,6 +126,12 @@ namespace StoryTeller.Workspace
             {
                 return (T) serializer.Deserialize(stream);
             }
+        }
+
+        public void ClearFolder(string directory)
+        {
+            DeleteFolder(directory);
+            CreateDirectory(directory);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Xml.Serialization;
 
 namespace StoryTeller.Engine
 {
@@ -12,9 +13,12 @@ namespace StoryTeller.Engine
 
         public string Html { get; set; }
         public Counts Counts { get; set; }
-        public double ExecutionTime { get; set; }
+        [XmlAttribute] public double ExecutionTime { get; set; }
+        [XmlAttribute]
         public string ExceptionText { get; set; }
+        [XmlAttribute]
         public bool WasCancelled { get; set; }
+        [XmlAttribute]
         public string Locator { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using StoryTeller.Codegen;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
@@ -30,6 +31,10 @@ namespace StoryTeller.Workspace
         string[] SelectedWorkspaceNames { get; }
 
         CodegenOptions Options { get; }
+
+        [XmlIgnore]
+        string ProjectFolder { get; set; }
+
         string GetTargetFile();
     }
 

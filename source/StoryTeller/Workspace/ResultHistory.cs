@@ -20,42 +20,22 @@ namespace StoryTeller.Workspace
                 _results[test.GetPath().Locator] = value;
             }
         }
-    }
 
-    public interface IResultPersistor
-    {
-        void SaveResult(IProject project, Test test, TestResult result);
-        ResultHistory LoadResults(IProject project);
-        ResultHistory LoadResults(string directory);
-        void ClearResults(IProject project);
-        void SaveResultsToDirectory(ResultHistory theResults, string directory);
-    }
-
-    public class ResultPersistor : IResultPersistor
-    {
-        public void SaveResult(IProject project, Test test, TestResult result)
+        public TestResult this[string locator]
         {
-            throw new NotImplementedException();
+            get
+            {
+                return _results[locator];
+            }
+            set
+            {
+                _results[locator] = value;
+            }
         }
 
-        public ResultHistory LoadResults(IProject project)
+        public void Each(Action<string, TestResult> action)
         {
-            throw new NotImplementedException();
-        }
-
-        public ResultHistory LoadResults(string directory)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearResults(IProject project)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveResultsToDirectory(ResultHistory theResults, string directory)
-        {
-            throw new NotImplementedException();
+            _results.Each(action);
         }
     }
 }

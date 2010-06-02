@@ -106,6 +106,9 @@
     <Compile Include="Engine\LibraryLifecycle.cs" />
     <Compile Include="Engine\NulloFixtureObserver.cs" />
     <Compile Include="Engine\NulloSystem.cs" />
+    <Compile Include="Execution\OpenHtmlOption.cs" />
+    <Compile Include="Execution\ProjectTestRunner.cs" />
+    <Compile Include="Workspace\IResultPersistor.cs" />
     <Compile Include="Workspace\ResultHistory.cs" />
     <Compile Include="Engine\Sets\RowValueMatcher.cs" />
     <Compile Include="Engine\StepResults.cs" />
@@ -277,6 +280,7 @@
     <Compile Include="Persistence\TestReader.cs" />
     <Compile Include="Persistence\TestWriter.cs" />
     <Compile Include="Workspace\ForceBinaryRecycle.cs" />
+    <Compile Include="Workspace\ResultPersistor.cs" />
     <Compile Include="Workspace\WorkspaceFilter.cs" />
   </ItemGroup>
   <ItemGroup>
