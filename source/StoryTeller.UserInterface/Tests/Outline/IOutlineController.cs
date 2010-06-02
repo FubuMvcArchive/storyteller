@@ -10,5 +10,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         void Remove(ITestPart part, IPartHolder holder);
         void MoveUp(ITestPart part, IPartHolder holder);
         void MoveDown(ITestPart part, IPartHolder holder);
+        IOutlineView View { get; }
+        void Refresh();
     }
 }

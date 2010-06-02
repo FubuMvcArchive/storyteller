@@ -6,6 +6,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
     public class OutlineTreeService : IOutlineTreeService
     {
         private readonly ProjectContext _context;
+        private OutlineNode _topNode;
 
         public OutlineTreeService(ProjectContext context)
         {
@@ -17,7 +18,8 @@ namespace StoryTeller.UserInterface.Tests.Outline
             var configurer = new OutlineConfigurer(controller);
             var builder = new OutlineTreeBuilder(test, _context.Library, configurer);
 
-            return builder.Build();
+            _topNode = builder.Build();
+            return _topNode;
         }
 
         public void RedrawNode(OutlineNode topNode, IPartHolder partHolder)

@@ -19,6 +19,11 @@ namespace StoryTeller.UserInterface.Tests.Outline
             stateManager.RegisterListener(this);
         }
 
+        public IOutlineView View
+        {
+            get { return _view; }
+        }
+
         private void configure(IPartHolder holder, Action<IPartHolder> configure)
         {
             configure(holder);
@@ -56,6 +61,11 @@ namespace StoryTeller.UserInterface.Tests.Outline
         {
             configure(holder, h => h.MoveDown(part));
             _treeService.SelectNodeFor(part);
+        }
+
+        public void Refresh()
+        {
+            Update(null);
         }
 
         public void Update(object source)

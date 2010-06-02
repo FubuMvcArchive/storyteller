@@ -5,6 +5,7 @@ using StoryTeller.Domain;
 using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Handlers;
 using StoryTeller.UserInterface.Screens;
+using StoryTeller.UserInterface.Tests.Outline;
 
 namespace StoryTeller.UserInterface.Tests
 {
@@ -15,10 +16,10 @@ namespace StoryTeller.UserInterface.Tests
         private readonly ITestStateManager _stateManager;
         private readonly ITestScreenCloser _closer;
         private readonly IEditTestController _controller;
-        private readonly IEventAggregator _events;
+        private readonly IOutlineController _outline;
         private readonly ITestView _view;
 
-        public TestScreen(ITestPresenter presenter, ITestView view, Test test, ITestStateManager stateManager, ITestScreenCloser closer, IEditTestController controller, IEventAggregator events)
+        public TestScreen(ITestPresenter presenter, ITestView view, Test test, ITestStateManager stateManager, ITestScreenCloser closer, IEditTestController controller, IOutlineController outline)
         {
             _presenter = presenter;
             _view = view;
@@ -26,7 +27,7 @@ namespace StoryTeller.UserInterface.Tests
             _stateManager = stateManager;
             _closer = closer;
             _controller = controller;
-            _events = events;
+            _outline = outline;
 
             _stateManager.RegisterListener(_presenter);
         }
@@ -93,9 +94,10 @@ namespace StoryTeller.UserInterface.Tests
 
 
             // TODO -- replace with the test outline
-            //screenObjects.PlaceInExplorerPane(_actions, "Actions");
+            screenObjects.PlaceInExplorerPane(_outline.View, "Outline");
 
             _presenter.Start();
+            _outline.Refresh();
         }
 
         public bool CanClose()
