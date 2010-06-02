@@ -30,4 +30,32 @@ namespace StoryTeller.Workspace
         void ClearResults(IProject project);
         void SaveResultsToDirectory(ResultHistory theResults, string directory);
     }
+
+    public class ResultPersistor : IResultPersistor
+    {
+        public void SaveResult(IProject project, Test test, TestResult result)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ResultHistory LoadResults(IProject project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ResultHistory LoadResults(string directory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearResults(IProject project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveResultsToDirectory(ResultHistory theResults, string directory)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
