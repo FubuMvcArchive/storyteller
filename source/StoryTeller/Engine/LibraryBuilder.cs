@@ -24,7 +24,7 @@ namespace StoryTeller.Engine
         private int _total;
         private ObjectFinder _finder = new ObjectFinder();
 
-
+        
         public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter)
         {
             _observer = observer;

@@ -47,7 +47,7 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            finder = new ObjectFinder();
+            finder = new TestContext().Finder;
         }
 
         #endregion
@@ -71,6 +71,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void array_of_non_simple_type_that_has_a_finder_can_be_parsed()
         {
+            
             finder.RegisterFinder(x => new Service(x));
             finder.CanBeParsed(typeof (Service[])).ShouldBeTrue();
         }
@@ -313,7 +314,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void parse_timespan_with_unrecognized_units()
         {
-            typeof (StorytellerAssertionException).ShouldBeThrownBy(() => finder.FromString<TimeSpan>("3 dais"));
+            typeof (ApplicationException).ShouldBeThrownBy(() => finder.FromString<TimeSpan>("3 dais"));
         }
 
         [Test]

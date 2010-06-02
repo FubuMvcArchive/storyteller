@@ -246,11 +246,19 @@ namespace StoryTeller.Engine
             {
                 object value = context.Finder.FromString(rawValue, _type);
                 continuation(value);
-            }
+            } // TODO -- eliminate duplication
             catch (FormatException)
             {
                 context.IncrementSyntaxErrors();
                 results.MarkFormatFailure(_key);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException is FormatException)
+                {
+                    context.IncrementSyntaxErrors();
+                    results.MarkFormatFailure(_key);
+                }
             }
         }
 
@@ -270,6 +278,7 @@ namespace StoryTeller.Engine
             return finder.CanBeParsed(_type);
         }
 
+        [Obsolete("NEED TO RENAME THIS TO INPUT CELL OR SOMETHING")]
         public Cell ToExample()
         {
             if (_type.IsSimple() || _type == typeof (TimeSpan)) return this;
