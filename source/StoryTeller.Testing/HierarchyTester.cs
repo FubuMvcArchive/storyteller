@@ -1,7 +1,9 @@
 using NUnit.Framework;
 using StoryTeller.Domain;
+using StoryTeller.Engine;
 using StoryTeller.Workspace;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace StoryTeller.Testing
 {
@@ -19,6 +21,22 @@ namespace StoryTeller.Testing
         #endregion
 
         private Hierarchy hierarchy;
+
+
+        [Test]
+        public void get_full_results_history_smoke_test()
+        {
+            var h = DataMother.MathProject().LoadTests();
+            h.GetAllTests().Each(x => x.LastResult = new TestResult());
+
+            var results = h.GetFullResults();
+
+            h.GetAllTests().Each(x =>
+            {
+                results[x].ShouldBeTheSameAs(x.LastResult);
+            });
+        }
+
 
         [Test]
         public void add_test_by_one_deep_path()

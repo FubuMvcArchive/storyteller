@@ -8,6 +8,9 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Exploring
 {
+
+    public class TestResultsLoaded{}
+
     public class TestExplorer : ITestExplorer
                                 , IListener<TestAddedMessage>
                                 , ITestFilterObserver

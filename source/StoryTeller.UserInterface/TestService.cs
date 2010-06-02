@@ -18,7 +18,7 @@ namespace StoryTeller.UserInterface
         void RenameTest(Test test, string newName);
     }
 
-    public class ProjectContext : IListener<BinaryRecycleFinished>, IListener<ProjectLoaded>, IListener<WorkflowFiltersChanged>, IStartable
+    public class ProjectContext : IListener<BinaryRecycleFinished>, IListener<ProjectLoaded>, IListener<WorkflowFiltersChanged>, IStartable, IListener<Hierarchy>
     {
         public void Handle(BinaryRecycleFinished message)
         {
@@ -44,6 +44,13 @@ namespace StoryTeller.UserInterface
         {
             WorkspaceFilter = message.Project.CurrentFixtureFilter();
         }
+
+        public void Handle(Hierarchy message)
+        {
+            Hierarchy = message;
+        }
+
+        public Hierarchy Hierarchy { get; set; }
     }
 
     public class TestService : ITestService, IListener<BinaryRecycleFinished>

@@ -224,6 +224,7 @@
       <DependentUpon>NamespaceSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Workspace\StartupActionSelector.cs" />
+    <Compile Include="Workspace\TestResultHandler.cs" />
     <Compile Include="Workspace\WorkspaceEditor.cs" />
     <Compile Include="Workspace\WorkspaceEditorView.xaml.cs">
       <DependentUpon>WorkspaceEditorView.xaml</DependentUpon>

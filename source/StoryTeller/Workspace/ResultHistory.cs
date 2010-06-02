@@ -24,7 +24,10 @@ namespace StoryTeller.Workspace
 
     public interface IResultPersistor
     {
-        void SaveResult(Test test, TestResult result);
-        void LoadResults(Action<TestResult> result);
+        void SaveResult(IProject project, Test test, TestResult result);
+        ResultHistory LoadResults(IProject project);
+        ResultHistory LoadResults(string directory);
+        void ClearResults(IProject project);
+        void SaveResultsToDirectory(ResultHistory theResults, string directory);
     }
 }
