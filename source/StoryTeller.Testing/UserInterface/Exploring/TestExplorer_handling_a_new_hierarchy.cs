@@ -6,6 +6,7 @@ using StoryTeller.UserInterface.Exploring;
 
 namespace StoryTeller.Testing.UserInterface.Exploring
 {
+
     [TestFixture]
     public class when_responding_to_delete_test_message : InteractionContext<TestExplorer>
     {
@@ -130,7 +131,7 @@ s1/t6,Failure
 
             events = MockRepository.GenerateMock<IEventAggregator>();
             view = new StubExplorerView();
-            explorer = new TestExplorer(view, events, null, new TestFilter());
+            explorer = new TestExplorer(view, events, null, new TestFilter(), null);
             explorer.Handle(hierarchy);
         }
 
@@ -181,7 +182,7 @@ s1/t6,Failure
 ");
             events = MockRepository.GenerateMock<IEventAggregator>();
             view = new StubExplorerView();
-            explorer = new TestExplorer(view, events, null, new TestFilter());
+            explorer = new TestExplorer(view, events, null, new TestFilter(), null);
             explorer.Handle(hierarchy);
 
 
@@ -253,7 +254,7 @@ s9/t18,Success
 ");
             events = MockRepository.GenerateMock<IEventAggregator>();
             view = new StubExplorerView();
-            explorer = new TestExplorer(view, events, null, new TestFilter());
+            explorer = new TestExplorer(view, events, null, new TestFilter(), null);
             explorer.Handle(hierarchy);
         }
 

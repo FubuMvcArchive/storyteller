@@ -21,21 +21,25 @@ namespace StoryTeller.UserInterface.Exploring
                                 , IListener<SuiteAddedMessage>
                                 , IListener<ProjectLoaded>
                                 , IListener<WorkflowFiltersChanged>
+                                , IListener<TestResultsLoaded>
     {
         private readonly IEventAggregator _events;
         private readonly ITestFilter _filter;
+        private readonly IIconService _icons;
         private readonly SuiteNavigator _navigator;
         private readonly SuiteNodeCache _suiteNodes = new SuiteNodeCache();
         private readonly TestNodeCache _testNodes = new TestNodeCache();
+        private readonly object _locker = new object();
 
         private readonly IExplorerView _view;
         private Hierarchy _hierarchy;
 
-        public TestExplorer(IExplorerView view, IEventAggregator events, ITestFilterBar filterBar, ITestFilter filter)
+        public TestExplorer(IExplorerView view, IEventAggregator events, ITestFilterBar filterBar, ITestFilter filter, IIconService icons)
         {
             _view = view;
             _events = events;
             _filter = filter;
+            _icons = icons;
 
             if (filterBar != null) filterBar.Observer = this;
             _navigator = new SuiteNavigator
@@ -50,10 +54,13 @@ namespace StoryTeller.UserInterface.Exploring
 
         public void Handle(ClearResultsMessage message)
         {
-            _hierarchy.ClearResults();
-            eachNode(x => x.Icon = Icon.Unknown);
+            lock (_locker)
+            {
+                _hierarchy.ClearResults();
+                eachNode(x => x.Icon = Icon.Unknown);
 
-            ResetFilter();
+                ResetFilter();
+            }
         }
 
         #endregion
@@ -104,32 +111,38 @@ namespace StoryTeller.UserInterface.Exploring
 
         public void Handle(TestRunEvent message)
         {
-            Icon icon = Icon.Unknown;
-            Test test = message.Test;
-
-            switch (message.State)
+            lock (_locker)
             {
-                case TestState.Queued:
-                    icon = Icon.Pending;
-                    break;
+                Icon icon = Icon.Unknown;
+                Test test = message.Test;
 
-                case TestState.Executing:
-                    icon = Icon.Pending;
-                    if (test.HasResult())
-                    {
-                        icon = test.WasSuccessful() ? Icon.RunningSuccess : Icon.RunningFailure;
-                    }
-                    break;
+                switch (message.State)
+                {
+                    case TestState.Queued:
+                        icon = Icon.Pending;
+                        break;
 
-                case TestState.NotQueued:
-                    if (message.Test.HasResult())
-                    {
-                        icon = message.Test.WasSuccessful() ? Icon.Success : Icon.Failed;
-                    }
-                    break;
+                    case TestState.Executing:
+                        icon = Icon.Pending;
+
+                        if (test.HasResult())
+                        {
+                            icon = test.WasSuccessful() ? Icon.RunningSuccess : Icon.RunningFailure;
+                        }
+                        break;
+
+                    case TestState.NotQueued:
+                        if (message.Test.HasResult())
+                        {
+                            icon = message.Test.WasSuccessful() ? Icon.Success : Icon.Failed;
+                        }
+                        break;
+                }
+
+                updateIcon(message.Test, icon);
+
+                ResetFilter();
             }
-
-            updateIcon(message.Test, icon);
         }
 
         #endregion
@@ -170,6 +183,8 @@ namespace StoryTeller.UserInterface.Exploring
             TreeNode topNode = NodeFor(_hierarchy);
 
             _navigator.Visit(_hierarchy, new TreeBuilder(topNode, _testNodes, _suiteNodes));
+
+            _suiteNodes.Each(n => n.UpdateIcon());
 
             _view.ApplyProjectNode(topNode);
         }
@@ -236,6 +251,19 @@ namespace StoryTeller.UserInterface.Exploring
         {
             _filter.Workspaces = message.Project.SelectedWorkspaceNames;
             ResetFilter();
+        }
+
+        public void Handle(TestResultsLoaded message)
+        {
+            lock (_locker)
+            {
+                _testNodes.Each((test, node) =>
+                {
+                    updateIcon(test, _icons.IconFor(test));
+                });
+
+                ResetFilter();
+            }
         }
     }
 }

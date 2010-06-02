@@ -44,7 +44,7 @@ s9/t18,Success
             view = new StubExplorerView();
             events = MockRepository.GenerateMock<IEventAggregator>();
 
-            explorer = new TestExplorer(view, events, new TestFilterBar(), new TestFilter());
+            explorer = new TestExplorer(view, events, new TestFilterBar(), new TestFilter(), null);
             explorer.Handle(hierarchy);
         }
 

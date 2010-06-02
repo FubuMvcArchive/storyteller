@@ -196,6 +196,7 @@
     <Compile Include="Editing\HTML\TableTemplateTag.cs" />
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
+    <Compile Include="Exploring\IIconService.cs" />
     <Compile Include="Tests\Outline\IOutlineConfigurer.cs" />
     <Compile Include="Tests\Outline\IOutlineController.cs" />
     <Compile Include="Tests\Outline\IOutlineTreeService.cs" />

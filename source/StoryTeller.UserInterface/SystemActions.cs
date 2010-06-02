@@ -1,6 +1,7 @@
 using System.Windows.Input;
 using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Queue;
+using StoryTeller.UserInterface.Workspace;
 using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface
@@ -42,6 +43,8 @@ namespace StoryTeller.UserInterface
 
             Action("Reload Tests from Disk").Bind(Key.F6).PublishEvent<ReloadTestsMessage>();
             Action("Reset Test Results").Bind(Key.F7).PublishEvent<ClearResultsMessage>();
+
+            Action("Load Last Results").Bind(Key.F8).PublishEvent<LoadPreviousResults>();
         }
     }
 }

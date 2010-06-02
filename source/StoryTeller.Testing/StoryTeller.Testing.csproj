@@ -287,6 +287,7 @@
     <Compile Include="UserInterface\Editing\HTML\TableTemplateTagTester.cs" />
     <Compile Include="UserInterface\Editing\HTML\TestEditorTagTester.cs" />
     <Compile Include="UserInterface\Editing\HTML\TextboxBuilderTester.cs" />
+    <Compile Include="UserInterface\Exploring\IconServiceTester.cs" />
     <Compile Include="UserInterface\Tests\Outline\OutlineConfigurerTester.cs" />
     <Compile Include="UserInterface\Tests\Outline\OutlineControllerTester.cs" />
     <Compile Include="UserInterface\Tests\Outline\OutlineTreeServiceIntegratedTester.cs" />

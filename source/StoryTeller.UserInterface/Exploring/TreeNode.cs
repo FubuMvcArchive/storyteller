@@ -90,7 +90,7 @@ namespace StoryTeller.UserInterface.Exploring
             var parent = Parent as TreeNode;
             if (parent != null)
             {
-                parent.updateIcon();
+                parent.UpdateIcon();
             }
         }
 
@@ -158,7 +158,7 @@ namespace StoryTeller.UserInterface.Exploring
             return Items[index].As<TreeNode>();
         }
 
-        private void updateIcon()
+        public void UpdateIcon()
         {
             if (Items.Count == 0) return;
 

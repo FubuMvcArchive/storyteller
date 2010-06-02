@@ -1,0 +1,473 @@
+<?xml version="1.0"?>
+<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="0.0360514" ExceptionText="" WasCancelled="false" Locator="Tables/Data Table Verification with Overridden Matchers">
+  <Html>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;style&gt;body
+{
+	
+}
+
+.input
+{
+	font-style: italic;
+}
+
+.exception
+{
+	background-color: #FFFFAA;
+}
+
+.pass
+{
+	background-color: #AAFFAA;
+}
+
+SPAN.pass 
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.fail
+{
+	background-color: #FFAAAA;
+
+}
+
+SPAN.fail
+{
+    padding-left: 5px;
+	padding-right: 5px;
+}
+
+SPAN.pass 
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.results
+{
+	padding: 5px;
+	border: solid 1px black;
+}
+
+.comment-text
+{
+	font-family: Courier New;
+	font-size:75%;
+}
+
+
+.comment-editor-holder &gt; textarea
+{
+	width:600px;
+	height:100px;
+	
+}
+
+.Comment
+{
+	margin-top:20px;
+	margin-bottom:10px;
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:#FFFFEF none repeat scroll 0 0;
+	border:1px solid #EBEBDB;
+}
+
+a
+{
+    color:#AAA;
+	font-size:smaller;
+	margin-left: 5px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+a:hover {
+	color:#000080;
+	text-decoration: underline;
+	font-weight: normal;
+}
+
+input.integer
+{
+	width: 75px;
+}
+
+.section-title &gt; a.deleteStep
+{
+	float:right;
+}
+
+.header-container &gt; a.closer
+{
+	float:right;
+}
+
+div.test-editor
+{
+	width: 95%;
+	margin: 0px;
+}
+
+.test-editor &gt; .container 
+{
+	margin: 20px;
+	padding-bottom:20px;
+	border:none;
+}
+
+.section {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	-moz-border-radius:5px;
+	background:#FCFDFD url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) repeat-x scroll 50% bottom;
+	border:1px solid #A6C9E2;
+	color:#222222;
+	/*padding: 20px;*/
+
+	margin-bottom: 5px;
+}
+
+div.embedded &gt; div &gt; div.step-holder
+{
+	padding: 10px;
+}
+
+.section-title{
+
+	-moz-background-clip:border;
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:6px;
+	background-color:#EBEAEA;
+	border-color:#FAFAFA #DDDDDD #D2D2D2;
+	border-style:solid;
+	border-width:1px;
+	margin: 0;
+	padding: 5px;
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.section-header &gt; .section-title
+{
+	font-size: 90%;
+	color:#E17009;
+	margin-bottom: 5px;
+}
+
+
+
+.TitledAndIndented
+{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+html, body{
+	font-family:Arial, Helvetica, sans-serif;
+	color:#111;
+	line-height:1.4em;
+	background-color: #ccc; 
+}
+
+.main{
+	-moz-background-clip:border;
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:6px;
+	background-color: #fff;
+}
+
+.main &gt; h2 {
+	-moz-background-clip:border;
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:6px;
+	background-color:#EBEAEA;
+	border-color:#FAFAFA #DDDDDD #D2D2D2;
+	border-style:solid;
+	border-width:1px;
+	margin: 0;
+	padding: 10px;
+}
+
+.main .homelink {
+	background-color:#EBEAEA;
+	border-color:#FAFAFA #DDDDDD #D2D2D2;
+	border-style:solid;
+	border-width:1px;
+	margin: 0;
+	padding: 2px;
+	padding-left: 10px;
+}
+
+.main ul {
+	border-color:#FAFAFA #DDDDDD #D2D2D2;
+	border-style:solid;
+	border-width:1px;
+	margin: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.main ul &gt; li {
+}
+
+.main table
+{
+	border-right: 1px dotted #d8d8d8;
+	border-bottom: 1px dotted #d8d8d8;
+}
+
+.main table &gt; tfoot a
+{
+	float: right;
+	padding-right: 10px;
+}
+
+.main table &gt; thead &gt; tr &gt; th{
+	padding: 2px;
+	background-color: #eee;
+	font-size: 90%;
+}
+
+.main table &gt; thead &gt; tr
+{
+	background-color: #eee;
+}
+
+.main table &gt; tbody &gt; tr &gt; td {
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 90%;
+	border-bottom: 1px dotted #d8d8d8;
+}
+
+.main table &gt; tbody &gt; tr:hover{
+	background-color: #c8c8c8;
+}
+
+.main-content{
+	padding: 4px 10px;
+}
+
+.convention-log li{
+	font-family: Consolas, Courier New, Courier;	
+}
+
+.behavior
+{
+	border: solid thin black;
+	margin: 20px;
+	padding: 10px;
+}
+
+.content
+{
+	overflow:scroll;
+	background-color: #dddddd;
+}
+
+
+table.details
+{
+    border: solid thin black;
+    margin-bottom: 25px;
+}
+
+table.details TR
+{
+	padding-bottom: 1px;
+	padding-top: 1px;
+}
+
+table.details &gt; THEAD &gt; TR
+{
+	border-bottom: solid thin black;
+}
+
+table.details TD
+{
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+table.details TH
+{
+    BACKGROUND-COLOR: Silver;
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0px;
+}
+
+.chainId
+{
+	 /* must be monospace */
+	font-family: Consolas, Courier New, Courier;
+	font-size: smaller;
+}
+
+
+.summary {
+	margin: 5px 10px;
+}
+
+#version-display{
+	float:right;
+	font-size:small;
+	font-weight:normal;
+}
+
+.add-section-activator{
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.grammar-selector{
+	border: 1px solid #79B7E7;
+	padding: 4px;
+	background-color: #F5F8F9;
+	margin: 10px;
+	width: 400px;
+}
+
+.grammar-selector .header-container{
+	padding: 4px;
+	background-color: #D7E3EF;
+}
+
+.grammar-selector .header-container a.closer{
+	float: right;
+}
+
+.grammar-selector .header-container span{
+	font-size: 110%;
+	font-weight: bold;
+}
+
+.grammar-selector .link-container{
+	max-height: 300px;	
+	overflow: auto;
+}
+
+.grammar-selector .add-link{
+	border:1px solid #EEE;
+	cursor:pointer;
+	padding:4px 4px 4px 8px;
+}
+
+.grammar-selector .add-link a span{
+	color: #000;
+}
+
+.grammar-selector .add-link:hover{
+	background-color: #EEE;
+}
+
+.grammar-selector .add-link a span.textbox{
+	font-style: italic;
+	color: #AAA;
+}
+
+div.paragraph
+{
+	width: 800px;
+	margin-bottom: 10px;
+}
+
+div.paragraph, div.table-editor
+{
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	background:#FCFDFD url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) repeat-x scroll 50% bottom;
+	border:1px solid #A6C9E2;
+	color:#222222;
+	padding-top: 0px;
+	margin-top: 10px;
+}
+
+div.paragraph &gt; div.step
+{
+	padding-left: 10px;
+	padding-right: 5px;
+}
+
+
+.section-header &gt; .section-title, .paragraph &gt; .section-title
+{
+	font-size: 90%;
+	color:#E17009;
+	margin-bottom: 5px;
+}
+
+.section-title{
+
+	-moz-background-clip:border;
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:6px;
+	background-color:#EBEAEA;
+	border-color:#FAFAFA #DDDDDD #D2D2D2;
+	border-style:solid;
+	border-width:1px;
+	margin: 0;
+	padding: 5px;
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.table-editor &gt; .section-header &gt; .section-title
+{
+	margin-bottom: 0px;
+}
+
+.test-editor &gt; .container &gt; div &gt; .step-holder &gt; .section &gt; .section-header &gt; .section-title
+{
+	font-size: 100%;
+	color: black;
+}
+
+.embedded .embedded
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.column-selector
+{
+	padding-left: 10px;
+}
+
+.sentence
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+DIV .exception-zone
+{
+    padding-top: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: solid thin black;
+    border-top: solid thin black;
+}
+
+.exception-zone &gt; PRE
+{
+    padding-top: 0px;
+    padding-bottom: 2px;
+    overflow: visible;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="testEditor" class="main test-editor"&gt;&lt;h2 class="testName"&gt;Data Table Verification with Overridden Matchers&lt;/h2&gt;&lt;div class="results fail"&gt;Failed with Rights: 2, Wrongs: 2, Exceptions: 0, SyntaxErrors: 0&lt;/div&gt;&lt;div class="container section test-editor"&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;div class="section embedded"&gt;&lt;div class="section-header"&gt;&lt;div class="section-title"&gt;Set Verification with DataTable&amp;#39;s&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;caption&gt;If the data is&lt;/caption&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;firstName&lt;/th&gt;&lt;th&gt;lastName&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="input"&gt;Jeremy D&lt;/td&gt;&lt;td class="input"&gt;Miller&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;Maxwell&lt;/td&gt;&lt;td class="input"&gt;Miller&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;Monte&lt;/td&gt;&lt;td class="input"&gt;Miller&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;caption&gt;The first name should contain&lt;/caption&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;First&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr class="pass"&gt;&lt;td&gt;Jeremy&lt;/td&gt;&lt;/tr&gt;&lt;tr class="pass"&gt;&lt;td&gt;Max&lt;/td&gt;&lt;/tr&gt;&lt;tr class="fail"&gt;&lt;td&gt;Missing:  Monteric&lt;/td&gt;&lt;/tr&gt;&lt;tr class="fail"&gt;&lt;td&gt;Extra:  Monte&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</Html>
+  <Counts Rights="2" Wrongs="2" Exceptions="0" SyntaxErrors="0" />
+</TestResult>
