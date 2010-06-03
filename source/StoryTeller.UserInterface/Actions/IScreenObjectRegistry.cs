@@ -15,6 +15,8 @@ namespace StoryTeller.UserInterface.Actions
         IActionExpression Action(string name);
         IActionExpression PermanentAction(string name);
 
+        
+
         void PlaceInExplorerPane(object view, string header);
     }
 }

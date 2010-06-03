@@ -2,6 +2,7 @@ using System;
 using System.Windows.Controls;
 using System.Windows.Input;
 using StoryTeller.UserInterface.Actions;
+using StoryTeller.UserInterface.Controls;
 
 namespace StoryTeller.UserInterface
 {
@@ -15,6 +16,11 @@ namespace StoryTeller.UserInterface
         public static TreeViewItemBindingExpression Bind(this TreeViewItem item, ModifierKeys modifiers, MouseAction action)
         {
             return new TreeViewItemBindingExpression(item, new MouseGesture(action, modifiers));
+        }
+
+        public static TreeViewItemBindingExpression Bind(this TreeViewItem item, Key key)
+        {
+            return new TreeViewItemBindingExpression(item, new KeyGesture(key));
         }
 
         public static TreeViewItemBindingExpression Bind(this TreeViewItem item, MouseAction action)
@@ -33,10 +39,16 @@ namespace StoryTeller.UserInterface
         }
     }
 
-    public class TreeViewItemBindingExpression
+    public interface IContextMenuBinding
+    {
+        void Menu(string text, Icon icon);
+    }
+
+    public class TreeViewItemBindingExpression : IContextMenuBinding
     {
         private readonly TreeViewItem _item;
         private InputGesture _gesture;
+        private ICommand _command;
 
         public TreeViewItemBindingExpression(TreeViewItem item, InputGesture gesture)
         {
@@ -44,33 +56,52 @@ namespace StoryTeller.UserInterface
             _gesture = gesture;
         }
 
-        public void To(Action action)
+        public IContextMenuBinding To(Action action)
         {
-            To(new ActionCommand(action));
+            return To(new ActionCommand(action));
         }
 
-        public void To(ICommand command)
+        public IContextMenuBinding To(ICommand command)
         {
+            _command = command;
             var binding = new InputBinding(command, _gesture);
             _item.InputBindings.Add(binding);
+
+            return this;
         }
 
-        public void ToMessage<T>(T message)
+        public IContextMenuBinding ToMessage<T>(T message)
         {
-            To(() =>
+            return To(() =>
             {
                 var args = new MessageRequestArgs(events => events.SendMessage(message));
                 _item.RaiseEvent(args);
             });
         }
 
-        public void ToMessage<T>(Func<T> toMessage)
+        public IContextMenuBinding ToMessage<T>(Func<T> toMessage)
         {
-            To(() =>
+            return To(() =>
             {
                 var args = new MessageRequestArgs(events => events.SendMessage(toMessage()));
                 _item.RaiseEvent(args);
             });
+        }
+
+        public void Menu(string text, Icon icon)
+        {
+            if (_item.ContextMenu == null)
+            {
+                _item.ContextMenu = new ContextMenu();
+            }
+
+            var action = new ScreenAction()
+            {
+                Binding = new InputBinding(_command, _gesture),
+                Icon = icon,
+                Name = text
+            };
+            _item.ContextMenu.Items.Add(new CommandMenuItem(action));
         }
     }
 }

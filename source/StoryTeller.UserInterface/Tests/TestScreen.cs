@@ -92,6 +92,10 @@ namespace StoryTeller.UserInterface.Tests
             screenObjects.Action("Undo").Bind(ModifierKeys.Control, Key.Z).To(_stateManager.Undo).Icon = Icon.Unknown;
             screenObjects.Action("Redo").Bind(ModifierKeys.Control, Key.Y).To(_stateManager.Redo).Icon = Icon.Unknown;
 
+            screenObjects.Action("Go to Top Node").Bind(ModifierKeys.Control, Key.T).To(() =>
+            {
+                _outline.FocusOnTop();
+            }).OnlyKeyboardShortcut();
 
             // TODO -- replace with the test outline
             screenObjects.PlaceInExplorerPane(_outline.View, "Outline");

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Input;
 using StoryTeller.Domain;
 using StoryTeller.Model;
 
@@ -20,7 +21,10 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
         public void ConfigureRearrangeCommands(OutlineNode node, IPartHolder holder, ITestPart part)
         {
-
+            node.BindControlAnd(Key.Up).To(() => _controller.MoveUp(part, holder)).Menu("Move Up", Icon.UpArrow);
+            node.BindControlAnd(Key.Down).To(() => _controller.MoveDown(part, holder)).Menu("Move Down", Icon.DownArrow);
+            node.Bind(Key.Delete).To(() => _controller.Remove(part, holder)).Menu("Delete", Icon.Delete);
+            
         }
 
         public void ConfigurePartAdders(OutlineNode node, FixtureGraph fixture, IPartHolder holder)

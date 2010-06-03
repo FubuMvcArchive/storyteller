@@ -75,7 +75,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void add_the_comment_node_underneath()
         {
-            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, section));
+            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(theTest, ClassUnderTest));
         }
     }
 
@@ -103,7 +103,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void should_add_a_new_section_node_to_the_tree()
         {
-            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, theTest));
+            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(theTest, ClassUnderTest));
         }
     }
 
@@ -135,7 +135,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void should_add_a_new_section_node_to_the_tree()
         {
-            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, theSection));
+            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(theTest, ClassUnderTest));
         }
     }
 
@@ -166,7 +166,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void should_redraw_the_tree()
         {
-            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, theTest));
+            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(theTest, ClassUnderTest));
         }
     }
 
@@ -200,7 +200,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void should_redraw_the_tree()
         {
-            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, theTest));
+            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(theTest, ClassUnderTest));
         }
 
         [Test]
@@ -240,7 +240,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void should_redraw_the_tree()
         {
-            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(ClassUnderTest.TopNode, theTest));
+            MockFor<IOutlineTreeService>().AssertWasCalled(x => x.RedrawNode(theTest, ClassUnderTest));
         }
 
         [Test]

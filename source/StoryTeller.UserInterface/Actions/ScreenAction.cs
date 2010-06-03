@@ -45,6 +45,12 @@ namespace StoryTeller.UserInterface.Actions
 
         public ICommand Command { get { return Binding.Command; } }
 
+        public ScreenAction OnlyKeyboardShortcut()
+        {
+            ShortcutOnly = true;
+            return this;
+        }
+
         public bool ShortcutOnly { get; set; }
 
         public void BuildButton(ICommandBar bar)

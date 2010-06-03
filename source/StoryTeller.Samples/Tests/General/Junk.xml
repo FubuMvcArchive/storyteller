@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <Test name="Junk" lifecycle="Acceptance">
-  <CheckObject>
-    <IfTheAddressIs isStep="True" Address1="a" Address2="b" />
-  </CheckObject>
+  <Sentence>
+    <ThisFactIsFalse isStep="True" />
+    <ThisFactThrowsException isStep="True" />
+    <ThisFactIsTrue isStep="True" />
+    <ThisLineIsAlwaysFalse isStep="True" />
+    <ThisLineIsAlwaysTrue isStep="True" />
+    <ThisLineAlwaysThrowsExceptions isStep="True" />
+  </Sentence>
 </Test>

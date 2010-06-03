@@ -28,7 +28,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         {
             configure(holder);
             _stateManager.Version(this);
-            _treeService.RedrawNode(TopNode, holder);
+            _treeService.RedrawNode(_test, this);
         }
 
         public void AddComment(IPartHolder holder)
@@ -66,6 +66,11 @@ namespace StoryTeller.UserInterface.Tests.Outline
         public void Refresh()
         {
             Update(null);
+        }
+
+        public void FocusOnTop()
+        {
+            _view.FocusOnTop();
         }
 
         public void Update(object source)

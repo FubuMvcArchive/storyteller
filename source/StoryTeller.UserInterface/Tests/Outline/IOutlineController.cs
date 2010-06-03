@@ -12,5 +12,6 @@ namespace StoryTeller.UserInterface.Tests.Outline
         void MoveDown(ITestPart part, IPartHolder holder);
         IOutlineView View { get; }
         void Refresh();
+        void FocusOnTop();
     }
 }

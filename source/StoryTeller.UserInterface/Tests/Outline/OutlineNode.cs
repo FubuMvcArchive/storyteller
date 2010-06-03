@@ -15,6 +15,8 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
         public OutlineNode(ITestPart part, Icon icon)
         {
+            Focusable = true;
+
             Part = part;
             IsExpanded = true;
             Holder = part as IPartHolder;

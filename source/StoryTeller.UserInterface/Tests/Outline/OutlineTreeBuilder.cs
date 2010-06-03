@@ -38,10 +38,25 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
         public OutlineNode Build()
         {
-            var parser = new TestParser(_test, this, _library);
-            parser.Parse();
+            var outlineNode = new OutlineNode(_test, Icon.Test);
+            outlineNode.AddText(_test.Name);
+
+            Rebuild(outlineNode);
 
             return _top;
+        }
+
+        public void Rebuild(OutlineNode topNode)
+        {
+            topNode.IsSelected = true;
+            topNode.Items.Clear();
+            _top = topNode;
+            
+            _nodes.Push(_top);
+            LastNode = _top;
+
+            var parser = new TestParser(_test, this, _library);
+            parser.Parse();
         }
 
         private void addRearrangeCommands(OutlineNode node)
@@ -176,10 +191,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
         public void StartTest(Test test)
         {
-            _top = new OutlineNode(test, Icon.Test);
-            _top.AddText(test.Name);
-            _nodes.Push(_top);
-            LastNode = _top;
+
         }
 
         public void EndTest(Test test)
