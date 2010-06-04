@@ -283,11 +283,20 @@ namespace StoryTeller.Testing
                 actual.Each(x => Debug.WriteLine(x));
             }
 
-            actual.Count.ShouldEqual(expected.Count);
-
-            for (int i = 0; i < actual.Count; i++)
+            try
             {
-                actual[i].ShouldEqual(expected[i]);
+                actual.Count.ShouldEqual(expected.Count);
+
+                for (int i = 0; i < actual.Count; i++)
+                {
+                    actual[i].ShouldEqual(expected[i]);
+                }
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Actual:");
+                actual.Each(x => Debug.WriteLine(x));
+                throw;
             }
         }
 

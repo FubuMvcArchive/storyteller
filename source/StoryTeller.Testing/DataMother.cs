@@ -12,8 +12,8 @@ namespace StoryTeller.Testing
 {
     public static class DataMother
     {
-        private const string THE_GRAMMAR_FILE = @"..\..\..\..\samples\grammars.xml";
-        private const string THE_MATH_FILE = @"..\..\..\..\samples\math.xml";
+        public const string THE_GRAMMAR_FILE = @"..\..\..\..\samples\grammars.xml";
+        public const string THE_MATH_FILE = @"..\..\..\..\samples\math.xml";
 
         public static Project MathProject()
         {

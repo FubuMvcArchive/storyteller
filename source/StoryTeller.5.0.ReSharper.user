@@ -9,10 +9,6 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Actions/f:IScreenObjectRegistry.cs" caret="438" fromTop="13" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Actions/f:ScreenObjectRegistry.cs" caret="5348" fromTop="20" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:CommandBar.cs" caret="1520" fromTop="26" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:IOutlineView.cs" caret="159" fromTop="4" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Domain/f:IPartHolder.cs" caret="1007" fromTop="27" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestScreen.cs" caret="3768" fromTop="34" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineController.cs" caret="1959" fromTop="26" />
@@ -36,26 +32,13 @@
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Dialogs/f:DialogLauncher.cs" caret="399" fromTop="14" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:TestTreeBuilderTester.cs" caret="12797" fromTop="25" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeBuilder.cs" caret="6014" fromTop="31" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:App.xaml" caret="431" fromTop="8" />
-      <File id="38EFE8DB-86AD-49B4-B22D-2F328237E0BE/f:MainWindow.xaml.cs" caret="0" fromTop="0" />
-      <File id="38EFE8DB-86AD-49B4-B22D-2F328237E0BE/f:App.xaml" caret="0" fromTop="0" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:DialogWindow.cs" caret="975" fromTop="21" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:App.xaml" caret="345" fromTop="7" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionLight.xaml" caret="37533" fromTop="21" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:Program.cs" caret="541" fromTop="20" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="3580" fromTop="33" />
     </RecentFiles>
     <RecentEdits>
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="6536" fromTop="34" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="6716" fromTop="39" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="6908" fromTop="44" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineGrammarSelector.cs" caret="470" fromTop="14" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="7310" fromTop="51" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="2390" fromTop="26" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="817" fromTop="18" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="934" fromTop="22" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="2067" fromTop="22" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="7045" fromTop="4" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="2047" fromTop="29" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeService.cs" caret="486" fromTop="18" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeService.cs" caret="342" fromTop="12" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeService.cs" caret="1768" fromTop="23" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:OutlineTreeServiceIntegratedTester.cs" caret="906" fromTop="26" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/f:UIElementShortcutExtensions.cs" caret="2181" fromTop="27" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="1690" fromTop="18" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="4179" fromTop="24" />
@@ -67,10 +50,21 @@
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineConfigurer.cs" caret="377" fromTop="13" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineGrammarSelector.cs" caret="625" fromTop="21" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeBuilder.cs" caret="6014" fromTop="31" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:App.xaml" caret="0" fromTop="0" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:App.xaml" caret="585" fromTop="14" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:App.xaml" caret="137" fromTop="2" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:App.xaml" caret="431" fromTop="8" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:Program.cs" caret="372" fromTop="14" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:App.xaml" caret="289" fromTop="4" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:Program.cs" caret="569" fromTop="20" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="1267" fromTop="20" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="1344" fromTop="25" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="1426" fromTop="23" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="1656" fromTop="23" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="2789" fromTop="29" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="3107" fromTop="31" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="3202" fromTop="26" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="657" fromTop="18" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="309" fromTop="10" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="1140" fromTop="30" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="3606" fromTop="27" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Usages/f:UsageGraph.cs" caret="3580" fromTop="33" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -88,9 +82,9 @@
     <ItemStatistics item="Default">
       <Item value="using" priority="1" />
       <Item value="FubuCore" priority="0" />
-      <Item value="public" priority="240" />
+      <Item value="public" priority="249" />
       <Item value="static" priority="26" />
-      <Item value="void" priority="102" />
+      <Item value="void" priority="110" />
       <Item value="Func" priority="12" />
       <Item value="params" priority="0" />
       <Item value="object" priority="10" />
@@ -98,17 +92,17 @@
       <Item value="condition" priority="0" />
       <Item value="Fail`0" priority="0" />
       <Item value="message" priority="20" />
-      <Item value="return" priority="114" />
+      <Item value="return" priority="115" />
       <Item value="this" priority="34" />
       <Item value="leafName" priority="0" />
-      <Item value="class" priority="81" />
+      <Item value="class" priority="83" />
       <Item value="ITestContext`0" priority="5" />
       <Item value="bool" priority="11" />
-      <Item value="string" priority="57" />
-      <Item value="private" priority="40" />
-      <Item value="new" priority="282" />
+      <Item value="string" priority="63" />
+      <Item value="private" priority="41" />
+      <Item value="new" priority="285" />
       <Item value="Cache&lt;string,Func&lt;object,object,bool&gt;&gt;" priority="0" />
-      <Item value="readonly" priority="13" />
+      <Item value="readonly" priority="14" />
       <Item value="_matchers" priority="3" />
       <Item value="_context" priority="13" />
       <Item value="o1" priority="0" />
@@ -126,7 +120,7 @@
       <Item value="row1" priority="1" />
       <Item value="row2" priority="0" />
       <Item value="_comparer" priority="1" />
-      <Item value="var" priority="135" />
+      <Item value="var" priority="136" />
       <Item value="context" priority="2" />
       <Item value="x" priority="86" />
       <Item value="valueMatcher" priority="1" />
@@ -154,8 +148,8 @@
       <Item value="header" priority="0" />
       <Item value="s1" priority="0" />
       <Item value="Title" priority="1" />
-      <Item value="throw" priority="19" />
-      <Item value="NotImplementedException" priority="16" />
+      <Item value="throw" priority="20" />
+      <Item value="NotImplementedException" priority="17" />
       <Item value="ISetColumn" priority="0" />
       <Item value="running`0" priority="2" />
       <Item value="ObjectFinder" priority="0" />
@@ -170,7 +164,7 @@
       <Item value="FixtureLibraryErrorWriter`0" priority="0" />
       <Item value="HtmlDocument`0" priority="1" />
       <Item value="document" priority="12" />
-      <Item value="library" priority="17" />
+      <Item value="library" priority="18" />
       <Item value="f" priority="11" />
       <Item value="Obsolete" priority="4" />
       <Item value="IEnumerable" priority="4" />
@@ -220,12 +214,12 @@
       <Item value="ObjectFactory`0" priority="0" />
       <Item value="thread" priority="0" />
       <Item value="_workerThread" priority="0" />
-      <Item value="interface" priority="13" />
+      <Item value="interface" priority="14" />
       <Item value="Table`0" priority="4" />
       <Item value="Action`0" priority="10" />
       <Item value="setup" priority="0" />
       <Item value="IContainer`0" priority="4" />
-      <Item value="FixtureLibrary`0" priority="9" />
+      <Item value="FixtureLibrary`0" priority="10" />
       <Item value="ITestObserver`0" priority="0" />
       <Item value="ISystem`0" priority="10" />
       <Item value="_library" priority="5" />
@@ -418,7 +412,7 @@
       <Item value="OrderBy`2" priority="0" />
       <Item value="Array`0" priority="0" />
       <Item value="for" priority="0" />
-      <Item value="int" priority="2" />
+      <Item value="int" priority="3" />
       <Item value="itar" priority="0" />
       <Item value="names" priority="0" />
       <Item value="FirstOrDefault`1" priority="0" />
@@ -469,11 +463,11 @@
       <Item value="_controller" priority="7" />
       <Item value="fixtureSelectors" priority="1" />
       <Item value="UIElement`0" priority="3" />
-      <Item value="hierarchy" priority="13" />
+      <Item value="hierarchy" priority="14" />
       <Item value="ShouldBeOfType`0" priority="1" />
       <Item value="ChildSuites" priority="0" />
       <Item value="is" priority="2" />
-      <Item value="Hierarchy`0" priority="3" />
+      <Item value="Hierarchy`0" priority="4" />
       <Item value="Filter" priority="1" />
       <Item value="_hierarchy" priority="4" />
       <Item value="ProjectController`0" priority="0" />
@@ -513,7 +507,7 @@
       <Item value="baseLibrary" priority="0" />
       <Item value="Select`2" priority="0" />
       <Item value="ActiveFixtures" priority="0" />
-      <Item value="Test`0" priority="16" />
+      <Item value="Test`0" priority="19" />
       <Item value="Filters" priority="0" />
       <Item value="workspaceFilter" priority="0" />
       <Item value="workspaceSuite" priority="0" />
@@ -738,7 +732,7 @@
       <Item value="SetVerification`0" priority="2" />
       <Item value="verification" priority="1" />
       <Item value="ITreeNodeBuilder`0" priority="1" />
-      <Item value="ITestStream`0" priority="0" />
+      <Item value="ITestStream`0" priority="1" />
       <Item value="TestParser`0" priority="0" />
       <Item value="parser" priority="0" />
       <Item value="Stack`0" priority="0" />
@@ -936,12 +930,18 @@
       <Item value="Step" priority="0" />
       <Item value="index" priority="0" />
       <Item value="_configurer" priority="0" />
+      <Item value="window" priority="1" />
+      <Item value="FixtureUsage`0" priority="1" />
+      <Item value="Cache&lt;string,FixtureUsage&gt;" priority="0" />
+      <Item value="_fixtures" priority="0" />
+      <Item value="FixtureUsage" priority="0" />
+      <Item value="IUsageGraphListener`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.EmbeddedSectionGrammar`1">
       <Item value="LeafName`0" priority="3" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:FubuCore.Util.Cache`2">
-      <Item value="OnMissing" priority="0" />
+      <Item value="OnMissing" priority="1" />
       <Item value="GetAll`0" priority="1" />
       <Item value="GetAllKeys`0" priority="0" />
       <Item value="WithValue`0" priority="0" />
@@ -1077,7 +1077,7 @@
       <Item value="ShouldNotBeTheSameAs`0" priority="0" />
       <Item value="_fixtures" priority="0" />
       <Item value="ActiveFixtures" priority="1" />
-      <Item value="FixtureFor`0" priority="0" />
+      <Item value="FixtureFor`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:HtmlTags.HtmlTag">
       <Item value="Text`0" priority="3" />

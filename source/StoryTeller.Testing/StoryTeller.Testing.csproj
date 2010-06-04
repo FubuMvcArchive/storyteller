@@ -255,6 +255,7 @@
     <Compile Include="TestUtility.cs" />
     <Compile Include="Model\FixtureLibraryWriterTester.cs" />
     <Compile Include="Model\SentenceTester.cs" />
+    <Compile Include="Usages\UsageGraphIntegratedTester.cs" />
     <Compile Include="UserInterface\Actions\ActionCommandTester.cs" />
     <Compile Include="UserInterface\Actions\MenuServiceTester.cs" />
     <Compile Include="UserInterface\can_get_the_test_status_from_the_container.cs" />

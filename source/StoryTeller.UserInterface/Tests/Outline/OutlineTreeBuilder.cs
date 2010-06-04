@@ -191,11 +191,18 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
         public void StartTest(Test test)
         {
-            _configurer.ConfigureSectionAdder(_top, _library, _test);
+            if (_top == null)
+            {
+                _top = new OutlineNode(test, Icon.Test);
+            }
+
             if (_nodes.Count == 0)
             {
                 _nodes.Push(_top);
             }
+            
+            _configurer.ConfigureSectionAdder(_top, _library, _test);
+
         }
 
         public void EndTest(Test test)

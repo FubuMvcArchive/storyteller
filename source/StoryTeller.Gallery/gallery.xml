@@ -3,6 +3,6 @@
   <BinaryFolder>bin\debug</BinaryFolder>
   <TestFolder>Tests</TestFolder>
   <TimeoutInSeconds>30</TimeoutInSeconds>
-  <TestRunnerTypeName>StoryTeller.Gallery.GalleryTestRunner, StoryTeller.Gallery</TestRunnerTypeName>
+  <FixtureAssembly>StoryTeller.Gallery</FixtureAssembly>
   <Name>Gallery</Name>
 </Project>

@@ -108,6 +108,9 @@
     <Compile Include="Engine\NulloSystem.cs" />
     <Compile Include="Execution\OpenHtmlOption.cs" />
     <Compile Include="Execution\ProjectTestRunner.cs" />
+    <Compile Include="Usages\FixtureUsage.cs" />
+    <Compile Include="Usages\IUsageGraphListener.cs" />
+    <Compile Include="Usages\UsageGraph.cs" />
     <Compile Include="Workspace\IResultPersistor.cs" />
     <Compile Include="Workspace\ResultHistory.cs" />
     <Compile Include="Engine\Sets\RowValueMatcher.cs" />
