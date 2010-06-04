@@ -1,10 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using StoryTeller.Domain;
 using StoryTeller.Model;
 
 namespace StoryTeller.UserInterface.Tests.Outline
 {
+    public static class KeyExtensions
+    {
+        public static KeyGesture ToGesture(this Key key)
+        {
+            return new KeyGesture(key, ModifierKeys.Control);
+        }
+
+        public static KeyGesture PlusAlt(this Key key)
+        {
+            return new KeyGesture(key, ModifierKeys.Alt);
+        }
+
+        public static KeyGesture PlusShift(this Key key)
+        {
+            return new KeyGesture(key, ModifierKeys.Control | ModifierKeys.Shift);
+        }
+    }
+    
     public class OutlineConfigurer : IOutlineConfigurer
     {
         private readonly IOutlineController _controller;
@@ -27,9 +46,25 @@ namespace StoryTeller.UserInterface.Tests.Outline
             
         }
 
+
+        public void ConfigureSectionAdder(OutlineNode node, FixtureLibrary library, Test test)
+        {
+            var selector = new OutlineGrammarSelector(node);
+            selector.Add(Icon.Comment, "Comment", () => _controller.AddComment(test), Key.C.ToGesture());
+
+            int index = 0;
+            library.ActiveFixtures.Each(x =>
+            {
+                selector.Add(Icon.Section, x.Title, () => _controller.AddSection(x.Name), Shortcuts[index++]);
+            });
+        }
+
+
         public void ConfigurePartAdders(OutlineNode node, FixtureGraph fixture, IPartHolder holder)
         {
-
+            var selector = new OutlineGrammarSelector(node);
+            var configurer = new GrammarSelectorConfigurer(holder, selector, _controller);
+            configurer.Configure(fixture);
         }
 
         public void WriteSentenceText(OutlineNode node, Sentence sentence, IStep step)
@@ -60,6 +95,120 @@ namespace StoryTeller.UserInterface.Tests.Outline
                 string value = _step.Has(key) ? _step.Get(key) : input.Cell.DefaultValue ?? "{" + key + "}";
 
                 _node.AddItalicizedText(value);
+            }
+        }
+
+
+        public static readonly KeyGesture[] Shortcuts = new KeyGesture[]
+        {
+            Key.D0.ToGesture(),    
+            Key.D1.ToGesture(),    
+            Key.D2.ToGesture(),    
+            Key.D3.ToGesture(),    
+            Key.D4.ToGesture(),    
+            Key.D5.ToGesture(),    
+            Key.D6.ToGesture(),    
+            Key.D7.ToGesture(),    
+            Key.D8.ToGesture(),    
+            Key.D9.ToGesture(),  
+            Key.D0.PlusAlt(),    
+            Key.D1.PlusAlt(),    
+            Key.D2.PlusAlt(),    
+            Key.D3.PlusAlt(),    
+            Key.D4.PlusAlt(),    
+            Key.D5.PlusAlt(),    
+            Key.D6.PlusAlt(),    
+            Key.D7.PlusAlt(),    
+            Key.D8.PlusAlt(),    
+            Key.D9.PlusAlt(),  
+            Key.D0.PlusShift(),    
+            Key.D1.PlusShift(),    
+            Key.D2.PlusShift(),    
+            Key.D3.PlusShift(),    
+            Key.D4.PlusShift(),    
+            Key.D5.PlusShift(),    
+            Key.D6.PlusShift(),    
+            Key.D7.PlusShift(),    
+            Key.D8.PlusShift(),    
+            Key.D9.PlusShift(),  
+            Key.A.ToGesture(),
+            Key.B.ToGesture(),
+            Key.D.ToGesture(),
+            Key.E.ToGesture(),
+            Key.F.ToGesture(),
+            Key.G.ToGesture(),
+            Key.H.ToGesture(),
+            Key.I.ToGesture(),
+            Key.J.ToGesture(),
+            Key.K.ToGesture(),
+            Key.L.ToGesture(),
+            Key.M.ToGesture(),
+            Key.N.ToGesture(),
+            Key.O.ToGesture(),
+            Key.P.ToGesture(),
+            Key.Q.ToGesture(),
+            Key.R.ToGesture(),
+            Key.S.ToGesture(),
+            Key.T.ToGesture(),
+            Key.U.ToGesture(),
+            Key.V.ToGesture(),
+        };
+
+
+        public class GrammarSelectorConfigurer : IGrammarVisitor
+        {
+            private readonly IPartHolder _holder;
+            private readonly OutlineGrammarSelector _selector;
+            private readonly IOutlineController _controller;
+            private int _index = 0;
+
+            public GrammarSelectorConfigurer(IPartHolder holder, OutlineGrammarSelector selector, IOutlineController controller)
+            {
+                _holder = holder;
+                _selector = selector;
+                _controller = controller;
+            }
+
+            private void add(string key, string text, Icon icon)
+            {
+                _selector.Add(icon, text, () => _controller.AddStep(key, _holder), Shortcuts[_index++]);
+            }
+
+            void IGrammarVisitor.Sentence(Sentence sentence, IStep step)
+            {
+                add(sentence.Name, sentence.Label, Icon.Sentence);
+            }
+
+            void IGrammarVisitor.Table(Table table, IStep step)
+            {
+                add(table.Name, table.Label, Icon.Table);
+            }
+
+            void IGrammarVisitor.SetVerification(SetVerification setVerification, IStep step)
+            {
+                add(setVerification.Name, setVerification.Label, Icon.SetVerification);
+            }
+
+            void IGrammarVisitor.Paragraph(Paragraph paragraph, IStep step)
+            {
+                add(paragraph.Name, paragraph.Label, Icon.Paragraph);
+            }
+
+            void IGrammarVisitor.EmbeddedSection(EmbeddedSection section, IStep step)
+            {
+                add(section.Name, section.Title, Icon.EmbeddedSection);
+            }
+
+            void IGrammarVisitor.DoGrammar(DoGrammarStructure grammar, IStep step)
+            {
+            }
+
+
+            public void Configure(FixtureGraph fixture)
+            {
+                _selector.Add(Icon.Comment, "Comment", () => _controller.AddComment(_holder), Key.C.ToGesture());
+
+                fixture.Grammars.Each(g => g.AcceptVisitor(this, new Step()));
             }
         }
     }

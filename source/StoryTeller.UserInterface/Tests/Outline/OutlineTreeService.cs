@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
+using StoryTeller.Model;
 
 namespace StoryTeller.UserInterface.Tests.Outline
 {
     public class OutlineTreeService : IOutlineTreeService
     {
         private readonly ProjectContext _context;
-        private readonly Window _window;
         private OutlineNode _topNode;
 
-        public OutlineTreeService(ProjectContext context, Window window)
+        public OutlineTreeService(ProjectContext context)
         {
             _context = context;
-            _window = window;
-            _window.Focusable = true;
         }
 
         public OutlineNode BuildNode(Test test, IOutlineController controller)
@@ -30,7 +29,10 @@ namespace StoryTeller.UserInterface.Tests.Outline
         private OutlineTreeBuilder builder(IOutlineController controller, Test test)
         {
             var configurer = new OutlineConfigurer(controller);
-            return new OutlineTreeBuilder(test, _context.Library, configurer);
+            var filter = test.GetWorkspace().CreateFixtureFilter();
+            var filteredLibrary = _context.Library.Filter(filter.Matches);
+            
+            return new OutlineTreeBuilder(test, filteredLibrary, configurer);
         }
 
         public void RedrawNode(Test test, IOutlineController controller)
@@ -53,9 +55,6 @@ namespace StoryTeller.UserInterface.Tests.Outline
             //moveNext();
             //moveNext();
 
-
-            _window.Focus();
-            
             _topNode.IsSelected = false;
             var parent = _topNode.Parent as UIElement;
             parent.Focus();

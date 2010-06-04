@@ -51,13 +51,14 @@ namespace StoryTeller.UserInterface.Controls
         {
             this.SetIcon(screenAction.Icon);
             Header = new DockPanel()
-                .Left<Label>(x => x.Content = screenAction.Name)
-                .Right<Label>(x =>
-                {
-                    x.Content = screenAction.KeyString;
-                    x.HorizontalAlignment = HorizontalAlignment.Right;
-                });
+                .Left<Label>(x => x.Content = screenAction.Name);
+                //.Right<Label>(x =>
+                //{
+                //    x.Content = screenAction.KeyString;
+                //    x.HorizontalAlignment = HorizontalAlignment.Right;
+                //});
 
+            InputGestureText = screenAction.KeyString;
             ScreenAction = ScreenAction;
             Command = screenAction.Command;
         }

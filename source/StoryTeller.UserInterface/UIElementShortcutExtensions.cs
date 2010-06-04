@@ -1,4 +1,5 @@
 using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using StoryTeller.UserInterface.Actions;
@@ -6,34 +7,34 @@ using StoryTeller.UserInterface.Controls;
 
 namespace StoryTeller.UserInterface
 {
-    public static class TreeViewItemExtensions
+    public static class ControlShortcutExtensions
     {
-        public static TreeViewItemBindingExpression Bind(this TreeViewItem item, ModifierKeys modifiers, Key key)
+        public static TreeViewItemBindingExpression Bind(this Control item, ModifierKeys modifiers, Key key)
         {
             return new TreeViewItemBindingExpression(item, new KeyGesture(key, modifiers));    
         }
 
-        public static TreeViewItemBindingExpression Bind(this TreeViewItem item, ModifierKeys modifiers, MouseAction action)
+        public static TreeViewItemBindingExpression Bind(this Control item, ModifierKeys modifiers, MouseAction action)
         {
             return new TreeViewItemBindingExpression(item, new MouseGesture(action, modifiers));
         }
 
-        public static TreeViewItemBindingExpression Bind(this TreeViewItem item, Key key)
+        public static TreeViewItemBindingExpression Bind(this Control item, Key key)
         {
             return new TreeViewItemBindingExpression(item, new KeyGesture(key));
         }
 
-        public static TreeViewItemBindingExpression Bind(this TreeViewItem item, MouseAction action)
+        public static TreeViewItemBindingExpression Bind(this Control item, MouseAction action)
         {
             return new TreeViewItemBindingExpression(item, new MouseGesture(action));
         }
 
-        public static TreeViewItemBindingExpression BindControlAnd(this TreeViewItem item, Key key)
+        public static TreeViewItemBindingExpression BindControlAnd(this Control item, Key key)
         {
             return item.Bind(ModifierKeys.Control, key);
         }
 
-        public static TreeViewItemBindingExpression BindControlAnd(this TreeViewItem item, MouseAction action)
+        public static TreeViewItemBindingExpression BindControlAnd(this Control item, MouseAction action)
         {
             return item.Bind(ModifierKeys.Control, action);
         }
@@ -46,11 +47,11 @@ namespace StoryTeller.UserInterface
 
     public class TreeViewItemBindingExpression : IContextMenuBinding
     {
-        private readonly TreeViewItem _item;
+        private readonly Control _item;
         private InputGesture _gesture;
         private ICommand _command;
 
-        public TreeViewItemBindingExpression(TreeViewItem item, InputGesture gesture)
+        public TreeViewItemBindingExpression(Control item, InputGesture gesture)
         {
             _item = item;
             _gesture = gesture;

@@ -89,6 +89,7 @@
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="ShadeTree, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\tools\ShadeTree\ShadeTree.dll</HintPath>
@@ -202,6 +203,7 @@
     <Compile Include="Tests\Outline\IOutlineTreeService.cs" />
     <Compile Include="Tests\Outline\OutlineConfigurer.cs" />
     <Compile Include="Tests\Outline\OutlineController.cs" />
+    <Compile Include="Tests\Outline\OutlineGrammarSelector.cs" />
     <Compile Include="Tests\Outline\OutlineTreeBuilder.cs" />
     <Compile Include="Handlers\CodegenHandler.cs" />
     <Compile Include="Projects\IProjectExplorerView.cs" />
@@ -213,7 +215,7 @@
     <Compile Include="Screens\ScreenFinder.cs" />
     <Compile Include="Screens\StoryTellerTabItem.cs" />
     <Compile Include="Tests\Outline\OutlineTreeService.cs" />
-    <Compile Include="TreeViewItemExtensions.cs" />
+    <Compile Include="UIElementShortcutExtensions.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
     <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />
     <Compile Include="Workspace\IFixtureSelector.cs" />
@@ -420,6 +422,10 @@
     <Page Include="Exploring\TestLinePanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpressionLight.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

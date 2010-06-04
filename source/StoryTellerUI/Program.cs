@@ -13,9 +13,13 @@ namespace StoryTellerUI
             Window window = Bootstrapper.BootstrapShell();
             window.Title = "StoryTeller";
 
+            
+
             var application = new Application();
 
             application.DispatcherUnhandledException += application_DispatcherUnhandledException;
+
+            
 
             application.Run(window);
         }

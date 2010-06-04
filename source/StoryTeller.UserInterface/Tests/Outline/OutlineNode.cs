@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using StoryTeller.Domain;
 using Label=System.Windows.Controls.Label;
 
@@ -27,7 +29,20 @@ namespace StoryTeller.UserInterface.Tests.Outline
             });
 
             Icon = icon;
+
+            this.BindControlAnd(Key.M).To(() =>
+            {
+                if (ContextMenu != null)
+                {
+                    ContextMenu.PlacementTarget = this;
+                    ContextMenu.VerticalOffset = 5;
+                    ContextMenu.HorizontalOffset = 20;
+                    ContextMenu.Placement = PlacementMode.RelativePoint;
+                    ContextMenu.IsOpen = true;
+                }
+            });
         }
+
 
         public OutlineNode ParentNode
         {
