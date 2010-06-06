@@ -37,6 +37,7 @@ $METHODS$
     <WorkspaceFilter Name="Embedded">
       <Actions />
       <Filters>
+        <FixtureFilter Type="Fixture" Name="Embedded" />
         <FixtureFilter Type="Fixture" Name="Another" />
         <FixtureFilter Type="Fixture" Name="Math" />
       </Filters>

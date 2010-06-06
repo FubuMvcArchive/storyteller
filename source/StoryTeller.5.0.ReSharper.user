@@ -9,8 +9,6 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Screens/f:TabCloser.xaml.cs" caret="518" fromTop="18" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Screens/f:TabCloser.xaml" caret="435" fromTop="4" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="6928" fromTop="18" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Screens/f:StoryTellerTabItem.cs" caret="1279" fromTop="27" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Screens/f:Tab_within_screen_collection_tests.cs" caret="630" fromTop="17" />
@@ -30,40 +28,31 @@
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineNode.cs" caret="546" fromTop="12" />
       <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="107049" fromTop="4" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuePresenter.cs" caret="2239" fromTop="38" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Shell.xaml" caret="649" fromTop="6" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:StoryTellerStatusBar.xaml.cs" caret="882" fromTop="26" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:StoryTellerStatusBar.xaml" caret="570" fromTop="2" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:Link.xaml.cs" caret="792" fromTop="32" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml.cs" caret="1412" fromTop="21" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="700" fromTop="6" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="2055" fromTop="22" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="2936" fromTop="12" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="702" fromTop="10" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="568" fromTop="8" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="502" fromTop="5" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuedTestItem.xaml" caret="627" fromTop="8" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Shell.xaml" caret="649" fromTop="6" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="1270" fromTop="8" />
     </RecentFiles>
     <RecentEdits>
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="241649" fromTop="13" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="243497" fromTop="2" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="243782" fromTop="12" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="244586" fromTop="24" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="245752" fromTop="14" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="247379" fromTop="37" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="246587" fromTop="27" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineNode.cs" caret="502" fromTop="9" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="43430" fromTop="30" />
       <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="102918" fromTop="18" />
       <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="103554" fromTop="19" />
       <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="108060" fromTop="17" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuePresenter.cs" caret="2499" fromTop="45" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1067" fromTop="8" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1133" fromTop="8" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml.cs" caret="1414" fromTop="22" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1284" fromTop="10" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1304" fromTop="10" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:StoryTellerStatusBar.xaml" caret="526" fromTop="1" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:Link.xaml.cs" caret="677" fromTop="28" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:Link.xaml.cs" caret="792" fromTop="32" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="212" fromTop="2" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="727" fromTop="6" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1133" fromTop="6" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="213" fromTop="1" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="702" fromTop="10" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="1527" fromTop="23" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="808" fromTop="22" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="2147" fromTop="25" />
@@ -71,6 +60,17 @@
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="2506" fromTop="22" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="5424" fromTop="22" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="3296" fromTop="22" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="568" fromTop="8" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1133" fromTop="7" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="752" fromTop="3" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1096" fromTop="7" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuedTestItem.xaml" caret="259" fromTop="2" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuedTestItem.xaml" caret="677" fromTop="8" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="291" fromTop="4" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="1268" fromTop="10" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="709" fromTop="4" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="887" fromTop="9" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="363" fromTop="5" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

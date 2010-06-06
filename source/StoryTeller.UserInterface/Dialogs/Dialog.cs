@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace StoryTeller.UserInterface.Dialogs
 {
@@ -13,7 +14,7 @@ namespace StoryTeller.UserInterface.Dialogs
             ResizeMode = ResizeMode.CanResizeWithGrip;
             SizeToContent = SizeToContent.WidthAndHeight;
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
+            SetResourceReference(BackgroundProperty, "WindowBackgroundBrush");
             ShowInTaskbar = false;
 
             Title = child.Title;

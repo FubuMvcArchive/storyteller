@@ -3,26 +3,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Controls="clr-namespace:StoryTeller.UserInterface.Controls"
     >
-    <DockPanel Background="Silver">
-        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0 0 0 2">
-            <Label FontWeight="Bold" Background="Silver">Settings</Label>
+    <DockPanel>
+        <Border Background="{StaticResource SelectedBackgroundBrush}" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0 0 0 2">
+            <Label Margin="5" Foreground="Black" FontWeight="Bold">Settings</Label>
         </Border>
 
-        <Controls:TestStopConditionsView DockPanel.Dock="Bottom" x:Name="stopConditions" Background="Silver"></Controls:TestStopConditionsView>
-        <Label DockPanel.Dock="Top">
-            <Hyperlink Name="newProjectLink">
-                <TextBlock>Create New Project</TextBlock>
+        <Controls:TestStopConditionsView DockPanel.Dock="Bottom" x:Name="stopConditions"></Controls:TestStopConditionsView>
+        <Label DockPanel.Dock="Top" Margin="5">
+            <Hyperlink   Name="newProjectLink" Foreground="White">
+                <TextBlock Foreground="White">Create New Project</TextBlock>
             </Hyperlink>
         </Label>
-        <Label DockPanel.Dock="Top">
-            <Hyperlink Name="loadProjectLink">
-                <TextBlock>Load Existing Project</TextBlock>
+        <Label Margin="5" DockPanel.Dock="Top">
+            <Hyperlink Name="loadProjectLink" Foreground="White">
+                <TextBlock Foreground="White">Load Existing Project</TextBlock>
             </Hyperlink>
         </Label>
-        <Border DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0 2 0 2">
-            <Label FontWeight="Bold">Projects</Label>
+        <Border Background="{StaticResource SelectedBackgroundBrush}" DockPanel.Dock="Top" Margin="0 5 0 0" BorderBrush="Black" BorderThickness="0 2 0 2">
+            <Label Foreground="Black" Margin="5" FontWeight="Bold">Projects</Label>
         </Border>
-        <StackPanel Orientation="Vertical" Background="White" Name="projectList" Margin="5">
+        <StackPanel Orientation="Vertical" Name="projectList" Margin="5">
             <Label>Something</Label>
             <Label>Something Else</Label>
             <Label>Even More</Label>

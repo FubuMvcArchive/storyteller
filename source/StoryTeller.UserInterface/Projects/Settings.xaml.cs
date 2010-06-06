@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using StoryTeller.UserInterface.Controls;
@@ -34,6 +35,7 @@ namespace StoryTeller.UserInterface.Projects
             projects.Each(p =>
             {
                 var link = new Link(p.Name, () => _controller.LoadProject(p));
+                link.Margin = new Thickness(0, 0, 0, 5);
                 projectList.Children.Add(link);
             });
         }
