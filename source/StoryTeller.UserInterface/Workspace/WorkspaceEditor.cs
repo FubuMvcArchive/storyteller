@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using StoryTeller.Domain;
 using StoryTeller.Execution;
+using StoryTeller.Usages;
 using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Projects;
 using StoryTeller.UserInterface.Screens;
@@ -46,6 +47,7 @@ namespace StoryTeller.UserInterface.Workspace
         public void Activate(IScreenObjectRegistry screenObjects)
         {
             screenObjects.Action("Save Filters and Actions").Bind(ModifierKeys.Control, Key.S).To(Save).Icon = Icon.Save;
+            screenObjects.Action("Refresh Usages").Bind(ModifierKeys.Control, Key.F5).To(RefreshUsages).Icon = Icon.Refresh;
         
             if (!_hasUpdatedView)
             {
@@ -61,7 +63,18 @@ namespace StoryTeller.UserInterface.Workspace
             StartupActions = _organizer.GetActionSelectors(_context.Library, _suite.Filter);
             _view.ShowActionSelectors(StartupActions);
 
+
+            RefreshUsages();
             _hasUpdatedView = true;
+        }
+
+        public void RefreshUsages()
+        {
+            // TODO -- show progress
+            var usageGraph = new UsageGraph(_context.Library, new ConsoleUsageGraphListener());
+            usageGraph.Rebuild(_suite.GetAllTests());
+
+            _view.ShowFixtureUsage(usageGraph.AllFixtures());
         }
 
         public IEnumerable<IStartupActionSelector> StartupActions { get; set; }

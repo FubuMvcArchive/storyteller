@@ -11,6 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FubuCore;
+using StoryTeller.Model;
+using StoryTeller.UserInterface.Controls;
 
 namespace StoryTeller.UserInterface.Workspace
 {
@@ -34,6 +37,22 @@ namespace StoryTeller.UserInterface.Workspace
         {
             actionSelectors.Children.Clear();
             selectors.Each(x => actionSelectors.Children.Add((UIElement) x));
+        }
+
+        public void ShowFixtureUsage(IEnumerable<FixtureGraph> fixtures)
+        {
+            fixtureUsages.Children.Clear();
+            fixtures.Each(x =>
+            {
+                var link = new Link
+                {
+                    ToolTip = "{0} ({1})".ToFormat(x.FixtureClassName, x.Title),
+                    Padding = new Thickness(0, 0, 0, 5)
+                };
+
+                link.WireUp(x.Name, () => new OpenItemMessage(x));
+                fixtureUsages.Children.Add(link);
+            });
         }
     }
 }

@@ -11,7 +11,8 @@ namespace StoryTeller.UserInterface
 
             CanClose = (() => true);
             Closing += (s, e) => e.Cancel = !CanClose();
-            ;
+
+            Closed += (s, e) => Application.Current.Shutdown();
 
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
             WindowState = WindowState.Maximized;

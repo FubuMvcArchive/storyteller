@@ -22,7 +22,7 @@ namespace StoryTeller.UserInterface.Workspace
             this.Horizontal();
             _checkbox = this.Add<CheckBox>();
             _checkbox.Padding = new Thickness(0, 5, 0, 0);
-            _checkbox.VerticalAlignment = VerticalAlignment.Center;
+            _checkbox.VerticalAlignment = VerticalAlignment.Top;
             _checkbox.IsChecked = selected;
 
             this.Add<System.Windows.Controls.Label>(l =>

@@ -50,7 +50,6 @@ namespace StoryTeller.UserInterface.Queue
             set
             {
                 stop.Click += (x, y) => value.AbortCurrentTest();
-                clearAll.Click += (x, y) => value.ClearQueue();
             }
         }
 

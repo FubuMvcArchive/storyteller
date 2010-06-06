@@ -25,7 +25,7 @@ namespace StoryTeller.UserInterface.Controls
         public Grid ProgressArea { get { return progressArea; } }
         public ProgressBar ProgressBar { get { return progressBar; } }
         public TextBlock TestName { get { return testName; } }
-        public TextBlock Status { get { return status; } }
+        public Label Status { get { return status; } }
 
         #region IListener<TestStatusMessage> Members
 
@@ -50,7 +50,7 @@ namespace StoryTeller.UserInterface.Controls
             progressBar.Value = message.CompletedSteps;
             testName.Text = message.TestPath;
 
-            status.Text = message.CurrentActivity;
+            status.Content = message.CurrentActivity;
 
             progressBar.ToolTip = "{0} / {1} ({2})".ToFormat(
                 message.CompletedSteps,
@@ -66,10 +66,10 @@ namespace StoryTeller.UserInterface.Controls
 
             if (message.WasCancelled)
             {
-                status.Text = "{0} was cancelled".ToFormat(message.TestPath);
+                status.Content = "{0} was cancelled".ToFormat(message.TestPath);
             }
 
-            status.Text = message.Status.IsEmpty() ? string.Empty : "{0} {1}".ToFormat(message.TestPath, message.Status);
+            status.Content = message.Status.IsEmpty() ? string.Empty : "{0} {1}".ToFormat(message.TestPath, message.Status);
         }
     }
 

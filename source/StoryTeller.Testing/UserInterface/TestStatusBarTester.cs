@@ -53,7 +53,7 @@ namespace StoryTeller.Testing.UserInterface
         [Test]
         public void the_status_should_be_show_the_test_name_and_status()
         {
-            theBar.Status.Text.ShouldEqual("{0} {1}".ToFormat(theStatus.TestPath, theStatus.Status));
+            theBar.Status.Content.ShouldEqual("{0} {1}".ToFormat(theStatus.TestPath, theStatus.Status));
         }
     }
 
@@ -75,7 +75,7 @@ namespace StoryTeller.Testing.UserInterface
         [Test]
         public void the_status_should_be_empty()
         {
-            theBar.Status.Text.ShouldBeEmpty();
+            (theBar.Status.Content as string).ShouldBeEmpty();
         }
     }
 
@@ -100,7 +100,7 @@ namespace StoryTeller.Testing.UserInterface
         public void the_activity_should_be_displayed()
         {
             theBar.Status.Visibility.ShouldEqual(Visibility.Visible);
-            theBar.Status.Text.ShouldEqual(theStatus.CurrentActivity);
+            theBar.Status.Content.ShouldEqual(theStatus.CurrentActivity);
         }
 
         [Test]
@@ -162,7 +162,7 @@ namespace StoryTeller.Testing.UserInterface
         public void the_activity_should_be_displayed()
         {
             theBar.Status.Visibility.ShouldEqual(Visibility.Visible);
-            theBar.Status.Text.ShouldEqual(theStatus.CurrentActivity);
+            theBar.Status.Content.ShouldEqual(theStatus.CurrentActivity);
         }
 
         [Test]

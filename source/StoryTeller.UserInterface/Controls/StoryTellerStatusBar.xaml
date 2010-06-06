@@ -2,9 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Controls="clr-namespace:StoryTeller.UserInterface.Controls">
-    <StatusBar Background="Silver">
+    <StatusBar Background="{StaticResource SelectedBackgroundBrush}">
         <StatusBarItem DockPanel.Dock="Right" Name="failureItem" Visibility="Collapsed">
-            <Controls:Link x:Name="failureLink" FontWeight="Bold"></Controls:Link>
+            <Controls:Link x:Name="failureLink" FontWeight="Bold" LinkColor="Black"></Controls:Link>
         </StatusBarItem>
 
         <StatusBarItem DockPanel.Dock="Right" Name="cycleItem">

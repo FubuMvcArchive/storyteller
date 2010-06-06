@@ -35,7 +35,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
             };
 
             InputBindings.Add(screenAction.Binding);
-            var item = new CommandMenuItem(screenAction);
+            var item = CommandMenuItem.Build(screenAction);
             item.StaysOpenOnClick = true;
 
             Items.Add(item);

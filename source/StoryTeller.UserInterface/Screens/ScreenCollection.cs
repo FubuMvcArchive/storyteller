@@ -52,19 +52,19 @@ namespace StoryTeller.UserInterface.Screens
 
         public void Show(IScreen screen)
         {
-            _tabs.SelectedItem = _tabItems[screen];
+            _tabs.SelectedItem = _tabItems[screen].Item;
         }
 
         public void Add(IScreen screen)
         {
             // Add a new screen to the tabbed display
-            StoryTellerTabItem cache = _tabItems[screen];
-            _tabs.Items.Add(cache);
+            StoryTellerTabItem item = _tabItems[screen];
+            _tabs.Items.Add(item.Item);
         }
 
         public void Remove(IScreen screen)
         {
-            TabItem tabItem = _tabItems[screen];
+            TabItem tabItem = _tabItems[screen].Item;
             _tabItems.Remove(screen);
             _tabs.Items.Remove(tabItem);
         }

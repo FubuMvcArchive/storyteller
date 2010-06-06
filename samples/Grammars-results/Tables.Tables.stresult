@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="0.3331047" ExceptionText="" WasCancelled="false" Locator="Tables/Tables">
+<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="0.0329129" ExceptionText="" WasCancelled="false" Locator="Tables/Tables">
   <Html>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;style&gt;body
 {
@@ -472,22 +472,18 @@ DIV .exception-zone
 Format exception for &amp;#39;y&amp;#39;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;2&lt;/td&gt;&lt;td class="input"&gt;2&lt;/td&gt;&lt;td class="input pass"&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;2&lt;/td&gt;&lt;td class="input"&gt;2&lt;/td&gt;&lt;td class="input fail"&gt;5, but was &amp;#39;4&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;div class="Comment"&gt;&lt;span class="comment-text"&gt;Table fixture from script&lt;/span&gt;&lt;/div&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;caption&gt;Subtract numbers&lt;/caption&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;x&lt;/th&gt;&lt;th&gt;y&lt;/th&gt;&lt;th&gt;product&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="input"&gt;4&lt;/td&gt;&lt;td class="input"&gt;2&lt;/td&gt;&lt;td class="input pass"&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;0&lt;/td&gt;&lt;td class="input fail"&gt;0, but was &amp;#39;Infinity&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input exception"&gt;a&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input exception"&gt;****&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3" class="exception"&gt;&lt;div class="exception exception-zone"&gt;&lt;pre&gt;Format exception for &amp;#39;x&amp;#39;
 System.Exception: **** is not a valid value for Double. ---&amp;gt; System.FormatException: Input string was not in a correct format.
    at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
-   at System.Double.Parse(String s, NumberStyles style, IFormatProvider provider)
    at System.ComponentModel.DoubleConverter.FromString(String value, NumberFormatInfo formatInfo)
    at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
    --- End of inner exception stack trace ---
    at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
-   at System.ComponentModel.TypeConverter.ConvertFromString(String text)
    at FubuCore.TypeDescriptorFamily.&amp;lt;&amp;gt;c__DisplayClass1.&amp;lt;CreateConverter&amp;gt;b__0(String s) in C:\git\fubumvc\src\FubuCore\ObjectConverter.cs:line 257
    at FubuCore.ObjectConverter.FromString(String stringValue, Type type) in C:\git\fubumvc\src\FubuCore\ObjectConverter.cs:line 104
    at StoryTeller.Engine.Cell.verifyTheActualValue(IStep step, Object actual, String rawExpected, ITestContext context) in C:\git\storyteller\source\StoryTeller\Engine\Cell.cs:line 203&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input exception"&gt;****&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3" class="exception"&gt;&lt;div class="exception exception-zone"&gt;&lt;pre&gt;System.Exception: **** is not a valid value for Double. ---&amp;gt; System.FormatException: Input string was not in a correct format.
    at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
-   at System.Double.Parse(String s, NumberStyles style, IFormatProvider provider)
    at System.ComponentModel.DoubleConverter.FromString(String value, NumberFormatInfo formatInfo)
    at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
    --- End of inner exception stack trace ---
    at System.ComponentModel.BaseNumberConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
-   at System.ComponentModel.TypeConverter.ConvertFromString(String text)
    at FubuCore.TypeDescriptorFamily.&amp;lt;&amp;gt;c__DisplayClass1.&amp;lt;CreateConverter&amp;gt;b__0(String s) in C:\git\fubumvc\src\FubuCore\ObjectConverter.cs:line 257
    at FubuCore.ObjectConverter.FromString(String stringValue, Type type) in C:\git\fubumvc\src\FubuCore\ObjectConverter.cs:line 104
    at StoryTeller.Engine.Cell.verifyTheActualValue(IStep step, Object actual, String rawExpected, ITestContext context) in C:\git\storyteller\source\StoryTeller\Engine\Cell.cs:line 203&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</Html>

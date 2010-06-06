@@ -13,6 +13,8 @@ using StoryTeller.UserInterface.Running;
 
 namespace StoryTeller.UserInterface.Exploring
 {
+    public class TreeStack : StackPanel{}
+
     public class TreeNode : TreeViewItem
     {
         private readonly INamedItem _subject;
@@ -69,15 +71,19 @@ namespace StoryTeller.UserInterface.Exploring
 
         private void setupHeader(INamedItem item)
         {
-            var stack = new StackPanel
+            var stack = new TreeStack()
             {
-                Orientation = Orientation.Horizontal
+                Orientation = Orientation.Horizontal,
+                Background = new SolidColorBrush(Colors.Transparent)
             };
             _image = new Image();
+            
+
             stack.Children.Add(_image);
             _label = new Label
             {
                 Content = item.Name,
+                Background = new SolidColorBrush(Colors.Transparent)
             };
             stack.Children.Add(_label);
             Header = stack;

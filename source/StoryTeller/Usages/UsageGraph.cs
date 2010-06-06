@@ -151,5 +151,10 @@ namespace StoryTeller.Usages
         {
             Rebuild(hierarchy.GetAllTests());
         }
+
+        public IEnumerable<FixtureGraph> AllFixtures()
+        {
+            return _fixtures.GetAll().Select(x => x.Fixture);
+        }
     }
 }

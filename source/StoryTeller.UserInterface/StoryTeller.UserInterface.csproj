@@ -156,8 +156,15 @@
     <Compile Include="Commands\RunSuiteCommand.cs" />
     <Compile Include="Commands\RunTestCommand.cs" />
     <Compile Include="Controls\CommandBar.cs" />
-    <Compile Include="Controls\OptionsMenu.cs" />
+    <Compile Include="Controls\CommandButton.xaml.cs">
+      <DependentUpon>CommandButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IOptionsMenu.cs" />
+    <Compile Include="Controls\CommandMenuItem.cs" />
     <Compile Include="Controls\ITestFilterObserver.cs" />
+    <Compile Include="Controls\OptionsMenu.xaml.cs">
+      <DependentUpon>OptionsMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TestStopConditionsView.xaml.cs">
       <DependentUpon>TestStopConditionsView.xaml</DependentUpon>
     </Compile>
@@ -198,6 +205,9 @@
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
     <Compile Include="Exploring\IIconService.cs" />
+    <Compile Include="Screens\TabCloser.xaml.cs">
+      <DependentUpon>TabCloser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tests\Outline\IOutlineConfigurer.cs" />
     <Compile Include="Tests\Outline\IOutlineController.cs" />
     <Compile Include="Tests\Outline\IOutlineTreeService.cs" />
@@ -215,6 +225,9 @@
     <Compile Include="Screens\ScreenFinder.cs" />
     <Compile Include="Screens\StoryTellerTabItem.cs" />
     <Compile Include="Tests\Outline\OutlineTreeService.cs" />
+    <Compile Include="Tests\Outline\OutlineView.xaml.cs">
+      <DependentUpon>OutlineView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIElementShortcutExtensions.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
     <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />
@@ -237,7 +250,9 @@
       <DependentUpon>WorkspaceSelectionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Workspace\WorkspaceSelector.cs" />
-    <Compile Include="Workspace\WorkspaceSelectorMenu.cs" />
+    <Compile Include="Workspace\WorkspaceSelectorMenu.xaml.cs">
+      <DependentUpon>WorkspaceSelectorMenu.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Editing\Scripts\Controls\tableEditor.js" />
     <Compile Include="Editing\Scripts\Embeds.cs" />
     <Compile Include="Editing\TestEditorBuilder.cs" />
@@ -358,7 +373,6 @@
     <Compile Include="Tests\Mode.cs" />
     <Compile Include="Tests\ModeCommand.cs" />
     <Compile Include="Tests\Outline\IOutlineView.cs" />
-    <Compile Include="Tests\Outline\OutlineView.cs" />
     <Compile Include="Tests\Outline\OutlineNode.cs" />
     <Compile Include="Tests\PreviewMode.cs" />
     <Compile Include="Tests\ResultsMode.cs" />
@@ -385,6 +399,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\CommandButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\OptionsMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TestStopConditionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -483,6 +505,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Screens\TabCloser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -500,6 +526,10 @@
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tests\Outline\OutlineView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tests\TestHeaderView.xaml">
       <SubType>Designer</SubType>
@@ -522,6 +552,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Workspace\WorkspaceSelectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Workspace\WorkspaceSelectorMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

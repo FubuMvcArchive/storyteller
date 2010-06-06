@@ -34,14 +34,16 @@ namespace StoryTeller.UserInterface.Controls
 
         public void AddCommand(string text, ICommand command, Icon icon)
         {
-            this.Add<Button>(x =>
-            {
-                x.ToIconButton(icon, command).Text(text);
-                x.VerticalAlignment = VerticalAlignment.Stretch;
-                x.Height = 30;
-                x.Margin = new Thickness(5, 0, 5, 0);
-                x.HorizontalAlignment = HorizontalAlignment.Right;
-            });
+            var button = new CommandButton(icon, text, command);
+            Children.Add(button);
+            //this.Add<Button>(x =>
+            //{
+            //    x.ToIconButton(icon, command).Text(text);
+            //    x.VerticalAlignment = VerticalAlignment.Stretch;
+            //    x.Height = 30;
+            //    x.Margin = new Thickness(5, 0, 5, 0);
+            //    x.HorizontalAlignment = HorizontalAlignment.Right;
+            //});
         }
 
         public void Refill(IEnumerable<ScreenAction> actions)

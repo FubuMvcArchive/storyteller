@@ -7,22 +7,24 @@ namespace StoryTellerUI
 {
     public class Program
     {
-        [STAThread]
-        public static void Main(params string[] args)
-        {
-            Window window = Bootstrapper.BootstrapShell();
-            window.Title = "StoryTeller";
+        //[STAThread]
+        //public static void Main(params string[] args)
+        //{
+        //    Window window = Bootstrapper.BootstrapShell();
+        //    window.Title = "StoryTeller";
 
-            
 
-            var application = new Application();
 
-            application.DispatcherUnhandledException += application_DispatcherUnhandledException;
+        //    var application = new Application();
 
-            
+        //    Uri resourceLocater = new Uri("/StoryTellerUI;component/ExpressionLight.xaml", UriKind.Relative);
+        //    Application.LoadComponent(resourceLocater);
 
-            application.Run(window);
-        }
+
+        //    application.DispatcherUnhandledException += application_DispatcherUnhandledException;
+
+        //    application.Run(window);
+        //}
 
         private static void application_DispatcherUnhandledException(object sender,
                                                                      DispatcherUnhandledExceptionEventArgs e)

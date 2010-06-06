@@ -102,7 +102,7 @@ namespace StoryTeller.UserInterface
                 Icon = icon,
                 Name = text
             };
-            _item.ContextMenu.Items.Add(new CommandMenuItem(action));
+            _item.ContextMenu.Items.Add(CommandMenuItem.Build(action));
         }
     }
 }

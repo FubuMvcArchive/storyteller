@@ -2,6 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media;
 using StoryTeller.UserInterface.Screens;
 
 namespace StoryTeller.UserInterface.Controls
@@ -20,6 +21,18 @@ namespace StoryTeller.UserInterface.Controls
             : this()
         {
             WireUp(text, action);
+        }
+
+        public Brush LinkColor
+        {
+            get
+            {
+                return textBlock.Foreground;
+            }
+            set
+            {
+                textBlock.Foreground = link.Foreground = value;
+            }
         }
 
         public Hyperlink Link1 { get { return link; } }

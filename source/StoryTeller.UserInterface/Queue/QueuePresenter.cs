@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Windows.Input;
 using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.UserInterface.Actions;
@@ -79,6 +80,10 @@ namespace StoryTeller.UserInterface.Queue
 
             _queue.GetAllQueuedTests().Each(queueTest);
             determineIfAnyTestsAreQueued();
+
+
+            screenObjects.Action("Clear All").Bind(ModifierKeys.Control | ModifierKeys.Shift, Key.Q).To(ClearQueue).Icon
+                = Icon.Stop;
         }
 
         public bool CanClose()

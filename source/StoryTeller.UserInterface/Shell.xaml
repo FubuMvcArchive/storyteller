@@ -5,7 +5,7 @@
     xmlns:Controls="clr-namespace:StoryTeller.UserInterface.Controls"
     xmlns:Projects="clr-namespace:StoryTeller.UserInterface.Projects" xmlns:Workspace="clr-namespace:StoryTeller.UserInterface.Workspace" MinHeight="600" MinWidth="800" >
     <DockPanel SnapsToDevicePixels="False">
-        <DockPanel Name="topBar" DockPanel.Dock="Top" Background="Silver" >
+        <DockPanel Name="topBar" DockPanel.Dock="Top" Background="{StaticResource SelectedBackgroundBrush}">
             <Controls:TestFilterBar x:Name="filterBar" DockPanel.Dock="Left" Height="40" Padding="2 5 2 5"></Controls:TestFilterBar>
             <Workspace:WorkspaceSelectorMenu x:Name="workspaces" DockPanel.Dock="Left" Height="30" Margin="20 5 2 5"></Workspace:WorkspaceSelectorMenu>
             <Controls:OptionsMenu x:Name="options" DockPanel.Dock="Right" Margin="30 0 0 0"></Controls:OptionsMenu>
@@ -23,7 +23,7 @@
                 <ColumnDefinition MinWidth="500" ></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!-- Add scroll viewer -->        
-            <TabControl  Grid.Row="0" Grid.Column="0" Name="explorerTabs" DockPanel.Dock="Left" TabStripPlacement="Top"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" Background="Silver">
+            <TabControl  Grid.Row="0" Grid.Column="0" Name="explorerTabs" DockPanel.Dock="Left" TabStripPlacement="Top"  HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
                 <TabItem Header="Tests" Height="30">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <TreeView Name="testTree" ></TreeView>
@@ -37,7 +37,7 @@
                 </TabItem>
             </TabControl>
             <GridSplitter Grid.Column="1" Grid.Row="0" IsTabStop="False" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"></GridSplitter>
-            <TabControl Grid.Column="2" Grid.Row="0" Name="mainTabs" TabStripPlacement="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Silver" />
+            <TabControl Grid.Column="2" Grid.Row="0" Name="mainTabs" TabStripPlacement="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  />
         </Grid>        
     </DockPanel>
     

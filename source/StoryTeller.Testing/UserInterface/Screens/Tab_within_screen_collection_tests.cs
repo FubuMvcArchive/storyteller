@@ -18,7 +18,7 @@ namespace StoryTeller.Testing.UserInterface.Screens
         {
             screen = new StubScreen();
             collection = MockRepository.GenerateMock<IScreenCollection>();
-            tab = new StoryTellerTabItem(screen, new NulloEventAggregator());
+            tab = new StoryTellerTabItem(screen, new NulloEventAggregator()).Item;
         }
 
         #endregion

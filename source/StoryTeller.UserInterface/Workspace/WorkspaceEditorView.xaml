@@ -5,23 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">
-    <DockPanel>
+    <ScrollViewer>
+        <StackPanel>
 
-        <DockPanel DockPanel.Dock="Right" Width="300">
-            <Label DockPanel.Dock="Top" Background="Silver" FontWeight="Bold">Startup Actions</Label>
-            <ScrollViewer>
-                <StackPanel Name="actionSelectors" Orientation="Vertical">
+            <Expander Header="Fixtures" IsExpanded="true">
 
-                </StackPanel>
-            </ScrollViewer>
-        </DockPanel>
-        <DockPanel>
-            <Label DockPanel.Dock="Top" Background="Silver" FontWeight="Bold">Fixtures</Label>
-            <ScrollViewer>
-                <StackPanel Name="fixtureSelectors" Orientation="Vertical">
+                <StackPanel Name="fixtureSelectors" Orientation="Vertical" Margin="25 0 0 0">
 
                 </StackPanel>
-            </ScrollViewer>
-        </DockPanel>
-    </DockPanel>
+
+            </Expander>
+            <Expander Header="Startup Actions" IsExpanded="False">
+                <StackPanel Name="actionSelectors" Orientation="Vertical" Margin="25 0 0 0">
+
+                </StackPanel>
+            </Expander>
+            <Expander Name="usageExpander" Header="Fixture Usages" IsExpanded="False">
+                <StackPanel Name="fixtureUsages" Orientation="Vertical" Margin="25 0 0 0">
+
+                </StackPanel>
+            </Expander>
+
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

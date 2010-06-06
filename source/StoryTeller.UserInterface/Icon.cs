@@ -36,6 +36,7 @@ namespace StoryTeller.UserInterface
         public static readonly Icon Test = new Icon("statusUnknown.png", 6);
         public static readonly Icon Paragraph = new Icon("statusUnknown.png", 6);
         public static readonly Icon EmbeddedSection = new Icon("statusUnknown.png", 6);
+        public static readonly Icon Refresh = new Icon("statusUnknown.png", 6);
 
         private readonly int _order;
         private readonly string _path;

@@ -271,7 +271,6 @@
     <Compile Include="UserInterface\Commands\RunSuiteCommandTester.cs" />
     <Compile Include="UserInterface\Commands\RunTestCommandTester.cs" />
     <Compile Include="UserInterface\ControlDriver.cs" />
-    <Compile Include="UserInterface\Controls\OptionsMenuTester.cs" />
     <Compile Include="UserInterface\Controls\TestStopConditionsViewTester.cs" />
     <Compile Include="UserInterface\Dialogs\AddTestTester.cs" />
     <Compile Include="UserInterface\Dialogs\AddSuiteTester.cs" />

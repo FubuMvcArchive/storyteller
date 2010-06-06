@@ -141,9 +141,10 @@ namespace StoryTeller.UserInterface
             return panel;
         }
 
-        public static void Add(this StackPanel panel, params UIElement[] elements)
+        public static StackPanel Add(this StackPanel panel, params UIElement[] elements)
         {
             elements.Each(x => panel.Children.Add(x));
+            return panel;
         }
 
         public static StackPanel Vertical(this StackPanel panel)
@@ -398,6 +399,13 @@ namespace StoryTeller.UserInterface
 
                 return this;
             }
+
+            public ButtonExpression Transparent()
+            {
+                _button.Background = new SolidColorBrush(Colors.Transparent);
+                return this;
+            }
+
 
             public ButtonExpression DoesNotAcceptTab()
             {
