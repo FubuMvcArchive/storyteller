@@ -4,7 +4,6 @@ using System.IO;
 using System.Xml;
 using HtmlTags;
 using StoryTeller.Domain;
-using StoryTeller.Examples;
 using StoryTeller.Execution;
 using StoryTeller.Html;
 
@@ -39,16 +38,5 @@ namespace StoryTeller.Engine
             Process.Start(fileName);
         }
 
-        public static XmlDocument CreateExampleXml(this ITestRunner runner)
-        {
-            ExampleSource source = ExampleSource.For(runner);
-            return source.ExampleTest.ToXml();
-        }
-
-        [Obsolete]
-        public static Test CreateExample(this ITestRunner runner)
-        {
-            return ExampleSource.For(runner).ExampleTest;
-        }
     }
 }

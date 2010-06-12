@@ -11,6 +11,7 @@ using StoryTeller.UserInterface;
 using StoryTeller.UserInterface.Exploring;
 using StoryTeller.UserInterface.Queue;
 using StoryTeller.UserInterface.Running;
+using Is = Rhino.Mocks.Constraints.Is;
 
 namespace StoryTeller.Testing.UserInterface
 {

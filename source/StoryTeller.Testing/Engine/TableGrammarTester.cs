@@ -7,6 +7,7 @@ using Rhino.Mocks.Constraints;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Model;
+using Is = Rhino.Mocks.Constraints.Is;
 
 namespace StoryTeller.Testing.Engine
 {

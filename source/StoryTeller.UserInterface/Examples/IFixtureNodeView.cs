@@ -4,6 +4,5 @@ namespace StoryTeller.UserInterface.Examples
 {
     public interface IFixtureNodeView
     {
-        void Display(Example example);
     }
 }

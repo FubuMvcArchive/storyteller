@@ -15,13 +15,6 @@ namespace StoryTeller.UserInterface.Examples
 
         #region IFixtureNodeView Members
 
-        public void Display(Example example)
-        {
-            description.Content = example.Description;
-            xml.Text = example.Xml;
-            browser.NavigateToString(example.Html);
-        }
-
         #endregion
     }
 }

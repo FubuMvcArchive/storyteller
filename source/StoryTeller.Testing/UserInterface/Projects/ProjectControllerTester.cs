@@ -8,6 +8,7 @@ using StoryTeller.UserInterface;
 using StoryTeller.UserInterface.Projects;
 using StoryTeller.UserInterface.Screens;
 using StoryTeller.Workspace;
+using Is = Rhino.Mocks.Constraints.Is;
 
 namespace StoryTeller.Testing.UserInterface.Projects
 {
@@ -422,7 +423,8 @@ namespace StoryTeller.Testing.UserInterface.Projects
             theProjectToken = new ProjectToken
             {
                 Filename = _theFileName,
-                SelectedWorkspaces = new string[]{"a", "b", "c"}
+                SelectedWorkspaces = new string[]{"a", "b", "c"},
+                Name = _theProjectName
             };
             ClassUnderTest.LoadProject(theProjectToken);
         }
@@ -456,7 +458,8 @@ namespace StoryTeller.Testing.UserInterface.Projects
         {
             var theProjectTokenThatShouldBeMarked = new ProjectToken
             {
-                Filename = _theFileName
+                Filename = _theFileName,
+                Name = _theProjectName
             };
 
             MockFor<IProjectHistory>().AssertWasCalled(x => x.MarkAsLastAccessed(theProjectTokenThatShouldBeMarked));

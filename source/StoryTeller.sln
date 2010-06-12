@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F}"
 	ProjectSection(SolutionItems) = preProject
+		..\BuildUtils.rb = ..\BuildUtils.rb
 		..\RakeFile = ..\RakeFile
 	EndProjectSection
 EndProject
@@ -21,8 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.Gallery", "StoryTeller.Gallery\StoryTeller.Gallery.csproj", "{CAE54634-A689-4CF2-979E-CCBCCA8A3644}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{B52EADC1-DDD4-452C-83ED-4A148302D424}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,16 +113,6 @@ Global
 		{B52EADC1-DDD4-452C-83ED-4A148302D424}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B52EADC1-DDD4-452C-83ED-4A148302D424}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B52EADC1-DDD4-452C-83ED-4A148302D424}.Release|x86.ActiveCfg = Release|Any CPU
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Debug|x86.ActiveCfg = Debug|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Debug|x86.Build.0 = Debug|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Release|Any CPU.ActiveCfg = Release|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Release|Mixed Platforms.Build.0 = Release|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Release|x86.ActiveCfg = Release|x86
-		{7E24E734-DAA2-4B9B-A9FF-21EBA6881E54}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

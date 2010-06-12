@@ -24,6 +24,10 @@ namespace StoryTeller.UserInterface.Exploring
         private Image _image;
         private Label _label;
 
+        public TreeNode()
+        {
+        }
+
         public TreeNode(INamedItem item)
         {
             setupHeader(item);
@@ -33,6 +37,7 @@ namespace StoryTeller.UserInterface.Exploring
             ContextMenuOpening += TreeNode_ContextMenuOpening;
 
             this.Bind(MouseAction.LeftDoubleClick).ToMessage(() => new OpenItemMessage(item));
+            this.Bind(Key.Enter).ToMessage(() => new OpenItemMessage(item));
             this.BindControlAnd(MouseAction.LeftClick).ToMessage(() => new ExecuteTestMessage(item.AllTests));
         }
 

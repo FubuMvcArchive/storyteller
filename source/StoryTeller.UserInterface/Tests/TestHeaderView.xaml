@@ -1,6 +1,6 @@
 ﻿<UserControl x:Class="StoryTeller.UserInterface.Tests.TestHeaderView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Padding="5" Background="{StaticResource SelectedBackgroundBrush}"  >
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Padding="5" Background="{DynamicResource SelectedBackgroundBrush}"  >
     <DockPanel MinWidth="500">
         <DockPanel.Resources>
             <Style TargetType="Label">

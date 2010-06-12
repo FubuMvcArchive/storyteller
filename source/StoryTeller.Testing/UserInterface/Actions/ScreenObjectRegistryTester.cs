@@ -12,6 +12,7 @@ using StoryTeller.UserInterface.Queue;
 using StoryTeller.UserInterface.Screens;
 using StoryTeller.Workspace;
 using StructureMap.AutoMocking;
+using Is = Rhino.Mocks.Constraints.Is;
 
 namespace StoryTeller.Testing.UserInterface.Shortcuts
 {

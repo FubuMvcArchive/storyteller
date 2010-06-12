@@ -9,68 +9,68 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="6928" fromTop="18" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Screens/f:StoryTellerTabItem.cs" caret="1279" fromTop="27" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Screens/f:Tab_within_screen_collection_tests.cs" caret="630" fromTop="17" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:SharedExtensions.cs" caret="1838" fromTop="16" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:OptionsMenu.xaml.cs" caret="1017" fromTop="17" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:UIElementShortcutExtensions.cs" caret="3006" fromTop="5" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:CommandMenuItem.cs" caret="623" fromTop="16" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineGrammarSelector.cs" caret="1248" fromTop="19" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:ProjectEditorPresenter.cs" caret="253" fromTop="8" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:ProjectScreen.xaml" caret="289" fromTop="1" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestView.xaml" caret="313" fromTop="2" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineView.xaml" caret="326" fromTop="3" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineView.xaml.cs" caret="892" fromTop="33" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestHeaderView.xaml" caret="443" fromTop="5" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:FailureFixture.cs" caret="304" fromTop="13" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Exploring/f:TreeNode.cs" caret="1345" fromTop="28" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineNode.cs" caret="546" fromTop="12" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="107049" fromTop="4" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuePresenter.cs" caret="2239" fromTop="38" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:StoryTellerStatusBar.xaml.cs" caret="882" fromTop="26" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:StoryTellerStatusBar.xaml" caret="570" fromTop="2" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:Link.xaml.cs" caret="792" fromTop="32" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml.cs" caret="1412" fromTop="21" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="2055" fromTop="22" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="2936" fromTop="12" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="568" fromTop="8" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="502" fromTop="5" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuedTestItem.xaml" caret="627" fromTop="8" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Shell.xaml" caret="649" fromTop="6" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="1270" fromTop="8" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:BuildUtils.rb/l:C!?git?storyteller?BuildUtils.rb" caret="1672" fromTop="38" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="292" fromTop="7" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Exploring/f:TreeNode.cs" caret="937" fromTop="28" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Styling.xaml" caret="0" fromTop="0" />
+      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="189483" fromTop="17" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:StoryTellerStatusBar.xaml" caret="318" fromTop="3" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStopConditionsView.xaml" caret="804" fromTop="7" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="1125" fromTop="3" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="289" fromTop="3" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:Shell.xaml" caret="625" fromTop="6" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Execution/f:TestEngineIntegrationTester.cs" caret="1776" fromTop="26" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestHeaderView.xaml" caret="266" fromTop="1" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/f:TestView.xaml" caret="536" fromTop="5" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:IntegrationTests/f:ScreenObjectLocatorIntegratedTester.cs" caret="1638" fromTop="30" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestRunnerExtensions.cs" caret="1192" fromTop="29" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="1136" fromTop="31" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodeView.xaml.cs" caret="266" fromTop="7" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:IFixtureNodeView.cs" caret="127" fromTop="5" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodePresenterTester.cs" caret="687" fromTop="25" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Engine/d:Sets/f:SetVerificationTesting.cs" caret="7319" fromTop="16" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:UserInterfaceRegistry.cs" caret="4858" fromTop="21" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodeSubjectIntegratedTester.cs" caret="694" fromTop="20" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuePresenter.cs" caret="2350" fromTop="21" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/f:DataMother.cs" caret="740" fromTop="21" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Queue/f:QueuePresenterTester.cs" caret="2581" fromTop="17" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Tests/d:Outline/f:TestTreeBuilderTester.cs" caret="487" fromTop="15" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeBuilder.cs" caret="6004" fromTop="26" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:ProjectController.cs" caret="3359" fromTop="30" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:JavaScript/f:JavaScriptTester.cs" caret="484" fromTop="19" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Projects/f:ProjectControllerTester.cs" caret="1596" fromTop="21" />
     </RecentFiles>
     <RecentEdits>
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="102918" fromTop="18" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="103554" fromTop="19" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:ExpressionDark.xaml" caret="108060" fromTop="17" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuePresenter.cs" caret="2499" fromTop="45" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1133" fromTop="8" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml.cs" caret="1414" fromTop="22" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1304" fromTop="10" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:StoryTellerStatusBar.xaml" caret="526" fromTop="1" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:Link.xaml.cs" caret="677" fromTop="28" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:Link.xaml.cs" caret="792" fromTop="32" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1133" fromTop="6" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="213" fromTop="1" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="1527" fromTop="23" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="808" fromTop="22" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml.cs" caret="2147" fromTop="25" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="1800" fromTop="23" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="2506" fromTop="22" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="5424" fromTop="22" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/f:TestStatusBarTester.cs" caret="3296" fromTop="22" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Controls/f:TestStatusBar.xaml" caret="568" fromTop="8" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1133" fromTop="7" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="752" fromTop="3" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueueView.xaml" caret="1096" fromTop="7" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuedTestItem.xaml" caret="259" fromTop="2" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Queue/f:QueuedTestItem.xaml" caret="677" fromTop="8" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="291" fromTop="4" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="1268" fromTop="10" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="709" fromTop="4" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="887" fromTop="9" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:Settings.xaml" caret="363" fromTop="5" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestRunnerExtensions.cs" caret="1192" fromTop="29" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="295" fromTop="9" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="0" fromTop="0" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodeSubjectIntegratedTester.cs" caret="44" fromTop="1" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="562" fromTop="18" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="1215" fromTop="23" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="394" fromTop="10" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="694" fromTop="21" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="955" fromTop="21" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodePresenter.cs" caret="1043" fromTop="25" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:FixtureNodeView.xaml.cs" caret="421" fromTop="15" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Examples/f:IFixtureNodeView.cs" caret="127" fromTop="5" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodePresenterTester.cs" caret="332" fromTop="11" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodePresenterTester.cs" caret="44" fromTop="1" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodePresenterTester.cs" caret="534" fromTop="17" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodePresenterTester.cs" caret="687" fromTop="25" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Engine/d:Sets/f:SetVerificationTesting.cs" caret="7319" fromTop="16" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Examples/f:FixtureNodeSubjectIntegratedTester.cs" caret="1258" fromTop="24" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:UserInterfaceRegistry.cs" caret="196" fromTop="6" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/f:UserInterfaceRegistry.cs" caret="4858" fromTop="21" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/f:DataMother.cs" caret="740" fromTop="21" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Queue/f:QueuePresenterTester.cs" caret="1698" fromTop="17" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Queue/f:QueuePresenterTester.cs" caret="3425" fromTop="17" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Queue/f:QueuePresenterTester.cs" caret="2581" fromTop="17" />
+      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Tests/d:Outline/f:OutlineTreeBuilder.cs" caret="6004" fromTop="26" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Projects/f:ProjectControllerTester.cs" caret="15211" fromTop="34" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:Projects/f:ProjectControllerTester.cs" caret="16331" fromTop="29" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:JavaScript/f:JavaScriptTester.cs" caret="207" fromTop="8" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:JavaScript/f:JavaScriptTester.cs" caret="815" fromTop="28" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:JavaScript/f:JavaScriptTester.cs" caret="979" fromTop="32" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -88,17 +88,17 @@
     <ItemStatistics item="Default">
       <Item value="using" priority="1" />
       <Item value="FubuCore" priority="0" />
-      <Item value="public" priority="257" />
-      <Item value="static" priority="26" />
+      <Item value="public" priority="258" />
+      <Item value="static" priority="27" />
       <Item value="void" priority="111" />
-      <Item value="Func" priority="12" />
+      <Item value="Func" priority="14" />
       <Item value="params" priority="0" />
       <Item value="object" priority="10" />
       <Item value="if" priority="45" />
       <Item value="condition" priority="0" />
       <Item value="Fail`0" priority="0" />
       <Item value="message" priority="20" />
-      <Item value="return" priority="120" />
+      <Item value="return" priority="121" />
       <Item value="this" priority="39" />
       <Item value="leafName" priority="0" />
       <Item value="class" priority="84" />
@@ -106,7 +106,7 @@
       <Item value="bool" priority="11" />
       <Item value="string" priority="63" />
       <Item value="private" priority="41" />
-      <Item value="new" priority="302" />
+      <Item value="new" priority="317" />
       <Item value="Cache&lt;string,Func&lt;object,object,bool&gt;&gt;" priority="0" />
       <Item value="readonly" priority="14" />
       <Item value="_matchers" priority="3" />
@@ -126,7 +126,7 @@
       <Item value="row1" priority="1" />
       <Item value="row2" priority="0" />
       <Item value="_comparer" priority="1" />
-      <Item value="var" priority="140" />
+      <Item value="var" priority="141" />
       <Item value="context" priority="2" />
       <Item value="x" priority="90" />
       <Item value="valueMatcher" priority="1" />
@@ -171,14 +171,14 @@
       <Item value="HtmlDocument`0" priority="1" />
       <Item value="document" priority="12" />
       <Item value="library" priority="18" />
-      <Item value="f" priority="11" />
+      <Item value="f" priority="12" />
       <Item value="Obsolete" priority="4" />
       <Item value="IEnumerable" priority="5" />
-      <Item value="false" priority="11" />
-      <Item value="Name" priority="22" />
+      <Item value="false" priority="12" />
+      <Item value="Name" priority="24" />
       <Item value="ExceptionTag" priority="1" />
       <Item value="Errors" priority="0" />
-      <Item value="e" priority="3" />
+      <Item value="e" priority="5" />
       <Item value="ErrorText" priority="0" />
       <Item value="GrammarStructure`0" priority="1" />
       <Item value="FixtureClassName" priority="1" />
@@ -194,7 +194,7 @@
       <Item value="Project`0" priority="5" />
       <Item value="FixtureLibraryErrorWriter" priority="1" />
       <Item value="writer" priority="2" />
-      <Item value="project" priority="13" />
+      <Item value="project" priority="14" />
       <Item value="TestEngine" priority="1" />
       <Item value="engine" priority="5" />
       <Item value="ProjectLoaded" priority="2" />
@@ -242,7 +242,7 @@
       <Item value="Registry" priority="0" />
       <Item value="IFixture`0" priority="3" />
       <Item value="FixtureRegistry`0" priority="6" />
-      <Item value="Container" priority="2" />
+      <Item value="Container" priority="4" />
       <Item value="IFixtureObserver`0" priority="0" />
       <Item value="LibraryBuilder`0" priority="1" />
       <Item value="_observer" priority="2" />
@@ -254,7 +254,7 @@
       <Item value="NulloFixtureObserver`0" priority="1" />
       <Item value="registry" priority="5" />
       <Item value="configure" priority="1" />
-      <Item value="For`0" priority="3" />
+      <Item value="For`0" priority="4" />
       <Item value="_source" priority="0" />
       <Item value="MockRepository`0" priority="5" />
       <Item value="source" priority="1" />
@@ -274,12 +274,12 @@
       <Item value="VerificationFixture`0" priority="0" />
       <Item value="ArithmeticFixture`0" priority="0" />
       <Item value="AddressCheckFixture`0" priority="0" />
-      <Item value="DataMother`0" priority="8" />
+      <Item value="DataMother`0" priority="10" />
       <Item value="ActionsFixture`0" priority="0" />
       <Item value="Assert`0" priority="3" />
       <Item value="ShouldContain`1" priority="4" />
       <Item value="ShouldNotContain`1" priority="0" />
-      <Item value="Length" priority="0" />
+      <Item value="Length" priority="1" />
       <Item value="SetUpAttribute`0" priority="0" />
       <Item value="ManualResetEvent" priority="1" />
       <Item value="ThreadPool`0" priority="0" />
@@ -298,7 +298,7 @@
       <Item value="EntryWrittenEventArgs`0" priority="0" />
       <Item value="FixtureContainerSource" priority="0" />
       <Item value="Test" priority="2" />
-      <Item value="test" priority="33" />
+      <Item value="test" priority="34" />
       <Item value="SystemLifecycle`0" priority="4" />
       <Item value="_lifecycle" priority="7" />
       <Item value="SystemLifecycle" priority="2" />
@@ -401,7 +401,7 @@
       <Item value="child2" priority="1" />
       <Item value="children" priority="0" />
       <Item value="foreach" priority="4" />
-      <Item value="child" priority="2" />
+      <Item value="child" priority="3" />
       <Item value="actual" priority="1" />
       <Item value="expected" priority="0" />
       <Item value="yield break" priority="0" />
@@ -447,7 +447,7 @@
       <Item value="LibraryContext" priority="0" />
       <Item value="Library" priority="1" />
       <Item value="ClassUnderTest" priority="28" />
-      <Item value="WorkspaceSuite" priority="2" />
+      <Item value="WorkspaceSuite" priority="3" />
       <Item value="suite" priority="4" />
       <Item value="WorkspaceFilter" priority="11" />
       <Item value="protected" priority="0" />
@@ -556,15 +556,15 @@
       <Item value="WasCancelled" priority="0" />
       <Item value="theTest" priority="27" />
       <Item value="result" priority="6" />
-      <Item value="Background" priority="2" />
+      <Item value="Background" priority="3" />
       <Item value="SolidColorBrush" priority="0" />
       <Item value="Colors`0" priority="2" />
       <Item value="element" priority="1" />
-      <Item value="SolidColorBrush`0" priority="3" />
+      <Item value="SolidColorBrush`0" priority="4" />
       <Item value="TestFixtureSetUpAttribute`0" priority="0" />
       <Item value="TestFixtureTearDownAttribute`0" priority="0" />
       <Item value="Engine" priority="0" />
-      <Item value="projectFile" priority="0" />
+      <Item value="projectFile" priority="1" />
       <Item value="TeardownProject`0" priority="0" />
       <Item value="TestStopConditions" priority="1" />
       <Item value="TestStopConditions`0" priority="0" />
@@ -717,7 +717,7 @@
       <Item value="TestExecutionRequest" priority="0" />
       <Item value="GetAllTests`0" priority="1" />
       <Item value="OpenItemMessage`0" priority="1" />
-      <Item value="_top" priority="6" />
+      <Item value="_top" priority="8" />
       <Item value="TreeViewItem" priority="0" />
       <Item value="NetworkInformationException" priority="0" />
       <Item value="ITestStateListener" priority="0" />
@@ -777,7 +777,7 @@
       <Item value="table" priority="5" />
       <Item value="Paragraph`0" priority="0" />
       <Item value="List&lt;GrammarStructure&gt;" priority="0" />
-      <Item value="LastNode" priority="1" />
+      <Item value="LastNode" priority="2" />
       <Item value="paragraph" priority="5" />
       <Item value="EmbeddedGrammarExtensions`0" priority="0" />
       <Item value="EmbeddedSection`0" priority="1" />
@@ -952,15 +952,15 @@
       <Item value="usageExpander" priority="0" />
       <Item value="fixtureUsages" priority="1" />
       <Item value="Link" priority="0" />
-      <Item value="link" priority="5" />
+      <Item value="link" priority="6" />
       <Item value="UsageGraph" priority="0" />
       <Item value="ConsoleUsageGraphListener`0" priority="0" />
       <Item value="usageGraph" priority="2" />
       <Item value="RefreshUsages`0" priority="0" />
       <Item value="F5" priority="0" />
       <Item value="Padding" priority="0" />
-      <Item value="Thickness" priority="1" />
-      <Item value="Color`0" priority="0" />
+      <Item value="Thickness" priority="2" />
+      <Item value="Color`0" priority="1" />
       <Item value="_image" priority="0" />
       <Item value="CommandButton`0" priority="1" />
       <Item value="image" priority="1" />
@@ -975,13 +975,33 @@
       <Item value="panel" priority="0" />
       <Item value="Style" priority="0" />
       <Item value="Style`0" priority="0" />
-      <Item value="DefaultStyleKey" priority="0" />
+      <Item value="DefaultStyleKey" priority="1" />
       <Item value="_screenAction" priority="0" />
       <Item value="TreeStack`0" priority="0" />
       <Item value="Q" priority="0" />
       <Item value="ClearQueue`0" priority="0" />
       <Item value="Brush" priority="0" />
       <Item value="textBlock" priority="0" />
+      <Item value="UserControl`0" priority="0" />
+      <Item value="Color" priority="1" />
+      <Item value="brush" priority="0" />
+      <Item value="Resources" priority="1" />
+      <Item value="SetResourceReference`0" priority="0" />
+      <Item value="BackgroundProperty" priority="0" />
+      <Item value="ObjectFactory" priority="0" />
+      <Item value="IProjectController" priority="0" />
+      <Item value="projectLoader" priority="0" />
+      <Item value="ProjectToken" priority="1" />
+      <Item value="Token`0" priority="1" />
+      <Item value="getToken" priority="0" />
+      <Item value="Filename" priority="0" />
+      <Item value="token" priority="0" />
+      <Item value="ScreenObjectRegistry" priority="1" />
+      <Item value="Window" priority="1" />
+      <Item value="Shell`0" priority="0" />
+      <Item value="IScreenObjectRegistry" priority="0" />
+      <Item value="ShellService`0" priority="0" />
+      <Item value="_theProjectName" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.EmbeddedSectionGrammar`1">
       <Item value="LeafName`0" priority="3" />
@@ -1007,7 +1027,7 @@
       <Item value="IsNotEmpty`0" priority="1" />
       <Item value="ToFormat`0" priority="2" />
       <Item value="ShouldContain`1" priority="4" />
-      <Item value="IsEmpty`0" priority="3" />
+      <Item value="IsEmpty`0" priority="4" />
       <Item value="ShouldNotBeNull`0" priority="2" />
       <Item value="Replace`0" priority="8" />
       <Item value="Trim`0" priority="1" />
@@ -1095,7 +1115,7 @@
       <Item value="FixtureClassName" priority="4" />
       <Item value="Errors" priority="0" />
       <Item value="Grammars" priority="1" />
-      <Item value="FixtureNamespace" priority="2" />
+      <Item value="FixtureNamespace" priority="3" />
       <Item value="Name" priority="3" />
       <Item value="Title" priority="2" />
     </ItemStatistics>
@@ -1176,7 +1196,7 @@
       <Item value="Main`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@StructureMap.ObjectFactory">
-      <Item value="GetInstance`1" priority="0" />
+      <Item value="GetInstance`1" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Threading.Thread">
       <Item value="Name" priority="1" />
@@ -1265,7 +1285,7 @@
       <Item value="Workspace" priority="2" />
       <Item value="GetWorkspace`0" priority="4" />
       <Item value="FileName" priority="0" />
-      <Item value="Name" priority="8" />
+      <Item value="Name" priority="9" />
       <Item value="Lifecycle" priority="0" />
       <Item value="AllParts" priority="0" />
       <Item value="Parts" priority="0" />
@@ -1314,7 +1334,7 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:StructureMap.Configuration.DSL.Expressions.CreatePluginFamilyExpression`1">
       <Item value="Add`0" priority="1" />
-      <Item value="Use`0" priority="1" />
+      <Item value="Use`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StructureMap.Pipeline.SmartInstance`1">
       <Item value="Named`0" priority="1" />
@@ -1334,7 +1354,7 @@
       <Item value="LoadTests`0" priority="0" />
       <Item value="Options" priority="1" />
       <Item value="FileName" priority="1" />
-      <Item value="Name" priority="1" />
+      <Item value="Name" priority="2" />
       <Item value="ProjectFolder" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Reflection.Assembly">
@@ -1451,6 +1471,7 @@
       <Item value="TextBlock" priority="0" />
       <Item value="WireUp`0" priority="1" />
       <Item value="ToolTip" priority="0" />
+      <Item value="Margin" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Windows.Controls.TextBlock">
       <Item value="Text" priority="1" />
@@ -1551,6 +1572,8 @@
     <ItemStatistics item="Qualified:StoryTeller.UserInterface.Projects.IProjectController">
       <Item value="AssertWasCalled`1" priority="0" />
       <Item value="SaveWorkspace`0" priority="0" />
+      <Item value="LoadExistingProject`0" priority="1" />
+      <Item value="LoadProject`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Domain.Hierarchy">
       <Item value="ChildSuites" priority="1" />
@@ -1678,6 +1701,7 @@
       <Item value="BuildHierarchy`0" priority="1" />
       <Item value="MathProject`0" priority="3" />
       <Item value="MathProjectRunner`0" priority="0" />
+      <Item value="ScreenObjectRegistry`0" priority="2" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Execution.ProjectTestRunner">
       <Item value="TeardownProject`0" priority="0" />
@@ -1901,7 +1925,7 @@
     <ItemStatistics item="Qualified:StoryTeller.UserInterface.Tests.Outline.OutlineNode">
       <Item value="Icon" priority="1" />
       <Item value="HeaderText`0" priority="2" />
-      <Item value="AddText`0" priority="9" />
+      <Item value="AddText`0" priority="10" />
       <Item value="ToolTip" priority="5" />
       <Item value="ParentNode" priority="0" />
       <Item value="Part" priority="5" />
@@ -2199,6 +2223,16 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:@StoryTeller.UserInterface.Controls.CommandMenuItem">
       <Item value="Build`0" priority="2" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.UserControl">
+      <Item value="Background" priority="1" />
+      <Item value="BackgroundIs`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.StartupEventArgs">
+      <Item value="Args" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:StoryTeller.UserInterface.Projects.ProjectToken">
+      <Item value="Name" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

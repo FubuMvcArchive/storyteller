@@ -1,10 +1,13 @@
+using System.Windows;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.UserInterface;
+using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Queue;
 using StoryTeller.UserInterface.Running;
+using StructureMap;
 
 namespace StoryTeller.Testing.UserInterface.Queue
 {
@@ -48,7 +51,7 @@ namespace StoryTeller.Testing.UserInterface.Queue
             MockFor<IExecutionQueue>().Expect(x => x.GetAllQueuedTests()).Return(tests);
             MockFor<IExecutionQueue>().Expect(x => x.IsEmpty()).Return(false);
 
-            ClassUnderTest.Activate(null);
+            ClassUnderTest.Activate(DataMother.ScreenObjectRegistry());
         }
 
         [Test]
@@ -75,7 +78,7 @@ namespace StoryTeller.Testing.UserInterface.Queue
             queue.Expect(x => x.IsExecuting()).Return(false);
             queue.Expect(x => x.IsEmpty()).Return(true);
 
-            ClassUnderTest.Activate(null);
+            ClassUnderTest.Activate(DataMother.ScreenObjectRegistry());
         }
 
         [Test]
@@ -99,7 +102,7 @@ namespace StoryTeller.Testing.UserInterface.Queue
             MockFor<IExecutionQueue>().Expect(x => x.GetAllQueuedTests()).Return(new Test[0]);
             MockFor<IExecutionQueue>().Expect(x => x.IsExecuting()).Return(true);
 
-            ClassUnderTest.Activate(null);
+            ClassUnderTest.Activate(DataMother.ScreenObjectRegistry());
         }
 
         [Test]

@@ -100,6 +100,8 @@ namespace StoryTeller.UserInterface.Projects
                     return false;
                 }
 
+                token.Name = project.Name;
+
                 project.SelectWorkspaces(token.SelectedWorkspaces ?? new string[0]);
 
                 ActivateProject(project);

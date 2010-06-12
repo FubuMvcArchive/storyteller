@@ -8,6 +8,7 @@ using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Execution;
 using StoryTeller.Persistence;
+using Is = Rhino.Mocks.Constraints.Is;
 
 namespace StoryTeller.Testing.Execution
 {

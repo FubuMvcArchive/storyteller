@@ -45,7 +45,8 @@ namespace StoryTeller.Workspace
                     break;
 
                 case FilterType.Namespace:
-                    filter.Includes += f => f.FixtureNamespace.StartsWith(Name);
+
+                    filter.Includes += f => f.FixtureNamespace.IsEmpty() ? false : f.FixtureNamespace.StartsWith(Name);
                     break;
             }
         }

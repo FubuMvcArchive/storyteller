@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using Rhino.Mocks;
-using StoryTeller.Examples;
 using StoryTeller.Model;
 using StoryTeller.UserInterface.Examples;
 using StoryTeller.UserInterface.Screens;
@@ -17,8 +16,8 @@ namespace StoryTeller.Testing.UserInterface.Examples
             var fixture1 = new FixtureGraph("fixture1");
             var fixture2 = new FixtureGraph("fixture2");
 
-            var screen1 = new FixtureNodePresenter(null, fixture1, null);
-            var screen2 = new FixtureNodePresenter(null, fixture2, null);
+            var screen1 = new FixtureNodePresenter(null, fixture1);
+            var screen2 = new FixtureNodePresenter(null, fixture2);
 
             var subject = new FixtureNodeSubject(fixture1);
 
@@ -41,7 +40,6 @@ namespace StoryTeller.Testing.UserInterface.Examples
             container = new Container(x =>
             {
                 x.For<IFixtureNodeView>().Use<FixtureNodeView>();
-                x.For<IExampleSource>().Use(MockRepository.GenerateMock<IExampleSource>());
                 x.For<IScreen<IFixtureNode>>().Use<FixtureNodePresenter>();
             });
 

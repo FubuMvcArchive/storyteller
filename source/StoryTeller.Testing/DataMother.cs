@@ -1,9 +1,12 @@
 using System;
 using System.IO;
+using System.Windows;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Execution;
 using StoryTeller.Model;
+using StoryTeller.UserInterface;
+using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Projects;
 using StoryTeller.Workspace;
 using StructureMap;
@@ -14,6 +17,11 @@ namespace StoryTeller.Testing
     {
         public const string THE_GRAMMAR_FILE = @"..\..\..\..\samples\grammars.xml";
         public const string THE_MATH_FILE = @"..\..\..\..\samples\math.xml";
+
+        public static IScreenObjectRegistry ScreenObjectRegistry()
+        {
+            return new ScreenObjectRegistry(new Window(), new Container(), new Shell());
+        }
 
         public static Project MathProject()
         {

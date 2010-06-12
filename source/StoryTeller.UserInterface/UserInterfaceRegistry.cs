@@ -5,7 +5,6 @@ using System.Windows.Threading;
 using ShadeTree.Validation;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
-using StoryTeller.Examples;
 using StoryTeller.Execution;
 using StoryTeller.Model;
 using StoryTeller.UserInterface.Actions;
@@ -80,6 +79,7 @@ namespace StoryTeller.UserInterface
             For<SetVerification>().Use(c => new SetVerification());
             For<FixtureGraph>().Use(c => new FixtureGraph());
             For<ITestFilter>().Use<TestFilter>();
+            For<WorkspaceSuite>().Use(c => new WorkspaceSuite("something"));
 
             IfTypeMatches(x => x.CanBeCastTo(typeof(Window))).InterceptWith((c, dialog) =>
             {
@@ -125,7 +125,6 @@ namespace StoryTeller.UserInterface
             makeSingleton<FixtureExplorer>();
             makeSingleton<ExplorerView>();
             makeSingleton<StatusPresenter>();
-            makeSingleton<IExampleSource>();
             makeSingleton<IScreenObjectRegistry>();
             makeSingleton<IShellService>();
             makeSingleton<ITestEditorBuilder>();

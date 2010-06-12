@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Threading;
 using StoryTeller.UserInterface;
+using StoryTeller.UserInterface.Projects;
+using StructureMap;
 
 namespace StoryTellerUI
 {
@@ -21,6 +23,15 @@ namespace StoryTellerUI
             application.DispatcherUnhandledException += application_DispatcherUnhandledException;
 
             window.Show();
+
+            if (e.Args.Length > 0)
+            {
+                var projectFile = e.Args[0];
+                ObjectFactory.GetInstance<IProjectController>().LoadProject(new ProjectToken()
+                {
+                    Filename = projectFile
+                });
+            }
 
             //application.Run(window);
         }

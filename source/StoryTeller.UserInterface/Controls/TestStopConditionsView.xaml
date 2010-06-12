@@ -1,6 +1,6 @@
 ﻿<UserControl x:Class="StoryTeller.UserInterface.Controls.TestStopConditionsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{StaticResource SelectedBackgroundBrush}" >
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{DynamicResource SelectedBackgroundBrush}" >
     <Border BorderBrush="Black" BorderThickness="2" Margin="5" Padding="5">
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
         <Label FontWeight="Bold" Foreground="Black" Margin="0 0 0 5">Test Execution Options:  </Label>

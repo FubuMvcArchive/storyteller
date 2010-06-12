@@ -18,6 +18,11 @@ namespace StoryTeller.UserInterface.Tests.Outline
             return new KeyGesture(key, ModifierKeys.Alt);
         }
 
+        public static KeyGesture PlusShiftAlt(this Key key)
+        {
+            return new KeyGesture(key, ModifierKeys.Alt | ModifierKeys.Shift);
+        }
+
         public static KeyGesture PlusShift(this Key key)
         {
             return new KeyGesture(key, ModifierKeys.Control | ModifierKeys.Shift);
@@ -55,7 +60,14 @@ namespace StoryTeller.UserInterface.Tests.Outline
             int index = 0;
             library.ActiveFixtures.Each(x =>
             {
-                selector.Add(Icon.Section, x.Title, () => _controller.AddSection(x.Name), Shortcuts[index++]);
+                if (index < Shortcuts.Length)
+                {
+                    selector.Add(Icon.Section, x.Title, () => _controller.AddSection(x.Name), Shortcuts[index++]);
+                }
+                else
+                {
+                    selector.Add(Icon.Section, x.Title, () => _controller.AddSection(x.Name), new KeyGesture(Key.F15));
+                }
             });
         }
 
@@ -152,6 +164,50 @@ namespace StoryTeller.UserInterface.Tests.Outline
             Key.T.ToGesture(),
             Key.U.ToGesture(),
             Key.V.ToGesture(),
+
+            Key.A.PlusAlt(),
+            Key.B.PlusAlt(),
+            Key.D.PlusAlt(),
+            Key.E.PlusAlt(),
+            Key.F.PlusAlt(),
+            Key.G.PlusAlt(),
+            Key.H.PlusAlt(),
+            Key.I.PlusAlt(),
+            Key.J.PlusAlt(),
+            Key.K.PlusAlt(),
+            Key.L.PlusAlt(),
+            Key.M.PlusAlt(),
+            Key.N.PlusAlt(),
+            Key.O.PlusAlt(),
+            Key.P.PlusAlt(),
+            Key.Q.PlusAlt(),
+            Key.R.PlusAlt(),
+            Key.S.PlusAlt(),
+            Key.T.PlusAlt(),
+            Key.U.PlusAlt(),
+            Key.V.PlusAlt(),
+
+            Key.A.PlusShiftAlt(),
+            Key.B.PlusShiftAlt(),
+            Key.D.PlusShiftAlt(),
+            Key.E.PlusShiftAlt(),
+            Key.F.PlusShiftAlt(),
+            Key.G.PlusShiftAlt(),
+            Key.H.PlusShiftAlt(),
+            Key.I.PlusShiftAlt(),
+            Key.J.PlusShiftAlt(),
+            Key.K.PlusShiftAlt(),
+            Key.L.PlusShiftAlt(),
+            Key.M.PlusShiftAlt(),
+            Key.N.PlusShiftAlt(),
+            Key.O.PlusShiftAlt(),
+            Key.P.PlusShiftAlt(),
+            Key.Q.PlusShiftAlt(),
+            Key.R.PlusShiftAlt(),
+            Key.S.PlusShiftAlt(),
+            Key.T.PlusShiftAlt(),
+            Key.U.PlusShiftAlt(),
+            Key.V.PlusShiftAlt(),
         };
 
 

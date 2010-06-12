@@ -4,6 +4,7 @@ using Rhino.Mocks.Constraints;
 using StoryTeller.Domain;
 using StoryTeller.UserInterface;
 using StoryTeller.UserInterface.Exploring;
+using Is = Rhino.Mocks.Constraints.Is;
 
 namespace StoryTeller.Testing.UserInterface.Exploring
 {

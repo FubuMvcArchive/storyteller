@@ -153,7 +153,6 @@
     <Compile Include="Engine\TestRunnerBuilder.cs" />
     <Compile Include="Engine\TestRunnerExtensions.cs" />
     <Compile Include="Execution\DirectoryRunner.cs" />
-    <Compile Include="Examples\ExampleSource.cs" />
     <Compile Include="Execution\FixtureAssembly.cs" />
     <Compile Include="Execution\FixtureLibraryWatcher.cs" />
     <Compile Include="Execution\FixtureObserver.cs" />
@@ -184,7 +183,6 @@
     <Compile Include="Engine\ITestObserver.cs" />
     <Compile Include="Engine\CheckGrammar.cs" />
     <Compile Include="Engine\TeamCityTestListener.cs" />
-    <Compile Include="Execution\Example.cs" />
     <Compile Include="Execution\BinaryRecycleFinished.cs" />
     <Compile Include="Execution\ITestEngine.cs" />
     <Compile Include="GrammarExtensions.cs" />

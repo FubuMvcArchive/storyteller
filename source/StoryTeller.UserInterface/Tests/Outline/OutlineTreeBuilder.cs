@@ -194,6 +194,8 @@ namespace StoryTeller.UserInterface.Tests.Outline
             if (_top == null)
             {
                 _top = new OutlineNode(test, Icon.Test);
+                _top.AddText(test.Name);
+                LastNode = _top;
             }
 
             if (_nodes.Count == 0)

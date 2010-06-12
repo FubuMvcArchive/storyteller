@@ -8,7 +8,6 @@ using System.Xml.Linq;
 using FubuCore;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
-using NUnitExtension.IterativeTest;
 using WatiN.Core;
 
 namespace StoryTeller.Testing.JavaScript
@@ -29,11 +28,11 @@ namespace StoryTeller.Testing.JavaScript
         // If a javascript test fails in the build, but NOT when you open the HTML file manually, it is probably an IE issue.
         // Make sure to test manually using IE.
 
-        [IterativeTest("RunQUnitTests")]
-        public void QUnit(object current)
-        {
-            ((QUnitTest) current).ShouldPass();
-        }
+        //[IterativeTest("RunQUnitTests")]
+        //public void QUnit(object current)
+        //{
+        //    ((QUnitTest) current).ShouldPass();
+        //}
 
 
         public IEnumerable RunQUnitTests()

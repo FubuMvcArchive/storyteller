@@ -1,15 +1,12 @@
 COMPILE_TARGET = "debug"
-require "BuildUtils.rb"
 require 'albacore'
+require "BuildUtils.rb"
 
-BUILD_NUMBER_BASE = "0.9.0"
+BUILD_NUMBER_BASE = "0.9.9"
 PRODUCT = "StoryTeller"
-COPYRIGHT = 'Released under the Apache 2.0 License';
+COPYRIGHT = 'Released under the Apache 2.0 License by Jeremy D. Miller and Brandon Behrens';
 COMMON_ASSEMBLY_INFO = 'source/CommonAssemblyInfo.cs';
-
-versionNumber = ENV["CCNetLabel"].nil? ? 0 : ENV["CCNetLabel"]
-
-
+CLR_VERSION = "v4.0.30319"
 
 task :default => [:compile, :unit_test]
 
@@ -40,7 +37,7 @@ assemblyinfo :version do |asm|
 end
 
 task :compile => :version do
-  MSBuildRunner.compile :compilemode => COMPILE_TARGET, :solutionfile => 'source/StoryTeller.sln', :clrversion => 'v4.0'
+  MSBuildRunner.compile :compilemode => COMPILE_TARGET, :solutionfile => 'source/StoryTeller.sln', :clrversion => CLR_VERSION
 end
 
 task :unit_test => :compile do

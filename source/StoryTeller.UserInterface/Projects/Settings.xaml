@@ -4,7 +4,7 @@
     xmlns:Controls="clr-namespace:StoryTeller.UserInterface.Controls"
     >
     <DockPanel>
-        <Border Background="{StaticResource SelectedBackgroundBrush}" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0 0 0 2">
+        <Border Background="{DynamicResource SelectedBackgroundBrush}" DockPanel.Dock="Top" BorderBrush="Black" BorderThickness="0 0 0 2">
             <Label Margin="5" Foreground="Black" FontWeight="Bold">Settings</Label>
         </Border>
 
@@ -19,7 +19,7 @@
                 <TextBlock Foreground="White">Load Existing Project</TextBlock>
             </Hyperlink>
         </Label>
-        <Border Background="{StaticResource SelectedBackgroundBrush}" DockPanel.Dock="Top" Margin="0 5 0 0" BorderBrush="Black" BorderThickness="0 2 0 2">
+        <Border Background="{DynamicResource SelectedBackgroundBrush}" DockPanel.Dock="Top" Margin="0 5 0 0" BorderBrush="Black" BorderThickness="0 2 0 2">
             <Label Foreground="Black" Margin="5" FontWeight="Bold">Projects</Label>
         </Border>
         <StackPanel Orientation="Vertical" Name="projectList" Margin="5">

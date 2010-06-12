@@ -205,17 +205,6 @@ namespace StoryTeller.Testing.Engine.Sets
             test.LastResult.Counts.ShouldEqual(5, 1, 0, 0);
         }
 
-        [Test]
-        public void smoke_test_get_example()
-        {
-            var runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
-
-            XmlDocument xml = runner.CreateExampleXml();
-            Debug.WriteLine(xml.OuterXml);
-
-            xml.ShouldNotBeNull();
-            xml.DocumentElement.SelectNodes("AddressCheck/CheckAddresses/Address/Address").Count.ShouldEqual(3);
-        }
 
         [Test]
         public void smoke_test_writing_preview()
