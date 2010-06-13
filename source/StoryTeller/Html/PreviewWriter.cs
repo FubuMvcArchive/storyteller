@@ -24,7 +24,7 @@ namespace StoryTeller.Html
             _document.AddStyle(HtmlClasses.CSS());
 
 
-            _document.Push("div").Id("testEditor").AddClass("main").AddClass("test-editor");
+            _document.Push("div").AddClass("main");
         }
 
         public HtmlDocument Document { get { return _document; } }
@@ -45,7 +45,7 @@ namespace StoryTeller.Html
 
             _document.Add(sectionTag);
 
-            _document.PushWithoutAttaching(sectionTag.StepHolder);
+            _document.PushWithoutAttaching(sectionTag.Body);
         }
 
         void ITestStream.EndSection(Section section)

@@ -46,7 +46,7 @@ namespace StoryTeller.Html
 
             _document.Add(sectionTag);
 
-            _document.PushWithoutAttaching(sectionTag.StepHolder);
+            _document.PushWithoutAttaching(sectionTag.Body);
         }
 
         void ITestStream.EndSection(Section section)

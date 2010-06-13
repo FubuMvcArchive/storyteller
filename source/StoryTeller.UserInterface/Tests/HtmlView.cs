@@ -20,6 +20,8 @@ namespace StoryTeller.UserInterface.Tests
         public HtmlView()
         {
             Content = _browser;
+            this.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+            _browser.HorizontalAlignment = HorizontalAlignment.Stretch;
 
             _browser.Visibility = Visibility.Visible;
 

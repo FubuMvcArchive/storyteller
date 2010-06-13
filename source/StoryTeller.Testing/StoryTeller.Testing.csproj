@@ -247,6 +247,7 @@
     <Compile Include="SimpleTest.cs" />
     <Compile Include="SpecificationExtensions.cs" />
     <Compile Include="StepTester.cs" />
+    <Compile Include="StoryTellerDebug.cs" />
     <Compile Include="SuiteTester.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="TestConverterTester.cs" />

@@ -4,6 +4,7 @@ using FubuCore;
 using StoryTeller.Assertions;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
+using StoryTeller.Html;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
 
@@ -39,6 +40,12 @@ namespace StoryTeller.Execution
 
 
             _hierarchy = _project.LoadTests();
+        }
+
+        public OpenHtmlOption OpenOption
+        {
+            get { return _openOption; }
+            set { _openOption = value; }
         }
 
         public Hierarchy Hierarchy
@@ -121,6 +128,12 @@ namespace StoryTeller.Execution
         public void RunAll()
         {
             _hierarchy.GetAllTests().Each(t => _engine.RunTest(t));
+        }
+
+        public string WritePreview(Test test)
+        {
+            var converter = new TestConverter();
+            return converter.ToPreview(this.GetLibary(), test);
         }
     }
 }

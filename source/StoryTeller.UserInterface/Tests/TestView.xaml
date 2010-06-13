@@ -7,6 +7,5 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <ContentControl Name="content"></ContentControl>
         </ScrollViewer>
-        <Border BorderBrush="Silver" BorderThickness="1" Name="border1" Width="200" />
     </DockPanel>
 </UserControl>

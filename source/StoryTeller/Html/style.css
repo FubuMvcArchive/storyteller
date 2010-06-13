@@ -55,13 +55,6 @@ SPAN.pass
 }
 
 
-.comment-editor-holder > textarea
-{
-	width:600px;
-	height:100px;
-	
-}
-
 .Comment
 {
 	margin-top:20px;
@@ -88,33 +81,6 @@ a:hover {
 	font-weight: normal;
 }
 
-input.integer
-{
-	width: 75px;
-}
-
-.section-title > a.deleteStep
-{
-	float:right;
-}
-
-.header-container > a.closer
-{
-	float:right;
-}
-
-div.test-editor
-{
-	width: 95%;
-	margin: 0px;
-}
-
-.test-editor > .container 
-{
-	margin: 20px;
-	padding-bottom:20px;
-	border:none;
-}
 
 .section {
 	-moz-background-clip:border;
@@ -122,11 +88,29 @@ div.test-editor
 	-moz-background-origin:padding;
 	-moz-border-radius:5px;
 	background:#FCFDFD url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) repeat-x scroll 50% bottom;
-	border:1px solid #A6C9E2;
+	/*border:1px solid #A6C9E2;*/
+	/* border-bottom:1px solid #A6C9E2; */
 	color:#222222;
-	/*padding: 20px;*/
+	margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
 
-	margin-bottom: 5px;
+}
+
+.section-body
+{
+    border-bottom: 2px solid black;
+    margin-top:0px;
+    margin-left:0px;
+    margin-right:0px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    padding:10px;
+}
+
+h3.section-title
+{
+    border:2px solid black;
 }
 
 div.embedded > div > div.step-holder
@@ -177,6 +161,7 @@ html, body{
 	-moz-border-radius-topleft:6px;
 	-moz-border-radius-topright:6px;
 	background-color: #fff;
+	padding-bottom: 20px;
 }
 
 .main > h2 {
@@ -321,64 +306,27 @@ table.details TH
 	font-weight:normal;
 }
 
-.add-section-activator{
-	margin-left: 10px;
-	margin-bottom: 10px;
-}
-
-.grammar-selector{
-	border: 1px solid #79B7E7;
-	padding: 4px;
-	background-color: #F5F8F9;
-	margin: 10px;
-	width: 400px;
-}
-
-.grammar-selector .header-container{
-	padding: 4px;
-	background-color: #D7E3EF;
-}
-
-.grammar-selector .header-container a.closer{
-	float: right;
-}
-
-.grammar-selector .header-container span{
-	font-size: 110%;
-	font-weight: bold;
-}
-
-.grammar-selector .link-container{
-	max-height: 300px;	
-	overflow: auto;
-}
-
-.grammar-selector .add-link{
-	border:1px solid #EEE;
-	cursor:pointer;
-	padding:4px 4px 4px 8px;
-}
-
-.grammar-selector .add-link a span{
-	color: #000;
-}
-
-.grammar-selector .add-link:hover{
-	background-color: #EEE;
-}
-
-.grammar-selector .add-link a span.textbox{
-	font-style: italic;
-	color: #AAA;
-}
 
 div.paragraph
 {
-	width: 800px;
 	margin-bottom: 10px;
 }
 
-div.paragraph, div.table-editor
+
+div.paragraph div
+{
+    margin-left: 20px;
+}
+
+div.paragraph-title
+{
+	font-size: 90%;
+	color:#E17009;
+	font-weight: bold;
+	margin-left: 0px !important;
+}
+
+div.paragraph
 {
 	-moz-background-clip:border;
 	-moz-background-inline-policy:continuous;
@@ -388,7 +336,7 @@ div.paragraph, div.table-editor
 	-moz-border-radius-topleft:5px;
 	-moz-border-radius-topright:5px;
 	background:#FCFDFD url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) repeat-x scroll 50% bottom;
-	border:1px solid #A6C9E2;
+	/*border:1px solid #A6C9E2;*/
 	color:#222222;
 	padding-top: 0px;
 	margin-top: 10px;

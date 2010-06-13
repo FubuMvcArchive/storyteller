@@ -9,7 +9,7 @@ namespace StoryTeller.Html
     {
         private readonly Section _section;
         private readonly FixtureGraph _fixture;
-        private readonly HtmlTag _stepHolder;
+        private readonly HtmlTag _body;
 
         public SectionTag(Section section, FixtureGraph fixture)
             : base("div")
@@ -17,20 +17,18 @@ namespace StoryTeller.Html
             _section = section;
             _fixture = fixture;
 
-            AddClass("section");
-            AddClass("embedded");
-            
-            Add("div").AddClass("section-header")
-                .Add("div").AddClass(HtmlClasses.SECTION_TITLE).Text(_fixture.Title);
+            Add("h3").Text(_fixture.Title).AddClass(HtmlClasses.SECTION_TITLE);
 
-            _stepHolder = Add("div").Add("div").AddClass("step-holder");
+            AddClass("section");
+
+            _body = Add("div").AddClass("section-body");
         }
 
-        public HtmlTag StepHolder { get { return _stepHolder; } }
+        public HtmlTag Body { get { return _body; } }
 
         public void WriteResults(ITestContext context)
         {
-            context.ResultsFor(_section).ForExceptionText(text => _stepHolder.Child(new ExceptionTag(text)));
+            context.ResultsFor(_section).ForExceptionText(text => _body.Child(new ExceptionTag(text)));
         }
     }
 

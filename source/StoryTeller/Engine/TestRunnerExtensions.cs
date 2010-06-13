@@ -33,10 +33,17 @@ namespace StoryTeller.Engine
 
         public static void OpenResultsInBrowser(this Test test)
         {
-            string fileName = Path.GetTempFileName() + ".htm";
-            File.WriteAllText(fileName, test.LastResult.Html);
-            Process.Start(fileName);
+            string contents = test.LastResult.Html;
+
+            OpenInBrowser(contents);
         }
 
+        public static void OpenInBrowser(this string contents)
+        {
+            string fileName = Path.GetTempFileName() + ".htm";
+            
+            File.WriteAllText(fileName, contents);
+            Process.Start(fileName);
+        }
     }
 }

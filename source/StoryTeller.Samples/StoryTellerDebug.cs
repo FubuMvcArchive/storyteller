@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using StoryTeller.Execution;
+using StoryTeller.Engine;
 
 namespace StoryTellerTestHarness
 {
@@ -15,9 +16,11 @@ namespace StoryTellerTestHarness
         }
 
         [Test]
-        public void Check_properties()
+        public void Composite_with_Errors()
         {
-            runner.RunAndAssertTest("General/Check properties");
+            runner.OpenOption = OpenHtmlOption.Always;
+            var test = runner.RunTest("Paragraphs/Composite with Errors");
+            runner.WritePreview(test).OpenInBrowser();
         }
 
         [TestFixtureTearDown]
