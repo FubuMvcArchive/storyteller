@@ -27,12 +27,12 @@ namespace StoryTeller.Html
             if (counts.WasSuccessful())
             {
                 countsTag.Text("Succeeded with " + counts.ToString());
-                countsTag.AddClass(HtmlClasses.PASS);
+                countsTag.AddClass("results-" + HtmlClasses.PASS);
             }
             else
             {
                 countsTag.Text("Failed with " + counts.ToString());
-                countsTag.AddClass(HtmlClasses.FAIL);
+                countsTag.AddClass("results-" + HtmlClasses.FAIL);
             }
 
             _testName.Next = countsTag;

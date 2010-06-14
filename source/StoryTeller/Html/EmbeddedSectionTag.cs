@@ -49,7 +49,7 @@ namespace StoryTeller.Html
 
             if (section.Style == EmbedStyle.TitledAndIndented)
             {
-                Add("div").AddClass(HtmlClasses.SECTION_TITLE).Text(section.Label);
+                Add("h3").AddClass("embedded-title").Text(section.Label);
             }
         }
 

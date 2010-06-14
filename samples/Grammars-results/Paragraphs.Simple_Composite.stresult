@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="5.045052" ExceptionText="" WasCancelled="false" Locator="Paragraphs/Simple Composite">
+<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="5.5897564" ExceptionText="" WasCancelled="false" Locator="Paragraphs/Simple Composite">
   <Html>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;style&gt;body
 {
@@ -16,33 +16,37 @@
 	background-color: #FFFFAA;
 }
 
-.pass
+
+div.pass &gt; span.input, div.pass &gt; span.fact, tr.pass &gt; td, SPAN.pass, td.pass
 {
-	background-color: #AAFFAA;
+    background-color: #AAFFAA;
 }
 
-SPAN.pass 
-{
-	padding-left: 5px;
-	padding-right: 5px;
-}
 
-.fail
+
+div.fail &gt; span.input, div.fail &gt; span.fact, span.fail, tr.fail &gt; td, td.fail
 {
 	background-color: #FFAAAA;
 
 }
 
-SPAN.fail
-{
-    padding-left: 5px;
-	padding-right: 5px;
-}
-
-SPAN.pass 
+div.fail &gt; span.input, div.pass &gt; span.input
 {
 	padding-left: 5px;
-	padding-right: 5px;
+	padding-right: 5px;   
+}
+
+
+SPAN.fail, SPAN.pass, span.fact
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+span.fact
+{
+    padding-top: 1px;    
+    padding-bottom: 0px;    
 }
 
 .results
@@ -53,27 +57,23 @@ SPAN.pass
 
 .comment-text
 {
+/*
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:#FFFFEF none repeat scroll 0 0;*/
+	border:1px solid #EBEBDB;
+	padding: 3px;
 	font-family: Courier New;
 	font-size:75%;
 }
 
 
-.comment-editor-holder &gt; textarea
-{
-	width:600px;
-	height:100px;
-	
-}
-
 .Comment
 {
-	margin-top:20px;
+	margin-top:10px;
 	margin-bottom:10px;
-	-moz-background-clip:border;
-	-moz-background-inline-policy:continuous;
-	-moz-background-origin:padding;
-	background:#FFFFEF none repeat scroll 0 0;
-	border:1px solid #EBEBDB;
+	overflow: visible;
 }
 
 a
@@ -91,32 +91,9 @@ a:hover {
 	font-weight: normal;
 }
 
-input.integer
+div, h2, h3, h4
 {
-	width: 75px;
-}
-
-.section-title &gt; a.deleteStep
-{
-	float:right;
-}
-
-.header-container &gt; a.closer
-{
-	float:right;
-}
-
-div.test-editor
-{
-	width: 95%;
-	margin: 0px;
-}
-
-.test-editor &gt; .container 
-{
-	margin: 20px;
-	padding-bottom:20px;
-	border:none;
+    width: auto;
 }
 
 .section {
@@ -125,11 +102,38 @@ div.test-editor
 	-moz-background-origin:padding;
 	-moz-border-radius:5px;
 	background:#FCFDFD url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) repeat-x scroll 50% bottom;
-	border:1px solid #A6C9E2;
+	/*border:1px solid #A6C9E2;*/
+	/* border-bottom:1px solid #A6C9E2; */
 	color:#222222;
-	/*padding: 20px;*/
+	margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    
 
-	margin-bottom: 5px;
+}
+
+.section-body
+{
+    border-bottom: 2px solid black;
+    margin-top:0px;
+    margin-left:0px;
+    margin-right:0px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    padding:10px;
+}
+
+h3.section-title
+{
+	font: bold 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	/*color: #4f6b72;*/
+	
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-weight: bold;
+    
+    border:2px solid black;
+    background-color: #EBEAEA;
 }
 
 div.embedded &gt; div &gt; div.step-holder
@@ -152,13 +156,6 @@ div.embedded &gt; div &gt; div.step-holder
 	font-weight: bold;
 }
 
-.section-header &gt; .section-title
-{
-	font-size: 90%;
-	color:#E17009;
-	margin-bottom: 5px;
-}
-
 
 
 .TitledAndIndented
@@ -173,6 +170,7 @@ html, body{
 	color:#111;
 	line-height:1.4em;
 	background-color: #ccc; 
+	height: 100%;
 }
 
 .main{
@@ -180,7 +178,12 @@ html, body{
 	-moz-border-radius-topleft:6px;
 	-moz-border-radius-topright:6px;
 	background-color: #fff;
+	padding-bottom: 20px;
+
+	overflow: visible;
 }
+
+
 
 .main &gt; h2 {
 	-moz-background-clip:border;
@@ -204,58 +207,8 @@ html, body{
 	padding-left: 10px;
 }
 
-.main ul {
-	border-color:#FAFAFA #DDDDDD #D2D2D2;
-	border-style:solid;
-	border-width:1px;
-	margin: 0px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-.main ul &gt; li {
-}
-
-.main table
-{
-	border-right: 1px dotted #d8d8d8;
-	border-bottom: 1px dotted #d8d8d8;
-}
-
-.main table &gt; tfoot a
-{
-	float: right;
-	padding-right: 10px;
-}
-
-.main table &gt; thead &gt; tr &gt; th{
-	padding: 2px;
-	background-color: #eee;
-	font-size: 90%;
-}
-
-.main table &gt; thead &gt; tr
-{
-	background-color: #eee;
-}
-
-.main table &gt; tbody &gt; tr &gt; td {
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 90%;
-	border-bottom: 1px dotted #d8d8d8;
-}
-
-.main table &gt; tbody &gt; tr:hover{
-	background-color: #c8c8c8;
-}
-
 .main-content{
 	padding: 4px 10px;
-}
-
-.convention-log li{
-	font-family: Consolas, Courier New, Courier;	
 }
 
 .behavior
@@ -271,40 +224,6 @@ html, body{
 	background-color: #dddddd;
 }
 
-
-table.details
-{
-    border: solid thin black;
-    margin-bottom: 25px;
-}
-
-table.details TR
-{
-	padding-bottom: 1px;
-	padding-top: 1px;
-}
-
-table.details &gt; THEAD &gt; TR
-{
-	border-bottom: solid thin black;
-}
-
-table.details TD
-{
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-table.details TH
-{
-    BACKGROUND-COLOR: Silver;
-    font-weight: bold;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 0px;
-}
 
 .chainId
 {
@@ -324,64 +243,98 @@ table.details TH
 	font-weight:normal;
 }
 
-.add-section-activator{
-	margin-left: 10px;
-	margin-bottom: 10px;
+table.table th {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	/*color: #4f6b72;*/
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	/*background: #CAE8EA url(images/bg_header.jpg) no-repeat;*/
+	background: #EBEAEA url(images/bg_header.jpg) no-repeat;
 }
 
-.grammar-selector{
-	border: 1px solid #79B7E7;
-	padding: 4px;
-	background-color: #F5F8F9;
-	margin: 10px;
-	width: 400px;
+table.table td {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	/*background: #fff;*/
+	padding: 3px 3px 3px 6px;
+	color: #4f6b72;
 }
 
-.grammar-selector .header-container{
-	padding: 4px;
-	background-color: #D7E3EF;
+td.left-cell
+{
+    border-left: 1px solid #C1DAD7;
 }
 
-.grammar-selector .header-container a.closer{
-	float: right;
+th.left-cell
+{
+    border-left: 1px solid #C1DAD7;
 }
 
-.grammar-selector .header-container span{
-	font-size: 110%;
+tr.table-container-row &gt; td
+{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.table-title
+{
+	font-size: 90%;
+	color:#E17009;
 	font-weight: bold;
+	text-align:right;
+	vertical-align: top;
+	margin-right: 20px;
+	padding-right: 20px;
 }
 
-.grammar-selector .link-container{
-	max-height: 300px;	
-	overflow: auto;
+td.table-cell
+{
+    
 }
 
-.grammar-selector .add-link{
-	border:1px solid #EEE;
-	cursor:pointer;
-	padding:4px 4px 4px 8px;
+td.exception-cell
+{
+    padding: 0px !important;
+    margin: 0px;
 }
 
-.grammar-selector .add-link a span{
-	color: #000;
+table.setverification &gt; tbody &gt; tr &gt; td
+{
+    font-style: italic;
+    padding-right: 10px;
 }
 
-.grammar-selector .add-link:hover{
-	background-color: #EEE;
-}
 
-.grammar-selector .add-link a span.textbox{
-	font-style: italic;
-	color: #AAA;
-}
+
+
 
 div.paragraph
 {
-	width: 800px;
 	margin-bottom: 10px;
 }
 
-div.paragraph, div.table-editor
+
+div.paragraph div
+{
+    margin-left: 20px;
+}
+
+div.paragraph-title
+{
+	font-size: 90%;
+	color:#E17009;
+	font-weight: bold;
+	margin-left: 0px !important;
+}
+
+div.paragraph
 {
 	-moz-background-clip:border;
 	-moz-background-inline-policy:continuous;
@@ -391,7 +344,7 @@ div.paragraph, div.table-editor
 	-moz-border-radius-topleft:5px;
 	-moz-border-radius-topright:5px;
 	background:#FCFDFD url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) repeat-x scroll 50% bottom;
-	border:1px solid #A6C9E2;
+	/*border:1px solid #A6C9E2;*/
 	color:#222222;
 	padding-top: 0px;
 	margin-top: 10px;
@@ -404,19 +357,14 @@ div.paragraph &gt; div.step
 }
 
 
-.section-header &gt; .section-title, .paragraph &gt; .section-title
-{
-	font-size: 90%;
-	color:#E17009;
-	margin-bottom: 5px;
-}
 
 .section-title{
 
 	-moz-background-clip:border;
 	-moz-border-radius-topleft:6px;
 	-moz-border-radius-topright:6px;
-	background-color:#EBEAEA;
+	/*background-color:#EBEAEA;*/
+	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
 	border-color:#FAFAFA #DDDDDD #D2D2D2;
 	border-style:solid;
 	border-width:1px;
@@ -426,39 +374,10 @@ div.paragraph &gt; div.step
 	font-weight: bold;
 }
 
-.table-editor &gt; .section-header &gt; .section-title
-{
-	margin-bottom: 0px;
-}
 
-.test-editor &gt; .container &gt; div &gt; .step-holder &gt; .section &gt; .section-header &gt; .section-title
-{
-	font-size: 100%;
-	color: black;
-}
-
-.embedded .embedded
-{
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.column-selector
-{
-	padding-left: 10px;
-}
-
-.sentence
-{
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-DIV .exception-zone
+DIV.exception-zone
 {
     padding-top: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
     border-bottom: solid thin black;
     border-top: solid thin black;
 }
@@ -468,7 +387,15 @@ DIV .exception-zone
     padding-top: 0px;
     padding-bottom: 2px;
     overflow: visible;
-}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="testEditor" class="main test-editor"&gt;&lt;h2 class="testName"&gt;Simple Composite&lt;/h2&gt;&lt;div class="results fail"&gt;Failed with Rights: 2, Wrongs: 3, Exceptions: 0, SyntaxErrors: 0&lt;/div&gt;&lt;div class="container section test-editor"&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;div class="section embedded"&gt;&lt;div class="section-header"&gt;&lt;div class="section-title"&gt;Composite&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="section-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input pass"&gt;80&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="section-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;caption&gt;Add and Multiply in a Table&lt;/caption&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;starting&lt;/th&gt;&lt;th&gt;operand&lt;/th&gt;&lt;th&gt;multiplier&lt;/th&gt;&lt;th&gt;expected&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;4&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;25, but was &amp;#39;70&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input pass"&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr /&gt;&lt;pre&gt;the number is 5
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div.sentence
+{
+    padding-left: 0px;
+    margin-left: 0px;
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="testEditor" class="main test-editor"&gt;&lt;h2 class="testName"&gt;Simple Composite&lt;/h2&gt;&lt;div class="results fail"&gt;Failed with Rights: 2, Wrongs: 3, Exceptions: 0, SyntaxErrors: 0&lt;/div&gt;&lt;div class="container section test-editor"&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;div class="section"&gt;&lt;h3 class="section-title"&gt;Composite&lt;/h3&gt;&lt;div class="section-body"&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="paragraph-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input pass"&gt;80&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="paragraph-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;table class="table-container"&gt;&lt;thead&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr class="table-container-row"&gt;&lt;td class="table-title"&gt;Add and Multiply in a Table&lt;/td&gt;&lt;td class="table-cell"&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th class="left-cell"&gt;starting&lt;/th&gt;&lt;th&gt;operand&lt;/th&gt;&lt;th&gt;multiplier&lt;/th&gt;&lt;th&gt;expected&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;3&lt;/td&gt;&lt;td class="input"&gt;4&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;25, but was &amp;#39;70&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input pass"&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr /&gt;&lt;pre&gt;the number is 5
 the number is 8
 the number is 80
 the number is 5

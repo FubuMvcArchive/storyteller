@@ -22,6 +22,8 @@ namespace StoryTeller.Html
         public StoryTellerTableTag(Table table, IStep step)
         {
             AddClass("table");
+            AddClass(table.GetType().Name.ToLower());
+
             _table = table;
             _step = step;
             Attr("cellpadding", "0").Attr("cellspacing", "0");
@@ -64,6 +66,8 @@ namespace StoryTeller.Html
             context.ResultsFor(_step).ForExceptionText(writeExceptionText);
 
             rows().Each(row => writeResultsRow(row, context));
+
+            _headerRow.FirstChild().AddClass("left-cell");
         }
 
         private void writeResultsRow(IStep step, ITestContext context)
@@ -106,6 +110,8 @@ namespace StoryTeller.Html
             {
                 writeVerificationResultRow(x, context, verification.Ordered);
             });
+
+            _headerRow.FirstChild().AddClass("left-cell");
         }
 
         private void writeVerificationResultRow(SetRow setRow, ITestContext context, bool ordered)
@@ -147,6 +153,8 @@ namespace StoryTeller.Html
                         row.FirstChild().Text(text);
                         break;
                 }
+
+                row.FirstChild().AddClass("left-cell");
             });
 
             if (setRow.Step != null)
@@ -162,7 +170,7 @@ namespace StoryTeller.Html
                 var exceptionTag = new ExceptionTag(text);
                 int colSpan = _headerRow.Children.Count;
                 row.Cell()
-                    .Attr("colspan", colSpan).AddClass(HtmlClasses.EXCEPTION)
+                    .Attr("colspan", colSpan).AddClass(HtmlClasses.EXCEPTION).AddClass("exception-cell")
                     .Child(exceptionTag);
             });
         }

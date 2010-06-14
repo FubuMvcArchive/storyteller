@@ -18,6 +18,13 @@ namespace StoryTeller.Html
             _step = step;
             this.AddSafeClassName(sentence.Name);
             AddClass("sentence");
+
+
+        }
+
+        public Sentence Sentence
+        {
+            get { return _sentence; }
         }
 
         public void WritePreview(ITestContext context)
@@ -81,7 +88,7 @@ namespace StoryTeller.Html
 
         public class Results : ISentenceVisitor
         {
-            private readonly HtmlTag _tag;
+            private readonly SentenceTag _tag;
             private readonly IStep _step;
             private ITestContext _context;
             private StepResults _results;
@@ -96,7 +103,11 @@ namespace StoryTeller.Html
 
             public void Label(Label label)
             {
-                _tag.Add("span").Text(label.Text);
+                var span = _tag.Add("span").Text(label.Text);
+                if (_tag.Sentence.IsFact)
+                {
+                    span.AddClass("fact");
+                }
             }
 
             public void Input(TextInput input)

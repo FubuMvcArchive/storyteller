@@ -13,33 +13,37 @@
 	background-color: #FFFFAA;
 }
 
-.pass
+
+div.pass > span.input, div.pass > span.fact, tr.pass > td, SPAN.pass, td.pass, .results-pass
 {
-	background-color: #AAFFAA;
+    background-color: #AAFFAA;
 }
 
-SPAN.pass 
-{
-	padding-left: 5px;
-	padding-right: 5px;
-}
 
-.fail
+
+div.fail > span.input, div.fail > span.fact, span.fail, tr.fail > td, td.fail, .results-fail
 {
 	background-color: #FFAAAA;
 
 }
 
-SPAN.fail
-{
-    padding-left: 5px;
-	padding-right: 5px;
-}
-
-SPAN.pass 
+div.fail > span.input, div.pass > span.input
 {
 	padding-left: 5px;
-	padding-right: 5px;
+	padding-right: 5px;   
+}
+
+
+SPAN.fail, SPAN.pass, span.fact
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+span.fact
+{
+    padding-top: 1px;    
+    padding-bottom: 0px;    
 }
 
 .results
@@ -64,7 +68,7 @@ SPAN.pass
 
 .Comment
 {
-	margin-top:20px;
+	margin-top:10px;
 	margin-bottom:10px;
 	overflow: visible;
 }
@@ -118,7 +122,15 @@ div, h2, h3, h4
 
 h3.section-title
 {
+	font: bold 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	/*color: #4f6b72;*/
+	
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	font-weight: bold;
+    
     border:2px solid black;
+    background-color: #EBEAEA;
 }
 
 div.embedded > div > div.step-holder
@@ -139,13 +151,6 @@ div.embedded > div > div.step-holder
 	padding: 5px;
 	font-size: 100%;
 	font-weight: bold;
-}
-
-.section-header > .section-title
-{
-	font-size: 90%;
-	color:#E17009;
-	margin-bottom: 5px;
 }
 
 
@@ -237,23 +242,31 @@ html, body{
 
 table.table th {
 	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
-	color: #4f6b72;
+	/*color: #4f6b72;*/
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	
 	border-right: 1px solid #C1DAD7;
 	border-bottom: 1px solid #C1DAD7;
 	border-top: 1px solid #C1DAD7;
-	letter-spacing: 2px;
-	text-transform: uppercase;
+
 	text-align: left;
 	padding: 6px 6px 6px 12px;
-	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+	/*background: #CAE8EA url(images/bg_header.jpg) no-repeat;*/
+	background: #EBEAEA url(images/bg_header.jpg) no-repeat;
 }
 
 table.table td {
 	border-right: 1px solid #C1DAD7;
 	border-bottom: 1px solid #C1DAD7;
-	background: #fff;
+	/*background: #fff;*/
 	padding: 3px 3px 3px 6px;
 	color: #4f6b72;
+}
+
+td.fail, td.pass, td.exception
+{
+    color: Black !important;
 }
 
 td.left-cell
@@ -261,7 +274,12 @@ td.left-cell
     border-left: 1px solid #C1DAD7;
 }
 
-tr.table-container-row td
+th.left-cell
+{
+    border-left: 1px solid #C1DAD7;
+}
+
+tr.table-container-row > td
 {
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -283,6 +301,18 @@ td.table-cell
     
 }
 
+td.exception-cell
+{
+    padding: 0px !important;
+    margin: 0px;
+}
+
+table.setverification > tbody > tr > td
+{
+    font-style: italic;
+    padding-right: 10px;
+}
+
 
 
 
@@ -298,12 +328,18 @@ div.paragraph div
     margin-left: 20px;
 }
 
-div.paragraph-title
+div.paragraph-title, h3.embedded-title
 {
 	font-size: 90%;
 	color:#E17009;
 	font-weight: bold;
 	margin-left: 0px !important;
+}
+
+h3.embedded-title
+{
+    margin-bottom: 2px;
+    padding-bottom: 0px;
 }
 
 div.paragraph
@@ -328,7 +364,11 @@ div.paragraph > div.step
 	padding-right: 5px;
 }
 
-
+div.embedded > div
+{
+	padding-left: 10px;
+	padding-right: 5px;
+}
 
 .section-title{
 
@@ -346,17 +386,10 @@ div.paragraph > div.step
 	font-weight: bold;
 }
 
-.embedded .embedded
-{
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
 
-DIV .exception-zone
+DIV.exception-zone
 {
     padding-top: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
     border-bottom: solid thin black;
     border-top: solid thin black;
 }
@@ -366,6 +399,8 @@ DIV .exception-zone
     padding-top: 0px;
     padding-bottom: 2px;
     overflow: visible;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 div.sentence
