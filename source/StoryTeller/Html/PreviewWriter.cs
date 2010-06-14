@@ -55,8 +55,11 @@ namespace StoryTeller.Html
 
         void ITestStream.Sentence(Sentence sentence, IStep step)
         {
+
             var tag = new SentenceTag(sentence, step);
             tag.WritePreview(_context);
+
+
             _document.Add(tag);
         }
 
@@ -68,23 +71,28 @@ namespace StoryTeller.Html
 
         void ITestStream.Table(Table table, IStep step)
         {
+            var container = _document.Current.JoinTagAtEnd<TableContainerTag>();
+
             var tag = new StoryTellerTableTag(table, step);
             tag.WritePreview(_context);
 
-            _document.Add(tag);
+            container.Add(table.Label, tag);
         }
 
         void ITestStream.SetVerification(SetVerification verification, IStep step)
         {
+            var container = _document.Current.JoinTagAtEnd<TableContainerTag>();
+
             var tag = new StoryTellerTableTag(verification, step);
             tag.WritePreview(_context);
 
-            _document.Add(tag);
+            container.Add(verification.Label, tag);
         }
 
         void ITestStream.StartParagraph(Paragraph paragraph, IStep step)
         {
             var tag = new ParagraphTag(paragraph, step);
+            
             _document.Push(tag);
         }
 

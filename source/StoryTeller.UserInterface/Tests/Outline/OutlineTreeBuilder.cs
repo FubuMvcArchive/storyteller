@@ -109,7 +109,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         {
             withNewNode(section, Icon.Section, node =>
             {
-                node.AddText(fixture.Title);
+                node.AddText(fixture.Label);
                 node.ToolTip = fixture.FixtureClassName;
 
                 addRearrangeCommands(node);
@@ -176,7 +176,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         {
             withNewNode(step, Icon.EmbeddedSection, node =>
             {
-                node.AddText(section.Title);
+                node.AddText(section.Label);
                 addRearrangeCommands(node);
                 StepLeaf leaf = section.LeafFor(step);
                 node.Holder = leaf;

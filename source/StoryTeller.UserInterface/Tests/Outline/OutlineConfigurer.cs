@@ -62,11 +62,11 @@ namespace StoryTeller.UserInterface.Tests.Outline
             {
                 if (index < Shortcuts.Length)
                 {
-                    selector.Add(Icon.Section, x.Title, () => _controller.AddSection(x.Name), Shortcuts[index++]);
+                    selector.Add(Icon.Section, x.Label, () => _controller.AddSection(x.Name), Shortcuts[index++]);
                 }
                 else
                 {
-                    selector.Add(Icon.Section, x.Title, () => _controller.AddSection(x.Name), new KeyGesture(Key.F15));
+                    selector.Add(Icon.Section, x.Label, () => _controller.AddSection(x.Name), new KeyGesture(Key.F15));
                 }
             });
         }
@@ -252,7 +252,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
             void IGrammarVisitor.EmbeddedSection(EmbeddedSection section, IStep step)
             {
-                add(section.Name, section.Title, Icon.EmbeddedSection);
+                add(section.Name, section.Label, Icon.EmbeddedSection);
             }
 
             void IGrammarVisitor.DoGrammar(DoGrammarStructure grammar, IStep step)

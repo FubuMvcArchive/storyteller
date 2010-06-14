@@ -181,7 +181,7 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
             var grammar = fixture.GrammarFor("Simple").As<EmbeddedSection>();
             GrammarTag grammarTag = grammarTagFor("Simple");
             HeaderTag headerTag = grammarTag.Children.Select(x => x as HeaderTag).First(x => x != null);
-            headerTag.Titled().ShouldEqual(grammar.Title);
+            headerTag.Titled().ShouldEqual(grammar.Label);
         }
 
         [Test]

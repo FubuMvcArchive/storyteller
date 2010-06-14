@@ -49,22 +49,22 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
         void IGrammarVisitor.Table(Table table, IStep step)
         {
-            _link.Label(table.Title);
+            _link.Label(table.Label);
         }
 
         void IGrammarVisitor.SetVerification(SetVerification setVerification, IStep step)
         {
-            _link.Label(setVerification.Title);
+            _link.Label(setVerification.Label);
         }
 
         void IGrammarVisitor.Paragraph(Paragraph paragraph, IStep step)
         {
-            _link.Label(paragraph.Title);
+            _link.Label(paragraph.Label);
         }
 
         void IGrammarVisitor.EmbeddedSection(EmbeddedSection section, IStep step)
         {
-            _link.Label(section.Title);
+            _link.Label(section.Label);
         }
 
         void IGrammarVisitor.DoGrammar(DoGrammarStructure grammar, IStep step)

@@ -24,7 +24,7 @@ namespace StoryTeller.Model
 
     public interface IFixtureNode : INamedItem
     {
-        string Title { get; }
+        string Label { get; }
         string Description { get; }
 
         void ModifyExampleTest(Test example);

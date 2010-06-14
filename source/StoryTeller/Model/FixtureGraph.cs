@@ -27,7 +27,7 @@ namespace StoryTeller.Model
         public FixtureGraph(string name)
         {
             _name = name;
-            Title = name;
+            Label = name;
         }
 
         public string FixtureClassName { get; set; }
@@ -39,7 +39,7 @@ namespace StoryTeller.Model
 
         public void ModifyExampleTest(Test example)
         {
-            example.Name = Title;
+            example.Name = Label;
             example.RemoveParts(x =>
             {
                 var section = x as Section;
@@ -72,7 +72,7 @@ namespace StoryTeller.Model
             }
         }
 
-        public string Title { get; set; }
+        public string Label { get; set; }
 
         public string Description { get; set; }
 

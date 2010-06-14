@@ -46,7 +46,7 @@ namespace StoryTeller.UserInterface.Workspace
             {
                 var link = new Link
                 {
-                    ToolTip = "{0} ({1})".ToFormat(x.FixtureClassName, x.Title),
+                    ToolTip = "{0} ({1})".ToFormat(x.FixtureClassName, x.Label),
                     Padding = new Thickness(0, 0, 0, 5)
                 };
 

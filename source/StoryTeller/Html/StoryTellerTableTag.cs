@@ -21,12 +21,11 @@ namespace StoryTeller.Html
 
         public StoryTellerTableTag(Table table, IStep step)
         {
+            AddClass("table");
             _table = table;
             _step = step;
-            AddClass("table");
             Attr("cellpadding", "0").Attr("cellspacing", "0");
 
-            CaptionText(_table.Label);
             AddHeaderRow(x =>
             {
                 _headerRow = x;
@@ -55,6 +54,8 @@ namespace StoryTeller.Html
 
                     row.Cell().Child(tag);
                 });
+
+                row.FirstChild().AddClass("left-cell");
             });
         }
 
@@ -81,6 +82,8 @@ namespace StoryTeller.Html
 
                     tag.WriteResults(results, context);
                 });
+
+                row.FirstChild().AddClass("left-cell");
 
                 results.ForExceptionText(writeExceptionText);
             });

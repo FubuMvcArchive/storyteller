@@ -69,18 +69,24 @@ namespace StoryTeller.Html
 
         void ITestStream.Table(Table table, IStep step)
         {
+            var holder = _document.Current.JoinTagAtEnd<TableContainerTag>();
+
             var tag = new StoryTellerTableTag(table, step);
             tag.WriteResults(_context);
 
-            _document.Add(tag);
+
+            holder.Add(table.Label, tag);
         }
 
         void ITestStream.SetVerification(SetVerification verification, IStep step)
         {
+            var holder = _document.Current.JoinTagAtEnd<TableContainerTag>();
+
+
             var tag = new StoryTellerTableTag(verification, step);
             tag.WriteSetVerificationResults(verification, _context);
 
-            _document.Add(tag);
+            holder.Add(verification.Label, tag);
         }
 
         void ITestStream.StartParagraph(Paragraph paragraph, IStep step)

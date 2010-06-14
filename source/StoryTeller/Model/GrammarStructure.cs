@@ -66,15 +66,13 @@ namespace StoryTeller.Model
                 return step == null ? true : step.GrammarKey != Name;
             });
 
-            example.Name = Title;
+            example.Name = Label;
         }
 
         public IEnumerable<GrammarError> AllErrors()
         {
             return _errors;
         }
-
-        public string Title { get { return Label; } }
 
         public string Description { get; set; }
 

@@ -12,14 +12,15 @@ namespace StoryTellerTestHarness
         [TestFixtureSetUp]
         public void SetupRunner()
         {
-            runner = new ProjectTestRunner(@"..\..\..\..\samples\grammars.xml");
+            runner = new ProjectTestRunner(@"C:\svn\bluestoryteller\StoryTeller.xml");
         }
 
         [Test]
-        public void Tables()
+        public void HTML_test_Create_New_Queue()
         {
-            var test = runner.RunTest("Tables/Tables");
+            var test = runner.RunTest("Admin/HTML test Create New Queue");
             runner.WritePreview(test).OpenInBrowser();
+            test.OpenResultsInBrowser();
         }
 
         [TestFixtureTearDown]

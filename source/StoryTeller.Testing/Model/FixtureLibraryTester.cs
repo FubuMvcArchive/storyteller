@@ -46,7 +46,7 @@ namespace StoryTeller.Testing.Model
         [Test]
         public void Title()
         {
-            new FixtureLibrary().Title.ShouldEqual("All Fixtures");
+            new FixtureLibrary().Label.ShouldEqual("All Fixtures");
         }
     }
 
@@ -99,7 +99,7 @@ namespace StoryTeller.Testing.Model
         [Test]
         public void each_embed_sectino_should_have_the_title_from_the_fixture()
         {
-            mathSection.Title.ShouldEqual("Math");
+            mathSection.Label.ShouldEqual("Math");
         }
 
         [Test]

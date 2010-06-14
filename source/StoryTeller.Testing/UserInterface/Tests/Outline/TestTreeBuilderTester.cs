@@ -131,7 +131,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
             fixture = theLibrary.FixtureFor("Math");
 
             fixture.FixtureClassName = "Math Classname";
-            fixture.Title = "the title of this fixture";
+            fixture.Label = "the title of this fixture";
 
             section = new Section(fixture.Name);
 
@@ -142,7 +142,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void the_node_should_be_added_to_the_tree()
         {
-            assertCurrentNode(section, Icon.Section, fixture.Title);
+            assertCurrentNode(section, Icon.Section, fixture.Label);
         }
 
         [Test]
@@ -481,7 +481,7 @@ namespace StoryTeller.Testing.UserInterface.Tests.Outline
         [Test]
         public void the_node_should_be_added_to_the_tree()
         {
-            assertCurrentNode(step, Icon.EmbeddedSection, embedded.Title);
+            assertCurrentNode(step, Icon.EmbeddedSection, embedded.Label);
         }
 
         [Test]

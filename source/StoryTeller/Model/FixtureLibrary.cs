@@ -89,7 +89,7 @@ namespace StoryTeller.Model
 
         public void ModifyExampleTest(Test example)
         {
-            example.Name = Title;
+            example.Name = Label;
         }
 
         public IEnumerable<GrammarError> AllErrors()
@@ -99,7 +99,7 @@ namespace StoryTeller.Model
             return list;
         }
 
-        public string Title { get { return "All Fixtures"; } }
+        public string Label { get { return "All Fixtures"; } }
 
         public string Description { get { return string.Empty; } }
 
@@ -159,7 +159,7 @@ namespace StoryTeller.Model
 
             _fixtures.Where(x => !x.Policies.IsPrivate).Each(x =>
             {
-                var grammar = new EmbeddedSection(x, x.Title ?? x.Name, x.Name);
+                var grammar = new EmbeddedSection(x, x.Label ?? x.Name, x.Name);
                 grammar.Style = EmbedStyle.TitledAndIndented;
                 fixture.AddStructure(x.Name, grammar);
             });

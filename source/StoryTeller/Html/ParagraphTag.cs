@@ -20,7 +20,7 @@ namespace StoryTeller.Html
 
             if (paragraph.Style == EmbedStyle.TitledAndIndented)
             {
-                Add("div").AddClass("paragraph-title").Text(paragraph.Title);
+                Add("div").AddClass("paragraph-title").Text(paragraph.Label);
             }
         }
     }

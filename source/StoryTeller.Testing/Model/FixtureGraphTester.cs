@@ -99,7 +99,7 @@ namespace StoryTeller.Testing.Model
         [Test]
         public void Title()
         {
-            new FixtureGraph("Math").Title.ShouldEqual("Math");
+            new FixtureGraph("Math").Label.ShouldEqual("Math");
         }
     }
 
@@ -228,13 +228,13 @@ namespace StoryTeller.Testing.Model
         }
 
         [Test]
-        public void Title()
+        public void Label()
         {
             new StubGrammarStructure
             {
                 Name = "Grammar1",
                 Parent = new FixtureGraph("Math")
-            }.Title.ShouldEqual(
+            }.Label.ShouldEqual(
                 "Grammar1");
         }
     }

@@ -117,7 +117,7 @@ namespace StoryTeller.Testing.Engine
 
             builder.ReadFixture("GrammarError", fixture);
 
-            builder.Library.FixtureFor("GrammarError").Title.ShouldEqual("the bad grammars");
+            builder.Library.FixtureFor("GrammarError").Label.ShouldEqual("the bad grammars");
         }
 
         [Test]
@@ -128,7 +128,7 @@ namespace StoryTeller.Testing.Engine
 
             builder.ReadFixture("GrammarError", fixture);
 
-            builder.Library.FixtureFor("GrammarError").Title.ShouldEqual("GrammarError");
+            builder.Library.FixtureFor("GrammarError").Label.ShouldEqual("GrammarError");
         }
 
         [Test]

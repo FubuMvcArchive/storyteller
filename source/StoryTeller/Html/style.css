@@ -50,6 +50,13 @@ SPAN.pass
 
 .comment-text
 {
+/*
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background:#FFFFEF none repeat scroll 0 0;*/
+	border:1px solid #EBEBDB;
+	padding: 3px;
 	font-family: Courier New;
 	font-size:75%;
 }
@@ -59,11 +66,7 @@ SPAN.pass
 {
 	margin-top:20px;
 	margin-bottom:10px;
-	-moz-background-clip:border;
-	-moz-background-inline-policy:continuous;
-	-moz-background-origin:padding;
-	background:#FFFFEF none repeat scroll 0 0;
-	border:1px solid #EBEBDB;
+	overflow: visible;
 }
 
 a
@@ -81,6 +84,10 @@ a:hover {
 	font-weight: normal;
 }
 
+div, h2, h3, h4
+{
+    width: auto;
+}
 
 .section {
 	-moz-background-clip:border;
@@ -94,6 +101,7 @@ a:hover {
 	margin-left: 10px;
     margin-right: 10px;
     margin-top: 20px;
+    
 
 }
 
@@ -154,6 +162,7 @@ html, body{
 	color:#111;
 	line-height:1.4em;
 	background-color: #ccc; 
+	height: 100%;
 }
 
 .main{
@@ -162,7 +171,11 @@ html, body{
 	-moz-border-radius-topright:6px;
 	background-color: #fff;
 	padding-bottom: 20px;
+
+	overflow: visible;
 }
+
+
 
 .main > h2 {
 	-moz-background-clip:border;
@@ -186,58 +199,8 @@ html, body{
 	padding-left: 10px;
 }
 
-.main ul {
-	border-color:#FAFAFA #DDDDDD #D2D2D2;
-	border-style:solid;
-	border-width:1px;
-	margin: 0px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-.main ul > li {
-}
-
-.main table
-{
-	border-right: 1px dotted #d8d8d8;
-	border-bottom: 1px dotted #d8d8d8;
-}
-
-.main table > tfoot a
-{
-	float: right;
-	padding-right: 10px;
-}
-
-.main table > thead > tr > th{
-	padding: 2px;
-	background-color: #eee;
-	font-size: 90%;
-}
-
-.main table > thead > tr
-{
-	background-color: #eee;
-}
-
-.main table > tbody > tr > td {
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 90%;
-	border-bottom: 1px dotted #d8d8d8;
-}
-
-.main table > tbody > tr:hover{
-	background-color: #c8c8c8;
-}
-
 .main-content{
 	padding: 4px 10px;
-}
-
-.convention-log li{
-	font-family: Consolas, Courier New, Courier;	
 }
 
 .behavior
@@ -253,40 +216,6 @@ html, body{
 	background-color: #dddddd;
 }
 
-
-table.details
-{
-    border: solid thin black;
-    margin-bottom: 25px;
-}
-
-table.details TR
-{
-	padding-bottom: 1px;
-	padding-top: 1px;
-}
-
-table.details > THEAD > TR
-{
-	border-bottom: solid thin black;
-}
-
-table.details TD
-{
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-table.details TH
-{
-    BACKGROUND-COLOR: Silver;
-    font-weight: bold;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 0px;
-}
 
 .chainId
 {
@@ -305,6 +234,57 @@ table.details TH
 	font-size:small;
 	font-weight:normal;
 }
+
+table.table th {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+}
+
+table.table td {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	background: #fff;
+	padding: 3px 3px 3px 6px;
+	color: #4f6b72;
+}
+
+td.left-cell
+{
+    border-left: 1px solid #C1DAD7;
+}
+
+tr.table-container-row td
+{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.table-title
+{
+	font-size: 90%;
+	color:#E17009;
+	font-weight: bold;
+	text-align:right;
+	vertical-align: top;
+	margin-right: 20px;
+	padding-right: 20px;
+}
+
+td.table-cell
+{
+    
+}
+
+
+
 
 
 div.paragraph
@@ -349,19 +329,14 @@ div.paragraph > div.step
 }
 
 
-.section-header > .section-title, .paragraph > .section-title
-{
-	font-size: 90%;
-	color:#E17009;
-	margin-bottom: 5px;
-}
 
 .section-title{
 
 	-moz-background-clip:border;
 	-moz-border-radius-topleft:6px;
 	-moz-border-radius-topright:6px;
-	background-color:#EBEAEA;
+	/*background-color:#EBEAEA;*/
+	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
 	border-color:#FAFAFA #DDDDDD #D2D2D2;
 	border-style:solid;
 	border-width:1px;
@@ -371,32 +346,10 @@ div.paragraph > div.step
 	font-weight: bold;
 }
 
-.table-editor > .section-header > .section-title
-{
-	margin-bottom: 0px;
-}
-
-.test-editor > .container > div > .step-holder > .section > .section-header > .section-title
-{
-	font-size: 100%;
-	color: black;
-}
-
 .embedded .embedded
 {
 	margin-top: 10px;
 	margin-bottom: 10px;
-}
-
-.column-selector
-{
-	padding-left: 10px;
-}
-
-.sentence
-{
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 DIV .exception-zone
@@ -413,4 +366,10 @@ DIV .exception-zone
     padding-top: 0px;
     padding-bottom: 2px;
     overflow: visible;
+}
+
+div.sentence
+{
+    padding-left: 0px;
+    margin-left: 0px;
 }

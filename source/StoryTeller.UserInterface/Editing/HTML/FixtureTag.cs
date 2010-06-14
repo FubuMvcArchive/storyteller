@@ -44,7 +44,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         {
             grammarTag.MetaData(GrammarConstants.LEAF_NAME, table.LeafName);
             grammarTag.AddClass(GrammarConstants.TABLE_EDITOR);
-            grammarTag.Child<HeaderTag>().Titled(table.Title);
+            grammarTag.Child<HeaderTag>().Titled(table.Label);
 
             var editor = grammarTag.Child<TableTag>();
             editor.Attr("cellpadding", "0").Attr("cellspacing", "0");
@@ -79,7 +79,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
             if (paragraph.Style == EmbedStyle.TitledAndIndented)
             {
-                header.Titled(paragraph.Title);
+                header.Titled(paragraph.Label);
             }
 
             paragraph.ForEachGrammar(g =>
@@ -102,7 +102,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             var header = new HeaderTag();
             if (section.IsTitled())
             {
-                header.Titled(section.Title);
+                header.Titled(section.Label);
             }
 
             grammarTag.Child(header);

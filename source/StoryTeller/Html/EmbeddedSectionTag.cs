@@ -17,7 +17,7 @@ namespace StoryTeller.Html
             _section = section;
             _fixture = fixture;
 
-            Add("h3").Text(_fixture.Title).AddClass(HtmlClasses.SECTION_TITLE);
+            Add("h3").Text(_fixture.Label).AddClass(HtmlClasses.SECTION_TITLE);
 
             AddClass("section");
 
