@@ -9,13 +9,11 @@ namespace StoryTeller.Engine
     {
         private readonly ISystem _system;
         private readonly IFixtureObserver _observer;
-        private readonly FixtureRegistry _registry;
 
-        public TestRunnerBuilder(ISystem system, IFixtureObserver observer, FixtureRegistry registry)
+        public TestRunnerBuilder(ISystem system, IFixtureObserver observer)
         {
             _system = system;
             _observer = observer;
-            _registry = registry;
         }
 
         public static ITestRunner ForSystem<T>() where T : ISystem, new()
@@ -29,7 +27,7 @@ namespace StoryTeller.Engine
             var registry = new FixtureRegistry();
             registry.AddFixturesFromAssembly(system.GetType().Assembly);
 
-            var builder = new TestRunnerBuilder(system, new NulloFixtureObserver(), registry);
+            var builder = new TestRunnerBuilder(system, new NulloFixtureObserver());
             return builder.Build();
         }
 
@@ -38,22 +36,16 @@ namespace StoryTeller.Engine
             return For(r => r.AddFixture<T>());
         }
 
-        public static ITestRunner For(FixtureRegistry registry)
-        {
-            return new TestRunnerBuilder(new NulloSystem(), new NulloFixtureObserver(), registry).Build();
-        }
-
         public static ITestRunner For(Action<FixtureRegistry> configure)
         {
-            var registry = new FixtureRegistry();
-            configure(registry);
-
-            return For(registry);
+            return new TestRunnerBuilder(new NulloSystem(configure), new NulloFixtureObserver()).Build();
         }
 
         public ITestRunner Build()
         {
-            var containerSource = new FixtureContainerSource(_registry.BuildContainer());
+            var registry = new FixtureRegistry();
+            _system.RegisterFixtures(registry);
+            var containerSource = new FixtureContainerSource(registry.BuildContainer());
             IContainer container = containerSource.Build();
             var observer = _observer;
 

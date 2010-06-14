@@ -68,6 +68,11 @@ namespace StoryTeller.Testing.Engine
         {
             Record("Teardown");
         }
+
+        public void RegisterFixtures(FixtureRegistry registry)
+        {
+            
+        }
     }
 
     public class Startup1Action : IStartupAction
@@ -478,6 +483,11 @@ namespace StoryTeller.Testing.Engine
 
         public void Teardown()
         {
+        }
+
+        public void RegisterFixtures(FixtureRegistry registry)
+        {
+            
         }
     }
 

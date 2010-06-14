@@ -39,6 +39,11 @@ namespace StoryTeller.Samples
         {
             throw new NotImplementedException();
         }
+
+        public void RegisterFixtures(FixtureRegistry registry)
+        {
+            
+        }
     }
 
     public class SetUserAction : IStartupAction

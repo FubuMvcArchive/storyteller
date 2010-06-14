@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace StoryTeller.Engine
 {
@@ -27,6 +28,12 @@ namespace StoryTeller.Engine
 
         public virtual void Teardown()
         {
+        }
+
+        public virtual void RegisterFixtures(FixtureRegistry registry)
+        {
+            Assembly assembly = GetType().Assembly;
+            registry.AddFixturesFromAssembly(assembly);
         }
     }
 }

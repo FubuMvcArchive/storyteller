@@ -83,7 +83,8 @@ namespace StoryTeller.Execution
             try
             {
                 var registry = new FixtureRegistry();
-                registry.AddFixturesFromAssembly(fixtureAssembly.Assembly);
+                _system.RegisterFixtures(registry);
+
                 var container = registry.BuildContainer();
                 
 

@@ -62,6 +62,11 @@ namespace StoryTeller.Engine
             readAttributes(property);
         }
 
+        public Cell(Accessor accessor) : this(accessor.InnerProperty)
+        {
+            _key = accessor.Name;
+        }
+
         public Cell(string key, Type type)
         {
             _key = key;
@@ -75,6 +80,8 @@ namespace StoryTeller.Engine
         {
             _defaultValue = defaultValue;
         }
+
+
 
 
         public IList<string> SelectionValues { get { return _selectionValues; } set { _selectionValues = value; } }

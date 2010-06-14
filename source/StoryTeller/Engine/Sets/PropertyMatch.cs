@@ -13,7 +13,10 @@ namespace StoryTeller.Engine.Sets
             _accessor = accessor;
         }
 
-        public Cell Cell { get { return new Cell(_accessor.InnerProperty); } }
+        public Cell Cell { get
+        {
+            return new Cell(_accessor);
+        } }
 
         public void ReadExpected(ITestContext context, IStep step, SetRow row)
         {
@@ -25,7 +28,7 @@ namespace StoryTeller.Engine.Sets
 
         public void ReadActual(object target, SetRow row)
         {
-            row.Values[_accessor.InnerProperty.Name] = _accessor.GetValue(target);
+            row.Values[_accessor.Name] = _accessor.GetValue(target);
         }
 
         public void ConfigureMatcher(RowValueMatcher matcher)

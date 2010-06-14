@@ -10,6 +10,8 @@ namespace StoryTeller.Engine
         void TeardownEnvironment();
         void Setup();
         void Teardown();
+
+        void RegisterFixtures(FixtureRegistry registry);
     }
 
     public static class SystemExtensions

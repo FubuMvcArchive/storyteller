@@ -47,7 +47,9 @@ namespace StoryTeller.Html
             {
                 if (_sentence.IsFact)
                 {
-                    var success = (bool)results.GetActual(_sentence.ResultCell.Key);
+                    var raw = results.GetActual(_sentence.ResultCell.Key);
+
+                    var success = raw == null ? false : (bool)raw;
                     var className = success ? HtmlClasses.PASS : HtmlClasses.FAIL;
                     AddClass(className);
                 }

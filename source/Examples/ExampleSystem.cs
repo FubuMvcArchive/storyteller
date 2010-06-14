@@ -36,6 +36,11 @@ namespace Examples
         public void Teardown()
         {
         }
+
+        public void RegisterFixtures(FixtureRegistry registry)
+        {
+            
+        }
     }
 
     public interface IBrowserDriver

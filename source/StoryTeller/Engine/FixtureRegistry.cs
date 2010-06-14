@@ -31,6 +31,7 @@ namespace StoryTeller.Engine
             var trace = new StackTrace(false);
 
             Assembly thisAssembly = Assembly.GetExecutingAssembly();
+
             Assembly callingAssembly = null;
             for (int i = 0; i < trace.FrameCount; i++)
             {
@@ -85,6 +86,11 @@ namespace StoryTeller.Engine
         public void AddFixture(IFixture fixture, string name)
         {
             _registry.For<IFixture>().Add(fixture).Named(name);
+        }
+
+        public void RegisterServices(Action<Registry> configure)
+        {
+            configure(_registry);
         }
 
         public static IContainer ContainerFor(Action<FixtureRegistry> action)
