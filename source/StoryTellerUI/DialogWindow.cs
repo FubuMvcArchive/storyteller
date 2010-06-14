@@ -38,7 +38,9 @@ namespace StoryTellerUI
             double left = Math.Floor(owner.Width/2) - content.Width.Zeroed();
 
             var relative = new Point(top, left);
-            return owner.PointToScreen(relative);
+            return relative;
+            
+            //return owner.PointToScreen(relative);
         }
     }
 }

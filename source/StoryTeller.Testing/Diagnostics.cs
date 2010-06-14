@@ -18,7 +18,7 @@ namespace StoryTeller.Testing
         [SetUp]
         public void SetUp()
         {
-            Bootstrapper.BootstrapShell();
+            Bootstrapper.BootstrapShell(false);
         }
 
         #endregion

@@ -24,7 +24,7 @@ namespace StoryTeller.Testing.UserInterface.IntegrationTests
             SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
 
             ProjectPersistor.DeleteHistoryFile();
-            Bootstrapper.BootstrapShell();
+            Bootstrapper.BootstrapShell(false);
 
 
             listener = new StubTestListener();

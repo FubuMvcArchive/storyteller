@@ -26,7 +26,7 @@ namespace StoryTeller.Testing.UserInterface.Tests
         public void can_create_the_presenter()
         {
             ProjectPersistor.DeleteHistoryFile();
-            Bootstrapper.BootstrapShell();
+            Bootstrapper.BootstrapShell(false);
             ObjectFactory.Inject<IProject>(new Project());
             var factory = ObjectFactory.GetInstance<IScreenFactory>();
 

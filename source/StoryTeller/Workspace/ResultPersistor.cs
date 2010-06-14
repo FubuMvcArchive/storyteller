@@ -21,9 +21,15 @@ namespace StoryTeller.Workspace
 
         public void SaveResult(IProject project, Test test, TestResult result)
         {
-            result.Locator = test.GetPath().Locator;
             string folder = folderFor(project);
 
+            SaveResult(result, test, folder);
+        }
+
+       public static void SaveResult(TestResult result, Test test, string folder)
+        {
+            result.Locator = test.GetPath().Locator;
+            
             var fileSystem = new FileSystem();
             fileSystem.CreateDirectory(folder);
 

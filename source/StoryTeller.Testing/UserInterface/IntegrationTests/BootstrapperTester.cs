@@ -26,7 +26,7 @@ namespace StoryTeller.Testing.UserInterface.IntegrationTests
             new ProjectPersistor().SaveHistory(history);
 
 
-            Bootstrapper.BootstrapShell();
+            Bootstrapper.BootstrapShell(false);
             shell = (Shell) ObjectFactory.GetInstance<IApplicationShell>();
 
 

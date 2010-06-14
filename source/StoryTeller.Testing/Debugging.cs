@@ -34,6 +34,16 @@ namespace StoryTeller.Testing
         #endregion
 
         [Test]
+        public void project_runner_smoke_tester()
+        {
+            var runner =
+                new ProjectRunner(new string[]
+                {@"c:\svn\bluestoryteller\storyteller.xml"}, @"c:\svn\bluestoryteller\results");
+
+            runner.Execute();
+        }
+
+        [Test]
         public void open_the_application()
         {
             var project = Project.LoadFromFile(@"c:\svn\blue\storyteller.xml");
@@ -70,7 +80,7 @@ namespace StoryTeller.Testing
         [Test]
         public void should_find_11_startables()
         {
-            Bootstrapper.BootstrapShell();
+            Bootstrapper.BootstrapShell(false);
 
             ObjectFactory.Model.AllInstances.Where(x => x.ConcreteType == typeof(ScreenConductor)).Each(
                 x => Debug.WriteLine(x.PluginType.FullName));

@@ -22,6 +22,11 @@ namespace StoryTeller.Execution
             LoadProject(projectFile);
         }
 
+        public ProjectTestRunner(IProject project)
+        {
+            initialize(() => project);
+        }
+
         public ResultHistory GetResults()
         {
             return _hierarchy.GetFullResults();
@@ -29,12 +34,18 @@ namespace StoryTeller.Execution
 
         public void LoadProject(string projectFile)
         {
+            Func<IProject> getProject = () => StoryTeller.Workspace.Project.LoadFromFile(projectFile);
+            initialize(getProject);
+        }
+
+        private void initialize(Func<IProject> getProject)
+        {
             if (_project != null)
             {
                 Dispose();
             }
 
-            _project = StoryTeller.Workspace.Project.LoadFromFile(projectFile);
+            _project = getProject();
             _engine = new TestEngine();
             _engine.Handle(new ProjectLoaded(_project));
 
@@ -125,9 +136,13 @@ namespace StoryTeller.Execution
             return _engine.Library;
         }
 
-        public void RunAll()
+        public void RunAll(Action<Test> callback)
         {
-            _hierarchy.GetAllTests().Each(t => _engine.RunTest(t));
+            _hierarchy.GetAllTests().Each(t =>
+            {
+                _engine.RunTest(t);
+                callback(t);
+            });
         }
 
         public string WritePreview(Test test)

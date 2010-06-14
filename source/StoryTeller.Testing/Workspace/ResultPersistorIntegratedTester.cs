@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.IO;
 using NUnit.Framework;
 using System.Linq;
@@ -71,7 +72,7 @@ s9/t18,Success
         {
             var persistor = new ResultPersistor();
             var runner = DataMother.MathProjectRunner();
-            runner.RunAll();
+            runner.RunAll(t => Debug.WriteLine("executed " + t.GetPath().Locator));
 
             runner.Hierarchy.GetAllTests().Each(t =>
             {

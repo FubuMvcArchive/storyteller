@@ -53,6 +53,11 @@ namespace StoryTeller.Execution
         {
             return (Message != null ? Message.GetHashCode() : 0);
         }
+
+        public override string ToString()
+        {
+            return string.Format("Recycling: {0}", Message);
+        }
     }
 
     [Serializable]
@@ -61,6 +66,11 @@ namespace StoryTeller.Execution
         public string FixtureName { get; set; }
         public int Total { get; set; }
         public int Index { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Reading {0}, {1} of {2}", FixtureName, Total, Index);
+        }
 
         public bool Equals(BinaryRecycleProcess other)
         {

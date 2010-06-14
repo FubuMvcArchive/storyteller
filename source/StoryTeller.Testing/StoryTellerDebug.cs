@@ -20,7 +20,6 @@ namespace StoryTellerTestHarness
         {
             var test = runner.RunTest("Admin/HTML test Create New Queue");
             runner.WritePreview(test).OpenInBrowser();
-            test.OpenResultsInBrowser();
         }
 
         [TestFixtureTearDown]

@@ -1,5 +1,6 @@
 using System;
 using StoryTeller.Engine;
+using FubuCore;
 
 namespace StoryTeller.Execution
 {
@@ -16,5 +17,10 @@ namespace StoryTeller.Execution
         public string Status { get; set; }
 
         public bool WasCancelled { get; set; }
+
+        public override string ToString()
+        {
+            return "Test {0}, Step {1} of {2} ({3}) with {4}".ToFormat(TestPath, CompletedSteps, TotalSteps, CurrentActivity, Counts);
+        }
     }
 }

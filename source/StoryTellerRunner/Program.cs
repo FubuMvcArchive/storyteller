@@ -19,18 +19,8 @@ namespace StoryTellerRunner
             }
 
             string resultsFile = args.Last();
-            var projects = new List<IProject>();
-            for (int i = 0; i < (args.Length - 1); i++)
-            {
-                Console.WriteLine("Loading Project file at " + args[i]);
-
-                Project project = Project.LoadFromFile(args[i]);
-
-                projects.Add(project);
-            }
-
-
-            var runner = new ProjectRunner(projects, resultsFile);
+            var projectFiles = args.Take(args.Length - 1);
+            var runner = new ProjectRunner(projectFiles, resultsFile);
 
             return runner.Execute();
         }

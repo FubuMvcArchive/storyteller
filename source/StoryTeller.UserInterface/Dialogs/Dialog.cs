@@ -13,12 +13,16 @@ namespace StoryTeller.UserInterface.Dialogs
 
             ResizeMode = ResizeMode.CanResizeWithGrip;
             SizeToContent = SizeToContent.WidthAndHeight;
-            WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            //WindowStartupLocation = Owner == null ? System.Windows.WindowStartupLocation.CenterScreen : WindowStartupLocation.CenterOwner;
+            WindowStartupLocation = WindowStartupLocation.Manual;
+            
             SetResourceReference(BackgroundProperty, "WindowBackgroundBrush");
             ShowInTaskbar = false;
 
             Title = child.Title;
             Content = child;
+
+            this.SetValue(Panel.ZIndexProperty, 1000);
 
             Closed += new System.EventHandler(Dialog_Closed);
         }

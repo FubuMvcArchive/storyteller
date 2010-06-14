@@ -16,18 +16,24 @@ namespace StoryTeller.Execution
     public class ProjectRunner : ConsoleListener
     {
         private readonly IDictionary<Lifecycle, TestCount> _counts = new Dictionary<Lifecycle, TestCount>();
-        private readonly IList<IProject> _projects;
+        private IList<IProject> _projects;
+        private readonly IEnumerable<string> _projectFiles;
         private readonly string _resultsFile;
         private readonly string _resultsFolder;
         private readonly IResultsSummary _summary = new ResultsSummary();
         private readonly IFileSystem _system = new FileSystem();
+        private string _historyFolder;
 
-        public ProjectRunner(IList<IProject> projects, string resultsFile)
+        public ProjectRunner(IEnumerable<string> projectFiles, string resultsFile)
         {
-            _projects = projects;
+            _projectFiles = projectFiles;
             _resultsFile = resultsFile;
+            
+
             string containingFolder = new FileInfo(_resultsFile).Directory.FullName;
             _resultsFolder = Path.Combine(containingFolder, "results");
+            _historyFolder = Path.Combine(_resultsFolder, "history");
+
 
             Console.WriteLine("Writing results to " + _resultsFolder);
 
@@ -41,6 +47,12 @@ namespace StoryTeller.Execution
             {
                 prepareResultsFolder();
 
+                _projects = _projectFiles.Select(file =>
+                {
+                    Console.WriteLine("Loading Project at " + file);
+                    return Project.LoadFromFile(file) as IProject;
+                }).ToList();
+
                 string names = _projects.Select(x => x.Name).ToArray().Join(", ");
                 _summary.Start("Project(s):  " + names, DateTime.Now);
 
@@ -48,7 +60,7 @@ namespace StoryTeller.Execution
                 _projects.Each(p =>
                 {
                     Console.WriteLine("Running Project " + p.Name);
-                    //executeProject(p);
+                    executeProject(p);
                 });
 
 
@@ -63,44 +75,46 @@ namespace StoryTeller.Execution
             }
         }
 
-        //private void executeProject(IProject project)
-        //{
-        //    var engine = new TestEngine();
-        //    using (ITestRunnerProxy proxy = engine.BuildProxy(project))
-        //    {
-        //        proxy.Listener = new TeamCityTestListener();
+        private void executeProject(IProject project)
+        {
+            var runner = new ProjectTestRunner(project);
+            string projectHistoryFolder = Path.Combine(_historyFolder, project.Name);
+            Directory.CreateDirectory(projectHistoryFolder);
 
-        //        foreach (Test test in project.LoadTests().GetAllTests())
-        //        {
-        //            runTest(proxy, test);
-        //        }
-        //    }
-        //}
+
+            try
+            {
+                runner.RunAll(test =>
+                {
+                    _counts[test.Lifecycle].Tally(test);
+                
+                    string filename = Path.GetFileNameWithoutExtension(test.FileName) +
+                                      DateTime.Now.ToString("hhmmss") + "-results.htm";
+                    string resultFile = Path.Combine(_resultsFolder,
+                                                     filename);
+
+                    test.WriteResultsToFile(resultFile);
+                    _summary.AddTest(test, "results/" + filename);
+
+                    ResultPersistor.SaveResult(test.LastResult, test, projectHistoryFolder);
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                runner.Dispose();
+            }
+        }
 
         private void prepareResultsFolder()
         {
             _system.DeleteFolder(_resultsFolder);
             _system.CreateFolder(_resultsFolder);
+
+            _system.CreateFolder(_historyFolder);
         }
 
-        //private void runTest(ITestRunnerProxy proxy, Test test)
-        //{
-        //    var request = new TestExecutionRequest(test);
-        //    // TODO -- need to bring back the timeout in seconds
-        //    // and the break on failures or exceptions
 
-        //    test.LastResult = proxy.RunTest(request);
-
-        //    _counts[test.Lifecycle].Tally(test);
-
-        //    string filename = Path.GetFileNameWithoutExtension(test.FileName) +
-        //                      DateTime.Now.ToString("hhmmss") + "-results.htm";
-        //    string resultFile = Path.Combine(_resultsFolder,
-        //                                     filename);
-
-        //    test.WriteResultsToFile(resultFile);
-        //    _summary.AddTest(test, "results/" + filename);
-        //}
 
         private int createFinalResult()
         {

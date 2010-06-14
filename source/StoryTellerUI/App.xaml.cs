@@ -17,7 +17,7 @@ namespace StoryTellerUI
         protected override void OnStartup(StartupEventArgs e)
         {
             var application = Application.Current;
-            Window window = Bootstrapper.BootstrapShell();
+            Window window = Bootstrapper.BootstrapShell(true);
             window.Title = "StoryTeller";
 
             application.DispatcherUnhandledException += application_DispatcherUnhandledException;
