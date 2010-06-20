@@ -26,7 +26,7 @@ namespace StoryTeller.Workspace
 
         public Project()
         {
-            TimeoutInSeconds = 5;
+            TimeoutInSeconds = 60;
             Options = new CodegenOptions();
         }
 

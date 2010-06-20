@@ -2,22 +2,19 @@
 
 namespace StoryTeller.Html
 {
-    public class TableContainerTag : TableTag
+    public class TableContainerTag : HtmlTag
     {
-        public TableContainerTag()
+        public TableContainerTag() : base("div")
         {
-            AddClass("table-container");
+            
         }
 
         public void Add(string title, HtmlTag bodyTag)
         {
-            AddBodyRow(row =>
-            {
-                row.AddClass("table-container-row");
-                row.Cell(title).AddClass("table-title");
-                row.Cell().AddClass("table-cell").Child(bodyTag);
             
-            });
+
+            Add("div").Text(title).AddClass("table-title");
+            Add("div").AddClass("table-container").AddClass("table-cell").Child(bodyTag);
         }
     }
 }
