@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="5.5897564" ExceptionText="" WasCancelled="false" Locator="Paragraphs/Simple Composite">
+<TestResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ExecutionTime="5.3022393" ExceptionText="" WasCancelled="false" Locator="Paragraphs/Simple Composite">
   <Html>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;style&gt;body
 {
@@ -17,14 +17,14 @@
 }
 
 
-div.pass &gt; span.input, div.pass &gt; span.fact, tr.pass &gt; td, SPAN.pass, td.pass
+div.pass &gt; span.input, div.pass &gt; span.fact, tr.pass &gt; td, SPAN.pass, td.pass, .results-pass
 {
     background-color: #AAFFAA;
 }
 
 
 
-div.fail &gt; span.input, div.fail &gt; span.fact, span.fail, tr.fail &gt; td, td.fail
+div.fail &gt; span.input, div.fail &gt; span.fact, span.fail, tr.fail &gt; td, td.fail, .results-fail
 {
 	background-color: #FFAAAA;
 
@@ -136,10 +136,6 @@ h3.section-title
     background-color: #EBEAEA;
 }
 
-div.embedded &gt; div &gt; div.step-holder
-{
-	padding: 10px;
-}
 
 .section-title{
 
@@ -267,6 +263,11 @@ table.table td {
 	color: #4f6b72;
 }
 
+td.fail, td.pass, td.exception
+{
+    color: Black !important;
+}
+
 td.left-cell
 {
     border-left: 1px solid #C1DAD7;
@@ -277,26 +278,17 @@ th.left-cell
     border-left: 1px solid #C1DAD7;
 }
 
-tr.table-container-row &gt; td
-{
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
-
 .table-title
 {
 	font-size: 90%;
 	color:#E17009;
 	font-weight: bold;
-	text-align:right;
 	vertical-align: top;
-	margin-right: 20px;
-	padding-right: 20px;
 }
 
-td.table-cell
+.table-container
 {
-    
+	margin-left:20px;
 }
 
 td.exception-cell
@@ -326,12 +318,18 @@ div.paragraph div
     margin-left: 20px;
 }
 
-div.paragraph-title
+div.paragraph-title, h3.embedded-title
 {
 	font-size: 90%;
 	color:#E17009;
 	font-weight: bold;
 	margin-left: 0px !important;
+}
+
+h3.embedded-title
+{
+    margin-bottom: 2px;
+    padding-bottom: 0px;
 }
 
 div.paragraph
@@ -356,7 +354,11 @@ div.paragraph &gt; div.step
 	padding-right: 5px;
 }
 
-
+div.embedded &gt; div
+{
+	padding-left: 10px;
+	padding-right: 5px;
+}
 
 .section-title{
 
@@ -395,7 +397,7 @@ div.sentence
 {
     padding-left: 0px;
     margin-left: 0px;
-}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="testEditor" class="main test-editor"&gt;&lt;h2 class="testName"&gt;Simple Composite&lt;/h2&gt;&lt;div class="results fail"&gt;Failed with Rights: 2, Wrongs: 3, Exceptions: 0, SyntaxErrors: 0&lt;/div&gt;&lt;div class="container section test-editor"&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;div class="section"&gt;&lt;h3 class="section-title"&gt;Composite&lt;/h3&gt;&lt;div class="section-body"&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="paragraph-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input pass"&gt;80&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="paragraph-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;table class="table-container"&gt;&lt;thead&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr class="table-container-row"&gt;&lt;td class="table-title"&gt;Add and Multiply in a Table&lt;/td&gt;&lt;td class="table-cell"&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th class="left-cell"&gt;starting&lt;/th&gt;&lt;th&gt;operand&lt;/th&gt;&lt;th&gt;multiplier&lt;/th&gt;&lt;th&gt;expected&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;3&lt;/td&gt;&lt;td class="input"&gt;4&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;25, but was &amp;#39;70&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input pass"&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr /&gt;&lt;pre&gt;the number is 5
+}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="testEditor" class="main test-editor"&gt;&lt;h2 class="testName"&gt;Simple Composite&lt;/h2&gt;&lt;div class="results results-fail"&gt;Failed with Rights: 2, Wrongs: 3, Exceptions: 0, SyntaxErrors: 0&lt;/div&gt;&lt;div class="container section test-editor"&gt;&lt;div&gt;&lt;div class="step-holder"&gt;&lt;div class="section"&gt;&lt;h3 class="section-title"&gt;Composite&lt;/h3&gt;&lt;div class="section-body"&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="paragraph-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input pass"&gt;80&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="paragraph TitledAndIndented"&gt;&lt;div class="paragraph-title"&gt;Add and Multiply&lt;/div&gt;&lt;div class="Thenumbershouldstartwithstarting sentence"&gt;&lt;span&gt;The number should start with &lt;/span&gt;&lt;span class="input"&gt;5&lt;/span&gt;&lt;/div&gt;&lt;div class="+=operand sentence"&gt;&lt;span&gt;+= &lt;/span&gt;&lt;span class="input"&gt;3&lt;/span&gt;&lt;/div&gt;&lt;div class="*=multiplier sentence"&gt;&lt;span&gt;*= &lt;/span&gt;&lt;span class="input"&gt;10&lt;/span&gt;&lt;/div&gt;&lt;div class="Valueshouldbeexpected sentence"&gt;&lt;span&gt;Value should be &lt;/span&gt;&lt;span class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;div class="table-title"&gt;Add and Multiply in a Table&lt;/div&gt;&lt;div class="table-container table-cell"&gt;&lt;table cellpadding="0" cellspacing="0" class="table"&gt;&lt;thead&gt;&lt;tr&gt;&lt;th class="left-cell"&gt;starting&lt;/th&gt;&lt;th&gt;operand&lt;/th&gt;&lt;th&gt;multiplier&lt;/th&gt;&lt;th&gt;expected&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;3&lt;/td&gt;&lt;td class="input"&gt;4&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;25, but was &amp;#39;70&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input pass"&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class="input left-cell"&gt;5&lt;/td&gt;&lt;td class="input"&gt;3&lt;/td&gt;&lt;td class="input"&gt;10&lt;/td&gt;&lt;td class="input fail"&gt;77, but was &amp;#39;80&amp;#39;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;hr /&gt;&lt;pre&gt;the number is 5
 the number is 8
 the number is 80
 the number is 5

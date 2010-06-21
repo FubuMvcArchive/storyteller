@@ -16,12 +16,11 @@ namespace StoryTellerTestHarness
         }
 
         [Test]
-        public void Embeds()
+        public void Tables()
         {
-            var test = runner.RunTest("Embedded/Embeds");
+            var test = runner.RunTest("Tables/Tables");
         
             runner.WritePreview(test).OpenInBrowser();
-            test.OpenResultsInBrowser();
         }
 
         [TestFixtureTearDown]

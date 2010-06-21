@@ -133,10 +133,6 @@ h3.section-title
     background-color: #EBEAEA;
 }
 
-div.embedded > div > div.step-holder
-{
-	padding: 10px;
-}
 
 .section-title{
 
@@ -279,26 +275,17 @@ th.left-cell
     border-left: 1px solid #C1DAD7;
 }
 
-tr.table-container-row > td
-{
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
-
 .table-title
 {
 	font-size: 90%;
 	color:#E17009;
 	font-weight: bold;
-	text-align:right;
 	vertical-align: top;
-	margin-right: 20px;
-	padding-right: 20px;
 }
 
-td.table-cell
+.table-container
 {
-    
+	margin-left:20px;
 }
 
 td.exception-cell
