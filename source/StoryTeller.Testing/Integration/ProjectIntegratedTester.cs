@@ -53,13 +53,13 @@ namespace StoryTeller.Testing.Integration
             hierarchy.FindSuite("Adding").Tests.ShouldHaveTestNames("Bad Add 1", "Good Add 1", "Good Add 2");
         }
 
-        [Test]
+        [Test, Explicit]
         public void has_the_empty_suite()
         {
             hierarchy.FindSuite("EmptySuite").ShouldNotBeNull();
         }
 
-        [Test]
+        [Test, Explicit]
         public void loads_the_suites_at_the_top_level()
         {
             hierarchy.ChildSuites.Each(x => Debug.WriteLine(x.Name));

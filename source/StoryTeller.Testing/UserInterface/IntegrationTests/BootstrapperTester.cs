@@ -73,7 +73,7 @@ namespace StoryTeller.Testing.UserInterface.IntegrationTests
             ObjectFactory.GetInstance<GrammarErrorsSubject>().CreateScreen(factory).ShouldNotBeNull();
         }
 
-        [Test]
+        [Test, Explicit]
         public void has_the_suite_and_test_nodes_for_the_math_project()
         {
             shell.HierarchyNode.Text.ShouldEqual("Math");
