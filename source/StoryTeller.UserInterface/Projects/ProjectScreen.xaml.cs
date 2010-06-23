@@ -61,7 +61,7 @@ namespace StoryTeller.UserInterface.Projects
             _binder.BindToModel(project);
         }
 
-        public void ShowErrorMessages(Notification notification)
+        public void ShowErrorMessages(ProjectValidationMessages notification)
         {
             validation.ShowMessages(notification);
         }

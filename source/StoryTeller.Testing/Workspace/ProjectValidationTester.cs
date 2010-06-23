@@ -82,5 +82,13 @@ namespace StoryTeller.Testing.Workspace
             project.Validate().IsValid.ShouldBeTrue();
         }
 
+        [Test]
+        public void name_is_missing()
+        {
+            project.Name = null;
+
+            project.Validate().Messages.ShouldHaveTheSameElementsAs("Name is required");
+        }
+
     }
 }

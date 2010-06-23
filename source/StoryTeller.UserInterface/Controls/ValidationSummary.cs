@@ -1,39 +1,29 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using ShadeTree.Validation;
+using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Controls
 {
-    public class ValidationSummary : Grid
+    public class ValidationSummary : StackPanel
     {
         public ValidationSummary()
         {
-            ColumnDefinitions.Add(new ColumnDefinition());
-            ColumnDefinitions.Add(new ColumnDefinition());
-
             Background = new SolidColorBrush(Colors.White);
         }
 
-        public void ShowMessages(Notification notification)
+        public void ShowMessages(ProjectValidationMessages notification)
         {
-            RowDefinitions.Clear();
+            Children.Clear();
 
-            foreach (NotificationMessage message in notification.AllMessages)
+            foreach (string message in notification.Messages)
             {
-                RowDefinitions.Add(new RowDefinition());
-                int rowIndex = RowDefinitions.Count - 1;
 
-                this.Add(new Label
+                Children.Add(new Label
                 {
-                    Content = message.FieldName,
+                    Content = message,
                     Foreground = new SolidColorBrush(Colors.Red)
-                }, rowIndex, 0);
-
-                this.Add(new Label
-                {
-                    Content = message.Message,
-                    Foreground = new SolidColorBrush(Colors.Red)
-                }, rowIndex, 1);
+                });
             }
         }
     }

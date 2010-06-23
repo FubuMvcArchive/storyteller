@@ -6,6 +6,19 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Projects
 {
+    public interface IProjectValidator
+    {
+        ProjectValidationMessages Validate(IProject project);
+    }
+
+    public class ProjectValidator : IProjectValidator
+    {
+        public ProjectValidationMessages Validate(IProject project)
+        {
+            return project.As<Project>().Validate();
+        }
+    }
+
 
     public class ProjectController : IProjectController
                                         , IListener<SaveTestMessage>

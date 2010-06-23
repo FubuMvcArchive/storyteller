@@ -13,10 +13,10 @@ namespace StoryTeller.UserInterface.Projects
         private readonly IProjectController _controller;
         private readonly Project _project;
         private readonly ICommand _save;
-        private readonly IValidator _validator;
+        private readonly IProjectValidator _validator;
         private readonly IProjectScreen _view;
 
-        public NewProjectPresenter(IProjectController controller, IScreenConductor conductor, IValidator validator,
+        public NewProjectPresenter(IProjectController controller, IScreenConductor conductor, IProjectValidator validator,
                                    IProjectScreen view)
         {
             _controller = controller;
@@ -59,16 +59,15 @@ namespace StoryTeller.UserInterface.Projects
 
         private void save()
         {
-            Notification notification = _validator.Validate(_project);
-            if (notification.IsValid())
+            var notification = _validator.Validate(_project);
+            if (notification.IsValid)
             {
                 _controller.StartNewProject(_project);
                 _conductor.Close(this);
             }
-            else
-            {
-                _view.ShowErrorMessages(notification);
-            }
+
+            _view.ShowErrorMessages(notification);
+
         }
 
         private void cancel()

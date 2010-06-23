@@ -4,6 +4,7 @@ using ShadeTree.Validation;
 using StoryTeller.UserInterface;
 using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Projects;
+using StoryTeller.Workspace;
 
 namespace StoryTeller.Testing.UserInterface.Projects
 {
@@ -50,12 +51,14 @@ namespace StoryTeller.Testing.UserInterface.Projects
     [TestFixture]
     public class when_saving_an_invalid_project : InteractionContext<NewProjectPresenter>
     {
-        private Notification notification;
+        private ProjectValidationMessages notification;
 
         protected override void beforeEach()
         {
-            notification = Notification.Invalid();
-            MockFor<IValidator>().Expect(x => x.Validate(ClassUnderTest.Project)).Return(notification);
+            notification = new ProjectValidationMessages();
+            notification.Messages.Add("some bad message");
+
+            MockFor<IProjectValidator>().Expect(x => x.Validate(ClassUnderTest.Project)).Return(notification);
 
             ClassUnderTest.Save.Execute(null);
         }
@@ -87,8 +90,7 @@ namespace StoryTeller.Testing.UserInterface.Projects
 
         protected override void beforeEach()
         {
-            notification = Notification.Valid();
-            MockFor<IValidator>().Expect(x => x.Validate(ClassUnderTest.Project)).Return(notification);
+            MockFor<IProjectValidator>().Expect(x => x.Validate(ClassUnderTest.Project)).Return(new ProjectValidationMessages());
 
             ClassUnderTest.Save.Execute(null);
         }
