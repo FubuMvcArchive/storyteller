@@ -20,6 +20,7 @@ namespace StoryTeller.Execution
             Debug.WriteLine("watching binaries at " + directory);
 
             cleanUpWatcher();
+
             _watcher = new FileSystemWatcher(directory, "*.dll");
             _watcher.Changed += fileChanged;
             _watcher.IncludeSubdirectories = true;

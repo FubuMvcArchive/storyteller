@@ -2,7 +2,7 @@ COMPILE_TARGET = "debug"
 require 'albacore'
 require "BuildUtils.rb"
 
-BUILD_NUMBER_BASE = "0.9.9"
+BUILD_NUMBER_BASE = "0.9.5"
 PRODUCT = "StoryTeller"
 COPYRIGHT = 'Released under the Apache 2.0 License by Jeremy D. Miller and Brandon Behrens';
 COMMON_ASSEMBLY_INFO = 'source/CommonAssemblyInfo.cs';

@@ -249,5 +249,63 @@ namespace StoryTeller.Workspace
         {
             get { return _selectedWorkspaces; }
         }
+
+
+        public ProjectValidationMessages Validate()
+        {
+            var messages = new ProjectValidationMessages();
+
+            if (TestFolder.IsEmpty())
+            {
+                messages.Messages.Add("Test Folder must be specified");
+            }
+            else if (!Directory.Exists(GetTestFolder()))
+            {
+                messages.Messages.Add("Test Folder '{0}' does not exist".ToFormat(GetTestFolder()));
+            }
+
+            if (BinaryFolder.IsEmpty())
+            {
+                messages.Messages.Add("Binary Folder must be specified");
+            }
+            else if (!Directory.Exists(GetBinaryFolder()))
+            {
+                messages.Messages.Add("Binary Folder '{0}' does not exist".ToFormat(GetBinaryFolder()));
+            }
+
+            if (FixtureAssembly.IsEmpty() && SystemTypeName.IsEmpty())
+            {
+                messages.Messages.Add("Either Fixture Assembly or System Type Name needs to be specified");
+            }
+
+            if (Name.IsEmpty())
+            {
+                messages.Messages.Add("Name is required");
+            }
+
+            if (FileName.IsEmpty())
+            {
+                messages.Messages.Add("File Name is required");
+            }
+
+            return messages;
+        }
+    }
+
+    public class ProjectValidationMessages
+    {
+        public ProjectValidationMessages()
+        {
+            Messages = new List<string>();
+        }
+
+        public IList<string> Messages { get; private set; }
+        public bool IsValid
+        {
+            get
+            {
+                return !Messages.Any();
+            }
+        }
     }
 }

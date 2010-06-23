@@ -25,7 +25,6 @@
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="2543" fromTop="37" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestRunnerProxy.cs" caret="2349" fromTop="1" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/f:Debugging.cs" caret="792" fromTop="16" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="5423" fromTop="30" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:PreviewWriter.cs" caret="2040" fromTop="25" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:StoryTellerTableTag.cs" caret="448" fromTop="20" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:TableContainerTag.cs" caret="424" fromTop="15" />
@@ -33,18 +32,15 @@
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:IProject.cs" caret="877" fromTop="25" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:ProjectController.cs" caret="4656" fromTop="28" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:ProjectLoadFailureHandler.cs" caret="987" fromTop="25" />
-      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="1186" fromTop="30" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:IntegrationTests/f:BootstrapperTester.cs" caret="2080" fromTop="15" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Integration/f:ProjectIntegratedTester.cs" caret="1669" fromTop="11" />
       <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="546" fromTop="16" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:FailureFixture.cs" caret="414" fromTop="18" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/f:StoryTellerDebug.cs" caret="588" fromTop="23" />
+      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/f:StoryTellerDebug.cs" caret="717" fromTop="29" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4729" fromTop="29" />
+      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:FailureFixture.cs" caret="360" fromTop="16" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="830" fromTop="0" />
     </RecentFiles>
     <RecentEdits>
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectTestRunner.cs" caret="727" fromTop="11" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="547" fromTop="5" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="1959" fromTop="25" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="2269" fromTop="31" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="3969" fromTop="14" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="3743" fromTop="35" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectTestRunner.cs" caret="3680" fromTop="22" />
@@ -71,6 +67,10 @@
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:IntegrationTests/f:BootstrapperTester.cs" caret="2107" fromTop="17" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Integration/f:ProjectIntegratedTester.cs" caret="1827" fromTop="17" />
       <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/f:StoryTellerDebug.cs" caret="719" fromTop="20" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4587" fromTop="13" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4683" fromTop="19" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="2204" fromTop="14" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4729" fromTop="29" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
