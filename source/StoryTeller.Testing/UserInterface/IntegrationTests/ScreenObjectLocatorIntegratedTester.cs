@@ -15,7 +15,7 @@ using StructureMap;
 
 namespace StoryTeller.Testing.UserInterface.IntegrationTests
 {
-    [TestFixture]
+    [TestFixture, Explicit]
     public class ScreenObjectLocatorIntegratedTester
     {
         #region Setup/Teardown
@@ -43,7 +43,7 @@ namespace StoryTeller.Testing.UserInterface.IntegrationTests
         private IScreenObjectLocator _objectLocator;
         private IScreenFactory factory;
 
-        [Test]
+        [Test, Explicit]
         public void can_create_screen_for_a_test()
         {
             var test = new Test("the test");

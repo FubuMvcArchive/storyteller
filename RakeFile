@@ -3,6 +3,7 @@ require 'albacore'
 require "BuildUtils.rb"
 
 BUILD_NUMBER_BASE = "0.9.5"
+build_number = BUILD_NUMBER_BASE + ".0"
 PRODUCT = "StoryTeller"
 COPYRIGHT = 'Released under the Apache 2.0 License by Jeremy D. Miller and Brandon Behrens';
 COMMON_ASSEMBLY_INFO = 'source/CommonAssemblyInfo.cs';
@@ -16,12 +17,12 @@ assemblyinfo :version do |asm|
   
   begin
 	gittag = `git describe --long --tags`.chomp 	# looks something like v0.1.0-63-g92228f4
-    gitnumberpart = /-(\d+)-/.match(gittag)
-    gitnumber = gitnumberpart.nil? ? '0' : gitnumberpart[1]
-    commit = (ENV["BUILD_VCS_NUMBER"].nil? ? `git log -1 --pretty=format:%H` : ENV["BUILD_VCS_NUMBER"])
+	gitnumberpart = /-(\d+)-/.match(gittag)
+	gitnumber = gitnumberpart.nil? ? '0' : gitnumberpart[1]
+	commit = (ENV["BUILD_VCS_NUMBER"].nil? ? `git log -1 --pretty=format:%H` : ENV["BUILD_VCS_NUMBER"])
   rescue
-    commit = "git unavailable"
-    gitnumber = "0"
+	commit = "git unavailable"
+	gitnumber = "0"
   end
   build_number = "#{BUILD_NUMBER_BASE}.#{gitnumber}"
   tc_build_number = ENV["BUILD_NUMBER"]
@@ -45,25 +46,32 @@ task :unit_test => :compile do
   runner.executeTests ['StoryTeller.Testing']
 end
 
-task :package  do
-  require 'fileutils'
-  FileUtils.rm_rf 'deploy'
 
-  Dir.mkdir 'deploy'
+require 'zip/zip'
+task :package => [:version]  do
+  package_file = "StoryTeller.#{build_number}.zip"
+  File.delete package_file if File.exist? package_file
+  Zip::ZipFile.open(package_file, Zip::ZipFile::CREATE) do |zip|
+	  zip.add "ICSharpCode.AvalonEdit.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.AvalonEdit.dll"
+	  zip.add "ICSharpCode.Core.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.Core.dll"
+	  zip.add "ICSharpCode.Core.Presentation.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.Core.Presentation.dll"
+	  zip.add "ICSharpCode.Core.WinForms.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.Core.WinForms.dll"
+	  zip.add "ICSharpCode.SharpDevelop.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.SharpDevelop.dll"
+	  zip.add "ICSharpCode.TextEditor.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.TextEditor.dll"
+	  zip.add "StoryTeller.UserInterface.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.UserInterface.dll"
+	  zip.add "XmlEditor.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/XmlEditor.dll"
+	  zip.add "StoryTeller.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.dll"
+	  zip.add "StoryTellerUI.exe", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTellerUI.exe"
+	  zip.add "StructureMap.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StructureMap.dll"
+	  zip.add "FubuCore.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/FubuCore.dll"
+	  zip.add "HtmlTags.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/HtmlTags.dll"
+	  zip.add "Newtonsoft.Json.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/Newtonsoft.Json.dll"
+	  zip.add "Microsoft.Practices.ServiceLocation.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/Microsoft.Practices.ServiceLocation.dll"
+	  zip.add "ShadeTree.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ShadeTree.dll"
+	  zip.add "ShadeTree.Binding.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ShadeTree.Binding.dll"
+	  zip.add "StoryTellerRunner.exe", "source/StoryTellerRunner/bin/#{COMPILE_TARGET}/StoryTellerRunner.exe"
+  end
 
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\ICSharpCode.AvalonEdit.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\ICSharpCode.Core.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\ICSharpCode.Core.Presentation.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\ICSharpCode.Core.WinForms.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\ICSharpCode.SharpDevelop.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\ICSharpCode.TextEditor.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\StoryTeller.UserInterface.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\StoryTeller.UserInterface.pdb', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\XmlEditor.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\StoryTeller.dll', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\StoryTeller.pdb', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\StoryTellerUI.exe', 'deploy'
-  FileUtils.cp 'source\StoryTellerUI\bin\Debug\StructureMap.dll', 'deploy'
 end
 
 

@@ -6,3 +6,6 @@
 
 @ECHO *** Installing Albacore (build support tools)
 @call gem install albacore --no-rdoc --no-ri
+
+@ECHO *** Installing Zip
+@call gem install zip --no-rdoc --no-ri
