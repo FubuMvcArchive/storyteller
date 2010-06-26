@@ -70,6 +70,7 @@ task :package => [:version]  do
 	  zip.add "ShadeTree.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ShadeTree.dll"
 	  zip.add "ShadeTree.Binding.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ShadeTree.Binding.dll"
 	  zip.add "StoryTellerRunner.exe", "source/StoryTellerRunner/bin/#{COMPILE_TARGET}/StoryTellerRunner.exe"
+  
   end
 
 end

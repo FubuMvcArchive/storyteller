@@ -9,10 +9,6 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Workspace/f:TestResultHandler.cs" caret="2292" fromTop="19" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:IResultPersistor.cs" caret="236" fromTop="7" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Workspace/f:ResultPersistorIntegratedTester.cs" caret="2280" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:ResultPersistor.cs" caret="777" fromTop="12" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestRun.cs" caret="3868" fromTop="17" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestResult.cs" caret="400" fromTop="15" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectTestRunner.cs" caret="1313" fromTop="29" />
@@ -37,8 +33,12 @@
       <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="546" fromTop="16" />
       <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/f:StoryTellerDebug.cs" caret="717" fromTop="29" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4729" fromTop="29" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="3838" fromTop="29" />
+      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:IntegrationTests/f:ScreenObjectLocatorIntegratedTester.cs" caret="575" fromTop="13" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:Fixture.cs" caret="763" fromTop="26" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/f:IGrammar.cs" caret="322" fromTop="12" />
+      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:SentenceFixture.cs" caret="2722" fromTop="31" />
       <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:FailureFixture.cs" caret="360" fromTop="16" />
-      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="830" fromTop="0" />
     </RecentFiles>
     <RecentEdits>
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="3969" fromTop="14" />

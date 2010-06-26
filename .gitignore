@@ -12,3 +12,6 @@ _ReSharper.*
 *.suo
 *.cache
 ~$*
+StoryTeller*
+*.zip
+*.lnk
