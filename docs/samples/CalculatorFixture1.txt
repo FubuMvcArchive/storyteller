@@ -1,0 +1,4 @@
+    public class CalculatorFixture1 : Fixture
+    {
+
+    }

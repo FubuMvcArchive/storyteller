@@ -23,6 +23,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.Gallery", "Stor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{B52EADC1-DDD4-452C-83ED-4A148302D424}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{1F28D8D7-626C-47F7-AEB4-D67C45E7B995}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "support", "support", "{0233FC2B-A85B-4F04-9166-0286A650924A}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\docs.rb = ..\docs\docs.rb
+		..\docs\storyteller\generator.rb = ..\docs\storyteller\generator.rb
+		..\docs\storyteller\helpers.rb = ..\docs\storyteller\helpers.rb
+		..\docs\storyteller\indexer.rb = ..\docs\storyteller\indexer.rb
+		..\docs\storyteller\textile_extensions.rb = ..\docs\storyteller\textile_extensions.rb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{4CC0B5E9-26D7-4B7A-8977-3F2B4052C097}"
+	ProjectSection(SolutionItems) = preProject
+		blank.erb.textile = blank.erb.textile
+		..\docs\content\contribute.textile = ..\docs\content\contribute.textile
+		..\docs\content\credits.erb.textile = ..\docs\content\credits.erb.textile
+		..\docs\content\index.erb.textile = ..\docs\content\index.erb.textile
+		..\docs\content\layout.html.erb = ..\docs\content\layout.html.erb
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleGenerator", "SampleGenerator\SampleGenerator.csproj", "{BC3E28C4-1653-43DD-959C-389CF1335D33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,8 +135,24 @@ Global
 		{B52EADC1-DDD4-452C-83ED-4A148302D424}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B52EADC1-DDD4-452C-83ED-4A148302D424}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B52EADC1-DDD4-452C-83ED-4A148302D424}.Release|x86.ActiveCfg = Release|Any CPU
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Debug|Any CPU.Build.0 = Debug|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Debug|x86.ActiveCfg = Debug|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Debug|x86.Build.0 = Debug|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|Any CPU.ActiveCfg = Release|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|Mixed Platforms.Build.0 = Release|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|x86.ActiveCfg = Release|x86
+		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F28D8D7-626C-47F7-AEB4-D67C45E7B995} = {4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F}
+		{0233FC2B-A85B-4F04-9166-0286A650924A} = {1F28D8D7-626C-47F7-AEB4-D67C45E7B995}
+		{4CC0B5E9-26D7-4B7A-8977-3F2B4052C097} = {1F28D8D7-626C-47F7-AEB4-D67C45E7B995}
 	EndGlobalSection
 EndGlobal

@@ -5,6 +5,14 @@ using StoryTeller.Engine;
 namespace Examples.Fixtures
 {
 
+    // SAMPLE:  Sample
+    public class FakeSample
+    {
+        // This was me
+    }
+
+    // END:  Sample
+
 
     public class SimpleActionsFixture : Fixture
     {
@@ -13,6 +21,7 @@ namespace Examples.Fixtures
 
         public SimpleActionsFixture(IBrowserDriver browser)
         {
+
             _browser = browser;
             // Create a Sentence grammar inline that performs a simple action
             this["JustDoSomething"] = Do("I want to do something", () => Debug.WriteLine("I did something"));

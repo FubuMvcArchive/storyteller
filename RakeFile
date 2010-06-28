@@ -84,6 +84,9 @@ end
 
 task :publish_docs => :docs do
 	cp_r 'docs/output/.', '../storyteller-website'
+	#sh "c:/git/storyteller-website/git.exe add ."
+	#sh 'c:/git/storyteller-website/git.exe commit -a -m "automated push of docs"'
+	#sh 'c:/git/storyteller-website/git.exe push origin'
 end
 
 

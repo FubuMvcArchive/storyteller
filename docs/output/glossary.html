@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>StoryTeller guides</title>
+<link rel="stylesheet" type="text/css" href="files/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="files/stylesheets/syntax.css" />
+<link rel="stylesheet" type="text/css" href="files/stylesheets/print.css" media="print" />
+<script type="text/javascript" src="files/javascripts/guides.js"></script><script type="text/javascript" src="files/javascripts/code_highlighter.js"></script><script type="text/javascript" src="files/javascripts/highlighters.js"></script></head>
+<body class="guide">
+<div id="topNav">
+<div class="wrapper">
+<strong>More at <a href="http://fubumvc.com">http://fubumvc.com:</a> </strong>
+<a href="http://github.com/StoryTeller/StoryTeller">Fork it!</a> |
+<a href="http://groups.google.com/group/storyteller-dotnet-users">Mailing list</a> |
+</div>
+</div>
+<div id="header">
+<div class="wrapper clearfix">
+      <h1><a href="index.html" title="Guides">Guides</a></h1>
+      <p class="hide"><a href="#mainCol">Skip navigation</a>.</p>
+<ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li class="index"><a href="index.html" onclick="guideMenu(); return false;" id="guidesMenu">Guides Index</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+            <dl class="L">
+              <dt>Start Here</dt>
+              <dd><a href="getting_started.html">Getting Started with StoryTeller</a></dd>
+</dl>
+<dl class="R">
+</dl>
+</div>
+</li>
+        <li><a href="contribute.html">Contribute</a></li>
+        <li><a href="credits.html">Credits</a></li>
+</ul>
+</div>
+</div>
+<div id="feature">
+<div class="wrapper">
+
+<h2>Glossary</h2>
+<p>Understanding these key terms are important for StoryTeller usage, both as a StoryTeller user and a developer or test engineer tasked with writing test code.</p>
+
+<div id="subCol">
+<dl>
+    <dd class="warning">This documentation is based on the 1.0 version of StoryTeller.</dd>
+</dl>
+</div>
+<dl>
+	<dt>Project</dt>
+	<dd>Very similar to projects in Visual Studio.Net or other IDE&#8217;s, a <em>Project</em> in StoryTeller describes a working set of specifications, 
+information about how to exercise the system under test, and folder information for tests and binaries.  
+You cannot use StoryTeller without first creating a project.  See <a href="create_project.html">Creating a StoryTeller Project</a> for more information</dd>
+</dl>
+<dl>
+	<dt>Test or Specification</dt>
+	<dd>Each specification of the system is described in a Test.  A single Test/Specification consists of Sections and Steps.</dd>
+</dl>
+<dl>
+	<dt>Workspace and Suites</dt>
+	<dd>StoryTeller projects can be (and should be) organized into <em>Suite&#8217;s</em> of closely related tests.  
+The top level suites directly underneath the project root are called <em>Workspaces</em>.  
+Within the project, Workspace&#8217;s can be configured to use a subset of the available Fixture&#8217;s for the system and also to specify startup and teardown 
+actions before the execution of each test. See <a href="workspaces.html">Workspaces</a> for more information</dd>
+</dl>
+<dl>
+	<dt>Grammar</dt>
+	<dd>Before you write tests, you need a vocabulary with which to express the tests, 
+and something behind that vocabulary that actually exercises the system under test and records the actual results.  
+Each action or assertion in a StoryTeller test/specification is performed by a <em>Grammar.</em>  [See the <a href="how_to.html">How To</a>] for more information</dd>
+</dl>
+<dl>
+	<dt>Fixture</dt>
+	<dd>A closely related collection of grammars.  In common usage, you will create a separate Fixture for each individual screen or service in your system.  See <a href="fixtures.html">Writing Fixtures</a> for more information</dd>
+</dl>
+<dl>
+	<dt>Sentence</dt>
+	<dd>A grammar that is expressed in a single line.  A sentence can have zero to many inputs. See <a href="sentences.html">Sentences</a> for more information.</dd>
+</dl>
+<dl>
+	<dt>Fact</dt>
+	<dd>A special Sentence with no inputs that simply declares that a <em>fact</em> should be true.  See <a href="sentences.html#facts">Sentences</a>.</dd>
+</dl>
+<dl>
+	<dt>Table</dt>
+	<dd>A grammar expressed as in tabular form.  <em>Table&#8217;s</em> can be used to set up test input state or test decision trees.  Table&#8217;s are valuable for example driven tests and are analagous to the old <a href="http://fitnesse.org/FitNesse.UserGuide.ColumnFixture">FitNesse ColumnFixture or RowFixture</a>.  See <a href="tables.html">Working with Tables</a>.</dd>
+</dl>
+<dl>
+	<dt>Set Verification</dt>
+	<dd>Set Verification grammars are a special type of Table that can be used to specify the expected contents of some sort of tabular data.  Set Verification&#8217;s are a superset of the <a href="http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture">FitNesse SetFixture&#8217;s and ArrayFixture&#8217;s</a>.  See <a href="sets.html">Verifying Sets</a>.</dd>
+</dl>
+<dl>
+	<dt>Embedded Section</dt>
+	<dd>An <em>Embedded Section</em> is a grammar that <em>nests</em> a different Fixture within the parent Section.  The canonical example is testing a screen that opens a dialog box during its operation.  Within the Fixture for the parent screen, you may want an Embedded Section grammar to open and then manipulate the modal dialog box.  See <a href="embedded_sections.html">Embedded Sections</a>.</dd>
+</dl>
+<dl>
+	<dt>Paragraph</dt>
+	<dd>A grammar that expresses a <em>macro</em> of other grammars.  Use a Paragraph anytime you find yourself repeating the same basic sequence of steps or if you want to force a consistent structure in your specifications.  See <a href="paragraphs.html">Paragraphs</a>.</dd>
+</dl>
+<dl>
+	<dt>Section</dt>
+	<dd>A <em>Section</em> is just a region that invokes a specified Fixture.</dd>
+</dl>
+<dl>
+	<dt>Step</dt>
+	<dd>A <em>Step</em> is the invocation of a single Grammar within a Test/Specification.</dd>
+</dl>
+<div class='note'><p>At this point StoryTeller uses &#8216;Test&#8217; as its terminology.  In the next release the terminology in the user interface and the code itself will change to &#8216;Specification&#8217; or &#8216;Spec&#8217; to be more consistent with current best practices.</p></div>
+
+</div>
+</div>
+<div id="container">
+<div class="wrapper">
+<div id="mainCol">
+
+</div>
+</div>
+</div>
+<hr class="hide" />
+<div id="footer">
+<div class="wrapper">
+      <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0</a> License</a></p>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = ((&#8220;https:&#8221; == document.location.protocol) ? &#8220;https://ssl.&#8221; : &#8220;http://www.&#8221;);
+document.write(unescape(&#8220;%3Cscript src=&#8217;&#8221; <tt> gaJsHost </tt> &#8220;google-analytics.com/ga.js&#8217; type=&#8216;text/javascript&#8217;%3E%3C/script%3E&#8221;));
+</script>
+<script type="text/javascript">
+var pageTracker = <em>gat.</em>getTracker(&quot;&quot;);
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</div>
+</body>
+</html>

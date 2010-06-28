@@ -9,68 +9,65 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestRun.cs" caret="3868" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:TestResult.cs" caret="400" fromTop="15" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectTestRunner.cs" caret="1313" fromTop="29" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestEngine.cs" caret="449" fromTop="8" />
-      <File id="34238910-0826-44D1-B2C3-DC990230A1A3/f:Program.cs" caret="450" fromTop="14" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:SentenceTag.cs" caret="1236" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestStatusMessage.cs" caret="538" fromTop="14" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:BinaryRecycleFinished.cs" caret="1905" fromTop="15" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestRunnerDomain.cs" caret="3582" fromTop="19" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="2543" fromTop="37" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestRunnerProxy.cs" caret="2349" fromTop="1" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/f:Debugging.cs" caret="792" fromTop="16" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:PreviewWriter.cs" caret="2040" fromTop="25" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:StoryTellerTableTag.cs" caret="448" fromTop="20" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:TableContainerTag.cs" caret="424" fromTop="15" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:Project.cs" caret="347" fromTop="13" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:IProject.cs" caret="877" fromTop="25" />
-      <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:ProjectController.cs" caret="4656" fromTop="28" />
       <File id="32304F08-A7DD-4788-B606-C19350B59417/d:Projects/f:ProjectLoadFailureHandler.cs" caret="987" fromTop="25" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:IntegrationTests/f:BootstrapperTester.cs" caret="2080" fromTop="15" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Integration/f:ProjectIntegratedTester.cs" caret="1669" fromTop="11" />
       <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="546" fromTop="16" />
       <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/f:StoryTellerDebug.cs" caret="717" fromTop="29" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4729" fromTop="29" />
-      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="3838" fromTop="29" />
       <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:IntegrationTests/f:ScreenObjectLocatorIntegratedTester.cs" caret="575" fromTop="13" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Engine/f:Fixture.cs" caret="763" fromTop="26" />
       <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/f:IGrammar.cs" caret="322" fromTop="12" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:SentenceFixture.cs" caret="2722" fromTop="31" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Grammars/f:FailureFixture.cs" caret="360" fromTop="16" />
+      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Fixtures/f:SentenceFixture.cs" caret="2722" fromTop="31" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:contribute.textile/l:C!?git?storyteller?docs?content?contribute.textile" caret="924" fromTop="11" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:layout.html.erb/l:C!?git?storyteller?docs?content?layout.html.erb" caret="1461" fromTop="26" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:HierarchyLoader.cs" caret="4268" fromTop="5" />
+      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/d:Fixtures/f:FailureFixture.cs" caret="249" fromTop="11" />
+      <File id="B52EADC1-DDD4-452C-83ED-4A148302D424/d:Fixtures/f:SimpleActionsFixture.cs" caret="0" fromTop="0" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Persistence/f:FileSystem.cs" caret="1270" fromTop="21" />
+      <File id="B52EADC1-DDD4-452C-83ED-4A148302D424/f:ExampleSystem.cs" caret="517" fromTop="23" />
+      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Rendering/f:DisplayParser.cs" caret="536" fromTop="18" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:docs.rb/l:C!?git?storyteller?docs?docs.rb" caret="553" fromTop="17" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:indexer.rb/l:C!?git?storyteller?docs?storyteller?indexer.rb" caret="0" fromTop="0" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:helpers.rb/l:C!?git?storyteller?docs?storyteller?helpers.rb" caret="883" fromTop="25" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:textile_extensions.rb/l:C!?git?storyteller?docs?storyteller?textile_extensions.rb" caret="1313" fromTop="19" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:generator.rb/l:C!?git?storyteller?docs?storyteller?generator.rb" caret="561" fromTop="0" />
+      <File id="BC3E28C4-1653-43DD-959C-389CF1335D33/f:Program.cs" caret="347" fromTop="14" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="4133" fromTop="12" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:credits.erb.textile/l:C!?git?storyteller?docs?content?credits.erb.textile" caret="312" fromTop="8" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:index.erb.textile/l:C!?git?storyteller?docs?content?index.erb.textile" caret="0" fromTop="0" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:blank.erb.textile/l:C!?git?storyteller?source?blank.erb.textile" caret="36" fromTop="0" />
+      <File id="d:Miscellaneous Files/f:glossary.erb.textile/l:C!?git?storyteller?docs?content?glossary.erb.textile" caret="208" fromTop="2" />
     </RecentFiles>
     <RecentEdits>
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="3969" fromTop="14" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="3743" fromTop="35" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectTestRunner.cs" caret="3680" fromTop="22" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Workspace/f:ResultPersistorIntegratedTester.cs" caret="2280" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="3743" fromTop="14" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:ResultPersistor.cs" caret="692" fromTop="22" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:ResultPersistor.cs" caret="776" fromTop="12" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="2742" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="2856" fromTop="14" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/f:Debugging.cs" caret="1059" fromTop="23" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:BinaryRecycleFinished.cs" caret="1628" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:TestStatusMessage.cs" caret="718" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:BinaryRecycleFinished.cs" caret="2018" fromTop="13" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:BinaryRecycleFinished.cs" caret="1960" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="2856" fromTop="17" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Execution/f:ProjectRunner.cs" caret="3715" fromTop="35" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="152" fromTop="2" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:TableContainerTag.cs" caret="176" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:TableContainerTag.cs" caret="424" fromTop="15" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="156" fromTop="2" />
-      <File id="5DF9F600-C04B-4FFB-8438-BDB24E6E096D/f:history.xml" caret="293" fromTop="7" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Workspace/f:Project.cs" caret="826" fromTop="27" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Integration/f:ProjectIntegratedTester.cs" caret="1668" fromTop="24" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:UserInterface/d:IntegrationTests/f:BootstrapperTester.cs" caret="2107" fromTop="17" />
-      <File id="CE6A3137-87EC-4BE2-A39A-518CBC9F2690/d:Integration/f:ProjectIntegratedTester.cs" caret="1827" fromTop="17" />
-      <File id="104DFFDD-2229-4F23-AE66-D8BC4AF622AB/f:StoryTellerDebug.cs" caret="719" fromTop="20" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4587" fromTop="13" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4683" fromTop="19" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="2204" fromTop="14" />
-      <File id="96C1F8D5-FB46-4F3E-8CB7-A53A919BB424/d:Html/f:style.css" caret="4729" fromTop="29" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:layout.html.erb/l:C!?git?storyteller?docs?content?layout.html.erb" caret="916" fromTop="18" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:layout.html.erb/l:C!?git?storyteller?docs?content?layout.html.erb" caret="1659" fromTop="31" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:contribute.textile/l:C!?git?storyteller?docs?content?contribute.textile" caret="40" fromTop="1" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:contribute.textile/l:C!?git?storyteller?docs?content?contribute.textile" caret="924" fromTop="11" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:credits.erb.textile/l:C!?git?storyteller?docs?content?credits.erb.textile" caret="312" fromTop="8" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:credits.erb.textile/l:C!?git?storyteller?docs?content?credits.erb.textile" caret="312" fromTop="8" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:index.erb.textile/l:C!?git?storyteller?docs?content?index.erb.textile" caret="968" fromTop="12" />
+      <File id="B52EADC1-DDD4-452C-83ED-4A148302D424/d:Fixtures/f:SimpleActionsFixture.cs" caret="434" fromTop="14" />
+      <File id="B52EADC1-DDD4-452C-83ED-4A148302D424/d:Fixtures/f:SimpleActionsFixture.cs" caret="187" fromTop="9" />
+      <File id="B52EADC1-DDD4-452C-83ED-4A148302D424/f:ExampleSystem.cs" caret="517" fromTop="23" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:textile_extensions.rb/l:C!?git?storyteller?docs?storyteller?textile_extensions.rb" caret="1255" fromTop="40" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:textile_extensions.rb/l:C!?git?storyteller?docs?storyteller?textile_extensions.rb" caret="1522" fromTop="21" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:textile_extensions.rb/l:C!?git?storyteller?docs?storyteller?textile_extensions.rb" caret="1153" fromTop="22" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:helpers.rb/l:C!?git?storyteller?docs?storyteller?helpers.rb" caret="1095" fromTop="25" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:index.erb.textile/l:C!?git?storyteller?docs?content?index.erb.textile" caret="1157" fromTop="16" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:index.erb.textile/l:C!?git?storyteller?docs?content?index.erb.textile" caret="1206" fromTop="20" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:helpers.rb/l:C!?git?storyteller?docs?storyteller?helpers.rb" caret="1046" fromTop="29" />
+      <File id="0233FC2B-A85B-4F04-9166-0286A650924A/f:helpers.rb/l:C!?git?storyteller?docs?storyteller?helpers.rb" caret="883" fromTop="25" />
+      <File id="BC3E28C4-1653-43DD-959C-389CF1335D33/f:Program.cs" caret="3771" fromTop="27" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="3904" fromTop="8" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="4091" fromTop="14" />
+      <File id="4EFEAE8B-EA3E-4E48-BEA3-863A8437D22F/f:RakeFile/l:C!?git?storyteller?RakeFile" caret="427" fromTop="11" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:index.erb.textile/l:C!?git?storyteller?docs?content?index.erb.textile" caret="907" fromTop="13" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:index.erb.textile/l:C!?git?storyteller?docs?content?index.erb.textile" caret="766" fromTop="6" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:credits.erb.textile/l:C!?git?storyteller?docs?content?credits.erb.textile" caret="374" fromTop="11" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:blank.erb.textile/l:C!?git?storyteller?source?blank.erb.textile" caret="470" fromTop="26" />
+      <File id="4CC0B5E9-26D7-4B7A-8977-3F2B4052C097/f:blank.erb.textile/l:C!?git?storyteller?source?blank.erb.textile" caret="60" fromTop="2" />
+      <File id="d:Miscellaneous Files/f:glossary.erb.textile/l:C!?git?storyteller?docs?content?glossary.erb.textile" caret="208" fromTop="2" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -86,29 +83,29 @@
   </UnitTestRunnerNUnit>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="using" priority="1" />
+      <Item value="using" priority="2" />
       <Item value="FubuCore" priority="0" />
-      <Item value="public" priority="262" />
-      <Item value="static" priority="30" />
-      <Item value="void" priority="113" />
+      <Item value="public" priority="273" />
+      <Item value="static" priority="31" />
+      <Item value="void" priority="117" />
       <Item value="Func" priority="15" />
       <Item value="params" priority="0" />
       <Item value="object" priority="10" />
-      <Item value="if" priority="49" />
+      <Item value="if" priority="55" />
       <Item value="condition" priority="0" />
       <Item value="Fail`0" priority="0" />
       <Item value="message" priority="20" />
-      <Item value="return" priority="127" />
+      <Item value="return" priority="130" />
       <Item value="this" priority="40" />
       <Item value="leafName" priority="0" />
-      <Item value="class" priority="87" />
+      <Item value="class" priority="92" />
       <Item value="ITestContext`0" priority="5" />
-      <Item value="bool" priority="11" />
-      <Item value="string" priority="65" />
-      <Item value="private" priority="41" />
-      <Item value="new" priority="324" />
+      <Item value="bool" priority="12" />
+      <Item value="string" priority="76" />
+      <Item value="private" priority="44" />
+      <Item value="new" priority="332" />
       <Item value="Cache&lt;string,Func&lt;object,object,bool&gt;&gt;" priority="0" />
-      <Item value="readonly" priority="14" />
+      <Item value="readonly" priority="15" />
       <Item value="_matchers" priority="3" />
       <Item value="_context" priority="14" />
       <Item value="o1" priority="0" />
@@ -126,9 +123,9 @@
       <Item value="row1" priority="1" />
       <Item value="row2" priority="0" />
       <Item value="_comparer" priority="1" />
-      <Item value="var" priority="145" />
+      <Item value="var" priority="149" />
       <Item value="context" priority="2" />
-      <Item value="x" priority="90" />
+      <Item value="x" priority="92" />
       <Item value="valueMatcher" priority="1" />
       <Item value="SetVerificationGrammar`0" priority="0" />
       <Item value="TProperty`0" priority="1" />
@@ -174,7 +171,7 @@
       <Item value="f" priority="12" />
       <Item value="Obsolete" priority="4" />
       <Item value="IEnumerable" priority="6" />
-      <Item value="false" priority="12" />
+      <Item value="false" priority="13" />
       <Item value="Name" priority="24" />
       <Item value="ExceptionTag" priority="1" />
       <Item value="Errors" priority="0" />
@@ -206,7 +203,7 @@
       <Item value="null" priority="13" />
       <Item value="IHtmlView" priority="0" />
       <Item value="_view" priority="10" />
-      <Item value="true" priority="30" />
+      <Item value="true" priority="31" />
       <Item value="IListener" priority="12" />
       <Item value="FixtureLibrary" priority="6" />
       <Item value="makeSingleton`1" priority="1" />
@@ -220,9 +217,9 @@
       <Item value="ObjectFactory`0" priority="0" />
       <Item value="thread" priority="0" />
       <Item value="_workerThread" priority="0" />
-      <Item value="interface" priority="14" />
+      <Item value="interface" priority="15" />
       <Item value="Table`0" priority="4" />
-      <Item value="Action`0" priority="12" />
+      <Item value="Action`0" priority="13" />
       <Item value="setup" priority="0" />
       <Item value="IContainer`0" priority="4" />
       <Item value="FixtureLibrary`0" priority="10" />
@@ -267,7 +264,7 @@
       <Item value="MathTestRunner`0" priority="0" />
       <Item value="TestRunnerBuilder" priority="0" />
       <Item value="r" priority="0" />
-      <Item value="system" priority="24" />
+      <Item value="system" priority="26" />
       <Item value="builder" priority="1" />
       <Item value="LinesOnlyFixture`0" priority="0" />
       <Item value="TimeoutFixture`0" priority="0" />
@@ -287,7 +284,7 @@
       <Item value="_environmentIsInitialized" priority="4" />
       <Item value="StartApplication`0" priority="0" />
       <Item value="ensureEnvironmentInitialized`0" priority="2" />
-      <Item value="Each`0" priority="7" />
+      <Item value="Each`0" priority="8" />
       <Item value="Debug" priority="0" />
       <Item value="runner" priority="26" />
       <Item value="Debug`0" priority="2" />
@@ -328,7 +325,7 @@
       <Item value="TestContext`0" priority="0" />
       <Item value="observer" priority="0" />
       <Item value="_runner" priority="0" />
-      <Item value="Each`1" priority="2" />
+      <Item value="Each`1" priority="3" />
       <Item value="lock" priority="2" />
       <Item value="_locker" priority="2" />
       <Item value="Serializable" priority="1" />
@@ -522,10 +519,10 @@
       <Item value="filteredLibrary" priority="1" />
       <Item value="XmlReader" priority="0" />
       <Item value="FileStream`0" priority="0" />
-      <Item value="filename" priority="6" />
+      <Item value="filename" priority="7" />
       <Item value="Open" priority="0" />
       <Item value="Read" priority="0" />
-      <Item value="reader" priority="3" />
+      <Item value="reader" priority="5" />
       <Item value="TestReader`0" priority="2" />
       <Item value="INode`0" priority="0" />
       <Item value="XmlReader`0" priority="0" />
@@ -591,7 +588,7 @@
       <Item value="CodegenOptions" priority="1" />
       <Item value="Assembly" priority="0" />
       <Item value="ProjectRunnerCodegenService`0" priority="2" />
-      <Item value="StreamReader" priority="0" />
+      <Item value="StreamReader" priority="1" />
       <Item value="ProjectRunnerCodegenServiceTester`0" priority="0" />
       <Item value="service" priority="2" />
       <Item value="methodText" priority="8" />
@@ -619,7 +616,7 @@
       <Item value="FileTemplate" priority="0" />
       <Item value="ProjectRunnerCodegenService" priority="2" />
       <Item value="TargetFile" priority="0" />
-      <Item value="FileSystem`0" priority="5" />
+      <Item value="FileSystem`0" priority="6" />
       <Item value="getCorrectPath`0" priority="0" />
       <Item value="IHandler`0" priority="0" />
       <Item value="ProjectContext`0" priority="4" />
@@ -722,7 +719,7 @@
       <Item value="NetworkInformationException" priority="0" />
       <Item value="ITestStateListener" priority="0" />
       <Item value="ITestPart`0" priority="14" />
-      <Item value="IList" priority="1" />
+      <Item value="IList" priority="3" />
       <Item value="IPartHolder`0" priority="16" />
       <Item value="holder" priority="10" />
       <Item value="Step`0" priority="2" />
@@ -840,16 +837,16 @@
       <Item value="ResultPersistor" priority="0" />
       <Item value="ResultPersistor`0" priority="2" />
       <Item value="persistor" priority="5" />
-      <Item value="Directory`0" priority="2" />
+      <Item value="Directory`0" priority="5" />
       <Item value="DeleteFolder`0" priority="0" />
-      <Item value="directory" priority="4" />
+      <Item value="directory" priority="7" />
       <Item value="CreateDirectory`0" priority="0" />
-      <Item value="folder" priority="0" />
+      <Item value="folder" priority="1" />
       <Item value="TestResult`0" priority="3" />
       <Item value="_results" priority="2" />
       <Item value="FileNameFor`0" priority="1" />
       <Item value="locator" priority="1" />
-      <Item value="Path`0" priority="3" />
+      <Item value="Path`0" priority="4" />
       <Item value="LoadResults`0" priority="0" />
       <Item value="folderFor`0" priority="2" />
       <Item value="ProjectTestRunner" priority="0" />
@@ -1023,7 +1020,7 @@
       <Item value="_headerRow" priority="0" />
       <Item value="span" priority="1" />
       <Item value="_tag" priority="0" />
-      <Item value="args" priority="2" />
+      <Item value="args" priority="4" />
       <Item value="Skip`1" priority="0" />
       <Item value="Take`1" priority="0" />
       <Item value="projectFiles" priority="0" />
@@ -1033,14 +1030,36 @@
       <Item value="initialize`0" priority="0" />
       <Item value="_projects" priority="0" />
       <Item value="_projectFiles" priority="0" />
-      <Item value="Console`0" priority="0" />
-      <Item value="callback" priority="0" />
+      <Item value="Console`0" priority="3" />
+      <Item value="callback" priority="1" />
       <Item value="projectHistoryFolder" priority="0" />
       <Item value="TestPath" priority="0" />
       <Item value="CompletedSteps" priority="0" />
       <Item value="TotalSteps" priority="0" />
       <Item value="Status" priority="0" />
       <Item value="CurrentActivity" priority="0" />
+      <Item value="while" priority="0" />
+      <Item value="line" priority="6" />
+      <Item value="_latched" priority="1" />
+      <Item value="StringWriter`0" priority="0" />
+      <Item value="StringWriter" priority="0" />
+      <Item value="_writer" priority="1" />
+      <Item value="_name" priority="0" />
+      <Item value="FileSystem" priority="0" />
+      <Item value="SampleCollector`0" priority="1" />
+      <Item value="List&lt;SampleCollector&gt;" priority="0" />
+      <Item value="FileReader`0" priority="0" />
+      <Item value="_file" priority="0" />
+      <Item value="_collectors" priority="2" />
+      <Item value="SampleCollector" priority="0" />
+      <Item value="sampleName" priority="1" />
+      <Item value="AddLine`0" priority="0" />
+      <Item value="FileCollector`0" priority="0" />
+      <Item value="ReadDirectory`0" priority="1" />
+      <Item value="collector" priority="0" />
+      <Item value="WriteFile`0" priority="0" />
+      <Item value="_outputFolder" priority="3" />
+      <Item value="SampleReader`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.EmbeddedSectionGrammar`1">
       <Item value="LeafName`0" priority="3" />
@@ -1060,7 +1079,7 @@
       <Item value="RegisterMatcher`1" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.String">
-      <Item value="StartsWith`0" priority="4" />
+      <Item value="StartsWith`0" priority="8" />
       <Item value="Contains`0" priority="0" />
       <Item value="ShouldEqual`0" priority="10" />
       <Item value="IsNotEmpty`0" priority="1" />
@@ -1069,11 +1088,15 @@
       <Item value="IsEmpty`0" priority="4" />
       <Item value="ShouldNotBeNull`0" priority="2" />
       <Item value="Replace`0" priority="8" />
-      <Item value="Trim`0" priority="1" />
+      <Item value="Trim`0" priority="2" />
       <Item value="Length" priority="0" />
       <Item value="TrimToLength`0" priority="0" />
       <Item value="OpenInBrowser`0" priority="6" />
       <Item value="ToLower`0" priority="0" />
+      <Item value="EndsWith`0" priority="0" />
+      <Item value="TrimEnd`0" priority="1" />
+      <Item value="TrimStart`0" priority="3" />
+      <Item value="Split`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Engine.Sets.SetRow">
       <Item value="Values" priority="1" />
@@ -1674,11 +1697,11 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.IList`1">
       <Item value="Equals`0" priority="0" />
-      <Item value="Each`0" priority="0" />
+      <Item value="Each`0" priority="2" />
       <Item value="Where`1" priority="0" />
       <Item value="MoveUp`1" priority="0" />
       <Item value="MoveDown`1" priority="0" />
-      <Item value="Add`0" priority="1" />
+      <Item value="Add`0" priority="2" />
       <Item value="Remove`0" priority="0" />
       <Item value="RemoveAll`1" priority="0" />
       <Item value="First`2" priority="0" />
@@ -1771,6 +1794,7 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.IO.StreamReader">
       <Item value="ReadToEnd`0" priority="0" />
+      <Item value="ReadLine`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@StoryTeller.Codegen.ProjectRunnerCodegenService">
       <Item value="DefaultClassTemplate`0" priority="1" />
@@ -2135,12 +2159,12 @@
       <Item value="SaveResult`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.IO.Directory">
-      <Item value="Delete`0" priority="0" />
-      <Item value="Exists`0" priority="0" />
-      <Item value="CreateDirectory`0" priority="0" />
+      <Item value="Delete`0" priority="1" />
+      <Item value="Exists`0" priority="1" />
+      <Item value="CreateDirectory`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.IO.Path">
-      <Item value="Combine`0" priority="4" />
+      <Item value="Combine`0" priority="5" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.UserInterface.Running.IExecutionQueue">
       <Item value="Stub`1" priority="0" />
@@ -2324,10 +2348,31 @@
       <Item value="CreateFolder`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Console">
-      <Item value="WriteLine`0" priority="0" />
+      <Item value="WriteLine`0" priority="3" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:StoryTeller.Execution.ProjectRunner">
       <Item value="Execute`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.StringWriter">
+      <Item value="Write`0" priority="0" />
+      <Item value="GetStringBuilder`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:StoryTeller.Persistence.FileSystem">
+      <Item value="WriteStringToFile`0" priority="0" />
+      <Item value="GetFiles`0" priority="0" />
+      <Item value="GetSubFolders`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.StringBuilder">
+      <Item value="ToString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@SampleGenerator.FileReader">
+      <Item value="Read`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SampleGenerator.FileCollector">
+      <Item value="Read`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:SampleGenerator.SampleReader">
+      <Item value="FindSamples`0" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

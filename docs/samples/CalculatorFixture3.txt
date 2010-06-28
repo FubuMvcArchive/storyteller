@@ -1,0 +1,54 @@
+    public class Calculator
+    {
+        private int _number;
+
+        public void Enter(int number)
+        {
+            _number = number;
+        }
+
+        public void Add(int operand)
+        {
+            _number += operand;
+        }
+
+        public int CurrentTotal
+        {
+            get
+            {
+                return _number;
+            }
+        }
+    }
+
+
+    public class CalculatorFixture3 : Fixture
+    {
+        private Calculator _calculator;
+
+        public CalculatorFixture3()
+        {
+            _calculator = new Calculator();
+        }
+
+        [FormatAs("Start with the number {number}")]
+        public void EnterNumber(int number)
+        {
+            _calculator.Enter(number);
+        }
+
+        [FormatAs("Add {operand}")]
+        public void Add(int operand)
+        {
+            _calculator.Add(operand);
+        }
+
+        [FormatAs("The current total should be {currentValue}")]
+        [return: AliasAs("currentValue")]
+        public int NumberShouldBe()
+        {
+            return _calculator.CurrentTotal;
+        }
+
+
+    }

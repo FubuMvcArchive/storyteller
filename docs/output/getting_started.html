@@ -1,0 +1,253 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Getting Started</title>
+
+<link rel="stylesheet" type="text/css" href="files/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="files/stylesheets/syntax.css" />
+<link rel="stylesheet" type="text/css" href="files/stylesheets/print.css" media="print" />
+
+<script type="text/javascript" src="files/javascripts/guides.js"></script>
+<script type="text/javascript" src="files/javascripts/code_highlighter.js"></script>
+<script type="text/javascript" src="files/javascripts/highlighters.js"></script>
+
+</head>
+<body class="guide">
+  <div id="topNav">
+    <div class="wrapper">
+      <strong>More at <a href="http://fubumvc.com">http://fubumvc.com:</a> </strong>
+      <a href="http://github.com/StoryTeller/StoryTeller">Fork it!</a> |
+      <a href="http://groups.google.com/group/storyteller-dotnet-users">Mailing list</a> |      
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
+      <h1><a href="index.html" title="Guides">Guides</a></h1>
+      <p class="hide"><a href="#mainCol">Skip navigation</a>.</p>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li class="index"><a href="index.html" onclick="guideMenu(); return false;" id="guidesMenu">Guides Index</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+            <dl class="L">
+              <dt>Start Here</dt>
+              <dd><a href="getting_started.html">Getting Started with StoryTeller</a></dd>
+
+            </dl>
+            <dl class="R">              
+            </dl> 
+          </div>
+        </li>
+        <li><a href="contribute.html">Contribute</a></li>
+        <li><a href="credits.html">Credits</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="feature">
+    <div class="wrapper">
+      <h2>Getting Started</h2>
+<p>This guide covers getting up and running a simple StoryTeller project. After reading it, you should be familiar with:</p>
+<ul>
+	<li>What StoryTeller is, why I might (or might not) use it, and how I get started</li>
+	<li>Downloading and installing StoryTeller and creating a new StoryTeller project</li>
+	<li>Creating simple Fixtures and Grammars</li>
+	<li>Adding a new Workspace</li>
+	<li>Authoring your first test</li>
+	<li>Executing a test and analyzing the output</li>
+</ul>
+<div class='note'><p>All the code used in this guide is available under in the <a href="http://github.com/storyteller/storyteller/tree/master/source/Examples/">StoryTeller repository on GitHub</a></p></div>
+
+      	  <div id="subCol">
+		<h3 class="chapter"><img src="images/chapters_icon.gif" alt="" />Chapters</h3>
+		<ol class="chapters">
+</ol></div>
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <h3>This guide assumes&#8230;</h3>
+<ul>
+	<li>You want to write executable specifications for your project</li>
+	<li>That you&#8217;re comfortable setting up basic Visual Studio class library projects</li>
+</ul>
+<h3>Introduction to StoryTeller</h3>
+<h4>What is StoryTeller?</h4>
+<p>StoryTeller is a tool for creating external domain specific languages to specify and test the desired behavior of your software system.  StoryTeller consists of:</p>
+<ol>
+	<li>A framework for crafting testing DSL&#8217;s with any .Net language</li>
+	<li>A <span class="caps">WPF</span> client for interactively editing and running tests/specifications</li>
+	<li>A command line runner for integration with build tools and your continuous integration infrastructure</li>
+</ol>
+<div class='note'><p>At this point StoryTeller is <strong>very</strong> developer centric and basically forces a team to author the fixtures and grammars</p></div>
+<p>in code before non-developers can use StoryTeller to create specifications.  This is a side effect of being developed and 
+used initially by a team that really didn&#8217;t have any non-developers.  A future release <strong>will</strong> include support for true 
+<a href="http://www.methodsandtools.com/archive/archive.php?id=72">Acceptance Test Driven Development</a> by allowing non-developers to create &#8220;stand in&#8221; fixtures and grammars
+before any code is written by developers or test engineers.</p>
+<h4>Motivation</h4>
+<p>The goal of StoryTeller was to realize the conceptual potential of the older <a href="http://fitnesse.org/">FitNesse</a> tool with far better mechanics.  Specifically, StoryTeller is meant to
+improve upon FitNesse by:</p>
+<ol>
+	<li>Being easier to integrate in both Continuous Integration scenarios and source control</li>
+	<li>Easier construction of Fixtures and Grammars</li>
+	<li>Better state management within the tests</li>
+	<li>A far better editing experience that cuts down dramatically on the mistakes that are so easy to make with FitNesse</li>
+	<li>More expressive tests</li>
+</ol>
+<h4>What do I need to know before I get started?</h4>
+<p>StoryTeller is open source under the Apache 2.0 license.  There is no commercial support at this junction and the hope is that it can succeed as a purely community driven effort.</p>
+<div class='note'><p>StoryTeller is written and compiled with .Net 4.0.  If there is enough demand, we will back port StoryTeller to .Net 3.5.</p></div>
+<h3>Setting up your first project</h3>
+<h4>Where do I get StoryTeller from?</h4>
+<p>The fastest way to get started is by downloading the binaries from the <a href="http://github.com/storyteller/storyteller/downloads">StoryTeller downloads page on GitHub</a>.  If you&#8217;re feeling brave or need a recent fix, the latest builds are 
+available on the <a href="http://teamcity.codebetter.com/project.html?projectId=project5">StoryTeller page on TeamCity.CodeBetter.com</a>.</p>
+<div class='note'><p>You can also build StoryTeller from source, but that&#8217;s a little more complicated and involves more setup time. If you&#8217;re already a git-using, rake-aware developer, you can read our (todo) getting started guide for advanced developers.</p></div>
+<p>Extract the StoryTeller <span class="caps">ZIP</span> into your lib/tools folder.</p>
+<div class='note'><p>StoryTeller is a pure &#8220;xcopy&#8221; deployment.  No further installation is necessary.</p></div>
+<h3>Starting a new project</h3>
+<h4>Adding a Visual Studio.Net project for StoryTeller to your solution</h4>
+<p>The recommended first step is to create a new project in your Visual Studio solutions that looks like the <em><a href="http://github.com/storyteller/storyteller/tree/master/source/Examples/">Examples</a></em> project in this tree:</p>
+<p><img src="images/project/ProjectStructure.png" alt="" /></p>
+<div class='note'><p>You don&#8217;t have to create a separate project / assembly in Visual Studio.Net for the StoryTeller support, but my team (Dovetail Software) has found it valuable</p></div>
+<p>In your Visual Studio.Net project you&#8217;ll want to have two folders:</p>
+<ol>
+	<li>The <em>Tests</em> (or <em>Specifications</em>) folder to store the test files</li>
+	<li>The <em>Fixtures</em> folder as the top level namespace for the custom StoryTeller <a href="fixtures.html">Fixture&#8217;s</a> you&#8217;ll write later.</li>
+</ol>
+<p>Your StoryTeller project absolutely must have a reference to the StoryTeller.dll assembly</p>
+<p><img src="images/project/References.png" alt="" /></p>
+<h4>Configuring your new project inside StoryTeller</h4>
+<p>Now that you have a Visual Studio project for StoryTeller, you next need to create a StoryTeller project file that defines where the tests/specs are and how they&#8217;ll be executed.  Open up the folder where you extracted StoryTeller and run the StoryTellerUI.exe application.</p>
+<p><img src="images/project/FindStoryTellerUI.png" alt="" /></p>
+<p>When you open the StoryTellerUI client for the first time it should immediately prompt you to configure a new StoryTeller project:</p>
+<image src="images/project/NewProject.png" style="overflow:scroll"></image>
+<h5>Mandatory Project Fields</h5>
+<p>For the moment, let&#8217;s only worry about the most important data elements that you need to enter in this screen.</p>
+<dl>
+	<dt>Name</dt>
+	<dd>A short, descriptive project name.  This will be displayed in the UI and in the project history tabs.</dd>
+</dl>
+<dl>
+	<dt>File Name</dt>
+	<dd>The file location to save this project file.  StoryTeller will save the project as an Xml file (it&#8217;s just a serialized <a href="http://github.com/storyteller/storyteller/blob/master/source/StoryTeller/Workspace/Project.cs">Project</a> object)  The recommendation is to either put this in the root directory of your solution or in the root of the Visual Studio project.</dd>
+</dl>
+<dl>
+	<dt>Test Folder</dt>
+	<dd>The root folder on the file system where the test files.  The folder path can either be an absolute path (not recommended) or a relative path <strong>to the project file</strong></dd>
+</dl>
+<dl>
+	<dt>Binary Folder</dt>
+	<dd>The folder where StoryTeller can find the binary assemblies for the system under test.  This should <strong>almost always</strong> be the bin\debug folder of your StoryTeller VS.Net project where the build products go</dd>
+</dl>
+<div class='info'><p>StoryTeller executes tests/specs in a separate AppDomain rooted in the project&#8217;s binary folder.  The testing AppDomain uses shadow copying, so it is possible to recompile your .Net solution without closing the StoryTeller UI.  The StoryTeller UI uses a file system watcher and will recreate the separate AppDomain anytime a change is detected to the main fixture assembly.</p></div>
+<dl>
+	<dt>System Type Name</dt>
+	<dd>The value of this field should be the assembly qualified name of a class that 
+implements the <a href="http://github.com/storyteller/storyteller/blob/master/source/StoryTeller/Engine/ISystem.cs">ISystem interface</a> 
+that StoryTeller uses internally to activate and bootstrap the system under test.  If no type name is supplied, the Fixture Assembly
+field becomes mandatory and StoryTeller will use a default <em>nullo</em> version of the ISystem interface for this project.  See <a href="creating_a_system.html">Creating a Custom ISystem</a>.</dd>
+</dl>
+<dl>
+	<dt>Fixture Assembly</dt>
+	<dd>If you do not specify a custom System Type Name class, then you must specify the name of the assembly 
+that contains the custom Fixture classes so that StoryTeller can build up its internal graph of Fixtures and Grammars</dd>
+</dl>
+<p>Using basic defaults, you would fill out the form to look something like this for the Visual Studio.Net project shown previously:</p>
+<p><img src="images/project/BasicValues.png" alt="" /></p>
+<h5>Other Project Fields</h5>
+<p>You can further control the behavior of your project by providing values for these additional fields:</p>
+<dl>
+	<dt>Configuration File Name</dt>
+	<dd>If you need to supply configuration in an App.config file, you need to 
+specify a file name in this field <strong>in the binary folder</strong> that StoryTeller should use as the configuration
+file when constructing the AppDomain for executing tests/specs.</dd>
+</dl>
+<p>&#8212; Timeout in Seconds := Just as it appears, this setting controls the &#8220;timeout&#8221; time of test execution.</p>
+<h3>Writing your first Fixture and Grammar</h3>
+<p>For a simple example, let&#8217;s say that you&#8217;re writing specifications for a new calculator service.  At a minimum, 
+you want to test that a client of the calculator can enter one number, add or multiply that by another number, 
+and lastly assert that the resulting number matches our expectations.</p>
+<h4>Add a new Fixture</h4>
+<p>Start your first Fixture for the calculator by adding a new class to the VS project:</p>
+<div class='code_container'><code class='html'>
+    public class CalculatorFixture1 : Fixture
+    {
+
+    }
+</code></div><div class='info'><p>Technically, a Fixture class only needs to implement the <a href="http://github.com/storyteller/storyteller/blob/master/source/StoryTeller/IFixture.cs">IFixture</a> interface, but it&#8217;s easiest to simply inherit from <a href="http://github.com/storyteller/storyteller/blob/master/source/StoryTeller/Engine/Fixture.cs">Fixture</a>.</p></div>
+<h4>Add stubbed Grammars</h4>
+<p>Let&#8217;s assume that the calculator service in question hasn&#8217;t been created yet, but you still want to create an automated specification ahead of time (the way you&#8217;re supposed to do, but few of us pull off).  
+In that case you just want to create the shell of the grammars.  For now, let&#8217;s assume a flow-based style of testing and write out the steps as &#8220;Sentences&#8221;: like this:</p>
+<div class='code_container'><code class='html'>
+    public class Calculator2Fixture : Fixture
+    {
+        [FormatAs("Start with the number {number}")]
+        public void EnterNumber(int number)
+        {
+
+        }
+
+        [FormatAs("Add {operand}")]
+        public void Add(int operand)
+        {
+
+        }
+
+        [FormatAs("The current total should be {currentValue}")]
+        [return: AliasAs("currentValue")]
+        public int NumberShouldBe()
+        {
+            throw new NotImplementedException();
+        }
+    }
+</code></div><h3>Write your first test</h3>
+<p>After you&#8217;ve written at least a stub of the CalculatorFixture class and compiled the code, open the StoryTellerUI 
+to the new project and add a new <a href="workspaces.html">Workspace</a> to the project by right-clicking on the project node in the Test Explorer:</p>
+<p><img src="images/project/AddWorkspace.png" alt="" /></p>
+<p>and specify the new Workspace name</p>
+<p><img src="images/project/AddWorkspace2.png" alt="" /></p>
+<p>From the new Workspace tree node, add a new test directly underneath the new &#8220;Calculator&#8221; Workspace called &#8220;Add Numbers.&#8221;</p>
+<p><img src="images/project/AddTest.png" alt="" /></p>
+<p>This should open your new test into the main pane of the StoryTeller UI.</p>
+<p><img src="images/project/NewTest.png" alt="" /></p>
+<p>Select the &#8220;Edit&#8221; mode, and create a couple test cases using our new Fixture (Calculator2Fixture above).</p>
+<p><img src="images/project/Editor.png" alt="" /></p>
+<p>And run the new Test/Spec by clicking <em>Run</em>.</p>
+<div class='info'><p>StoryTeller is meant to be wrist friendly by exposing keyboard shortcuts for most common actions</p></div>
+<p>The output will look like this:</p>
+<p><img src="images/project/InitialFailure.png" alt="" /></p>
+<p>The test execution failed of course because nothing is really implemented.</p>
+<h3>Connect the fixtures and grammars to the system under test</h3>
+<p>Alrighty, we&#8217;ve got a shell of a fixture and a specification that&#8217;s failing.  Let&#8217;s make the connection 
+between the specification and the new Calculator service by fleshing out the Calculator fixture:</p>
+<p><span class="caps">CODE</span>[CalculatorFixture3]</p>
+<p>And after compiling, execute your original specification (I&#8217;ve quietly switched it to using the fully coded Calculator3Fixture):</p>
+<p><img src="images/project/Fixed.png" alt="" /></p>
+<p>Just for fun, let&#8217;s put some invalid numbers into the test just to see what a failure looks like:</p>
+<p><img src="images/project/BadData.png" alt="" /></p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
+      <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0</a> License</a></p>
+    </div>             
+    
+    <script type="text/javascript">
+    	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    	var pageTracker = _gat._getTracker("");
+    	pageTracker._initData();
+    	pageTracker._trackPageview();
+    </script>
+        
+  </div>
+</body>
+</html>

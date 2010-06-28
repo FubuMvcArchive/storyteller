@@ -22,7 +22,7 @@ namespace Examples
 
         public void SetupEnvironment()
         {
-
+            
         }
 
         public void TeardownEnvironment()

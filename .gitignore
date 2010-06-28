@@ -15,3 +15,5 @@ _ReSharper.*
 StoryTeller*
 *.zip
 *.lnk
+*.bat
+source/Examples/Examples-results

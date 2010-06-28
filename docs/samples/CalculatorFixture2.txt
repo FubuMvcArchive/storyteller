@@ -1,0 +1,21 @@
+    public class Calculator2Fixture : Fixture
+    {
+        [FormatAs("Start with the number {number}")]
+        public void EnterNumber(int number)
+        {
+
+        }
+
+        [FormatAs("Add {operand}")]
+        public void Add(int operand)
+        {
+
+        }
+
+        [FormatAs("The current total should be {currentValue}")]
+        [return: AliasAs("currentValue")]
+        public int NumberShouldBe()
+        {
+            throw new NotImplementedException();
+        }
+    }

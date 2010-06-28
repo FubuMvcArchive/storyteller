@@ -75,17 +75,17 @@
     </Compile>
     <Compile Include="GrammarMarker.cs" />
     <Compile Include="GrammarSystem.cs" />
-    <Compile Include="Grammars\CheckObjectFixture.cs" />
-    <Compile Include="Grammars\CompositeFixture.cs" />
-    <Compile Include="Grammars\DecoratedGrammarFixture.cs" />
-    <Compile Include="Grammars\EmbeddedFixture.cs" />
-    <Compile Include="Grammars\FailureFixture.cs" />
-    <Compile Include="Grammars\SelectionListFixture.cs" />
-    <Compile Include="Grammars\SentenceFixture.cs" />
-    <Compile Include="Grammars\ServiceFixture.cs" />
-    <Compile Include="Grammars\SetsFixture.cs" />
-    <Compile Include="Grammars\TableFixture.cs" />
-    <Compile Include="MathFixture.cs" />
+    <Compile Include="Fixtures\CheckObjectFixture.cs" />
+    <Compile Include="Fixtures\CompositeFixture.cs" />
+    <Compile Include="Fixtures\DecoratedGrammarFixture.cs" />
+    <Compile Include="Fixtures\EmbeddedFixture.cs" />
+    <Compile Include="Fixtures\FailureFixture.cs" />
+    <Compile Include="Fixtures\SelectionListFixture.cs" />
+    <Compile Include="Fixtures\SentenceFixture.cs" />
+    <Compile Include="Fixtures\ServiceFixture.cs" />
+    <Compile Include="Fixtures\SetsFixture.cs" />
+    <Compile Include="Fixtures\TableFixture.cs" />
+    <Compile Include="Fixtures\MathFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoryTellerDebug.cs" />
   </ItemGroup>
