@@ -64,9 +64,12 @@ namespace StoryTeller.UserInterface.Screens
 
         public void Remove(IScreen screen)
         {
-            TabItem tabItem = _tabItems[screen].Item;
-            _tabItems.Remove(screen);
-            _tabs.Items.Remove(tabItem);
+            if (_tabItems.Has(screen))
+            {
+                TabItem tabItem = _tabItems[screen].Item;
+                _tabItems.Remove(screen);
+                _tabs.Items.Remove(tabItem);
+            }
         }
 
         public void RefreshScreenHeaders()

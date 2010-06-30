@@ -189,7 +189,7 @@ h3. Connect the fixtures and grammars to the system under test
 Alrighty, we've got a shell of a fixture and a specification that's failing.  Let's make the connection 
 between the specification and the new Calculator service by fleshing out the Calculator fixture:
 
-CODE[CalculatorFixture3]
+CODE[CalculatorFixture3].
 
 And after compiling, execute your original specification (I've quietly switched it to using the fully coded Calculator3Fixture):
 

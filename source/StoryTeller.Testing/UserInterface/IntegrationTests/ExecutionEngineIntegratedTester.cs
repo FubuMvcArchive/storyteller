@@ -65,7 +65,7 @@ namespace StoryTeller.Testing.UserInterface.IntegrationTests
             }
         }
 
-        [Test]
+        [Test, Explicit]
         public void run_test_through_the_container()
         {
             var queue = ObjectFactory.GetInstance<IExecutionQueue>().As<ExecutionQueue>();
