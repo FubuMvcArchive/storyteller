@@ -60,11 +60,12 @@ namespace StoryTeller.Testing.Engine
         }
     }
 
-
+    // SAMPLE:  HiddenFixture
     [Hidden]
     public class HiddenFixture : Fixture
     {
     }
+    // END:  HiddenFixture
 
     public class NotHiddenFixture : Fixture
     {
@@ -157,29 +158,26 @@ namespace StoryTeller.Testing.Engine
         }
     }
 
-
+    // SAMPLE:  FixtureWithSetUpTearDownAndDescription
     public class FixtureWithSetUpTearDownAndDescription : Fixture
     {
-        #region Overrides of Fixture
-
         public override string Description { get { return "something"; } }
 
         public override void SetUp(ITestContext context)
         {
-            // do something
+            // do something before the Section using this Fixture
         }
 
         public override void TearDown()
         {
-            // do something
+            // do something after the Section using this Fixture
         }
-
-        #endregion
 
         public void Go()
         {
         }
     }
+    // END:  FixtureWithSetUpTearDownAndDescription
 
     [TestFixture]
     public class when_reading_a_fixture_that_has_errors_while_scanning_for_grammars

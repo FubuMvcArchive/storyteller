@@ -1,6 +1,6 @@
 h2. Writing Fixtures
 
-The unit of writing StoryTeller specifications is the Fixture.  In this guide you will learn how to write custom Fixture classes, control their projected appearance and behavior, how to add Grammars to a Fixture, and finally how to let 
+The basic unit of authoring StoryTeller specification DSL's is the Fixture class.  In this guide you will learn how to write custom Fixture classes, control their projected appearance and behavior, how to add Grammars to a Fixture, and finally how to let 
 your StoryTeller project know which Fixtures to use.
 
 endprologue.
@@ -81,11 +81,28 @@ anything complicated, but it is still a handy convenience.
 
 h3. Controlling Fixture Appearance
 
+Later...
+
 h3. Exposing Fixtures to your Project
+
+More content later, but for now, see the "Getting Started":getting_started.html guide for the basics.
 
 h3. Private Fixtures
 
-h3. Fixture Description
+Many times you might only want to use a Fixture from within an "Embedded Section":embedded_sections.html.  In this case you probably want to keep the StoryTeller UI cleaner and easier to use by 
+hiding Fixture selections that aren't valid by marking the Fixture _private_ by using the [Hidden] attribute like this sample:
+
+CODE[HiddenFixture].
+
+h3. Fixture Description 
+
+When your StoryTeller project begins to get larger you may have trouble remembering which Fixtures do what.  Descriptive names certainly help, but you can also embed a Description of a Fixture strictly for usage 
+in the StoryTeller UI by overriding the Description property of a Fixture class:
+
+CODE[FixtureWithDescription].
 
 h3. SetUp() and TearDown()
 
+If you need to perform some sort of action either before or after a Fixture is used within a Test/Specification section, you can override the SetUp() and/or TearDown() methods in the Fixture class.
+
+CODE[FixtureWithSetUpTearDownAndDescription].

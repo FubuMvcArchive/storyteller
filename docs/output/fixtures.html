@@ -159,12 +159,66 @@ in a single method so that you could use tools like ReSharper to more quickly fi
                 x += this["TheValueShouldBe"];
             });
         }
-</code></div><h4>Add a Grammar in the Fixture constructor</h4>
+</code></div><p>When the Fixture containing this method is <strong>instantiated</strong>, the Fixture class will execute any method on itself that returns an IGrammar object and adds the IGrammar object returned from the 
+method into its collection of grammars using the method name for the name of the grammar.</p>
+<p>NODE. At this point, you cannot pass any arguments to the methods that return IGrammar objects.  This will change in a forthcoming version of StoryTeller.</p>
+<h4>Add a Grammar in the Fixture constructor</h4>
+<p>As I alluded to earlier, it is also possible to add grammars to a fixture in the constructor function of a Fixture class like this sample below:</p>
+<div class='code_container'><code class='html'>
+        public SentenceFixture()
+        {
+            this["ThisFactIsTrue"] = Fact("This fact is always true").VerifiedBy(() =&gt; true);
+            this["ThisFactIsFalse"] = Fact("This fact is always false").VerifiedBy(() =&gt; false);
+            this["ThisFactThrowsException"] =
+                Fact("This fact throws an exception").VerifiedBy(() =&gt; { throw new NotImplementedException(); });
+        }
+</code></div><p>In the code sample above, I&#8217;m building a couple simple <em>Fact</em> grammars (see <a href="sentences.html">Sentences</a>) directly in code and adding the new grammars directly to the Fixture.  I don&#8217;t recommend this technique for 
+anything complicated, but it is still a handy convenience.</p>
 <h3>Controlling Fixture Appearance</h3>
+<p>Later&#8230;</p>
 <h3>Exposing Fixtures to your Project</h3>
+<p>More content later, but for now, see the <a href="getting_started.html">Getting Started</a> guide for the basics.</p>
 <h3>Private Fixtures</h3>
-<h3>Fixture Description</h3>
-<h3>SetUp() and TearDown()</h3>
+<p>Many times you might only want to use a Fixture from within an <a href="embedded_sections.html">Embedded Section</a>.  In this case you probably want to keep the StoryTeller UI cleaner and easier to use by 
+hiding Fixture selections that aren&#8217;t valid by marking the Fixture <em>private</em> by using the [Hidden] attribute like this sample:</p>
+<div class='code_container'><code class='html'>
+    [Hidden]
+    public class HiddenFixture : Fixture
+    {
+    }
+</code></div><h3>Fixture Description</h3>
+<p>When your StoryTeller project begins to get larger you may have trouble remembering which Fixtures do what.  Descriptive names certainly help, but you can also embed a Description of a Fixture strictly for usage 
+in the StoryTeller UI by overriding the Description property of a Fixture class:</p>
+<div class='code_container'><code class='html'>
+    public class FixtureWithDescription : Fixture
+    {
+        public override string Description
+        {
+            get { return "a descriptive label for this Fixture"; }
+        }
+    }
+</code></div><h3>SetUp() and TearDown()</h3>
+<p>If you need to perform some sort of action either before or after a Fixture is used within a Test/Specification section, you can override the SetUp() and/or TearDown() methods in the Fixture class.</p>
+<div class='code_container'><code class='html'>
+    public class FixtureWithSetUpTearDownAndDescription : Fixture
+    {
+        public override string Description { get { return "something"; } }
+
+        public override void SetUp(ITestContext context)
+        {
+            // do something before the Section using this Fixture
+        }
+
+        public override void TearDown()
+        {
+            // do something after the Section using this Fixture
+        }
+
+        public void Go()
+        {
+        }
+    }
+</code></div>
       </div>
     </div>
   </div>

@@ -70,6 +70,7 @@
     <Compile Include="ExampleSystem.cs" />
     <Compile Include="Fixtures\AddingGrammarsFixture.cs" />
     <Compile Include="Fixtures\CalculatorFixture.cs" />
+    <Compile Include="Fixtures\FixtureWithDescription.cs" />
     <Compile Include="Fixtures\MyFirstFixture.cs" />
     <Compile Include="Fixtures\SimpleActionsFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
