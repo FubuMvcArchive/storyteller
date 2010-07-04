@@ -77,10 +77,19 @@ task :package => [:version]  do
 end
 
 
-task :docs do
+task :samples do
 	sh "source/SampleGenerator/bin/#{COMPILE_TARGET}/SampleGenerator.exe source/Examples docs/samples"
+	sh "source/SampleGenerator/bin/#{COMPILE_TARGET}/SampleGenerator.exe source/StoryTeller docs/samples"
+	sh "source/SampleGenerator/bin/#{COMPILE_TARGET}/SampleGenerator.exe source/StoryTeller.Testing docs/samples"
+	sh "source/SampleGenerator/bin/#{COMPILE_TARGET}/SampleGenerator.exe source/StoryTeller.Samples docs/samples"
+end
+
+task :generate_docs do
 	ruby "docs/docs.rb"
 end
+
+task :docs => [:samples, :generate_docs]
+	
 
 task :publish_docs => :docs do
 	cp_r 'docs/output/.', '../storyteller-website'

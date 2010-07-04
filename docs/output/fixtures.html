@@ -1,24 +1,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>StoryTeller guides</title>
+
+<title>Writing Fixtures</title>
+
 <link rel="stylesheet" type="text/css" href="files/stylesheets/style.css" />
 <link rel="stylesheet" type="text/css" href="files/stylesheets/syntax.css" />
 <link rel="stylesheet" type="text/css" href="files/stylesheets/print.css" media="print" />
-<script type="text/javascript" src="files/javascripts/guides.js"></script><script type="text/javascript" src="files/javascripts/code_highlighter.js"></script><script type="text/javascript" src="files/javascripts/highlighters.js"></script></head>
+
+<script type="text/javascript" src="files/javascripts/guides.js"></script>
+<script type="text/javascript" src="files/javascripts/code_highlighter.js"></script>
+<script type="text/javascript" src="files/javascripts/highlighters.js"></script>
+
+</head>
 <body class="guide">
-<div id="topNav">
-<div class="wrapper">
-<strong>More at <a href="http://fubumvc.com">http://fubumvc.com:</a> </strong>
-<a href="http://github.com/StoryTeller/StoryTeller">Fork it!</a> |
-<a href="http://groups.google.com/group/storyteller-dotnet-users">Mailing list</a> |
-</div>
-</div>
-<div id="header">
-<div class="wrapper clearfix">
+  <div id="topNav">
+    <div class="wrapper">
+      <strong>More at <a href="http://fubumvc.com">http://fubumvc.com:</a> </strong>
+      <a href="http://github.com/StoryTeller/StoryTeller">Fork it!</a> |
+      <a href="http://groups.google.com/group/storyteller-dotnet-users">Mailing list</a> |      
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
       <h1><a href="index.html" title="Guides">Guides</a></h1>
       <p class="hide"><a href="#mainCol">Skip navigation</a>.</p>
-<ul class="nav">
+      <ul class="nav">
         <li><a href="index.html">Home</a></li>
         <li class="index"><a href="index.html" onclick="guideMenu(); return false;" id="guidesMenu">Guides Index</a>
           <div id="guides" class="clearfix" style="display: none;">
@@ -26,59 +33,126 @@
             <dl class="L">
               <dt>Start Here</dt>
               <dd><a href="getting_started.html">Getting Started with StoryTeller</a></dd>
-</dl>
-<dl class="R">
-</dl>
-</div>
-</li>
+
+            </dl>
+            <dl class="R">              
+            </dl> 
+          </div>
+        </li>
         <li><a href="contribute.html">Contribute</a></li>
         <li><a href="credits.html">Credits</a></li>
-</ul>
-</div>
-</div>
-<div id="feature">
-<div class="wrapper">
+      </ul>
+    </div>
+  </div>
 
-<h2><span class="caps">TITLE</span></h2>
-<p><span class="caps">INTRODUCTION</span></p>
+  <div id="feature">
+    <div class="wrapper">
+      <h2>Writing Fixtures</h2>
+<p>The unit of writing StoryTeller specifications is the Fixture.  In this guide you will learn how to write custom Fixture classes, control their projected appearance and behavior, how to add Grammars to a Fixture, and finally how to let 
+your StoryTeller project know which Fixtures to use.</p>
 
-<div id="subCol">
-<dl>
-    <dd class="warning">This documentation is based on the 1.0 version of StoryTeller.</dd>
-</dl>
-</div>
-<h3>Start Here</h3>
-<dl>
-  <dt><a href="getting_started.html">Getting Started with StoryTeller</a></dt><dd>
-Everything you need to know to install StoryTeller and create your first application.
-</dd>
+      	  <div id="subCol">
+		<h3 class="chapter"><img src="images/chapters_icon.gif" alt="" />Chapters</h3>
+		<ol class="chapters">
+</ol></div>
+    </div>
+  </div>
 
-</dl>
-</div>
-</div>
-<div id="container">
-<div class="wrapper">
-<div id="mainCol">
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <h3>What is a Fixture?</h3>
+<p>The Fixture classes are the most important unit of your specification <span class="caps">DSL</span>. 
+To be technical, a Fixture is just any concrete class that implements the IFixture interface shown below:</p>
+<div class='code_container'><code class='html'>
+namespace StoryTeller
+{
+    public interface IFixture
+    {
+        string Name { get; }
+        string Description { get; }
 
-</div>
-</div>
-</div>
-<hr class="hide" />
-<div id="footer">
-<div class="wrapper">
+        [IndexerName("Grammar")]
+        IGrammar this[string key] { get; set; }
+
+        IEnumerable&lt;GrammarError&gt; Errors { get; }
+        IPolicies Policies { get; }
+        string Title { get; set; }
+
+        void ForEachGrammar(Action&lt;string, IGrammar&gt; action);
+
+        void SetUp(ITestContext context);
+        void TearDown();
+    }
+}
+</code></div><p>Let&#8217;s break down the IFixture interface and look at its contents:</p>
+<ol>
+	<li><strong>Name</strong>:  StoryTeller has to have a way to internally identify a Fixture.  Most of the time, you&#8217;ll simply let StoryTeller handle the name for you by deriving it from the class name (&#8216;SomethingFixture&#8217; would be &#8216;Something&#8217;).</li>
+	<li><strong>Description</strong>:  You can add a description to a Fixture class.  This is strictly for usage in the StoryTeller UI.</li>
+	<li><strong>Grammars</strong>:  The main purpose of an IFixture class is to expose a related collection of Grammars.  Grammars are indexed by name.</li>
+	<li><strong>Policies and Title</strong>:  In advanced usage, you can use the Title property and the Policies member of IFixture to fine tune the appearance and behavior of a Fixture in the Html rendering and the editor.</li>
+	<li><strong>SetUp()</strong>:  The Setup() method is executed by the StoryTeller engine immediately before starting any of the steps in a section pointing to a Fixture.</li>
+	<li><strong>TearDown()</strong>:  The TearDown() method is executed by the StoryTeller engine immediately after calling the last step in a section pointing to a Fixture.</li>
+</ol>
+
+<h3>Build a Fixture</h3>
+<p>The first step is just to declare a new class in your StoryTeller testing project assembly (see <a href="getting_started.html">Getting Started</a> for more information about setting up a StoryTeller project)
+ and inherit from the StoryTeller Fixture class.</p>
+<div class='code_container'><code class='html'>
+using StoryTeller.Engine;
+
+namespace Examples.Fixtures
+{
+    public class MyFirstFixture : Fixture
+    {
+
+    }
+}
+</code></div><p>Fixture&#8217;s only have to implement the IFixture interface, but it&#8217;s easiest by far to just inherit from the Fixture class.  The default naming convention embedded into StoryTeller is to use <em>Fixture</em> as a suffix
+in the class name.  Using that naming convention, StoryTeller will use the internal name <em>Something</em> to identify the <em>SomethingFixture</em> class at runtime.</p>
+<div class='note'><p>Internally, StoryTeller uses the <a href="http://structuremap.github.com">StructureMap</a> IoC tool to build Fixture objects with all their dependencies.  If you&#8217;re familiar with StructureMap, the Fixture name is used to retrieve an IFixture object by name like:  var fixture = container.GetInstance&lt;IFixture&gt;(fixtureName)</p></div>
+<p>If for some reason you don&#8217;t or can&#8217;t use the default naming convention, you can use the [AliasAs] fixture to explicitly control the fixture name:</p>
+<div class='code_container'><code class='html'>
+[AliasAs("Aliased")]
+public class FixtureWithAlias : Fixture
+{
+
+}
+</code></div><h3>Adding Grammars</h3>
+<p>The most important role of the Fixture class is to expose the grammars that express and execute your specification <span class="caps">DSL</span>.  At runtime, Grammars are objects implementing the IGrammar interface stored by name in a Fixture object.  Assuming 
+that you&#8217;re just inheriting from the basic Fixture class, you can add grammars programmatically to the internal collection, let StoryTeller derive grammars from public methods on your Fixture class, expose methods on your Fixture class 
+that return IGrammar object, or any combination of the above.  In advanced usage you might even have methods on a base Fixture class that add multiple grammars based on specified traits of the Fixture class much the way that 
+dynamic programmers use metaprogramming.</p>
+<div class='note'><p>Grammars are a first class interface in the StoryTeller architecture.  Many of the introductory StoryTeller examples show simple grammars implemented as methods on Fixture classes, but that isn&#8217;t the full story.</p></div>
+<h4>Methods</h4>
+<h5>Sentence Method</h5>
+<h5>Return an IGrammar</h5>
+<h4>In the Fixture Constructor</h4>
+<h3>Controlling Fixture Appearance</h3>
+<h3>Exposing Fixtures to your Project</h3>
+<h3>Private Fixtures</h3>
+<h3>Fixture Description</h3>
+<h3>SetUp() and TearDown()</h3>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
       <p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0</a> License</a></p>
-</div>
-
-<script type="text/javascript">
-var gaJsHost = ((&#8220;https:&#8221; == document.location.protocol) ? &#8220;https://ssl.&#8221; : &#8220;http://www.&#8221;);
-document.write(unescape(&#8220;%3Cscript src=&#8217;&#8221; <tt> gaJsHost </tt> &#8220;google-analytics.com/ga.js&#8217; type=&#8216;text/javascript&#8217;%3E%3C/script%3E&#8221;));
-</script>
-<script type="text/javascript">
-var pageTracker = <em>gat.</em>getTracker(&quot;&quot;);
-pageTracker._initData();
-pageTracker._trackPageview();
-</script>
-
-</div>
+    </div>             
+    
+    <script type="text/javascript">
+    	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    	var pageTracker = _gat._getTracker("");
+    	pageTracker._initData();
+    	pageTracker._trackPageview();
+    </script>
+        
+  </div>
 </body>
 </html>

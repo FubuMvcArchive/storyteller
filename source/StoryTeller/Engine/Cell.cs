@@ -86,7 +86,7 @@ namespace StoryTeller.Engine
 
         public IList<string> SelectionValues { get { return _selectionValues; } set { _selectionValues = value; } }
 
-        public string Key { get { return _key; } }
+        public string Key { get { return _key; } set { _key = value; } }
 
         public Type Type { get { return _type; } }
 

@@ -28,6 +28,9 @@ namespace StoryTeller.Workspace
         {
             TimeoutInSeconds = 60;
             Options = new CodegenOptions();
+
+            TestFolder = "Tests";
+            BinaryFolder = "bin\\debug";
         }
 
         public Project(string filename)

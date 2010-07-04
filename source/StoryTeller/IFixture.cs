@@ -5,6 +5,7 @@ using StoryTeller.Engine;
 using StoryTeller.Engine.Constraints;
 using StoryTeller.Model;
 
+// SAMPLE:  IFixture
 namespace StoryTeller
 {
     public interface IFixture
@@ -25,3 +26,4 @@ namespace StoryTeller
         void TearDown();
     }
 }
+// END:  IFixture

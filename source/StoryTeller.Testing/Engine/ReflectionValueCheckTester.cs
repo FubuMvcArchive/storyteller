@@ -5,6 +5,7 @@ using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Engine.Reflection;
 using StoryTeller.Model;
+using System.Linq;
 
 namespace StoryTeller.Testing.Engine
 {
@@ -15,11 +16,31 @@ namespace StoryTeller.Testing.Engine
         {
             return string.Format("{0} is {1}", name, age);
         }
+
+        [FormatAs("Adding {x} to {y} should equal {sum}")]
+        public int Adding(int x, int y)
+        {
+            return x + y;
+        }
     }
 
     [TestFixture]
     public class ReflectionValueCheckTester
     {
+        [Test]
+        public void make_the_last_parameter_the_output_cell_if_not_aliased()
+        {
+            MethodInfo method = ReflectionHelper.GetMethod<ReflectionTarget>(x => x.Adding(0, 0));
+
+            var grammar = new ReflectionValueCheck(method, new ReflectionTarget());
+
+            var sentence = grammar.ToStructure(new FixtureLibrary()).ShouldBeOfType<Sentence>();
+
+            sentence.AllErrors().Any().ShouldBeFalse();
+            sentence.Cells.FirstOrDefault(x => x.IsResult).Key.ShouldEqual("sum");
+            
+        }
+
         [Test]
         public void create_a_grammar_structure()
         {

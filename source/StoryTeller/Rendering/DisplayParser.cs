@@ -25,13 +25,13 @@ namespace StoryTeller.Rendering
             parse(template, matches, cells, step);
         }
 
-        public List<string> GetKeys(string template)
+        public static List<string> GetKeys(string template)
         {
             MatchCollection matches = Regex.Matches(template, @"\{(\w+)\}");
             return getKeys(matches);
         }
 
-        private List<string> getKeys(MatchCollection matches)
+        private static List<string> getKeys(MatchCollection matches)
         {
             var list = new List<string>();
 
@@ -93,7 +93,7 @@ namespace StoryTeller.Rendering
 
         public static string FirstKey(string template)
         {
-            return new DisplayParser(null).GetKeys(template).First();
+            return DisplayParser.GetKeys(template).First();
         }
     }
 }

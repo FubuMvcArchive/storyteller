@@ -59,7 +59,11 @@ namespace StoryTeller.Testing.UserInterface.Projects
         {
             MockFor<IFileDialogPicker>().Stub(x => x.ShowDialog()).Return(DialogResult.Cancel);
             MockFor<IDirectoryDialogPicker>().Stub(x => x.ShowDialog()).Return(DialogResult.Cancel);
-            _project = new Project();
+            _project = new Project()
+                       {
+                           BinaryFolder = null,
+                           TestFolder = null
+                       };
             ClassUnderTest.BindTo(_project);
         }
 

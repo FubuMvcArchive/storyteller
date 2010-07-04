@@ -226,8 +226,62 @@ to the new project and add a new <a href="workspaces.html">Workspace</a> to the 
 <h3>Connect the fixtures and grammars to the system under test</h3>
 <p>Alrighty, we&#8217;ve got a shell of a fixture and a specification that&#8217;s failing.  Let&#8217;s make the connection 
 between the specification and the new Calculator service by fleshing out the Calculator fixture:</p>
-<p><span class="caps">CODE</span>[CalculatorFixture3]</p>
-<p>And after compiling, execute your original specification (I&#8217;ve quietly switched it to using the fully coded Calculator3Fixture):</p>
+<div class='code_container'><code class='html'>
+    public class Calculator
+    {
+        private int _number;
+
+        public void Enter(int number)
+        {
+            _number = number;
+        }
+
+        public void Add(int operand)
+        {
+            _number += operand;
+        }
+
+        public int CurrentTotal
+        {
+            get
+            {
+                return _number;
+            }
+        }
+    }
+
+
+    public class CalculatorFixture3 : Fixture
+    {
+        private Calculator _calculator;
+
+        public CalculatorFixture3()
+        {
+            _calculator = new Calculator();
+        }
+
+        [FormatAs("Start with the number {number}")]
+        public void EnterNumber(int number)
+        {
+            _calculator.Enter(number);
+        }
+
+        [FormatAs("Add {operand}")]
+        public void Add(int operand)
+        {
+            _calculator.Add(operand);
+        }
+
+        [FormatAs("The current total should be {currentValue}")]
+        [return: AliasAs("currentValue")]
+        public int NumberShouldBe()
+        {
+            return _calculator.CurrentTotal;
+        }
+
+
+    }
+</code></div><p>And after compiling, execute your original specification (I&#8217;ve quietly switched it to using the fully coded Calculator3Fixture):</p>
 <p><img src="images/project/Fixed.png" alt="" /></p>
 <p>Just for fun, let&#8217;s put some invalid numbers into the test just to see what a failure looks like:</p>
 <p><img src="images/project/BadData.png" alt="" /></p>
