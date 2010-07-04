@@ -11,9 +11,9 @@ namespace StoryTeller.DSL
 {
     public class ObjectVerificationExpression<T> where T : class
     {
-        private readonly CompositeGrammar _grammar;
+        private readonly ParagraphGrammar _grammar;
 
-        public ObjectVerificationExpression(CompositeGrammar grammar)
+        public ObjectVerificationExpression(ParagraphGrammar grammar)
         {
             _grammar = grammar;
         }

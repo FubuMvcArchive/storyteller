@@ -50,7 +50,7 @@ namespace Examples.Fixtures
             });
 
 
-            this["ScriptedActions"] = Script("Do a bunch of stuff", x =>
+            this["ScriptedActions"] = Paragraph("Do a bunch of stuff", x =>
             {
                 // Perform an action inside the Paragraph that is not part of the 
                 // Html output

@@ -10,9 +10,9 @@ namespace StoryTeller.DSL
 {
     public class ObjectConstructionExpression<T>
     {
-        protected readonly CompositeGrammar _grammar;
+        protected readonly ParagraphGrammar _grammar;
 
-        public ObjectConstructionExpression(CompositeGrammar grammar)
+        public ObjectConstructionExpression(ParagraphGrammar grammar)
         {
             _grammar = grammar;
         }

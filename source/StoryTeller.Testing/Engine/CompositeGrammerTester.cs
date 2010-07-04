@@ -33,7 +33,7 @@ namespace StoryTeller.Testing.Engine
             grammar2.Expect(x => x.ToStructure(library)).Return(structure2);
             grammar3.Expect(x => x.ToStructure(library)).Return(structure3);
 
-            grammar = new CompositeGrammar("the title").With(grammar1, grammar2, grammar3);
+            grammar = new ParagraphGrammar("the title").With(grammar1, grammar2, grammar3);
             grammar.Style = EmbedStyle.TitledAndIndented;
             theStructure = grammar.ToStructure(library).ShouldBeOfType<Paragraph>();
         }
@@ -43,7 +43,7 @@ namespace StoryTeller.Testing.Engine
         private StubGrammarStructure structure1;
         private StubGrammarStructure structure2;
         private StubGrammarStructure structure3;
-        private CompositeGrammar grammar;
+        private ParagraphGrammar grammar;
         private Paragraph theStructure;
 
         [Test]
@@ -79,23 +79,23 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            composite = new CompositeGrammar("the title");
+            _paragraph = new ParagraphGrammar("the title");
         }
 
         #endregion
 
-        private CompositeGrammar composite;
+        private ParagraphGrammar _paragraph;
 
         [Test]
         public void the_default_style_should_be_embed()
         {
-            composite.Style.ShouldEqual(EmbedStyle.TitledAndIndented);
+            _paragraph.Style.ShouldEqual(EmbedStyle.TitledAndIndented);
         }
     }
 
 
     [TestFixture]
-    public class when_executing_the_composite_grammar : InteractionContext<CompositeGrammar>
+    public class when_executing_the_composite_grammar : InteractionContext<ParagraphGrammar>
     {
         private IGrammar[] grammars;
         private IStep step;
@@ -205,7 +205,7 @@ namespace StoryTeller.Testing.Engine
             var child2 = MockRepository.GenerateMock<LineGrammar>();
             var child3 = MockRepository.GenerateMock<LineGrammar>();
 
-            var grammar = new CompositeGrammar(child1, child2, child3);
+            var grammar = new ParagraphGrammar(child1, child2, child3);
 
             child1.Stub(x => x.GetCells()).Return(new List<Cell>
             {

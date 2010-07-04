@@ -154,17 +154,17 @@ namespace StoryTeller.Engine
             return this;
         }
 
-        public static CompositeGrammar Script(string title, Action<CompositeGrammarBuilder> configure)
+        public static ParagraphGrammar Paragraph(string title, Action<CompositeGrammarBuilder> configure)
         {
-            var grammar = new CompositeGrammar(title);
+            var grammar = new ParagraphGrammar(title);
             grammar.ConfigureSteps(configure);
 
             return grammar;
         }
 
-        public static CompositeGrammar InlineScript(string title, Action<CompositeGrammarBuilder> configure)
+        public static ParagraphGrammar InlineParagraph(string title, Action<CompositeGrammarBuilder> configure)
         {
-            CompositeGrammar grammar = Script(title, configure);
+            ParagraphGrammar grammar = Paragraph(title, configure);
             grammar.Style = EmbedStyle.Inline;
 
             return grammar;
@@ -257,11 +257,11 @@ namespace StoryTeller.Engine
         }
 
         // TODO -- need tests.  Need an overload that puts the T on the Current
-        public static CompositeGrammar VerifyPropertiesOf<T>(string title,
+        public static ParagraphGrammar VerifyPropertiesOf<T>(string title,
                                                              Action<ObjectVerificationExpression<T>> action)
             where T : class
         {
-            return new CompositeGrammar(title).ConfigureSteps(x =>
+            return new ParagraphGrammar(title).ConfigureSteps(x =>
             {
                 x.VerifyPropertiesOf(action);
             });
@@ -297,9 +297,9 @@ namespace StoryTeller.Engine
         }
 
         // TODO: tests!
-        public static CompositeGrammar CreateObject<T>(string title, Action<ObjectConstructionExpression<T>> action)
+        public static ParagraphGrammar CreateObject<T>(string title, Action<ObjectConstructionExpression<T>> action)
         {
-            var grammar = new CompositeGrammar(title);
+            var grammar = new ParagraphGrammar(title);
             var expression = new ObjectConstructionExpression<T>(grammar);
             action(expression);
 
@@ -313,10 +313,10 @@ namespace StoryTeller.Engine
             return new DoGrammar(createObject);
         }
 
-        public static CompositeGrammar CreateNewObject<T>(Action<ObjectConstructionExpression<T>> action)
+        public static ParagraphGrammar CreateNewObject<T>(Action<ObjectConstructionExpression<T>> action)
             where T : new()
         {
-            var grammar = new CompositeGrammar(CreateNewObject<T>());
+            var grammar = new ParagraphGrammar(CreateNewObject<T>());
             var expression = new ObjectConstructionExpression<T>(grammar);
             action(expression);
 

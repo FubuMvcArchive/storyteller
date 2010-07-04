@@ -220,7 +220,7 @@ namespace StoryTeller.Testing
 
         public IGrammar EditAndGo()
         {
-            return Script("Edit and go", x =>
+            return Paragraph("Edit and go", x =>
             {
                 x += this["Edit"];
                 x += Embed<Fixture2>("Do something");

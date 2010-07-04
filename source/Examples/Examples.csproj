@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExampleSystem.cs" />
+    <Compile Include="Fixtures\AddingGrammarsFixture.cs" />
     <Compile Include="Fixtures\CalculatorFixture.cs" />
     <Compile Include="Fixtures\MyFirstFixture.cs" />
     <Compile Include="Fixtures\SimpleActionsFixture.cs" />

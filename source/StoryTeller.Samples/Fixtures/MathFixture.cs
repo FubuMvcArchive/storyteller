@@ -75,15 +75,17 @@ namespace StoryTeller.Samples
             return x + y;
         }
 
+        // SAMPLE:  ReturnGrammarFromMethod
         public IGrammar AddAndCheck()
         {
-            return Script("Add and check", x =>
+            return Paragraph("Add and check", x =>
             {
                 x += this["StartWith"];
                 x += this["Add"];
                 x += this["TheValueShouldBe"];
             });
         }
+        // END:  ReturnGrammarFromMethod
 
         public void Throw()
         {

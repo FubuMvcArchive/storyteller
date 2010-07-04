@@ -14,14 +14,14 @@ namespace StoryTeller.Testing.DSL
         [SetUp]
         public void SetUp()
         {
-            grammar = new CompositeGrammar("an action");
+            grammar = new ParagraphGrammar("an action");
             step = new Step("some grammar");
             TheAddress = null;
         }
 
         #endregion
 
-        private CompositeGrammar grammar;
+        private ParagraphGrammar grammar;
         private IStep step;
         public Address TheAddress;
         public Counts TheCounts;
@@ -158,7 +158,7 @@ namespace StoryTeller.Testing.DSL
             Assert.Fail("Redo.");
             Fixture fixture = new Fixture().With(x =>
             {
-                x["CheckAddress"] = Fixture.Script("Check the Address", o => { });
+                x["CheckAddress"] = Fixture.Paragraph("Check the Address", o => { });
 
                 //x.Grammar("CheckAddress").IsCompositeTitled("Check the Address")
                 //    .Before((s, c) => c.CurrentObject = new Address {Address1 = "A1", Address2 = "A2"})

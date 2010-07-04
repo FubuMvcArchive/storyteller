@@ -35,10 +35,10 @@ namespace StoryTeller.Testing.Engine
         public void adding_a_composite_grammar_programmatically()
         {
             var fixture = new Fixture();
-            fixture["theGrammar"] = Fixture.Script("The Grammar", x => { });
+            fixture["theGrammar"] = Fixture.Paragraph("The Grammar", x => { });
 
             fixture["theGrammar"]
-                .ShouldBeOfType<CompositeGrammar>().Title().ShouldEqual("The Grammar");
+                .ShouldBeOfType<ParagraphGrammar>().Title().ShouldEqual("The Grammar");
         }
 
         [Test]
@@ -255,12 +255,12 @@ namespace StoryTeller.Testing.Engine
         [Hidden]
         public IGrammar Hidden2()
         {
-            return Script("something", x => { });
+            return Paragraph("something", x => { });
         }
 
         public IGrammar NotHidden2()
         {
-            return Script("something", x => { });
+            return Paragraph("something", x => { });
         }
     }
 

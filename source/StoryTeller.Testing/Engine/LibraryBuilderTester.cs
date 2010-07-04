@@ -275,12 +275,12 @@ namespace StoryTeller.Testing.Engine
         [Hidden]
         public IGrammar Hidden2()
         {
-            return Script("something", x => { });
+            return Paragraph("something", x => { });
         }
 
         public IGrammar NotHidden2()
         {
-            return Script("something", x => { });
+            return Paragraph("something", x => { });
         }
     }
 

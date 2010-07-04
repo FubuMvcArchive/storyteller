@@ -197,7 +197,7 @@
     <Compile Include="Engine\BatchRunner.cs" />
     <Compile Include="Engine\ObjectFinder.cs" />
     <Compile Include="Engine\CheckPropertyGrammar.cs" />
-    <Compile Include="Engine\CompositeGrammar.cs" />
+    <Compile Include="Engine\ParagraphGrammar.cs" />
     <Compile Include="Engine\Counts.cs" />
     <Compile Include="Engine\DoGrammar.cs" />
     <Compile Include="Engine\EmbeddedSectionGrammar.cs" />

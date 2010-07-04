@@ -6,7 +6,7 @@ namespace StoryTeller.Samples.Grammars
     {
         public CompositeFixture()
         {
-            this["AddAndMultiply"] = Script("Add and Multiply", x =>
+            this["AddAndMultiply"] = Paragraph("Add and Multiply", x =>
             {
                 x += this["StartWith"];
                 x += this["Add"];
@@ -16,7 +16,7 @@ namespace StoryTeller.Samples.Grammars
 
             this["AddAndMultiplyTable"] = this["AddAndMultiply"].AsTable("Add and Multiply in a Table");
 
-            this["AddAndMultiplyThrow"] = Script("Add and Multiply", x =>
+            this["AddAndMultiplyThrow"] = Paragraph("Add and Multiply", x =>
             {
                 x += this["StartWith"];
                 x += this["Add"];

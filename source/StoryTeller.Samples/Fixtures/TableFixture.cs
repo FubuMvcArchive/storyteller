@@ -23,7 +23,7 @@ namespace StoryTeller.Samples.Grammars
 
         public IGrammar Divide()
         {
-            return Script("Divide numbers", x =>
+            return Paragraph("Divide numbers", x =>
             {
                 x += Do(() => _first = _second = 0);
                 x += Read<double>("x", o => _first = o);
@@ -35,14 +35,14 @@ namespace StoryTeller.Samples.Grammars
         public IGrammar BeforeThrowsError()
         {
             return
-                Script("Throws an Error before we even start", x => { x += Read<double>("x", o => { }); }).AsTable(
+                Paragraph("Throws an Error before we even start", x => { x += Read<double>("x", o => { }); }).AsTable(
                     "Throw error on the Before").Before(() => { throw new NotImplementedException(); });
         }
 
         public IGrammar AfterThrowsError()
         {
             return
-                Script("Throws an Error before we even start", x => { x += Read<double>("x", o => { }); }).AsTable(
+                Paragraph("Throws an Error before we even start", x => { x += Read<double>("x", o => { }); }).AsTable(
                     "Throw error on the After").After(() => { throw new NotImplementedException(); });
         }
     }

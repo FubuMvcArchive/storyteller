@@ -68,6 +68,7 @@ namespace StoryTeller.Samples.Grammars
     {
         private int _number;
 
+        // SAMPLE:  GrammarsInConstructor
         public SentenceFixture()
         {
             this["ThisFactIsTrue"] = Fact("This fact is always true").VerifiedBy(() => true);
@@ -75,6 +76,7 @@ namespace StoryTeller.Samples.Grammars
             this["ThisFactThrowsException"] =
                 Fact("This fact throws an exception").VerifiedBy(() => { throw new NotImplementedException(); });
         }
+        // END:  GrammarsInConstructor
 
         [FormatAs("Start with the number {number}")]
         public void StartWithTheNumber(int number)

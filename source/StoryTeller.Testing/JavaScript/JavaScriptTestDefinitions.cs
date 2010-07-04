@@ -254,7 +254,7 @@ namespace StoryTeller.Testing.JavaScript
 
         public IGrammar Sum1()
         {
-            return Script("Add numbers 1", x =>
+            return Paragraph("Add numbers 1", x =>
             {
                 x += this["X"];
                 x += this["Y"];
@@ -264,7 +264,7 @@ namespace StoryTeller.Testing.JavaScript
 
         public IGrammar Sum2()
         {
-            return Script("Add numbers 2", x =>
+            return Paragraph("Add numbers 2", x =>
             {
                 x += this["X"];
                 x += this["Y"];

@@ -15,7 +15,7 @@ namespace StoryTeller.Testing.DSL
         {
             _theAddress = null;
 
-            grammar = new CompositeGrammar();
+            grammar = new ParagraphGrammar();
             expression = new ObjectConstructionExpression<Address>(grammar);
 
             theStep = new Step();
@@ -23,7 +23,7 @@ namespace StoryTeller.Testing.DSL
 
         #endregion
 
-        private CompositeGrammar grammar;
+        private ParagraphGrammar grammar;
         private ObjectConstructionExpression<Address> expression;
         private Address _theAddress;
         private Step theStep;
