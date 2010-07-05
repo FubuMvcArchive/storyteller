@@ -85,7 +85,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void build_a_grammar_for_a_bool_method()
         {
-            getMethod(x => x.Assertion()).ShouldBeOfType<ReflectionValueCheck>();
+            getMethod(x => x.Assertion()).ShouldBeOfType<ValueCheckMethod>();
         }
 
         [Test]
@@ -97,13 +97,13 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void build_a_grammar_for_a_method_that_returns_a_primitive()
         {
-            getMethod(x => x.DoSomethingElse(0)).ShouldBeOfType<ReflectionValueCheck>();
+            getMethod(x => x.DoSomethingElse(0)).ShouldBeOfType<ValueCheckMethod>();
         }
 
         [Test]
         public void build_a_grammar_for_a_void_method()
         {
-            getMethod(x => x.DoSomething(0)).ShouldBeOfType<ReflectionAction>();
+            getMethod(x => x.DoSomething(0)).ShouldBeOfType<ActionMethodGrammar>();
         }
 
         [Test]
@@ -121,7 +121,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void has_the_aliased_method()
         {
-            new TargetedReflectionFixture()["red"].ShouldBeOfType<ReflectionValueCheck>();
+            new TargetedReflectionFixture()["red"].ShouldBeOfType<ValueCheckMethod>();
         }
 
         [Test]

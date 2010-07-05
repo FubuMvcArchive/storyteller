@@ -32,7 +32,7 @@ namespace StoryTeller.Testing.Engine
         {
             MethodInfo method = ReflectionHelper.GetMethod<ReflectionTarget>(x => x.Adding(0, 0));
 
-            var grammar = new ReflectionValueCheck(method, new ReflectionTarget());
+            var grammar = new ValueCheckMethod(method, new ReflectionTarget());
 
             var sentence = grammar.ToStructure(new FixtureLibrary()).ShouldBeOfType<Sentence>();
 
@@ -46,7 +46,7 @@ namespace StoryTeller.Testing.Engine
         {
             MethodInfo method = ReflectionHelper.GetMethod<ReflectionTarget>(x => x.GetNameAndAge("", 0));
 
-            var grammar = new ReflectionValueCheck(method, new ReflectionTarget());
+            var grammar = new ValueCheckMethod(method, new ReflectionTarget());
 
             var sentence = grammar.ToStructure(new FixtureLibrary()).ShouldBeOfType<Sentence>();
 
@@ -58,7 +58,7 @@ namespace StoryTeller.Testing.Engine
         public void execute_the_method_with_a_step_and_store_the_actual()
         {
             MethodInfo method = ReflectionHelper.GetMethod<ReflectionTarget>(x => x.GetNameAndAge("", 0));
-            var grammar = new ReflectionValueCheck(method, new ReflectionTarget());
+            var grammar = new ValueCheckMethod(method, new ReflectionTarget());
 
             Step step = new Step("a").With("name", "Jeremy").With("age", 34);
 
@@ -70,7 +70,7 @@ namespace StoryTeller.Testing.Engine
         public void marks_the_testdata_with_right_if_the_actual_matches_the_expected()
         {
             MethodInfo method = ReflectionHelper.GetMethod<ReflectionTarget>(x => x.GetNameAndAge("", 0));
-            var grammar = new ReflectionValueCheck(method, new ReflectionTarget());
+            var grammar = new ValueCheckMethod(method, new ReflectionTarget());
 
             Step step = new Step("a").With("name", "Jeremy").With("age", 34).With("theValue", "Jeremy is 34");
             var data = new TestContext();
@@ -84,7 +84,7 @@ namespace StoryTeller.Testing.Engine
         public void marks_the_testdata_with_wrong_if_the_actual_is_wrong()
         {
             MethodInfo method = ReflectionHelper.GetMethod<ReflectionTarget>(x => x.GetNameAndAge("", 0));
-            var grammar = new ReflectionValueCheck(method, new ReflectionTarget());
+            var grammar = new ValueCheckMethod(method, new ReflectionTarget());
 
             Step step = new Step("a").With("name", "Jeremy").With("age", 34).With("theValue", "the wrong value");
             var data = new TestContext();

@@ -61,7 +61,7 @@ namespace StoryTeller.Testing.Engine
 
             context.LoadFixture("Something", new StubTestPart());
 
-            context.FindGrammar("DoSomething").ShouldBeOfType<ReflectionAction>();
+            context.FindGrammar("DoSomething").ShouldBeOfType<ActionMethodGrammar>();
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace StoryTeller.Testing.Engine
 
             context.LoadFixture("Something", new StubTestPart());
 
-            context.FindGrammar("DoSomething").ShouldBeOfType<ReflectionAction>();
+            context.FindGrammar("DoSomething").ShouldBeOfType<ActionMethodGrammar>();
         }
 
         [Test]
@@ -81,7 +81,7 @@ namespace StoryTeller.Testing.Engine
 
             context.LoadFixture("Something", new StubTestPart());
 
-            context.FindGrammar("DoSomething").ShouldBeOfType<ReflectionAction>();
+            context.FindGrammar("DoSomething").ShouldBeOfType<ActionMethodGrammar>();
         }
 
         [Test]
@@ -92,10 +92,10 @@ namespace StoryTeller.Testing.Engine
 
             context.LoadFixture("a", new StubTestPart());
 
-            context.FindGrammar("DoSomething").ShouldBeOfType<ReflectionAction>();
+            context.FindGrammar("DoSomething").ShouldBeOfType<ActionMethodGrammar>();
 
             context.LoadFixture("b", new StubTestPart());
-            context.FindGrammar("Go").ShouldBeOfType<ReflectionValueCheck>();
+            context.FindGrammar("Go").ShouldBeOfType<ValueCheckMethod>();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace StoryTeller
         }
     }
 
+    // SAMPLE:  LineGrammar
     public abstract class LineGrammar : IGrammarWithCells
     {
         // Leave these constructors as public
@@ -34,8 +35,6 @@ namespace StoryTeller
         }
 
         public virtual string Template { get; set; }
-
-        #region IGrammarWithCells Members
 
         public abstract string Description { get; }
 
@@ -54,7 +53,6 @@ namespace StoryTeller
 
             return new Sentence(Template, cells);
         }
-
-        #endregion
     }
+    // END:  LineGrammar
 }

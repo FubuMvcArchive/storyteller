@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using StoryTeller.Domain;
 using StoryTeller.Engine.Reflection;
+using System.Linq;
 
 namespace StoryTeller.Engine
 {
@@ -23,7 +24,12 @@ namespace StoryTeller.Engine
 
         public override void Execute(IStep containerStep, ITestContext context)
         {
-            _callback = value => _method.GetReturnCell().RecordActual(value, containerStep, context);
+            _callback = value =>
+            {
+                var returnCell = GetCells().Where(x => x.IsResult).FirstOrDefault();
+
+                if (returnCell != null) returnCell.RecordActual(value, containerStep, context);
+            };
 
             _method.Call(_target, containerStep, context, _callback);
         }

@@ -78,11 +78,13 @@ namespace StoryTeller.Samples.Grammars
         }
         // END:  GrammarsInConstructor
 
+        // SAMPLE:  ActionMethod
         [FormatAs("Start with the number {number}")]
         public void StartWithTheNumber(int number)
         {
             _number = number;
         }
+        // END:  ActionMethod
 
         [FormatAs("Multiply by {multiplier} then add {delta}")]
         public void MultiplyThenAdd(int multiplier, int delta)
@@ -108,13 +110,20 @@ namespace StoryTeller.Samples.Grammars
             return _number;
         }
 
-        [return: AliasAs("sum")]
+        // SAMPLE:  ValueCheckMethod
         [FormatAs("The sum of {number1} and {number2} should be {sum}")]
         public int TheSumOf(int number1, int number2)
         {
             return number1 + number2;
         }
+        // END:  ValueCheckMethod
 
+        public void ThisLineAlwaysThrowsExceptions()
+        {
+            StoryTellerAssert.Fail("No go!");
+        }
+
+        // SAMPLE:  FactAssertions
         [FormatAs("This line is always true")]
         public bool ThisLineIsAlwaysTrue()
         {
@@ -127,16 +136,11 @@ namespace StoryTeller.Samples.Grammars
             return false;
         }
 
-        public void ThisLineAlwaysThrowsExceptions()
-        {
-            StoryTellerAssert.Fail("No go!");
-        }
-
-
         [FormatAs("{x} + {y} should be {sum}")]
         public bool XplusYShouldBe(int x, int y, int sum)
         {
             return (x + y) == sum;
         }
+        // END:  FactAssertions
     }
 }

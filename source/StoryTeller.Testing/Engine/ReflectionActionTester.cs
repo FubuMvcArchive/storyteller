@@ -65,7 +65,7 @@ namespace StoryTeller.Testing.Engine
         public void creates_grammar_structure()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.DoSomethingWith2(null, 34), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.DoSomethingWith2(null, 34), dooer);
             MethodInfo method = ReflectionHelper.GetMethod<Dooer>(x => x.DoSomethingWith2(null, 34));
 
 
@@ -77,7 +77,7 @@ namespace StoryTeller.Testing.Engine
         public void execute_the_void_action_and_missing_an_argument()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.DoSomethingWith(null, 34), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.DoSomethingWith(null, 34), dooer);
 
             var step = new Step("something", x => { x.Set("name", "Josh"); });
 
@@ -91,7 +91,7 @@ namespace StoryTeller.Testing.Engine
         public void execute_the_void_action_that_would_catch_an_exception()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.MethodThatThrowsException(), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.MethodThatThrowsException(), dooer);
 
             var step = new Step();
             var results = action.Execute(step);
@@ -104,7 +104,7 @@ namespace StoryTeller.Testing.Engine
         public void execute_the_void_action_with_a_parse_error()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.DoSomethingWith(null, 34), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.DoSomethingWith(null, 34), dooer);
 
             var step = new Step("something", x =>
             {
@@ -123,7 +123,7 @@ namespace StoryTeller.Testing.Engine
         public void execute_the_void_action_with_all_the_arguments()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.DoSomethingWith(null, 34), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.DoSomethingWith(null, 34), dooer);
 
             var step = new Step("something", x =>
             {
@@ -141,7 +141,7 @@ namespace StoryTeller.Testing.Engine
         public void executing_with_an_exception_in_the_target_method_increments_the_exception_count()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.MethodThatThrowsException(), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.MethodThatThrowsException(), dooer);
             var step = new Step("a");
 
             action.Execute(step, _testContext);
@@ -153,7 +153,7 @@ namespace StoryTeller.Testing.Engine
         public void get_template_for_the_method_if_attribute_is_found()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.DoSomethingWith2(null, 34), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.DoSomethingWith2(null, 34), dooer);
 
             action.Template.ShouldEqual("{name} is {age}");
         }
@@ -162,7 +162,7 @@ namespace StoryTeller.Testing.Engine
         public void get_template_for_the_method_if_no_attribute_is_found()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(x => x.DoSomethingWith(null, 34), dooer);
+            ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.DoSomethingWith(null, 34), dooer);
 
             action.Template.ShouldEqual("DoSomethingWith {name}, {age}");
         }
@@ -171,7 +171,7 @@ namespace StoryTeller.Testing.Engine
         public void ignores_Testcontext_and_non_simple_types_when_building_a_grammar_structure()
         {
             var dooer = new Dooer();
-            ReflectionAction action = ReflectionAction.Create(
+            ActionMethodGrammar action = ActionMethodGrammar.Create(
                 x => x.DoSomethingUsingContextAndAddress(null, null, null), dooer);
             MethodInfo method =
                 ReflectionHelper.GetMethod<Dooer>(x => x.DoSomethingUsingContextAndAddress(null, null, null));

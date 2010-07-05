@@ -23,6 +23,8 @@ namespace Examples.Fixtures
         {
 
             _browser = browser;
+
+            // SAMPLE:  InlineActions
             // Create a Sentence grammar inline that performs a simple action
             this["JustDoSomething"] = Do("I want to do something", () => Debug.WriteLine("I did something"));
 
@@ -48,7 +50,7 @@ namespace Examples.Fixtures
                 // Perform a special action of some sort with access
                 // to both the current IStep and ITestContext
             });
-
+            // END:  InlineActions
 
             this["ScriptedActions"] = Paragraph("Do a bunch of stuff", x =>
             {

@@ -16,13 +16,13 @@ namespace StoryTeller.Testing.Engine
         public void cannot_make_an_assertion_out_of_a_method_that_does_not_return_bool()
         {
             MethodInfo method = typeof (AssertionFixture).GetMethod("NotAMethod");
-            new ReflectionAssertion(method, new AssertionFixture());
+            new FactAssertion(method, new AssertionFixture());
         }
 
         [Test]
         public void execute_successfully()
         {
-            ReflectionAssertion assertion = ReflectionAssertion.Create(x => x.Success(), new AssertionFixture());
+            FactAssertion assertion = FactAssertion.Create(x => x.Success(), new AssertionFixture());
             var step = new Step();
 
             var context = new TestContext();
@@ -37,7 +37,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void execute_with_exception()
         {
-            ReflectionAssertion assertion = ReflectionAssertion.Create(x => x.Exception(), new AssertionFixture());
+            FactAssertion assertion = FactAssertion.Create(x => x.Exception(), new AssertionFixture());
             var step = new Step();
 
             var context = new TestContext();
@@ -53,7 +53,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void execute_with_false()
         {
-            ReflectionAssertion assertion = ReflectionAssertion.Create(x => x.Failure(), new AssertionFixture());
+            FactAssertion assertion = FactAssertion.Create(x => x.Failure(), new AssertionFixture());
             var step = new Step();
             var context = new TestContext();
 
@@ -67,7 +67,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void get_the_cells()
         {
-            ReflectionAssertion assertion = ReflectionAssertion.Create(x => x.MethodWithArgs(null, 0),
+            FactAssertion assertion = FactAssertion.Create(x => x.MethodWithArgs(null, 0),
                                                                        new AssertionFixture());
             IList<Cell> actual = assertion.GetCells();
             var expected = new List<Cell>

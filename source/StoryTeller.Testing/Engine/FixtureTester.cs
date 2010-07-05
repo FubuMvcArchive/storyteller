@@ -90,7 +90,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void inner_grammar_should_be_created_to_match_the_method()
         {
-            var inner = grammar.ShouldBeOfType<TableGrammar>().InnerGrammar.ShouldBeOfType<ReflectionValueCheck>();
+            var inner = grammar.ShouldBeOfType<TableGrammar>().InnerGrammar.ShouldBeOfType<ValueCheckMethod>();
             inner.GetCells().Count.ShouldEqual(3);
         }
 

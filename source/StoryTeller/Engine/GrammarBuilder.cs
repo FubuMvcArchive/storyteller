@@ -13,8 +13,8 @@ namespace StoryTeller.Engine
             }
 
             IGrammar basicGrammar = method.HasReturn()
-                                        ? (IGrammar) new ReflectionValueCheck(method, target)
-                                        : new ReflectionAction(method, target);
+                                        ? (IGrammar) new ValueCheckMethod(method, target)
+                                        : new ActionMethodGrammar(method, target);
 
             var tableAtt = method.GetAttribute<ExposeAsTableAttribute>();
             return tableAtt == null

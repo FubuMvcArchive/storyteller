@@ -282,7 +282,7 @@ namespace StoryTeller.Testing.Engine
 
             context.LoadFixture(new SomethingElseFixture(), new StubTestPart());
 
-            context.FindGrammar("Go").ShouldBeOfType<ReflectionValueCheck>();
+            context.FindGrammar("Go").ShouldBeOfType<ValueCheckMethod>();
         }
 
         [Test]
