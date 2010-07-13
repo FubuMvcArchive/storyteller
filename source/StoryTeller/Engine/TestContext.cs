@@ -114,6 +114,8 @@ namespace StoryTeller.Engine
             _container.Inject<ITestContext>(this);
             _container.Inject(test);
 
+            _container.Configure(x => x.For<IFixture>().AlwaysUnique());
+
             Finder = new ObjectFinder();
 
             StartupActionNames = new string[0];
@@ -229,6 +231,9 @@ namespace StoryTeller.Engine
 
         public void LoadFixture<T>(ITestPart part) where T : IFixture
         {
+            // TEMP HACKERY!!!!
+            _container.Configure(x => x.For<T>().AlwaysUnique());
+
             var fixture = _container.GetInstance<T>();
             LoadFixture(fixture, part);
         }

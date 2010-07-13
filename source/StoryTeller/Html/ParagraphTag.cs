@@ -17,10 +17,11 @@ namespace StoryTeller.Html
 
             AddClass("paragraph");
             AddClass(paragraph.Style.ToString());
+            
 
             if (paragraph.Style == EmbedStyle.TitledAndIndented)
             {
-                Add("div").AddClass("paragraph-title").Text(paragraph.Label);
+                Add("div").AddClass("paragraph-title").Text(paragraph.Label).Title(paragraph.Name);
             }
         }
     }

@@ -2,6 +2,7 @@ using HtmlTags;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Model;
+using FubuCore;
 
 namespace StoryTeller.Html
 {
@@ -17,7 +18,7 @@ namespace StoryTeller.Html
             _section = section;
             _fixture = fixture;
 
-            Add("h3").Text(_fixture.Label ?? _fixture.Name).AddClass(HtmlClasses.SECTION_TITLE);
+            Add("h3").Text(_fixture.Label ?? _fixture.Name).AddClass(HtmlClasses.SECTION_TITLE).Title(fixture.FixtureClassName);
 
             AddClass("section");
 
@@ -49,7 +50,7 @@ namespace StoryTeller.Html
 
             if (section.Style == EmbedStyle.TitledAndIndented)
             {
-                Add("h3").AddClass("embedded-title").Text(section.Label);
+                Add("h3").AddClass("embedded-title").Text(section.Label).Title("{0} (Embeds {1})".ToFormat(section.Name, section.Fixture.FixtureClassName));
             }
         }
 
