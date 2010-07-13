@@ -8,8 +8,9 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Exploring
 {
-
-    public class TestResultsLoaded{}
+    public class TestResultsLoaded
+    {
+    }
 
     public class TestExplorer : ITestExplorer
                                 , IListener<TestAddedMessage>
@@ -29,12 +30,12 @@ namespace StoryTeller.UserInterface.Exploring
         private readonly SuiteNavigator _navigator;
         private readonly SuiteNodeCache _suiteNodes = new SuiteNodeCache();
         private readonly TestNodeCache _testNodes = new TestNodeCache();
-        private readonly object _locker = new object();
 
         private readonly IExplorerView _view;
         private Hierarchy _hierarchy;
 
-        public TestExplorer(IExplorerView view, IEventAggregator events, ITestFilterBar filterBar, ITestFilter filter, IIconService icons)
+        public TestExplorer(IExplorerView view, IEventAggregator events, ITestFilterBar filterBar, ITestFilter filter,
+                            IIconService icons)
         {
             _view = view;
             _events = events;
@@ -43,24 +44,20 @@ namespace StoryTeller.UserInterface.Exploring
 
             if (filterBar != null) filterBar.Observer = this;
             _navigator = new SuiteNavigator
-            {
-                TestFilter = _filter.Matches,
-                SuiteFilter = _filter.Matches
-            };
+                         {
+                             TestFilter = _filter.Matches,
+                             SuiteFilter = _filter.Matches
+                         };
         }
-
 
         #region IListener<ClearResultsMessage> Members
 
         public void Handle(ClearResultsMessage message)
         {
-            lock (_locker)
-            {
-                _hierarchy.ClearResults();
-                eachNode(x => x.Icon = Icon.Unknown);
+            _hierarchy.ClearResults();
+            eachNode(x => x.Icon = Icon.Unknown);
 
-                ResetFilter();
-            }
+            ResetFilter();
         }
 
         #endregion
@@ -71,6 +68,15 @@ namespace StoryTeller.UserInterface.Exploring
         {
             TreeNode testNode = _testNodes[message.Test];
             _suiteNodes[message.Parent].Remove(testNode);
+        }
+
+        #endregion
+
+        #region IListener<ProjectLoaded> Members
+
+        public void Handle(ProjectLoaded message)
+        {
+            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
         }
 
         #endregion
@@ -107,42 +113,60 @@ namespace StoryTeller.UserInterface.Exploring
 
         #endregion
 
+        #region IListener<TestResultsLoaded> Members
+
+        public void Handle(TestResultsLoaded message)
+        {
+            _testNodes.Each((test, node) => { updateIcon(test, _icons.IconFor(test)); });
+
+            ResetFilter();
+        }
+
+        #endregion
+
         #region IListener<TestRunEvent> Members
 
         public void Handle(TestRunEvent message)
         {
-            lock (_locker)
+            Icon icon = Icon.Unknown;
+            Test test = message.Test;
+
+            switch (message.State)
             {
-                Icon icon = Icon.Unknown;
-                Test test = message.Test;
+                case TestState.Queued:
+                    icon = Icon.Pending;
+                    break;
 
-                switch (message.State)
-                {
-                    case TestState.Queued:
-                        icon = Icon.Pending;
-                        break;
+                case TestState.Executing:
+                    icon = Icon.Pending;
 
-                    case TestState.Executing:
-                        icon = Icon.Pending;
+                    if (test.HasResult())
+                    {
+                        icon = test.WasSuccessful() ? Icon.RunningSuccess : Icon.RunningFailure;
+                    }
+                    break;
 
-                        if (test.HasResult())
-                        {
-                            icon = test.WasSuccessful() ? Icon.RunningSuccess : Icon.RunningFailure;
-                        }
-                        break;
-
-                    case TestState.NotQueued:
-                        if (message.Test.HasResult())
-                        {
-                            icon = message.Test.WasSuccessful() ? Icon.Success : Icon.Failed;
-                        }
-                        break;
-                }
-
-                updateIcon(message.Test, icon);
-
-                ResetFilter();
+                case TestState.NotQueued:
+                    if (message.Test.HasResult())
+                    {
+                        icon = message.Test.WasSuccessful() ? Icon.Success : Icon.Failed;
+                    }
+                    break;
             }
+
+            updateIcon(message.Test, icon);
+
+            ResetFilter();
+        }
+
+        #endregion
+
+        #region IListener<WorkflowFiltersChanged> Members
+
+        public void Handle(WorkflowFiltersChanged message)
+        {
+            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
+            ResetFilter();
         }
 
         #endregion
@@ -174,7 +198,10 @@ namespace StoryTeller.UserInterface.Exploring
             return suite.GetAllTests().Where(_filter.Matches);
         }
 
-        public Hierarchy CurrentHierarchy { get { return _hierarchy; } }
+        public Hierarchy CurrentHierarchy
+        {
+            get { return _hierarchy; }
+        }
 
         public virtual void ResetFilter()
         {
@@ -240,30 +267,6 @@ namespace StoryTeller.UserInterface.Exploring
         {
             _suiteNodes.Each(action);
             _testNodes.Each(action);
-        }
-
-        public void Handle(ProjectLoaded message)
-        {
-            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
-        }
-
-        public void Handle(WorkflowFiltersChanged message)
-        {
-            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
-            ResetFilter();
-        }
-
-        public void Handle(TestResultsLoaded message)
-        {
-            lock (_locker)
-            {
-                _testNodes.Each((test, node) =>
-                {
-                    updateIcon(test, _icons.IconFor(test));
-                });
-
-                ResetFilter();
-            }
         }
     }
 }

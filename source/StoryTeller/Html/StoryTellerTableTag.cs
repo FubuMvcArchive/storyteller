@@ -18,6 +18,7 @@ namespace StoryTeller.Html
         private readonly IStep _step;
         private readonly Table _table;
         private TableRowTag _headerRow;
+        private Table.TableWriter _writer;
 
         public StoryTellerTableTag(Table table, IStep step)
         {
@@ -26,12 +27,16 @@ namespace StoryTeller.Html
 
             _table = table;
             _step = step;
+
+            _writer = table.GetWriter(_step);
+
             Attr("cellpadding", "0").Attr("cellspacing", "0");
 
             AddHeaderRow(x =>
             {
                 _headerRow = x;
-                _table.Cells.Each(cell => x.Header(cell.Header));
+
+                _writer.DisplayCells.Each(cell => x.Header(cell.Header));
             });
         }
 
@@ -49,7 +54,7 @@ namespace StoryTeller.Html
         {
             AddBodyRow(row =>
             {
-                _table.Cells.Each(cell =>
+                _writer.DisplayCells.Each(cell =>
                 {
                     var tag = new CellTag(cell, step);
                     tag.WritePreview(context);
@@ -77,7 +82,7 @@ namespace StoryTeller.Html
                 StepResults results = context.ResultsFor(step);
                 results.Collapse();
 
-                _table.Cells.Each(cell =>
+                _writer.DisplayCells.Each(cell =>
                 {
                     
                     var tag = new CellTag(cell, step);
