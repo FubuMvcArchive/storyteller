@@ -113,7 +113,10 @@ namespace StoryTeller.Execution
 
         public TestResult RunTest(TestExecutionRequest request)
         {
-            return _proxy.RunTest(request);
+            lock (_locker)
+            {
+                return _proxy.RunTest(request);
+            }
         }
 
         public void AbortCurrentTest()

@@ -38,7 +38,7 @@ namespace StoryTeller.Testing
         {
             var runner =
                 new ProjectRunner(new string[]
-                {@"c:\svn\bluestoryteller\storyteller.xml"}, @"c:\svn\bluestoryteller\results");
+                {@"c:\svn\bluestoryteller\RuleTests.xml", @"c:\svn\bluestoryteller\storyteller.xml"}, @"c:\svn\bluestoryteller\results");
 
             runner.Execute();
         }
