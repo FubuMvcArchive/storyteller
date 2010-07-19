@@ -73,6 +73,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Fixtures\ParkingExpiryFixture.cs" />
     <Compile Include="GrammarMarker.cs" />
     <Compile Include="GrammarSystem.cs" />
     <Compile Include="Fixtures\CheckObjectFixture.cs" />

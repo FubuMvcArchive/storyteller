@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using FubuCore.Reflection;
+using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Engine.Reflection;
 using FubuCore;
@@ -26,6 +27,8 @@ namespace StoryTeller.Engine
         void ReadArgument(ITestContext context, IStep step, Action<object> continuation);
     }
 
+
+
     [Serializable]
     public class Cell : ICell
     {
@@ -35,6 +38,8 @@ namespace StoryTeller.Engine
         private string _key;
         [NonSerialized] private SelectionValuesAttribute _selectionAttribute;
         private IList<string> _selectionValues = new List<string>();
+        private readonly Cache<string, string> _tags = new Cache<string,string>(key => null);
+        
 
         public Cell(ParameterInfo parameter)
         {
@@ -51,6 +56,8 @@ namespace StoryTeller.Engine
 
             readAttributes(parameter);
         }
+
+        
 
         public Cell(PropertyInfo property)
         {
@@ -82,7 +89,13 @@ namespace StoryTeller.Engine
         }
 
 
-
+        public Indexer<string, string> Tags
+        {
+            get
+            {
+                return new Indexer<string, string>(key => _tags[key], (key, value) => _tags[key] = value);
+            }
+        }
 
         public IList<string> SelectionValues { get { return _selectionValues; } set { _selectionValues = value; } }
 
