@@ -13,18 +13,18 @@ ST.testEditor = function (editor, test) {
 
         editor.isLatched = false;
     }
-
+    
     $('.testName', editor).html(test.Name);
 
     var metadata = $(editor.inner).metadata();
-    $(editor.inner).sectionEditor(metadata, test);
 
+    $(editor.inner).sectionEditor(metadata, test);
     editor.getStepNames = function () {
         return editor.inner.getStepNames();
     }
 
     editor.isLatched = false;
-
+    
     return editor;
 }
 

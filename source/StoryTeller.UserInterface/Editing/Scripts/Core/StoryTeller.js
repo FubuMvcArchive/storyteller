@@ -37,16 +37,18 @@ $.fn.dirtyable = function() {
     });
 }
 
-$.fn.markDirty = function() {
-    return this.each(function(index, element) {
-        $('#testEditor').get(0).markDirty();
+$.fn.markDirty = function () {
+    return this.each(function (index, element) {
+        $('.test-editor').each(function(y, editor) {
+            if ($.isFunction(editor.markDirty)) editor.markDirty();
+        });
 
-//        $(element).closest('.test-editor').each(function(y, editor) {
-//            alert('markDirty');
-//            alert(editor.markDirty);
-//            alert($(editor).html());
-//            if ($.isFunction(editor.markDirty)) editor.markDirty();
-//        });
+        //        $(element).closest('.test-editor').each(function(y, editor) {
+        //            alert('markDirty');
+        //            alert(editor.markDirty);
+        //            alert($(editor).html());
+        //            if ($.isFunction(editor.markDirty)) editor.markDirty();
+        //        });
     });
 }
 

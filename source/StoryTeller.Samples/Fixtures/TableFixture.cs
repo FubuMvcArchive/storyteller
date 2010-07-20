@@ -45,6 +45,17 @@ namespace StoryTeller.Samples.Grammars
                 Paragraph("Throws an Error before we even start", x => { x += Read<double>("x", o => { }); }).AsTable(
                     "Throw error on the After").After(() => { throw new NotImplementedException(); });
         }
+
+        [ExposeAsTable("Table with lots of options")]
+        public void TableWithLotsOfOptions(
+            int a,
+            [Default("2")] int b,
+            [Default("3")] int c,
+            [Default("4")] int d,
+            [Default("5")] int e)
+        {
+            
+        }
     }
 
 

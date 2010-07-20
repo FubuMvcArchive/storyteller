@@ -80,7 +80,7 @@ ST.sectionEditor = function (section, metadata, step) {
             section.addStep(metadata.autoSelectKey);
         }
     }
-
+    
     section.stepsChanged();
     section.isLatched = false;
     section.holder.show();

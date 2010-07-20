@@ -1,5 +1,5 @@
 ﻿
-ST.tableEditor = function(div, metadata, step) {
+ST.tableEditor = function (div, metadata, step) {
     div.step = step;
     div.columns = new TableColumns($('table.templates', div).get(0));
     div.selector = new ColumnSelector(div);
@@ -9,53 +9,51 @@ ST.tableEditor = function(div, metadata, step) {
 
     $('.deleteStep').removable();
 
-    div.addColumn = function(column) {
+    div.addColumn = function (column) {
         div.columns.addColumn(column);
         div.selector.hideColumn(column);
 
         div.rebuildTable();
     }
 
-    div.removeColumn = function(column) {
+    div.removeColumn = function (column) {
         div.update();
 
-        $(div.leaf.children).each(function(i, step) {
+        $(div.leaf.children).each(function (i, step) {
             step.remove(column);
         });
 
+        div.columns.removeColumn(column);
         div.selector.showColumn(column);
 
         div.rebuildTable();
     }
 
-    div.rebuildTable = function() {
+    div.rebuildTable = function () {
         div.thead.empty();
         var header = div.columns.headerRow();
         div.thead.append(header);
 
         div.tbody.empty();
-        $(div.leaf.children).each(function(i, step) {
+        $(div.leaf.children).each(function (i, step) {
             div.add(step);
         });
 
         var columnCount = header.children.length;
         $('tfoot > tr > td', div).attr('colspan', columnCount);
 
-
-        var hiddenColumnCount = $(':visible', div.selector).length;
-
-        if (hiddenColumnCount == 0) {
-            $('.column-selector', div).hide();
+        if (this.columns.hasInactiveColumns()) {
+            div.selector.show();
         }
         else {
-            $('.column-selector', div).show();
+            div.selector.hide();
         }
     }
 
-    div.update = function() {
+    div.update = function () {
         div.leaf.children = [];
 
-        $('tr', div.tbody).each(function(i, tr) {
+        $('tr', div.tbody).each(function (i, tr) {
             var step = tr.update();
             div.leaf.children.push(step);
         });
@@ -63,7 +61,7 @@ ST.tableEditor = function(div, metadata, step) {
         return div.step;
     }
 
-    div.add = function(step) {
+    div.add = function (step) {
         if (step == null || !step.isStep) {
             step = new Step('row');
         }
@@ -76,7 +74,7 @@ ST.tableEditor = function(div, metadata, step) {
         return false;
     }
 
-    div.cloneLast = function() {
+    div.cloneLast = function () {
         var lastRow = $('tr:last', div.tbody).get(0);
         var newStep = lastRow.step.simpleClone();
         div.add(newStep);
@@ -85,7 +83,7 @@ ST.tableEditor = function(div, metadata, step) {
         return false;
     }
 
-    div.rowRemoved = function() {
+    div.rowRemoved = function () {
         if (div.tbody.children().length == 0) {
             $('.cloner', div).hide();
         }
@@ -108,6 +106,7 @@ ST.registerGrammar('.table-editor', ST.tableEditor);
 
 function ColumnSelector(div){
     var self = this;
+    self.container = $('.column-selector', div);
 
     $('a.column-adder', div).click(function(){
         var column = $(this).metadata().key;
@@ -116,9 +115,9 @@ function ColumnSelector(div){
         return false;
     });
 
-    self.showColumns = function(tableColumns){
+    self.showColumns = function (tableColumns) {
         $('a.column-adder', div).hide();
-        tableColumns.columns.forHiddenCells(function(column){
+        tableColumns.columns.forHiddenCells(function (column) {
             self.showColumn(column);
         });
     }
@@ -134,6 +133,14 @@ function ColumnSelector(div){
     
     self.showColumn = function(column){
         self.findColumn(column).show();
+    }
+
+    self.hide = function () {
+        self.container.hide();
+    }
+
+    self.show = function () {
+        self.container.show();
     }
 
     
@@ -168,7 +175,17 @@ function ColumnList(){
             }
         }
     }
-    
+
+    self.hasInactiveColumns = function () {
+        for (prop in self) {
+            if (self[prop] == false) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     return self;
 }
 
@@ -178,7 +195,7 @@ $.fn.tableColumns = function(){
     });
 }
 
-function TableColumns(table){
+function TableColumns(table) {
     table.columns = new ColumnList();
 
     table.chooseColumns = function(leaf){
@@ -192,8 +209,8 @@ function TableColumns(table){
         
         table.rebuildTemplates();
     }
-    
-    table.removeColumn = function(columnName){
+
+    table.removeColumn = function (columnName) {
         table.columns[columnName] = false;
         table.rebuildTemplates();
     }
@@ -202,15 +219,15 @@ function TableColumns(table){
         table.columns[columnName] = true;
         table.rebuildTemplates();
     }
-    
-    table.rebuildTemplates = function(){
+
+    table.rebuildTemplates = function () {
         table.header = $('<tr></tr>').get(0);
         table.body = $('<tr></tr>').get(0);
-        
-        $('th.command', table).appendTo(table.header);
-        $('td.command', table).appendTo(table.body);
-        
-        table.columns.forCells(function(column){
+
+        $('th.command', table).clone().appendTo(table.header);
+        $('td.command', table).clone().appendTo(table.body);
+
+        table.columns.forCells(function (column) {
             $('th.' + column, table).clone().appendTo(table.header);
             $('td.' + column, table).clone().appendTo(table.body);
         });
@@ -223,25 +240,28 @@ function TableColumns(table){
     table.bodyRow = function(step){
         return $(table.body).clone().bodyRow(step);
     }
-    
-    
+
+
+    table.hasInactiveColumns = function () {
+        return table.columns.hasInactiveColumns();
+    }
     
     return table;
 }
 
-$.fn.headerRow = function(){
+$.fn.headerRow = function () {
     var tr = this.get(0);
-    
-    tr.getCell = function(cellName){
+
+    tr.getCell = function (cellName) {
         return $('th.' + cellName, tr).get(0);
     }
-    
-    $('.column-remover', tr).click(function(){
+
+    $('.column-remover', tr).click(function () {
         var column = $(this).metadata().key;
         $(this).closest('.table-editor').get(0).removeColumn(column);
         return false;
     });
-    
+
     return tr;
 }
 
