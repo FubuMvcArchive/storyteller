@@ -199,19 +199,6 @@ namespace StoryTeller.Testing.Engine
             fixture1.AssertWasCalled(x => x.TearDown());
         }
 
-        [Test]
-        public void executing_calls_listener_before_and_after()
-        {
-            var test = new Test("some test");
-            var listener = MockRepository.GenerateMock<ITestObserver>();
-            var context = new TestContext(new Container(), test, listener);
-
-            context.Execute();
-
-            listener.AssertWasCalled(x => x.StartTest(test, context.Counts));
-            listener.AssertWasCalled(x => x.FinishTest(test));
-        }
-
 
         [Test]
         public void increment_exceptions()
@@ -380,13 +367,16 @@ namespace StoryTeller.Testing.Engine
             context.Execute();
 
             observer.StepsRun.ShouldEqual(3);
+            observer.StepsRun = 0;
 
             observer.StepsAllowed = 2;
+
             context.Execute();
             observer.StepsRun.ShouldEqual(2);
 
-
+            observer.StepsRun = 0;
             observer.StepsAllowed = 200;
+
             context.Execute();
             observer.StepsRun.ShouldEqual(10);
         }

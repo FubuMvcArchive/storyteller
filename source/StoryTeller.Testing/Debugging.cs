@@ -37,8 +37,7 @@ namespace StoryTeller.Testing
         public void project_runner_smoke_tester()
         {
             var runner =
-                new ProjectRunner(new string[]
-                {@"c:\svn\blue\RuleTests.xml"}, @"c:\svn\blue\results");
+                new ProjectRunner(new string[] { @"c:\svn\blue\RuleTests.xml", @"c:\svn\blue\SDKTests.xml", @"c:\svn\blue\Storyteller.xml" }, @"c:\svn\blue\results");
 
             runner.Execute();
         }

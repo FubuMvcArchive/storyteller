@@ -58,6 +58,8 @@ namespace StoryTeller.Engine
 
         internal TestResult Execute()
         {
+            _listener.StartTest(_request.Test, _result.Counts);
+
             Stopwatch timer = Stopwatch.StartNew();
 
             _context = new TestContext(_fetchContainer.Build(), _request.Test, _listener)
@@ -85,6 +87,8 @@ namespace StoryTeller.Engine
             timer.Stop();
 
             recordResults(timer);
+
+            _listener.FinishTest(_request.Test);
 
             return _result;
         }
@@ -131,6 +135,8 @@ namespace StoryTeller.Engine
             _result.Counts = _context.Counts;
             _result.ExceptionText = _context.ResultsFor(_request.Test).ExceptionText;
             _result.Html = writeResults();
+
+            _request.Test.LastResult = _result;
         }
 
         private void executeContext()

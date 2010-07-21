@@ -55,7 +55,7 @@ namespace StoryTeller.Testing.Execution
         private StubLibraryListener listener;
 
 
-        [Test]
+        [Test, Explicit]
         public void broadcasts_a_FixtureLibraryLoaded_message_in_recycle()
         {
             listener.TheMessage.ShouldNotBeNull();

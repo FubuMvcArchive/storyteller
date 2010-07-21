@@ -61,8 +61,10 @@ namespace StoryTeller.Engine
 
                 // Setting the LastResult on the test here is just a convenience
                 // for testing
+                
                 TestResult result = _currentRun.Execute();
-                request.Test.LastResult = result;
+                
+                
 
                 return result;
             }

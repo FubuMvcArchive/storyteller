@@ -409,6 +409,8 @@ namespace StoryTeller.Engine
 
         void ITestVisitor.EndSection(Section section)
         {
+            if (shouldStop) return;
+
             storePrincipal();
 
             RevertFixture(section);
@@ -457,13 +459,11 @@ namespace StoryTeller.Engine
 
             try
             {
-                _listener.StartTest(_test, Counts);
-
                 _principal = Thread.CurrentPrincipal;
 
                 executeParts();
 
-                _listener.FinishTest(_test);
+                
             }
             finally
             {
