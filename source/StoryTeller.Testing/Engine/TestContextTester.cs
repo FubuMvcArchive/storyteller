@@ -443,7 +443,7 @@ namespace StoryTeller.Testing.Engine
     public interface ISomethingThatDoesNotExist{}
     public class SomethingThatDoesNotExist : ISomethingThatDoesNotExist {}
 
-    [TestFixture]
+    [TestFixture, Explicit]
     public class when_visiting_fixtures
     {
         [Test]
