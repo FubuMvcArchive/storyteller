@@ -8,16 +8,18 @@ namespace StoryTeller.Execution
 {
     public class TestRunnerDomain : ITestRunnerDomain
     {
+        private readonly object _locker = new object();
         private readonly IEventPublisher _publisher;
         private AppDomain _domain;
-        private TestRunnerProxy _proxy;
-        private readonly object _locker = new object();
         private FixtureLibrary _library;
+        private TestRunnerProxy _proxy;
 
         public TestRunnerDomain(IEventPublisher publisher)
         {
             _publisher = publisher;
         }
+
+        #region ITestRunnerDomain Members
 
         public void LoadProject(IProject project)
         {
@@ -42,9 +44,14 @@ namespace StoryTeller.Execution
                             "\nYou will not be able to execute tests until the StoryTeller.dll file is copied to " +
                             project.GetBinaryFolder();
 
-                        _publisher.Publish(new BinaryRecycleFailure
-                        {
+                        _publisher.Publish(new BinaryRecycleFailure{
                             ErrorMessage = message
+                        });
+                    }
+                    else
+                    {
+                        _publisher.Publish(new BinaryRecycleFailure{
+                            ErrorMessage = ex.ToString()
                         });
                     }
 
@@ -53,34 +60,11 @@ namespace StoryTeller.Execution
                 catch (Exception ex)
                 {
                     Teardown();
-                    _publisher.Publish(new BinaryRecycleFailure
-                    {
+                    _publisher.Publish(new BinaryRecycleFailure{
                         ErrorMessage = ex.ToString()
                     });
                 }
-
-
             }
-        }
-
-        public virtual TestRunnerProxy BuildProxy(IProject project)
-        {
-            var setup = new AppDomainSetup
-            {
-                ApplicationName = "StoryTeller-Testing-" + Guid.NewGuid(),
-                ConfigurationFile = project.ConfigurationFileName,
-                ShadowCopyFiles = "true",
-                ApplicationBase = project.GetBinaryFolder()
-            };
-
-            _domain = AppDomain.CreateDomain("StoryTeller-Testing", null, setup);
-
-            Type proxyType = typeof(TestRunnerProxy);
-            var proxy =
-                (TestRunnerProxy)
-                _domain.CreateInstanceAndUnwrap(proxyType.Assembly.FullName, proxyType.FullName);
-
-            return proxy;
         }
 
         public void Teardown()
@@ -122,8 +106,7 @@ namespace StoryTeller.Execution
         public void AbortCurrentTest()
         {
             _proxy.AbortCurrentTest();
-            _publisher.Publish(new TestStatusMessage
-            {
+            _publisher.Publish(new TestStatusMessage{
                 IsRunning = false,
                 WasCancelled = true
             });
@@ -136,7 +119,8 @@ namespace StoryTeller.Execution
 
         public FixtureLibrary Library
         {
-            get { return _library; } }
+            get { return _library; }
+        }
 
         public void Dispose()
         {
@@ -153,6 +137,27 @@ namespace StoryTeller.Execution
             {
                 Console.WriteLine(e);
             }
+        }
+
+        #endregion
+
+        public virtual TestRunnerProxy BuildProxy(IProject project)
+        {
+            var setup = new AppDomainSetup{
+                ApplicationName = "StoryTeller-Testing-" + Guid.NewGuid(),
+                ConfigurationFile = project.ConfigurationFileName,
+                ShadowCopyFiles = "true",
+                ApplicationBase = project.GetBinaryFolder()
+            };
+
+            _domain = AppDomain.CreateDomain("StoryTeller-Testing", null, setup);
+
+            Type proxyType = typeof (TestRunnerProxy);
+            var proxy =
+                (TestRunnerProxy)
+                _domain.CreateInstanceAndUnwrap(proxyType.Assembly.FullName, proxyType.FullName);
+
+            return proxy;
         }
     }
 }

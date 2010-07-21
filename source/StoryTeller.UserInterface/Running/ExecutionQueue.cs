@@ -148,7 +148,7 @@ namespace StoryTeller.UserInterface.Running
         }
 
         #endregion
-
+        
         #region IListener<CancelTestMessage> Members
 
         public void Handle(CancelTestMessage message)

@@ -145,7 +145,7 @@ namespace StoryTeller.Execution
 
         public void WaitForProcessing()
         {
-            _latch.WaitOne();
+            _latch.WaitOne(30000);
         }
     }
 }

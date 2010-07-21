@@ -53,8 +53,8 @@ namespace StoryTeller.UserInterface.Editing.HTML
             {
                 x.Cell().AddClass("table-add-row").Configure(td =>
                 {
-                    td.ActionLink("add").AddClass("adder");
-                    td.ActionLink("clone").AddClass("cloner");
+                    td.ActionLink("add (ctrl+1)").AddClass("adder");
+                    td.ActionLink("clone (ctrl+2)").AddClass("cloner");
                 });
             })
             .AddFooterRow(x =>

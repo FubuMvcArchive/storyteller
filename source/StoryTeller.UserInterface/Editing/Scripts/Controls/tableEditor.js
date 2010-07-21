@@ -7,6 +7,8 @@ ST.tableEditor = function (div, metadata, step) {
     div.tbody = $('table.editor > tbody', div);
     div.leaf = step.childFor(metadata.leafName);
 
+
+
     $('.deleteStep').removable();
 
     div.addColumn = function (column) {
@@ -82,6 +84,11 @@ ST.tableEditor = function (div, metadata, step) {
 
         return false;
     }
+
+    $(div)
+        .bind("keydown", "ctrl+1", div.add)
+        .bind("keydown", "ctrl+2", div.cloneLast);
+
 
     div.rowRemoved = function () {
         if (div.tbody.children().length == 0) {
