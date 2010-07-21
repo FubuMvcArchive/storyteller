@@ -2,7 +2,7 @@ COMPILE_TARGET = "release"
 require 'albacore'
 require "BuildUtils.rb"
 
-BUILD_NUMBER_BASE = "1.0.0"
+BUILD_NUMBER_BASE = "1.0.1"
 build_number = BUILD_NUMBER_BASE + ".0"
 PRODUCT = "StoryTeller"
 COPYRIGHT = 'Released under the Apache 2.0 License by Jeremy D. Miller and Brandon Behrens';
