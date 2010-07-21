@@ -15,6 +15,7 @@ namespace StoryTeller.Execution
         private SystemLifecycle _lifecycle;
         private IEventPublisher _publisher;
         private ISystem _system;
+        private ITestObserver _listener;
 
         public void Dispose()
         {
@@ -46,7 +47,8 @@ namespace StoryTeller.Execution
 
         public TestResult RunTest(TestExecutionRequest request)
         {
-            _runner.Listener = new UserInterfaceTestObserver(_publisher, request);
+            _runner.Listener = _listener ?? new UserInterfaceTestObserver(_publisher, request);
+
             return _runner.RunTest(request);
         }
 
@@ -70,7 +72,7 @@ namespace StoryTeller.Execution
         public FixtureLibrary StartSystem(FixtureAssembly fixtureAssembly, MarshalByRefObject remotePublisher)
         {
             _publisher = (IEventPublisher)remotePublisher;
-
+            var observer = new FixtureObserver(_publisher);
 
             // TODO -- if fails, do a Thread.Sleep and try again
             _system = fixtureAssembly.System;
@@ -78,6 +80,7 @@ namespace StoryTeller.Execution
             _lifecycle = new SystemLifecycle(_system);
 
             // TODO -- make this be async
+            observer.RecordStatus("Setting up the environment");
             _lifecycle.StartApplication();
 
             try
@@ -88,11 +91,15 @@ namespace StoryTeller.Execution
                 var container = registry.BuildContainer();
                 
 
-                var observer = new FixtureObserver(_publisher);
+                
                 
                 var library = TestRunnerBuilder.BuildLibrary(_system, observer, container, fixtureAssembly.Filter.CreateTypeFilter());
                 var containerSource = new FixtureContainerSource(container);
                 _runner = new TestRunner(_lifecycle, library, containerSource);
+                if (_listener != null)
+                {
+                    _runner.Listener = _listener;
+                }
 
                 return library;
             }
@@ -104,6 +111,11 @@ namespace StoryTeller.Execution
             {
                 throw new TestEngineFailureException(e.ToString());
             }
+        }
+
+        public void UseTeamCityListener()
+        {
+            _listener = new TeamCityTestListener();
         }
     }
 }

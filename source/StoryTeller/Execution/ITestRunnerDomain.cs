@@ -17,6 +17,7 @@ namespace StoryTeller.Execution
         bool IsExecuting();
 
         FixtureLibrary Library { get; }
+        void UseTeamCityListener();
     }
 
 

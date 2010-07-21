@@ -1,5 +1,7 @@
+using System;
 using System.Threading;
 using StoryTeller.Domain;
+using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
 using FubuCore;
@@ -61,7 +63,11 @@ namespace StoryTeller.Execution
 
         public IProject Project { get { return _project; } set { _project = value; } }
 
-
+        public void LoadSynchronously(IProject project)
+        {
+            _project = project;
+            performReload();
+        }
 
         public void RunTest(Test test)
         {
@@ -146,6 +152,11 @@ namespace StoryTeller.Execution
         public void WaitForProcessing()
         {
             _latch.WaitOne(30000);
+        }
+
+        public void UseTeamCityListener()
+        {
+            _domain.UseTeamCityListener();
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace StoryTeller
 {
@@ -21,7 +22,7 @@ namespace StoryTeller
     {
         public void Publish(object message)
         {
-            Debug.WriteLine(message);
+            // Do nothing
         }
 
         public override object InitializeLifetimeService()
@@ -51,8 +52,11 @@ namespace StoryTeller
         {
             if (message == null) return;
 
-            var callerType = typeof(Caller<>).MakeGenericType(message.GetType());
-            Activator.CreateInstance(callerType, message, _aggregator);
+            ThreadPool.QueueUserWorkItem(o =>
+            {
+                var callerType = typeof(Caller<>).MakeGenericType(message.GetType());
+                Activator.CreateInstance(callerType, message, _aggregator);
+            });
         }
 
         public override object InitializeLifetimeService()
@@ -64,6 +68,7 @@ namespace StoryTeller
         {
             public Caller(T message, IEventAggregator events)
             {
+
                 events.SendMessage(message);
             }
         }

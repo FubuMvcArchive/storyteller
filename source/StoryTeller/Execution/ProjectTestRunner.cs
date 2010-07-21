@@ -48,7 +48,8 @@ namespace StoryTeller.Execution
             _project = getProject();
             _engine = new TestEngine();
             _engine.Handle(new ProjectLoaded(_project));
-
+            _engine.UseTeamCityListener();
+            
 
             _hierarchy = _project.LoadTests();
         }

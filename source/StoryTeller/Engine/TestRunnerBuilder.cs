@@ -62,11 +62,15 @@ namespace StoryTeller.Engine
                 observer.RecordStatus("Starting to rebuild the fixture model");
 
                 var context = new TestContext(container);
+                observer.RecordStatus("Setting up the system environment");
                 system.SetupEnvironment();
+
+                observer.RecordStatus("Registering the system services");
                 system.RegisterServices(context);
 
                 builder.Finder = context.Finder;
                 
+                observer.RecordStatus("Starting to read fixtures");
                 return builder.Build(context);
             }
             finally

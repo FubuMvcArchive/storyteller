@@ -17,8 +17,6 @@ namespace StoryTeller.Execution
 
         public void WatchBinariesAt(string directory)
         {
-            Debug.WriteLine("watching binaries at " + directory);
-
             cleanUpWatcher();
 
             _watcher = new FileSystemWatcher(directory, "*.dll");

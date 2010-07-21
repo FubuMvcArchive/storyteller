@@ -32,11 +32,7 @@ namespace StoryTeller.Engine
 
         public void StartApplication()
         {
-            lock (_locker)
-            {
-                _system.SetupEnvironment();
-                _environmentIsInitialized = true;
-            }
+            ensureEnvironmentInitialized();
         }
 
         protected void tearDownEnvironment()

@@ -122,6 +122,18 @@ namespace StoryTeller.Execution
             get { return _library; }
         }
 
+        private ITestObserver _listener;
+        private bool _useTeamCityListener;
+
+        public void UseTeamCityListener()
+        {
+            _useTeamCityListener = true;
+            if (_proxy != null)
+            {
+                _proxy.UseTeamCityListener();
+            }
+        }
+
         public void Dispose()
         {
             try
@@ -156,6 +168,8 @@ namespace StoryTeller.Execution
             var proxy =
                 (TestRunnerProxy)
                 _domain.CreateInstanceAndUnwrap(proxyType.Assembly.FullName, proxyType.FullName);
+
+            if (_useTeamCityListener) proxy.UseTeamCityListener();
 
             return proxy;
         }

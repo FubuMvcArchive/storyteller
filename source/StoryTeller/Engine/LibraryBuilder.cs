@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+
 using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Model;
@@ -112,8 +114,13 @@ namespace StoryTeller.Engine
         {
             try
             {
+                var timer = new Stopwatch();
+                timer.Start();
                 var fixture = instance.Get<IFixture>();
                 ReadFixture(instance.Name, fixture);
+                timer.Stop();
+
+                Console.WriteLine("Fixture {0} read in {1} milliseconds", fixture.Name, timer.ElapsedMilliseconds);
             }
             catch (Exception e)
             {

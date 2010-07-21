@@ -50,6 +50,12 @@ namespace StoryTeller.Execution
         public FixtureLibrary Library
         {
             get { throw new NotImplementedException(); } }
+
+        
+        public void UseTeamCityListener()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public class InProcessTestEngine : TestEngine

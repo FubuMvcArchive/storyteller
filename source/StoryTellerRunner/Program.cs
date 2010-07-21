@@ -21,6 +21,7 @@ namespace StoryTellerRunner
             string resultsFile = args.Last();
             var projectFiles = args.Take(args.Length - 1);
             var runner = new ProjectRunner(projectFiles, resultsFile);
+            
 
             return runner.Execute();
         }

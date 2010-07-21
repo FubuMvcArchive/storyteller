@@ -38,7 +38,7 @@ namespace StoryTeller.Testing
         {
             var runner =
                 new ProjectRunner(new string[]
-                {@"c:\svn\bluestoryteller\RuleTests.xml", @"c:\svn\bluestoryteller\storyteller.xml"}, @"c:\svn\bluestoryteller\results");
+                {@"c:\svn\blue\RuleTests.xml"}, @"c:\svn\blue\results");
 
             runner.Execute();
         }
@@ -56,8 +56,9 @@ namespace StoryTeller.Testing
             var project = Project.LoadFromFile(@"C:\svn\blue\storyteller.xml");
             var writer = new FixtureLibraryErrorWriter();
             var engine = new TestEngine();
-            engine.Handle(new ProjectLoaded(project));
-            engine.WaitForProcessing();
+            engine.LoadSynchronously(project);
+            //engine.Handle(new ProjectLoaded(project));
+            //engine.WaitForProcessing();
             writer.BuildReport(engine.Library).OpenInBrowser();
         }
 
