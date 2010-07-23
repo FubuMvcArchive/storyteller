@@ -56,6 +56,11 @@ namespace StoryTeller.Engine
             return InnerGrammar.GetCells();
         }
 
+        public void ExecuteCurriedStep(IStep step, ITestContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         public string LeafName()

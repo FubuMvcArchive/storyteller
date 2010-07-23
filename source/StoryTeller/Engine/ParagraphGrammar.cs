@@ -72,6 +72,11 @@ namespace StoryTeller.Engine
             return cells;
         }
 
+        public void ExecuteCurriedStep(IStep step, ITestContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         public GrammarStructure ToStructure(FixtureLibrary library)
         {
             List<GrammarStructure> list =

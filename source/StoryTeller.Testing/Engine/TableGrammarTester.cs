@@ -146,6 +146,11 @@ namespace StoryTeller.Testing.Engine
             return new List<Cell>();
         }
 
+        public void ExecuteCurriedStep(IStep step, ITestContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

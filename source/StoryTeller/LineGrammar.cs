@@ -10,6 +10,7 @@ namespace StoryTeller
     public interface IGrammarWithCells : IGrammar
     {
         IList<Cell> GetCells();
+        void ExecuteCurriedStep(IStep step, ITestContext context);
     }
 
     public static class GrammarWithCellsExtensions
@@ -41,6 +42,11 @@ namespace StoryTeller
         public abstract void Execute(IStep containerStep, ITestContext context);
 
         public abstract IList<Cell> GetCells();
+        public void ExecuteCurriedStep(IStep step, ITestContext context)
+        {
+            // Nothing special here
+            Execute(step, context);
+        }
 
         public GrammarStructure ToStructure(FixtureLibrary library)
         {

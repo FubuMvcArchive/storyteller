@@ -184,12 +184,7 @@ namespace StoryTeller.Domain
         {
             if (string.IsNullOrEmpty(text)) return this;
 
-            string[] data = text.Split(',');
-            foreach (string property in data)
-            {
-                string[] parts = property.Split(':');
-                With(parts[0].Trim(), parts[1].Trim());
-            }
+            ParseValues(text).Each(x => With(x.Key, x.Value));
 
             return this;
         }
@@ -209,6 +204,19 @@ namespace StoryTeller.Domain
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+
+        public static IDictionary<string, string> ParseValues(string text)
+        {
+            var dict = new Dictionary<string, string>();
+            string[] data = text.Split(',');
+            foreach (string property in data)
+            {
+                string[] parts = property.Split(':');
+                dict.Add(parts[0].Trim(), parts[1].Trim());
+            }
+
+            return dict;
         }
     }
 }

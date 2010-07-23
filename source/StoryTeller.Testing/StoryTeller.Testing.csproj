@@ -164,6 +164,7 @@
     <Compile Include="Engine\ConfigureObjectGrammarTester.cs" />
     <Compile Include="Engine\Constraints\PoliciesTester.cs" />
     <Compile Include="Engine\CreateObjectGrammarTester.cs" />
+    <Compile Include="Engine\CurriedLineGrammarTester.cs" />
     <Compile Include="Engine\DecoratedLineGrammarTester.cs" />
     <Compile Include="Engine\DoGrammarTester.cs" />
     <Compile Include="Engine\EmbeddedSectionGrammarTester.cs" />
