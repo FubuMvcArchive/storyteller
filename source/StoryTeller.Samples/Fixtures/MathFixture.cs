@@ -19,6 +19,11 @@ namespace StoryTeller.Samples
 
         public override string Description { get { return "The description of the MathFixture"; } }
 
+        public MathFixture()
+        {
+            this["AddTo5"] = Curry("Adding").Template("Adding {x} to 5 should be {returnValue}").Defaults("y:5");
+        }
+
         [FormatAs("The number should start with {starting}")]
         public void StartWith(double starting)
         {
@@ -67,6 +72,8 @@ namespace StoryTeller.Samples
         {
             return x + y;
         }
+
+
 
         [ExposeAsTable("When adding numbers", "operation")]
         [return: AliasAs("sum")]

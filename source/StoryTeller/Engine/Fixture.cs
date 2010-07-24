@@ -419,6 +419,16 @@ namespace StoryTeller.Engine
             _selectionLists[key].AddRange(values);
         }
 
+        public CurryGrammarExpression Curry(string key)
+        {
+            return Curry(this[key]);
+        }
+
+        public CurryGrammarExpression Curry(IGrammar inner)
+        {
+            return new CurryGrammarExpression(inner);
+        }
+
         #region Nested type: FactExpression
 
         public class FactExpression
@@ -454,7 +464,42 @@ namespace StoryTeller.Engine
             }
         }
 
+        
+
         #endregion
+    }
+
+    public interface ICurryGrammarDefaultsExpression
+    {
+        /// <summary>
+        /// Specify the curried values to the inner grammar
+        /// in the format "key1:value1, key2:value2, key3:value3"
+        /// </summary>
+        /// <param name="defaultValues"></param>
+        /// <returns></returns>
+        IGrammar Defaults(string defaultValues);
+    }
+
+    public class CurryGrammarExpression : ICurryGrammarDefaultsExpression
+    {
+        private readonly IGrammarWithCells _inner;
+        private string _template;
+
+        public CurryGrammarExpression(IGrammar inner)
+        {
+            _inner = (IGrammarWithCells) inner;
+        }
+
+        public ICurryGrammarDefaultsExpression Template(string template)
+        {
+            _template = template;
+            return this;
+        }
+
+        IGrammar ICurryGrammarDefaultsExpression.Defaults(string defaultValues)
+        {
+            return new CurriedLineGrammar(_template, _inner, defaultValues);
+        }
     }
 
     public class CompositeFixture : Fixture

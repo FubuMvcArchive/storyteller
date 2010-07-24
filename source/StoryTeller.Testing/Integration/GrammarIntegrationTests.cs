@@ -97,6 +97,12 @@ namespace StoryTeller.Testing.Integration
         }
 
         [Test]
+        public void Currying()
+        {
+            running("Currying").ShouldEqual(1, 1, 0, 0);
+        }
+
+        [Test]
         public void Set_with_Error()
         {
             running("Set with Error").ShouldEqual(0, 3, 1, 0);

@@ -58,6 +58,7 @@ $METHODS$
       <Actions />
       <Filters>
         <FixtureFilter Type="Fixture" Name="Sentence" />
+        <FixtureFilter Type="Fixture" Name="Math" />
       </Filters>
     </WorkspaceFilter>
     <WorkspaceFilter Name="Sets">
@@ -67,6 +68,12 @@ $METHODS$
       </Filters>
     </WorkspaceFilter>
     <WorkspaceFilter Name="Tables">
+      <Actions />
+      <Filters>
+        <FixtureFilter Type="All" Name="ALL" />
+      </Filters>
+    </WorkspaceFilter>
+    <WorkspaceFilter Name="Parking">
       <Actions />
       <Filters>
         <FixtureFilter Type="All" Name="ALL" />

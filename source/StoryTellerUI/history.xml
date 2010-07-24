@@ -2,12 +2,12 @@
 <ProjectHistory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <Projects>
 
-
+<!--
   <ProjectToken>
     <Name>DovetailCRM</Name>
     <Filename>C:\svn\blue\storyteller.xml</Filename>
   </ProjectToken>
-
+-->
   <ProjectToken>
     <Name>Grammars</Name>
     <Filename>..\..\..\..\samples\grammars.xml</Filename>
