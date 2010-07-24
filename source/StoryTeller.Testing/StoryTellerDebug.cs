@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using StoryTeller.Execution;
-using StoryTeller.Engine;
 
 namespace StoryTellerTestHarness
 {
@@ -12,14 +11,13 @@ namespace StoryTellerTestHarness
         [TestFixtureSetUp]
         public void SetupRunner()
         {
-            runner = new ProjectTestRunner(@"C:\svn\bluestoryteller\StoryTeller.xml");
+            runner = new ProjectTestRunner(@"..\..\StoryTeller.xml");
         }
 
         [Test]
-        public void HTML_test_Create_New_Queue()
+        public void Either_a_site_or_contact_is_required()
         {
-            var test = runner.RunTest("Admin/HTML test Create New Queue");
-            runner.WritePreview(test).OpenInBrowser();
+            runner.RunAndAssertTest("Parts/Installed Parts/Against a Contact/Either a site or contact is required");
         }
 
         [TestFixtureTearDown]

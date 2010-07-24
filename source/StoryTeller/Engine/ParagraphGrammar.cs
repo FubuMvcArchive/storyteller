@@ -74,7 +74,8 @@ namespace StoryTeller.Engine
 
         public void ExecuteCurriedStep(IStep step, ITestContext context)
         {
-            throw new NotImplementedException();
+            // Nothing special here
+            Execute(step, context);
         }
 
         public GrammarStructure ToStructure(FixtureLibrary library)

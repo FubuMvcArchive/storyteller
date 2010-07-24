@@ -5,6 +5,7 @@ using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Execution;
 using StoryTeller.Model;
+using StoryTeller.Testing;
 
 namespace StoryTeller.Testing.Engine
 {
@@ -45,6 +46,14 @@ namespace StoryTeller.Testing.Engine
     [TestFixture]
     public class ServiceActionGrammarTester
     {
+        [Test]
+        public void use_default_values()
+        {
+            var grammar = new TestServiceActionGrammar();
+            grammar.DefaultValue = "5";
+            grammar.GetCells()[0].DefaultValue.ShouldEqual("5");
+        }
+
         [Test]
         public void create_a_grammar_structure()
         {
@@ -198,6 +207,7 @@ namespace StoryTeller.Testing.Engine
         public TestServiceActionGrammar()
             : base("number", "do something with {number}")
         {
+            DefaultValue = "something";
         }
 
         protected override void execute(IService service, double value)

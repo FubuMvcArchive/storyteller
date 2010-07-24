@@ -92,6 +92,20 @@ namespace StoryTeller.Testing.Html
         }
     }
 
+    [TestFixture]
+    public class when_creating_the_sentence_for_a_fact
+    {
+        [Test]
+        public void should_have_a_label()
+        {
+            var fixture = new FactFixture();
+            var grammar = fixture["True"];
+            var fixtureLibrary = new FixtureLibrary();
+            var sentence = grammar.ToStructure(fixtureLibrary) as Sentence;
+            sentence.PartCount.ShouldEqual(1);
+            sentence.Parts[0].ShouldBeOfType<Label>().Text.ShouldEqual("This is true");
+        }
+    }
 
     public class FactFixture : Fixture
     {

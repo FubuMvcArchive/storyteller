@@ -35,5 +35,31 @@ namespace StoryTeller.Testing.Engine
             returnsTrue = true;
             grammar.Execute(new Step()).ShouldEqual(1, 0, 0, 0);
         }
+
+        [Test]
+        public void run_with_a_test_context_func()
+        {
+            var context = new TestContext();
+            var service = new ServiceInContext(){
+                Count = 2
+            };
+            context.Store(service);
+
+            var fact = new FactGrammar(c => c.Retrieve<ServiceInContext>().Count == 2, "the count should be 2");
+
+            fact.Execute(new Step(), context);
+            context.Counts.ShouldEqual(1, 0, 0, 0);
+
+            service.Count = 3;
+            context.Counts.Reset();
+
+            fact.Execute(new Step(), context);
+            context.Counts.ShouldEqual(0, 1, 0, 0);
+        }
+
+        public class ServiceInContext
+        {
+            public int Count;
+        }
     }
 }

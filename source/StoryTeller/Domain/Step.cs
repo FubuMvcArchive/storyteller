@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FubuCore.Util;
 using StoryTeller.Engine;
+using FubuCore;
 
 namespace StoryTeller.Domain
 {
@@ -209,6 +210,8 @@ namespace StoryTeller.Domain
         public static IDictionary<string, string> ParseValues(string text)
         {
             var dict = new Dictionary<string, string>();
+            if (text.IsEmpty()) return dict;
+
             string[] data = text.Split(',');
             foreach (string property in data)
             {

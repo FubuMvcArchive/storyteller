@@ -5,6 +5,8 @@ namespace StoryTeller.Engine
 {
     public abstract class ServiceActionGrammar<TService, TCellType> : LineGrammar
     {
+        public string DefaultValue = null;
+
         protected ServiceActionGrammar(string key, string template)
             : base(template)
         {
@@ -33,7 +35,9 @@ namespace StoryTeller.Engine
 
         private Cell cell()
         {
-            return new Cell(key, typeof (TCellType));
+            return new Cell(key, typeof (TCellType)){
+                DefaultValue = DefaultValue
+            };
         }
     }
 }

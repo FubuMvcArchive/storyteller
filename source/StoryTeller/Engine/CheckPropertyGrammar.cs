@@ -18,6 +18,11 @@ namespace StoryTeller.Engine
             Template = string.Format("{0} should be {{{0}}}", cell.Key);
         }
 
+        public CheckPropertyGrammar(Accessor accessor, string template) : base(template)
+        {
+            _accessor = accessor;
+        }
+
         public override string Description { get { return "checks a single property on an object"; } }
 
         public override void Execute(IStep containerStep, ITestContext context)

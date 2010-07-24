@@ -6,14 +6,19 @@ namespace StoryTeller.Engine
 {
     public class FactGrammar : LineGrammar
     {
-        private readonly Func<bool> _test;
+        private readonly Func<ITestContext, bool> _test;
         private readonly string _title;
 
-        public FactGrammar(Func<bool> test, string title)
-            : base(title)
+        public FactGrammar(Func<ITestContext, bool> test, string title) : base(title)
         {
             _test = test;
             _title = title;
+        }
+
+
+        public FactGrammar(Func<bool> test, string title)
+            : this(c => test(), title)
+        {
         }
 
 
@@ -21,7 +26,7 @@ namespace StoryTeller.Engine
 
         public override void Execute(IStep containerStep, ITestContext context)
         {
-            cell().RecordActual(_test(), containerStep, context);
+            cell().RecordActual(_test(context), containerStep, context);
         }
 
         private Cell cell()

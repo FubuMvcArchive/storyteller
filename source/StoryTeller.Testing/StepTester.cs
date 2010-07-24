@@ -21,6 +21,13 @@ namespace StoryTeller.Testing
         }
 
         [Test]
+        public void parse_values_works_just_fine_with_blank_or_null_values()
+        {
+            Step.ParseValues(null).ShouldNotBeNull();
+            Step.ParseValues(string.Empty).ShouldNotBeNull();
+        }
+
+        [Test]
         public void accept_a_visitor()
         {
             var visitor = MockRepository.GenerateMock<ITestVisitor>();
