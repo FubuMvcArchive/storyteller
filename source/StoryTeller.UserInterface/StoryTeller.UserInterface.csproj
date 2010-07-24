@@ -63,26 +63,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\tools\HtmlTags\HtmlTags.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.Core, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.Core.Presentation, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.Core.Presentation.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.Core.WinForms, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.Core.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpDevelop, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=f829da5c02be14ee, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.SharpDevelop.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.TextEditor, Version=4.0.0.3967, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\SharpDevelop\ICSharpCode.TextEditor.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -127,10 +107,6 @@
     </Reference>
     <Reference Include="WindowsFormsIntegration">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="XmlEditor, Version=4.0.0.3967, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\SharpDevelop\XmlEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +203,9 @@
     <Compile Include="Tests\Outline\OutlineTreeService.cs" />
     <Compile Include="Tests\Outline\OutlineView.xaml.cs">
       <DependentUpon>OutlineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\XmlView.xaml.cs">
+      <DependentUpon>XmlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIElementShortcutExtensions.cs" />
     <Compile Include="Workspace\FixtureSelector.cs" />
@@ -389,7 +368,7 @@
       <DependentUpon>TestView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tests\XmlMode.cs" />
-    <Compile Include="Tests\XmlView.cs" />
+    <Compile Include="Tests\IXmlView.cs" />
     <Compile Include="UserInterfaceRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -542,6 +521,10 @@
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tests\XmlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Workspace\NamespaceSelector.xaml">
       <SubType>Designer</SubType>

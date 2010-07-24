@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using ICSharpCode.SharpDevelop;
 using StoryTeller.Domain;
 using StoryTeller.UserInterface.Actions;
 using StoryTeller.UserInterface.Screens;
@@ -202,13 +201,13 @@ namespace StoryTeller.UserInterface
 
         public void CloseAllBut(IScreen screen)
         {
-            _screens.AllScreens.Where(s => s != screen).ForEach(x => removeScreen(x));
+            _screens.AllScreens.Where(s => s != screen).Each(x => removeScreen(x));
             activateCurrentScreen();
         }
 
         public void CloseAll()
         {
-            _screens.AllScreens.ForEach(x => removeScreen(x));
+            _screens.AllScreens.Each(x => removeScreen(x));
         }
 
         public void Start()

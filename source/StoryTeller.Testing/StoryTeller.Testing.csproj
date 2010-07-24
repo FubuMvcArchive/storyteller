@@ -77,14 +77,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\tools\NUnit\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="NUnitExtension.IterativeTest, Version=2.4.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\NUnit\NUnitExtension.IterativeTest.dll</HintPath>
-    </Reference>
-    <Reference Include="NUnitExtension.IterativeTest.AddIn, Version=2.4.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\NUnit\NUnitExtension.IterativeTest.AddIn.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
