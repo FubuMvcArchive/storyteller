@@ -440,6 +440,18 @@ namespace StoryTeller.Engine
             {
                 return new FactGrammar(test, _title);
             }
+
+            /// <summary>
+            /// Register the Func that works against
+            /// a service in the TestContext that can be evaluated as a boolean
+            /// to determine the success or failure of this Fact
+            /// </summary>
+            /// <param name="test"></param>
+            /// <returns></returns>
+            public IGrammar VerifiedBy<TService>(Func<TService, bool> test)
+            {
+                return new FactGrammar(c => test(c.Retrieve<TService>()), _title);
+            }
         }
 
         #endregion
