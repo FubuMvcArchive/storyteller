@@ -198,19 +198,14 @@ namespace StoryTeller.Engine
             var results = context.ResultsFor(step);
             results.SetActual(_key, actual);
 
-            string rawExpected = step.Get(_key);
+            string rawExpected = IsBooleanResult() ? true.ToString() : step.Get(_key);
+            
+
             if (rawExpected == null)
             {
-                if (IsBooleanResult())
-                {
-                    rawExpected = true.ToString();
-                }
-                else
-                {
-                    context.IncrementSyntaxErrors();
-                    results.MarkMissingValue(_key);
-                    return;
-                }
+                context.IncrementSyntaxErrors();
+                results.MarkMissingValue(_key);
+                return;
             }
 
             verifyTheActualValue(step, actual, rawExpected, context);
