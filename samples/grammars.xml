@@ -59,6 +59,7 @@ $METHODS$
       <Filters>
         <FixtureFilter Type="Fixture" Name="Sentence" />
         <FixtureFilter Type="Fixture" Name="Math" />
+        <FixtureFilter Type="Fixture" Name="CurriedMath" />
       </Filters>
     </WorkspaceFilter>
     <WorkspaceFilter Name="Sets">

@@ -166,6 +166,9 @@
     <Compile Include="Engine\FixtureRegistryTester.cs" />
     <Compile Include="Engine\FixtureTester.cs" />
     <Compile Include="Engine\FrameTester.cs" />
+    <Compile Include="Engine\Importing\GrammarImportTester.cs" />
+    <Compile Include="Engine\Importing\ImportGrammarIntegrationTester.cs" />
+    <Compile Include="Engine\Importing\ProxyGrammarTester.cs" />
     <Compile Include="Engine\LibraryBuilderTester.cs" />
     <Compile Include="Engine\SelectionListTester.cs" />
     <Compile Include="Engine\SelectionValueAttributeTester.cs" />

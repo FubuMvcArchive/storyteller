@@ -102,6 +102,10 @@
     <Compile Include="Engine\FixtureContainerSource.cs" />
     <Compile Include="Engine\Frame.cs" />
     <Compile Include="Engine\IFixtureContainerSource.cs" />
+    <Compile Include="Engine\Importing\CurryAction.cs" />
+    <Compile Include="Engine\Importing\GrammarImport.cs" />
+    <Compile Include="Engine\Importing\ImportedGrammar.cs" />
+    <Compile Include="Engine\Importing\ProxyGrammar.cs" />
     <Compile Include="Engine\IStartupAction.cs" />
     <Compile Include="Engine\ISystem.cs" />
     <Compile Include="Engine\LibraryLifecycle.cs" />

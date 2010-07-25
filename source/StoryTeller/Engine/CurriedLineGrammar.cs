@@ -28,6 +28,11 @@ namespace StoryTeller.Engine
             get { return Template; }
         }
 
+        public IGrammarWithCells Inner
+        {
+            get { return _inner; }
+        }
+
         public override void Execute(IStep containerStep, ITestContext context)
         {
             _defaults.Each(x => containerStep.Set(x.Key, x.Value));

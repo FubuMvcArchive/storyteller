@@ -8,8 +8,10 @@ using System.Runtime.CompilerServices;
 using FubuCore;
 using FubuCore.Reflection;
 using FubuCore.Util;
+using StoryTeller.Assertions;
 using StoryTeller.DSL;
 using StoryTeller.Engine.Constraints;
+using StoryTeller.Engine.Importing;
 using StoryTeller.Engine.Reflection;
 using StoryTeller.Model;
 
@@ -23,6 +25,8 @@ namespace StoryTeller.Engine
             typeof (object),
             typeof (Fixture)
         };
+
+        public IFixtureContext Fixtures { get; set; }
 
         private readonly List<GrammarError> _errors = new List<GrammarError>();
         private readonly Cache<string, IGrammar> _grammars = new Cache<string, IGrammar>();
@@ -70,7 +74,12 @@ namespace StoryTeller.Engine
         public string Title { get; set; }
 
         [IndexerName("Grammars")]
-        public IGrammar this[string key] { get { return _grammars[key]; } set { _grammars[key] = value; } }
+        public IGrammar this[string key] { get
+        {
+            StoryTellerAssert.Fail(!_grammars.Has(key), "Fixture {0} does not have a grammar named {1}".ToFormat(Name, key));
+            
+            return _grammars[key];
+        } set { _grammars[key] = value; } }
 
         public void ForEachGrammar(Action<string, IGrammar> action)
         {
@@ -427,6 +436,12 @@ namespace StoryTeller.Engine
         public CurryGrammarExpression Curry(IGrammar inner)
         {
             return new CurryGrammarExpression(inner);
+        }
+
+        public ImportedGrammar Import<T>(string grammarKey)
+        {
+            var import = GrammarImport.For<T>(grammarKey);
+            return new ImportedGrammar(import, () => Fixtures);
         }
 
         #region Nested type: FactExpression

@@ -7,6 +7,7 @@ using Rhino.Mocks.Constraints;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Samples;
+using StoryTeller.Samples.Grammars;
 using StructureMap;
 
 namespace StoryTeller.Testing.Engine
@@ -26,6 +27,19 @@ namespace StoryTeller.Testing.Engine
         public int StepCount()
         {
             throw new NotImplementedException();
+        }
+    }
+
+    [TestFixture]
+    public class when_TestContext_is_building_a_fixture
+    {
+        [Test]
+        public void should_store_itself_on_the_fixture_as_the_fixture_context()
+        {
+            var context = new TestContext();
+            var fixture = context.RetrieveFixture<SentenceFixture>();
+            fixture.ShouldBeOfType<SentenceFixture>().Fixtures.ShouldBeTheSameAs(context);
+            
         }
     }
 

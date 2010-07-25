@@ -24,6 +24,11 @@ namespace StoryTeller.Testing
         public static Test RunTest(string xml)
         {
             Test test = ReadTest(xml);
+            return RunTest(test);
+        }
+
+        public static Test RunTest(Test test)
+        {
             ITestRunner runner = GetRunner();
 
             test.LastResult = runner.RunTest(test);

@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using StoryTeller.Engine;
+using StoryTeller.Engine.Importing;
 
 namespace StoryTeller.Samples
 {
@@ -10,6 +11,25 @@ namespace StoryTeller.Samples
     {
         public void RepeatAfterMe(string whatDidISay)
         {
+        }
+    }
+
+    public class CurriedMathFixture : Fixture
+    {
+        public CurriedMathFixture()
+        {
+            this["StartWith"] = Import<MathFixture>("StartWith");
+            this["Add5"] = Import<MathFixture>("Add").Curry(new CurryAction(){
+                Template = "Add 5",
+                DefaultValues = "operand:5"
+            });
+
+            this["AddingTo5"] = Import<MathFixture>("Adding").Curry(new CurryAction(){
+                Template = "Adding {y} to 5 should be {returnValue}",
+                DefaultValues = "x:5"
+            });
+
+            this["TheValueShouldBe"] = Import<MathFixture>("TheValueShouldBe");
         }
     }
 

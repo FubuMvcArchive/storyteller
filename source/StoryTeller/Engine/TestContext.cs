@@ -20,6 +20,9 @@ namespace StoryTeller.Engine
         void LoadFixture(IFixture fixture, ITestPart part);
         void LoadFixture<T>(ITestPart part) where T : IFixture;
         void RevertFixture(ITestPart part);
+
+        IFixture RetrieveFixture<T>() where T : IFixture;
+        IFixture RetrieveFixture(string fixtureName);
     }
 
     public interface IExceptionTarget
@@ -114,7 +117,12 @@ namespace StoryTeller.Engine
             _container.Inject<ITestContext>(this);
             _container.Inject(test);
 
-            _container.Configure(x => x.For<IFixture>().AlwaysUnique());
+            _container.Configure(x =>
+            {
+                x.For<IFixture>().AlwaysUnique();
+                x.For<IFixtureContext>().Use(this);
+                x.SetAllProperties(o => o.OfType<IFixtureContext>());
+            });
 
             Finder = new ObjectFinder();
 
@@ -183,6 +191,19 @@ namespace StoryTeller.Engine
             _fixtureIsInvalid = false;
         }
 
+        public IFixture RetrieveFixture<T>() where T : IFixture
+        {
+            // TEMP HACKERY!!!!
+            _container.Configure(x => x.For<T>().AlwaysUnique());
+
+            return _container.GetInstance<T>();
+        }
+
+        public IFixture RetrieveFixture(string fixtureName)
+        {
+            return _container.GetInstance<IFixture>(fixtureName);
+        }
+
         public IGrammar FindGrammar(string grammarKey)
         {
             return CurrentFixture[grammarKey];
@@ -231,10 +252,10 @@ namespace StoryTeller.Engine
 
         public void LoadFixture<T>(ITestPart part) where T : IFixture
         {
-            // TEMP HACKERY!!!!
-            _container.Configure(x => x.For<T>().AlwaysUnique());
+            var fixture = RetrieveFixture<T>();
 
-            var fixture = _container.GetInstance<T>();
+
+
             LoadFixture(fixture, part);
         }
 
