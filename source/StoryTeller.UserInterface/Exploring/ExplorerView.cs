@@ -26,6 +26,8 @@ namespace StoryTeller.UserInterface.Exploring
             _testTree.MouseDoubleClick += unLatch;
         }
 
+
+
         public TreeView TestTree { get { return _testTree; } }
 
         public TreeView FixtureTree { get { return _fixtureTree; } }

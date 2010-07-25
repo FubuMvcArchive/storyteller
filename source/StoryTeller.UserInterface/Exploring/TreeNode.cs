@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -26,9 +27,16 @@ namespace StoryTeller.UserInterface.Exploring
 
         public TreeNode()
         {
+            this.MouseLeftButtonUp += (a, b) =>
+            {
+                IsExpanded = !IsExpanded;
+                b.Handled = true;
+            };
         }
 
-        public TreeNode(INamedItem item)
+ 
+
+        public TreeNode(INamedItem item) : this()
         {
             setupHeader(item);
 
