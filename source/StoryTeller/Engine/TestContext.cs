@@ -105,7 +105,7 @@ namespace StoryTeller.Engine
         private readonly Counts _counts = new Counts();
 
         public TestContext()
-            : this(new Container(), new Test("FAKE"), new ConsoleListener())
+            : this(new Container(), new Test("FAKE"), new TraceListener())
         {
         }
 
@@ -137,12 +137,12 @@ namespace StoryTeller.Engine
         public Func<Type, object> BackupResolver { get; set; }
 
         public TestContext(IContainer container)
-            : this(container, new Test("FAKE"), new ConsoleListener())
+            : this(container, new Test("FAKE"), new TraceListener())
         {
         }
 
         public TestContext(Action<FixtureRegistry> action)
-            : this(FixtureRegistry.ContainerFor(action), new Test("FAKE"), new ConsoleListener())
+            : this(FixtureRegistry.ContainerFor(action), new Test("FAKE"), new TraceListener())
         {
         }
 

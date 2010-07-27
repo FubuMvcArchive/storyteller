@@ -1,10 +1,26 @@
 using System;
-using FubuCore;
+using System.Diagnostics;
 using StoryTeller.Domain;
 
 namespace StoryTeller.Engine
 {
-    public class ConsoleListener : MarshalByRefObject, ITestObserver
+    public class ConsoleListener : TextListener
+    {
+        protected override void write(string format, params string[] args)
+        {
+            Console.WriteLine(format, args);
+        }
+    }
+
+    public class TraceListener : TextListener
+    {
+        protected override void write(string format, params string[] args)
+        {
+            Trace.WriteLine(string.Format(format, args));
+        }
+    }
+
+    public abstract class TextListener : MarshalByRefObject, ITestObserver
     {
         #region ITestObserver Members
 
@@ -63,21 +79,16 @@ namespace StoryTeller.Engine
 
         #endregion
 
-        protected void write(string format, params string[] args)
-        {
-            string message = format.ToFormat(args);
-            Console.WriteLine(message);
-        }
+        protected abstract void write(string format, params string[] args);
 
         protected void writeDivider()
         {
-            write(
-                "=========================================================================================================");
+            write("=========================================================================================================");
         }
 
         private void writeSpacer()
         {
-            Console.WriteLine();
+            write(string.Empty);
         }
     }
 }

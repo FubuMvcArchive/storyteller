@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading;
 using StoryTeller.Domain;
 using StoryTeller.Execution;
 using StoryTeller.Model;
@@ -12,7 +10,7 @@ namespace StoryTeller.Engine
         private readonly FixtureLibrary _library;
         private readonly IFixtureContainerSource _source;
         private TestRun _currentRun;
-        private ITestObserver _listener = new ConsoleListener();
+        private ITestObserver _listener = new TraceListener();
         private readonly SystemLifecycle _lifecycle;
 
 
