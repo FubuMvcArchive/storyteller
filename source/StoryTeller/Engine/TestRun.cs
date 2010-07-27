@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Web;
 using FubuCore;
 using StoryTeller.Execution;
 using StoryTeller.Html;
@@ -161,7 +162,17 @@ namespace StoryTeller.Engine
             var parser = new TestParser(_request.Test, writer, _library);
             parser.Parse();
 
-            return writer.Document.ToString();
+            string results;
+            try
+            {
+                results = writer.Document.ToString();
+            }
+            catch(HttpException)
+            {
+                results = @"Failed to create test run results because of bug in .NET Framework 4.0:
+https://connect.microsoft.com/VisualStudio/feedback/details/578670/httputility-htmlencode-fails-in-application-start-with-response-is-not-available-in-this-context?wa=wsignin1.0";
+            }
+            return results;
         }
     }
 }
