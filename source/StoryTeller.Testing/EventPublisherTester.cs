@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using NUnit.Framework;
 using StoryTeller.Execution;
 using Rhino.Mocks;
@@ -18,7 +19,7 @@ namespace StoryTeller.Testing
         {
             var failure = new BinaryRecycleFailure();
             ClassUnderTest.Publish(failure);
-
+            Thread.Sleep(200); // tiny pause to wait for thread
             MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(failure));
         }
 

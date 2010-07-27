@@ -1,4 +1,4 @@
-COMPILE_TARGET = "release"
+COMPILE_TARGET = ENV['config'].nil? ? "debug" : ENV['config']
 require 'albacore'
 require "BuildUtils.rb"
 
@@ -53,14 +53,7 @@ task :package => [:version]  do
   package_file = "StoryTeller.#{build_number}.zip"
   File.delete package_file if File.exist? package_file
   Zip::ZipFile.open(package_file, Zip::ZipFile::CREATE) do |zip|
-	  zip.add "ICSharpCode.AvalonEdit.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.AvalonEdit.dll"
-	  zip.add "ICSharpCode.Core.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.Core.dll"
-	  zip.add "ICSharpCode.Core.Presentation.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.Core.Presentation.dll"
-	  zip.add "ICSharpCode.Core.WinForms.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.Core.WinForms.dll"
-	  zip.add "ICSharpCode.SharpDevelop.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.SharpDevelop.dll"
-	  zip.add "ICSharpCode.TextEditor.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ICSharpCode.TextEditor.dll"
 	  zip.add "StoryTeller.UserInterface.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.UserInterface.dll"
-	  zip.add "XmlEditor.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/XmlEditor.dll"
 	  zip.add "StoryTeller.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.dll"
 	  zip.add "StoryTellerUI.exe", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTellerUI.exe"
 	  zip.add "StructureMap.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StructureMap.dll"
