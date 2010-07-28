@@ -50,7 +50,7 @@ ST.sectionEditor = function (section, metadata, step) {
             key = step.key();
         }
 
-        var search = "#{fixture} > div.{key}".fillWith({ fixture: section.fixture, key: key });
+        var search = "#{fixture} > .{key}".fillWith({ fixture: section.fixture, key: key });
 
         var node = $(search).clone().appendTo(section.holder);
 

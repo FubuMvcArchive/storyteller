@@ -44,26 +44,11 @@ namespace StoryTeller.UserInterface.Editing.HTML
         {
             grammarTag.MetaData(GrammarConstants.LEAF_NAME, table.LeafName);
             grammarTag.AddClass(GrammarConstants.TABLE_EDITOR);
-            grammarTag.Child<HeaderTag>().Titled(table.Label);
 
-            var editor = grammarTag.Child<TableTag>();
-            editor.Attr("cellpadding", "0").Attr("cellspacing", "0");
-
-            editor.AddFooterRow(x =>
-            {
-                x.Cell().AddClass("table-add-row").Configure(td =>
-                {
-                    td.ActionLink("add (ctrl+1)").AddClass("adder");
-                    td.ActionLink("clone (ctrl+2)").AddClass("cloner");
-                });
-            })
-            .AddFooterRow(x =>
-            {
-                x.Cell().Child(new ColumnSelectionTag(table));
-            })
-            .AddClasses("grid", "editor");
-
-            grammarTag.Child(new TableTemplateTag(table, new CellBuilderLibrary()));
+            var area = new AreaTag(table.Label);
+            area.Container.Child<TableEditorTag>();
+            area.Container.Child(new ColumnSelectionTag(table));
+            area.Container.Child(new TableTemplateTag(table, new CellBuilderLibrary()));
         }
 
         void IGrammarVisitor.SetVerification(SetVerification setVerification, IStep step)

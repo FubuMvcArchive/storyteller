@@ -81,7 +81,13 @@ namespace StoryTeller.Testing.JavaScript
 
         public JavaScriptTestFile Fixtures(Action<FixtureRegistry> configure)
         {
-            _library = FixtureLibrary.For(configure);
+            FixtureLibrary fixtureLibrary = FixtureLibrary.For(configure);
+            return Fixtures(fixtureLibrary);
+        }
+
+        public JavaScriptTestFile Fixtures(FixtureLibrary fixtureLibrary)
+        {
+            _library = fixtureLibrary;
 
             var writer = new GrammarWriter(_library);
             HtmlTag templates = writer.Build();

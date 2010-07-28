@@ -88,39 +88,37 @@ namespace StoryTeller.UserInterface.Editing.HTML
         public HtmlTag Build()
         {
             HtmlTag tag = buildTopNode();
+            var body = tag.Add("tbody");
 
-            addCommentLink(tag);
+            var commentLink = new SelectorLinkTag(GrammarConstants.COMMENT);
+            commentLink.Label(GrammarConstants.COMMENT);
+            body.Add("tr").Child(commentLink.TagName("td"));
 
             _fixture.PossibleGrammarsFor(new StepLeaf()).Where(x => !(x is DoGrammarStructure)).Each(grammar =>
             {
                 _link = new SelectorLinkTag(grammar.Name);
-                tag.Child(_link);
+                _link.TagName("td");
+                body.Add("tr").Child(_link);
 
                 grammar.AcceptVisitor(this, new Step());
             });
 
-            return tag;
-        }
+            var area = new AreaTag();
+            area.Child(tag);
 
-        private void addCommentLink(HtmlTag tag)
-        {
-            var commentLink = new SelectorLinkTag(GrammarConstants.COMMENT);
-            commentLink.Label(GrammarConstants.COMMENT);
-            tag.Child(commentLink);
+            return area;
         }
 
         private HtmlTag buildTopNode()
         {
-            HtmlTag tag = new HtmlTag("div").AddClass(GrammarConstants.GRAMMAR_SELECTOR).Hide();
-            tag.Add("div", div =>
-            {
-                div.AddClass(GrammarConstants.HEADER_CONTAINER);
-                div.ActionLink(GrammarConstants.CLOSE, GrammarConstants.CLOSER).Visible(!_fixture.IsSingleSelection());
+            HtmlTag tag = new HtmlTag("table").Attr("cellPadding", "0").Attr("cellSpacing", "0").AddClass(GrammarConstants.GRAMMAR_SELECTOR).Hide();
+            HtmlTag headerCell = tag.Add("thead/tr/td").AddClass(GrammarConstants.HEADER_CONTAINER);
+            headerCell.Add("span").Text(_fixture.Policies.AddGrammarText);
+            headerCell.Add("span").AddClass(GrammarConstants.SELECTION_REQUIRED).Text(GrammarConstants.REQUIRED).Visible
+                (_fixture.IsSingleSelection());
+                
+            headerCell.ActionLink(GrammarConstants.CLOSE, GrammarConstants.CLOSER).Visible(!_fixture.IsSingleSelection());
 
-                div.Add("span").Text(_fixture.Policies.AddGrammarText);
-                div.Add("span").AddClass(GrammarConstants.SELECTION_REQUIRED).Text(GrammarConstants.REQUIRED).Visible(
-                    _fixture.IsSingleSelection());
-            });
             return tag;
         }
     }

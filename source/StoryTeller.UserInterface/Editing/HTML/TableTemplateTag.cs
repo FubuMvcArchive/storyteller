@@ -6,6 +6,24 @@ using System.Linq;
 
 namespace StoryTeller.UserInterface.Editing.HTML
 {
+    public class TableEditorTag : TableTag
+    {
+        public TableEditorTag()
+        {
+            Attr("cellpadding", "0").Attr("cellspacing", "0");
+            AddClasses("grid", "editor");
+
+            AddFooterRow(x =>
+            {
+                x.Cell().AddClass("table-add-row").Configure(td =>
+                {
+                    td.ActionLink("add").AddClass("adder");
+                    td.ActionLink("clone").AddClass("cloner");
+                });
+            });
+        }
+    }
+
     public class CellHeaderTag : HtmlTag
     {
         public CellHeaderTag(Cell cell)
@@ -51,7 +69,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
     public class ColumnSelectionTag : HtmlTag
     {
-        public ColumnSelectionTag(Table table) : base("span")
+        public ColumnSelectionTag(Table table) : base("p")
         {
             AddClass(GrammarConstants.COLUMN_SELECTOR);
             Add("b").Text(GrammarConstants.ADDITIONAL_COLUMNS_HEADER_TEXT);
