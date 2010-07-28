@@ -47,9 +47,13 @@ namespace StoryTeller.UserInterface.Editing.HTML
             grammarTag.AddClass(GrammarConstants.TABLE_EDITOR);
 
             var area = new AreaTag(table.Label);
-            area.Container.Child<TableEditorTag>();
-            area.Container.Child(new ColumnSelectionTag(table));
-            area.Container.Child(new TableTemplateTag(table, new CellBuilderLibrary()));
+            var container = area.Container.Add("div").AddClass("section-container");
+
+            container.Child<TableEditorTag>();
+            container.Child(new ColumnSelectionTag(table));
+            container.Child(new TableTemplateTag(table, new CellBuilderLibrary()));
+
+            grammarTag.Child(area);
         }
 
         void IGrammarVisitor.SetVerification(SetVerification setVerification, IStep step)
@@ -88,32 +92,13 @@ namespace StoryTeller.UserInterface.Editing.HTML
                 .MetaData(GrammarConstants.SELECTION_MODE, section.Fixture.Policies.SelectionMode.ToString());
 
             var area = section.IsTitled() ? new AreaTag(section.Label) : new AreaTag();
-            HtmlTag container = area.Container.Add("div").AddClass("section-container");
+            var container = area.Container.Add("div").AddClass("section-container");
             container.Child(new HolderTag(section.Fixture));
             
             if (section.Fixture.Policies.SelectionMode != SelectionMode.MandatoryAutoSelect)
             {
-                Debug.WriteLine(container.ToPrettyString());
-                HtmlTag selector = new GrammarSelector(section.Fixture).Build();
-                
-                
-                Debug.WriteLine("----------------------------------------------------");
-                Debug.WriteLine(selector.ToPrettyString());
-
-                
+                var selector = new GrammarSelector(section.Fixture).Build();
                 container.Child(selector);
-
-                Debug.WriteLine("----------------------------------------------------");
-                Debug.WriteLine(container.ToPrettyString());
-
-                Debug.WriteLine(" ");
-                Debug.WriteLine(" ");
-                Debug.WriteLine(" ");
-                Debug.WriteLine(" ");
-                Debug.WriteLine(" ");
-                Debug.WriteLine(" ");
-                Debug.WriteLine(" ");
-                Debug.WriteLine(" ");
             }
 
             grammarTag.Child(area);
@@ -127,12 +112,12 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
         public GrammarTag Add(GrammarStructure structure)
         {
-            var grammarTag = new GrammarTag(structure);
-            Child(grammarTag);
+            var childGrammarTag = new GrammarTag(structure);
+            Child(childGrammarTag);
 
-            _fixture.Policies.Tags(structure.Name).Each(tag => grammarTag.AddSafeClassName(tag));
+            _fixture.Policies.Tags(structure.Name).Each(tag => childGrammarTag.AddSafeClassName(tag));
 
-            return grammarTag;
+            return childGrammarTag;
         }
 
         private void writeGrammar(GrammarStructure grammar)
