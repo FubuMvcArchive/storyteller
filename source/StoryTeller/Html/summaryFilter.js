@@ -10,7 +10,9 @@ $(document).ready(function(){
 		.append("<option value='fail'>fail</option>")
 		.change(filterResults);
 	$("table:first").before(lifecycleFilterBox).before(resultFilterBox);
-});
+    if ($("table:first tr.fail").length > 0){
+        resultFilterBox.val("fail").change();
+    }});
 
 function filterResults(){
 	var lifecycle = $("#filterLifecycle").val();
