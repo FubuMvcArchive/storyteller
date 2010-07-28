@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using HtmlTags;
 using StoryTeller.Domain;
 using StoryTeller.Html;
@@ -84,20 +85,36 @@ namespace StoryTeller.UserInterface.Editing.HTML
                 .MetaData(GrammarConstants.AUTO_SELECT_KEY, section.Fixture.Policies.AutoSelectGrammarKey)
                 .MetaData(GrammarConstants.SELECTION_MODE, section.Fixture.Policies.SelectionMode.ToString());
 
-            var header = new HeaderTag();
-            if (section.IsTitled())
+            var area = section.IsTitled() ? new AreaTag(section.Label) : new AreaTag();
+            HtmlTag container = area.Container.Add("div").AddClass("section-container");
+            container.Child(new HolderTag(section.Fixture));
+            
+            if (section.Fixture.Policies.SelectionMode != SelectionMode.MandatoryAutoSelect)
             {
-                header.Titled(section.Label);
+                Debug.WriteLine(container.ToPrettyString());
+                HtmlTag selector = new GrammarSelector(section.Fixture).Build();
+                
+                
+                Debug.WriteLine("----------------------------------------------------");
+                Debug.WriteLine(selector.ToPrettyString());
+
+                
+                container.Child(selector);
+
+                Debug.WriteLine("----------------------------------------------------");
+                Debug.WriteLine(container.ToPrettyString());
+
+                Debug.WriteLine(" ");
+                Debug.WriteLine(" ");
+                Debug.WriteLine(" ");
+                Debug.WriteLine(" ");
+                Debug.WriteLine(" ");
+                Debug.WriteLine(" ");
+                Debug.WriteLine(" ");
+                Debug.WriteLine(" ");
             }
 
-            grammarTag.Child(header);
-            grammarTag.Child(new HolderTag(section.Fixture));
-
-            
-            if (section.Fixture.Policies.SelectionMode == SelectionMode.MandatoryAutoSelect) return;
-
-            HtmlTag selector = new GrammarSelector(section.Fixture).Build();
-            grammarTag.Child(selector);
+            grammarTag.Child(area);
         }
 
         void IGrammarVisitor.DoGrammar(DoGrammarStructure grammar, IStep step)
@@ -121,13 +138,6 @@ namespace StoryTeller.UserInterface.Editing.HTML
             GrammarTag tag = Add(grammar);
 
             _grammarTags.Do(tag, () => grammar.AcceptVisitor(this, new Step()));
-
-            if (Fixture.IsMandatoryAutoSelectGrammar(grammar)) return;
-
-            if (_grammarTags.Count == 0)
-            {
-                tag.AddDeleteLink();
-            }
         }
     }
 }

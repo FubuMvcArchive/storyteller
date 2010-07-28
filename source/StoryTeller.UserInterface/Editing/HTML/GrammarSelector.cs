@@ -103,10 +103,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
                 grammar.AcceptVisitor(this, new Step());
             });
 
-            var area = new AreaTag();
-            area.Child(tag);
-
-            return area;
+            return tag;
         }
 
         private HtmlTag buildTopNode()

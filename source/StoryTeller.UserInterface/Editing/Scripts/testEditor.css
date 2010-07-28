@@ -14,6 +14,11 @@ a
 	text-decoration: none;
 }
 
+a.add-section-activator
+{
+	margin-left: 0px;	
+}
+
 a:hover {
 	color:#000080;
 	text-decoration: underline;
@@ -49,6 +54,8 @@ a:hover {
 	padding-bottom: 5px;
 }
 
+
+
 div.section-title > a.deleteStep
 {
 	float:right;
@@ -81,10 +88,10 @@ div.section-title > a.deleteStep
 	margin-bottom: 5px;
 }
 
-.step-holder
+.section-container
 {
 	border:1px solid #A6C9E2;
-	padding: 10px;
+	padding: 20px;
 }
 
 img.remover
@@ -93,13 +100,13 @@ img.remover
 	margin-left: 0px;
 }
 
-.main table
+table.grid
 {
 	border-right: 1px dotted #d8d8d8;
 	border-bottom: 1px dotted #d8d8d8;
 }
 
-.main table > tfoot a
+table.grid > tfoot a
 {
 	padding-right: 10px;
 }
@@ -146,9 +153,10 @@ table.grid > tbody > tr:hover{
 
 .grammar-selector{
 	border: 1px solid #79B7E7;
-	padding: 4px;
+	padding: 4px 4px 4px 4px;
+
 	background-color: #F5F8F9;
-	margin: 10px;
+	margin: 10px 10px 10px 0px;
 
 	min-width: 300px;
 	max-height: 450px;	
@@ -186,4 +194,13 @@ table.grid > tbody > tr:hover{
 .grammar-selector .add-link a span.textbox{
 	font-style: italic;
 	color: #AAA;
+}
+
+
+
+
+
+.section > table > tbody > tr > td
+{
+	min-width: 300px;
 }

@@ -22,13 +22,5 @@ namespace StoryTeller.UserInterface.Editing.HTML
         {
             get { return _container; }
         }
-
-        public HolderTag AddStepHolder(FixtureGraph fixture)
-        {
-            var tag = new HolderTag(fixture);
-
-            _container.Child(tag);
-            return tag;
-        }
     }
 }
