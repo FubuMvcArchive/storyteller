@@ -32,6 +32,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         {
             _grammar.AddClass(GrammarConstants.SENTENCE);
             _grammar.Grammar.As<Sentence>().Parts.Each(x => x.AcceptVisitor(this));
+            _grammar.Add("a").Attr("href", "#").Text("delete").AddClass("deleteStep");
         }
     }
 }

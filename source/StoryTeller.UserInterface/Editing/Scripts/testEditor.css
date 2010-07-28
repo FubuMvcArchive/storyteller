@@ -196,7 +196,10 @@ table.grid > tbody > tr:hover{
 	color: #AAA;
 }
 
-
+div.sentence
+{
+	margin: 2px 0px 2px 0px;
+}
 
 
 
