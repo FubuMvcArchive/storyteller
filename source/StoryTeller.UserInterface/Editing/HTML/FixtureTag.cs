@@ -60,18 +60,20 @@ namespace StoryTeller.UserInterface.Editing.HTML
         void IGrammarVisitor.Paragraph(Paragraph paragraph, IStep step)
         {
             grammarTag.AddClasses(GrammarConstants.PARAGRAPH, paragraph.Style.ToString());
-            var header = new HeaderTag();
-            grammarTag.Child(header);
+            var area = new AreaTag(paragraph.Label);
+            var container = area.Container.Add("div")
+                .AddClass("paragraph.Style.ToString()")
+                .AddClass("section-container")
+                .AddClass("in-paragraph");
+            grammarTag.Child(area);
 
-            if (paragraph.Style == EmbedStyle.TitledAndIndented)
-            {
-                header.Titled(paragraph.Label);
-            }
+
 
             paragraph.ForEachGrammar(g =>
             {
                 var tag = new GrammarTag(g);
-                grammarTag.Child(tag);
+
+                container.Child(tag);
 
                 _grammarTags.Do(tag, () => g.AcceptVisitor(this, new Step()));
             });

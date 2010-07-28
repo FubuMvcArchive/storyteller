@@ -638,7 +638,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Editing\Scripts\editor.css" />
-    <EmbeddedResource Include="Editing\Scripts\External\curvycorners.js" />
     <Content Include="Editing\Scripts\StyleTest.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
