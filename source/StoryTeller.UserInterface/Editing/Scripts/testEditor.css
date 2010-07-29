@@ -207,3 +207,8 @@ div.sentence
 {
 	min-width: 300px;
 }
+
+.in-paragraph > div.sentence > a.deleteStep, .in-paragraph > div.step > table > tbody > tr > td > div.section-title > a.deleteStep, .auto-select-remover
+{
+	visibility: hidden;
+}

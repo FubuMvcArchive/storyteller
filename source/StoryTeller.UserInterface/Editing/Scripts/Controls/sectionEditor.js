@@ -59,6 +59,8 @@ ST.sectionEditor = function (section, metadata, step) {
         section.stepsChanged();
 
         section.isLatched = false;
+
+        return node;
     };
 
     section.update = function () {
@@ -77,10 +79,14 @@ ST.sectionEditor = function (section, metadata, step) {
 
     if (section.hasNoSteps()) {
         if (metadata.autoSelectKey) {
-            section.addStep(metadata.autoSelectKey);
+            var control = section.addStep(metadata.autoSelectKey);
+            var link = $('a.deleteStep', control);
+            if (link.length > 0) {
+                $(link.get(0)).addClass("auto-select-remover");
+            }
         }
     }
-    
+
     section.stepsChanged();
     section.isLatched = false;
     section.holder.show();

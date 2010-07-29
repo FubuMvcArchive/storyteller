@@ -89,9 +89,7 @@ namespace StoryTeller.Execution
                 _system.RegisterFixtures(registry);
 
                 var container = registry.BuildContainer();
-                
 
-                
                 
                 var library = TestRunnerBuilder.BuildLibrary(_system, observer, container, fixtureAssembly.Filter.CreateTypeFilter());
                 var containerSource = new FixtureContainerSource(container);
