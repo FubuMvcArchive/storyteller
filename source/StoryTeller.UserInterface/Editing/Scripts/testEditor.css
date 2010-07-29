@@ -54,7 +54,15 @@ a:hover {
 	padding-bottom: 5px;
 }
 
+.Comment:first-child
+{
+	margin-top: 2px;
+}
 
+div.top-level-holder > div.step-holder > div.section
+{
+	margin-top: 20px;
+}
 
 div.section-title > a.deleteStep
 {
@@ -75,7 +83,7 @@ div.section-title > a.deleteStep
 	font-size: 100%;
 	font-weight: bold;
 	
-	background-color:lightblue;
+	background-color:#D7E3EF;
 	font-size: 90%;
 	color:#E17009;
 	
@@ -199,6 +207,21 @@ table.grid > tbody > tr:hover{
 div.sentence
 {
 	margin: 2px 0px 2px 0px;
+}
+
+div.paragraph + div.sentence, div.embedded + div.sentence, div.table-editor + div.sentence
+{
+	margin-top: 15px;
+}
+
+div.paragraph, div.embedded, div.table-editor
+{
+	margin-top: 10px;
+}
+
+div.paragraph:first-child, div.embedded:first-child, div.table-editor:first-child
+{
+	margin-top: 0px;
 }
 
 

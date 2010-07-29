@@ -16,7 +16,8 @@ namespace StoryTeller.UserInterface.Editing.HTML
                 .MetaData(GrammarConstants.LEAF_NAME, GrammarConstants.TEST)
                 .MetaData(GrammarConstants.FIXTURE, GrammarConstants.TEST)
                 .MetaData(GrammarConstants.SELECTION_MODE, SelectionMode.OneOrMore.ToString())
-                .Child(new HolderTag(fixture))
+                .Child(new HolderTag(fixture).AddClass("top-level-holder"))
+                .Child(new HtmlTag("hr"))
                 .Child(selector);
 
 
