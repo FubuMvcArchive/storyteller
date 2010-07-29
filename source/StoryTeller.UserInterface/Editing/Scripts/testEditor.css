@@ -108,12 +108,6 @@ img.remover
 	margin-left: 0px;
 }
 
-table.grid
-{
-	border-right: 1px dotted #d8d8d8;
-	border-bottom: 1px dotted #d8d8d8;
-}
-
 table.grid > tfoot a
 {
 	padding-right: 10px;
@@ -126,6 +120,7 @@ table.grid > tfoot a
 	padding-top: 5px;
 	padding-bottom: 5px;
 	background-color: #eee;
+	border: none;
 }
 
 .table-add-row > a
@@ -150,7 +145,6 @@ table.grid > thead > tr
 
 table.grid > tbody > tr > td {
 	padding: 2px;
-	border-bottom: 1px dotted #d8d8d8;
 	background-color: #eee;
 }
 
@@ -158,6 +152,22 @@ table.grid > tbody > tr:hover{
 	background-color: #c8c8c8;
 }
 
+.table-editor > table > tbody > tr > td > .section-container
+{
+	padding: 0px !important;
+	background-color: #eee;
+}
+
+.column-selector
+{
+	padding-left: 5px;
+}
+
+span.column-selector
+{
+	font-size: small;
+	font-weight: bold;
+}
 
 .grammar-selector{
 	border: 1px solid #79B7E7;

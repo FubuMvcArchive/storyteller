@@ -72,7 +72,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         public ColumnSelectionTag(Table table) : base("p")
         {
             AddClass(GrammarConstants.COLUMN_SELECTOR);
-            Add("b").Text(GrammarConstants.ADDITIONAL_COLUMNS_HEADER_TEXT);
+            Add("span").Text(GrammarConstants.ADDITIONAL_COLUMNS_HEADER_TEXT);
             table.Cells
                 .Where(x => x.HasDefault())
                 .Each(cell => Child(new OptionalColumnTag(cell)));
