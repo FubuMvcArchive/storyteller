@@ -179,7 +179,11 @@
     <Compile Include="Editing\HTML\HeaderTag.cs" />
     <Compile Include="Editing\HTML\ICellBuilder.cs" />
     <Compile Include="Editing\HTML\SentenceWriter.cs" />
-    <Compile Include="Editing\HTML\TableTemplateTag.cs" />
+    <Compile Include="Editing\HTML\Tables\CellHeaderTag.cs" />
+    <Compile Include="Editing\HTML\Tables\ColumnSelectionTag.cs" />
+    <Compile Include="Editing\HTML\Tables\OptionalColumnTag.cs" />
+    <Compile Include="Editing\HTML\Tables\TableEditorTag.cs" />
+    <Compile Include="Editing\HTML\Tables\TableTemplateTag.cs" />
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
     <Compile Include="Exploring\IIconService.cs" />

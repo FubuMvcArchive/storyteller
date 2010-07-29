@@ -12,6 +12,8 @@ ST.tableEditor = function (div, metadata, step) {
     $('.deleteStep').removable();
 
     div.addColumn = function (column) {
+        div.update();
+
         div.columns.addColumn(column);
         div.selector.hideColumn(column);
 

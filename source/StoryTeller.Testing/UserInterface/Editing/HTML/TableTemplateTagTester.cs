@@ -4,6 +4,7 @@ using NUnit.Framework;
 using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.UserInterface.Editing.HTML;
+using StoryTeller.UserInterface.Editing.HTML.Tables;
 
 namespace StoryTeller.Testing.UserInterface.Editing.HTML
 {

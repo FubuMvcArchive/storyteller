@@ -10,6 +10,7 @@ using StoryTeller.Model;
 using StoryTeller.Samples.Grammars;
 using StoryTeller.Testing.UserInterface.Editing.HTML;
 using StoryTeller.UserInterface.Editing.HTML;
+using StoryTeller.UserInterface.Editing.HTML.Tables;
 using StoryTeller.Workspace;
 
 namespace StoryTeller.Testing.JavaScript

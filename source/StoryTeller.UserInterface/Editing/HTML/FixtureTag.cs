@@ -4,6 +4,7 @@ using HtmlTags;
 using StoryTeller.Domain;
 using StoryTeller.Html;
 using StoryTeller.Model;
+using StoryTeller.UserInterface.Editing.HTML.Tables;
 
 namespace StoryTeller.UserInterface.Editing.HTML
 {

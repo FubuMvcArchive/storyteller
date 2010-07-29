@@ -129,6 +129,11 @@ table.grid > tfoot a
 	
 }
 
+table.grid
+{
+	padding-left: 5px;
+}
+
 table.grid > thead > tr > th{
 	padding-left: 2px;
 	padding-right: 2px;
