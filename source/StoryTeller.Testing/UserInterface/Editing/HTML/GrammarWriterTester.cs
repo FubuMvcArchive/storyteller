@@ -78,19 +78,10 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
         {
             HtmlTag grammarTag = templates.GrammarNode<SentenceGrammarFixture>("MultiplyThenAdd");
 
-            grammarTag.Children.Count(x => !(x is RemoveLinkTag)).ShouldEqual(4);
-
             grammarTag.Children[0].TagName().ShouldEqual("span");
             grammarTag.Children[1].TagName().ShouldEqual("input");
             grammarTag.Children[2].TagName().ShouldEqual("span");
             grammarTag.Children[3].TagName().ShouldEqual("input");
-        }
-
-        [Test]
-        public void the_sentence_should_have_a_close_link()
-        {
-            HtmlTag grammarTag = templates.GrammarNode<SentenceGrammarFixture>("MultiplyThenAdd");
-            grammarTag.Children.Last().ShouldBeOfType<RemoveLinkTag>();
         }
     }
 
@@ -102,14 +93,6 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
             registry.AddFixture<ParagraphGrammarFixture>();
         }
 
-        [Test]
-        public void should_write_a_child_tag_for_each_grammar_underneath_a_paragraph()
-        {
-            HtmlTag paragraph = templates.GrammarNode<ParagraphGrammarFixture>("Sum1");
-
-            IEnumerable<HtmlTag> children = paragraph.Children.Where(x => x.HasClass(GrammarConstants.SENTENCE));
-            children.Count().ShouldEqual(3);
-        }
 
         [Test]
         public void the_children_underneath_paragraph_should_not_have_remove_link()
@@ -118,14 +101,6 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
 
             paragraph.Children.Where(x => x.HasClass(GrammarConstants.SENTENCE)).Each(
                 x => { x.Children.Count(c => c is RemoveLinkTag).ShouldEqual(0); });
-        }
-
-        [Test]
-        public void the_paragraph_should_start_with_a_header_tag_with_a_remove_link()
-        {
-            HtmlTag paragraph = templates.GrammarNode<ParagraphGrammarFixture>("Sum1");
-            paragraph.Children.First().ShouldBeOfType<HeaderTag>().Children.First()
-                .Children.Count(x => x is RemoveLinkTag).ShouldEqual(1);
         }
 
         [Test]
@@ -298,11 +273,6 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
                 new EmbeddedFixture().Policies.SelectionMode.ToString());
         }
 
-        [Test]
-        public void the_embedded_section_should_start_with_a_header_tag_and_remove_link()
-        {
-            theSectionNode.Children.First().ShouldBeOfType<HeaderTag>().Children.Count(x => x is RemoveLinkTag);
-        }
     }
 
     [TestFixture]

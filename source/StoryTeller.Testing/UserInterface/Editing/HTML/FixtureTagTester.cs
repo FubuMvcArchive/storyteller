@@ -130,14 +130,6 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
         }
 
         [Test]
-        public void do_not_write_title_if_the_section_is_inline()
-        {
-            GrammarTag grammarTag = grammarTagFor("Inline");
-            HeaderTag headerTag = grammarTag.Children.Select(x => x as HeaderTag).First(x => x != null);
-            headerTag.Titled().ShouldBeEmpty();
-        }
-
-        [Test]
         public void should_write_the_embedded_and_section_classes()
         {
             GrammarStructure grammar = fixture.GrammarFor("Simple");
@@ -175,22 +167,6 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
                 grammar.Fixture.Policies.SelectionMode.ToString());
         }
 
-        [Test]
-        public void write_title_if_the_section_is_titled()
-        {
-            var grammar = fixture.GrammarFor("Simple").As<EmbeddedSection>();
-            GrammarTag grammarTag = grammarTagFor("Simple");
-            HeaderTag headerTag = grammarTag.Children.Select(x => x as HeaderTag).First(x => x != null);
-            headerTag.Titled().ShouldEqual(grammar.Label);
-        }
-
-        [Test]
-        public void add_selector_if_it_is_not_mandatory_auto_select()
-        {
-            var grammar = fixture.GrammarFor("Simple").As<EmbeddedSection>();
-            GrammarTag grammarTag = grammarTagFor("Simple");
-            grammarTag.Children.Any(x => x.HasClass(GrammarConstants.GRAMMAR_SELECTOR)).ShouldBeTrue();
-        }
 
 
         [Test]

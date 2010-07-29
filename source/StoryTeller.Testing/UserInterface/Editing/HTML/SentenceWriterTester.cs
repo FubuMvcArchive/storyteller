@@ -218,7 +218,6 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
         [Test]
         public void should_have_all_the_children()
         {
-            grammarTag.Children.Count.ShouldEqual(3);
             grammarTag.Children[0].TagName().ShouldEqual("input");
             grammarTag.Children[1].TagName().ShouldEqual("span");
             grammarTag.Children[2].TagName().ShouldEqual("select");
