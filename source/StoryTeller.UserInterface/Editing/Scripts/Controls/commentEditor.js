@@ -1,4 +1,4 @@
-ST.commentEditor = function(div, metadata, comment) {
+ST.commentEditor = function (div, metadata, comment) {
     div.comment = comment;
 
     div.textbox = $('.editor', div);
@@ -8,30 +8,34 @@ ST.commentEditor = function(div, metadata, comment) {
 
     $('.deleteStep', div).removable();
 
-    div.showPreview = function() {
+
+
+    div.showPreview = function () {
         div.editorHolder.hide();
         div.previewHolder.show();
     }
 
-    div.edit = function() {
+    $(div.textbox).blur(div.showPreview);
+
+    div.edit = function () {
         div.editorHolder.show();
         div.previewHolder.hide();
     }
 
-    div.update = function() {
+    div.update = function () {
         div.textbox.change();
         return div.comment;
     }
 
-    $('.comment-editor', div).click(function() {
+    $('.comment-editor', div).click(function () {
         div.edit();
     });
 
-    $('.comment-closer', div).click(function() {
+    $('.comment-closer', div).click(function () {
         div.showPreview();
     });
 
-    div.textbox.change(function() {
+    div.textbox.change(function () {
         comment.text(div.textbox.val());
         div.preview.html(div.textbox.val());
         $(div).markDirty();
