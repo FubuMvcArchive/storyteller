@@ -106,6 +106,11 @@ ST.tableEditor = function (div, metadata, step) {
     div.rebuildTable();                    // rebuild the initial state of the row/columns
     div.rowRemoved();
 
+    // If this is a new table, add at least one row
+    if (div.leaf.children.length == 0) {
+        div.add();
+    }
+
     return div;
 }
 
