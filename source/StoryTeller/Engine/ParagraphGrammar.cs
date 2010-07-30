@@ -65,7 +65,7 @@ namespace StoryTeller.Engine
             var cells = new List<Cell>();
             _grammars.CallOnEach<LineGrammar>(x =>
             {
-                IEnumerable<Cell> newCells = x.GetCells().Select(c => c.ToExample());
+                IEnumerable<Cell> newCells = x.GetCells().Select(c => c.ToInputCell());
                 cells.AddRange(newCells);
             });
 

@@ -54,7 +54,7 @@ namespace StoryTeller
 
             Cell[] cells = GetCells()
                 .Where(x => x.IsTestVariable(library.Finder))
-                .Select(x => x.ToExample())
+                .Select(x => x.ToInputCell())
                 .ToArray();
 
             return new Sentence(Template, cells);

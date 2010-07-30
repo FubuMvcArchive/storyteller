@@ -48,11 +48,11 @@ namespace StoryTeller.Samples.Grammars
 
         [ExposeAsTable("Table with lots of options")]
         public void TableWithLotsOfOptions(
-            int a,
-            [Default("2")] int b,
-            [Default("3")] int c,
-            [Default("4")] int d,
-            [Default("5")] int e)
+            [Header("A")]int a,
+            [Header("B"),Default("2")] int b,
+            [Header("C"), Default("3")] int c,
+            [Header("D"), Default("4")] int d,
+            [Header("E"), Default("5")] int e)
         {
             
         }

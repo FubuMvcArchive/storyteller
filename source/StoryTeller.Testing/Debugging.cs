@@ -12,8 +12,10 @@ using StoryTeller.Execution;
 using StoryTeller.Html;
 using StoryTeller.Model;
 using StoryTeller.Samples;
+using StoryTeller.Samples.Grammars;
 using StoryTeller.UserInterface;
 using StoryTeller.UserInterface.Editing;
+using StoryTeller.UserInterface.Editing.HTML.Tables;
 using StoryTeller.UserInterface.Tests;
 using StoryTeller.Workspace;
 using StructureMap;
@@ -32,6 +34,19 @@ namespace StoryTeller.Testing
         }
 
         #endregion
+
+        [Test]
+        public void get_header_attribute_off_of_table()
+        {
+            var fixture = new TableFixture();
+            var table = fixture["TableWithLotsOfOptions"].ToStructure(new FixtureLibrary()).ShouldBeOfType<Table>();
+            Cell cell = table.Cells.Find(x => x.Key == "a");
+            cell.Header.ShouldEqual("A");
+
+            var tag = new CellHeaderTag(cell);
+
+            Debug.WriteLine(tag.ToPrettyString());
+        }
 
         [Test]
         public void project_runner_smoke_tester()

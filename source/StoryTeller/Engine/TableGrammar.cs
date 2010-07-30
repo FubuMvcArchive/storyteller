@@ -44,7 +44,7 @@ namespace StoryTeller.Engine
         {
             Cell[] cells = InnerGrammar.GetCells()
                 .Where(x => x.IsTestVariable(library.Finder))
-                .Select(c => c.ToExample()).ToArray();
+                .Select(c => c.ToInputCell()).ToArray();
 
             return new Table(LabelName, LeafName(), cells);
         }

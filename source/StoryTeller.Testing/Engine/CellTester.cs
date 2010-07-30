@@ -373,25 +373,37 @@ namespace StoryTeller.Testing.Engine
             Cell cell = Cell.For<Service1>("name");
             cell.DefaultValue = "something";
 
-            Cell example = cell.ToExample();
+            Cell example = cell.ToInputCell();
             example.Key.ShouldEqual(cell.Key);
             example.Type.ShouldEqual(typeof (string));
             example.DefaultValue.ShouldEqual(cell.DefaultValue);
             example.OriginalTypeName.ShouldEqual(cell.Type.AssemblyQualifiedName);
         }
 
+
+        [Test]
+        public void to_example_as_a_non_simple_type_copies_the_header_value()
+        {
+            Cell cell = Cell.For<Service1>("name");
+            cell.DefaultValue = "something";
+            cell.Header = "Something Different";
+
+            Cell example = cell.ToInputCell();
+            example.Header.ShouldEqual(cell.Header);
+        }
+
         [Test]
         public void to_example_as_a_simple_type_returns_self()
         {
             Cell cell = Cell.For<string>("name");
-            cell.ToExample().ShouldBeTheSameAs(cell);
+            cell.ToInputCell().ShouldBeTheSameAs(cell);
         }
 
         [Test]
         public void to_example_as_a_timestamp_returns_self()
         {
             Cell cell = Cell.For<TimeSpan>("name");
-            cell.ToExample().ShouldBeTheSameAs(cell);
+            cell.ToInputCell().ShouldBeTheSameAs(cell);
         }
 
 

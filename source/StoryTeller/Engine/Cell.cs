@@ -293,16 +293,16 @@ namespace StoryTeller.Engine
             return finder.CanBeParsed(_type);
         }
 
-        [Obsolete("NEED TO RENAME THIS TO INPUT CELL OR SOMETHING")]
-        public Cell ToExample()
+        public Cell ToInputCell()
         {
             if (_type.IsSimple() || _type == typeof (TimeSpan)) return this;
 
             var example = new Cell(Key, typeof (string), DefaultValue)
             {
-                OriginalTypeName = _type.AssemblyQualifiedName
+                OriginalTypeName = _type.AssemblyQualifiedName,
+                Header = Header,
+                IsResult = IsResult
             };
-            example.IsResult = IsResult;
 
             return example;
         }
