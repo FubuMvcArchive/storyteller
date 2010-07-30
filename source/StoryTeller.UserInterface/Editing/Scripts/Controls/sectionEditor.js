@@ -7,14 +7,11 @@ ST.sectionEditor = function (section, metadata, step) {
 
     $('.deleteStep', section).removable();
 
-    if (step.key() == metadata.leafName) {
+    if (step.key() == "Test" || $(section).hasClass('top-node')) {
         section.leaf = step;
-    }
-    else if ($(section).hasClass('embedded')) {
-        section.leaf = step.childFor(metadata.leafName);
     }
     else {
-        section.leaf = step;
+        section.leaf = step.childFor(metadata.leafName);
     }
 
     section.holder = ST.stepHolder(section);

@@ -20,17 +20,20 @@ namespace StoryTeller.UserInterface.Editing.HTML
             _top = new DivTag(GrammarConstants.FIXTURE_SELECTOR).Hide();
 
             FixtureGraph topFixture = _library.BuildTopLevelGraph();
-            writeFixture(topFixture);
+            var topFixtureNode = writeFixture(topFixture);
+            topFixtureNode.Children.Each(x => x.AddClass("top-node"));
 
-            _library.ActiveFixtures.Each(writeFixture);
+            _library.ActiveFixtures.Each(f => writeFixture(f));
 
             return _top;
         }
 
-        private void writeFixture(FixtureGraph fixture)
+        private FixtureTag writeFixture(FixtureGraph fixture)
         {
             _fixtureTag = new FixtureTag(fixture);
             _top.Child(_fixtureTag);
+
+            return _fixtureTag;
         }
     }
 }

@@ -3,6 +3,8 @@ ST.testEditor = function (editor, test) {
     editor.inner = $('.container', editor).get(0);
     editor.test = test;
 
+    //$(editor.inner).clear();
+
     editor.markDirty = function () {
         if (editor.isLatched) return true;
 

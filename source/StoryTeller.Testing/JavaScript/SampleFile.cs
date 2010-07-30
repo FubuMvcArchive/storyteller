@@ -62,7 +62,7 @@ namespace StoryTeller.Testing.JavaScript
     // THIS IS STRICTLY FOR JEREMY's TESTING AND 100% LIKELY TO FAIL ON YOUR BOX!
     public class BlueTestFile : JavaScriptTestFile
     {
-        private readonly ProjectTestRunner _runner = new ProjectTestRunner(@"C:\\svn\\blue\\StoryTeller.xml");
+        private readonly ProjectTestRunner _runner = new ProjectTestRunner(@"C:\\svn\\blue\\RuleTests.xml");
 
         public BlueTestFile()
             : base("Blue Files")
@@ -84,7 +84,8 @@ namespace StoryTeller.Testing.JavaScript
 
         protected override void addChildren(string title)
         {
-            var select = Add("h2").Text("Test:  ").Child<SelectTag>();
+            HtmlTag header = Add("h2").Text("Test:  ");
+            var select = header.Child<SelectTag>();
             select.Id("testName");
 
 
@@ -101,6 +102,8 @@ namespace StoryTeller.Testing.JavaScript
 
                 AddTest(testName, test);
             });
+
+            header.Add("button").Text("Next").Id("nextButton");
 
             Add("hr");
 

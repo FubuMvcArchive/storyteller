@@ -3,6 +3,7 @@
 	color:#111;
 	line-height:1.4em;
 	/*background-color: #ccc;*/ 
+	margin-left: 30px;
 }
 
 a
@@ -163,7 +164,7 @@ table.grid > tbody > tr:hover{
 	background-color: #eee;
 }
 
-.column-selector
+p.column-selector
 {
 	padding-left: 5px;
 }
