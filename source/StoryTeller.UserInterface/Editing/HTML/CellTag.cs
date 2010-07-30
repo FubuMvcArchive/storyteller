@@ -1,3 +1,4 @@
+using FubuCore;
 using HtmlTags;
 using StoryTeller.Engine;
 using StoryTeller.Html;
@@ -12,6 +13,11 @@ namespace StoryTeller.UserInterface.Editing.HTML
             AddClass(GrammarConstants.CELL);
             this.AddSafeClassName(cell.Key);
             MetaData(GrammarConstants.KEY, cell.Key);
+
+            if (cell.DefaultValue.IsNotEmpty())
+            {
+                MetaData("defaultValue", cell.DefaultValue);
+            }
         }
     }
 }

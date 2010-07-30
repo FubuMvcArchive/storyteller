@@ -196,7 +196,7 @@ span.column-selector
 }
 
 .grammar-selector .header-container span{
-	font-size: 110%;
+	font-size: 90%;
 	font-weight: bold;
 }
 
@@ -218,6 +218,7 @@ span.column-selector
 	font-style: italic;
 	color: #AAA;
 }
+
 
 div.sentence
 {

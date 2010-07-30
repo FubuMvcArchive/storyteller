@@ -38,14 +38,15 @@ namespace StoryTeller.Testing
         [Test]
         public void get_header_attribute_off_of_table()
         {
-            var fixture = new TableFixture();
-            var table = fixture["TableWithLotsOfOptions"].ToStructure(new FixtureLibrary()).ShouldBeOfType<Table>();
-            Cell cell = table.Cells.Find(x => x.Key == "a");
-            cell.Header.ShouldEqual("A");
+            var fixture = new MathFixture();
+            var sentence = fixture["StartWith"].ToStructure(new FixtureLibrary()).ShouldBeOfType<Sentence>();
+            Cell cell = sentence.Cells.First();
+            cell.DefaultValue.ShouldEqual("11");
 
-            var tag = new CellHeaderTag(cell);
+            cell.ToInputCell().DefaultValue.ShouldEqual("11");
 
-            Debug.WriteLine(tag.ToPrettyString());
+            var tag = new CellTag(cell, new Step());
+            tag.MetaData("defaultValue").ShouldEqual("11");
         }
 
         [Test]

@@ -45,7 +45,7 @@ namespace StoryTeller.Samples
         }
 
         [FormatAs("The number should start with {starting}")]
-        public void StartWith(double starting)
+        public void StartWith([Default("11")]double starting)
         {
             Thread.Sleep(1000);
 

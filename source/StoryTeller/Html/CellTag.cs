@@ -20,6 +20,11 @@ namespace StoryTeller.Html
             _step = step;
 
             AddClass(HtmlClasses.INPUT);
+
+            if (cell.DefaultValue.IsNotEmpty())
+            {
+                MetaData("defaultValue", cell.DefaultValue);
+            }
         }
 
         public void WritePreview(ITestContext context)

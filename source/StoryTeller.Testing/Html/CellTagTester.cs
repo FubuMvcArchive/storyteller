@@ -1,7 +1,12 @@
+using System.Diagnostics;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Html;
+using StoryTeller.Model;
+using StoryTeller.Samples;
+using StoryTeller.UserInterface.Editing.HTML;
+using CellTag = StoryTeller.Html.CellTag;
 
 namespace StoryTeller.Testing.Html
 {
@@ -11,6 +16,35 @@ namespace StoryTeller.Testing.Html
         [SetUp]
         public void SetUp()
         {
+        }
+
+        [Test]
+        public void integrated_test_for_the_default_value_coming_all_the_way_through()
+        {
+            var fixture = new MathFixture();
+            var sentence = fixture["StartWith"].ToStructure(new FixtureLibrary()).ShouldBeOfType<Sentence>();
+            Cell cell = sentence.Cells[0].ToInputCell();
+            StoryTeller.UserInterface.Editing.HTML.CellTag buildTag = new CellBuilderLibrary().BuildTag(cell);
+
+            buildTag.MetaData("defaultValue").ShouldEqual(cell.DefaultValue);
+        }
+
+        [Test]
+        public void cell_tag_puts_on_default_value_if_it_exists()
+        {
+            var cell = Cell.For<string>("name");
+            cell.DefaultValue = "Jeremy";
+
+            new CellTag(cell, new Step()).MetaData("defaultValue").ShouldEqual("Jeremy");
+        }
+
+        [Test]
+        public void cell_tag_does_not_put_on_default_value_if_it_does_not_exist_on_the_cell()
+        {
+            var cell = Cell.For<string>("name");
+            cell.DefaultValue = null;
+
+            new CellTag(cell, new Step()).HasMetaData("defaultValue").ShouldBeFalse();
         }
 
         [Test]
