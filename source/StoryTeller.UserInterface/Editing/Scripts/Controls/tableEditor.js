@@ -18,6 +18,8 @@ ST.tableEditor = function (div, metadata, step) {
         div.selector.hideColumn(column);
 
         div.rebuildTable();
+
+        $(div).markDirty();
     }
 
     div.removeColumn = function (column) {
@@ -31,6 +33,8 @@ ST.tableEditor = function (div, metadata, step) {
         div.selector.showColumn(column);
 
         div.rebuildTable();
+
+        $(div).markDirty();
     }
 
     div.rebuildTable = function () {
@@ -75,6 +79,8 @@ ST.tableEditor = function (div, metadata, step) {
 
         $('.cloner', div).show();
 
+        $(div).markDirty();
+
         return false;
     }
 
@@ -96,6 +102,8 @@ ST.tableEditor = function (div, metadata, step) {
         if (div.tbody.children().length == 0) {
             $('.cloner', div).hide();
         }
+
+        $(div).markDirty();
     }
 
     $('.adder', div).click(div.add);

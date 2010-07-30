@@ -5,6 +5,7 @@ ST.testEditor = function (editor, test) {
 
     editor.markDirty = function () {
         if (editor.isLatched) return true;
+
         editor.isLatched = true;
 
         editor.inner.update();
@@ -13,7 +14,7 @@ ST.testEditor = function (editor, test) {
 
         editor.isLatched = false;
     }
-    
+
     $('.testName', editor).html(test.Name);
 
     var metadata = $(editor.inner).metadata();
@@ -24,7 +25,7 @@ ST.testEditor = function (editor, test) {
     }
 
     editor.isLatched = false;
-    
+
     return editor;
 }
 
