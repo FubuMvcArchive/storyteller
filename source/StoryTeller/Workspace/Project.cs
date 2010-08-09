@@ -180,7 +180,7 @@ namespace StoryTeller.Workspace
         {
             if (!File.Exists(filename))
             {
-                return null;
+                throw new FileNotFoundException("Could not locate designated Project File", filename);
             }
 
             var fileSystem = new FileSystem();

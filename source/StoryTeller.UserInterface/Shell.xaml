@@ -43,7 +43,7 @@
                     <TabItem Header="Fixtures">
                         <TreeView Name="fixtureTree"></TreeView>
                     </TabItem>
-                    <TabItem Header="Settings">
+                    <TabItem Header="Projects">
                         <Projects:Settings x:Name="settings"></Projects:Settings>
                     </TabItem>
                 </TabControl>

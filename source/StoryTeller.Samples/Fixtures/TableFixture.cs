@@ -56,6 +56,13 @@ namespace StoryTeller.Samples.Grammars
         {
             
         }
+
+        [ExposeAsTable("Is Positive?")]
+        [return: AliasAs("IsEven")]
+        public bool IsPositive(int number)
+        {
+            return number >= 0;            
+        }
     }
 
 

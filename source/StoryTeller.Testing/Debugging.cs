@@ -23,6 +23,32 @@ using StructureMap.TypeRules;
 
 namespace StoryTeller.Testing
 {
+
+    [TestFixture, Explicit]
+    public class Runner
+    {
+        private ProjectTestRunner runner;
+
+        [TestFixtureSetUp]
+        public void SetupRunner()
+        {
+            runner = new ProjectTestRunner(@"c:\svn\blue\RuleTests.xml");
+        }
+
+        [Test]
+        public void Automatically_Assign_Case_To_User()
+        {
+            runner.RunAndAssertTest("Case Tests/Automatically Assign Case To User");
+        }
+
+        [TestFixtureTearDown]
+        public void TeardownRunner()
+        {
+            runner.Dispose();
+        }
+    }
+
+
     [TestFixture, Explicit]
     public class Debugging
     {

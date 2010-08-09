@@ -43,6 +43,12 @@ namespace StoryTeller.Testing.Integration
         }
 
         [Test]
+        public void boolean_results_in_set_verification()
+        {
+            running("Boolean Results in a Table").ShouldEqual(2, 0, 0, 0);
+        }
+
+        [Test]
         public void cannot_find_grammar()
         {
             running("Test with Bad Grammar Name").ShouldEqual(0, 0, 3, 0);

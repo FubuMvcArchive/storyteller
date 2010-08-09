@@ -39,6 +39,21 @@ namespace StoryTeller.Testing.Engine
     public class CellTester
     {
         [Test]
+        public void boolean_result_cell_expected_value_is_true_if_no_value_is_specified()
+        {
+            var cell = Cell.ResultFor<bool>("tag");
+            cell.GetRawExpected(new Step()).ShouldEqual(true.ToString());
+        }
+
+        [Test]
+        public void boolean_result_cell_expected_value_is_read_from_the_step_if_the_value_is_specified()
+        {
+            var cell = Cell.ResultFor<bool>("tag");
+            cell.GetRawExpected(new Step().With("tag:true")).ShouldEqual("true");
+            cell.GetRawExpected(new Step().With("tag:false")).ShouldEqual("false");
+        }
+
+        [Test]
         public void a_cell_with_a_default_value_will_use_that_for_the_sample_value()
         {
             new Cell("key1", typeof (string), "Jeremy").SampleValue().ShouldEqual("Jeremy");

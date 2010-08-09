@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 using StoryTeller.Execution;
 using StoryTeller.Usages;
@@ -22,7 +23,9 @@ namespace StoryTeller.Testing.Usages
         [Test]
         public void find_fixture_usage_for_a_workspace()
         {
-            usages.FixturesFor("Tables").Select(x => x.Name).ShouldHaveTheSameElementsAs("DataTable", "Table");
+            var enumerable = usages.FixturesFor("Tables").Select(x => x.Name).ToList();
+            enumerable.Sort();
+            enumerable.ShouldHaveTheSameElementsAs("DataTable", "Table");
         }
 
 
