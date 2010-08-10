@@ -31,6 +31,10 @@ ST.testEditor = function (editor, test) {
     return editor;
 }
 
+function applyChanges() {
+    $('#testEditor').markDirty();
+}
+
 ST.pushChanges = function(json) {
     // nothing
 }

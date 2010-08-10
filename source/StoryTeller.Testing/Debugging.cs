@@ -32,13 +32,13 @@ namespace StoryTeller.Testing
         [TestFixtureSetUp]
         public void SetupRunner()
         {
-            runner = new ProjectTestRunner(@"c:\svn\blue\RuleTests.xml");
+            runner = new ProjectTestRunner(@"c:\svn\blue\storyteller.xml");
         }
 
         [Test]
-        public void Automatically_Assign_Case_To_User()
+        public void Viewing_Installed_Part_Information()
         {
-            runner.RunAndAssertTest("Case Tests/Automatically Assign Case To User");
+            runner.RunAndAssertTest("Case/Viewing Installed Part Information");
         }
 
         [TestFixtureTearDown]

@@ -46,5 +46,10 @@ namespace StoryTeller.UserInterface.Tests
             return true;
         }
 
+        public override bool ApplyChanges()
+        {
+            _view.RunCommand("applyChanges");
+            return true;
+        }
     }
 }

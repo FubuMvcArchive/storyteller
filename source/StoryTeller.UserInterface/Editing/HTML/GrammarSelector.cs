@@ -69,7 +69,6 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
         void IGrammarVisitor.DoGrammar(DoGrammarStructure grammar, IStep step)
         {
-            throw new NotImplementedException();
         }
 
         #endregion

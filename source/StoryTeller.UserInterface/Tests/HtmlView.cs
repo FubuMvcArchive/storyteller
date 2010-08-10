@@ -10,6 +10,7 @@ namespace StoryTeller.UserInterface.Tests
         object Listener { set; }
         void OpenFile(string path);
         void CaptureFocus();
+        void RunCommand(string command);
     }
 
     public class HtmlView : ContentControl, IHtmlView
@@ -56,6 +57,11 @@ namespace StoryTeller.UserInterface.Tests
         public void CaptureFocus()
         {
             _browser.Focus();
+        }
+
+        public void RunCommand(string command)
+        {
+            _browser.InvokeScript(command);
         }
 
         #endregion

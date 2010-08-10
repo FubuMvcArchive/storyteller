@@ -62,8 +62,6 @@ namespace StoryTeller.Model
         {
             foreach (GrammarStructure structure in _children)
             {
-                if (structure is DoGrammarStructure) continue;
-
                 action(structure);
             }
         }
