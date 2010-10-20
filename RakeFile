@@ -54,8 +54,11 @@ task :package => [:version]  do
   File.delete package_file if File.exist? package_file
   Zip::ZipFile.open(package_file, Zip::ZipFile::CREATE) do |zip|
 	  zip.add "StoryTeller.UserInterface.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.UserInterface.dll"
+	  zip.add "StoryTeller.UserInterface.pdb", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.UserInterface.pdb"
 	  zip.add "StoryTeller.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.dll"
+	  zip.add "StoryTeller.pdb", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTeller.pdb"
 	  zip.add "StoryTellerUI.exe", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTellerUI.exe"
+	  zip.add "StoryTellerUI.pdb", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StoryTellerUI.pdb"
 	  zip.add "StructureMap.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/StructureMap.dll"
 	  zip.add "FubuCore.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/FubuCore.dll"
 	  zip.add "HtmlTags.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/HtmlTags.dll"
@@ -64,6 +67,7 @@ task :package => [:version]  do
 	  zip.add "ShadeTree.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ShadeTree.dll"
 	  zip.add "ShadeTree.Binding.dll", "source/StoryTellerUI/bin/#{COMPILE_TARGET}/ShadeTree.Binding.dll"
 	  zip.add "StoryTellerRunner.exe", "source/StoryTellerRunner/bin/#{COMPILE_TARGET}/StoryTellerRunner.exe"
+	  zip.add "StoryTellerRunner.pdb", "source/StoryTellerRunner/bin/#{COMPILE_TARGET}/StoryTellerRunner.pdb"
   
   end
 

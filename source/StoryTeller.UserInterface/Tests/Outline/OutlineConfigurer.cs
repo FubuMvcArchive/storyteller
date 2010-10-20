@@ -226,8 +226,23 @@ namespace StoryTeller.UserInterface.Tests.Outline
             }
 
             private void add(string key, string text, Icon icon)
+            {                
+                _selector.Add(icon, text, () => _controller.AddStep(key, _holder), Shortcuts[_index]);
+                getIndexAction()();
+            }
+
+            private Action getIndexAction()
             {
-                _selector.Add(icon, text, () => _controller.AddStep(key, _holder), Shortcuts[_index++]);
+                Action indexAction;
+                if(_index < Shortcuts.Length - 1)
+                {
+                    indexAction = () => _index +=1;
+                }
+                else
+                {
+                    indexAction = () => { };
+                }
+                return indexAction;
             }
 
             void IGrammarVisitor.Sentence(Sentence sentence, IStep step)
