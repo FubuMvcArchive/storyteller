@@ -102,6 +102,9 @@ namespace StoryTeller.Execution
             catch (Exception e)
             {
                 Console.WriteLine(e);
+            }
+            finally
+            {
                 runner.Dispose();
             }
         }
