@@ -6,7 +6,6 @@ using StoryTeller.Engine.Sets;
 
 namespace StoryTeller.DSL
 {
-    // TODO -- be very nice 
     public class VerifySetExpression<T>
     {
         private readonly Func<ITestContext, IEnumerable<T>> _dataSource;

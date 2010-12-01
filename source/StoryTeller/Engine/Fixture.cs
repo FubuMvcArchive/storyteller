@@ -202,7 +202,6 @@ namespace StoryTeller.Engine
             return new VerifyStringListExpression(dataSource);
         }
 
-        // TODO: tests!
         public static VerifyStringListExpression VerifyStringList()
         {
             return new VerifyStringListExpression();
@@ -213,7 +212,6 @@ namespace StoryTeller.Engine
             return new VerifyStringListExpression(c => dataSource());
         }
 
-        // TODO: tests!
         public static VerifySetExpression<T> VerifySetOf<T>(Func<ITestContext, IEnumerable<T>> dataSource)
         {
             return new VerifySetExpression<T>(dataSource);
@@ -265,7 +263,6 @@ namespace StoryTeller.Engine
             return new VerifySetExpression<T>(c => dataSource());
         }
 
-        // TODO -- need tests.  Need an overload that puts the T on the Current
         public static ParagraphGrammar VerifyPropertiesOf<T>(string title,
                                                              Action<ObjectVerificationExpression<T>> action)
             where T : class

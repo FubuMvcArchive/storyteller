@@ -5,6 +5,8 @@ using FubuCore;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Persistence;
+using FileSystem = StoryTeller.Persistence.FileSystem;
+using IFileSystem = StoryTeller.Persistence.IFileSystem;
 
 namespace StoryTeller.Execution
 {

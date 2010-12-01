@@ -40,8 +40,15 @@ namespace StoryTeller.UserInterface
         public static void Do<T>(this Stack<T> stack, T target, Action action)
         {
             stack.Push(target);
-            action();
-            stack.Pop();
+            
+            try
+            {
+                action();
+            }
+            finally
+            {
+                stack.Pop();
+            }
         }
 
         public static bool IsFloatingPoint(this Type type)

@@ -6,6 +6,7 @@ using StoryTeller.Domain;
 using StoryTeller.Workspace;
 using FubuCore;
 using System.Linq;
+using FileSystem = StoryTeller.Workspace.FileSystem;
 
 namespace StoryTeller.Codegen
 {

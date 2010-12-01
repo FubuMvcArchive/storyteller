@@ -10,6 +10,7 @@ using StoryTeller.Model;
 using StoryTeller.Persistence;
 using StoryTeller.Workspace;
 using FileSystem=StoryTeller.Persistence.FileSystem;
+using IFileSystem = StoryTeller.Persistence.IFileSystem;
 
 namespace StoryTeller.Execution
 {
