@@ -18,6 +18,7 @@ namespace StoryTeller.Persistence
         {
             var node = new JsonNode("Test");
             node["Name"] = test.Name;
+            node["SuiteName"] = test.SuiteName;
 
             new WriterVisitor(test, node).Write();
 

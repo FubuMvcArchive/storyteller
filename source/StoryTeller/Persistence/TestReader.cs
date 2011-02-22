@@ -61,7 +61,10 @@ namespace StoryTeller.Persistence
 
         public static Test CreateTest(INode element, ITestPartCollection parts)
         {
-            var test = new Test(element["name"], parts);
+            string name = element["name"];
+            string suiteName = element["SuiteName"];
+            var test = new Test(name, parts);
+            test.SuiteName = suiteName;
 
             readLifecycle(test, element);
             return test;
