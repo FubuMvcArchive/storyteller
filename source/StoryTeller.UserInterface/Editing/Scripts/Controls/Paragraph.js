@@ -1,4 +1,4 @@
-ST.paragraph = function(div, metadata, step) {
+ST.paragraph = function (div, metadata, step) {
     div.step = step;
     div.container = $('.section-container', div).get(0);
 
@@ -6,9 +6,11 @@ ST.paragraph = function(div, metadata, step) {
 
     ST.activateGrammars(div.container, step);
 
-    div.update = function() {
+    div.update = function () {
         $(div.container).children('.step').each(function (i, child) {
-            child.update();
+            if (jQuery.isFunction(child.update)) {
+                child.update();
+            }
         });
 
         return div.step;

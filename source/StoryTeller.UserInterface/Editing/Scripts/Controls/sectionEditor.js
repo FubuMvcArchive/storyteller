@@ -64,7 +64,9 @@ ST.sectionEditor = function (section, metadata, step) {
         section.leaf.children = [];
 
         section.eachStep(function (x) {
-            section.leaf.children.push(x.update());
+            if (jQuery.isFunction(x.update)) {
+                section.leaf.children.push(x.update());
+            }
         });
 
         return step;
