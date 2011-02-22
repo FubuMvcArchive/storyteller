@@ -192,6 +192,8 @@ namespace StoryTeller.Workspace
             foreach (string file in _system.GetFiles(folder, "xml"))
             {
                 Test test = LazyTestXmlReader.ReadFromFile(file);
+                test.Parent = parent;
+                test.SuiteName = test.Parent == null ? string.Empty : string.Format("{0}/{1}", _project.Name, test.Parent.GetPath().Locator);
                 parent.AddTest(test);
             }
 
@@ -200,10 +202,11 @@ namespace StoryTeller.Workspace
             {
                 string name = Path.GetFileName(subFolder);
                 var child = parent is Hierarchy ? new WorkspaceSuite(name){Filter = _project.WorkspaceFor(name)} : new Suite(name);
+                child.Parent = parent;
                 parent.AddSuite(child);
-
                 loadTestsInFolder(subFolder, child);
             }
         }
+
     }
 }

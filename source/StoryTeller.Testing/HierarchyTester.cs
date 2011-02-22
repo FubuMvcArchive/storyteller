@@ -37,6 +37,21 @@ namespace StoryTeller.Testing
             });
         }
 
+        [Test]
+        public void verify_child_parent_relationships_smoke_test()
+        {
+            var h = DataMother.MathProject().LoadTests();
+            h.GetAllTests().Each(x =>
+            {
+                Assert.IsNotNull(x.Parent);
+                Assert.IsTrue(x.SuiteName.Contains(x.Parent.Name));
+                if (x.Parent.Parent != null)
+                {
+                    Assert.IsTrue(x.SuiteName.Contains("/"));
+                    Assert.IsTrue(x.SuiteName.Contains(x.Parent.Parent.Name));
+                }
+            });
+        }
 
         [Test]
         public void add_test_by_one_deep_path()
