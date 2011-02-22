@@ -116,7 +116,7 @@ namespace StoryTeller.Html
             var testHolder = new TestHolderTag();
 
             _document.Add(testHolder);
-            testHolder.TestName.Text(test.Name);
+            testHolder.TestName.Text(string.Format("{0}/{1}", test.SuiteName, test.Name));
 
             _document.PushWithoutAttaching(testHolder.CreateStepHolder());
         }
