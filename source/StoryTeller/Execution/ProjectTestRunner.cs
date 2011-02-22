@@ -46,7 +46,8 @@ namespace StoryTeller.Execution
             }
 
             _project = getProject();
-            _engine = new TestEngine();
+            TestStopConditions conditions = new TestStopConditions {TimeoutInSeconds = _project.TimeoutInSeconds};
+            _engine = new TestEngine(new TestRunnerDomain(new NulloEventPublisher()), conditions);
             _engine.Handle(new ProjectLoaded(_project));
             _engine.UseTeamCityListener();
             
