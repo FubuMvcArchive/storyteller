@@ -96,7 +96,7 @@ namespace StoryTeller.UserInterface.Tests
 
         public void Handle(TestRenamed message)
         {
-            if (message.Test == _test)
+            if (message.Test.Equals(_test))
             {
                 _view.Refresh();
             }
