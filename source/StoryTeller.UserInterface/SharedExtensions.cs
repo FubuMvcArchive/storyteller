@@ -136,6 +136,11 @@ namespace StoryTeller.UserInterface
             return text;
         }
 
+        public static string GetLabelTextWithoutHotkey(this string text)
+        {
+            return text.Replace("_", "__");
+        }
+
         public static StackPanel Configure(this StackPanel panel, Action<StackPanel> action)
         {
             action(panel);

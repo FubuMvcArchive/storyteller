@@ -22,7 +22,7 @@ namespace StoryTeller.UserInterface.Screens
                 {
                     x.Height = 25;
                 })
-                .AddText(screen.Title, x => _label = x)
+                .AddText(screen.Title.GetLabelTextWithoutHotkey(), x => _label = x)
                 .Add(new TabCloser(sendMessage(s => s.Close(screen))));
 
             _label.VerticalAlignment = VerticalAlignment.Center;

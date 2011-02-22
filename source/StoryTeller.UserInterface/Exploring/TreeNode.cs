@@ -95,7 +95,7 @@ namespace StoryTeller.UserInterface.Exploring
             stack.Children.Add(_image);
             _label = new Label
             {
-                Content = item.Name,
+                Content = item.Name.GetLabelTextWithoutHotkey(),
                 Background = new SolidColorBrush(Colors.Transparent)
             };
             stack.Children.Add(_label);

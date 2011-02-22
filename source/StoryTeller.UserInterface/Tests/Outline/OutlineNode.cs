@@ -63,7 +63,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         public void AddText(string text)
         {
             var label = Header.As<StackPanel>().Add<Label>();
-            label.Content = text;
+            label.Content = text.GetLabelTextWithoutHotkey();
         }
 
         public string Description()
@@ -74,7 +74,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         public void AddItalicizedText(string text)
         {
             var label = Header.As<StackPanel>().Add<Label>();
-            label.Content = text;
+            label.Content = text.GetLabelTextWithoutHotkey();
             label.FontStyle = FontStyles.Italic;
         }
 
