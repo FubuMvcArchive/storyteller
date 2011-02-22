@@ -73,23 +73,29 @@ namespace StoryTeller.Execution
         {
             _latch.WaitOne(30000);
 
-            // This shouldn't happen, but of course it does, so we'll
-            // help the system recover from blowups
-            if (!_domain.HasStarted())
+            try
             {
-                performReload();
-            }
-
-            // TODO -- exception handling.  Not sure why it needs to be here,
-            // but stuff is leaking through
-            lock (_locker)
-            {
-                TestExecutionRequest request = GetExecutionRequest(test);
-                var result = _domain.RunTest(request);
-                if (!result.WasCancelled)
+                // This shouldn't happen, but of course it does, so we'll
+                // help the system recover from blowups
+                if (!_domain.HasStarted())
                 {
-                    test.LastResult = result;
+                    performReload();
                 }
+
+                lock (_locker)
+                {
+                    TestExecutionRequest request = GetExecutionRequest(test);
+                    var result = _domain.RunTest(request);
+                    if (!result.WasCancelled)
+                    {
+                        test.LastResult = result;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                test.LastResult = new TestResult { ExceptionText = ex.Message, Counts = new Counts(0, 0, 1, 0) };
             }
         }
 

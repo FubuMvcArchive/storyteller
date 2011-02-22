@@ -87,17 +87,24 @@ namespace StoryTeller.Execution
             {
                 runner.RunAll(test =>
                 {
-                    _counts[test.Lifecycle].Tally(test);
-                
-                    string filename = Path.GetFileNameWithoutExtension(test.FileName) +
-                                      DateTime.Now.ToString("hhmmss") + "-results.htm";
-                    string resultFile = Path.Combine(_resultsFolder,
-                                                     filename);
+                    try
+                    {
+                        _counts[test.Lifecycle].Tally(test);
 
-                    test.WriteResultsToFile(resultFile);
-                    _summary.AddTest(test, "results/" + filename);
+                        string filename = Path.GetFileNameWithoutExtension(test.FileName) +
+                                          DateTime.Now.ToString("hhmmss") + "-results.htm";
+                        string resultFile = Path.Combine(_resultsFolder,
+                                                         filename);
 
-                    ResultPersistor.SaveResult(test.LastResult, test, projectHistoryFolder);
+                        test.WriteResultsToFile(resultFile);
+                        _summary.AddTest(test, "results/" + filename);
+
+                        ResultPersistor.SaveResult(test.LastResult, test, projectHistoryFolder);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
                 });
             }
             catch (Exception e)
