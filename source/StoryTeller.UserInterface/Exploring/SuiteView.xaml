@@ -2,6 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Exploring="clr-namespace:StoryTeller.UserInterface.Exploring">
+    <ScrollViewer>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button DockPanel.Dock="Right" Name="runAll" ClickMode="Release">
@@ -25,4 +26,5 @@
         </Grid>
         
     </DockPanel>
+    </ScrollViewer>
 </UserControl>
