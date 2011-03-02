@@ -19,6 +19,8 @@ namespace StoryTeller.UserInterface
         public Shell()
         {
             InitializeComponent();
+
+            runAll.Click += (x, y) => filterBar.RunAll();
         }
 
         private IEnumerable<UIElement> editables
@@ -118,4 +120,5 @@ namespace StoryTeller.UserInterface
             remove { this.RemoveHandler(MessageRequestArgs.SendMessageEvent, value); }
         }
     }
+
 }

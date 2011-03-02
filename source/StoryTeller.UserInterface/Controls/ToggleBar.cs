@@ -51,6 +51,7 @@ namespace StoryTeller.UserInterface.Controls
                 {
                     x.ToIconButton(icon, () => _parent.selectValue(value, x));
                     x.ToolTip = toolTip;
+                    x.Margin = new System.Windows.Thickness(2);
                     _parent._buttons[value] = x;
                 });
             }
@@ -62,6 +63,7 @@ namespace StoryTeller.UserInterface.Controls
                     _parent._buttons[value] = x;
                     x.Click += (a, b) => _parent.selectValue(value, x);
                     x.Content = text;
+                    x.Margin = new System.Windows.Thickness(2);
                 });
             }
         }

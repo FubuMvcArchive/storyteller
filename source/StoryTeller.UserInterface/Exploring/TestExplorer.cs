@@ -8,6 +8,10 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.UserInterface.Exploring
 {
+    public class RunAllRequested
+    {
+    }
+
     public class TestResultsLoaded
     {
     }
@@ -23,6 +27,7 @@ namespace StoryTeller.UserInterface.Exploring
                                 , IListener<ProjectLoaded>
                                 , IListener<WorkflowFiltersChanged>
                                 , IListener<TestResultsLoaded>
+                                , IListener<RunAllRequested>
     {
         private readonly IEventAggregator _events;
         private readonly ITestFilter _filter;
@@ -108,6 +113,7 @@ namespace StoryTeller.UserInterface.Exploring
         public void Handle(TestRenamed message)
         {
             ResetFilter();
+
             _testNodes[message.Test].IsSelected = true;
         }
 
@@ -239,6 +245,11 @@ namespace StoryTeller.UserInterface.Exploring
             _events.SendMessage(message);
         }
 
+        public void TagFilterApplied(string tags)
+        {
+            _filter.Tags = tags;
+            ResetFilter();
+        }
         #endregion
 
         private void updateIcon(Test test, Icon icon)
@@ -267,6 +278,11 @@ namespace StoryTeller.UserInterface.Exploring
         {
             _suiteNodes.Each(action);
             _testNodes.Each(action);
+        }
+
+        public void Handle(RunAllRequested message)
+        {
+            RunAll();
         }
     }
 }

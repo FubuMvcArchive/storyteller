@@ -1,4 +1,5 @@
 using HtmlTags;
+using StoryTeller.Domain;
 using StoryTeller.Engine;
 
 namespace StoryTeller.Html
@@ -36,6 +37,12 @@ namespace StoryTeller.Html
             }
 
             _testName.Next = countsTag;
+        }
+
+        public void WriteTags(Tags tags)
+        {
+            var tagsTag = new TagsTag(tags);
+            _testName.Next = tagsTag;
         }
 
         public HtmlTag TestName { get { return _testName; } }

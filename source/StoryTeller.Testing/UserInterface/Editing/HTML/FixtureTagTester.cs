@@ -32,6 +32,14 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
         }
 
         [Test]
+        public void the_last_child_should_be_a_tags_tag()
+        {
+            var tag = new FixtureTag(fixture);
+            tag.Children.Last().ShouldBeOfType<TagsTag>().ShouldHaveClass(GrammarConstants.TAGS).ShouldHaveClass(
+                GrammarConstants.STEP);
+        }
+
+        [Test]
         public void write_a_div_with_the_id()
         {
             var tag = new FixtureTag(fixture);

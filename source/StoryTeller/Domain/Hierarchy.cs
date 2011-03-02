@@ -44,6 +44,11 @@ namespace StoryTeller.Domain
             return new TPath("");
         }
 
+        public override string GetProjectName()
+        {
+            return Name;
+        }
+
         public void ClearResults()
         {
             GetAllTests().Each(x => x.Reset());

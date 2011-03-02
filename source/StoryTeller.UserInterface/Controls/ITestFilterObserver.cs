@@ -7,5 +7,6 @@ namespace StoryTeller.UserInterface.Controls
         void ResultStatusChanged(ResultStatus status);
         void LifecycleChanged(Lifecycle lifecycle);
         void RunAll();
+        void TagFilterApplied(string tags);
     }
 }

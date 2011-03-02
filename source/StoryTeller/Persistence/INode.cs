@@ -13,6 +13,7 @@ namespace StoryTeller.Persistence
         INode WithFormattedText(string text);
         void ForEachChild(Action<INode> action);
         bool IsComment();
+        bool IsTags();
         void ForEachAttribute(Action<string, string> action);
     }
 }

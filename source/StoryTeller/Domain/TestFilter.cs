@@ -22,6 +22,7 @@ namespace StoryTeller.Domain
         bool Matches(Test test);
         bool Matches(Suite suite);
         bool ShowEmptySuites();
+        string Tags { get; set; }
     }
 
     public class TestFilter : ITestFilter
@@ -36,8 +37,39 @@ namespace StoryTeller.Domain
         private Predicate<Test> _lifecycleMatch;
         private Predicate<Test> _resultMatch;
         private Predicate<Test> _workspaceMatch = t => true;
+        private Predicate<Test> _tagsMatch = t => true;
+
         private ResultStatus _resultStatus;
         private IEnumerable<string> _workspaces = new string[0];
+
+        private string _Tags;
+        public string Tags
+        {
+            get { return _Tags; }
+            set
+            {
+                _Tags = value;
+                if (string.IsNullOrEmpty(_Tags))
+                {
+                    _tagsMatch = t => true;
+                }
+                else
+                {
+                    string[] tags = _Tags.Split(',');
+                    _tagsMatch = test => MatchTestToTags(tags, test);
+                }
+            }
+        }
+
+        private static bool MatchTestToTags(IEnumerable<string> tags, Test test)
+        {
+            bool match = test.Children.Any(part => (from tag in tags
+                                              where part is Tags
+                                                    let comment = (Tags)part
+                                              where comment.Text.ToUpper().Contains(tag.Trim().ToUpper())
+                                              select tag).Any());
+            return match;
+        }
 
         public TestFilter()
         {
@@ -95,7 +127,7 @@ namespace StoryTeller.Domain
 
         public bool Matches(Test test)
         {
-            return _resultMatch(test) && _lifecycleMatch(test) && _workspaceMatch(test);
+            return _resultMatch(test) && _lifecycleMatch(test) && _workspaceMatch(test) && _tagsMatch(test);
         }
 
         public bool Matches(Suite suite)
@@ -119,7 +151,7 @@ namespace StoryTeller.Domain
 
         public bool ShowEmptySuites()
         {
-            return _lifecycle == Lifecycle.Any && _resultStatus == ResultStatus.All;
+            return _lifecycle == Lifecycle.Any && _resultStatus == ResultStatus.All && string.IsNullOrEmpty(_Tags);
         }
     }
 }

@@ -5,6 +5,7 @@ namespace StoryTeller.Model
 {
     public interface ITestStream
     {
+        void Tags(Tags tags);
         void Comment(Comment comment);
         void InvalidSection(Section section);
         void StartSection(Section section, FixtureGraph fixture);
@@ -108,6 +109,13 @@ namespace StoryTeller.Model
                 _stream.InvalidGrammar(step.GrammarKey, step);
             }
         }
+
+        void ITestVisitor.WriteTags(Tags tags)
+        {
+            if (isLatched) return;
+            _stream.Tags(tags);
+        }
+
 
         void ITestVisitor.WriteComment(Comment comment)
         {

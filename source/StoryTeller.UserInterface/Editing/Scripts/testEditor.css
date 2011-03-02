@@ -26,6 +26,35 @@ a:hover {
 	font-weight: normal;
 }
 
+.tags-text
+{
+	font-family: Courier New;
+	font-size:75%;
+}
+
+
+.tags-editor-holder > textarea
+{
+	width:1000px;
+	height:100px;
+	
+}
+
+.TestTags
+{
+	margin-top:20px;
+	margin-bottom:10px;
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	/*background:#FFFFEF none repeat scroll 0 0;*/
+	background:wheat none repeat scroll 0 0;
+	border:1px solid #EBEBDB;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+
 .comment-text
 {
 	font-family: Courier New;

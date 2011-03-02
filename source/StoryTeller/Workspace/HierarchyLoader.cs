@@ -60,6 +60,11 @@ namespace StoryTeller.Workspace
             throw new NotImplementedException();
         }
 
+        public bool IsTags()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool IsComment()
         {
             throw new NotImplementedException();
@@ -192,8 +197,8 @@ namespace StoryTeller.Workspace
             foreach (string file in _system.GetFiles(folder, "xml"))
             {
                 Test test = LazyTestXmlReader.ReadFromFile(file);
-                test.Parent = parent;
-                test.SuiteName = test.Parent == null ? string.Empty : string.Format("{0}/{1}", _project.Name, test.Parent.GetPath().Locator);
+                test.SetParent(parent);
+                
                 parent.AddTest(test);
             }
 

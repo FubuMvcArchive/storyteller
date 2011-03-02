@@ -133,8 +133,8 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
         {
             var fixture = new SentenceGrammarFixture();
 
-            // Plus 1 because of Comments
-            templates.FixtureNode<SentenceGrammarFixture>().Children.Count.ShouldEqual(fixture.GrammarCount + 1);
+            // Plus 2 because of Comments + Tags
+            templates.FixtureNode<SentenceGrammarFixture>().Children.Count.ShouldEqual(fixture.GrammarCount + 2);
         }
     }
 

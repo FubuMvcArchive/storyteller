@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -18,13 +17,14 @@ namespace StoryTeller.Domain
         private Lifecycle _lifecycle = Lifecycle.Acceptance;
         private string _name;
 
-        public Test(string name, ITestPartCollection parts)
+        public Test(string name, string suiteName, ITestPartCollection parts)
         {
             _parts = parts;
             _name = name;
+            SuiteName = suiteName;
         }
 
-        public Test(string name) : this(name, new DefaultTestPartcollection())
+        public Test(string name) : this(name, string.Empty, new DefaultTestPartcollection())
         {
         }
 
@@ -35,18 +35,27 @@ namespace StoryTeller.Domain
             initialization(this);
         }
 
-        public Lifecycle Lifecycle { get { return _lifecycle; } set { _lifecycle = value; } }
-
-        public TestResult LastResult
+        public Lifecycle Lifecycle
         {
-            get;
-            set;
+            get { return _lifecycle; }
+            set { _lifecycle = value; }
         }
 
-        public string SuiteName { get; set; }
-        public Suite Parent { get; set; }
+        public TestResult LastResult { get; set; }
 
-         public string FileName
+        public string SuiteName { get; set; }
+        public Suite Parent { get; private set; }
+
+        public void SetParent(Suite parent)
+        {
+            Parent = parent;
+            SuiteName = parent == null ? string.Empty : 
+                string.Format("{0}/{1}", parent.GetProjectName(), 
+                            parent.GetPath().Locator);
+            SuiteName = SuiteName.Trim('/');
+        }
+
+        public string FileName
         {
             get
             {
@@ -58,14 +67,32 @@ namespace StoryTeller.Domain
             set { _fileName = value; }
         }
 
+        public string WorkspaceName
+        {
+            get
+            {
+                if (Parent == null) return string.Empty;
+
+                return GetPath().Workspace;
+            }
+        }
+
 
         public IList<ITestPart> Parts
         {
             get { return _parts.GetList(); }
         }
 
-        #region INamedItem Members
+        public IEnumerable<ITestPart> Children
+        {
+            get { return _parts; }
+        }
 
+        public int StepCount()
+        {
+            return 0;
+        }
+        
         public string Name
         {
             get { return _name; }
@@ -92,18 +119,18 @@ namespace StoryTeller.Domain
             get { yield return this; }
         }
 
-        #endregion
-
-        #region ITestVisitable Members
 
         public void AcceptVisitor(ITestVisitor visitor)
         {
             _parts.Each(x => x.AcceptVisitor(visitor));
         }
 
-        #endregion
 
-
+        public Tags GetTags()
+        {
+            var tags = _parts.GetList().FirstOrDefault(x => x is Tags) as Tags;
+            return tags;
+        }
 
         public void Toggle()
         {
@@ -140,7 +167,7 @@ namespace StoryTeller.Domain
 
         public Test WithCounts(int rights, int wrongs, int syntaxErrors, int exceptions)
         {
-            if (LastResult == null) LastResult = new TestResult() { Counts = new Counts() };
+            if (LastResult == null) LastResult = new TestResult {Counts = new Counts()};
             LastResult.Counts.Rights = rights;
             LastResult.Counts.Wrongs = wrongs;
             LastResult.Counts.SyntaxErrors = syntaxErrors;
@@ -149,12 +176,23 @@ namespace StoryTeller.Domain
             return this;
         }
 
+        public Tags AddTags(string text)
+        {
+            var tags = new Tags
+                           {
+                               Text = text
+                           };
+            _parts.Add(tags);
+
+            return tags;
+        }
+
         public Comment AddComment(string text)
         {
             var comment = new Comment
-            {
-                Text = text
-            };
+                              {
+                                  Text = text
+                              };
             _parts.Add(comment);
 
             return comment;
@@ -171,15 +209,15 @@ namespace StoryTeller.Domain
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof(Test)) return false;
-            return Equals((Test)obj);
+            if (obj.GetType() != typeof (Test)) return false;
+            return Equals((Test) obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((Name != null ? Name.GetHashCode() : 0) * 397) ^
+                return ((Name != null ? Name.GetHashCode() : 0)*397) ^
                        (SuiteName != null ? SuiteName.GetHashCode() : 0);
             }
         }
@@ -260,16 +298,6 @@ namespace StoryTeller.Domain
             return clone;
         }
 
-        public IEnumerable<ITestPart> Children
-        {
-            get { return _parts; }
-        }
-
-        public int StepCount()
-        {
-            return 0;
-        }
-
         public void Add(Comment comment)
         {
             _parts.Add(comment);
@@ -279,16 +307,6 @@ namespace StoryTeller.Domain
         {
             if (Parent == null) return false;
             return GetPath().Workspace == workspace;
-        }
-
-        public string WorkspaceName
-        {
-            get
-            {
-                if (Parent == null) return string.Empty;
-
-                return GetPath().Workspace;
-            }
         }
 
         public WorkspaceFilter GetWorkspace()

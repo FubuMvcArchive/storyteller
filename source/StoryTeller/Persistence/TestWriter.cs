@@ -16,6 +16,7 @@ namespace StoryTeller.Persistence
 
         public string WriteToJson(Test test)
         {
+
             var node = new JsonNode("Test");
             node["Name"] = test.Name;
             node["SuiteName"] = test.SuiteName;
@@ -23,7 +24,7 @@ namespace StoryTeller.Persistence
             new WriterVisitor(test, node).Write();
 
             return node.ToJson();
-        }
+        } 
 
 
         public XmlDocument Write(Test test)

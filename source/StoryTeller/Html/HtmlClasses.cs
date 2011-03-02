@@ -19,6 +19,7 @@ namespace StoryTeller.Html
         public static readonly string SECTION = "section";
         public static readonly string SECTION_TITLE = "section-title";
         public static readonly string TEST_EDITOR = "test-editor";
+        public static readonly string TAGS = "TestTags";
         public static readonly string TEST_NAME = "testName";
         public static readonly string STEP_HOLDER = "step-holder";
 

@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Controls;
 using StoryTeller.Domain;
 
@@ -6,6 +7,7 @@ namespace StoryTeller.UserInterface.Controls
     public interface ITestFilterBar
     {
         ITestFilterObserver Observer { set; }
+        void RunAll();
     }
 
     /// <summary>
@@ -21,7 +23,6 @@ namespace StoryTeller.UserInterface.Controls
         {
             InitializeComponent();
 
-            runAll.Click += (x, y) => _observer.RunAll();
 
             _statusToggle = new ToggleBar<ResultStatus>(resultPanel, x => _observer.ResultStatusChanged(x), x =>
             {
@@ -39,10 +40,24 @@ namespace StoryTeller.UserInterface.Controls
             });
         }
 
-        #region ITestFilterBar Members
 
         public ITestFilterObserver Observer { set { _observer = value; } }
 
-        #endregion
+        public void RunAll()
+        {
+            _observer.RunAll();
+        }
+
+
+        private void btnApply_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _observer.TagFilterApplied(tagsFilter.Text.Trim());
+        }
+
+        private void btnClear_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            tagsFilter.Text = "";
+            _observer.TagFilterApplied(tagsFilter.Text.Trim());
+        }
     }
 }

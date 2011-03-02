@@ -61,6 +61,12 @@ namespace StoryTeller.Usages
             throw new NotImplementedException();
         }
 
+        void ITestStream.Tags(Tags tags)
+        {
+
+        }
+        
+
         void ITestStream.Comment(Comment comment)
         {
         }

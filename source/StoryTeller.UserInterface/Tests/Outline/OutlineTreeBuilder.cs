@@ -83,6 +83,18 @@ namespace StoryTeller.UserInterface.Tests.Outline
             _nodes.Push(node);
         }
 
+        public void Tags(Tags tags)
+        {
+            withNewLeaf(tags, Icon.Tags, node =>
+            {
+                node.AddText(tags.Text.TrimToLength(40, "..."));
+                node.ToolTip = tags.Text;
+
+                addRearrangeCommands(node);
+            });
+        }
+        
+
         public void Comment(Comment comment)
         {
             withNewLeaf(comment, Icon.Comment, node =>

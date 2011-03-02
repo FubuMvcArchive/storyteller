@@ -72,6 +72,11 @@ namespace StoryTeller.Persistence
             }
         }
 
+        public bool IsTags()
+        {
+            return Name == Tags.TAGS;
+        }
+
         public bool IsComment()
         {
             return Name == Comment.COMMENT;

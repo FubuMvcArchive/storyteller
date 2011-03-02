@@ -185,6 +185,7 @@
     <Compile Include="Editing\HTML\Tables\OptionalColumnTag.cs" />
     <Compile Include="Editing\HTML\Tables\TableEditorTag.cs" />
     <Compile Include="Editing\HTML\Tables\TableTemplateTag.cs" />
+    <Compile Include="Editing\HTML\TagsTag.cs" />
     <Compile Include="Editing\HTML\TestEditorTag.cs" />
     <Compile Include="Editing\HTML\TextboxBuilder.cs" />
     <Compile Include="Exploring\IIconService.cs" />

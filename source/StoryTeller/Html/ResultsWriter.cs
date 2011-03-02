@@ -29,6 +29,11 @@ namespace StoryTeller.Html
 
         public HtmlDocument Document { get { return _document; } }
 
+        void ITestStream.Tags(Tags tags)
+        {
+            _document.Add(new TagsTag(tags));
+        }
+        
         void ITestStream.Comment(Comment comment)
         {
             _document.Add(new CommentTag(comment));

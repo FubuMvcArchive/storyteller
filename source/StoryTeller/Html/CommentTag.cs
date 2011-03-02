@@ -4,6 +4,16 @@ using FubuCore;
 
 namespace StoryTeller.Html
 {
+    public class TagsTag : HtmlTag
+    {
+        public TagsTag(Tags tags)
+            : base("div")
+        {
+            AddClass("TestTags");
+            Add("span").AddClass("tags-text").Text(tags.Text);
+        }
+    }
+
     public class CommentTag : HtmlTag
     {
         public CommentTag(Comment comment)

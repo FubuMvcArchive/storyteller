@@ -14,7 +14,6 @@ namespace StoryTeller.UserInterface.Editing
 {
     public interface ITestEditorBuilder : IStartable
     {
-        string BuildHtml(Test test);
         HtmlDocument BuildEditor(Test test);
     }
 
@@ -28,11 +27,6 @@ namespace StoryTeller.UserInterface.Editing
         public void Start()
         {
             // no op
-        }
-
-        public string BuildHtml(Test test)
-        {
-            return BuildTestEditor(test, _library).ToString();
         }
 
         public HtmlDocument BuildEditor(Test test)
@@ -65,11 +59,6 @@ namespace StoryTeller.UserInterface.Editing
             addTestEditor(document, library);
 
             return document;
-        }
-
-        public string BuildHtml(Test test, FixtureLibrary library)
-        {
-            return BuildTestEditor(test, library).ToString();
         }
 
         private void addTestEditor(HtmlDocument document, FixtureLibrary library)

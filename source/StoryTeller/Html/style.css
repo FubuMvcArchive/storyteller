@@ -66,6 +66,28 @@ span.fact
 }
 
 
+.TestTags
+{
+	margin-top:10px;
+	margin-bottom:10px;
+	overflow: visible;
+}
+
+.tags-text
+{
+/*
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;*/
+	background: #F0F0F0 none repeat scroll 0 0;
+	border:1px solid #EBEBDB;
+	padding: 3px;
+	font-family: Courier New;
+	font-size:75%;
+	color: #A8A8A8 ;
+}
+
+
 .Comment
 {
 	margin-top:10px;

@@ -411,6 +411,11 @@ namespace StoryTeller.Engine
             });
         }
 
+        void ITestVisitor.WriteTags(Tags tags)
+        {
+            // no-op;
+        }
+
         void ITestVisitor.WriteComment(Comment comment)
         {
             // no-op;

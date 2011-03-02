@@ -1,6 +1,7 @@
 using System;
 using System.Xml;
 using FubuCore;
+using StoryTeller.Domain;
 
 namespace StoryTeller.Persistence
 {
@@ -44,6 +45,11 @@ namespace StoryTeller.Persistence
         public void ForEachChild(Action<INode> action)
         {
             _element.ForEachElement(x => action(new TestXmlNode(x)));
+        }
+
+        public bool IsTags()
+        {
+            return _element.Name == Tags.TAGS;
         }
 
         public bool IsComment()

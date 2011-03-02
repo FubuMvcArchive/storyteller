@@ -49,12 +49,12 @@ namespace StoryTeller.Engine
             IContainer container = containerSource.Build();
             var observer = _observer;
 
-            var library = BuildLibrary(_system, observer, container, new CompositeFilter<Type>());
+            var library = BuildLibrary(new SystemLifecycle(_system), observer, container, new CompositeFilter<Type>());
 
             return new TestRunner(_system, library, containerSource);
         }
 
-        public static FixtureLibrary BuildLibrary(ISystem system, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter)
+        public static FixtureLibrary BuildLibrary(SystemLifecycle lifeCycle, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter)
         {
             try
             {
@@ -63,10 +63,7 @@ namespace StoryTeller.Engine
 
                 var context = new TestContext(container);
                 observer.RecordStatus("Setting up the system environment");
-                system.SetupEnvironment();
-
-                observer.RecordStatus("Registering the system services");
-                system.RegisterServices(context);
+                lifeCycle.StartApplication();
 
                 builder.Finder = context.Finder;
                 

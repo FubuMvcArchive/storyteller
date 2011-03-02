@@ -174,6 +174,11 @@ namespace StoryTeller.Domain
             withName(step.GrammarKey, () => step.EachLeaf(readLeaf));
         }
 
+        public void WriteTags(Tags tags)
+        {
+            
+        }
+
         public void WriteComment(Comment comment)
         {
         }

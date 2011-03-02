@@ -32,7 +32,9 @@ namespace StoryTeller.Testing.Domain
         private Test failedRegressionTest;
         private Test successfulAcceptanceTest;
         private Test successfulRegressionTest;
+        
         private TestFilter filter;
+
 
         [Test]
         public void by_default_the_lifecycle_is_any()
@@ -61,6 +63,15 @@ namespace StoryTeller.Testing.Domain
             filter.Lifecycle = Lifecycle.Acceptance;
             filter.ResultStatus = ResultStatus.All;
 
+            filter.ShowEmptySuites().ShouldBeFalse();
+        }
+
+        [Test]
+        public void do_not_show_empty_suites_when_tags_are_applied()
+        {
+            filter.Lifecycle = Lifecycle.Any;
+            filter.ResultStatus = ResultStatus.All;
+            filter.Tags = "tagged";
             filter.ShowEmptySuites().ShouldBeFalse();
         }
 
@@ -175,6 +186,58 @@ namespace StoryTeller.Testing.Domain
             filter.Matches(failedRegressionTest).ShouldBeTrue();
             filter.Matches(successfulAcceptanceTest).ShouldBeTrue();
             filter.Matches(successfulRegressionTest).ShouldBeTrue();
+        }
+
+        [Test]
+        public void the_filter_should_match_all_tests_when_no_tags_are_applied()
+        {
+            Test noTags = new Test("noTags");
+            Test tagged = new Test("tagged");
+            tagged.AddTags("tag");
+
+            filter.Matches(noTags).ShouldBeTrue();
+            filter.Matches(tagged).ShouldBeTrue();
+        }
+
+        [Test]
+        public void the_filter_should_match_tests_with_matching_tags()
+        {
+            Test noTags = new Test("noTags");
+            Test tagged = new Test("tagged");
+            tagged.AddTags("tag");
+
+            filter.Tags = "tag";
+
+            filter.Matches(noTags).ShouldBeFalse();
+            filter.Matches(tagged).ShouldBeTrue();
+        }
+
+        [Test]
+        public void the_filter_should_match_tests_with_multiple_tags()
+        {
+            Test testing = new Test("testing");
+            testing.AddTags("testing");
+            Test tag = new Test("tagged");
+            tag.AddTags("tag");
+
+            filter.Tags = "tag, testing";
+
+            filter.Matches(testing).ShouldBeTrue();
+            filter.Matches(tag).ShouldBeTrue();
+        }
+
+        [Test]
+        public void the_filter_should_match_no_tests_when_using_tags_that_are_not_used()
+        {
+            Test noTags = new Test("noTags");
+            Test tagged = new Test("tagged");
+            tagged.AddTags("tag");
+
+            filter.Tags = "nothing";
+
+            filter.Matches(noTags).ShouldBeFalse();
+            filter.Matches(tagged).ShouldBeFalse();
+
         }
     }
 

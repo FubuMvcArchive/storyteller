@@ -63,9 +63,9 @@ namespace StoryTeller.Persistence
         {
             string name = element["name"];
             string suiteName = element["SuiteName"];
-            var test = new Test(name, parts);
-            test.SuiteName = suiteName;
-
+            //string tags = element[Tags.TAGS];
+            
+            var test = new Test(name, suiteName, parts);
             readLifecycle(test, element);
             return test;
         }
@@ -75,6 +75,10 @@ namespace StoryTeller.Persistence
             if (node.IsComment())
             {
                 test.AddComment(node.InnerText);
+            }
+            else if (node.IsTags())
+            {
+                test.AddTags(node.InnerText);
             }
             else
             {
@@ -95,14 +99,33 @@ namespace StoryTeller.Persistence
 
         public ITestPart ReadPart(INode node)
         {
-            return node.IsComment()
-                       ? buildComment(node)
-                       : buildStep(node);
+            ITestPart part;
+            if (node.IsComment())
+            {
+                part = buildComment(node);
+            }
+            else if (node.IsTags())
+            {
+                part = buildTags(node);
+            }
+            else
+            {
+                part = buildStep(node);
+            }
+            return part;
         }
 
         public ITestPart ReadPart(XmlElement element)
         {
             return ReadPart(new TestXmlNode(element));
+        }
+
+        private static ITestPart buildTags(INode node)
+        {
+            return new Tags
+            {
+                Text = node.InnerText
+            };
         }
 
         private static ITestPart buildComment(INode node)
@@ -169,6 +192,11 @@ namespace StoryTeller.Persistence
         public void RunStep(IStep step)
         {
             _section.Add(step);
+        }
+
+        public void WriteTags(Tags tags)
+        {
+            _section.Add(tags);
         }
 
         public void WriteComment(Comment comment)

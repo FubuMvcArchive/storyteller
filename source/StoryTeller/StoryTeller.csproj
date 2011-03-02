@@ -89,6 +89,7 @@
     <Compile Include="Assertions\StorytellerAssertionException.cs" />
     <Compile Include="DecoratedLineGrammar.cs" />
     <Compile Include="Domain\Comment.cs" />
+    <Compile Include="Domain\Tags.cs" />
     <Compile Include="Domain\DefaultTestPartcollection.cs" />
     <Compile Include="Domain\IStepResults.cs" />
     <Compile Include="Domain\ITestPartCollection.cs" />
@@ -274,7 +275,6 @@
     <Compile Include="Domain\Suite.cs" />
     <Compile Include="Domain\Test.cs" />
     <Compile Include="Domain\TPath.cs" />
-    <Compile Include="Tags.cs" />
     <Compile Include="TestConverter.cs" />
     <Compile Include="Execution\UserInterfaceTestObserver.cs" />
     <Compile Include="Workspace\FileSystem.cs" />

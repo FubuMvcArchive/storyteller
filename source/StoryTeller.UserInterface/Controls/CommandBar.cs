@@ -62,7 +62,7 @@ namespace StoryTeller.UserInterface.Controls
                 x.VerticalAlignment = VerticalAlignment.Stretch;
                 x.Content = text;
                 x.Click += action.ToRoutedHandler();
-                x.Height = 30;
+                x.Height = Height - 10;
                 x.Margin = new Thickness(5, 0, 5, 0);
                 x.HorizontalAlignment = HorizontalAlignment.Right;
             });

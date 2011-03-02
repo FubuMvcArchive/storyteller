@@ -56,6 +56,18 @@ namespace StoryTeller.Domain
             return path;
         }
 
+        public virtual string GetProjectName()
+        {
+            Suite parent = Parent;
+            string name = null;
+            while (parent != null)
+            {
+                name = parent.Name;
+                parent = parent.Parent;
+            }
+            return name;
+        }
+
         IEnumerable<Test> INamedItem.AllTests
         {
             get { return GetAllTests(); }
@@ -70,7 +82,7 @@ namespace StoryTeller.Domain
 
         public void AddTest(Test test)
         {
-            test.Parent = this;
+            test.SetParent(this);
             _tests.Add(test);
         }
 

@@ -40,6 +40,11 @@ namespace StoryTeller.Persistence
             });
         }
 
+        public void WriteTags(Tags tags)
+        {
+            _nodes.Peek().AddChild(Tags.TAGS).WithFormattedText(tags.Text);
+        }
+
         public void WriteComment(Comment comment)
         {
             _nodes.Peek().AddChild(Comment.COMMENT).WithFormattedText(comment.Text);

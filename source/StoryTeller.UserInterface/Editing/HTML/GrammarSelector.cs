@@ -89,9 +89,16 @@ namespace StoryTeller.UserInterface.Editing.HTML
             HtmlTag tag = buildTopNode();
             var body = tag.Add("tbody");
 
+            var tagsLink = new SelectorLinkTag(GrammarConstants.TAGS);
+            tagsLink.Label(GrammarConstants.TAGS_LABEL);
+            body.Add("tr").Child(tagsLink.TagName("td"));
+
+
             var commentLink = new SelectorLinkTag(GrammarConstants.COMMENT);
             commentLink.Label(GrammarConstants.COMMENT);
             body.Add("tr").Child(commentLink.TagName("td"));
+
+
 
             _fixture.PossibleGrammarsFor(new StepLeaf()).Where(x => !(x is DoGrammarStructure)).Each(grammar =>
             {

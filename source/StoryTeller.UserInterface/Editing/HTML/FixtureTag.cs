@@ -20,6 +20,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             _fixture = fixture;
 
             Child<CommentTag>();
+            Child<TagsTag>();
 
             fixture.TopLevelGrammars().Each(writeGrammar);
         }

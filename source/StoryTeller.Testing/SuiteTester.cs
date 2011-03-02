@@ -145,5 +145,15 @@ s9/t18,Success
             hierarchy.FindSuite("s1/s2").GetPath().Locator.ShouldEqual("s1/s2");
             hierarchy.FindSuite("s1").GetPath().Locator.ShouldEqual("s1");
         }
+
+        [Test]
+        public void get_project_name()
+        {
+            var hierarchy = new Hierarchy("hier");
+            hierarchy.AddTest("s1/s2/s3/t1");
+
+            Suite suite = hierarchy.FindSuite("s1/s2/s3");
+            suite.GetProjectName().ShouldEqual(hierarchy.Name);
+        }
     }
 }

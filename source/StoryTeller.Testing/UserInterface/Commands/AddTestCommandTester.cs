@@ -54,21 +54,28 @@ namespace StoryTeller.Testing.UserInterface.Commands
         [Test]
         public void should_raise_a_save_test_message()
         {
-            var theExpectedMessage = new SaveTestMessage(new Test(theTestName));
+            var theExpectedMessage = new SaveTestMessage(CreateTest());
             MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(theExpectedMessage));
+        }
+
+        private Test CreateTest()
+        {
+            var test = new Test(theTestName);
+            test.SetParent(suite);
+            return test;
         }
 
         [Test]
         public void should_raise_test_added_message()
         {
-            var theExpectedMessage = new TestAddedMessage(new Test(theTestName));
+            var theExpectedMessage = new TestAddedMessage(CreateTest());
             MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(theExpectedMessage));
         }
 
         [Test]
         public void should_request_the_new_test_be_opened()
         {
-            var theExpectedMessage = new OpenItemMessage(new Test(theTestName));
+            var theExpectedMessage = new OpenItemMessage(CreateTest());
             MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(theExpectedMessage));
         }
 
