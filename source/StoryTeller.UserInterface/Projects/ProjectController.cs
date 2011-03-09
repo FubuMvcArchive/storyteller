@@ -103,7 +103,7 @@ namespace StoryTeller.UserInterface.Projects
 
         public virtual bool LoadProject(ProjectToken token)
         {
-            if (token == null) return false;            
+            if (token == null) return false;
             try
             {
                 var project = _persistor.LoadFromFile(token.Filename);
@@ -217,6 +217,9 @@ namespace StoryTeller.UserInterface.Projects
 
         public void Start()
         {
+            // Do not load the last project from the history.xml file if a project was passed in as an argument to the application
+            if (Environment.GetCommandLineArgs().Length > 0) return;
+
             reloadProjectList();
 
             ProjectToken token = _history.LastAccessed;
