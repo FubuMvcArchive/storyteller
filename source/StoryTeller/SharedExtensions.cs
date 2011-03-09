@@ -103,6 +103,15 @@ namespace StoryTeller
             list.Insert(index - 1, subject);
         }
 
+        public static void MoveToTop<T>(this IList<T> list, T subject)
+        {
+            int index = list.IndexOf(subject);
+            if (index == 0) return;
+
+            list.Remove(subject);
+            list.Insert(0, subject);
+        }
+
         public static void MoveDown<T>(this IList<T> list, T subject)
         {
             if (ReferenceEquals(subject, list.LastOrDefault())) return;
@@ -110,6 +119,14 @@ namespace StoryTeller
             int index = list.IndexOf(subject);
             list.Remove(subject);
             list.Insert(index + 1, subject);
+        }
+
+        public static void MoveToBottom<T>(this IList<T> list, T subject)
+        {
+            if (ReferenceEquals(subject, list.LastOrDefault())) return;
+
+            list.Remove(subject);
+            list.Add(subject);
         }
 
         public static INode WithProperties(this INode node, Cache<string, string> values)

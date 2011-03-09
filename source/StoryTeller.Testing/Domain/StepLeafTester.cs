@@ -116,6 +116,47 @@ namespace StoryTeller.Testing.Domain
         }
 
         [Test]
+        public void move_to_bottom()
+        {
+            var leaf = new StepLeaf();
+            IStep step0 = leaf.AddNewStep();
+            IStep step1 = leaf.AddNewStep();
+            IStep step2 = leaf.AddNewStep();
+            IStep step3 = leaf.AddNewStep();
+
+            leaf.MoveToBottom(step0);
+
+            leaf.AllSteps()[0].ShouldBeTheSameAs(step1);
+            leaf.AllSteps()[1].ShouldBeTheSameAs(step2);
+            leaf.AllSteps()[2].ShouldBeTheSameAs(step3);
+            leaf.AllSteps()[3].ShouldBeTheSameAs(step0);
+
+            leaf.MoveToBottom(step1);
+
+            leaf.AllSteps()[0].ShouldBeTheSameAs(step2);
+            leaf.AllSteps()[1].ShouldBeTheSameAs(step3);
+            leaf.AllSteps()[2].ShouldBeTheSameAs(step0);
+            leaf.AllSteps()[3].ShouldBeTheSameAs(step1);
+        }
+
+        [Test]
+        public void move_to_bottom_when_already_last()
+        {
+            var leaf = new StepLeaf();
+            IStep step0 = leaf.AddNewStep();
+            IStep step1 = leaf.AddNewStep();
+            IStep step2 = leaf.AddNewStep();
+            IStep step3 = leaf.AddNewStep();
+
+            leaf.MoveToBottom(step3);
+
+            leaf.AllSteps()[0].ShouldBeTheSameAs(step0);
+            leaf.AllSteps()[1].ShouldBeTheSameAs(step1);
+            leaf.AllSteps()[2].ShouldBeTheSameAs(step2);
+            leaf.AllSteps()[3].ShouldBeTheSameAs(step3);
+        }
+
+        [Test]
         public void move_up_1()
         {
             var leaf = new StepLeaf();
@@ -149,6 +190,47 @@ namespace StoryTeller.Testing.Domain
             IStep step3 = leaf.AddNewStep();
 
             leaf.MoveUp(step0);
+
+            leaf.AllSteps()[0].ShouldBeTheSameAs(step0);
+            leaf.AllSteps()[1].ShouldBeTheSameAs(step1);
+            leaf.AllSteps()[2].ShouldBeTheSameAs(step2);
+            leaf.AllSteps()[3].ShouldBeTheSameAs(step3);
+        }
+
+        [Test]
+        public void move_to_top()
+        {
+            var leaf = new StepLeaf();
+            IStep step0 = leaf.AddNewStep();
+            IStep step1 = leaf.AddNewStep();
+            IStep step2 = leaf.AddNewStep();
+            IStep step3 = leaf.AddNewStep();
+
+            leaf.MoveToTop(step3);
+
+            leaf.AllSteps()[0].ShouldBeTheSameAs(step3);
+            leaf.AllSteps()[1].ShouldBeTheSameAs(step0);
+            leaf.AllSteps()[2].ShouldBeTheSameAs(step1);
+            leaf.AllSteps()[3].ShouldBeTheSameAs(step2);
+
+            leaf.MoveToTop(step2);
+
+            leaf.AllSteps()[0].ShouldBeTheSameAs(step2);
+            leaf.AllSteps()[1].ShouldBeTheSameAs(step3);
+            leaf.AllSteps()[2].ShouldBeTheSameAs(step0);
+            leaf.AllSteps()[3].ShouldBeTheSameAs(step1);
+        }
+
+        [Test]
+        public void move_to_top_when_the_step_is_already_first()
+        {
+            var leaf = new StepLeaf();
+            IStep step0 = leaf.AddNewStep();
+            IStep step1 = leaf.AddNewStep();
+            IStep step2 = leaf.AddNewStep();
+            IStep step3 = leaf.AddNewStep();
+
+            leaf.MoveToTop(step0);
 
             leaf.AllSteps()[0].ShouldBeTheSameAs(step0);
             leaf.AllSteps()[1].ShouldBeTheSameAs(step1);

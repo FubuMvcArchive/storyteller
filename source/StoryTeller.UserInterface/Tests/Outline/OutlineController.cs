@@ -63,6 +63,18 @@ namespace StoryTeller.UserInterface.Tests.Outline
             _treeService.SelectNodeFor(part);
         }
 
+        public void MoveToTop(ITestPart part, IPartHolder holder)
+        {
+            configure(holder, h => h.MoveToTop(part));
+            _treeService.SelectNodeFor(part);
+        }
+
+        public void MoveToBottom(ITestPart part, IPartHolder holder)
+        {
+            configure(holder, h => h.MoveToBottom(part));
+            _treeService.SelectNodeFor(part);
+        }
+
         public void Refresh()
         {
             Update(null);

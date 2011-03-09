@@ -41,9 +41,19 @@ namespace StoryTeller.Domain
             _parts.MoveUp(step);
         }
 
+        public virtual void MoveToTop(IStep step)
+        {
+            _parts.MoveToTop(step);
+        }
+
         public virtual void MoveDown(IStep step)
         {
             _parts.MoveDown(step);
+        }
+
+        public virtual void MoveToBottom(IStep step)
+        {
+            _parts.MoveToBottom(step);
         }
 
         public void AddParts(IEnumerable<ITestPart> parts)

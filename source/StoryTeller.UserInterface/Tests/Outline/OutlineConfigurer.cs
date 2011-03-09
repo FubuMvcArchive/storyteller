@@ -46,9 +46,10 @@ namespace StoryTeller.UserInterface.Tests.Outline
         public void ConfigureRearrangeCommands(OutlineNode node, IPartHolder holder, ITestPart part)
         {
             node.BindControlAnd(Key.Up).To(() => _controller.MoveUp(part, holder)).Menu("Move Up", Icon.UpArrow);
+            node.BindControlAnd(Key.PageUp).To(() => _controller.MoveToTop(part, holder)).Menu("Move to Top", Icon.UpArrow);
             node.BindControlAnd(Key.Down).To(() => _controller.MoveDown(part, holder)).Menu("Move Down", Icon.DownArrow);
+            node.BindControlAnd(Key.PageDown).To(() => _controller.MoveToBottom(part, holder)).Menu("Move to Bottom", Icon.DownArrow);
             node.Bind(Key.Delete).To(() => _controller.Remove(part, holder)).Menu("Delete", Icon.Delete);
-            
         }
 
 
@@ -108,7 +109,9 @@ namespace StoryTeller.UserInterface.Tests.Outline
 
                 _node.AddItalicizedText(value);
             }
+
         }
+
 
 
         public static readonly KeyGesture[] Shortcuts = new KeyGesture[]

@@ -26,6 +26,16 @@ namespace StoryTeller.Domain
             holder.Parts.MoveDown(part);
         }
 
+        public static void MoveToTop(this IPartHolder holder, ITestPart part)
+        {
+            holder.Parts.MoveToTop(part);
+        }
+
+        public static void MoveToBottom(this IPartHolder holder, ITestPart part)
+        {
+            holder.Parts.MoveToBottom(part);
+        }
+
         public static Step AddStep(this IPartHolder holder, string grammarKey)
         {
             var step = new Step(grammarKey);
