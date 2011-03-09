@@ -125,11 +125,31 @@ namespace StoryTeller.Domain
             _parts.Each(x => x.AcceptVisitor(visitor));
         }
 
+        public Tags AddTags(string text)
+        {
+            var tags = _parts.GetList().OfType<Tags>().FirstOrDefault();
+            if (tags == null)
+            {
+                _parts.Add(new Tags(text));
+            }
+            else
+            {
+                tags.AddTag(text);
+            }
+
+            return tags;
+        }
+
 
         public Tags GetTags()
         {
-            var tags = _parts.GetList().FirstOrDefault(x => x is Tags) as Tags;
-            return tags;
+            var tags = _parts.GetList().OfType<Tags>();
+            List<string> list = new List<string>();
+            foreach(Tags setOfTags in tags)
+            {
+                list.AddRange(setOfTags.AllTags);
+            }
+            return new Tags(string.Join(",", list));
         }
 
         public void Toggle()
@@ -174,17 +194,6 @@ namespace StoryTeller.Domain
             LastResult.Counts.Exceptions = exceptions;
 
             return this;
-        }
-
-        public Tags AddTags(string text)
-        {
-            var tags = new Tags
-                           {
-                               Text = text
-                           };
-            _parts.Add(tags);
-
-            return tags;
         }
 
         public Comment AddComment(string text)

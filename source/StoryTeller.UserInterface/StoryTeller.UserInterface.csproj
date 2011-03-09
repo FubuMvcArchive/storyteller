@@ -132,6 +132,7 @@
     <Compile Include="Commands\MarkRegressionCommand.cs" />
     <Compile Include="Commands\RunSuiteCommand.cs" />
     <Compile Include="Commands\RunTestCommand.cs" />
+    <Compile Include="Commands\TagTestsCommand.cs" />
     <Compile Include="Controls\CommandBar.cs" />
     <Compile Include="Controls\CommandButton.xaml.cs">
       <DependentUpon>CommandButton.xaml</DependentUpon>
@@ -158,6 +159,9 @@
     </Compile>
     <Compile Include="Dialogs\AddWorkspace.xaml.cs">
       <DependentUpon>AddWorkspace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TagSuite.xaml.cs">
+      <DependentUpon>TagSuite.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Dialog.cs" />
     <Compile Include="Dialogs\DialogLauncher.cs" />
@@ -422,6 +426,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Dialogs\TagSuite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Exploring\SuiteView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -643,6 +651,8 @@
     <EmbeddedResource Include="Editing\Scripts\External\jquery.hotkeys-0.7.9.min.js" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Icons\tags.png" />
+    <EmbeddedResource Include="Editing\Scripts\Controls\tagsEditor.js" />
     <Content Include="Editing\Scripts\editor.css" />
     <Content Include="Editing\Scripts\StyleTest.htm" />
   </ItemGroup>

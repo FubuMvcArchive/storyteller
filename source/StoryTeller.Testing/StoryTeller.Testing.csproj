@@ -146,6 +146,7 @@
     <Compile Include="DisplayParserTester.cs" />
     <Compile Include="Domain\StepLeafTester.cs" />
     <Compile Include="Domain\SuiteNavigatorTester.cs" />
+    <Compile Include="Domain\TagsTest.cs" />
     <Compile Include="Domain\TestFilterTester.cs" />
     <Compile Include="Domain\TestProgressionTester.cs" />
     <Compile Include="Domain\TPathTester.cs" />
@@ -264,6 +265,7 @@
     <Compile Include="UserInterface\Commands\AddTestCommandTester.cs" />
     <Compile Include="UserInterface\Commands\AddWorkspaceCommandTester.cs" />
     <Compile Include="UserInterface\Commands\CloneTestCommandTester.cs" />
+    <Compile Include="UserInterface\Commands\TagTestsCommandTester.cs" />
     <Compile Include="UserInterface\Commands\DeleteTestCommandTester.cs" />
     <Compile Include="UserInterface\Commands\MarkAcceptanceCommandTester.cs" />
     <Compile Include="UserInterface\Commands\MarkRegressionCommandTester.cs" />

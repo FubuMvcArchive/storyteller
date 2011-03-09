@@ -55,20 +55,10 @@ namespace StoryTeller.Domain
                 }
                 else
                 {
-                    string[] tags = _Tags.Split(',');
-                    _tagsMatch = test => MatchTestToTags(tags, test);
+                    Tags tags = new Tags(_Tags);
+                    _tagsMatch = test => tags.DoesTestMatch(test);
                 }
             }
-        }
-
-        private static bool MatchTestToTags(IEnumerable<string> tags, Test test)
-        {
-            bool match = test.Children.Any(part => (from tag in tags
-                                              where part is Tags
-                                                    let comment = (Tags)part
-                                              where comment.Text.ToUpper().Contains(tag.Trim().ToUpper())
-                                              select tag).Any());
-            return match;
         }
 
         public TestFilter()
