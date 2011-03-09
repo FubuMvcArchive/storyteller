@@ -45,6 +45,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{4CC0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleGenerator", "SampleGenerator\SampleGenerator.csproj", "{BC3E28C4-1653-43DD-959C-389CF1335D33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.TestRunner", "StoryTeller.TestRunner\StoryTeller.TestRunner.csproj", "{669E4F43-C8E4-422F-B758-287D987C9BBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,6 +148,16 @@ Global
 		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|Mixed Platforms.Build.0 = Release|x86
 		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|x86.ActiveCfg = Release|x86
 		{BC3E28C4-1653-43DD-959C-389CF1335D33}.Release|x86.Build.0 = Release|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Debug|x86.ActiveCfg = Debug|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Debug|x86.Build.0 = Debug|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Release|Any CPU.ActiveCfg = Release|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Release|Mixed Platforms.Build.0 = Release|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Release|x86.ActiveCfg = Release|x86
+		{669E4F43-C8E4-422F-B758-287D987C9BBE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
