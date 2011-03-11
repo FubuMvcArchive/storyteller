@@ -1,4 +1,5 @@
 using HtmlTags;
+using HtmlTags.Extended.TagBuilders;
 using StoryTeller.Html;
 using StoryTeller.Model;
 using System.Linq;
@@ -24,18 +25,18 @@ namespace StoryTeller.UserInterface.Editing.HTML
             FixtureGraph fixture = library.BuildTopLevelGraph();
 
             HtmlTag holder = new HolderTag(fixture).AddClass("top-level-holder");
-            holder.Children.Last().Visible(false);
+            holder.Children.Last().Render(false);
 
             Container
                 .MetaData(GrammarConstants.LEAF_NAME, GrammarConstants.TEST)
                 .MetaData(GrammarConstants.FIXTURE, GrammarConstants.TEST)
                 .MetaData(GrammarConstants.SELECTION_MODE, SelectionMode.OneOrMore.ToString())
-                .Child(holder)
-                .Child(new HtmlTag("hr"));
+                .Append(holder)
+                .Append(new HtmlTag("hr"));
 
             
             Container.ActionLink(fixture.Policies.AddGrammarText, GrammarConstants.ADD_SECTION_ACTIVATOR);
-            Container.Child(new GrammarSelector(fixture).Build());
+            Container.Append(new GrammarSelector(fixture).Build());
 
                 
         }

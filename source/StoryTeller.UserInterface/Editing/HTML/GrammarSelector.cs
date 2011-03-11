@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using HtmlTags;
+using HtmlTags.Extended.TagBuilders;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Model;
@@ -91,13 +92,13 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
             var commentLink = new SelectorLinkTag(GrammarConstants.COMMENT);
             commentLink.Label(GrammarConstants.COMMENT);
-            body.Add("tr").Child(commentLink.TagName("td"));
+            body.Add("tr").Append(commentLink.TagName("td"));
 
             _fixture.PossibleGrammarsFor(new StepLeaf()).Where(x => !(x is DoGrammarStructure)).Each(grammar =>
             {
                 _link = new SelectorLinkTag(grammar.Name);
                 _link.TagName("td");
-                body.Add("tr").Child(_link);
+                body.Add("tr").Append(_link);
 
                 grammar.AcceptVisitor(this, new Step());
             });
@@ -110,10 +111,10 @@ namespace StoryTeller.UserInterface.Editing.HTML
             HtmlTag tag = new HtmlTag("table").Attr("cellPadding", "0").Attr("cellSpacing", "0").AddClass(GrammarConstants.GRAMMAR_SELECTOR).Hide();
             HtmlTag headerCell = tag.Add("thead/tr/td").AddClass(GrammarConstants.HEADER_CONTAINER);
             headerCell.Add("span").Text(_fixture.Policies.AddGrammarText);
-            headerCell.Add("span").AddClass(GrammarConstants.SELECTION_REQUIRED).Text(GrammarConstants.REQUIRED).Visible
+            headerCell.Add("span").AddClass(GrammarConstants.SELECTION_REQUIRED).Text(GrammarConstants.REQUIRED).Render
                 (_fixture.IsSingleSelection());
                 
-            headerCell.ActionLink(GrammarConstants.CLOSE, GrammarConstants.CLOSER).Visible(!_fixture.IsSingleSelection());
+            headerCell.ActionLink(GrammarConstants.CLOSE, GrammarConstants.CLOSER).Render(!_fixture.IsSingleSelection());
 
             return tag;
         }

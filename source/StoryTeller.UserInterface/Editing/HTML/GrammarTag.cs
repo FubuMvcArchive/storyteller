@@ -31,7 +31,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             var header = Children.FirstOrDefault(x => x is HeaderTag) as HeaderTag;
             if (header == null)
             {
-                Child(link);
+                Append(link);
             }
             else
             {
@@ -42,7 +42,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         public CellTag AddCell(Cell cell, string tagName)
         {
             var child = new CellTag(cell, tagName);
-            Child(child);
+            Append(child);
 
             return child;
         }

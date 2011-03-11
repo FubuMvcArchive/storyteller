@@ -31,7 +31,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         private FixtureTag writeFixture(FixtureGraph fixture)
         {
             _fixtureTag = new FixtureTag(fixture);
-            _top.Child(_fixtureTag);
+            _top.Append(_fixtureTag);
 
             return _fixtureTag;
         }

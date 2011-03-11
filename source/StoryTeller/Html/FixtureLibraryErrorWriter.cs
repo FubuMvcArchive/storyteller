@@ -30,7 +30,7 @@ namespace StoryTeller.Html
 
             fixture.Errors.Each(e =>
             {
-                document.Add("div").Child(new ExceptionTag(e.ErrorText));
+                document.Add("div").Append(new ExceptionTag(e.ErrorText));
             });
 
             document.Add("hr");

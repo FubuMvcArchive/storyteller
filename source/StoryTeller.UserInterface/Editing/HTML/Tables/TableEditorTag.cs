@@ -1,4 +1,5 @@
 ﻿using HtmlTags;
+using HtmlTags.Extended.TagBuilders;
 
 namespace StoryTeller.UserInterface.Editing.HTML.Tables
 {

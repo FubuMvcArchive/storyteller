@@ -16,16 +16,16 @@ namespace StoryTeller.UserInterface.Editing.HTML.Tables
                 x.Header(" ").AddClass("command");
                 table.Cells.Each(cell =>
                 {
-                    x.Child(new CellHeaderTag(cell));
+                    x.Append(new CellHeaderTag(cell));
                 });
             });
 
             AddBodyRow(x =>
             {
-                x.Cell().AddClass("command").Child<DeleteIconTag>().AddClass("remover");
+                x.Cell().AddClass("command").Add<DeleteIconTag>().AddClass("remover");
                 table.Cells.Each(cell =>
                 {
-                    x.Cell().AddClass(cell.Key).Child(builders.BuildTag(cell));
+                    x.Cell().AddClass(cell.Key).Append(builders.BuildTag(cell));
                 });
             });
         }

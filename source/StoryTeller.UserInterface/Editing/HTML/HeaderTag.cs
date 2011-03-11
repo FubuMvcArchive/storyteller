@@ -26,7 +26,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
         public void AddRemoveLink(RemoveLinkTag link)
         {
-            _title.Child(link);
+            _title.Append(link);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             Id(fixture.Name);
             _fixture = fixture;
 
-            Child<CommentTag>();
+            Add<CommentTag>();
 
             fixture.TopLevelGrammars().Each(writeGrammar);
         }
@@ -50,11 +50,11 @@ namespace StoryTeller.UserInterface.Editing.HTML
             var area = new AreaTag(table.Label);
             var container = area.Container.Add("div").AddClass("section-container");
 
-            container.Child<TableEditorTag>();
-            container.Child(new ColumnSelectionTag(table));
-            container.Child(new TableTemplateTag(table, new CellBuilderLibrary()));
+            container.Add<TableEditorTag>();
+            container.Append(new ColumnSelectionTag(table));
+            container.Append(new TableTemplateTag(table, new CellBuilderLibrary()));
 
-            grammarTag.Child(area);
+            grammarTag.Append(area);
         }
 
         void IGrammarVisitor.SetVerification(SetVerification setVerification, IStep step)
@@ -70,7 +70,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
                 .AddClass("paragraph.Style.ToString()")
                 .AddClass("section-container")
                 .AddClass("in-paragraph");
-            grammarTag.Child(area);
+            grammarTag.Append(area);
 
 
 
@@ -78,7 +78,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             {
                 var tag = new GrammarTag(g);
 
-                container.Child(tag);
+                container.Append(tag);
 
                 _grammarTags.Do(tag, () => g.AcceptVisitor(this, new Step()));
             });
@@ -94,20 +94,20 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
             var area = section.IsTitled() ? new AreaTag(section.Label) : new AreaTag();
             var container = area.Container.Add("div").AddClass("section-container");
-            container.Child(new HolderTag(section.Fixture));
+            container.Append(new HolderTag(section.Fixture));
             
             if (section.Fixture.Policies.SelectionMode != SelectionMode.MandatoryAutoSelect)
             {
                 var selector = new GrammarSelector(section.Fixture).Build();
-                container.Child(selector);
+                container.Append(selector);
             }
 
-            grammarTag.Child(area);
+            grammarTag.Append(area);
         }
 
         void IGrammarVisitor.DoGrammar(DoGrammarStructure grammar, IStep step)
         {
-            grammarTag.Visible(false);
+            grammarTag.Render(false);
         }
 
         #endregion
@@ -115,7 +115,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         public GrammarTag Add(GrammarStructure structure)
         {
             var childGrammarTag = new GrammarTag(structure);
-            Child(childGrammarTag);
+            Append(childGrammarTag);
 
             _fixture.Policies.Tags(structure.Name).Each(tag => childGrammarTag.AddSafeClassName(tag));
 

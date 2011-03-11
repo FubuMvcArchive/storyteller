@@ -44,7 +44,7 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
 
             var tag = new GrammarTag(sentence);
             var header = new HeaderTag();
-            tag.Child(header);
+            tag.Append(header);
 
             tag.AddDeleteLink();
 

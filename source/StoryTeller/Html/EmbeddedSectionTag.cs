@@ -29,7 +29,7 @@ namespace StoryTeller.Html
 
         public void WriteResults(ITestContext context)
         {
-            context.ResultsFor(_section).ForExceptionText(text => _body.Child(new ExceptionTag(text)));
+            context.ResultsFor(_section).ForExceptionText(text => _body.Append(new ExceptionTag(text)));
         }
     }
 
@@ -61,7 +61,7 @@ namespace StoryTeller.Html
 
         public void WriteResults(ITestContext context)
         {
-            context.ResultsFor(_step).ForExceptionText(text => Child(new ExceptionTag(text)));
+            context.ResultsFor(_step).ForExceptionText(text => Append(new ExceptionTag(text)));
         }
     }
 }

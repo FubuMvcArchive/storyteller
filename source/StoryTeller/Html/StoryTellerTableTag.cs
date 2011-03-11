@@ -59,7 +59,7 @@ namespace StoryTeller.Html
                     var tag = new CellTag(cell, step);
                     tag.WritePreview(context);
 
-                    row.Cell().Child(tag);
+                    row.Cell().Append(tag);
                 });
 
                 row.FirstChild().AddClass("left-cell");
@@ -87,7 +87,7 @@ namespace StoryTeller.Html
                     
                     var tag = new CellTag(cell, step);
                     tag.TagName("td");
-                    row.Child(tag);
+                    row.Append(tag);
 
                     tag.WriteResults(results, context);
                 });
@@ -176,7 +176,7 @@ namespace StoryTeller.Html
                 int colSpan = _headerRow.Children.Count;
                 row.Cell()
                     .Attr("colspan", colSpan).AddClass(HtmlClasses.EXCEPTION).AddClass("exception-cell")
-                    .Child(exceptionTag);
+                    .Append(exceptionTag);
             });
         }
     }

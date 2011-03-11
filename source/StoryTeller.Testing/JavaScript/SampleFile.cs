@@ -31,7 +31,7 @@ namespace StoryTeller.Testing.JavaScript
 
         protected override void addChildren(string title)
         {
-            var select = Add("h2").Text("Test:  ").Child<SelectTag>();
+            var select = Add("h2").Text("Test:  ").Add<SelectTag>();
             select.Id("testName");
 
 
@@ -52,7 +52,7 @@ namespace StoryTeller.Testing.JavaScript
             Add("hr");
 
             FixtureLibrary library = FixtureLibrary.For(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>());
-            Add("div").Child(new TestEditorTag(library));
+            Add("div").Append(new TestEditorTag(library));
         }
     }
 
@@ -85,7 +85,7 @@ namespace StoryTeller.Testing.JavaScript
         protected override void addChildren(string title)
         {
             HtmlTag header = Add("h2").Text("Test:  ");
-            var select = header.Child<SelectTag>();
+            var select = header.Add<SelectTag>();
             select.Id("testName");
 
 
@@ -108,7 +108,7 @@ namespace StoryTeller.Testing.JavaScript
             Add("hr");
 
             FixtureLibrary library = _runner.GetLibary();
-            Add("div").Child(new TestEditorTag(library));
+            Add("div").Append(new TestEditorTag(library));
         }
     }
 
