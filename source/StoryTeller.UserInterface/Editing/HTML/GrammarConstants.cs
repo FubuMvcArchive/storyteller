@@ -38,7 +38,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         public static readonly string STEP = "step";
         public static readonly string STEP_HOLDER = "step-holder";
         public static readonly string TAGS = "TestTags";
-        public static readonly string TAGS_LABEL = "Tag";
+        public static readonly string TAGS_LABEL = "Tags";
 
         public static readonly string TAGS_CLOSER = "tags-closer";
         public static readonly string TAGS_EDITOR = "tags-editor";

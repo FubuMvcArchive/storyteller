@@ -57,43 +57,39 @@ span.fact
 /*
 	-moz-background-clip:border;
 	-moz-background-inline-policy:continuous;
-	-moz-background-origin:padding;
-	background:#FFFFEF none repeat scroll 0 0;*/
-	border:1px solid #EBEBDB;
-	padding: 3px;
-	font-family: Courier New;
-	font-size:75%;
-}
-
-
-.TestTags
-{
-	margin-top:10px;
-	margin-bottom:10px;
-	overflow: visible;
-}
-
-.tags-text
-{
-/*
-	-moz-background-clip:border;
-	-moz-background-inline-policy:continuous;
 	-moz-background-origin:padding;*/
-	background: #F0F0F0 none repeat scroll 0 0;
-	border:1px solid #EBEBDB;
 	padding: 3px;
 	font-family: Courier New;
 	font-size:75%;
-	color: #A8A8A8 ;
 }
 
 
 .Comment
 {
+	background: none repeat scroll 0 0;
+	border:1px solid #EBEBDB;
+	white-space: pre;	
 	margin-top:10px;
 	margin-bottom:10px;
 	overflow: visible;
 }
+
+.TestTags
+{
+	margin-top:3px;
+	margin-bottom:3px;
+	overflow: visible;
+}
+
+.tags-text
+{
+	background: none repeat scroll 0 0;
+	padding: 3px;
+	font-family: Courier New;
+	font-size: 75%;
+	color: #A8A8A8 ;
+}
+
 
 a
 {
@@ -210,6 +206,11 @@ html, body{
 	border-width:1px;
 	margin: 0;
 	padding: 10px;
+}
+
+h5 {
+	margin: 0;
+	padding-left: 10px;	
 }
 
 .main .homelink {
@@ -416,4 +417,10 @@ div.sentence
 {
     padding-left: 0px;
     margin-left: 0px;
+}
+
+div.caption
+{
+	padding: 0px;
+	margin-left: 20px;
 }

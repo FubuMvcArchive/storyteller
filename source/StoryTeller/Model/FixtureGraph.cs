@@ -9,8 +9,32 @@ using StructureMap;
 
 namespace StoryTeller.Model
 {
+    public interface IFixtureGraph
+    {
+        string FixtureClassName { get; set; }
+        string FixtureNamespace { get; set; }
+        int GrammarCount { get; }
+        IPolicies Policies { get; set; }
+        IEnumerable<GrammarError> Errors { get; }
+        IEnumerable<GrammarStructure> Grammars { get; }
+        bool IsAFixture();
+        Section CreateExample();
+        GrammarStructure GrammarFor(string grammarKey);
+        void AddStructure(string grammarKey, GrammarStructure structure);
+        IEnumerable<GrammarStructure> TopLevelGrammars();
+        IEnumerable<GrammarStructure> PossibleGrammarsFor(IPartHolder holder);
+        bool HasGrammar(string key);
+        bool Equals(FixtureGraph obj);
+        void LogError(Exception exception);
+        void LogError(GrammarError error);
+        bool CanChoose(Test test);
+        bool IsSingleSelection();
+        bool IsMandatoryAutoSelectGrammar(GrammarStructure structure);
+        bool HasGrammarErrors();
+    }
+
     [Serializable]
-    public class FixtureGraph : IFixtureNode
+    public class FixtureGraph : IFixtureNode, IFixtureGraph
     {
         private readonly List<GrammarError> _errors = new List<GrammarError>();
         private readonly string _name;
@@ -34,6 +58,11 @@ namespace StoryTeller.Model
         public string FixtureNamespace { get; set; }
         public int GrammarCount { get { return _structures.Count; } }
         public IPolicies Policies { get { return _policies; } set { _policies = value; } }
+
+        public bool IsAFixture()
+        {
+            return !string.IsNullOrEmpty(FixtureClassName);
+        }
 
         #region IFixtureNode Members
 

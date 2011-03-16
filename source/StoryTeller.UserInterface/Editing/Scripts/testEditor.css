@@ -48,7 +48,7 @@ a:hover {
 	-moz-background-inline-policy:continuous;
 	-moz-background-origin:padding;
 	/*background:#FFFFEF none repeat scroll 0 0;*/
-	background:wheat none repeat scroll 0 0;
+	background: #A8A8A8 none repeat scroll 0 0;
 	border:1px solid #EBEBDB;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -82,6 +82,7 @@ a:hover {
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-bottom: 5px;
+	white-space: pre
 }
 
 .Comment:first-child

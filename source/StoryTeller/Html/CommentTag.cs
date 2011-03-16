@@ -10,7 +10,7 @@ namespace StoryTeller.Html
             : base("div")
         {
             AddClass("TestTags");
-            Add("span").AddClass("tags-text").Text(tags.Text);
+            Add("span").AddClass("tags-text").Text("Tags: " + tags.Text);
         }
     }
 

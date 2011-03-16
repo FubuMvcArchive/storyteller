@@ -32,10 +32,10 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
     public class GrammarSelector : IGrammarVisitor, ISentenceVisitor
     {
-        private readonly FixtureGraph _fixture;
+        private readonly IFixtureGraph _fixture;
         private SelectorLinkTag _link;
 
-        public GrammarSelector(FixtureGraph fixture)
+        public GrammarSelector(IFixtureGraph fixture)
         {
             _fixture = fixture;
         }
@@ -89,10 +89,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             HtmlTag tag = buildTopNode();
             var body = tag.Add("tbody");
 
-            var tagsLink = new SelectorLinkTag(GrammarConstants.TAGS);
-            tagsLink.Label(GrammarConstants.TAGS_LABEL);
-            body.Add("tr").Child(tagsLink.TagName("td"));
-
+            AddTaggingLinkIfAtTopLevel(body);
 
             var commentLink = new SelectorLinkTag(GrammarConstants.COMMENT);
             commentLink.Label(GrammarConstants.COMMENT);
@@ -110,6 +107,16 @@ namespace StoryTeller.UserInterface.Editing.HTML
             });
 
             return tag;
+        }
+
+        private void AddTaggingLinkIfAtTopLevel(HtmlTag body)
+        {
+            if (!_fixture.IsAFixture())
+            {
+                var tagsLink = new SelectorLinkTag(GrammarConstants.TAGS);
+                tagsLink.Label(GrammarConstants.TAGS_LABEL);
+                body.Add("tr").Child(tagsLink.TagName("td"));
+            }
         }
 
         private HtmlTag buildTopNode()

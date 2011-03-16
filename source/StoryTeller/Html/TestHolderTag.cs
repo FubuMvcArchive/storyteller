@@ -7,6 +7,7 @@ namespace StoryTeller.Html
     public class TestHolderTag : HtmlTag
     {
         private readonly HtmlTag _testName;
+        private HtmlTag _suiteName;
         private readonly HtmlTag _container;
 
         public TestHolderTag()
@@ -36,15 +37,15 @@ namespace StoryTeller.Html
                 countsTag.AddClass("results-" + HtmlClasses.FAIL);
             }
 
-            _testName.Next = countsTag;
+            _suiteName.Next = countsTag;
         }
 
-        public void WriteTags(Tags tags)
+        public void WriteSuiteName(string suiteName)
         {
-            var tagsTag = new TagsTag(tags);
-            _testName.Next = tagsTag;
+            _suiteName = new HtmlTag("h5").Text(suiteName);
+            _testName.Next = _suiteName;
         }
-
+        
         public HtmlTag TestName { get { return _testName; } }
         public HtmlTag Container { get { return _container; } }
     

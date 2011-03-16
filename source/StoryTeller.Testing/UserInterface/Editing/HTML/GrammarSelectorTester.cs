@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using NUnit.Framework;
+using Rhino.Mocks;
+using StoryTeller.Engine.Constraints;
 using StoryTeller.Model;
 using StoryTeller.UserInterface.Editing.HTML;
 
@@ -50,6 +53,30 @@ namespace StoryTeller.Testing.UserInterface.Editing.HTML
             fixture.Policies.SelectionMode = SelectionMode.Any;
 
             new GrammarSelector(fixture).Build().ToString().ShouldNotContain(GrammarConstants.REQUIRED);
+        }
+
+        [Test]
+        public void should_add_tagging_ability_if_graph_is_not_a_fixture()
+        {
+            IFixtureGraph fixture = MockRepository.GenerateMock<IFixtureGraph>();
+            IPolicies policies = MockRepository.GenerateMock<IPolicies>();
+            IEnumerable<GrammarStructure> grammars = new List<GrammarStructure>();
+            fixture.Stub(x => x.IsAFixture()).Return(false);
+            fixture.Stub(x => x.Policies).Return(policies);
+            fixture.Stub(x => x.PossibleGrammarsFor(null)).IgnoreArguments().Return(grammars);
+            new GrammarSelector(fixture).Build().ToString().ShouldContain(GrammarConstants.TAGS_LABEL);
+        }
+
+        [Test]
+        public void should_not_add_tagging_ability_if_graph_is_a_fixture()
+        {
+            IFixtureGraph fixture = MockRepository.GenerateMock<IFixtureGraph>();
+            IPolicies policies = MockRepository.GenerateMock<IPolicies>();
+            IEnumerable<GrammarStructure> grammars = new List<GrammarStructure>();
+            fixture.Stub(x => x.IsAFixture()).Return(true);
+            fixture.Stub(x => x.Policies).Return(policies);
+            fixture.Stub(x => x.PossibleGrammarsFor(null)).IgnoreArguments().Return(grammars);
+            new GrammarSelector(fixture).Build().ToString().ShouldNotContain(GrammarConstants.TAGS_LABEL);
         }
     }
 }

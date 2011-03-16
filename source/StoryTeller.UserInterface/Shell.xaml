@@ -32,7 +32,8 @@
                 </Grid.ColumnDefinitions>
 
                 <DockPanel Name="navigationPanel" DockPanel.Dock="Top" Background="{DynamicResource SelectedBackgroundBrush}">
-                    <Controls:TestFilterBar x:Name="filterBar" DockPanel.Dock="Top" ></Controls:TestFilterBar>
+                    <Controls:TestFilterBar x:Name="filterBar" DockPanel.Dock="Top" 
+                                            ></Controls:TestFilterBar>
                     <!-- Add scroll viewer -->
                 <TabControl  Grid.Row="0" Grid.Column="0" Name="explorerTabs" DockPanel.Dock="Left" TabStripPlacement="Top"  
                              HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">

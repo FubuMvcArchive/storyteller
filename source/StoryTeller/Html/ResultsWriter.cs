@@ -125,9 +125,11 @@ namespace StoryTeller.Html
             var testHolder = new TestHolderTag();
             
             _document.Add(testHolder);
-            testHolder.TestName.Text(string.Format("{0}/{1}", test.SuiteName, test.Name));
+            testHolder.TestName.Text(test.Name);
+            testHolder.WriteSuiteName("Suite: " + test.SuiteName);
             testHolder.WriteResults(_context.Counts);
             
+
             _context.ResultsFor(test).ForExceptionText(text =>
             {
                 _document.Add(new ExceptionTag(text));
