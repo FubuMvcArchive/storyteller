@@ -1,7 +1,0 @@
-﻿<Window x:Class="WpfSpike.CommentPlaying"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Editing="clr-namespace:StoryTeller.UserInterface.Tests.Editing;assembly=StoryTeller.UserInterface"
-    Title="CommentPlaying" Height="200" Width="500">
-    <StackPanel Name="panel"></StackPanel>
-</Window>
