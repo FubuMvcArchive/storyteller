@@ -1,4 +1,5 @@
 using HtmlTags;
+using HtmlTags.Extended.TagBuilders;
 
 namespace StoryTeller.UserInterface.Editing.HTML
 {
@@ -27,7 +28,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
                 x.ActionLink("close", GrammarConstants.COMMENT_CLOSER);
             });
 
-            cell.Child(new RemoveLinkTag());
+            cell.Append(new RemoveLinkTag());
         }
     }
 }

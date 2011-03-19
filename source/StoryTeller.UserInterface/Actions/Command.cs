@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Windows.Input;
 using StructureMap;
 
@@ -31,5 +32,24 @@ namespace StoryTeller.UserInterface.Actions
         public event EventHandler CanExecuteChanged;
 
         #endregion
+    }
+
+    public class CommandExecutor
+    {
+        private readonly SynchronizationContext _context;
+
+        public CommandExecutor(SynchronizationContext context)
+        {
+            _context = context;
+        }
+
+        public void ExecuteAsynch(Func<Action> func)
+        {
+            ThreadPool.QueueUserWorkItem(o =>
+            {
+                var callback = func();
+                _context.Send(x => callback(), null);
+            });
+        }
     }
 }

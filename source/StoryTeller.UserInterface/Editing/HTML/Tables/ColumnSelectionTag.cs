@@ -17,7 +17,7 @@ namespace StoryTeller.UserInterface.Editing.HTML.Tables
             var count = 1;
             table.Cells.Where(x => x.HasDefault()).Each(cell =>
             {
-                Child(new OptionalColumnTag(cell));
+                Append(new OptionalColumnTag(cell));
                 count++;
 
                 if (count == 5)

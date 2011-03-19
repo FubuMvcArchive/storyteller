@@ -84,7 +84,7 @@ namespace StoryTeller.Html
             {
                 var cellTag = new CellTag(input.Cell, _step);
                 cellTag.WritePreview(_context);
-                _tag.Child(cellTag);
+                _tag.Append(cellTag);
             }
         }
 
@@ -116,7 +116,7 @@ namespace StoryTeller.Html
             {
                 var cellTag = new CellTag(input.Cell, _step);
                 cellTag.WriteResults(_results, _context);
-                _tag.Child(cellTag);
+                _tag.Append(cellTag);
             }
         }
     }

@@ -1,6 +1,0 @@
-<Window x:Class="WpfSpike.GridWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Tables1="clr-namespace:StoryTeller.UserInterface.Tests.Editing.Tables;assembly=StoryTeller.UserInterface"
-    Title="GridWindow" Height="300" Width="600">
-</Window>

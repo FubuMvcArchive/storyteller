@@ -55,7 +55,7 @@ namespace StoryTeller.Testing.JavaScript
 
             var testEditor =
                 new TestEditorTag(FixtureLibrary.For(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>()));
-            file.Html(x => x.Add("div").Child(testEditor));
+            file.Html(x => x.Add("div").Append(testEditor));
 
             Project project = DataMother.GrammarProject();
             project.LoadTests().GetAllTests().Each(test =>
@@ -84,7 +84,7 @@ namespace StoryTeller.Testing.JavaScript
                 {
                     var testEditor =
                         new TestEditorTag(FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>()));
-                    x.Add("div").Child(testEditor);
+                    x.Add("div").Append(testEditor);
                 });
         }
 
@@ -99,7 +99,7 @@ namespace StoryTeller.Testing.JavaScript
                 {
                     var testEditor =
                         new TestEditorTag(FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>()));
-                    x.Add("div").Child(testEditor);
+                    x.Add("div").Append(testEditor);
                 });
         }
 
@@ -113,7 +113,7 @@ namespace StoryTeller.Testing.JavaScript
                 {
                     var testEditor =
                         new TestEditorTag(FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>()));
-                    x.Add("div").Child(testEditor);
+                    x.Add("div").Append(testEditor);
                 });
 
         }
@@ -146,7 +146,7 @@ namespace StoryTeller.Testing.JavaScript
                 {
                     FixtureLibrary library =
                         FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>());
-                    x.Add("div").Child(new TestEditorTag(library));
+                    x.Add("div").Append(new TestEditorTag(library));
 
                     x.Add("Div").AddClass(GrammarConstants.SECTION).AddClass(GrammarConstants.EMBEDDED).Id("section1").
                         Add("div").AddClass(GrammarConstants.STEP_HOLDER);
@@ -180,7 +180,7 @@ namespace StoryTeller.Testing.JavaScript
                 {
                     FixtureLibrary library =
                         FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>());
-                    x.Add("div").Child(new TestEditorTag(library));
+                    x.Add("div").Append(new TestEditorTag(library));
 
                     x.Add("Div").AddClass(GrammarConstants.EMBEDDED).Id("section1").Add("div").AddClass(
                         GrammarConstants.STEP_HOLDER).AddClass(GrammarConstants.SECTION);

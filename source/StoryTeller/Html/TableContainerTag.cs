@@ -14,7 +14,7 @@ namespace StoryTeller.Html
             
 
             Add("div").Text(title).AddClass("table-title");
-            Add("div").AddClass("table-container").AddClass("table-cell").Child(bodyTag);
+            Add("div").AddClass("table-container").AddClass("table-cell").Append(bodyTag);
         }
     }
 }

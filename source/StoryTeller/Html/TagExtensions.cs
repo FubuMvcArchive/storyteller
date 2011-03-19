@@ -20,11 +20,11 @@ namespace StoryTeller.Html
         {
             if (!tag.Children.Any())
             {
-                return tag.Child<T>();
+                return tag.Add<T>();
             }
 
             HtmlTag lastTag = tag.Children.Last();
-            return (T) (lastTag is T ? lastTag : tag.Child<T>());
+            return (T) (lastTag is T ? lastTag : tag.Add<T>());
         }
     }
 }
