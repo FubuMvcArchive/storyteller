@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FubuCore;
+using System.IO;
 
 namespace StoryTeller.Domain
 {
@@ -94,12 +95,12 @@ namespace StoryTeller.Domain
         {
             if (IsEnd) return string.Empty;
 
-            return ToSuite()._parts.ToArray().Join("\\");
+            return ToSuite()._parts.ToArray().Join(Path.DirectorySeparatorChar.ToString());
         }
 
         public string GetFolder()
         {
-            return _parts.ToArray().Join("\\");
+            return _parts.ToArray().Join(Path.DirectorySeparatorChar.ToString());
         }
 
         public string DottedPath()
