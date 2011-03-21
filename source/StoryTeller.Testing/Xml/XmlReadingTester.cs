@@ -3,7 +3,6 @@ using System.Xml;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Persistence;
-using StoryTeller.UserInterface;
 
 namespace StoryTeller.Testing.Xml
 {

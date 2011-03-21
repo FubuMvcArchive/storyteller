@@ -276,12 +276,6 @@ namespace StoryTeller.UserInterface
             return element;
         }
 
-        public static T Configure<T>(this T target, Action<T> action)
-        {
-            action(target);
-            return target;
-        }
-
         public static RoutedEventHandler ToRoutedHandler(this Action action)
         {
             return (s, e) => action();
