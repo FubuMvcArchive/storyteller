@@ -7,6 +7,8 @@ using StoryTeller.Workspace;
 
 namespace StoryTeller.Testing
 {
+    using System.Collections.Generic;
+
     [TestFixture]
     public class TestTester
     {
@@ -293,6 +295,15 @@ namespace StoryTeller.Testing
                 FileName = "Test001.xml"
             };
             test.FileName.ShouldEqual("Test001.xml");
+        }
+
+        [Test]
+        public void Adding_tags_should_add_to_existing_tags()
+        {
+            Test test = new Test("test");
+            List<string> tags = new List<string> { "tagged", "another" };
+            tags.ForEach(x => test.AddTags(x));
+            tags.ForEach(tag => test.GetTags().AllTags.Contains(tag));
         }
 
     }

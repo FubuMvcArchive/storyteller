@@ -47,6 +47,7 @@ a:hover {
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-bottom: 5px;
+	white-space: pre
 }
 
 div.section-title > a.deleteStep
