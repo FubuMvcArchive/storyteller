@@ -2,6 +2,8 @@
 
 namespace StoryTeller.UserInterface.Editing.HTML
 {
+    using HtmlTags.Extended.TagBuilders;
+
     public class TagsTag : HtmlTag
     {
         public TagsTag()
@@ -27,7 +29,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
                               x.ActionLink("close", GrammarConstants.TAGS_CLOSER);
                           });
 
-            cell.Child(new RemoveLinkTag());
+            cell.Append(new RemoveLinkTag());
         }
     }
 }

@@ -116,7 +116,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             {
                 var tagsLink = new SelectorLinkTag(GrammarConstants.TAGS);
                 tagsLink.Label(GrammarConstants.TAGS_LABEL);
-                body.Add("tr").Child(tagsLink.TagName("td"));
+                body.Add("tr").Append(tagsLink.TagName("td"));
             }
         }
 
