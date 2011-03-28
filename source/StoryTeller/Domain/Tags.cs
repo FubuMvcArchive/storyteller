@@ -8,7 +8,7 @@ namespace StoryTeller.Domain
     public class Tags : ITestPart
     {
         public static readonly string TAGS = "TestTags";
-
+        public const string AUTO_CLOSE_SELECTOR = "autoCloseSelector";
         public Tags()
         {
         }
