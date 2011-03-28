@@ -20,6 +20,8 @@ namespace StoryTeller
         IPolicies Policies { get; }
         string Title { get; set; }
 
+        bool HasGrammar(string key);
+
         void ForEachGrammar(Action<string, IGrammar> action);
 
         void SetUp(ITestContext context);

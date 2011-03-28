@@ -75,6 +75,11 @@ namespace StoryTeller.Testing.Engine
 
             public IGrammar this[string key] { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
 
+            public bool HasGrammar(string key)
+            {
+                throw new NotImplementedException();
+            }
+
             public void ForEachGrammar(Action<string, IGrammar> action)
             {
             }
@@ -108,6 +113,11 @@ namespace StoryTeller.Testing.Engine
             public string Description { get { return "FixtureThatThrowsExceptionInTeardown"; } }
 
             public IGrammar this[string key] { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
+
+            public bool HasGrammar(string key)
+            {
+                throw new NotImplementedException();
+            }
 
             public void ForEachGrammar(Action<string, IGrammar> action)
             {

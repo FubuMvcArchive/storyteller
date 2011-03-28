@@ -12,6 +12,11 @@ namespace StoryTeller.Testing.Engine
 
         #region IFixture Members
 
+        public bool HasGrammar(string key)
+        {
+            throw new NotImplementedException();
+        }
+
         public void ForEachGrammar(Action<string, IGrammar> action)
         {
         }

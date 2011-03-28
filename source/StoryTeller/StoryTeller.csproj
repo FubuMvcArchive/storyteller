@@ -100,6 +100,7 @@
     <Compile Include="Domain\WorkspaceSuite.cs" />
     <Compile Include="Engine\BasicSystem.cs" />
     <Compile Include="Engine\CurriedLineGrammar.cs" />
+    <Compile Include="Engine\ExtendsFixture.cs" />
     <Compile Include="Engine\FixtureContainerSource.cs" />
     <Compile Include="Engine\Frame.cs" />
     <Compile Include="Engine\IFixtureContainerSource.cs" />

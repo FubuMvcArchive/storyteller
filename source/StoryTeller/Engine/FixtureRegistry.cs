@@ -10,6 +10,11 @@ namespace StoryTeller.Engine
     {
         private readonly Registry _registry = new Registry();
 
+        public FixtureRegistry()
+        {
+            _registry.RegisterInterceptor(new FixtureExtender());
+        }
+
         public void AddFixture<T>() where T : IFixture
         {
             _registry.For<IFixture>().Add<T>().Named(typeof(T).GetFixtureAlias());
@@ -53,6 +58,8 @@ namespace StoryTeller.Engine
                 x.Assembly(assembly);
                 x.TheCallingAssembly();
                 x.Convention<FixtureScanner>();
+
+                
             });
         }
 
