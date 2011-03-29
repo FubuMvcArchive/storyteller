@@ -86,5 +86,15 @@ namespace StoryTeller.Engine
                 return t => _system.Get(t);
             }
         }
+
+        public void SetupEnvironment()
+        {
+            _system.SetupEnvironment();
+        }
+
+        public void RegisterServices(ITestContext context)
+        {
+            _system.RegisterServices(context);
+        }
     }
 }

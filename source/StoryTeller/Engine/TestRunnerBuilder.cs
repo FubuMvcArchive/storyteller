@@ -65,6 +65,11 @@ namespace StoryTeller.Engine
                 observer.RecordStatus("Setting up the system environment");
                 lifeCycle.StartApplication();
 
+
+                lifeCycle.SetupEnvironment();
+                observer.RecordStatus("Registering the system services");
+                lifeCycle.RegisterServices(context);
+
                 builder.Finder = context.Finder;
                 
                 observer.RecordStatus("Starting to read fixtures");
