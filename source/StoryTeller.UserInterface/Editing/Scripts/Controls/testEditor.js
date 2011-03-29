@@ -1,3 +1,8 @@
+// Change the default location of HTML metadata
+if ($.metadata) {
+    $.metadata.setType('attr', 'data-:');
+}
+
 ST.testEditor = function (editor, test) {
     editor.isLatched = true;
     editor.inner = $('.container', editor).get(0);
