@@ -1,7 +1,6 @@
 using System.Windows.Forms;
 using ShadeTree.Binding;
 using ShadeTree.Binding.WPF;
-using ShadeTree.Validation;
 using StoryTeller.Workspace;
 using Button=System.Windows.Controls.Button;
 using TextBox=System.Windows.Controls.TextBox;
@@ -30,6 +29,7 @@ namespace StoryTeller.UserInterface.Projects
             _binder.Bind(x => x.ConfigurationFileName).To(configurationFile);
             _binder.Bind(x => x.SystemTypeName).To(systemName);
             _binder.Bind(x => x.TimeoutInSeconds).To(timeoutInSeconds);
+            _binder.Bind(x => x.NumberOfTestRetries).To(numberOfTestRetries);
 
             _binder.Bind(x => x.FixtureAssembly).To(fixtureAssembly);
             _binder.Bind(x => x.Options.TargetFile).To(testHarnessFileName);

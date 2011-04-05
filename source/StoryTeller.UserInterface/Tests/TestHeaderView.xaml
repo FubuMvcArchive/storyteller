@@ -14,6 +14,8 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
             <CheckBox VerticalAlignment="Center" Name="autoRun" Margin="0 0 20 0" FontWeight="Bold" Foreground="Black">Auto Run</CheckBox>
+            <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"># of Retries:</Label>
+            <TextBox  Name="numberOfRetries" Width="50" />
             <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0">Lifecycle: </Label>
             <Button Name="lifecycle" Padding="5" VerticalAlignment="Center">Some text</Button>
         </StackPanel>

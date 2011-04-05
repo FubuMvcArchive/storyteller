@@ -20,6 +20,7 @@ namespace StoryTeller.UserInterface.Tests
             _binder.Bind(x => x.Path).To(path);
             _binder.Bind(x => x.Status).To(status);
             _binder.Bind(x => x.AutoRun).To(autoRun);
+            _binder.Bind(x => x.NumberOfRetries).To(numberOfRetries);
             _binder.Bind(x => x.Name).To(testName).OnChange(() =>
             {
                 hideTestName();

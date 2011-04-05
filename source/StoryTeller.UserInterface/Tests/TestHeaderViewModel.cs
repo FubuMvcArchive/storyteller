@@ -1,4 +1,3 @@
-using System;
 using StoryTeller.Domain;
 using StoryTeller.Execution;
 
@@ -32,6 +31,12 @@ namespace StoryTeller.UserInterface.Tests
         public string Path
         {
             get { return _test.Parent == null ? string.Empty : _test.Parent.GetPath().Locator.GetLabelTextWithoutHotkey() + "/" + _test.Name.GetLabelTextWithoutHotkey(); }
+        }
+
+        public int NumberOfRetries
+        {
+            get { return _test.NumberOfRetries; }
+            set { _test.NumberOfRetries = value; }
         }
 
         public string Name

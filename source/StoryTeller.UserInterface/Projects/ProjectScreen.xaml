@@ -78,27 +78,30 @@
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6" Height="30" Margin="0 0 0 5">
                 <TextBox Name="timeoutInSeconds" Width="50"></TextBox>
             </StackPanel>
-
-
-            <Label  FontWeight="Bold" Grid.Column="0" Grid.Row="7" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Fixture Assembly</Label>
+                <Label  FontWeight="Bold" Grid.Column="0" Grid.Row="7" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Number of Test Retries</Label>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="7" Height="30" Margin="0 0 0 5">
+                    <TextBox Name="numberOfTestRetries" Width="50"></TextBox>
+                </StackPanel>
+
+                <Label  FontWeight="Bold" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Fixture Assembly</Label>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="8" Height="30" Margin="0 0 0 5">
                 <TextBox Name="fixtureAssembly" Width="300"></TextBox>
                 <Button Name="findFixtureAssembly" Width="40">...</Button>
             </StackPanel>
 
-                <Label  FontWeight="Bold" Grid.Column="0" Grid.Row="8" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Test Harness File Path</Label>
-                <StackPanel Margin="0 0 0 25" Orientation="Horizontal" Grid.Column="1" Grid.Row="8" Height="30">
+                <Label  FontWeight="Bold" Grid.Column="0" Grid.Row="9" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">Test Harness File Path</Label>
+                <StackPanel Margin="0 0 0 25" Orientation="Horizontal" Grid.Column="1" Grid.Row="9" Height="30">
                     <TextBox Name="testHarnessFileName" Width="300"></TextBox>
                     <Button Name="findTestHarnessFile" Width="40">...</Button>
                 </StackPanel>
 
 
 
-                <Label  FontWeight="Bold" Grid.Row="9" Grid.Column="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" >Template for Test Harness Class</Label>
-                <TextBox Name="testHarnessFileTemplate" Grid.Row="9" Grid.Column="1" Height="400" Margin="0 0 0 25" MinWidth="400" ></TextBox>
+                <Label  FontWeight="Bold" Grid.Row="10" Grid.Column="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" >Template for Test Harness Class</Label>
+                <TextBox Name="testHarnessFileTemplate" Grid.Row="10" Grid.Column="1" Height="400" Margin="0 0 0 25" MinWidth="400" ></TextBox>
 
-                <Label  FontWeight="Bold" Grid.Row="10" Grid.Column="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" >Template for Test Harness Method</Label>
-                <TextBox Name="testHarnessMethodTemplate" Grid.Row="10" Grid.Column="1" Height="200" Width="400" MinWidth="400"></TextBox>
+                <Label  FontWeight="Bold" Grid.Row="11" Grid.Column="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" >Template for Test Harness Method</Label>
+                <TextBox Name="testHarnessMethodTemplate" Grid.Row="11" Grid.Column="1" Height="200" Width="400" MinWidth="400"></TextBox>
             </Grid>
         </ScrollViewer>
     </DockPanel>

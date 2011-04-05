@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
-using StoryTeller.Engine.Sets;
 using StoryTeller.Persistence;
-using System.Linq;
 
 namespace StoryTeller.Workspace
 {
@@ -73,7 +72,7 @@ namespace StoryTeller.Workspace
 
         public string FixtureAssembly { get; set; }
         public string BinaryFolder { get; set; }
-
+        public int NumberOfTestRetries { get; set; }
         public string TestFolder { get; set; }
 
         [XmlIgnore]
