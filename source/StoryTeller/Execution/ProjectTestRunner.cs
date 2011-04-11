@@ -4,7 +4,6 @@ using FubuCore;
 using StoryTeller.Assertions;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
-using StoryTeller.Html;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
 
@@ -79,9 +78,7 @@ namespace StoryTeller.Execution
         public Test RunTest(string testPath)
         {
             Test test = FindTest(testPath);
-
             _engine.RunTest(test);
-
 
             return test;
         }
@@ -142,8 +139,16 @@ namespace StoryTeller.Execution
         {
             _hierarchy.GetAllTests().Each(t =>
             {
-                
-                _engine.RunTest(t);
+                int numberOfRetries = 0;
+                while (numberOfRetries <= t.NumberOfRetries && !t.WasSuccessful())
+                {
+                    if (numberOfRetries != 0)
+                    {
+                        Console.WriteLine("$$$$$$$$$$$$$$$$Previous pass failed -- retrying: {0}".ToFormat(t.GetStatus()));
+                    }
+                    _engine.RunTest(t);
+                    numberOfRetries++;
+                }                
                 callback(t);
             });
         }

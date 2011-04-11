@@ -22,6 +22,7 @@ namespace StoryTeller.Domain
             _parts = parts;
             _name = name;
             SuiteName = suiteName;
+            NumberOfRetries = 5;
         }
 
         public Test(string name) : this(name, string.Empty, new DefaultTestPartcollection())

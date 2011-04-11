@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using FubuCore;
 using StoryTeller.Domain;
 using StoryTeller.Execution;
 using StoryTeller.Model;
@@ -57,22 +56,12 @@ namespace StoryTeller.Engine
             try
             {
                 _currentRun = new TestRun(request, _source, _listener, _library, _lifecycle);
-
+                
                 // Setting the LastResult on the test here is just a convenience
                 // for testing
-                var result = new TestResult() {ExceptionText = "exception"};
-                int numberOfRetries = 0;
-                while (numberOfRetries <= request.Test.NumberOfRetries && result.ExceptionText.IsNotEmpty())
-                {
-                    result = _currentRun.Execute();
-                    numberOfRetries++;
-                }
-            
-            
 
-
-
-            return result;
+                TestResult result = _currentRun.Execute();
+                return result;
             }
             finally
             {
