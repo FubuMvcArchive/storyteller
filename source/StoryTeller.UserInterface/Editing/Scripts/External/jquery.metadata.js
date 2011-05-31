@@ -84,3 +84,14 @@ $.fn.metadata = function( opts ){
 };
 
 })(jQuery);
+
+
+
+/**
+ * Storyteller specific metadata fix, due to the change to HtmlTags 1.0 release
+*/ 
+ (function ($) {
+	if ($.metadata) {
+		$.metadata.setType('attr', 'data-:');
+	}
+ })(jQuery);
