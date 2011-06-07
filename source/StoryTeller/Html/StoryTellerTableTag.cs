@@ -143,12 +143,14 @@ namespace StoryTeller.Html
 
                     case SetMatch.Extra:
                         row.AddClass(HtmlClasses.FAIL);
-                        row.FirstChild().Prepend("Extra:  ");
+                        var firstChild = row.FirstChild();
+                        firstChild.Text("Extra:  " + firstChild.Text());
                         break;
 
                     case SetMatch.Missing:
                         row.AddClass(HtmlClasses.FAIL);
-                        row.FirstChild().Prepend("Missing:  ");
+                        var tag = row.FirstChild();
+                        tag.Text("Missing:  " + tag.Text());
                         break;
 
                     case SetMatch.OutOfOrder:
