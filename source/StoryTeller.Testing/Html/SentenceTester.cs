@@ -3,6 +3,7 @@ using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Html;
 using StoryTeller.Model;
+using TestContext = StoryTeller.Engine.TestContext;
 
 namespace StoryTeller.Testing.Html
 {

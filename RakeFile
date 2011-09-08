@@ -42,12 +42,13 @@ task :compile => :version do
   MSBuildRunner.compile :compilemode => COMPILE_TARGET, :solutionfile => 'source/StoryTeller.sln', :clrversion => CLR_VERSION
 end
 
+desc "Runs the unit tests"
 task :unit_test => :compile do
   runner = NUnitRunner.new :compilemode => COMPILE_TARGET
   runner.executeTests ['StoryTeller.Testing']
 end
 
-
+desc "packages binaries for release"
 require 'zip/zip'
 task :package => [:version]  do
   package_file = "StoryTeller.#{build_number}.zip"
@@ -73,7 +74,7 @@ task :package => [:version]  do
 
 end
 
-
+desc "Generates samples"
 task :samples do
 	sh "source/SampleGenerator/bin/#{COMPILE_TARGET}/SampleGenerator.exe source/Examples docs/samples"
 	sh "source/SampleGenerator/bin/#{COMPILE_TARGET}/SampleGenerator.exe source/StoryTeller docs/samples"
@@ -81,13 +82,16 @@ task :samples do
 	sh "source/SampleGenerator/bin/#{COMPILE_TARGET}/SampleGenerator.exe source/StoryTeller.Samples docs/samples"
 end
 
+desc "Generates docs"
 task :generate_docs do
 	ruby "docs/docs.rb"
 end
 
+desc "Generates the samples and the docs"
 task :docs => [:samples, :generate_docs]
 	
 
+desc "Publishes the docs to github"
 task :publish_docs => :docs do
 	cp_r 'docs/output/.', '../storyteller-website'
 	#sh "c:/git/storyteller-website/git.exe add ."
