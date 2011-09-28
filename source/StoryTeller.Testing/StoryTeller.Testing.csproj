@@ -77,23 +77,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\tools\NUnit\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="PresentationCore">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="PresentationFramework">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
     <Reference Include="Rhino.Mocks, Version=3.5.0.1, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\tools\Rhino\Rhino.Mocks.dll</HintPath>
-    </Reference>
-    <Reference Include="ShadeTree, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\ShadeTree\ShadeTree.dll</HintPath>
-    </Reference>
-    <Reference Include="ShadeTree.Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\ShadeTree\ShadeTree.Binding.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=2.5.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -111,26 +97,12 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UIAutomationProvider">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WatiN.Core, Version=2.0.0.1000, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\Watin\WatiN.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="WindowsBase">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
@@ -141,8 +113,6 @@
     <Compile Include="Codegen\ProjectRunnerCodegenServiceTester.cs" />
     <Compile Include="CommentTester.cs" />
     <Compile Include="DataMother.cs" />
-    <Compile Include="Debugging.cs" />
-    <Compile Include="Diagnostics.cs" />
     <Compile Include="DisplayParserTester.cs" />
     <Compile Include="Domain\StepLeafTester.cs" />
     <Compile Include="Domain\SuiteNavigatorTester.cs" />
@@ -206,13 +176,8 @@
     <Compile Include="Engine\TimeoutFixture.cs" />
     <Compile Include="ErrorsTester.cs" />
     <Compile Include="Execution\DirectoryRunnerTester.cs" />
-    <Compile Include="Execution\TestEngineIntegrationTester.cs" />
     <Compile Include="HierarchyTester.cs" />
     <Compile Include="Integration\ProjectIntegratedTester.cs" />
-    <Compile Include="JavaScript\JavaScriptTestDefinitions.cs" />
-    <Compile Include="JavaScript\JavaScriptTester.cs" />
-    <Compile Include="JavaScript\JavaScriptTestFile.cs" />
-    <Compile Include="JavaScript\SampleFile.cs" />
     <Compile Include="Model\DoGrammarStructureTester.cs" />
     <Compile Include="Model\EmbeddedSectionTester.cs" />
     <Compile Include="Model\FixtureGraphTester.cs" />
@@ -257,103 +222,6 @@
     <Compile Include="Model\FixtureLibraryWriterTester.cs" />
     <Compile Include="Model\SentenceTester.cs" />
     <Compile Include="Usages\UsageGraphIntegratedTester.cs" />
-    <Compile Include="UserInterface\Actions\ActionCommandTester.cs" />
-    <Compile Include="UserInterface\Actions\MenuServiceTester.cs" />
-    <Compile Include="UserInterface\can_get_the_test_status_from_the_container.cs" />
-    <Compile Include="UserInterface\ClosingScreenTester.cs" />
-    <Compile Include="UserInterface\Commands\ActionMenuItemTester.cs" />
-    <Compile Include="UserInterface\Commands\AddSuiteCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\AddTestCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\AddWorkspaceCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\CloneTestCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\TagTestsCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\DeleteTestCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\MarkAcceptanceCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\MarkRegressionCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\RunSuiteCommandTester.cs" />
-    <Compile Include="UserInterface\Commands\RunTestCommandTester.cs" />
-    <Compile Include="UserInterface\ControlDriver.cs" />
-    <Compile Include="UserInterface\Controls\TestStopConditionsViewTester.cs" />
-    <Compile Include="UserInterface\Dialogs\AddTestTester.cs" />
-    <Compile Include="UserInterface\Dialogs\AddSuiteTester.cs" />
-    <Compile Include="UserInterface\Dialogs\DialogLauncherTester.cs" />
-    <Compile Include="UserInterface\Editing\EmbedsTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\GrammarSelectorTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\HolderTagTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\RemoveLinkTagTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\CommentTagTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\FixtureTagTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\GrammarTagTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\GrammarWriterTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\SentenceWriterTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\TableTemplateTagTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\TestEditorTagTester.cs" />
-    <Compile Include="UserInterface\Editing\HTML\TextboxBuilderTester.cs" />
-    <Compile Include="UserInterface\Exploring\IconServiceTester.cs" />
-    <Compile Include="UserInterface\Tests\Outline\OutlineConfigurerTester.cs" />
-    <Compile Include="UserInterface\Tests\Outline\OutlineControllerTester.cs" />
-    <Compile Include="UserInterface\Tests\Outline\OutlineTreeServiceIntegratedTester.cs" />
-    <Compile Include="UserInterface\Tests\Outline\TestTreeBuilderTester.cs" />
-    <Compile Include="UserInterface\Editing\VersionHistoryTester.cs" />
-    <Compile Include="UserInterface\Eventing\EventAggregatorTester.cs" />
-    <Compile Include="UserInterface\Eventing\UserInterfaceObserverTester.cs" />
-    <Compile Include="UserInterface\Examples\FixtureNodePresenterTester.cs" />
-    <Compile Include="UserInterface\Examples\FixtureNodeSubjectIntegratedTester.cs" />
-    <Compile Include="UserInterface\Exploring\ExplorerViewTester.cs" />
-    <Compile Include="UserInterface\Exploring\FixtureExplorerTester.cs" />
-    <Compile Include="UserInterface\Exploring\GrammarErrorsSubjectTester.cs" />
-    <Compile Include="UserInterface\Exploring\SuitePresenterTester.cs" />
-    <Compile Include="UserInterface\Exploring\TestLineDriverTester.cs" />
-    <Compile Include="UserInterface\Exploring\TreeBuilderTester.cs" />
-    <Compile Include="UserInterface\Exploring\TestExplorer_handling_a_new_hierarchy.cs" />
-    <Compile Include="UserInterface\Exploring\TreeExplorer_handling_a_status_changed.cs" />
-    <Compile Include="UserInterface\Exploring\TreeExplorer_responding_to_TestListener_events.cs" />
-    <Compile Include="UserInterface\Exploring\TreeNodeSpecification.cs" />
-    <Compile Include="UserInterface\Exploring\TreeNodeTester.cs" />
-    <Compile Include="UserInterface\Handlers\ShellPresenterTester.cs" />
-    <Compile Include="UserInterface\IntegrationTests\BootstrapperTester.cs" />
-    <Compile Include="UserInterface\IntegrationTests\ExecutionEngineIntegratedTester.cs" />
-    <Compile Include="UserInterface\IntegrationTests\ScreenObjectLocatorIntegratedTester.cs" />
-    <Compile Include="UserInterface\IntegrationTests\ShellRegistrationIntegrationTester.cs" />
-    <Compile Include="UserInterface\Projects\BinaryFailureHandlerTester.cs" />
-    <Compile Include="UserInterface\Projects\NewProjectPresenterTester.cs" />
-    <Compile Include="UserInterface\Projects\ProjectHistoryTester.cs" />
-    <Compile Include="UserInterface\Projects\ProjectLoadFailureHandlerTester.cs" />
-    <Compile Include="UserInterface\Projects\ProjectLoadFailureTester.cs" />
-    <Compile Include="UserInterface\Projects\ProjectPersistorTester.cs" />
-    <Compile Include="UserInterface\Projects\ProjectScreenTester.cs" />
-    <Compile Include="UserInterface\Projects\SettingsTester.cs" />
-    <Compile Include="UserInterface\Queue\QueuePresenterTester.cs" />
-    <Compile Include="UserInterface\Recycling\RecyclingHandlerTester.cs" />
-    <Compile Include="UserInterface\Running\ExecutionQueueTester.cs" />
-    <Compile Include="UserInterface\Projects\ProjectControllerTester.cs" />
-    <Compile Include="UserInterface\Running\TestRunEventTester.cs" />
-    <Compile Include="UserInterface\Screens\ScreenCollectionTester.cs" />
-    <Compile Include="UserInterface\Screens\ScreenFactoryTester.cs" />
-    <Compile Include="UserInterface\Screens\Tab_within_screen_collection_tests.cs" />
-    <Compile Include="UserInterface\ScreenConductorTester.cs" />
-    <Compile Include="UserInterface\Actions\CommandTester.cs" />
-    <Compile Include="UserInterface\Actions\ScreenObjectRegistryTester.cs" />
-    <Compile Include="UserInterface\Actions\ShortcutTester.cs" />
-    <Compile Include="UserInterface\StatusPresenterTester.cs" />
-    <Compile Include="UserInterface\TestServiceTester.cs" />
-    <Compile Include="UserInterface\TestStatusBarTester.cs" />
-    <Compile Include="UserInterface\Tests\EditModeTester.cs" />
-    <Compile Include="UserInterface\Tests\EditTestControllerTester.cs" />
-    <Compile Include="UserInterface\Tests\ResultsModeTester.cs" />
-    <Compile Include="UserInterface\Tests\TestHeaderViewModelTester.cs" />
-    <Compile Include="UserInterface\Tests\TestPresenterTester.cs" />
-    <Compile Include="UserInterface\Tests\TestScreenCloserTester.cs" />
-    <Compile Include="UserInterface\Tests\TestScreenSubjectTester.cs" />
-    <Compile Include="UserInterface\Tests\TestScreenTester.cs" />
-    <Compile Include="UserInterface\Tests\TestStateManagerTester.cs" />
-    <Compile Include="UserInterface\Tests\XmlModeTester.cs" />
-    <Compile Include="UserInterface\Workspace\FixtureSelectorTester.cs" />
-    <Compile Include="UserInterface\Workspace\NamespaceSelectorTester.cs" />
-    <Compile Include="UserInterface\Workspace\TestResultHandlerTester.cs" />
-    <Compile Include="UserInterface\Workspace\WorkspaceEditorTester.cs" />
-    <Compile Include="UserInterface\Workspace\WorkspaceItemTester.cs" />
-    <Compile Include="UserInterface\Workspace\WorkspaceSelectorDialogTester.cs" />
     <Compile Include="Workspace\FixtureFilterTester.cs" />
     <Compile Include="Workspace\LazyTestXmlReaderTester.cs" />
     <Compile Include="Workspace\ProjectTester.cs" />
@@ -368,14 +236,6 @@
       <Project>{104DFFDD-2229-4F23-AE66-D8BC4AF622AB}</Project>
       <Name>StoryTeller.Samples</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StoryTeller.UserInterface\StoryTeller.UserInterface.csproj">
-      <Project>{32304F08-A7DD-4788-B606-C19350B59417}</Project>
-      <Name>StoryTeller.UserInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StoryTellerUI\StoryTellerUI.csproj">
-      <Project>{5DF9F600-C04B-4FFB-8438-BDB24E6E096D}</Project>
-      <Name>StoryTellerUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\StoryTeller\StoryTeller.csproj">
       <Project>{96C1F8D5-FB46-4F3E-8CB7-A53A919BB424}</Project>
       <Name>StoryTeller</Name>
@@ -385,27 +245,6 @@
     <Content Include="history.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="JavaScript\testrunner.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="JavaScript\TestScripts\CellInputTester.js" />
-    <Content Include="JavaScript\TestScripts\CommentEditorTester.js" />
-    <Content Include="JavaScript\TestScripts\TableEditorTester.js" />
-    <Content Include="JavaScript\TestScripts\MandatorySelectionTester.js" />
-    <Content Include="JavaScript\TestScripts\OneOrMoreSelectionModeTester.js" />
-    <Content Include="JavaScript\TestScripts\SingleSelectionModeTester.js" />
-    <Content Include="JavaScript\TestScripts\SelectorTester.js" />
-    <Content Include="JavaScript\TestScripts\EmbeddedSectionTester.js" />
-    <Content Include="JavaScript\TestScripts\SampleTestEditor.js" />
-    <Content Include="JavaScript\TestScripts\SectionEditorTester.js" />
-    <Content Include="JavaScript\TestScripts\ParagraphTester.js" />
-    <Content Include="JavaScript\TestScripts\SentenceTester.js" />
-    <Content Include="JavaScript\TestScripts\Template.js" />
-    <Content Include="JavaScript\TestScripts\TestEditorTester.js" />
-    <Content Include="JavaScript\testsuite.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="JavaScript\TestScripts\StepTester.js" />
     <Content Include="SampleData\Address\h.xml" />
     <Content Include="SampleData\Address\Data\a.xml" />
     <Content Include="SampleData\Address\Data\b.xml" />

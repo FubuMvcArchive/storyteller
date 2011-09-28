@@ -1,12 +1,7 @@
-using System.Diagnostics;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Html;
-using StoryTeller.Model;
-using StoryTeller.Samples;
-using StoryTeller.UserInterface.Editing.HTML;
-using CellTag = StoryTeller.Html.CellTag;
 
 namespace StoryTeller.Testing.Html
 {
@@ -14,20 +9,7 @@ namespace StoryTeller.Testing.Html
     public class CellTagTester
     {
         [SetUp]
-        public void SetUp()
-        {
-        }
-
-        [Test]
-        public void integrated_test_for_the_default_value_coming_all_the_way_through()
-        {
-            var fixture = new MathFixture();
-            var sentence = fixture["StartWith"].ToStructure(new FixtureLibrary()).ShouldBeOfType<Sentence>();
-            Cell cell = sentence.Cells[0].ToInputCell();
-            StoryTeller.UserInterface.Editing.HTML.CellTag buildTag = new CellBuilderLibrary().BuildTag(cell);
-
-            buildTag.MetaData("defaultValue").ShouldEqual(cell.DefaultValue);
-        }
+        public void SetUp() {}
 
         [Test]
         public void cell_tag_puts_on_default_value_if_it_exists()

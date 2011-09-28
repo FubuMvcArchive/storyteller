@@ -134,5 +134,11 @@ namespace StoryTeller
             values.Each((key, val) => node[key] = val);
             return node;
         }
+
+        public static T Configure<T>(this T target, Action<T> action)
+        {
+            action(target);
+            return target;
+        }
     }
 }

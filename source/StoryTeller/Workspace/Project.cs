@@ -29,7 +29,7 @@ namespace StoryTeller.Workspace
             Options = new CodegenOptions();
 
             TestFolder = "Tests";
-            BinaryFolder = "bin\\debug";
+            BinaryFolder = Path.Combine("bin","debug");
         }
 
         public Project(string filename)

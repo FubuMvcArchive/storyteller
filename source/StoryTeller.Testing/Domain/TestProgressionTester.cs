@@ -4,7 +4,6 @@ using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Execution;
-using StoryTeller.UserInterface;
 
 namespace StoryTeller.Testing.Domain
 {
