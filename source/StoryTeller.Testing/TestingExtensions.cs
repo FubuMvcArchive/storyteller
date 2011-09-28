@@ -1,11 +1,7 @@
-using System.Collections.Generic;
-using System.Windows.Controls;
-using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Testing.Engine;
-using StoryTeller.Testing.UserInterface;
 
 namespace StoryTeller.Testing
 {
@@ -26,7 +22,7 @@ namespace StoryTeller.Testing
 
             grammar.Execute(step, context);
 
-            return new StepExecutionResult()
+            return new StepExecutionResult
             {
                 Counts = context.Counts,
                 Results = context.ResultsFor(step)
@@ -54,31 +50,6 @@ namespace StoryTeller.Testing
         public static void HandleMessage<T>(this object listener, T message)
         {
             ((IListener<T>)listener).Handle(message);
-        }
-
-        public static IEnumerable<string> GetMenus(this ContextMenu menu)
-        {
-            var list = new List<string>();
-            foreach (MenuItem item in menu.Items)
-            {
-                list.Add(item.Header.As<string>());
-            }
-
-            return list;
-        }
-
-        public static void ClickMenu(this ContextMenu menu, string text)
-        {
-            foreach (MenuItem item in menu.Items)
-            {
-                if (item.Header.Equals(text))
-                {
-                    ControlDriver.ClickOn(item);
-                    return;
-                }
-            }
-
-            Assert.Fail("Did not find the menu item");
         }
     }
 }

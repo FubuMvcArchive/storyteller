@@ -49,6 +49,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.TestRunner", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionFixtures", "ExtensionFixtures\ExtensionFixtures.csproj", "{518A88E2-32DA-4DE1-B227-27A0B74612C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.UserInterface.Testing", "StoryTeller.UserInterface.Testing\StoryTeller.UserInterface.Testing.csproj", "{4B6DA392-CE54-4D51-802C-71ED758856E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,6 +172,16 @@ Global
 		{518A88E2-32DA-4DE1-B227-27A0B74612C7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{518A88E2-32DA-4DE1-B227-27A0B74612C7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{518A88E2-32DA-4DE1-B227-27A0B74612C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
