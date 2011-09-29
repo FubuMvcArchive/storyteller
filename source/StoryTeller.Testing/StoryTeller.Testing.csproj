@@ -253,6 +253,7 @@
     <Compile Include="SuiteTester.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="TestConverterTester.cs" />
+    <Compile Include="TestForConflictingAssemblyReferences.cs" />
     <Compile Include="TestingExtensions.cs" />
     <Compile Include="TestTester.cs" />
     <Compile Include="TestUtility.cs" />
