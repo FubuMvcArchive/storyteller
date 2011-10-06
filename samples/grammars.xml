@@ -82,8 +82,8 @@ $METHODS$
     </WorkspaceFilter>
   </Workspaces>
   <FixtureAssembly>Storyteller.Samples</FixtureAssembly>
-  <BinaryFolder>..\source\StoryTeller.Samples\bin\debug</BinaryFolder>
-  <TestFolder>..\source\StoryTeller.Samples\Tests</TestFolder>
+  <BinaryFolder>..\src\StoryTeller.Samples\bin\debug</BinaryFolder>
+  <TestFolder>..\src\StoryTeller.Samples\Tests</TestFolder>
   <FileName>..\..\..\..\samples\grammars.xml</FileName>
   <TimeoutInSeconds>30</TimeoutInSeconds>
   <Name>Grammars</Name>
