@@ -24,3 +24,4 @@ StoryTeller.1*
 demo/*
 source/StoryTeller/CommonAssemblyInfo.cs
 src/packages
+src/CommonAssemblyInfo.cs
