@@ -12,7 +12,7 @@
     <description>StoryTeller is an external DSL tool for creating acceptance tests in .Net</description>
     <tags></tags>
     <dependencies>
-	  <dependency id="Newtonsoft.Json" version="4.0.3" />
+	  <dependency id="Newtonsoft.Json" version="4.0" />
       <dependency id="Bottles" />
       <dependency id="CommonServiceLocator" />
       <dependency id="FubuCore" />
