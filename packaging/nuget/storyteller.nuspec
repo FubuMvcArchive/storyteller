@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Storyteller</id>
+    <version>0.0.0</version>
+    <authors>Jeremy D. Miller, et al</authors>
+    <owners>Jeremy D. Miller</owners>
+    <licenseUrl>https://github.com/DarthFubuMVC/storyteller/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://github.com/DarthFubuMVC/storyteller</projectUrl>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>StoryTeller is an external DSL tool for creating acceptance tests in .Net</description>
+    <tags></tags>
+    <dependencies>
+	  <dependency id="Newtonsoft.Json" version="4.0.3" />
+      <dependency id="Bottles" />
+      <dependency id="CommonServiceLocator" />
+      <dependency id="FubuCore" />
+      <dependency id="HtmlTags" version="1.0.0" />
+      <dependency id="StructureMap" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="lib\net40" />	
+
+    <file src="..\..\src\StoryTellerUI\bin\Release\FubuCore.*" target="tools" />
+	<file src="..\..\src\StoryTellerUI\bin\Release\HtmlTags.*" target="tools" />
+	<file src="..\..\src\StoryTellerUI\bin\Release\StructureMap.*" target="tools" />
+	<file src="..\..\src\StoryTellerUI\bin\Release\Microsoft.Practices.ServiceLocation.*" target="tools" />
+	<file src="..\..\src\StoryTellerUI\bin\Release\Newtonsoft.Json.*" target="tools" />
+	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.Binding.*" target="tools" />
+	
+	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.*" target="tools" />
+	<file src="..\..\src\StoryTellerUI\bin\Release\StoryTeller*.*" target="tools" />
+	
+	<file src="..\..\src\StoryTellerRunner\bin\Release\StoryTellerRunner.*" target="tools" />
+  </files>
+</package>
