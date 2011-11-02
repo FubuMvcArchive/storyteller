@@ -24,7 +24,7 @@ BUILD_NUMBER = build_number
 props = { :stage => File.expand_path("build"), :stage35 => File.expand_path("build35"), :artifacts => File.expand_path("artifacts") }
 
 desc "**Default**, compiles and runs tests"
-task :default => [:compile, :unit_test]
+task :default => [:compile, :ilrepack, :unit_test]
 #task :default => [:compile, :unit_test, :stage, "fx35:compile", "fx35:unit_test", "fx35:stage"]
 task :ci => [:update_all_dependencies, :default, :history, :publish]
 
@@ -88,4 +88,15 @@ task :unit_test => :compile do
 
   # don't feel like dealing w/ STA stuff this morning , 'StoryTeller.UserInterface.Testing'
   runner.executeTests ['StoryTeller.Testing']
+end
+
+desc "Merge newtonsoft assembly into the main StoryTeller project"
+task :ilrepack do
+  merge_newtonsoft("src/StoryTeller/bin/#{COMPILE_TARGET}", 'StoryTeller.dll')
+end
+
+def merge_newtonsoft(dir, assembly)
+	output = File.join(dir, assembly)
+	packer = ILRepack.new :out => output, :lib => dir
+	packer.merge :lib => dir, :refs => [assembly, 'Newtonsoft.Json.dll']
 end

@@ -23,11 +23,10 @@
   <files>
     <file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="lib\net40" />	
 
-    <file src="..\..\src\StoryTellerUI\bin\Release\FubuCore.*" target="tools" />
+  <file src="..\..\src\StoryTellerUI\bin\Release\FubuCore.*" target="tools" />
 	<file src="..\..\src\StoryTellerUI\bin\Release\HtmlTags.*" target="tools" />
 	<file src="..\..\src\StoryTellerUI\bin\Release\StructureMap.*" target="tools" />
 	<file src="..\..\src\StoryTellerUI\bin\Release\Microsoft.Practices.ServiceLocation.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\Newtonsoft.Json.*" target="tools" />
 	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.Binding.*" target="tools" />
 	
 	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.*" target="tools" />
