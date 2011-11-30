@@ -176,7 +176,8 @@ namespace StoryTeller.UserInterface.Testing
         {
             var project = new Project
             {
-                BinaryFolder = @"..\..\source\StoryTeller.Samples\bin\debug",
+                // TODO: Github issue #56 
+                BinaryFolder = @"..\..\source\StoryTeller.Samples\bin\release",
                 FileName = "math.xml",
                 Name = "Math",
                 TestFolder = "math"
