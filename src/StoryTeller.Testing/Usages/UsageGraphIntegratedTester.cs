@@ -15,7 +15,7 @@ namespace StoryTeller.Testing.Usages
         [SetUp]
         public void SetUp()
         {
-            runner = new ProjectTestRunner(DataMother.THE_GRAMMAR_FILE);
+            runner = DataMother.GrammarsProjectRunner();
             usages = new UsageGraph(runner.GetLibary(), new ConsoleUsageGraphListener());
             usages.Rebuild(runner.Hierarchy);
         }

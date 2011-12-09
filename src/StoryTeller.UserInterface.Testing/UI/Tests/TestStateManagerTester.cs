@@ -1,6 +1,9 @@
+using System;
+using System.Xml;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Domain;
+using StoryTeller.Model;
 using StoryTeller.Persistence;
 using StoryTeller.Testing;
 using StoryTeller.UserInterface.Tests;
@@ -143,6 +146,51 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests
         }
     }
 
+    public class FakeConverter : ITestConverter
+    {
+        public Test Clone(Test test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Test TestFromXml(string xml)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ToXml(Test test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ApplyXmlChanges(Test test, XmlDocument xml)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string ToPreview(FixtureLibrary library, Test test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string TheJson;
+
+        public string ToJson(Test test)
+        {
+            return TheJson;
+        }
+
+        public void ApplyJsonChanges(Test test, string json)
+        {
+            
+        }
+
+        public void ApplyXmlChanges(Test test, string xml)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     [TestFixture]
     public class when_reverting_the_test
     {
@@ -152,29 +200,31 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests
         public void SetUp()
         {
             test = new Test("my test");
-            service = MockRepository.GenerateMock<ITestConverter>();
+            
 
             listener1 = MockRepository.GenerateMock<ITestStateListener>();
             listener2 = MockRepository.GenerateMock<ITestStateListener>();
             listener3 = MockRepository.GenerateMock<ITestStateListener>();
 
-            manager = new TestStateManager(service, test);
+            theOriginalJson = "{old: 'json'}";
+            theNewJson = "{new: 'json'}";
+
+            theConverter = new FakeConverter() { TheJson = theOriginalJson };
+            manager = new TestStateManager(theConverter, test);
 
             manager.RegisterListener(listener1);
             manager.RegisterListener(listener2);
             manager.RegisterListener(listener3);
 
-            theOriginalJson = "{old: 'json'}";
-            theNewJson = "{new: 'json'}";
-
-            service.Expect(x => x.ToJson(test)).Return(theOriginalJson);
-            service.Expect(x => x.ToJson(test)).Return(theNewJson);
 
 
-            manager = new TestStateManager(service, test);
+            
+
+            manager = new TestStateManager(theConverter, test);
             // setting the pre-condition here
             manager.CurrentJson.ShouldEqual(theOriginalJson);
 
+            theConverter.TheJson = theNewJson;
             manager.Version(null);
             // second version of the JSON
             manager.CurrentJson.ShouldEqual(theNewJson);
@@ -193,7 +243,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests
         #endregion
 
         private Test test;
-        private ITestConverter service;
+        private FakeConverter theConverter;
         private TestStateManager manager;
         private ITestStateListener listener1;
         private ITestStateListener listener2;

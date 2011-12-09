@@ -53,6 +53,8 @@ namespace StoryTeller.Testing.Engine
 
         #endregion
 
+        public class CrazyService{}
+
         private ObjectFinder finder;
 
         [Test]
@@ -66,7 +68,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void array_of_non_simple_type_that_does_not_have_a_finder_cannot_be_parsed()
         {
-            finder.CanBeParsed(typeof (Service[])).ShouldBeFalse();
+            finder.CanBeParsed(typeof(CrazyService[])).ShouldBeFalse();
         }
 
         [Test]
@@ -80,14 +82,14 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void enumerable_of_non_simple_type_that_does_not_have_a_finder_cannot_be_parsed()
         {
-            finder.CanBeParsed(typeof (IEnumerable<Service>)).ShouldBeFalse();
+            finder.CanBeParsed(typeof (IEnumerable<CrazyService>)).ShouldBeFalse();
         }
 
         [Test]
         public void enumerable_of_non_simple_type_that_has_a_finder_can_be_parsed()
         {
-            finder.RegisterFinder(x => new Service(x));
-            finder.CanBeParsed(typeof (IEnumerable<Service>)).ShouldBeTrue();
+            finder.RegisterFinder(x => new CrazyService());
+            finder.CanBeParsed(typeof (IEnumerable<CrazyService>)).ShouldBeTrue();
         }
 
         [Test]
@@ -199,7 +201,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void non_simple_type_that_does_not_have_a_finder_cannot_be_parsed()
         {
-            finder.CanBeParsed(typeof (Service)).ShouldBeFalse();
+            finder.CanBeParsed(typeof (CrazyService)).ShouldBeFalse();
         }
 
         [Test]

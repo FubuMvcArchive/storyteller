@@ -30,7 +30,7 @@ namespace StoryTeller.UserInterface.Testing.Integration
 
             project = StoryTeller.Testing.DataMother.MathProject();
 
-            project.GetBinaryFolder().ShouldEqual(Path.GetFullPath(@"..\..\..\StoryTeller.Samples\bin\debug"));
+            //project.GetBinaryFolder().ShouldEqual(Path.GetFullPath(@"..\..\..\StoryTeller.Samples\bin\debug"));
 
             hierarchy = project.LoadTests();
 

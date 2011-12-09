@@ -11,7 +11,7 @@ namespace StoryTeller.Testing.Execution
         [SetUp]
         public void SetUp()
         {
-            runner = new ProjectTestRunner(DataMother.MathProjectFile());
+            runner = DataMother.MathProjectRunner();
         }
 
         [TearDown]
