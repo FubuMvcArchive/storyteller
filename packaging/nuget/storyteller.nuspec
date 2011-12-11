@@ -12,7 +12,6 @@
     <description>StoryTeller is an external DSL tool for creating acceptance tests in .Net</description>
     <tags></tags>
     <dependencies>
-	  <dependency id="Newtonsoft.Json" version="4.0" />
       <dependency id="Bottles" />
       <dependency id="CommonServiceLocator" />
       <dependency id="FubuCore" />
@@ -30,7 +29,9 @@
 	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.Binding.*" target="tools" />
 	
 	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\StoryTeller*.*" target="tools" />
+	<file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="tools" />	
+
+	<file src="..\..\src\StoryTeller\bin\release\StoryTeller.UserInterface*" target="tools" />
 	
 	<file src="..\..\src\StoryTellerRunner\bin\Release\StoryTellerRunner.*" target="tools" />
   </files>
