@@ -30,7 +30,7 @@
 	
 	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.*" target="tools" />
 	<file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="tools" />	
-
+	<file src="..\..\src\StoryTeller\bin\release\StoryTellerUI.*" target="tools" />
 	<file src="..\..\src\StoryTeller\bin\release\StoryTeller.UserInterface*" target="tools" />
 	
 	<file src="..\..\src\StoryTellerRunner\bin\Release\StoryTellerRunner.*" target="tools" />
