@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
+using FubuCore.Conversion;
 using FubuCore.Reflection;
 using FubuCore.Util;
 using StoryTeller.Domain;
@@ -299,7 +300,7 @@ namespace StoryTeller.Engine
             return IsResult && _type == typeof (bool);
         }
 
-        public bool IsTestVariable(ObjectFinder finder)
+        public bool IsTestVariable(IObjectConverter finder)
         {
             return finder.CanBeParsed(_type);
         }

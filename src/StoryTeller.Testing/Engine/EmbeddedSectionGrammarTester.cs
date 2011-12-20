@@ -76,6 +76,8 @@ namespace StoryTeller.Testing.Engine
 
             public IGrammar this[string key] { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
 
+            public ITestContext Context { get; set; }
+
             public bool HasGrammar(string key)
             {
                 throw new NotImplementedException();
@@ -107,6 +109,8 @@ namespace StoryTeller.Testing.Engine
 
         public class FixtureThatThrowsExceptionInTearDown : IFixture
         {
+            public ITestContext Context { get; set; }
+
             #region IFixture Members
 
             public string Name { get { return "Name1"; } }

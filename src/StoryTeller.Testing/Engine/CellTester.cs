@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
+using FubuCore.Conversion;
 using FubuCore.Reflection;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -177,7 +178,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void is_a_test_input()
         {
-            var finder = new ObjectFinder();
+            var finder = new ObjectConverter();
 
             Cell.For<Address>("address").IsTestVariable(finder).ShouldBeFalse();
             Cell.For<ITestContext>("context").IsTestVariable(finder).ShouldBeFalse();

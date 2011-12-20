@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FubuCore">
-      <HintPath>..\packages\FubuCore.0.9.3.101\lib\FubuCore.dll</HintPath>
+      <HintPath>..\packages\FubuCore.0.9.4.104\lib\FubuCore.dll</HintPath>
     </Reference>
     <Reference Include="FubuTestingSupport">
       <HintPath>..\packages\FubuTestingSupport.0.9.3.101\lib\FubuTestingSupport.dll</HintPath>
@@ -191,7 +191,6 @@
     <Compile Include="Persistence\JsonNodeTester.cs" />
     <Compile Include="Persistence\XmlTestWriterTester.cs" />
     <Compile Include="StepExtensions.cs" />
-    <Compile Include="Engine\ObjectFinderTester.cs" />
     <Compile Include="Engine\CheckPropertyGrammarTester.cs" />
     <Compile Include="Engine\CompositeGrammerTester.cs" />
     <Compile Include="Engine\CountsTester.cs" />

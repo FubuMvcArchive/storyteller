@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FubuCore;
+using FubuCore.Conversion;
 using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
@@ -105,7 +106,7 @@ namespace StoryTeller.Testing.Engine
             throw new NotImplementedException();
         }
 
-        public ObjectFinder Finder { get; set; }
+        public IObjectConverter Finder { get; set; }
 
         #endregion
     }

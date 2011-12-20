@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 using FubuCore;
+using FubuCore.Conversion;
 using FubuCore.Util;
 using StoryTeller.Model;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace StoryTeller.Engine
         private FixtureLibrary _library = new FixtureLibrary();
         private int _number = 1;
         private int _total;
-        private ObjectFinder _finder = new ObjectFinder();
+        private IObjectConverter _finder = new ObjectConverter();
 
         
         public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter)
@@ -35,7 +36,7 @@ namespace StoryTeller.Engine
 
         public FixtureLibrary Library { get { return _library; } }
 
-        public ObjectFinder Finder { set { _finder = value; } }
+        public IObjectConverter Finder { set { _finder = value; } }
 
         #region IFixtureVisitor Members
 

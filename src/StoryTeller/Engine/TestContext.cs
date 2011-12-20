@@ -6,7 +6,9 @@ using System.Linq;
 using System.Security.Principal;
 using System.Threading;
 using FubuCore;
+using FubuCore.Conversion;
 using FubuCore.Util;
+using Microsoft.Practices.ServiceLocation;
 using StoryTeller.Domain;
 using StructureMap;
 using StructureMap.Query;
@@ -36,7 +38,7 @@ namespace StoryTeller.Engine
         IEnumerable<Type> StartupActionTypes { get; }
 
         object CurrentObject { get; set; }
-        ObjectFinder Finder { get; }
+        IObjectConverter Finder { get; }
         bool Matches(object expected, object actual);
         
         void Store<T>(T data);
@@ -122,9 +124,10 @@ namespace StoryTeller.Engine
                 x.For<IFixture>().AlwaysUnique();
                 x.For<IFixtureContext>().Use(this);
                 x.SetAllProperties(o => o.OfType<IFixtureContext>());
-            });
 
-            Finder = new ObjectFinder();
+                x.For<IObjectConverter>().Use<ObjectConverter>();
+                x.For<IServiceLocator>().Use<StructureMapServiceLocator>();
+            });
 
             StartupActionNames = new string[0];
 
@@ -263,7 +266,11 @@ namespace StoryTeller.Engine
         {
             if (part == null) throw new ArgumentNullException("part");
 
-            performAction(part, () => fixture.SetUp(this));
+            performAction(part, () =>
+            {
+                fixture.Context = this;
+                fixture.SetUp(this);
+            });
 
             _fixtures.Push(fixture);
         }
@@ -380,11 +387,11 @@ namespace StoryTeller.Engine
             return _results[part];
         }
 
-        public ObjectFinder Finder
+        public IObjectConverter Finder
         {
             get
             {
-                return Retrieve<ObjectFinder>();
+                return Retrieve<IObjectConverter>();
             }
             set
             {
@@ -520,6 +527,45 @@ namespace StoryTeller.Engine
         public Type GetStartupType(string name)
         {
             return _container.Model.For<IStartupAction>().Find(name).ConcreteType;
+        }
+    }
+
+    public class StructureMapServiceLocator : ServiceLocatorImplBase
+    {
+        private readonly IContainer _container;
+
+        public StructureMapServiceLocator(IContainer container)
+        {
+            _container = container;
+        }
+
+        public IContainer Container { get { return _container; } }
+
+        protected override object DoGetInstance(Type serviceType, string key)
+        {
+            return key.IsEmpty()
+                       ? _container.GetInstance(serviceType)
+                       : _container.GetInstance(serviceType, key);
+        }
+
+        protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
+        {
+            return _container.GetAllInstances(serviceType).Cast<object>().AsEnumerable();
+        }
+
+        public override TService GetInstance<TService>()
+        {
+            return _container.GetInstance<TService>();
+        }
+
+        public override TService GetInstance<TService>(string key)
+        {
+            return _container.GetInstance<TService>(key);
+        }
+
+        public override IEnumerable<TService> GetAllInstances<TService>()
+        {
+            return _container.GetAllInstances<TService>();
         }
     }
 }

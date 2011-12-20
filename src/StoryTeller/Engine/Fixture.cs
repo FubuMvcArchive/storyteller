@@ -35,6 +35,20 @@ namespace StoryTeller.Engine
         private readonly Cache<string, List<string>> _selectionLists =
             new Cache<string, List<string>>(x => new List<string>());
 
+        public ITestContext Context { get; set; }
+
+        public T Retrieve<T>()
+        {
+            if (Context == null) throw new InvalidOperationException("This method can only be called when the Fixture is being used in a spec.  Cannot be used in the ctor function");
+            return Context.Retrieve<T>();
+        }
+
+        public void Store<T>(T subject)
+        {
+            if (Context == null) throw new InvalidOperationException("This method can only be called when the Fixture is being used in a spec.  Cannot be used in the ctor function");
+            Context.Store(subject);
+        }
+
         public Fixture()
         {
             _grammars.OnAddition = readGrammar;

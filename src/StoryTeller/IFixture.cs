@@ -19,6 +19,7 @@ namespace StoryTeller
         IEnumerable<GrammarError> Errors { get; }
         IPolicies Policies { get; }
         string Title { get; set; }
+        ITestContext Context { get; set; }
 
         bool HasGrammar(string key);
 

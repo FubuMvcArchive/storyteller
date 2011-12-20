@@ -76,7 +76,19 @@ namespace StoryTeller.Testing.Engine
             var context = new TestContext();
             context.LoadFixture(fixture, new StubTestPart());
 
+            
             fixture.AssertWasCalled(x => x.SetUp(context));
+        }
+
+        [Test]
+        public void sets_the_context_on_the_fixture_when_loading_a_fixture()
+        {
+            var fixture = MockRepository.GenerateMock<IFixture>();
+            var context = new TestContext();
+            context.LoadFixture(fixture, new StubTestPart());
+
+
+            fixture.AssertWasCalled(x => x.Context = context);
         }
 
         [Test]

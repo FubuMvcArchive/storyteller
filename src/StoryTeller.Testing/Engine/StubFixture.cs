@@ -12,6 +12,8 @@ namespace StoryTeller.Testing.Engine
 
         #region IFixture Members
 
+        public ITestContext Context { get; set; }
+
         public bool HasGrammar(string key)
         {
             throw new NotImplementedException();

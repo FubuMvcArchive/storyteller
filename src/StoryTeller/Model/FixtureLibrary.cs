@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FubuCore.Conversion;
 using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
@@ -50,11 +51,12 @@ namespace StoryTeller.Model
                 Description = key
             });
 
-        [NonSerialized] private ObjectFinder _finder;
+        [NonSerialized]
+        private IObjectConverter _finder;
 
         public FixtureLibrary()
         {
-            _finder = new ObjectFinder();
+            _finder = new ObjectConverter();
         }
 
         public FixtureLibrary Filter(Func<FixtureGraph, bool> filter)
@@ -71,7 +73,7 @@ namespace StoryTeller.Model
         public FixtureDto[] AllFixtures { get; set; }
         public string[] StartupActions { get; set; }
         public IEnumerable<FixtureGraph> ActiveFixtures { get { return _fixtures.OrderBy(x => x.Name); } }
-        public ObjectFinder Finder { get { return _finder; } set { _finder = value; } }
+        public IObjectConverter Finder { get { return _finder; } set { _finder = value; } }
 
         #region IFixtureNode Members
 
