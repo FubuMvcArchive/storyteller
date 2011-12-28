@@ -64,6 +64,7 @@ namespace StoryTeller.Engine
                 var builder = new LibraryBuilder(observer, filter, converter);
                 observer.RecordStatus("Starting to rebuild the fixture model");
 
+                container.Inject<IObjectConverter>(converter);
                 var context = new TestContext(container);
                 observer.RecordStatus("Setting up the system environment");
                 lifeCycle.StartApplication();

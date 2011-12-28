@@ -126,7 +126,11 @@ namespace StoryTeller.Engine
                 x.SetAllProperties(o => o.OfType<IFixtureContext>());
 
                 // This is a fallback mechanism.  If the IObjectConverter is not explicitly registered somewhere else, this will be the default
-                x.For<IObjectConverter>().Add<ObjectConverter>();
+                if (!_container.Model.HasDefaultImplementationFor(typeof(IObjectConverter)))
+                {
+                    x.For<IObjectConverter>().Use<ObjectConverter>();
+                }
+
                 x.For<IServiceLocator>().Use<StructureMapServiceLocator>();
             });
 
