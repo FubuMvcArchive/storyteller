@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Threading;
+using StoryTeller;
 using StoryTeller.UserInterface;
 using StoryTeller.UserInterface.Projects;
+using StoryTeller.Workspace;
 using StructureMap;
 
 namespace StoryTellerUI
@@ -39,12 +41,16 @@ namespace StoryTellerUI
         private static void application_DispatcherUnhandledException(object sender,
                                                                      DispatcherUnhandledExceptionEventArgs e)
         {
+            ObjectFactory.GetInstance<IEventAggregator>().SendMessage(new ForceEnvironmentRecycle());
+
             var errorMessage = new ErrorMessage
             {
                 ErrorText = e.Exception.ToString()
             };
 
             errorMessage.ShowDialog();
+
+            e.Handled = true;
         }
     }
 }
