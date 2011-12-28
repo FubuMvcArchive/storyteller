@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using FubuCore.Conversion;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Assertions;
@@ -73,6 +74,11 @@ namespace StoryTeller.Testing.Engine
         public void RegisterFixtures(FixtureRegistry registry)
         {
             
+        }
+
+        public IObjectConverter BuildConverter()
+        {
+            return new ObjectConverter();
         }
     }
 
@@ -435,6 +441,8 @@ namespace StoryTeller.Testing.Engine
         public void run_a_test_when_teardown_blows_up_do_not_rethrow_exception_and_log_the_exception_to_the_test()
         {
             var system = MockRepository.GenerateMock<ISystem>();
+            system.Stub(x => x.BuildConverter()).Return(new ObjectConverter());
+
             var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
             {
                 x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
@@ -489,6 +497,11 @@ namespace StoryTeller.Testing.Engine
         public void RegisterFixtures(FixtureRegistry registry)
         {
             
+        }
+
+        public IObjectConverter BuildConverter()
+        {
+            return new ObjectConverter();
         }
     }
 

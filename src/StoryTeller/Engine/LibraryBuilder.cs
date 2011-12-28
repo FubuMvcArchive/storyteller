@@ -22,21 +22,22 @@ namespace StoryTeller.Engine
     {
         private readonly IFixtureObserver _observer;
         private readonly CompositeFilter<Type> _filter;
-        private FixtureLibrary _library = new FixtureLibrary();
+        private FixtureLibrary _library;
         private int _number = 1;
         private int _total;
-        private IObjectConverter _finder = new ObjectConverter();
+        private readonly IObjectConverter _converter;
 
         
-        public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter)
+        public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter, IObjectConverter converter)
         {
             _observer = observer;
             _filter = filter;
+            _converter = converter;
+
+            _library = new FixtureLibrary(_converter);
         }
 
         public FixtureLibrary Library { get { return _library; } }
-
-        public IObjectConverter Finder { set { _finder = value; } }
 
         #region IFixtureVisitor Members
 
@@ -76,10 +77,7 @@ namespace StoryTeller.Engine
         // TODO -- needs to change to IContainer child container
         public FixtureLibrary Build(TestContext context)
         {
-            _library = new FixtureLibrary()
-            {
-                Finder = _finder
-            };
+            _library = new FixtureLibrary(_converter);
 
             readFixtures(context);
             readActions(context.Container);

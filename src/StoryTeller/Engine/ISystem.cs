@@ -1,4 +1,5 @@
 ﻿using System;
+using FubuCore.Conversion;
 
 namespace StoryTeller.Engine
 {
@@ -12,6 +13,8 @@ namespace StoryTeller.Engine
         void Teardown();
 
         void RegisterFixtures(FixtureRegistry registry);
+
+        IObjectConverter BuildConverter();
     }
 
     public static class SystemExtensions

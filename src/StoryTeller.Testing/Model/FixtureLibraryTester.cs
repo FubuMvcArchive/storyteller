@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using FubuCore.Conversion;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
@@ -47,6 +49,20 @@ namespace StoryTeller.Testing.Model
         public void Title()
         {
             new FixtureLibrary().Label.ShouldEqual("All Fixtures");
+        }
+
+        [Test]
+        public void is_a_test_input()
+        {
+            var converter = new ObjectConverter();
+            var library = new FixtureLibrary(converter);
+
+            library.IsTestVariable(typeof(Address)).ShouldBeFalse();
+            library.IsTestVariable(typeof(ITestContext)).ShouldBeFalse();
+            library.IsTestVariable(typeof(int?)).ShouldBeTrue();
+            library.IsTestVariable(typeof(int)).ShouldBeTrue();
+            library.IsTestVariable(typeof(DateTime)).ShouldBeTrue();
+            library.IsTestVariable(typeof(DateTime?)).ShouldBeTrue();
         }
     }
 

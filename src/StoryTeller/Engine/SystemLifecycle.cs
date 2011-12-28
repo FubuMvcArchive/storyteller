@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using FubuCore.Conversion;
 
 namespace StoryTeller.Engine
 {
@@ -95,6 +96,11 @@ namespace StoryTeller.Engine
         public void RegisterServices(ITestContext context)
         {
             _system.RegisterServices(context);
+        }
+
+        public IObjectConverter BuildConverter()
+        {
+            return _system.BuildConverter();
         }
     }
 }

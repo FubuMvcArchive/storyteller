@@ -91,7 +91,7 @@ namespace StoryTeller.Execution
                 var container = registry.BuildContainer();
 
                 
-                var library = TestRunnerBuilder.BuildLibrary(_lifecycle, observer, container, fixtureAssembly.Filter.CreateTypeFilter());
+                var library = TestRunnerBuilder.BuildLibrary(_lifecycle, observer, container, fixtureAssembly.Filter.CreateTypeFilter(), _system.BuildConverter());
                 var containerSource = new FixtureContainerSource(container);
                 _runner = new TestRunner(_lifecycle, library, containerSource);
                 if (_listener != null)

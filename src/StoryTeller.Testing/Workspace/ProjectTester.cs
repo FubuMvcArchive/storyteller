@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using DirectionFixtures;
+using FubuCore.Conversion;
 using NUnit.Framework;
 using StateFixtures;
 using StoryTeller.Domain;
@@ -261,7 +262,7 @@ s1/s2/t3,Success
 
         private void fixturesShouldBe(params string[] names)
         {
-            var builder = new LibraryBuilder(new NulloFixtureObserver(), project.CurrentFixtureFilter().CreateTypeFilter());
+            var builder = new LibraryBuilder(new NulloFixtureObserver(), project.CurrentFixtureFilter().CreateTypeFilter(), new ObjectConverter());
             var library = builder.Build(new TestContext(x =>
             {
                 x.AddFixture<OhioFixture>();

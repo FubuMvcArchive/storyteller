@@ -1,4 +1,5 @@
 using System;
+using FubuCore.Conversion;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Domain;
@@ -15,7 +16,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            library = new FixtureLibrary();
+            library = new FixtureLibrary(new ObjectConverter());
             test = new Test("something");
             stream = MockRepository.GenerateMock<ITestStream>();
 

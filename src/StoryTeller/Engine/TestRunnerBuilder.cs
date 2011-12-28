@@ -1,4 +1,5 @@
 ﻿using System;
+using FubuCore.Conversion;
 using FubuCore.Util;
 using StoryTeller.Model;
 using StructureMap;
@@ -49,16 +50,18 @@ namespace StoryTeller.Engine
             IContainer container = containerSource.Build();
             var observer = _observer;
 
-            var library = BuildLibrary(new SystemLifecycle(_system), observer, container, new CompositeFilter<Type>());
+            var library = BuildLibrary(new SystemLifecycle(_system), observer, container, new CompositeFilter<Type>(), _system.BuildConverter());
 
             return new TestRunner(_system, library, containerSource);
         }
 
-        public static FixtureLibrary BuildLibrary(SystemLifecycle lifeCycle, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter)
+        public static FixtureLibrary BuildLibrary(SystemLifecycle lifeCycle, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter, IObjectConverter converter)
         {
+            if (converter == null) throw new ArgumentNullException("converter");
+
             try
             {
-                var builder = new LibraryBuilder(observer, filter);
+                var builder = new LibraryBuilder(observer, filter, converter);
                 observer.RecordStatus("Starting to rebuild the fixture model");
 
                 var context = new TestContext(container);
@@ -70,8 +73,6 @@ namespace StoryTeller.Engine
                 observer.RecordStatus("Registering the system services");
                 lifeCycle.RegisterServices(context);
 
-                builder.Finder = context.Finder;
-                
                 observer.RecordStatus("Starting to read fixtures");
                 return builder.Build(context);
             }

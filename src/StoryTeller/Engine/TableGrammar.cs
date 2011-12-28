@@ -43,7 +43,7 @@ namespace StoryTeller.Engine
         public GrammarStructure ToStructure(FixtureLibrary library)
         {
             Cell[] cells = InnerGrammar.GetCells()
-                .Where(x => x.IsTestVariable(library.Finder))
+                .Where(x => library.IsTestVariable(x.Type))
                 .Select(c => c.ToInputCell()).ToArray();
 
             return new Table(LabelName, LeafName(), cells);

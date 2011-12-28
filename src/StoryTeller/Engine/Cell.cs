@@ -300,10 +300,6 @@ namespace StoryTeller.Engine
             return IsResult && _type == typeof (bool);
         }
 
-        public bool IsTestVariable(IObjectConverter finder)
-        {
-            return finder.CanBeParsed(_type);
-        }
 
         public Cell ToInputCell()
         {

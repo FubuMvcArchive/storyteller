@@ -175,18 +175,7 @@ namespace StoryTeller.Testing.Engine
             }.HasDefault().ShouldBeTrue();
         }
 
-        [Test]
-        public void is_a_test_input()
-        {
-            var finder = new ObjectConverter();
 
-            Cell.For<Address>("address").IsTestVariable(finder).ShouldBeFalse();
-            Cell.For<ITestContext>("context").IsTestVariable(finder).ShouldBeFalse();
-            Cell.For<int?>("age").IsTestVariable(finder).ShouldBeTrue();
-            Cell.For<int>("age").IsTestVariable(finder).ShouldBeTrue();
-            Cell.For<DateTime>("time").IsTestVariable(finder).ShouldBeTrue();
-            Cell.For<DateTime?>("time").IsTestVariable(finder).ShouldBeTrue();
-        }
 
         [Test]
         public void on_creation_the_heading_is_the_same_as_the_key()

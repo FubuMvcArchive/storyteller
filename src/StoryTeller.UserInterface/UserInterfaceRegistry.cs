@@ -2,6 +2,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using FubuCore.Conversion;
 using ShadeTree.Validation;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
@@ -136,7 +137,7 @@ namespace StoryTeller.UserInterface
         private void fakeValidDefaultsForExplicitArguments()
         {
             For<TreeNode>().Use(new TreeNode(new Hierarchy("some project")));
-            For<IFixtureNode>().Use(new FixtureLibrary());
+            For<IFixtureNode>().Use(new FixtureLibrary(new ObjectConverter()));
             For<TreeView>().Use(new TreeView());
             For<Test>().Use(new Test("FAKE"));
             For<IProject>().Use(new Project());

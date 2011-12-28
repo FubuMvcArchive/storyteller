@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Web;
 using FubuCore;
+using FubuCore.Conversion;
 using StoryTeller.Execution;
 using StoryTeller.Html;
 using StoryTeller.Model;
@@ -63,7 +64,10 @@ namespace StoryTeller.Engine
 
             Stopwatch timer = Stopwatch.StartNew();
 
-            _context = new TestContext(_fetchContainer.Build(), _request.Test, _listener)
+            var container = _fetchContainer.Build();
+            container.Inject(_lifecycle.BuildConverter());
+
+            _context = new TestContext(container, _request.Test, _listener)
             {
                 StartupActionNames = _request.StartupActions ?? new string[0],
                 BackupResolver = _lifecycle.Resolver

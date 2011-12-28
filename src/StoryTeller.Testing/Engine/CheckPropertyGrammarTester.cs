@@ -1,4 +1,5 @@
 using System;
+using FubuCore.Conversion;
 using NUnit.Framework;
 using StoryTeller.Domain;
 using StoryTeller.Engine;

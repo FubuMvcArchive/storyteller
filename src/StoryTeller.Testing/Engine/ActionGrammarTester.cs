@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FubuCore.Conversion;
 using NUnit.Framework;
 using Rhino.Mocks;
 using StoryTeller.Domain;

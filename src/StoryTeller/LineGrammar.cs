@@ -53,7 +53,7 @@ namespace StoryTeller
             if (library == null) throw new ArgumentNullException("library");
 
             Cell[] cells = GetCells()
-                .Where(x => x.IsTestVariable(library.Finder))
+                .Where(x => library.IsTestVariable(x.Type))
                 .Select(x => x.ToInputCell())
                 .ToArray();
 

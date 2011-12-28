@@ -1,4 +1,5 @@
 using System;
+using FubuCore.Conversion;
 using StoryTeller.Engine;
 
 namespace Examples
@@ -40,6 +41,11 @@ namespace Examples
         public void RegisterFixtures(FixtureRegistry registry)
         {
             
+        }
+
+        public IObjectConverter BuildConverter()
+        {
+            throw new NotImplementedException();
         }
     }
 

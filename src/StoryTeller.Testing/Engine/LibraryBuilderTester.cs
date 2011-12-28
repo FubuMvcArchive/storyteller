@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FubuCore.Conversion;
 using FubuCore.Util;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -24,7 +25,7 @@ namespace StoryTeller.Testing.Engine
             filter.Includes += t => t.Name.StartsWith("M");
 
 
-            builder = new LibraryBuilder(observer, filter);
+            builder = new LibraryBuilder(observer, filter, new ObjectConverter());
 
             library = builder.Build(new TestContext(x => x.AddFixturesFromThisAssembly()));
         }
@@ -83,7 +84,7 @@ namespace StoryTeller.Testing.Engine
         public void SetUp()
         {
             observer = MockRepository.GenerateMock<IFixtureObserver>();
-            builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
+            builder = new LibraryBuilder(observer, new CompositeFilter<Type>(), new ObjectConverter());
 
             builder.FixtureCount = 23;
         }
@@ -180,7 +181,7 @@ namespace StoryTeller.Testing.Engine
             var context = new TestContext(x => { x.AddFixture<FixtureWithHiddenGrammarsFixture>(); });
 
             var observer = MockRepository.GenerateMock<IFixtureObserver>();
-            var builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
+            var builder = new LibraryBuilder(observer, new CompositeFilter<Type>(), new ObjectConverter());
             builder.Build(context);
 
             library = builder.Library;
@@ -226,7 +227,7 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            var builder = new LibraryBuilder(new NulloFixtureObserver(), new CompositeFilter<Type>());
+            var builder = new LibraryBuilder(new NulloFixtureObserver(), new CompositeFilter<Type>(), new ObjectConverter());
             var registry = new FixtureRegistry();
             registry.AddFixturesFromAssemblyContaining<SetUserAction>();
 
