@@ -21,9 +21,7 @@ namespace StoryTeller.Engine
     }
 
     public abstract class TextListener : MarshalByRefObject, ITestObserver
-    {
-        #region ITestObserver Members
-
+    {      
         public virtual void StartTest(Test test, Counts counts)
         {
             writeDivider();
@@ -32,7 +30,6 @@ namespace StoryTeller.Engine
 
         public void StartSection(Section section)
         {
-            write("Starting Section {0}", section.GetName());
         }
 
         public void FinishSection(Section section)
@@ -41,7 +38,6 @@ namespace StoryTeller.Engine
 
         public void StartStep(IStep step)
         {
-            write("Starting Grammar {0}", step.GrammarKey);
         }
 
         public void FinishStep(IStep step)
@@ -68,16 +64,10 @@ namespace StoryTeller.Engine
             return true;
         }
 
-        #endregion
-
-        #region Overrides of MarshalByRefObject
-
         public override object InitializeLifetimeService()
         {
             return null;
         }
-
-        #endregion
 
         protected abstract void write(string format, params string[] args);
 
