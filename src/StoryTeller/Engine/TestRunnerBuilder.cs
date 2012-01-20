@@ -44,15 +44,17 @@ namespace StoryTeller.Engine
 
         public ITestRunner Build()
         {
+            var container = _system.BuildFixtureContainer();
             var registry = new FixtureRegistry();
             _system.RegisterFixtures(registry);
-            var containerSource = new FixtureContainerSource(registry.BuildContainer());
-            IContainer container = containerSource.Build();
+            registry.AddFixturesToContainer(container);
+            var source = new FixtureContainerSource(container);
+            var nestedContainer = source.Build();
             var observer = _observer;
 
-            var library = BuildLibrary(new SystemLifecycle(_system), observer, container, new CompositeFilter<Type>(), _system.BuildConverter());
-
-            return new TestRunner(_system, library, containerSource);
+            var library = BuildLibrary(new SystemLifecycle(_system), observer, nestedContainer, new CompositeFilter<Type>(), _system.BuildConverter());
+            
+            return new TestRunner(_system, library, source);
         }
 
         public static FixtureLibrary BuildLibrary(SystemLifecycle lifeCycle, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter, IObjectConverter converter)
@@ -66,6 +68,7 @@ namespace StoryTeller.Engine
 
                 container.Inject<IObjectConverter>(converter);
                 var context = new TestContext(container);
+
                 observer.RecordStatus("Setting up the system environment");
                 lifeCycle.StartApplication();
 

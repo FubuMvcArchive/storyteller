@@ -1,4 +1,4 @@
-using System.Linq;
+/*using System.Linq;
 using NUnit.Framework;
 using StoryTeller.Engine;
 using StoryTeller.Samples;
@@ -31,7 +31,7 @@ namespace StoryTeller.Testing.Engine
             {
                 if (_context == null)
                 {
-                    _context = new TestContext(registry.BuildContainer());
+                    _context = new TestContext(registry.AddFixturesToContainer());
                 }
 
                 return _context;
@@ -42,7 +42,7 @@ namespace StoryTeller.Testing.Engine
         public void adds_all_the_startup_actions_from_the_requested_assembly()
         {
             registry.AddFixturesFromAssemblyContaining<SetUserAction>();
-            var container = registry.BuildContainer();
+            var container = registry.AddFixturesToContainer();
 
             var actions = container.Model.For<IStartupAction>();
 
@@ -99,4 +99,4 @@ namespace StoryTeller.Testing.Engine
             context.FindGrammar("Go").ShouldBeOfType<ValueCheckMethod>();
         }
     }
-}
+}*/

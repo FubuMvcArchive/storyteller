@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using FubuCore.Conversion;
+using StructureMap;
 
 namespace StoryTeller.Engine
 {
@@ -47,6 +48,11 @@ namespace StoryTeller.Engine
         public void RegisterFixtures(FixtureRegistry registry)
         {
             _configure(registry);
+        }
+
+        public IContainer BuildFixtureContainer()
+        {
+            return new Container();
         }
 
         public IObjectConverter BuildConverter()

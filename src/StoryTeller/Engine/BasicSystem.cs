@@ -4,6 +4,7 @@ using System.Reflection;
 using FubuCore.Conversion;
 using FubuCore;
 using Microsoft.Practices.ServiceLocation;
+using StructureMap;
 
 namespace StoryTeller.Engine
 {
@@ -44,6 +45,11 @@ namespace StoryTeller.Engine
         {
             Assembly assembly = GetType().Assembly;
             registry.AddFixturesFromAssembly(assembly);
+        }
+
+        public IContainer BuildFixtureContainer()
+        {
+            return new Container();
         }
 
         public IObjectConverter BuildConverter()

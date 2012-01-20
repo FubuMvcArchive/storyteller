@@ -57,12 +57,9 @@ namespace StoryTeller.Engine
             {
                 x.Assembly(assembly);
                 x.TheCallingAssembly();
-                x.Convention<FixtureScanner>();
-
-                
+                x.Convention<FixtureScanner>();                
             });
         }
-
 
         public void AddFixturesFromNamespaceContaining<T>()
         {
@@ -80,9 +77,10 @@ namespace StoryTeller.Engine
             AddFixturesFromAssembly(assembly);
         }
 
-        public IContainer BuildContainer()
+        
+        public void AddFixturesToContainer(IContainer container)
         {
-            return new Container(_registry);
+            container.Configure(x => x.IncludeRegistry(_registry));
         }
 
         internal void ConfigureContainer(IContainer container)
@@ -100,12 +98,12 @@ namespace StoryTeller.Engine
             configure(_registry);
         }
 
-        public static IContainer ContainerFor(Action<FixtureRegistry> action)
-        {
-            var registry = new FixtureRegistry();
-            action(registry);
+        //public static IContainer ContainerFor(Action<FixtureRegistry> action)
+        //{
+        //    var registry = new FixtureRegistry();
+        //    action(registry);
 
-            return registry.BuildContainer();
-        }
+        //    return registry.AddFixturesToContainer();
+        //}
     }
 }

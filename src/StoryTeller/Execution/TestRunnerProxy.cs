@@ -85,15 +85,15 @@ namespace StoryTeller.Execution
 
             try
             {
+                var container = _system.BuildFixtureContainer();
                 var registry = new FixtureRegistry();
                 _system.RegisterFixtures(registry);
-
-                var container = registry.BuildContainer();
+                registry.AddFixturesToContainer(container);
 
                 
                 var library = TestRunnerBuilder.BuildLibrary(_lifecycle, observer, container, fixtureAssembly.Filter.CreateTypeFilter(), _system.BuildConverter());
-                var containerSource = new FixtureContainerSource(container);
-                _runner = new TestRunner(_lifecycle, library, containerSource);
+                var source = new FixtureContainerSource(container);
+                _runner = new TestRunner(_lifecycle, library, source);
                 if (_listener != null)
                 {
                     _runner.Listener = _listener;

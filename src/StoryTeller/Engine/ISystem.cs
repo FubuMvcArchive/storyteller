@@ -1,5 +1,6 @@
 ﻿using System;
 using FubuCore.Conversion;
+using StructureMap;
 
 namespace StoryTeller.Engine
 {
@@ -11,9 +12,9 @@ namespace StoryTeller.Engine
         void TeardownEnvironment();
         void Setup();
         void Teardown();
-
         void RegisterFixtures(FixtureRegistry registry);
 
+        IContainer BuildFixtureContainer();        
         IObjectConverter BuildConverter();
     }
 

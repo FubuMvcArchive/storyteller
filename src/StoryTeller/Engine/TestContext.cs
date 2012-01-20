@@ -149,10 +149,10 @@ namespace StoryTeller.Engine
         {
         }
 
-        public TestContext(Action<FixtureRegistry> action)
-            : this(FixtureRegistry.ContainerFor(action), new Test("FAKE"), new TraceListener())
-        {
-        }
+        //public TestContext(Action<FixtureRegistry> action)
+        //    : this(FixtureRegistry.ContainerFor(action), new Test("FAKE"), new TraceListener())
+        //{
+        //}
 
         public string[] StartupActionNames { get; set; }
 
