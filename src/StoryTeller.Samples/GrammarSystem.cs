@@ -47,11 +47,6 @@ namespace StoryTeller.Samples
             
         }
 
-        public IContainer BuildFixtureContainer()
-        {
-            return new Container();
-        }
-
         public IObjectConverter BuildConverter()
         {
             throw new NotImplementedException();

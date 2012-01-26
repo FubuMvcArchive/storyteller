@@ -50,11 +50,6 @@ namespace StoryTeller.Engine
             _configure(registry);
         }
 
-        public IContainer BuildFixtureContainer()
-        {
-            return new Container();
-        }
-
         public IObjectConverter BuildConverter()
         {
             return new ObjectConverter();

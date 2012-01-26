@@ -77,11 +77,6 @@ namespace StoryTeller.Testing.Engine
             
         }
 
-        public IContainer BuildFixtureContainer()
-        {
-            return new Container();
-        }
-
         public IObjectConverter BuildConverter()
         {
             return new ObjectConverter();
@@ -527,11 +522,6 @@ namespace StoryTeller.Testing.Engine
         public void RegisterFixtures(FixtureRegistry registry)
         {
             
-        }
-
-        public IContainer BuildFixtureContainer()
-        {
-            return new Container();
         }
 
         public IObjectConverter BuildConverter()

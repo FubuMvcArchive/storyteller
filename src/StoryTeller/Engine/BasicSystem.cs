@@ -46,12 +46,7 @@ namespace StoryTeller.Engine
             Assembly assembly = GetType().Assembly;
             registry.AddFixturesFromAssembly(assembly);
         }
-
-        public virtual IContainer BuildFixtureContainer()
-        {
-            return new Container();
-        }
-        
+      
         public IObjectConverter BuildConverter()
         {
             var library = Get(typeof (ConverterLibrary)).As<ConverterLibrary>();
