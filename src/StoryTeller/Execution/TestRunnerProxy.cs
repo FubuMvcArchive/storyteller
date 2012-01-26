@@ -85,7 +85,7 @@ namespace StoryTeller.Execution
 
             try
             {
-                var container = _system.BuildFixtureContainer();
+                var container = TestRunnerBuilder.BuildFixtureContainer(_system);
                 var registry = new FixtureRegistry();
                 _system.RegisterFixtures(registry);
                 registry.AddFixturesToContainer(container);

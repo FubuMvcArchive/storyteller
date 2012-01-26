@@ -12,10 +12,15 @@ namespace StoryTeller.Engine
         void TeardownEnvironment();
         void Setup();
         void Teardown();
+
         void RegisterFixtures(FixtureRegistry registry);
 
-        IContainer BuildFixtureContainer();        
         IObjectConverter BuildConverter();
+    }
+
+    public interface IRequireFixtureContainer
+    {
+        void ConfigureFixtureContainer(IContainer container);
     }
 
     public static class SystemExtensions

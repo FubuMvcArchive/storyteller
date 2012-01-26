@@ -3,6 +3,7 @@ using FubuCore.Conversion;
 using FubuCore.Util;
 using StoryTeller.Model;
 using StructureMap;
+using FubuCore;
 
 namespace StoryTeller.Engine
 {
@@ -42,9 +43,21 @@ namespace StoryTeller.Engine
             return new TestRunnerBuilder(new NulloSystem(configure), new NulloFixtureObserver()).Build();
         }
 
+        public static IContainer BuildFixtureContainer(ISystem system)
+        {
+            var container = new Container();
+            var rfc = system as IRequireFixtureContainer;
+            if( rfc != null )
+            {
+                rfc.ConfigureFixtureContainer(container);
+            }
+
+            return container;
+        }
+
         public ITestRunner Build()
         {
-            var container = _system.BuildFixtureContainer();
+            var container = BuildFixtureContainer(_system);
             var registry = new FixtureRegistry();
             _system.RegisterFixtures(registry);
             registry.AddFixturesToContainer(container);

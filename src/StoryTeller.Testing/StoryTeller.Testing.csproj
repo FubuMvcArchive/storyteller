@@ -150,6 +150,7 @@
     <Compile Include="Engine\Sets\SetRowTester.cs" />
     <Compile Include="Engine\StepResultsTester.cs" />
     <Compile Include="Engine\TableLineGrammarTester.cs" />
+    <Compile Include="Engine\TestRunnerBuilderTester.cs" />
     <Compile Include="EventPublisherTester.cs" />
     <Compile Include="Execution\FixtureAssemblyTester.cs" />
     <Compile Include="Execution\FixtureObserverTester.cs" />
