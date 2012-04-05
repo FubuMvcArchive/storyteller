@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using FubuCore.Conversion;
 using FubuCore;
-using Microsoft.Practices.ServiceLocation;
-using StructureMap;
 
 namespace StoryTeller.Engine
 {
@@ -52,9 +50,7 @@ namespace StoryTeller.Engine
             var library = Get(typeof (ConverterLibrary)).As<ConverterLibrary>();
             _converterRegistrations.Each(x => x(library));
 
-            var services = new SimpleServiceLocator(this);
-
-            return new ObjectConverter(services, library);
+            return new ObjectConverter(new InMemoryServiceLocator(), library);
         }
 
 
@@ -68,23 +64,5 @@ namespace StoryTeller.Engine
 
     }
 
-    public class SimpleServiceLocator : ServiceLocatorImplBase
-    {
-        private readonly ISystem _system;
 
-        public SimpleServiceLocator(ISystem system)
-        {
-            _system = system;
-        }
-
-        protected override object DoGetInstance(Type serviceType, string key)
-        {
-            return _system.Get(serviceType);
-        }
-
-        protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
-        {
-            throw new NotSupportedException();
-        }
-    }
 }

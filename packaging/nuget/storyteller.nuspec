@@ -7,32 +7,29 @@
     <owners>Jeremy D. Miller</owners>
     <licenseUrl>https://github.com/DarthFubuMVC/storyteller/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>http://github.com/DarthFubuMVC/storyteller</projectUrl>
-
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>StoryTeller is an external DSL tool for creating acceptance tests in .Net</description>
-    <tags></tags>
+    <tags>
+    </tags>
     <dependencies>
       <dependency id="Bottles" />
-      <dependency id="CommonServiceLocator" />
-      <dependency id="FubuCore" />
+      <dependency id="FubuCore" version="0.9.8.128" />
       <dependency id="HtmlTags" version="1.0.0" />
       <dependency id="StructureMap" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="lib\net40" />	
-	<file src="..\..\src\StoryTellerUI\bin\Release\StoryTeller.UserInterface.*" target="tools" />
-  <file src="..\..\src\StoryTellerUI\bin\Release\FubuCore.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\HtmlTags.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\StructureMap.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\Microsoft.Practices.ServiceLocation.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.Binding.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\Newtonsoft.Json.*" target="tools" />
-	<file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.*" target="tools" />
-	<file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="tools" />	
-	<file src="..\..\src\StoryTellerUI\bin\release\StoryTellerUI.*" target="tools" />
-	<file src="..\..\src\StoryTeller\bin\release\StoryTeller.UserInterface*" target="tools" />
-	
-	<file src="..\..\src\StoryTellerRunner\bin\Release\StoryTellerRunner.*" target="tools" />
+    <file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="lib\net40" />
+    <file src="..\..\src\StoryTellerUI\bin\Release\StoryTeller.UserInterface.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\Release\FubuCore.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\Release\HtmlTags.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\Release\StructureMap.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.Binding.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\Release\Newtonsoft.Json.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\Release\ShadeTree.*" target="tools" />
+    <file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\release\StoryTellerUI.*" target="tools" />
+    <file src="..\..\src\StoryTellerUI\bin\release\StoryTeller.UserInterface*" target="tools" />
+    <file src="..\..\src\StoryTellerRunner\bin\Release\StoryTellerRunner.*" target="tools" />
   </files>
 </package>

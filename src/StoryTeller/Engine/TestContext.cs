@@ -7,8 +7,8 @@ using System.Security.Principal;
 using System.Threading;
 using FubuCore;
 using FubuCore.Conversion;
+using FubuCore.Formatting;
 using FubuCore.Util;
-using Microsoft.Practices.ServiceLocation;
 using StoryTeller.Domain;
 using StructureMap;
 using StructureMap.Query;
@@ -535,7 +535,7 @@ namespace StoryTeller.Engine
         }
     }
 
-    public class StructureMapServiceLocator : ServiceLocatorImplBase
+    public class StructureMapServiceLocator : IServiceLocator
     {
         private readonly IContainer _container;
 
@@ -544,33 +544,17 @@ namespace StoryTeller.Engine
             _container = container;
         }
 
+        public object GetInstance(Type type)
+        {
+            return _container.GetInstance(type);
+        }
+
         public IContainer Container { get { return _container; } }
 
-        protected override object DoGetInstance(Type serviceType, string key)
-        {
-            return key.IsEmpty()
-                       ? _container.GetInstance(serviceType)
-                       : _container.GetInstance(serviceType, key);
-        }
 
-        protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
-        {
-            return _container.GetAllInstances(serviceType).Cast<object>().AsEnumerable();
-        }
-
-        public override TService GetInstance<TService>()
+        public TService GetInstance<TService>()
         {
             return _container.GetInstance<TService>();
-        }
-
-        public override TService GetInstance<TService>(string key)
-        {
-            return _container.GetInstance<TService>(key);
-        }
-
-        public override IEnumerable<TService> GetAllInstances<TService>()
-        {
-            return _container.GetAllInstances<TService>();
         }
     }
 }
