@@ -50,7 +50,7 @@ namespace StoryTeller.Engine
             var library = Get(typeof (ConverterLibrary)).As<ConverterLibrary>();
             _converterRegistrations.Each(x => x(library));
 
-            return new ObjectConverter(new InMemoryServiceLocator(), library);
+            return new ObjectConverter(new DelegatingServiceLocator(Get), library);
         }
 
 
@@ -62,6 +62,26 @@ namespace StoryTeller.Engine
         }
 
 
+    }
+
+    public class DelegatingServiceLocator : IServiceLocator
+    {
+        private readonly Func<Type, object> _finder;
+
+        public DelegatingServiceLocator(Func<Type, object> finder)
+        {
+            _finder = finder;
+        }
+
+        public T GetInstance<T>()
+        {
+            return (T) GetInstance(typeof (T));
+        }
+
+        public object GetInstance(Type type)
+        {
+            return _finder(type);
+        }
     }
 
 
