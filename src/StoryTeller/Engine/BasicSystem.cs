@@ -82,6 +82,11 @@ namespace StoryTeller.Engine
         {
             return _finder(type);
         }
+
+        public T GetInstance<T>(string name)
+        {
+            return (T) GetInstance(typeof (T));
+        }
     }
 
 

@@ -556,5 +556,10 @@ namespace StoryTeller.Engine
         {
             return _container.GetInstance<TService>();
         }
+
+        public TService GetInstance<TService>(string name)
+        {
+            return _container.GetInstance<TService>(name);
+        }
     }
 }
