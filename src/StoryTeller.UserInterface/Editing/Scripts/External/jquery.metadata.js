@@ -92,6 +92,6 @@ $.fn.metadata = function( opts ){
 */ 
  (function ($) {
 	if ($.metadata) {
-		$.metadata.setType('attr', 'data-:');
+		$.metadata.setType('attr', 'data-__');
 	}
  })(jQuery);
