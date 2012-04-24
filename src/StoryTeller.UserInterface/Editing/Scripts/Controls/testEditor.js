@@ -1,6 +1,6 @@
 // Change the default location of HTML metadata
 if ($.metadata) {
-    $.metadata.setType('attr', 'data-:');
+    $.metadata.setType('attr', 'data-__');
 }
 
 ST.testEditor = function (editor, test) {
