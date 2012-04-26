@@ -61,6 +61,12 @@ namespace StoryTeller.Domain
             get
             {
                 string filename = _fileName.IsNotEmpty() ? _fileName : Name + ".xml";
+
+                if(filename.Contains(" "))
+                {
+                    filename = filename.Replace(' ', '_');
+                }
+
                 TPath path = GetPath();
 
                 return Path.Combine(path.GetContainingFolder(), filename);

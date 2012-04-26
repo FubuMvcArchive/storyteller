@@ -195,7 +195,7 @@ s1/s2/t3,Success
         [Test]
         public void the_new_file_name_should_reflect_the_new_name()
         {
-            test.FileName.ShouldEqual("New Name.xml");
+            test.FileName.ShouldEqual("New_Name.xml");
         }
 
         [Test]
@@ -213,9 +213,9 @@ s1/s2/t3,Success
         [Test]
         public void the_test_should_now_be_saved_at_the_new_file_location()
         {
-            File.Exists("New Name.xml");
+            File.Exists("New_Name.xml");
 
-            Test test2 = new TestReader().ReadFromFile("New Name.xml");
+            Test test2 = new TestReader().ReadFromFile("New_Name.xml");
             test2.Parts[0].ShouldBeOfType<Comment>().Text.ShouldEqual("some comment");
         }
 
