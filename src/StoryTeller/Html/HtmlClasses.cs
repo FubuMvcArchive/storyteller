@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -48,7 +49,14 @@ namespace StoryTeller.Html
 
         public static HtmlTag AddSafeClassName(this HtmlTag tag, string unsafeClassName)
         {
-            return tag.AddClass(unsafeClassName.Replace(" ", string.Empty));
+            try
+            {
+                return tag.AddClass(unsafeClassName.Replace(" ", string.Empty));
+            }
+            catch (Exception)
+            {
+                return tag;
+            }
         }
 
         public static HtmlTag Pre(this HtmlTag tag, string text)

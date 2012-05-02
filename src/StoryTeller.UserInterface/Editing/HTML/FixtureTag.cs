@@ -68,7 +68,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             grammarTag.AddClasses(GrammarConstants.PARAGRAPH, paragraph.Style.ToString());
             var area = new AreaTag(paragraph.Label);
             var container = area.Container.Add("div")
-                .AddClass("paragraph.Style.ToString()")
+                .AddClass(paragraph.Style.ToString())
                 .AddClass("section-container")
                 .AddClass("in-paragraph");
             grammarTag.Append(area);

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using HtmlTags;
 using StoryTeller.Engine;
@@ -15,7 +16,14 @@ namespace StoryTeller.UserInterface.Editing.HTML
         {
             _grammar = grammar;
 
-            this.AddSafeClassName(grammar.Name);
+            try
+            {
+                this.AddSafeClassName(grammar.Name);
+            }
+            catch (Exception)
+            {
+            }
+
             AddClass(GrammarConstants.STEP);
             MetaData(GrammarConstants.KEY, grammar.Name);
         }
