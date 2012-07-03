@@ -30,5 +30,17 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests
         {
             mode.IsEnabled(StoryTeller.Testing.DataMother.TestWithNoResults()).ShouldBeFalse();
         }
+
+        [Test]
+        public void should_handle_when_there_is_no_html_and_exception_is_present()
+        {
+            Assert.Fail("implement this test");
+        }
+
+        [Test]
+        public void should_handle_when_there_is_no_html_and_no_exception_is_present()
+        {
+            Assert.Fail("implement this test");
+        }
     }
 }

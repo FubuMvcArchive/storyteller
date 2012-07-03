@@ -18,7 +18,25 @@ namespace StoryTeller.UserInterface.Tests
 
         public override void Refresh()
         {
-            _view.Html = _test.LastResult.Html;
+            if( _test.LastResult.Html == null)
+            {
+                if (_test.LastResult.ExceptionText != null)
+                {
+                    const string resultsErrorFormat =
+                        "<html><body><p>StoryTeller encountered an error while collecting the test results:</p><pre>{0}</pre></body></html>";
+                    _view.Html = string.Format(resultsErrorFormat, _test.LastResult.ExceptionText);
+                }
+                else
+                {
+                    _view.Html =
+                        "<html><body><p>StoryTeller encountered an error while collecting the test results, but the error details aren't available (LastResult.ExceptionText is null)</p></body></html>";
+                }
+            }
+            else
+            {
+                _view.Html = _test.LastResult.Html;
+            }
+            
         }
 
         public override bool IsEnabled(Test test)
