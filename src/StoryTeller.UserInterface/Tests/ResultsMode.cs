@@ -25,12 +25,12 @@ namespace StoryTeller.UserInterface.Tests
                     const string resultsErrorFormat =
                         "<html><body><p>StoryTeller encountered an error while collecting the test results:</p><pre>{0}</pre></body></html>";
                     _view.Html = string.Format(resultsErrorFormat, _test.LastResult.ExceptionText);
+
+                    return;
                 }
-                else
-                {
-                    _view.Html =
-                        "<html><body><p>StoryTeller encountered an error while collecting the test results, but the error details aren't available (LastResult.ExceptionText is null)</p></body></html>";
-                }
+                
+                _view.Html =
+                    "<html><body><p>StoryTeller encountered an error while collecting the test results, but the error details aren't available (LastResult.ExceptionText is null)</p></body></html>";
             }
             else
             {
