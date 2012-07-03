@@ -1,3 +1,5 @@
+using System.Linq;
+using HtmlTags;
 using NUnit.Framework;
 using StoryTeller.Html;
 
@@ -22,9 +24,21 @@ namespace StoryTeller.Testing.Html
         }
 
         [Test]
-        public void should_sanitize_bad_class_names()
+        public void AddSafeClassName_should_sanitize_bad_class_names()
         {
-            Assert.Fail("implement this test");
+            var tag = new HtmlTag("span");
+
+            tag.AddSafeClassName("Bad/Class=Name`With'Invalid Chars");
+
+            tag.GetClasses().Single().ShouldEqual("BadClassNameWithInvalidChars");
+        }
+
+        [Test]
+        public void AddSafeClassName_should_not_tamper_with_valid_class_names()
+        {
+            var tag = new HtmlTag("span");
+            tag.AddSafeClassName("-valid_class-name99");
+            tag.GetClasses().Single().ShouldEqual("-valid_class-name99");
         }
     }
 }
