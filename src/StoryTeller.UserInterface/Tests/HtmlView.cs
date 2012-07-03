@@ -38,7 +38,7 @@ namespace StoryTeller.UserInterface.Tests
                 _html = value;
                 _browser.NavigateToString(value);
             }
-            get { return _browser.Document.ToString(); }
+            get { return _html; }
         }
 
         public object Listener
