@@ -50,13 +50,7 @@ namespace StoryTeller.Html
 
         public static HtmlTag AddSafeClassName(this HtmlTag tag, string unsafeClassName)
         {
-            return tag.AddClass(SanitizeClassName(unsafeClassName));
-        }
-
-        private static string SanitizeClassName(string unsafeName)
-        {
-            // @"^-?[_a-zA-Z]+[_a-zA-Z0-9-]*$
-            return Regex.Replace(unsafeName, "[^-_a-zA-Z0-9]", "");
+            return tag.AddClass(CssClassNameValidator.SanitizeClassName(unsafeClassName));
         }
 
         public static HtmlTag Pre(this HtmlTag tag, string text)
