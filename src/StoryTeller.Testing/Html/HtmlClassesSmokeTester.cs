@@ -20,5 +20,11 @@ namespace StoryTeller.Testing.Html
         {
             HtmlClasses.CSS().ShouldNotBeEmpty();
         }
+
+        [Test]
+        public void should_sanitize_bad_class_names()
+        {
+            Assert.Fail("implement this test");
+        }
     }
 }
