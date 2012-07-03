@@ -1,6 +1,7 @@
 ﻿using HtmlTags;
 using HtmlTags.Extended.TagBuilders;
 using StoryTeller.Engine;
+using StoryTeller.Html;
 
 namespace StoryTeller.UserInterface.Editing.HTML.Tables
 {
@@ -10,7 +11,7 @@ namespace StoryTeller.UserInterface.Editing.HTML.Tables
             : base("th")
         {
             Text(cell.Header);
-            AddClass(cell.Key);
+            this.AddSafeClassName(cell.Key);
             MetaData("key", cell.Key);
             MetaData("mandatory", !cell.HasDefault());
             if (cell.HasDefault())

@@ -23,7 +23,7 @@ namespace StoryTeller.Html
         public StoryTellerTableTag(Table table, IStep step)
         {
             AddClass("table");
-            AddClass(table.GetType().Name.ToLower());
+            this.AddSafeClassName(table.GetType().Name.ToLower());
 
             _table = table;
             _step = step;

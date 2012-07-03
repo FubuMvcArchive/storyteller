@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HtmlTags;
+using StoryTeller.Html;
 using StoryTeller.Model;
 
 namespace StoryTeller.UserInterface.Editing.HTML.Tables
@@ -23,10 +24,7 @@ namespace StoryTeller.UserInterface.Editing.HTML.Tables
             AddBodyRow(x =>
             {
                 x.Cell().AddClass("command").Add<DeleteIconTag>().AddClass("remover");
-                table.Cells.Each(cell =>
-                {
-                    x.Cell().AddClass(cell.Key).Append(builders.BuildTag(cell));
-                });
+                table.Cells.Each(cell => x.Cell().AddSafeClassName(cell.Key).Append(builders.BuildTag(cell)));
             });
         }
     }
