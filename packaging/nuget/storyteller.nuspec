@@ -13,8 +13,8 @@
     </tags>
     <dependencies>
       <dependency id="Bottles" />
-      <dependency id="FubuCore" version="0.9.9.139" />
-      <dependency id="HtmlTags" version="1.1.0.71" />
+      <dependency id="FubuCore" version="0.9.9.159" />
+      <dependency id="HtmlTags" version="1.1.0.80" />
       <dependency id="StructureMap" />
     </dependencies>
   </metadata>
