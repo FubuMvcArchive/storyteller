@@ -15,6 +15,7 @@ namespace StoryTeller.UserInterface.Recycling
 
         public void Start()
         {
+            Topmost = true;
             Show();
             ShowProgress(100, 0, "Starting to read fixtures");
         }
