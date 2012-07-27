@@ -3,8 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Unexpected Error" Height="300" Width="500" WindowStartupLocation="CenterScreen">
 
-    <DockPanel>
-        <ScrollViewer>
+    <DockPanel LastChildFill="True">
+        <ScrollViewer  HorizontalScrollBarVisibility="Auto">
             <TextBox Name="errorText" FontFamily="Courier New">Error text</TextBox>
         </ScrollViewer>
     </DockPanel>
