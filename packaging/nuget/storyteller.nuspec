@@ -19,6 +19,7 @@
     </dependencies>
   </metadata>
   <files>
+    <file src="ripple.xml" target="tools" />
     <file src="..\..\src\StoryTeller\bin\release\StoryTeller.*" target="lib\net40" />
     <file src="..\..\src\StoryTellerUI\bin\release\StoryTeller.UserInterface.*" target="tools" />
     <file src="..\..\src\StoryTellerUI\bin\release\FubuCore.*" target="tools" />
