@@ -75,7 +75,7 @@ namespace StoryTeller.Testing
 
 
             Test test2 = theConverter.Clone(test);
-            test2.Name.ShouldEqual("Clone of test1");
+            test2.Name.ShouldEqual("Clone_of_test1");
             test2.Parts.Count.ShouldEqual(3);
         }
     }

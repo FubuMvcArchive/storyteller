@@ -58,5 +58,11 @@ namespace StoryTeller.Domain
         {
             return ChildSuites.Select(x => project.WorkspaceFor(x.Name));
         }
+
+        public Test FindFirstTestWithName(string name)
+        {
+            name = name.Replace(' ', '_');
+            return GetAllTests().FirstOrDefault(x => x.Name == name);
+        }
     }
 }

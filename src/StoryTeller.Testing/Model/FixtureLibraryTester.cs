@@ -22,7 +22,7 @@ namespace StoryTeller.Testing.Model
             test.Section("c");
 
             new FixtureLibrary().ModifyExampleTest(test);
-            test.Name.ShouldEqual("All Fixtures");
+            test.Name.ShouldEqual("All_Fixtures");
             test.Parts.ShouldHaveTheSameElementsAs<ITestPart>(test.Parts);
         }
 

@@ -33,7 +33,7 @@ namespace StoryTeller.Domain
 
         public string Next { get { return _parts.First(); } }
 
-        public string Name { get { return _parts.Last(); } }
+        public string Name { get { return _parts.Last().Replace(' ','_'); } }
 
         public bool IsEnd { get { return _parts.Count == 1; } }
 

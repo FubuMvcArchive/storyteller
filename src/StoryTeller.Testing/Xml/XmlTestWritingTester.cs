@@ -64,7 +64,7 @@ namespace StoryTeller.Testing.Xml
         [Test]
         public void should_have_the_test_name_in_the_top_node()
         {
-            element.AttributeShouldEqual("name", "a test name");
+            element.AttributeShouldEqual("name", "a_test_name");
         }
 
         [Test]
