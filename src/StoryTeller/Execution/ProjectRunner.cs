@@ -2,36 +2,33 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FubuCore;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
-using StoryTeller.Html;
-using StoryTeller.Model;
 using StoryTeller.Persistence;
 using StoryTeller.Workspace;
-using FileSystem=StoryTeller.Persistence.FileSystem;
-using IFileSystem = StoryTeller.Persistence.IFileSystem;
+using FileSystem = StoryTeller.Persistence.FileSystem;
+using StringExtensions = FubuCore.StringExtensions;
 
 namespace StoryTeller.Execution
 {
     public class ProjectRunner : ConsoleListener
     {
         private readonly IDictionary<Lifecycle, TestCount> _counts = new Dictionary<Lifecycle, TestCount>();
-        private IList<IProject> _projects;
+        private readonly string _historyFolder;
         private readonly IEnumerable<string> _projectFiles;
         private readonly string _resultsFile;
         private readonly string _resultsFolder;
         private readonly IResultsSummary _summary = new ResultsSummary();
         private readonly IFileSystem _system = new FileSystem();
-        private string _historyFolder;
+        private IList<IProject> _projects;
 
         public ProjectRunner(IEnumerable<string> projectFiles, string resultsFile)
         {
             _projectFiles = projectFiles;
             _resultsFile = resultsFile;
-            
 
-            string containingFolder = new FileInfo(_resultsFile).Directory.FullName;
+
+            var containingFolder = new FileInfo(_resultsFile).Directory.FullName;
             _resultsFolder = Path.Combine(containingFolder, "results");
             _historyFolder = Path.Combine(_resultsFolder, "history");
 
@@ -56,7 +53,7 @@ namespace StoryTeller.Execution
                     return Project.LoadFromFile(file) as IProject;
                 }).ToList();
 
-                string names = _projects.Select(x => x.Name).ToArray().Join(", ");
+                var names = _projects.Select(x => x.Name).ToArray().Join(", ");
                 _summary.Start("Project(s):  " + names, DateTime.Now);
 
 
@@ -83,14 +80,14 @@ namespace StoryTeller.Execution
             var runner = new ProjectTestRunner(project);
 
 
-            string projectHistoryFolder = Path.Combine(_historyFolder, project.Name);
+            var projectHistoryFolder = Path.Combine(_historyFolder, project.Name);
             Directory.CreateDirectory(projectHistoryFolder);
 
 
             try
             {
                 Func<Hierarchy, IEnumerable<Test>> selector = h => h.GetAllTests();
-                if (Workspace.IsNotEmpty())
+                if (StringExtensions.IsNotEmpty(Workspace))
                 {
                     selector = h => h.FindSuite(Workspace).GetAllTests();
                 }
@@ -101,17 +98,17 @@ namespace StoryTeller.Execution
                     {
                         _counts[test.Lifecycle].Tally(test);
 
-                        string filename = Path.GetFileNameWithoutExtension(test.FileName) +
-                                          DateTime.Now.ToString("hhmmss") + "-results.htm";
-                        string resultFile = Path.Combine(_resultsFolder,
-                                                         filename);
+                        var filename = Path.GetFileNameWithoutExtension(test.FileName) +
+                                       DateTime.Now.ToString("hhmmss") + "-results.htm";
+                        var resultFile = Path.Combine(_resultsFolder,
+                                                      filename);
 
                         test.WriteResultsToFile(resultFile);
                         _summary.AddTest(test, "results/" + filename);
 
                         ResultPersistor.SaveResult(test.LastResult, test, projectHistoryFolder);
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Console.WriteLine(ex);
                     }
@@ -134,7 +131,6 @@ namespace StoryTeller.Execution
 
             _system.CreateFolder(_historyFolder);
         }
-
 
 
         private int createFinalResult()
@@ -163,8 +159,9 @@ namespace StoryTeller.Execution
 
         public void Write()
         {
-            int failed = Total - Passed;
-            string message = "{0} Tests:  {1} of {2} passed.  {3} failed".ToFormat(Lifecycle, Passed, Total, failed);
+            var failed = Total - Passed;
+            var message = StringExtensions.ToFormat("{0} Tests:  {1} of {2} passed.  {3} failed", Lifecycle, Passed,
+                                                    Total, failed);
             Console.WriteLine(message);
         }
 
