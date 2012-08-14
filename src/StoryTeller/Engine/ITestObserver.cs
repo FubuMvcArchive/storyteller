@@ -15,5 +15,6 @@ namespace StoryTeller.Engine
         void Exception(string exceptionString);
 
         bool CanContinue(Counts counts);
+        void FinishTestRetries(Test test);
     }
 }

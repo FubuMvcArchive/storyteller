@@ -149,7 +149,8 @@ namespace StoryTeller.Execution
                     }
                     _engine.RunTest(t);
                     numberOfRetries++;
-                }                
+                }
+                _engine.TestRetriesFinished(t);
                 callback(t);
             });
         }
