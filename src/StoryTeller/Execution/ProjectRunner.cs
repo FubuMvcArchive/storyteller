@@ -42,6 +42,8 @@ namespace StoryTeller.Execution
             _counts.Add(Lifecycle.Regression, new TestCount(Lifecycle.Regression));
         }
 
+        public string Workspace { get; set; }
+
         public int Execute()
         {
             try
@@ -79,13 +81,21 @@ namespace StoryTeller.Execution
         private void executeProject(IProject project)
         {
             var runner = new ProjectTestRunner(project);
+
+
             string projectHistoryFolder = Path.Combine(_historyFolder, project.Name);
             Directory.CreateDirectory(projectHistoryFolder);
 
 
             try
             {
-                runner.RunAll(test =>
+                Func<Hierarchy, IEnumerable<Test>> selector = h => h.GetAllTests();
+                if (Workspace.IsNotEmpty())
+                {
+                    selector = h => h.FindSuite(Workspace).GetAllTests();
+                }
+
+                runner.RunAll(selector, test =>
                 {
                     try
                     {

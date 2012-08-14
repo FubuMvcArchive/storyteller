@@ -52,6 +52,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionFixtures", "Extens
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTeller.UserInterface.Testing", "StoryTeller.UserInterface.Testing\StoryTeller.UserInterface.Testing.csproj", "{4B6DA392-CE54-4D51-802C-71ED758856E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ST", "ST\ST.csproj", "{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +185,16 @@ Global
 		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4B6DA392-CE54-4D51-802C-71ED758856E9}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Debug|x86.ActiveCfg = Debug|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Debug|x86.Build.0 = Debug|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Release|Any CPU.ActiveCfg = Release|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Release|Mixed Platforms.Build.0 = Release|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Release|x86.ActiveCfg = Release|x86
+		{7D034F5B-1786-4D0F-A4C6-D6E689F522A4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

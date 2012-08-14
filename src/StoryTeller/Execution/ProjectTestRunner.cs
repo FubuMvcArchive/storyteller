@@ -6,6 +6,7 @@ using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
+using System.Linq;
 
 namespace StoryTeller.Execution
 {
@@ -135,9 +136,9 @@ namespace StoryTeller.Execution
             return _engine.Library;
         }
 
-        public void RunAll(Action<Test> callback)
+        public void RunAll(Func<Hierarchy, IEnumerable<Test>> selectionFilter, Action<Test> callback)
         {
-            _hierarchy.GetAllTests().Each(t =>
+            selectionFilter(_hierarchy).Each(t =>
             {
                 int numberOfRetries = 0;
                 while (numberOfRetries <= t.NumberOfRetries && !t.WasSuccessful())

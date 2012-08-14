@@ -72,7 +72,7 @@ s9/t18,Success
         {
             var persistor = new ResultPersistor();
             var runner = DataMother.MathProjectRunner();
-            runner.RunAll(t => Debug.WriteLine("executed " + t.GetPath().Locator));
+            runner.RunAll(t => t.GetAllTests(), t => Debug.WriteLine("executed " + t.GetPath().Locator));
 
             runner.Hierarchy.GetAllTests().Each(t =>
             {
