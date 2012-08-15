@@ -288,13 +288,20 @@ namespace StoryTeller.Testing
         }
 
         [Test]
+        public void use_filename_derived_from_test_name_if_the_filename_is_not_supplied_and_replaces_spaces()
+        {
+            var test = new Test("asdf else");
+            test.FileName.ShouldEqual("asdf_else.xml");
+        }
+
+        [Test]
         public void use_saved_filename_if_it_exists()
         {
             var test = new Test("asdf")
             {
-                FileName = "Test001.xml"
+                FileName = "Test 001.xml"
             };
-            test.FileName.ShouldEqual("Test001.xml");
+            test.FileName.ShouldEqual("Test 001.xml");
         }
 
         [Test]

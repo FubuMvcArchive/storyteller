@@ -60,18 +60,29 @@ namespace StoryTeller.Domain
         {
             get
             {
-                string filename = _fileName.IsNotEmpty() ? _fileName : Name + ".xml";
-
-                if(filename.Contains(" "))
-                {
-                    filename = filename.Replace(' ', '_');
-                }
+                string filename = determineFilename();
 
                 TPath path = GetPath();
 
                 return Path.Combine(path.GetContainingFolder(), filename);
             }
             set { _fileName = value; }
+        }
+
+        private string determineFilename()
+        {
+            if (_fileName.IsNotEmpty())
+            {
+                return _fileName;
+            }
+
+            string filename = Name + ".xml";
+
+            if(filename.Contains(" "))
+            {
+                filename = filename.Replace(' ', '_');
+            }
+            return filename;
         }
 
         public string WorkspaceName
