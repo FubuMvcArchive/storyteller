@@ -569,6 +569,11 @@ namespace StoryTeller.Testing.Engine
             return StepsRun < StepsAllowed;
         }
 
+        public void FinishTestRetries(Test test)
+        {
+            
+        }
+
         #endregion
     }
 

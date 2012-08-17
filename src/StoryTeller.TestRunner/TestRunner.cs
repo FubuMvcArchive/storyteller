@@ -87,5 +87,10 @@ namespace StoryTeller.TestRunner
         {
             return true;
         }
+
+        public void FinishTestRetries(Test test)
+        {
+            
+        }
     }
 }
