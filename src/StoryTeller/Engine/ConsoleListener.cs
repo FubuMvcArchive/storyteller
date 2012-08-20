@@ -64,6 +64,11 @@ namespace StoryTeller.Engine
             return true;
         }
 
+        public virtual void FinishTestRetries(Test test)
+        {
+            write("Final test status after retries: {0}", test.LastResult.Counts.WasSuccessful() ? "Successful" : "Failure");
+        }
+
         public override object InitializeLifetimeService()
         {
             return null;

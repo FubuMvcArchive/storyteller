@@ -119,5 +119,11 @@ namespace StoryTeller.Execution
         {
             _publisher.Publish(GetStatus());
         }
+
+
+        public void FinishTestRetries(Test test)
+        {
+            
+        }
     }
 }

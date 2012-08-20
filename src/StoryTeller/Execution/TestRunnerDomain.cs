@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
@@ -32,7 +33,7 @@ namespace StoryTeller.Execution
                     _publisher.Publish<BinaryRecycleStarted>();
                     _proxy = BuildProxy(project);
 
-                    _library = _proxy.StartSystem(new FixtureAssembly(project), (MarshalByRefObject) _publisher);
+                    _library = _proxy.StartSystem(new FixtureAssembly(project), (MarshalByRefObject)_publisher);
                     _publisher.Publish(new BinaryRecycleFinished(_library));
                 }
                 catch (FileNotFoundException ex)
@@ -44,13 +45,15 @@ namespace StoryTeller.Execution
                             "\nYou will not be able to execute tests until the StoryTeller.dll file is copied to " +
                             project.GetBinaryFolder();
 
-                        _publisher.Publish(new BinaryRecycleFailure{
+                        _publisher.Publish(new BinaryRecycleFailure
+                        {
                             ErrorMessage = message
                         });
                     }
                     else
                     {
-                        _publisher.Publish(new BinaryRecycleFailure{
+                        _publisher.Publish(new BinaryRecycleFailure
+                        {
                             ErrorMessage = ex.ToString()
                         });
                     }
@@ -60,7 +63,8 @@ namespace StoryTeller.Execution
                 catch (Exception ex)
                 {
                     Teardown();
-                    _publisher.Publish(new BinaryRecycleFailure{
+                    _publisher.Publish(new BinaryRecycleFailure
+                    {
                         ErrorMessage = ex.ToString()
                     });
                 }
@@ -106,7 +110,8 @@ namespace StoryTeller.Execution
         public void AbortCurrentTest()
         {
             _proxy.AbortCurrentTest();
-            _publisher.Publish(new TestStatusMessage{
+            _publisher.Publish(new TestStatusMessage
+            {
                 IsRunning = false,
                 WasCancelled = true
             });
@@ -115,6 +120,12 @@ namespace StoryTeller.Execution
         public bool IsExecuting()
         {
             return _proxy.IsExecuting();
+        }
+
+        public void MarkTestFinalStatus(Test test)
+        {
+            if (_listener != null)
+                _listener.FinishTestRetries(test);
         }
 
         public FixtureLibrary Library
@@ -155,7 +166,8 @@ namespace StoryTeller.Execution
 
         public virtual TestRunnerProxy BuildProxy(IProject project)
         {
-            var setup = new AppDomainSetup{
+            var setup = new AppDomainSetup
+            {
                 ApplicationName = "StoryTeller-Testing-" + Guid.NewGuid(),
                 ConfigurationFile = project.ConfigurationFileName,
                 ShadowCopyFiles = "true",
@@ -164,7 +176,7 @@ namespace StoryTeller.Execution
 
             _domain = AppDomain.CreateDomain("StoryTeller-Testing", null, setup);
 
-            Type proxyType = typeof (TestRunnerProxy);
+            Type proxyType = typeof(TestRunnerProxy);
             var proxy =
                 (TestRunnerProxy)
                 _domain.CreateInstanceAndUnwrap(proxyType.Assembly.FullName, proxyType.FullName);

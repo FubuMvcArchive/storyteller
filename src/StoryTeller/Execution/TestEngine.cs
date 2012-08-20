@@ -119,7 +119,6 @@ namespace StoryTeller.Execution
         public void AbortCurrentTest()
         {
             _domain.AbortCurrentTest();
-
             
         }
 
@@ -163,6 +162,11 @@ namespace StoryTeller.Execution
         public void UseTeamCityListener()
         {
             _domain.UseTeamCityListener();
+        }
+
+        public void TestRetriesFinished(Test test)
+        {
+            _domain.MarkTestFinalStatus(test);
         }
     }
 }

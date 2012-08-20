@@ -1,4 +1,5 @@
 using System;
+using StoryTeller.Domain;
 using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
@@ -43,6 +44,11 @@ namespace StoryTeller.Execution
         }
 
         public bool IsExecuting()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MarkTestFinalStatus(Test test)
         {
             throw new NotImplementedException();
         }
