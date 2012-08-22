@@ -17,20 +17,8 @@ namespace StoryTeller.Engine
 
         public override void FinishTest(Test test)
         {
-            if (!test.LastResult.Counts.WasSuccessful())
-            {
-                if (test.Lifecycle == Lifecycle.Regression)
-                {
-                    Console.WriteLine("##teamcity[testIgnored name='{0}' details='{1}']", test.Name.Escape(),
-                                      getFailureDetails(test).Escape());
-                }
-                else
-                {
-                    Console.WriteLine("##teamcity[testIgnored name='{0}' message='{1}']", test.Name.Escape(),
-                                      "Acceptance test failed: " + getFailureDetails(test).Escape());
-                }
-            }
-            Console.WriteLine("##teamcity[testFinished name='{0}']", test.Name.Escape());
+            // no-op
+            // we have to write the REAL result when the retries finish
         }
 
         public override void FinishTestRetries(Test test)
