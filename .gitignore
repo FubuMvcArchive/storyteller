@@ -29,3 +29,4 @@ artifacts
 
 src/StoryTeller.sln.DotSettings.user
 src/StoryTeller/StoryTeller.csproj.DotSettings.user
+*.DotSettings.user
