@@ -33,7 +33,7 @@ namespace StoryTeller.Testing.Engine
             filter.Includes += t => t.Name.StartsWith("M");
 
 
-            builder = new LibraryBuilder(observer, filter, new ObjectConverter());
+            builder = new LibraryBuilder(observer, filter);
 
             library = builder.Build(new TestContext(container));
         }
@@ -93,7 +93,7 @@ namespace StoryTeller.Testing.Engine
         public void SetUp()
         {
             observer = MockRepository.GenerateMock<IFixtureObserver>();
-            builder = new LibraryBuilder(observer, new CompositeFilter<Type>(), new ObjectConverter());
+            builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
 
             builder.FixtureCount = 23;
         }
@@ -194,7 +194,7 @@ namespace StoryTeller.Testing.Engine
             var context = new TestContext(container);
 
             var observer = MockRepository.GenerateMock<IFixtureObserver>();
-            var builder = new LibraryBuilder(observer, new CompositeFilter<Type>(), new ObjectConverter());
+            var builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
             
             builder.Build(context);
 
@@ -241,7 +241,7 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            var builder = new LibraryBuilder(new NulloFixtureObserver(), new CompositeFilter<Type>(), new ObjectConverter());
+            var builder = new LibraryBuilder(new NulloFixtureObserver(), new CompositeFilter<Type>());
             var registry = new FixtureRegistry();
             registry.AddFixturesFromAssemblyContaining<SetUserAction>();
 

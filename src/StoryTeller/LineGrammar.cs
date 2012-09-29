@@ -52,10 +52,7 @@ namespace StoryTeller
         {
             if (library == null) throw new ArgumentNullException("library");
 
-            Cell[] cells = GetCells()
-                .Where(x => library.IsTestVariable(x.Type))
-                .Select(x => x.ToInputCell())
-                .ToArray();
+            Cell[] cells = GetCells().Select(x => x.ToInputCell()).ToArray();
 
             return new Sentence(Template, cells);
         }

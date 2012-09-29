@@ -65,21 +65,18 @@ namespace StoryTeller.Engine
             var nestedContainer = source.Build();
             var observer = _observer;
 
-            var library = BuildLibrary(new SystemLifecycle(_system), observer, nestedContainer, new CompositeFilter<Type>(), _system.BuildConverter());
+            var library = BuildLibrary(new SystemLifecycle(_system), observer, nestedContainer, new CompositeFilter<Type>());
             
             return new TestRunner(_system, library, source);
         }
 
-        public static FixtureLibrary BuildLibrary(SystemLifecycle lifeCycle, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter, IObjectConverter converter)
+        public static FixtureLibrary BuildLibrary(SystemLifecycle lifeCycle, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter)
         {
-            if (converter == null) throw new ArgumentNullException("converter");
-
             try
             {
-                var builder = new LibraryBuilder(observer, filter, converter);
+                var builder = new LibraryBuilder(observer, filter);
                 observer.RecordStatus("Starting to rebuild the fixture model");
 
-                container.Inject<IObjectConverter>(converter);
                 var context = new TestContext(container);
 
                 observer.RecordStatus("Setting up the system environment");

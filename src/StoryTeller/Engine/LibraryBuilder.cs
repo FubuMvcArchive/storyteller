@@ -25,16 +25,13 @@ namespace StoryTeller.Engine
         private FixtureLibrary _library;
         private int _number = 1;
         private int _total;
-        private readonly IObjectConverter _converter;
-
         
-        public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter, IObjectConverter converter)
+        public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter)
         {
             _observer = observer;
             _filter = filter;
-            _converter = converter;
 
-            _library = new FixtureLibrary(_converter);
+            _library = new FixtureLibrary();
         }
 
         public FixtureLibrary Library { get { return _library; } }
@@ -77,7 +74,7 @@ namespace StoryTeller.Engine
         // TODO -- needs to change to IContainer child container
         public FixtureLibrary Build(TestContext context)
         {
-            _library = new FixtureLibrary(_converter);
+            _library = new FixtureLibrary();
 
             readFixtures(context);
             readActions(context.Container);

@@ -30,11 +30,6 @@ namespace StoryTeller.Testing.Engine
             Name = name;
         }
 
-        [FormatAs("{name}")]
-        public void DoSomethingUsingContextAndAddress(string name, ITestContext context, Address address)
-        {
-        }
-
         public void MethodThatThrowsException()
         {
             throw new NotImplementedException();
@@ -166,20 +161,6 @@ namespace StoryTeller.Testing.Engine
             ActionMethodGrammar action = ActionMethodGrammar.Create(x => x.DoSomethingWith(null, 34), dooer);
 
             action.Template.ShouldEqual("DoSomethingWith {name}, {age}");
-        }
-
-        [Test]
-        public void ignores_Testcontext_and_non_simple_types_when_building_a_grammar_structure()
-        {
-            var dooer = new Dooer();
-            ActionMethodGrammar action = ActionMethodGrammar.Create(
-                x => x.DoSomethingUsingContextAndAddress(null, null, null), dooer);
-            MethodInfo method =
-                ReflectionHelper.GetMethod<Dooer>(x => x.DoSomethingUsingContextAndAddress(null, null, null));
-
-            var sentence = action.ToStructure(new FixtureLibrary()).ShouldBeOfType<Sentence>();
-            Sentence expected = Sentence.For(method.GetTemplate(), Cell.For<string>("name"));
-            sentence.ShouldEqual(expected);
         }
     }
 }

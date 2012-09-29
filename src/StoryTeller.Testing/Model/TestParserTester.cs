@@ -16,7 +16,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            library = new FixtureLibrary(new ObjectConverter());
+            library = new FixtureLibrary();
             test = new Test("something");
             stream = MockRepository.GenerateMock<ITestStream>();
 

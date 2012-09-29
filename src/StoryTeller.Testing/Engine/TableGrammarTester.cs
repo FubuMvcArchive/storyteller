@@ -54,7 +54,7 @@ namespace StoryTeller.Testing.Engine
             var table = grammar.ToStructure(new FixtureLibrary()).ShouldBeOfType<Table>();
 
             var expected = new Table(grammar.LabelName, "record",
-                                     new[] {new Cell("a", typeof (string)), new Cell("b", typeof (int))});
+                                     new[] {new Cell("a", typeof (string)), new Cell("b", typeof (int)), new Cell("address", typeof(string))});
             table.ShouldEqual(expected);
         }
 

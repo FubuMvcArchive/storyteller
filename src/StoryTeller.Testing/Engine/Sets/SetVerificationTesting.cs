@@ -264,15 +264,6 @@ namespace StoryTeller.Testing.Engine.Sets
         }
 
         [Test]
-        public void the_context_should_not_show_up_in_example()
-        {
-            ITestRunner runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
-            FixtureLibrary library = runner.Library;
-            IStep step = library.FixtureFor("AddressCheck").GrammarFor("LoadList1").CreateExample();
-            step.Has("context").ShouldBeFalse();
-        }
-
-        [Test]
         public void when_writing_the_grammar_structure()
         {
             SetVerificationGrammar grammar = Fixture.VerifySetOf(c => new ValidationError[0])
@@ -306,7 +297,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 .MatchOn(x => x.Address1, x => x.City, x => x.StateOrProvince);
         }
 
-        public Address[] LoadList1(ITestContext context)
+        public Address[] LoadList1()
         {
             return new[]
             {
@@ -343,9 +334,9 @@ namespace StoryTeller.Testing.Engine.Sets
             };
         }
 
-        public void LoadList2(ITestContext context)
+        public void LoadList2()
         {
-            context.CurrentObject = new[]
+            Context.CurrentObject = new[]
             {
                 new Address
                 {

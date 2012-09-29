@@ -274,7 +274,7 @@ s1/s2/t3,Success
             registry.AddFixturesToContainer(container);
 
             var builder = new LibraryBuilder(new NulloFixtureObserver(),
-                                             project.CurrentFixtureFilter().CreateTypeFilter(), new ObjectConverter());
+                                             project.CurrentFixtureFilter().CreateTypeFilter());
             var library = builder.Build(new TestContext(container));
 
             Array.Sort(names);
