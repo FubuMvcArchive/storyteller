@@ -20,5 +20,7 @@ namespace StoryTeller.Engine
         public bool WasCancelled { get; set; }
         [XmlAttribute]
         public string Locator { get; set; }
+
+        public string FullExceptionText { get; set; }
     }
 }

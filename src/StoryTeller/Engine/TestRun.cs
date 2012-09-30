@@ -138,7 +138,9 @@ namespace StoryTeller.Engine
         {
             _result.ExecutionTime = timer.Elapsed.TotalSeconds;
             _result.Counts = _context.Counts;
-            _result.ExceptionText = _context.ResultsFor(_request.Test).ExceptionText;
+            var results = _context.ResultsFor(_request.Test);
+            _result.ExceptionText = results.ExceptionText;
+            _result.FullExceptionText = results.ExceptionText;
             _result.Html = writeResults();
 
             _request.Test.LastResult = _result;
