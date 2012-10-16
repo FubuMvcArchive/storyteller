@@ -12,7 +12,7 @@ namespace StoryTeller.Engine
 
         public override void StartTest(Test test, Counts counts)
         {
-            Console.WriteLine("##teamcity[testStarted name='{0}']", test.Name.Escape());
+          Console.WriteLine("##teamcity[testStarted name='{0}']", test.Name.Escape());
         }
 
         public override void FinishTest(Test test)
@@ -23,7 +23,7 @@ namespace StoryTeller.Engine
 
         public override void FinishTestRetries(Test test)
         {
-            if (!test.LastResult.Counts.WasSuccessful())
+            if (test.LastResult != null && !test.LastResult.Counts.WasSuccessful())
             {
                 if (test.Lifecycle == Lifecycle.Regression)
                 {
