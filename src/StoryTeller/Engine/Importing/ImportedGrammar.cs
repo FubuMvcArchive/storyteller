@@ -24,11 +24,11 @@ namespace StoryTeller.Engine.Importing
         }
 
         private IGrammar _inner;
-        private IGrammar inner()
+        private IGrammar inner(ITestContext context)
         {
             if (_inner == null)
             {
-                _inner = _import.FindGrammar(_fixtureSource());
+                _inner = _import.FindGrammar(_fixtureSource(), context);
             }
 
             return _inner;
@@ -36,12 +36,12 @@ namespace StoryTeller.Engine.Importing
 
         public void Execute(IStep containerStep, ITestContext context)
         {
-            inner().Execute(containerStep, context);
+            inner(context).Execute(containerStep, context);
         }
 
         public GrammarStructure ToStructure(FixtureLibrary library)
         {
-            return inner().ToStructure(library);
+            return inner(null).ToStructure(library);
         }
 
         public ImportedGrammar Curry(CurryAction curryAction)

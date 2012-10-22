@@ -8,9 +8,12 @@ namespace StoryTeller.Engine.Importing
         public string FixtureName { get; set; }
         public CurryAction CurryAction { get; set; }
 
-        public IGrammar FindGrammar(IFixtureContext parent)
+        public IGrammar FindGrammar(IFixtureContext parent, ITestContext context)
         {
-            var innerGrammar = parent.RetrieveFixture(FixtureName)[GrammarKey];
+            var fixture = parent.RetrieveFixture(FixtureName);
+            fixture.Context = context;
+
+            var innerGrammar = fixture[GrammarKey];
 
             if (CurryAction == null)
             {

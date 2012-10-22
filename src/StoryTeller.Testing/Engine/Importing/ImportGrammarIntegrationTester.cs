@@ -36,10 +36,26 @@ namespace StoryTeller.Testing.Engine.Importing
             runTest("SetTo12", "");
             StateFixture.RunningTotal.ShouldEqual(12);
         }
+
+        [Test]
+        public void the_imported_grammar_is_able_to_access_test_context_and_retrieve_methods()
+        {
+            runTest("SetTo12", "");
+
+            StateFixture.MyFoo.ShouldBeTheSameAs(ImportsFixture.MyFoo);
+        }
     }
 
     public class ImportsFixture : Fixture
     {
+        public static MyFoo MyFoo;
+
+        public override void SetUp(ITestContext context)
+        {
+            MyFoo = new MyFoo();
+            context.Store(MyFoo);
+        }
+
         public ImportsFixture()
         {
             this["SetTo"] = Import<StateFixture>("SetTo");
@@ -50,13 +66,18 @@ namespace StoryTeller.Testing.Engine.Importing
         }
     }
 
+    public class MyFoo{}
+
     public class StateFixture : Fixture
     {
         public static int RunningTotal;
+        public static MyFoo MyFoo;
 
     
         public void SetTo(int value)
         {
+            MyFoo = Retrieve<MyFoo>();
+
             RunningTotal = value;
         }
 

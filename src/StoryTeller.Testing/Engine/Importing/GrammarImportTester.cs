@@ -29,7 +29,7 @@ namespace StoryTeller.Testing.Engine.Importing
             {
                 if (_grammar == null)
                 {
-                    _grammar = ClassUnderTest.FindGrammar(MockFor<IFixtureContext>());
+                    _grammar = ClassUnderTest.FindGrammar(MockFor<IFixtureContext>(), null);
                 }
 
                 return _grammar;
