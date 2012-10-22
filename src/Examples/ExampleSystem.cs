@@ -12,6 +12,16 @@ namespace Examples
             return null;
         }
 
+        public IExecutionContext CreateContext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Recycle()
+        {
+            throw new NotImplementedException();
+        }
+
         public object Get(Type type)
         {
             return null;
@@ -20,15 +30,6 @@ namespace Examples
         public void RegisterServices(ITestContext context)
         {
             context.Store<IBrowserDriver>(new SeleniumBrowserDriver());
-        }
-
-        public void SetupEnvironment()
-        {
-            
-        }
-
-        public void TeardownEnvironment()
-        {
         }
 
         public void Setup()
@@ -45,6 +46,11 @@ namespace Examples
         }
 
         public IObjectConverter BuildConverter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
         {
             throw new NotImplementedException();
         }

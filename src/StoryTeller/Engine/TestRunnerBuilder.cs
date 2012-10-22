@@ -74,10 +74,7 @@ namespace StoryTeller.Engine
                 var context = new TestContext(container);
 
                 observer.RecordStatus("Setting up the system environment");
-                lifeCycle.StartApplication();
 
-
-                lifeCycle.SetupEnvironment();
                 observer.RecordStatus("Registering the system services");
                 lifeCycle.RegisterServices(context);
 

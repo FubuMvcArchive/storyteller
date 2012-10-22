@@ -40,6 +40,16 @@ namespace StoryTeller.Testing.Engine
             _messages.Clear();
         }
 
+        public IExecutionContext CreateContext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Recycle()
+        {
+            Record("Recycle");
+        }
+
         public object Get(Type type)
         {
             var container = new Container(x => x.For<RecordingSystem>().Use(this));
@@ -50,16 +60,6 @@ namespace StoryTeller.Testing.Engine
         {
             Record("RegisterServices");
             context.Store(this);
-        }
-
-        public void SetupEnvironment()
-        {
-            Record("SetupEnvironment");
-        }
-
-        public void TeardownEnvironment()
-        {
-            Record("TeardownEnvironment");
         }
 
         public void Setup()
@@ -80,6 +80,11 @@ namespace StoryTeller.Testing.Engine
         public IObjectConverter BuildConverter()
         {
             return new ObjectConverter();
+        }
+
+        public void Dispose()
+        {
+            Record("Dispose");
         }
     }
 
@@ -189,12 +194,6 @@ namespace StoryTeller.Testing.Engine
         }
 
         [Test]
-        public void should_start_the_application_because_it_has_not_already_been_started()
-        {
-            system.Messages.ShouldContain("SetupEnvironment");
-        }
-
-        [Test]
         public void should_register_services()
         {
             system.Messages.ShouldContain("RegisterServices");
@@ -227,20 +226,19 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_do_the_steps_in_the_proper_order()
         {
-            system.Messages.Length.ShouldEqual(9);
+            system.Messages.Length.ShouldEqual(8);
 
-            system.Messages[0].ShouldEqual("SetupEnvironment");
-            system.Messages[1].ShouldEqual("RegisterServices");
-            system.Messages[2].ShouldEqual("Setup");
-            system.Messages[3].ShouldEqual("Setup 1");
-            system.Messages[4].ShouldEqual("Setup 2");
+            system.Messages[0].ShouldEqual("RegisterServices");
+            system.Messages[1].ShouldEqual("Setup");
+            system.Messages[2].ShouldEqual("Setup 1");
+            system.Messages[3].ShouldEqual("Setup 2");
 
 
-            system.Messages[5].ShouldEqual("Execute");
-            system.Messages[6].ShouldEqual("Teardown 1");
-            system.Messages[7].ShouldEqual("Teardown 2");
+            system.Messages[4].ShouldEqual("Execute");
+            system.Messages[5].ShouldEqual("Teardown 1");
+            system.Messages[6].ShouldEqual("Teardown 2");
 
-            system.Messages[8].ShouldEqual("Teardown");
+            system.Messages[7].ShouldEqual("Teardown");
         }
     }
 
@@ -286,12 +284,6 @@ namespace StoryTeller.Testing.Engine
 
         }
 
-        [Test]
-        public void setup_environment_should_only_be_called_once()
-        {
-            system.Messages[0].ShouldEqual("SetupEnvironment");
-            system.Messages.Count(x => x == "SetupEnvironment").ShouldEqual(1);
-        }
     }
 
     [TestFixture]
@@ -322,7 +314,6 @@ namespace StoryTeller.Testing.Engine
             
 
             runner = new TestRunner(system, library, fixtureContainerSource);
-            runner.Lifecycle.StartApplication();
 
             var test = new Test("something");
             test.Add(new Section("Recording").WithStep("Execute"));
@@ -338,13 +329,12 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_do_the_steps_in_the_proper_order_and_not_repeat_SetupEnvironment()
         {
-            system.Messages.Length.ShouldEqual(5);
+            system.Messages.Length.ShouldEqual(4);
 
-            system.Messages[0].ShouldEqual("SetupEnvironment");
-            system.Messages[1].ShouldEqual("RegisterServices");
-            system.Messages[2].ShouldEqual("Setup");
-            system.Messages[3].ShouldEqual("Execute");
-            system.Messages[4].ShouldEqual("Teardown");
+            system.Messages[0].ShouldEqual("RegisterServices");
+            system.Messages[1].ShouldEqual("Setup");
+            system.Messages[2].ShouldEqual("Execute");
+            system.Messages[3].ShouldEqual("Teardown");
         }
     }
 
@@ -374,7 +364,6 @@ namespace StoryTeller.Testing.Engine
 
             lifecycle = new SystemLifecycle(system);
             runner = new TestRunner(lifecycle, library, fixtureContainerSource);
-            lifecycle.StartApplication();
 
             lifecycle.RecycleEnvironment();
 
@@ -393,16 +382,13 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_do_the_steps_in_the_proper_order_and_not_repeat_SetupEnvironment()
         {
-            system.Messages.Length.ShouldEqual(7);
+            system.Messages.Length.ShouldEqual(5);
 
-            system.Messages[0].ShouldEqual("SetupEnvironment");
-            system.Messages[1].ShouldEqual("TeardownEnvironment");
-            system.Messages[2].ShouldEqual("SetupEnvironment");
-
-            system.Messages[3].ShouldEqual("RegisterServices");
-            system.Messages[4].ShouldEqual("Setup");
-            system.Messages[5].ShouldEqual("Execute");
-            system.Messages[6].ShouldEqual("Teardown");
+            system.Messages[0].ShouldEqual("Recycle");
+            system.Messages[1].ShouldEqual("RegisterServices");
+            system.Messages[2].ShouldEqual("Setup");
+            system.Messages[3].ShouldEqual("Execute");
+            system.Messages[4].ShouldEqual("Teardown");
         }
     }
 
@@ -440,7 +426,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_teardown_the_environment()
         {
-            system.Messages.ShouldHaveTheSameElementsAs("TeardownEnvironment");
+            system.Messages.ShouldHaveTheSameElementsAs("Dispose");
         }
     }
     
@@ -493,20 +479,22 @@ namespace StoryTeller.Testing.Engine
             throw new NotImplementedException();
         }
 
+        public IExecutionContext CreateContext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Recycle()
+        {
+            throw new NotImplementedException();
+        }
+
         public object Get(Type type)
         {
             throw new NotImplementedException();
         }
 
         public void RegisterServices(ITestContext context)
-        {
-        }
-
-        public void SetupEnvironment()
-        {
-        }
-
-        public void TeardownEnvironment()
         {
         }
 
@@ -527,6 +515,11 @@ namespace StoryTeller.Testing.Engine
         public IObjectConverter BuildConverter()
         {
             return new ObjectConverter();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 

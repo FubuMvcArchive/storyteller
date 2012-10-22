@@ -12,6 +12,16 @@ namespace StoryTeller.Samples
             throw new NotImplementedException();
         }
 
+        public IExecutionContext CreateContext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Recycle()
+        {
+            throw new NotImplementedException();
+        }
+
         public object Get(Type type)
         {
             throw new NotImplementedException();
@@ -22,15 +32,6 @@ namespace StoryTeller.Samples
             throw new NotImplementedException();
         }
 
-        public void SetupEnvironment()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TeardownEnvironment()
-        {
-            throw new NotImplementedException();
-        }
 
         public void Setup()
         {
@@ -48,6 +49,11 @@ namespace StoryTeller.Samples
         }
 
         public IObjectConverter BuildConverter()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
         {
             throw new NotImplementedException();
         }

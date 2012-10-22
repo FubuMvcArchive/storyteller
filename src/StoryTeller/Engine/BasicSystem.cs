@@ -9,6 +9,16 @@ namespace StoryTeller.Engine
     // TODO -- get tests around this thing.  Used heavy everyday already, but still
     public abstract class BasicSystem : ISystem
     {
+        public IExecutionContext CreateContext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Recycle()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual object Get(Type type)
         {
             if (type.IsConcreteWithDefaultCtor())
@@ -20,14 +30,6 @@ namespace StoryTeller.Engine
         }
 
         public virtual void RegisterServices(ITestContext context)
-        {
-        }
-
-        public virtual void SetupEnvironment()
-        {
-        }
-
-        public virtual void TeardownEnvironment()
         {
         }
 
@@ -62,6 +64,10 @@ namespace StoryTeller.Engine
         }
 
 
+        public void Dispose()
+        {
+            
+        }
     }
 
     public class DelegatingServiceLocator : IServiceLocator

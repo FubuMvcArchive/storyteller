@@ -81,7 +81,6 @@ namespace StoryTeller.Execution
 
             // TODO -- make this be async
             observer.RecordStatus("Setting up the environment");
-            _lifecycle.StartApplication();
 
             try
             {

@@ -8,7 +8,6 @@ namespace StoryTeller.Engine
     public class SystemLifecycle : IDisposable
     {
         private readonly ISystem _system;
-        private bool _environmentIsInitialized;
         private readonly object _locker = new object();
 
         public SystemLifecycle(ISystem system)
@@ -16,44 +15,13 @@ namespace StoryTeller.Engine
             _system = system;
         }
 
-        protected void ensureEnvironmentInitialized()
-        {
-            if (!_environmentIsInitialized)
-            {
-                lock (_locker)
-                {
-                    if (!_environmentIsInitialized)
-                    {
-                        _system.SetupEnvironment();
-                        _environmentIsInitialized = true;
-                    }
-                }
-            }
-        }
-
-        public void StartApplication()
-        {
-            ensureEnvironmentInitialized();
-        }
-
-        protected void tearDownEnvironment()
-        {
-            lock (_locker)
-            {
-                _system.TeardownEnvironment();
-                _environmentIsInitialized = false;
-            }
-        }
-
         public void RecycleEnvironment()
         {
-            tearDownEnvironment();
-            ensureEnvironmentInitialized();
+            _system.Recycle();
         }
 
         public void ExecuteContext(ITestContext context, Action action)
         {
-            ensureEnvironmentInitialized();
             _system.RegisterServices(context);
 
             try
@@ -77,7 +45,7 @@ namespace StoryTeller.Engine
 
         public void Dispose()
         {
-            tearDownEnvironment();
+            _system.Dispose();
         }
 
         public Func<Type, object> Resolver
@@ -86,11 +54,6 @@ namespace StoryTeller.Engine
             {
                 return t => _system.Get(t);
             }
-        }
-
-        public void SetupEnvironment()
-        {
-            _system.SetupEnvironment();
         }
 
         public void RegisterServices(ITestContext context)

@@ -1,15 +1,24 @@
 ﻿using System;
+using FubuCore;
+using FubuCore.Binding;
 using FubuCore.Conversion;
 using StructureMap;
 
 namespace StoryTeller.Engine
 {
-    public interface ISystem
+    public interface IExecutionContext : IDisposable
     {
+        IServiceLocator Services { get; }
+        BindingRegistry BindingRegistry { get; }
+    }
+
+    public interface ISystem : IDisposable
+    {
+        IExecutionContext CreateContext();
+        void Recycle();
+
         object Get(Type type);
         void RegisterServices(ITestContext context);
-        void SetupEnvironment();
-        void TeardownEnvironment();
         void Setup();
         void Teardown();
 

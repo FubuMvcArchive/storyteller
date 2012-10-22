@@ -19,6 +19,16 @@ namespace StoryTeller.Engine
             
         }
 
+        public IExecutionContext CreateContext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Recycle()
+        {
+            throw new NotImplementedException();
+        }
+
         public object Get(Type type)
         {
             throw new NotSupportedException("Get<T> is not supported by this ISystem:  " + GetType().FullName);
@@ -27,14 +37,6 @@ namespace StoryTeller.Engine
         public void RegisterServices(ITestContext context)
         {
             
-        }
-
-        public void SetupEnvironment()
-        {
-        }
-
-        public void TeardownEnvironment()
-        {
         }
 
         public void Setup()
@@ -53,6 +55,11 @@ namespace StoryTeller.Engine
         public IObjectConverter BuildConverter()
         {
             return new ObjectConverter();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }
