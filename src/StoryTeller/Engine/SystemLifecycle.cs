@@ -22,8 +22,6 @@ namespace StoryTeller.Engine
 
         public void ExecuteContext(ITestContext context, Action action)
         {
-            _system.RegisterServices(context);
-
             try
             {
                 _system.Setup();
@@ -54,11 +52,6 @@ namespace StoryTeller.Engine
             {
                 return t => _system.Get(t);
             }
-        }
-
-        public void RegisterServices(ITestContext context)
-        {
-            _system.RegisterServices(context);
         }
 
         public IObjectConverter BuildConverter()

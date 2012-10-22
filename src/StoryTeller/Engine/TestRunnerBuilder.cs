@@ -73,11 +73,6 @@ namespace StoryTeller.Engine
 
                 var context = new TestContext(container);
 
-                observer.RecordStatus("Setting up the system environment");
-
-                observer.RecordStatus("Registering the system services");
-                lifeCycle.RegisterServices(context);
-
                 observer.RecordStatus("Starting to read fixtures");
                 return builder.Build(context);
             }

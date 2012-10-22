@@ -20,14 +20,14 @@ namespace StoryTeller.Testing.Engine
 
     public class RecordingSystem : ISystem
     {
-        private readonly List<string> _messages = new List<string>();
+        private static readonly List<string> _messages = new List<string>();
 
         public void Record(string message)
         {
             _messages.Add(message);
         }
 
-        public string[] Messages
+        public static string[] Messages
         {
             get
             {
@@ -35,7 +35,7 @@ namespace StoryTeller.Testing.Engine
             }
         }
 
-        public void Clear()
+        public static void Clear()
         {
             _messages.Clear();
         }
@@ -54,12 +54,6 @@ namespace StoryTeller.Testing.Engine
         {
             var container = new Container(x => x.For<RecordingSystem>().Use(this));
             return container.GetInstance(type);
-        }
-
-        public void RegisterServices(ITestContext context)
-        {
-            Record("RegisterServices");
-            context.Store(this);
         }
 
         public void Setup()
@@ -130,16 +124,11 @@ namespace StoryTeller.Testing.Engine
 
     public class RecordingFixture : Fixture
     {
-        private readonly RecordingSystem _system;
 
-        public RecordingFixture(RecordingSystem system)
-        {
-            _system = system;
-        }
 
         public void Execute()
         {
-            _system.Record("Execute");
+            Retrieve<RecordingSystem>().Record("Execute");
         }        
     }
 
@@ -152,6 +141,8 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
+            RecordingSystem.Clear();
+
             var container = new Container(x =>
             {
                 x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
@@ -182,63 +173,40 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_call_setup_on_both_startup_actions()
         {
-            system.Messages.ShouldContain("Setup 1");
-            system.Messages.ShouldContain("Setup 2");
+            RecordingSystem.Messages.ShouldContain("Setup 1");
+            RecordingSystem.Messages.ShouldContain("Setup 2");
         }
 
         [Test]
         public void should_call_teardown_on_both_startup_actions()
         {
-            system.Messages.ShouldContain("Teardown 1");
-            system.Messages.ShouldContain("Teardown 2");
-        }
-
-        [Test]
-        public void should_register_services()
-        {
-            system.Messages.ShouldContain("RegisterServices");
+            RecordingSystem.Messages.ShouldContain("Teardown 1");
+            RecordingSystem.Messages.ShouldContain("Teardown 2");
         }
 
         [Test]
         public void should_setup_the_execution()
         {
-            system.Messages.ShouldContain("Setup");
+            RecordingSystem.Messages.ShouldContain("Setup");
         }
 
         [Test]
         public void should_have_executed_the_fixture()
         {
-            system.Messages.ShouldContain("Execute");
+            RecordingSystem.Messages.ShouldContain("Execute");
         }
 
         [Test]
         public void should_teardown_after_the_test()
         {
-            system.Messages.ShouldContain("Teardown");
-        }
-
-        [Test]
-        public void should_not_teardown_the_environment()
-        {
-            system.Messages.ShouldNotContain("TeardownEnvironment");
+            RecordingSystem.Messages.ShouldContain("Teardown");
         }
 
         [Test]
         public void should_do_the_steps_in_the_proper_order()
         {
-            system.Messages.Length.ShouldEqual(8);
 
-            system.Messages[0].ShouldEqual("RegisterServices");
-            system.Messages[1].ShouldEqual("Setup");
-            system.Messages[2].ShouldEqual("Setup 1");
-            system.Messages[3].ShouldEqual("Setup 2");
-
-
-            system.Messages[4].ShouldEqual("Execute");
-            system.Messages[5].ShouldEqual("Teardown 1");
-            system.Messages[6].ShouldEqual("Teardown 2");
-
-            system.Messages[7].ShouldEqual("Teardown");
+            RecordingSystem.Messages.ShouldHaveTheSameElementsAs("Setup", "Setup 1", "Setup 2", "Execute", "Teardown 1", "Teardown 2", "Teardown");
         }
     }
 
@@ -295,6 +263,8 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
+            RecordingSystem.Clear();
+
             var container = new Container(x =>
             {
                 x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
@@ -329,12 +299,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_do_the_steps_in_the_proper_order_and_not_repeat_SetupEnvironment()
         {
-            system.Messages.Length.ShouldEqual(4);
-
-            system.Messages[0].ShouldEqual("RegisterServices");
-            system.Messages[1].ShouldEqual("Setup");
-            system.Messages[2].ShouldEqual("Execute");
-            system.Messages[3].ShouldEqual("Teardown");
+            RecordingSystem.Messages.ShouldHaveTheSameElementsAs("Setup", "Execute", "Teardown");
         }
     }
 
@@ -348,6 +313,8 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
+            RecordingSystem.Clear();
+
             var container = new Container(x =>
             {
                 x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
@@ -376,19 +343,13 @@ namespace StoryTeller.Testing.Engine
                 TimeoutInSeconds = 1200
             });
 
-            system.Messages.Each(x => Debug.WriteLine(x));
+            RecordingSystem.Messages.Each(x => Debug.WriteLine(x));
         }
 
         [Test]
-        public void should_do_the_steps_in_the_proper_order_and_not_repeat_SetupEnvironment()
+        public void should_do_the_steps_in_the_proper_order()
         {
-            system.Messages.Length.ShouldEqual(5);
-
-            system.Messages[0].ShouldEqual("Recycle");
-            system.Messages[1].ShouldEqual("RegisterServices");
-            system.Messages[2].ShouldEqual("Setup");
-            system.Messages[3].ShouldEqual("Execute");
-            system.Messages[4].ShouldEqual("Teardown");
+            RecordingSystem.Messages.ShouldHaveTheSameElementsAs("Recycle", "Setup", "Execute", "Teardown");
         }
     }
 
@@ -426,7 +387,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void should_teardown_the_environment()
         {
-            system.Messages.ShouldHaveTheSameElementsAs("Dispose");
+            RecordingSystem.Messages.ShouldHaveTheSameElementsAs("Dispose");
         }
     }
     
@@ -492,10 +453,6 @@ namespace StoryTeller.Testing.Engine
         public object Get(Type type)
         {
             throw new NotImplementedException();
-        }
-
-        public void RegisterServices(ITestContext context)
-        {
         }
 
         public void Setup()

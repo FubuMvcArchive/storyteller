@@ -18,7 +18,6 @@ namespace StoryTeller.Engine
         void Recycle();
 
         object Get(Type type);
-        void RegisterServices(ITestContext context);
         void Setup();
         void Teardown();
 

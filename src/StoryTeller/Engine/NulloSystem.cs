@@ -34,11 +34,6 @@ namespace StoryTeller.Engine
             throw new NotSupportedException("Get<T> is not supported by this ISystem:  " + GetType().FullName);
         }
 
-        public void RegisterServices(ITestContext context)
-        {
-            
-        }
-
         public void Setup()
         {
         }

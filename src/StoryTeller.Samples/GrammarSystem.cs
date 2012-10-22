@@ -27,11 +27,6 @@ namespace StoryTeller.Samples
             throw new NotImplementedException();
         }
 
-        public void RegisterServices(ITestContext context)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public void Setup()
         {
