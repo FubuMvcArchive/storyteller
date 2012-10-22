@@ -46,12 +46,6 @@ namespace StoryTeller.Engine
         public static IContainer BuildFixtureContainer(ISystem system)
         {
             var container = new Container();
-            var rfc = system as IRequireFixtureContainer;
-            if( rfc != null )
-            {
-                rfc.ConfigureFixtureContainer(container);
-            }
-
             return container;
         }
 

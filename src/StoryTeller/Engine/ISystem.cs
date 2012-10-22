@@ -18,11 +18,6 @@ namespace StoryTeller.Engine
         IObjectConverter BuildConverter();
     }
 
-    public interface IRequireFixtureContainer
-    {
-        void ConfigureFixtureContainer(IContainer container);
-    }
-
     public static class SystemExtensions
     {
         public static T Get<T>(this ISystem system)
