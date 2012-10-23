@@ -1,14 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-
 using FubuCore;
-using FubuCore.Conversion;
-using FubuCore.Util;
 using StoryTeller.Model;
-using System.Linq;
-using StructureMap;
-using StructureMap.Query;
 
 namespace StoryTeller.Engine
 {
@@ -24,7 +17,7 @@ namespace StoryTeller.Engine
         private FixtureLibrary _library;
         private int _number = 1;
         private int _total;
-        
+
         public LibraryBuilder(IFixtureObserver observer)
         {
             _observer = observer;
@@ -32,11 +25,17 @@ namespace StoryTeller.Engine
             _library = new FixtureLibrary();
         }
 
-        public FixtureLibrary Library { get { return _library; } }
+        public FixtureLibrary Library
+        {
+            get { return _library; }
+        }
 
         #region IFixtureVisitor Members
 
-        public int FixtureCount { set { _total = value; } }
+        public int FixtureCount
+        {
+            set { _total = value; }
+        }
 
         public void ReadFixture(string fixtureName, IFixture fixture)
         {
@@ -49,8 +48,7 @@ namespace StoryTeller.Engine
             fixtureStructure.Description = fixture.Description;
             fixtureStructure.Label = fixture.Title.IsEmpty() ? fixtureName : fixture.Title;
 
-            fixture.Errors.Each(x =>
-            {
+            fixture.Errors.Each(x => {
                 x.Node = fixtureStructure;
                 fixtureStructure.LogError(x);
             });
@@ -63,7 +61,7 @@ namespace StoryTeller.Engine
             sendMessage(fixtureName);
 
             FixtureStructure fixtureStructure = _library.FixtureFor(fixtureName);
-            
+
             fixtureStructure.LogError(exception);
         }
 
@@ -96,19 +94,6 @@ namespace StoryTeller.Engine
 //                Name = x.ConcreteType.GetFixtureAlias(),
 //                Namespace = x.ConcreteType.Namespace
 //            }).ToArray();
-        }
-
-        private void readInstance(InstanceRef instance)
-        {
-            try
-            {
-                var fixture = instance.Get<IFixture>();
-                ReadFixture(instance.Name, fixture);
-            }
-            catch (Exception e)
-            {
-                LogFixtureFailure(instance.Name, e);
-            }
         }
 
         private void readGrammar(IGrammar grammar, FixtureStructure fixtureStructure, string key)

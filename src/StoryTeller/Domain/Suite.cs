@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using StoryTeller.Workspace;
-using StructureMap;
 
 namespace StoryTeller.Domain
 {
@@ -12,7 +10,6 @@ namespace StoryTeller.Domain
         private readonly List<Test> _tests = new List<Test>();
 
         // Testing only
-        [DefaultConstructor]
         public Suite()
             : this(Guid.NewGuid().ToString())
         {

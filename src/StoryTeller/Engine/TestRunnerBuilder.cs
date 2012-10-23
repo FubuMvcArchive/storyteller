@@ -1,16 +1,12 @@
 ﻿using System;
-using FubuCore.Conversion;
-using FubuCore.Util;
 using StoryTeller.Model;
-using StructureMap;
-using FubuCore;
 
 namespace StoryTeller.Engine
 {
     public class TestRunnerBuilder
     {
-        private readonly ISystem _system;
         private readonly IFixtureObserver _observer;
+        private readonly ISystem _system;
 
         public TestRunnerBuilder(ISystem system, IFixtureObserver observer)
         {
@@ -49,7 +45,6 @@ namespace StoryTeller.Engine
         // TODO -- remove the composite filter thing
         public static FixtureLibrary BuildLibrary(ISystem lifeCycle, IFixtureObserver observer)
         {
-
             throw new NotImplementedException();
 //            try
 //            {

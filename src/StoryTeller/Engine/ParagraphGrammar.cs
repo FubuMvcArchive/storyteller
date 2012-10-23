@@ -4,7 +4,7 @@ using System.Linq;
 using StoryTeller.Domain;
 using StoryTeller.DSL;
 using StoryTeller.Model;
-using StructureMap;
+
 
 namespace StoryTeller.Engine
 {
@@ -28,7 +28,7 @@ namespace StoryTeller.Engine
             Title(title);
         }
 
-        [DefaultConstructor]
+        
         public ParagraphGrammar(params IGrammar[] grammars)
         {
             _grammars.AddRange(grammars);

@@ -5,7 +5,7 @@ using FubuCore;
 using FubuCore.Util;
 using StoryTeller.Domain;
 using StoryTeller.Engine.Constraints;
-using StructureMap;
+
 
 namespace StoryTeller.Model
 {
@@ -41,7 +41,7 @@ namespace StoryTeller.Model
         private readonly Cache<string, GrammarStructure> _structures = new Cache<string, GrammarStructure>();
         private IPolicies _policies = new Policies();
 
-        [DefaultConstructor]
+        
         public FixtureStructure()
             : this(Guid.NewGuid().ToString())
         {

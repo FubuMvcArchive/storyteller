@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Reflection;
-using FubuCore.Conversion;
-using StructureMap;
 
 namespace StoryTeller.Engine
 {
     public class NulloSystem : ISystem
     {
+        #region ISystem Members
+
         public IExecutionContext CreateContext()
         {
             throw new NotImplementedException();
@@ -20,5 +19,7 @@ namespace StoryTeller.Engine
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }
