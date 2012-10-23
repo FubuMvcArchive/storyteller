@@ -14,8 +14,6 @@ namespace StoryTeller.Execution
         private string _testJson;
         private int _timeoutInSeconds;
 
-        public string[] StartupActions { get; set; }
-
         public TestExecutionRequest()
         {
             TimeoutInSeconds = 60;

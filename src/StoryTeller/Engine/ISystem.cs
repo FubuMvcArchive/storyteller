@@ -32,10 +32,5 @@ namespace StoryTeller.Engine
         {
             return (T)system.Get(typeof (T));
         }
-
-        public static IStartupAction GetAction(this ISystem system, Type type)
-        {
-            return (IStartupAction) system.Get(type);
-        }
     }
 }

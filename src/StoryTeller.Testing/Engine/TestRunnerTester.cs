@@ -82,45 +82,6 @@ namespace StoryTeller.Testing.Engine
         }
     }
 
-    public class Startup1Action : IStartupAction
-    {
-        private readonly RecordingSystem _system;
-
-        public Startup1Action(RecordingSystem system)
-        {
-            _system = system;
-        }
-
-        public void Startup(ITestContext context)
-        {
-           _system.Record("Setup 1");
-        }
-
-        public void Teardown(ITestContext context)
-        {
-            _system.Record("Teardown 1");
-        }
-    }
-
-    public class Startup2Action : IStartupAction
-    {
-        private readonly RecordingSystem _system;
-
-        public Startup2Action(RecordingSystem system)
-        {
-            _system = system;
-        }
-
-        public void Startup(ITestContext context)
-        {
-            _system.Record("Setup 2");
-        }
-
-        public void Teardown(ITestContext context)
-        {
-            _system.Record("Teardown 2");
-        }
-    }
 
     public class RecordingFixture : Fixture
     {
@@ -146,8 +107,6 @@ namespace StoryTeller.Testing.Engine
             var container = new Container(x =>
             {
                 x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
-                x.For<IStartupAction>().Add<Startup1Action>().Named("Startup1");
-                x.For<IStartupAction>().Add<Startup2Action>().Named("Startup2");
             });
             var registry = new FixtureRegistry();
             registry.AddFixture<RecordingFixture>();
@@ -164,24 +123,9 @@ namespace StoryTeller.Testing.Engine
             runner.RunTest(new TestExecutionRequest()
             {
                 Test = test,
-                TimeoutInSeconds = 1200,
-                StartupActions = new string[]{"Startup1", "Startup2"}
+                TimeoutInSeconds = 1200
             });
 
-        }
-
-        [Test]
-        public void should_call_setup_on_both_startup_actions()
-        {
-            RecordingSystem.Messages.ShouldContain("Setup 1");
-            RecordingSystem.Messages.ShouldContain("Setup 2");
-        }
-
-        [Test]
-        public void should_call_teardown_on_both_startup_actions()
-        {
-            RecordingSystem.Messages.ShouldContain("Teardown 1");
-            RecordingSystem.Messages.ShouldContain("Teardown 2");
         }
 
         [Test]
@@ -206,7 +150,7 @@ namespace StoryTeller.Testing.Engine
         public void should_do_the_steps_in_the_proper_order()
         {
 
-            RecordingSystem.Messages.ShouldHaveTheSameElementsAs("Setup", "Setup 1", "Setup 2", "Execute", "Teardown 1", "Teardown 2", "Teardown");
+            RecordingSystem.Messages.ShouldHaveTheSameElementsAs("Setup", "Execute", "Teardown");
         }
     }
 

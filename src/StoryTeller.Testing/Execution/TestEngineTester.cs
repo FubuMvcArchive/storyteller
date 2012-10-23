@@ -28,16 +28,6 @@ workspace1/test1,Success
             Services.Inject(stopConditions);
 
             ClassUnderTest.Project = new Project();
-            ClassUnderTest.Project.WorkspaceFor("workspace1").StartupActions = new string[]{"a", "b"};
-
-
-
-        }
-
-        [Test]
-        public void propogates_the_startup_actions_from_the_workspace_of_the_test_to_the_request()
-        {
-            ClassUnderTest.GetExecutionRequest(theTest).StartupActions.ShouldHaveTheSameElementsAs("a", "b");
         }
 
         [Test]

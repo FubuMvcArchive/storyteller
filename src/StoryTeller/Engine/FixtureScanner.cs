@@ -21,11 +21,6 @@ namespace StoryTeller.Engine
             {
                 registry.AddType(typeof(IFixture), type, type.GetFixtureAlias());
             }
-
-            if (type.IsConcreteAndAssignableTo(typeof(IStartupAction)))
-            {
-                registry.AddType(typeof(IStartupAction), type, type.Name.Replace("Action", string.Empty));
-            }
         }
     }
 }

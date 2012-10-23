@@ -64,6 +64,7 @@ namespace StoryTeller.Engine
             return new TestRunner(_system, library, source);
         }
 
+        // TODO -- remove the composite filter thing
         public static FixtureLibrary BuildLibrary(SystemLifecycle lifeCycle, IFixtureObserver observer, IContainer container, CompositeFilter<Type> filter)
         {
             try

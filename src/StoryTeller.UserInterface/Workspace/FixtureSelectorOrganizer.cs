@@ -29,11 +29,6 @@ namespace StoryTeller.UserInterface.Workspace
             return topLevels.ToArray(); 
         }
 
-        public IEnumerable<IStartupActionSelector> GetActionSelectors(FixtureLibrary library, WorkspaceFilter filter)
-        {
-            return library.StartupActions.Select(x => new StartupActionSelector(x, filter.StartupActions.Contains(x))).ToArray();
-        }
-
         private void selectNamespaces(Cache<string, NamespaceSelector> namespaces, WorkspaceFilter workspace)
         {
             workspace.Filters.Where(x => x.Type == FilterType.Namespace).Each(x => namespaces[x.Name].Select(true));

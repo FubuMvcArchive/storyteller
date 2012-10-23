@@ -35,8 +35,6 @@ namespace StoryTeller.Engine
 
     public interface ITestContext
     {
-        IEnumerable<Type> StartupActionTypes { get; }
-
         object CurrentObject { get; set; }
         IObjectConverter Finder { get; }
         bool Matches(object expected, object actual);
@@ -134,7 +132,6 @@ namespace StoryTeller.Engine
                 x.For<IServiceLocator>().Use<StructureMapServiceLocator>();
             });
 
-            StartupActionNames = new string[0];
 
             BackupResolver = t =>
             {
@@ -148,13 +145,6 @@ namespace StoryTeller.Engine
             : this(container, new Test("FAKE"), new TraceListener())
         {
         }
-
-        //public TestContext(Action<FixtureRegistry> action)
-        //    : this(FixtureRegistry.ContainerFor(action), new Test("FAKE"), new TraceListener())
-        //{
-        //}
-
-        public string[] StartupActionNames { get; set; }
 
         public IContainer Container
         {
@@ -354,11 +344,6 @@ namespace StoryTeller.Engine
             RevertFixture(exceptionTarget);
         }
 
-        public IEnumerable<Type> StartupActionTypes
-        {
-            get { return StartupActionNames.Select(x => GetStartupType(x)); }
-        }
-
         public object CurrentObject { get; set; }
 
         public void RunStep(IGrammar grammar, IStep step)
@@ -529,10 +514,6 @@ namespace StoryTeller.Engine
             }
         }
 
-        public Type GetStartupType(string name)
-        {
-            return _container.Model.For<IStartupAction>().Find(name).ConcreteType;
-        }
     }
 
     public class StructureMapServiceLocator : IServiceLocator

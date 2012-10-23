@@ -233,32 +233,7 @@ namespace StoryTeller.Testing.Engine
         }
     }
 
-    [TestFixture]
-    public class when_reading_startup_actions_into_the_library
-    {
-        private FixtureLibrary library;
 
-        [SetUp]
-        public void SetUp()
-        {
-            var builder = new LibraryBuilder(new NulloFixtureObserver(), new CompositeFilter<Type>());
-            var registry = new FixtureRegistry();
-            registry.AddFixturesFromAssemblyContaining<SetUserAction>();
-
-            var container = new Container();
-            registry.AddFixturesToContainer(container);
-            var context = new TestContext(container);
-
-
-            library = builder.Build(context);
-        }
-
-        [Test]
-        public void library_startup_action_names_should_include_the_names_of_the_registered_startup_actions()
-        {
-            library.StartupActions.ShouldHaveTheSameElementsAs("SetUser", "StartWebApp");
-        }
-    }
 
     [Tag("d", "e")]
     public class TagsFixture : Fixture

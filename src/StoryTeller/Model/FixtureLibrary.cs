@@ -63,7 +63,6 @@ namespace StoryTeller.Model
         }
 
         public FixtureDto[] AllFixtures { get; set; }
-        public string[] StartupActions { get; set; }
         public IEnumerable<FixtureGraph> ActiveFixtures { get { return _fixtures.OrderBy(x => x.Name); } }
 
         #region IFixtureNode Members

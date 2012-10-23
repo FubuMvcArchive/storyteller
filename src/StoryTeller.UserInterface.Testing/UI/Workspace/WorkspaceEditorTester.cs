@@ -14,7 +14,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Workspace
     public class when_building_the_screen : WorkspaceEditorContext
     {
         private List<NamespaceSelector> theSelectors;
-        private List<StartupActionSelector> actions;
 
         protected override void theContextIs()
         {
@@ -24,20 +23,8 @@ namespace StoryTeller.UserInterface.Testing.UI.Workspace
                 new NamespaceSelector("b"),
                 new NamespaceSelector("c")
             };
-
-            actions = new List<StartupActionSelector>()
-            {
-                new StartupActionSelector("a", true),
-                new StartupActionSelector("b", true),
-                new StartupActionSelector("c", true)
-            };
-
             MockFor<IFixtureSelectorOrganizer>().Expect(x => x.Organize(library, suite.Filter))
                 .Return(theSelectors);
-
-            MockFor<IFixtureSelectorOrganizer>().Expect(x => x.GetActionSelectors(library, suite.Filter))
-                .Return(actions);
-
             ClassUnderTest.BuildView();
         }
 
@@ -53,11 +40,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Workspace
             MockFor<IWorkspaceEditorView>().AssertWasCalled(x => x.ShowFixtureNamespaces(theSelectors));
         }
 
-        [Test]
-        public void should_put_all_the_action_selectors_into_the_viedw()
-        {
-            MockFor<IWorkspaceEditorView>().AssertWasCalled(x => x.ShowActionSelectors(actions));
-        }
     }
 
     [TestFixture]
@@ -69,8 +51,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Workspace
         private FixtureFilter _f4;
         private FixtureFilter _f5;
         private IFixtureSelector[] theSelectors;
-        private IStartupActionSelector[] theActionSelectors;
-
         protected override void theContextIs()
         {
             theSelectors = new IFixtureSelector[]
@@ -79,17 +59,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Workspace
                 MockRepository.GenerateMock<IFixtureSelector>(),
                 MockRepository.GenerateMock<IFixtureSelector>()
             };
-
-            theActionSelectors = new IStartupActionSelector[]
-            {
-                new StartupActionSelector("a", false), 
-                new StartupActionSelector("b", true), 
-                new StartupActionSelector("c", false), 
-                new StartupActionSelector("d", true)
-            };
-
-            ClassUnderTest.StartupActions = theActionSelectors;
-
             ClassUnderTest.Selectors = theSelectors;
 
             _f1 = FixtureFilter.Namespace("a");
@@ -104,12 +73,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Workspace
 
 
             ClassUnderTest.Save();
-        }
-
-        [Test]
-        public void should_find_all_the_selected_startup_actions()
-        {
-            suite.Filter.StartupActions.ShouldHaveTheSameElementsAs("b", "d");
         }
 
         [Test]

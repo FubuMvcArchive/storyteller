@@ -101,14 +101,7 @@ namespace StoryTeller.Execution
 
         public TestExecutionRequest GetExecutionRequest(Test test)
         {
-            var request = new TestExecutionRequest(test, _stopConditions);
-            string workspaceName = test.WorkspaceName;
-            if (workspaceName.IsNotEmpty())
-            {
-                request.StartupActions = Project.WorkspaceFor(workspaceName).StartupActions ?? new string[0];
-            }
-
-            return request;
+            return new TestExecutionRequest(test, _stopConditions);
         }
 
         public TestStopConditions StopConditions

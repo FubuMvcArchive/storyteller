@@ -26,14 +26,7 @@ namespace StoryTeller.Engine
             {
                 _system.Setup();
 
-                var startups = context.StartupActionTypes.Select(x => _system.GetAction(x));
-
-                startups.Each(x => x.Startup(context));
-
                 action();
-
-                // TODO -- this might need to go to system teardown
-                startups.Each(x => x.Teardown(context));
             }
             finally
             {

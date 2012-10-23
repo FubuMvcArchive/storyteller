@@ -60,9 +60,6 @@ namespace StoryTeller.UserInterface.Workspace
             Selectors = _organizer.Organize(_context.Library, _suite.Filter);
             _view.ShowFixtureNamespaces(Selectors);
 
-            StartupActions = _organizer.GetActionSelectors(_context.Library, _suite.Filter);
-            _view.ShowActionSelectors(StartupActions);
-
 
             RefreshUsages();
             _hasUpdatedView = true;
@@ -77,14 +74,12 @@ namespace StoryTeller.UserInterface.Workspace
             _view.ShowFixtureUsage(usageGraph.AllFixtures());
         }
 
-        public IEnumerable<IStartupActionSelector> StartupActions { get; set; }
 
         public IEnumerable<IFixtureSelector> Selectors { get; set; }
 
         public void Save()
         {
             _suite.Filter.Filters = Selectors.SelectMany(x => x.GetFilters()).ToArray();
-            _suite.Filter.StartupActions = StartupActions.Where(x => x.IsSelected()).Select(x => x.ActionName).ToArray();
 
             _controller.SaveWorkspace(_suite);
         }

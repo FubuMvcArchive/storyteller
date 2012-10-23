@@ -26,7 +26,6 @@ namespace StoryTeller.Engine
 
         public void Recycle()
         {
-            throw new NotImplementedException();
         }
 
         public object Get(Type type)

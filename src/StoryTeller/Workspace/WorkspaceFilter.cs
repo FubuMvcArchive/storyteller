@@ -18,31 +18,14 @@ namespace StoryTeller.Workspace
     {
         private readonly IList<FixtureFilter> _filters = new List<FixtureFilter>();
 
+        public WorkspaceFilter()
+        {
+        }
+
         public WorkspaceFilter(IEnumerable<WorkspaceFilter> workspaceFilters) : this()
         {
             _filters.AddRange(workspaceFilters.SelectMany(x => x.Filters));
         }
-
-        public WorkspaceFilter()
-        {
-            StartupActions = new string[0];
-        }
-
-        // Only here to make the XMl prettier
-        public StartupAction[] Actions
-        {
-            get
-            {
-                return (StartupActions ?? new string[0]).Select(x => new StartupAction() {Name = x}).ToArray();
-            }
-            set
-            {
-                StartupActions = value.Select(x => x.Name).ToArray();
-            }
-        }
-
-        [XmlIgnore]
-        public string[] StartupActions { get; set; }
 
         [XmlAttribute]
         public string Name { get; set; }

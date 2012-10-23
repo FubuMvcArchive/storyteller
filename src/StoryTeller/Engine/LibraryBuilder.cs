@@ -77,14 +77,8 @@ namespace StoryTeller.Engine
             _library = new FixtureLibrary();
 
             readFixtures(context);
-            readActions(context.Container);
 
             return _library;
-        }
-
-        private void readActions(IContainer container)
-        {
-            _library.StartupActions = container.Model.For<IStartupAction>().Instances.OrderBy(x => x.Name).Select(x => x.Name).ToArray();
         }
 
         private void readFixtures(TestContext context)
