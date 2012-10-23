@@ -35,11 +35,11 @@ namespace StoryTeller.Testing.Engine
     public class when_TestContext_is_building_a_fixture
     {
         [Test]
-        public void should_store_itself_on_the_fixture_as_the_fixture_context()
+        public void should_store_itself_on_the_fixture_as_the_test_context()
         {
             var context = new TestContext();
             var fixture = context.RetrieveFixture<SentenceFixture>();
-            fixture.ShouldBeOfType<SentenceFixture>().Fixtures.ShouldBeTheSameAs(context);
+            fixture.ShouldBeOfType<SentenceFixture>().Context.ShouldBeTheSameAs(context);
             
         }
     }

@@ -5,7 +5,7 @@ using StoryTeller.Model;
 namespace StoryTeller.Engine
 {
     [Description("Embeds a section of another Fixture")]
-    public class EmbeddedSectionGrammar<T> : IGrammar where T : IFixture
+    public class EmbeddedSectionGrammar<T> : IGrammar where T : IFixture, new()
     {
         private GrammarAction _before = (step, context) => { };
 

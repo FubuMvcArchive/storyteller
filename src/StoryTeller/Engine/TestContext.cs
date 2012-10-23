@@ -15,18 +15,6 @@ using StructureMap.Query;
 
 namespace StoryTeller.Engine
 {
-    public interface IFixtureContext
-    {
-        IGrammar FindGrammar(string grammarKey);
-        void LoadFixture(string fixtureKey, ITestPart part);
-        void LoadFixture(IFixture fixture, ITestPart part);
-        void LoadFixture<T>(ITestPart part) where T : IFixture;
-        void RevertFixture(ITestPart part);
-
-        IFixture RetrieveFixture<T>() where T : IFixture;
-        IFixture RetrieveFixture(string fixtureName);
-    }
-
     public interface IExceptionTarget
     {
         void CaptureException(string exceptionText);
@@ -48,7 +36,7 @@ namespace StoryTeller.Engine
         void IncrementExceptions();
         void IncrementSyntaxErrors();
 
-        void ExecuteWithFixture<T>(StepLeaf leaf, ITestPart exceptionTarget) where T : IFixture;
+        void ExecuteWithFixture<T>(StepLeaf leaf, ITestPart exceptionTarget) where T : IFixture, new();
         void RunStep(IGrammar grammar, IStep step);
 
         void PerformAction(IStep step, GrammarAction action);
@@ -59,6 +47,23 @@ namespace StoryTeller.Engine
         Counts Counts { get; }
         string TraceText { get; }
         void Trace(string text);
+
+
+
+
+
+
+        // TODO -- ISP anyone?
+        IGrammar FindGrammar(string grammarKey);
+        void LoadFixture(string fixtureKey, ITestPart part);
+        void LoadFixture(IFixture fixture, ITestPart part);
+        void LoadFixture<T>(ITestPart part) where T : IFixture, new();
+        void RevertFixture(ITestPart part);
+
+        IFixture RetrieveFixture<T>() where T : IFixture, new();
+        IFixture RetrieveFixture(string fixtureName);
+
+
     }
 
     public static class TestContextExtensions
@@ -92,11 +97,13 @@ namespace StoryTeller.Engine
         void LogFixtureFailure(string fixtureName, Exception exception);
     }
 
-    public class TestContext : ITestContext, ITestVisitor, IFixtureContext
+    public class TestContext : ITestContext, ITestVisitor
     {
         private readonly IContainer _container;
         private readonly Stack<IFixture> _fixtures = new Stack<IFixture>();
         private readonly Test _test;
+
+        [Obsolete]
         private bool _fixtureIsInvalid;
         private ITestObserver _listener;
         private IPrincipal _principal;
@@ -120,8 +127,8 @@ namespace StoryTeller.Engine
             _container.Configure(x =>
             {
                 x.For<IFixture>().AlwaysUnique();
-                x.For<IFixtureContext>().Use(this);
-                x.SetAllProperties(o => o.OfType<IFixtureContext>());
+                x.For<ITestContext>().Use(this);
+                x.SetAllProperties(o => o.OfType<ITestContext>());
 
                 // This is a fallback mechanism.  If the IObjectConverter is not explicitly registered somewhere else, this will be the default
                 if (!_container.Model.HasDefaultImplementationFor(typeof(IObjectConverter)))
@@ -157,6 +164,7 @@ namespace StoryTeller.Engine
 
         public Counts Counts { get { return _counts; } }
 
+        [Obsolete("KIll")]
         public IFixture CurrentFixture { get { return _fixtures.Peek(); } }
 
         public Test Test { get { return _test; } }
@@ -189,17 +197,17 @@ namespace StoryTeller.Engine
             _fixtureIsInvalid = false;
         }
 
-        public IFixture RetrieveFixture<T>() where T : IFixture
+        public IFixture RetrieveFixture<T>() where T : IFixture, new()
         {
-            // TEMP HACKERY!!!!
-            _container.Configure(x => x.For<T>().AlwaysUnique());
-
-            return _container.GetInstance<T>();
+            return new T {Context = this};
         }
 
         public IFixture RetrieveFixture(string fixtureName)
         {
-            return _container.GetInstance<IFixture>(fixtureName);
+            var fixture = _container.GetInstance<IFixture>(fixtureName);
+            fixture.Context = this;
+
+            return fixture;
         }
 
         public IGrammar FindGrammar(string grammarKey)
@@ -248,12 +256,9 @@ namespace StoryTeller.Engine
             }
         }
 
-        public void LoadFixture<T>(ITestPart part) where T : IFixture
+        public void LoadFixture<T>(ITestPart part) where T : IFixture, new()
         {
             var fixture = RetrieveFixture<T>();
-
-
-
             LoadFixture(fixture, part);
         }
 
@@ -335,7 +340,7 @@ namespace StoryTeller.Engine
             Counts.IncrementSyntaxErrors();
         }
 
-        public void ExecuteWithFixture<T>(StepLeaf leaf, ITestPart exceptionTarget) where T : IFixture
+        public void ExecuteWithFixture<T>(StepLeaf leaf, ITestPart exceptionTarget) where T : IFixture, new()
         {
             LoadFixture<T>(exceptionTarget);
 

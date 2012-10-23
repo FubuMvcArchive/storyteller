@@ -19,7 +19,7 @@ namespace StoryTeller.Testing.Engine.Importing
             fixture = new MathFixture();
             ClassUnderTest.FixtureName = "Math";
 
-            MockFor<IFixtureContext>().Stub(x => x.RetrieveFixture(ClassUnderTest.FixtureName)).Return(fixture);
+            MockFor<ITestContext>().Stub(x => x.RetrieveFixture(ClassUnderTest.FixtureName)).Return(fixture);
         }
 
         private IGrammar _grammar;
@@ -29,7 +29,7 @@ namespace StoryTeller.Testing.Engine.Importing
             {
                 if (_grammar == null)
                 {
-                    _grammar = ClassUnderTest.FindGrammar(MockFor<IFixtureContext>(), null);
+                    _grammar = ClassUnderTest.FindGrammar(MockFor<ITestContext>());
                 }
 
                 return _grammar;

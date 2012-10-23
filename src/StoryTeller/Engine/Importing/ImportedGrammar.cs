@@ -7,9 +7,9 @@ namespace StoryTeller.Engine.Importing
     public class ImportedGrammar : IGrammar
     {
         private readonly GrammarImport _import;
-        private readonly Func<IFixtureContext> _fixtureSource;
+        private readonly Func<ITestContext> _fixtureSource;
 
-        public ImportedGrammar(GrammarImport import, Func<IFixtureContext> fixtureSource)
+        public ImportedGrammar(GrammarImport import, Func<ITestContext> fixtureSource)
         {
             _import = import;
             _fixtureSource = fixtureSource;
@@ -28,7 +28,7 @@ namespace StoryTeller.Engine.Importing
         {
             if (_inner == null)
             {
-                _inner = _import.FindGrammar(_fixtureSource(), context);
+                _inner = _import.FindGrammar(context);
             }
 
             return _inner;

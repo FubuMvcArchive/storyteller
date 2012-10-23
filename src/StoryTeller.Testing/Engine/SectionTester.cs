@@ -81,7 +81,7 @@ namespace StoryTeller.Testing.Engine
         public void section_starts_the_new_fixture()
         {
             Section section = Section.For<StubFixture>();
-            var context = MockRepository.GenerateMock<IFixtureContext>();
+            var context = MockRepository.GenerateMock<ITestContext>();
 
             section.StartFixture(context);
 
@@ -92,7 +92,7 @@ namespace StoryTeller.Testing.Engine
         public void section_starts_the_new_fixture_on_execute_by_key()
         {
             var section = new Section("fixture1");
-            var context = MockRepository.GenerateMock<IFixtureContext>();
+            var context = MockRepository.GenerateMock<ITestContext>();
 
             section.StartFixture(context);
 

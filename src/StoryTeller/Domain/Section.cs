@@ -67,7 +67,7 @@ namespace StoryTeller.Domain
 
         #endregion
 
-        public static Section For<T>() where T : IFixture
+        public static Section For<T>() where T : IFixture, new()
         {
             var section = new Section();
             section._loader = new FixtureLoader<T>(section);
@@ -75,7 +75,7 @@ namespace StoryTeller.Domain
             return section;
         }
 
-        public static Section For<T>(IList<ITestPart> list) where T : IFixture
+        public static Section For<T>(IList<ITestPart> list) where T : IFixture, new()
         {
             Section section = For<T>();
             section._parts.AddRange(list);
@@ -83,7 +83,7 @@ namespace StoryTeller.Domain
             return section;
         }
 
-        public void StartFixture(IFixtureContext context)
+        public void StartFixture(ITestContext context)
         {
             _loader.LoadFixture(context);
         }
@@ -158,7 +158,7 @@ namespace StoryTeller.Domain
 
             #region FixtureLoader Members
 
-            public void LoadFixture(IFixtureContext context)
+            public void LoadFixture(ITestContext context)
             {
                 context.LoadFixture(_fixtureName, _section);
             }
@@ -177,11 +177,11 @@ namespace StoryTeller.Domain
 
         internal interface FixtureLoader
         {
-            void LoadFixture(IFixtureContext context);
+            void LoadFixture(ITestContext context);
             string GetName();
         }
 
-        internal class FixtureLoader<T> : FixtureLoader where T : IFixture
+        internal class FixtureLoader<T> : FixtureLoader where T : IFixture, new()
         {
             private readonly Section _section;
 
@@ -192,7 +192,7 @@ namespace StoryTeller.Domain
 
             #region FixtureLoader Members
 
-            public void LoadFixture(IFixtureContext context)
+            public void LoadFixture(ITestContext context)
             {
                 context.LoadFixture<T>(_section);
             }

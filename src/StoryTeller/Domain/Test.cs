@@ -184,7 +184,7 @@ namespace StoryTeller.Domain
         }
 
 
-        public Test Section<T>(Action<Section> action) where T : IFixture
+        public Test Section<T>(Action<Section> action) where T : IFixture, new()
         {
             Section section = Domain.Section.For<T>();
             _parts.Add(section);

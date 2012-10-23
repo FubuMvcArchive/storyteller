@@ -55,7 +55,7 @@ namespace StoryTeller.Testing.Engine
         {
         }
 
-        public void ExecuteWithFixture<T>(StepLeaf leaf, ITestPart exceptionTarget) where T : IFixture
+        public void ExecuteWithFixture<T>(StepLeaf leaf, ITestPart exceptionTarget) where T : IFixture, new()
         {
         }
 
@@ -103,6 +103,41 @@ namespace StoryTeller.Testing.Engine
         }
 
         public void Trace(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IGrammar FindGrammar(string grammarKey)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadFixture(string fixtureKey, ITestPart part)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadFixture(IFixture fixture, ITestPart part)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LoadFixture<T>(ITestPart part) where T : IFixture, new()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RevertFixture(ITestPart part)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IFixture RetrieveFixture<T>() where T : IFixture, new()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IFixture RetrieveFixture(string fixtureName)
         {
             throw new NotImplementedException();
         }

@@ -26,8 +26,6 @@ namespace StoryTeller.Engine
             typeof (Fixture)
         };
 
-        public IFixtureContext Fixtures { get; set; }
-
         private readonly List<GrammarError> _errors = new List<GrammarError>();
         private readonly Cache<string, IGrammar> _grammars = new Cache<string, IGrammar>();
         private readonly Policies _policies = new Policies();
@@ -289,7 +287,7 @@ namespace StoryTeller.Engine
 
 
         // TODO: tests!
-        public static EmbeddedSectionGrammar<T> Embed<T>(string label) where T : IFixture
+        public static EmbeddedSectionGrammar<T> Embed<T>(string label) where T : IFixture, new()
         {
             return new EmbeddedSectionGrammar<T>
             {
@@ -299,7 +297,7 @@ namespace StoryTeller.Engine
 
 
         // TODO: tests!
-        public static EmbeddedSectionGrammar<T> Inline<T>(string label) where T : IFixture
+        public static EmbeddedSectionGrammar<T> Inline<T>(string label) where T : IFixture, new()
         {
             return new EmbeddedSectionGrammar<T>
             {
@@ -308,7 +306,7 @@ namespace StoryTeller.Engine
             };
         }
 
-        public static EmbeddedSectionGrammar<T> Embed<T>(string label, string leafName) where T : IFixture
+        public static EmbeddedSectionGrammar<T> Embed<T>(string label, string leafName) where T : IFixture, new()
         {
             return new EmbeddedSectionGrammar<T>
             {
@@ -452,7 +450,7 @@ namespace StoryTeller.Engine
         public ImportedGrammar Import<T>(string grammarKey)
         {
             var import = GrammarImport.For<T>(grammarKey);
-            return new ImportedGrammar(import, () => Fixtures);
+            return new ImportedGrammar(import, () => Context);
         }
 
         #region Nested type: FactExpression
