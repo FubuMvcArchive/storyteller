@@ -27,11 +27,6 @@ namespace Examples
             return null;
         }
 
-//        public void RegisterServices(ITestContext context)
-//        {
-//            context.Store<IBrowserDriver>(new SeleniumBrowserDriver());
-//        }
-
         public void Setup()
         {
         }

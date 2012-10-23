@@ -89,9 +89,11 @@
     <Compile Include="Domain\PropertyError.cs" />
     <Compile Include="Domain\PropertyErrorCode.cs" />
     <Compile Include="Domain\TestExtensions.cs" />
+    <Compile Include="Engine\AssemblyResult.cs" />
     <Compile Include="Engine\BasicSystem.cs" />
     <Compile Include="Engine\CurriedLineGrammar.cs" />
     <Compile Include="Engine\ExtendsFixture.cs" />
+    <Compile Include="Engine\FixtureGraph.cs" />
     <Compile Include="Engine\Frame.cs" />
     <Compile Include="Engine\IFixtureContainerSource.cs" />
     <Compile Include="Engine\Importing\CurryAction.cs" />

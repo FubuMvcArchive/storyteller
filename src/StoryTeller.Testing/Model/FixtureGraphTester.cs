@@ -70,7 +70,7 @@ namespace StoryTeller.Testing.Model
     }
 
     [TestFixture]
-    public class FixtureGraph_implementation_of_FixtureNode
+    public class FixtureStructure_implementation_of_FixtureNode
     {
         [Test]
         public void combines_the_list_of_all_errors()

@@ -120,6 +120,7 @@
     <Compile Include="DSL\ObjectConstructionExpressionTester.cs" />
     <Compile Include="DSL\ObjectVerificationExpressionTester.cs" />
     <Compile Include="Engine\ActionGrammarTester.cs" />
+    <Compile Include="Engine\AssemblyResultTester.cs" />
     <Compile Include="Engine\AutoPerformingTestContext.cs" />
     <Compile Include="Engine\BooleanReturnTester.cs" />
     <Compile Include="Engine\CheckGrammarTester.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Engine\EquivalenceCheckerTester.cs" />
     <Compile Include="Engine\FactGrammarTester.cs" />
     <Compile Include="Engine\FixtureExtenderTester.cs" />
+    <Compile Include="Engine\FixtureGraphTester.cs" />
     <Compile Include="Engine\FixtureRegistryTester.cs" />
     <Compile Include="Engine\FixtureTester.cs" />
     <Compile Include="Engine\FrameTester.cs" />
@@ -227,6 +229,10 @@
     <Compile Include="Xml\XmlTestWritingTester.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Examples\Examples.csproj">
+      <Project>{B52EADC1-DDD4-452C-83ED-4A148302D424}</Project>
+      <Name>Examples</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StoryTeller.Samples\StoryTeller.Samples.csproj">
       <Project>{104DFFDD-2229-4F23-AE66-D8BC4AF622AB}</Project>
       <Name>StoryTeller.Samples</Name>
