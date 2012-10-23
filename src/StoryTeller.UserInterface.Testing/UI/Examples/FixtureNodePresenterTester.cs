@@ -8,11 +8,11 @@ namespace StoryTeller.UserInterface.Testing.UI.Examples
     [TestFixture]
     public class when_activating_the_fixture_node_presenter : InteractionContext<FixtureNodePresenter>
     {
-        private FixtureGraph fixture;
+        private FixtureStructure fixture;
 
         protected override void beforeEach()
         {
-            fixture = new FixtureGraph("Math");
+            fixture = new FixtureStructure("Math");
             Services.Inject<IFixtureNode>(fixture);
 
 

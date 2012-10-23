@@ -72,12 +72,12 @@ namespace StoryTeller.Testing.Workspace
                 Type = FilterType.Fixture
             };
 
-            var composite = new CompositeFilter<FixtureGraph>();
+            var composite = new CompositeFilter<FixtureStructure>();
             filter.Apply(composite);
 
-            composite.Matches(new FixtureGraph("Math")).ShouldBeTrue();
-            composite.Matches(new FixtureGraph("Math1")).ShouldBeFalse();
-            composite.Matches(new FixtureGraph("SomethingElse")).ShouldBeFalse();
+            composite.Matches(new FixtureStructure("Math")).ShouldBeTrue();
+            composite.Matches(new FixtureStructure("Math1")).ShouldBeFalse();
+            composite.Matches(new FixtureStructure("SomethingElse")).ShouldBeFalse();
 
         }
 
@@ -90,13 +90,13 @@ namespace StoryTeller.Testing.Workspace
                 Type = FilterType.Namespace
             };
 
-            var composite = new CompositeFilter<FixtureGraph>();
+            var composite = new CompositeFilter<FixtureStructure>();
             filter.Apply(composite);
 
-            composite.Matches(new FixtureGraph(){FixtureNamespace = "ST.Grammars"}).ShouldBeTrue();
-            composite.Matches(new FixtureGraph(){FixtureNamespace = "ST.Grammars.More"}).ShouldBeTrue();
-            composite.Matches(new FixtureGraph(){FixtureNamespace = "More.ST.Grammars.More"}).ShouldBeFalse();
-            composite.Matches(new FixtureGraph(){FixtureNamespace = "SomethingDifferent"}).ShouldBeFalse();
+            composite.Matches(new FixtureStructure(){FixtureNamespace = "ST.Grammars"}).ShouldBeTrue();
+            composite.Matches(new FixtureStructure(){FixtureNamespace = "ST.Grammars.More"}).ShouldBeTrue();
+            composite.Matches(new FixtureStructure(){FixtureNamespace = "More.ST.Grammars.More"}).ShouldBeFalse();
+            composite.Matches(new FixtureStructure(){FixtureNamespace = "SomethingDifferent"}).ShouldBeFalse();
         }
 
 

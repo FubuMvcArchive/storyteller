@@ -42,7 +42,7 @@ namespace StoryTeller.Engine
 
         public GrammarStructure ToStructure(FixtureLibrary library)
         {
-            FixtureGraph fixture = library.FixtureFor(typeof(T).GetFixtureAlias());
+            FixtureStructure fixture = library.FixtureFor(typeof(T).GetFixtureAlias());
             return new EmbeddedSection(fixture, Label, LeafName())
             {
                 Style = Style

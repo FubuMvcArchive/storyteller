@@ -150,7 +150,7 @@ namespace StoryTeller.Testing.Engine
         public void create_an_embeddedSection_grammar_structure()
         {
             var library = new FixtureLibrary();
-            FixtureGraph fixture = library.FixtureFor("Arithmetic");
+            FixtureStructure fixture = library.FixtureFor("Arithmetic");
 
             var grammar = new EmbeddedSectionGrammar<ArithmeticFixture>
             {
@@ -235,7 +235,7 @@ namespace StoryTeller.Testing.Engine
         public void should_copy_the_style_from_the_grammar()
         {
             var library = new FixtureLibrary();
-            FixtureGraph fixture = library.FixtureFor("Arithmetic");
+            FixtureStructure fixture = library.FixtureFor("Arithmetic");
 
             var grammar = new EmbeddedSectionGrammar<ArithmeticFixture>
             {

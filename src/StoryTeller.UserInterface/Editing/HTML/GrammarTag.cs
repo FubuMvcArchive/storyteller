@@ -32,7 +32,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
         public void AddDeleteLink()
         {
-            FixtureGraph fixture = _grammar.Parent;
+            FixtureStructure fixture = _grammar.Parent;
             var link = new RemoveLinkTag(fixture);
 
 

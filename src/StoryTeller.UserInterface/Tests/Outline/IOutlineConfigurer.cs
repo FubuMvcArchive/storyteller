@@ -13,7 +13,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         void ConfigureRearrangeCommands(OutlineNode node, IPartHolder holder, ITestPart part);
         
         // ALT-INS opens the add step / comment dialog -- just let it stay open until closed
-        void ConfigurePartAdders(OutlineNode node, FixtureGraph fixture, IPartHolder holder);
+        void ConfigurePartAdders(OutlineNode node, FixtureStructure fixture, IPartHolder holder);
         void WriteSentenceText(OutlineNode node, Sentence sentence, IStep step);
         void ConfigureSectionAdder(OutlineNode node, FixtureLibrary library, Test test);
     }

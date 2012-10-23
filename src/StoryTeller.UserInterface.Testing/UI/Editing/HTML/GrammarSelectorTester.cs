@@ -23,7 +23,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void close_should_appear_in_the_html_for_a_multiple_selection_fixture()
         {
-            var fixture = new FixtureGraph("Math");
+            var fixture = new FixtureStructure("Math");
             fixture.Policies.SelectionMode = SelectionMode.Any;
 
             new GrammarSelector(fixture).Build().ToString().ShouldContain(GrammarConstants.CLOSE);
@@ -32,7 +32,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void close_should_not_appear_in_the_html_for_a_single_selection_fixture()
         {
-            var fixture = new FixtureGraph("Math");
+            var fixture = new FixtureStructure("Math");
             fixture.Policies.SelectionMode = SelectionMode.Single;
 
             new GrammarSelector(fixture).Build().ToString().ShouldNotContain(GrammarConstants.CLOSE);
@@ -41,7 +41,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void required_should_appear_in_the_html_for_a_single_selection_fixture()
         {
-            var fixture = new FixtureGraph("Math");
+            var fixture = new FixtureStructure("Math");
             fixture.Policies.SelectionMode = SelectionMode.Single;
 
             new GrammarSelector(fixture).Build().ToString().ShouldContain(GrammarConstants.REQUIRED);
@@ -50,7 +50,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void required_should_not_appear_in_the_html_for_a_multiple_selection_fixture()
         {
-            var fixture = new FixtureGraph("Math");
+            var fixture = new FixtureStructure("Math");
             fixture.Policies.SelectionMode = SelectionMode.Any;
 
             new GrammarSelector(fixture).Build().ToString().ShouldNotContain(GrammarConstants.REQUIRED);
@@ -59,7 +59,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void should_add_tagging_ability_if_graph_is_not_a_fixture()
         {
-            IFixtureGraph fixture = MockRepository.GenerateMock<IFixtureGraph>();
+            IFixtureStructure fixture = MockRepository.GenerateMock<IFixtureStructure>();
             IPolicies policies = MockRepository.GenerateMock<IPolicies>();
             IEnumerable<GrammarStructure> grammars = new List<GrammarStructure>();
             fixture.Stub(x => x.IsAFixture()).Return(false);
@@ -71,7 +71,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void should_not_add_tagging_ability_if_graph_is_a_fixture()
         {
-            IFixtureGraph fixture = MockRepository.GenerateMock<IFixtureGraph>();
+            IFixtureStructure fixture = MockRepository.GenerateMock<IFixtureStructure>();
             IPolicies policies = MockRepository.GenerateMock<IPolicies>();
             IEnumerable<GrammarStructure> grammars = new List<GrammarStructure>();
             fixture.Stub(x => x.IsAFixture()).Return(true);

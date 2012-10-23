@@ -10,10 +10,10 @@ namespace StoryTeller.UserInterface.Editing.HTML
 {
     public class FixtureTag : HtmlTag, IGrammarVisitor
     {
-        private readonly FixtureGraph _fixture;
+        private readonly FixtureStructure _fixture;
         private readonly Stack<GrammarTag> _grammarTags = new Stack<GrammarTag>();
 
-        public FixtureTag(FixtureGraph fixture)
+        public FixtureTag(FixtureStructure fixture)
             : base("div")
         {
             Id(fixture.Name);
@@ -25,7 +25,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             fixture.TopLevelGrammars().Each(writeGrammar);
         }
 
-        public FixtureGraph Fixture { get { return _fixture; } }
+        public FixtureStructure Fixture { get { return _fixture; } }
 
         private GrammarTag grammarTag { get { return _grammarTags.Peek(); } }
 

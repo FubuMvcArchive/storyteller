@@ -6,7 +6,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
 {
     public class HolderTag : HtmlTag
     {
-        public HolderTag(FixtureGraph fixture)
+        public HolderTag(FixtureStructure fixture)
             : base("div")
         {
             Add("div").AddClass(GrammarConstants.STEP_HOLDER);

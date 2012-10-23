@@ -78,7 +78,7 @@ namespace StoryTeller.UserInterface
             For<Paragraph>().Use(c => new Paragraph());
             For<Comment>().Use(c => new Comment());
             For<SetVerification>().Use(c => new SetVerification());
-            For<FixtureGraph>().Use(c => new FixtureGraph());
+            For<FixtureStructure>().Use(c => new FixtureStructure());
             For<ITestFilter>().Use<TestFilter>();
             For<WorkspaceSuite>().Use(c => new WorkspaceSuite("something"));
 

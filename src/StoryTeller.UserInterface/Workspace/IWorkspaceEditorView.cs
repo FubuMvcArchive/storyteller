@@ -6,6 +6,6 @@ namespace StoryTeller.UserInterface.Workspace
     public interface IWorkspaceEditorView
     {
         void ShowFixtureNamespaces(IEnumerable<IFixtureSelector> selectors);
-        void ShowFixtureUsage(IEnumerable<FixtureGraph> fixtures);
+        void ShowFixtureUsage(IEnumerable<FixtureStructure> fixtures);
     }
 }

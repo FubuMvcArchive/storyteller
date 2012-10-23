@@ -33,10 +33,10 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
     public class GrammarSelector : IGrammarVisitor, ISentenceVisitor
     {
-        private readonly IFixtureGraph _fixture;
+        private readonly IFixtureStructure _fixture;
         private SelectorLinkTag _link;
 
-        public GrammarSelector(IFixtureGraph fixture)
+        public GrammarSelector(IFixtureStructure fixture)
         {
             _fixture = fixture;
         }

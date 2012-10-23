@@ -146,7 +146,7 @@ namespace StoryTeller.Testing.Model
         {
             GrammarAndStep<EmbeddedSection> context = runStep<EmbeddedSection>(x =>
             {
-                x.Fixture = new FixtureGraph("embedded");
+                x.Fixture = new FixtureStructure("embedded");
                 x.LeafName = "leaf";
             });
 
@@ -157,7 +157,7 @@ namespace StoryTeller.Testing.Model
         [Test]
         public void relay_to_the_stream_when_the_new_section_can_be_found()
         {
-            FixtureGraph fixture = library.FixtureFor("Existing");
+            FixtureStructure fixture = library.FixtureFor("Existing");
             var section = new Section(fixture.Name);
 
             parser.As<ITestVisitor>().StartSection(section);

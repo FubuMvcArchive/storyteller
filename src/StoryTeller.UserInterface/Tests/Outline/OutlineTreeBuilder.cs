@@ -117,7 +117,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
             });
         }
 
-        public void StartSection(Section section, FixtureGraph fixture)
+        public void StartSection(Section section, FixtureStructure fixture)
         {
             withNewNode(section, Icon.Section, node =>
             {

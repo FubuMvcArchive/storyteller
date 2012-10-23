@@ -37,11 +37,11 @@ namespace StoryTeller.Usages
 
     public class FixtureUsage
     {
-        private readonly FixtureGraph _fixture;
+        private readonly FixtureStructure _fixture;
         private readonly IList<Test> _tests = new List<Test>();
         private readonly IList<GrammarUsage> _grammars = new List<GrammarUsage>();
 
-        public FixtureUsage(FixtureGraph fixture)
+        public FixtureUsage(FixtureStructure fixture)
         {
             _fixture = fixture;
         }
@@ -60,7 +60,7 @@ namespace StoryTeller.Usages
             });
         }
 
-        public FixtureGraph Fixture
+        public FixtureStructure Fixture
         {
             get { return _fixture; }
         }

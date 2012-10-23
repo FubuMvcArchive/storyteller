@@ -8,14 +8,14 @@ namespace StoryTeller.Model
     public class EmbeddedSection : GrammarStructure, IEmbeddedGrammar
     {
         private readonly string _label;
-        private FixtureGraph _fixture;
+        private FixtureStructure _fixture;
         private string _leafName;
 
         public EmbeddedSection()
         {
         }
 
-        public EmbeddedSection(FixtureGraph fixture, string label, string leafName)
+        public EmbeddedSection(FixtureStructure fixture, string label, string leafName)
         {
             Name = label;
             _fixture = fixture;
@@ -26,7 +26,7 @@ namespace StoryTeller.Model
 
         public string LeafName { get { return _leafName; } set { _leafName = value; } }
 
-        public FixtureGraph Fixture { get { return _fixture; } set { _fixture = value; } }
+        public FixtureStructure Fixture { get { return _fixture; } set { _fixture = value; } }
 
         #region IEmbeddedGrammar Members
 

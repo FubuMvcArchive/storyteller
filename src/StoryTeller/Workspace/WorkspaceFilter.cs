@@ -61,9 +61,9 @@ namespace StoryTeller.Workspace
             return filter;
         }
 
-        public CompositeFilter<FixtureGraph> CreateFixtureFilter()
+        public CompositeFilter<FixtureStructure> CreateFixtureFilter()
         {
-            var filter = new CompositeFilter<FixtureGraph>();
+            var filter = new CompositeFilter<FixtureStructure>();
 
             _filters.Each(x => x.Apply(filter));
 

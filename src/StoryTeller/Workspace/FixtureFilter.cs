@@ -32,7 +32,7 @@ namespace StoryTeller.Workspace
             }
         }
 
-        public void Apply(CompositeFilter<FixtureGraph> filter)
+        public void Apply(CompositeFilter<FixtureStructure> filter)
         {
             switch (Type)
             {

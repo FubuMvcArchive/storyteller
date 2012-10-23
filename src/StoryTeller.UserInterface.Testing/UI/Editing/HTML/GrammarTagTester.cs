@@ -25,7 +25,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
             var sentence = new Sentence
             {
                 Name = "ThisGrammar",
-                Parent = new FixtureGraph()
+                Parent = new FixtureStructure()
             };
 
             var tag = new GrammarTag(sentence);
@@ -40,7 +40,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
             var sentence = new Sentence
             {
                 Name = "ThisGrammar",
-                Parent = new FixtureGraph()
+                Parent = new FixtureStructure()
             };
 
             var tag = new GrammarTag(sentence);

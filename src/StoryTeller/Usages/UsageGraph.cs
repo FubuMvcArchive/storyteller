@@ -46,7 +46,7 @@ namespace StoryTeller.Usages
             return _fixtures[name];
         }
 
-        public IEnumerable<FixtureGraph> FixturesFor(string workspaceName)
+        public IEnumerable<FixtureStructure> FixturesFor(string workspaceName)
         {
             return _fixtures.GetAll().Where(x => x.HasUsageInWorkspace(workspaceName)).Distinct().Select(x => x.Fixture);
         }
@@ -76,9 +76,9 @@ namespace StoryTeller.Usages
             ForFixture(section.FixtureName).Mark(_currentTest);
         }
 
-        private readonly Stack<FixtureGraph> _fixtureStack = new Stack<FixtureGraph>();
+        private readonly Stack<FixtureStructure> _fixtureStack = new Stack<FixtureStructure>();
 
-        void ITestStream.StartSection(Section section, FixtureGraph fixture)
+        void ITestStream.StartSection(Section section, FixtureStructure fixture)
         {
             ForFixture(section.FixtureName).Mark(_currentTest);
             _fixtureStack.Push(fixture);
@@ -158,7 +158,7 @@ namespace StoryTeller.Usages
             Rebuild(hierarchy.GetAllTests());
         }
 
-        public IEnumerable<FixtureGraph> AllFixtures()
+        public IEnumerable<FixtureStructure> AllFixtures()
         {
             return _fixtures.GetAll().Select(x => x.Fixture);
         }

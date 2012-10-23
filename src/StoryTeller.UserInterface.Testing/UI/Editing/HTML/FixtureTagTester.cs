@@ -16,12 +16,12 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [SetUp]
         public void SetUp()
         {
-            fixture = new FixtureGraph("Math");
+            fixture = new FixtureStructure("Math");
         }
 
         #endregion
 
-        private FixtureGraph fixture;
+        private FixtureStructure fixture;
 
 
         [Test]
@@ -74,7 +74,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
                 Name = "Something"
             };
 
-            var fixture = new FixtureGraph("Math");
+            var fixture = new FixtureStructure("Math");
             fixture.Policies.Tag(sentence.Name, "abc");
             fixture.Policies.Tag(sentence.Name, "def");
             fixture.Policies.Tag(Guid.NewGuid().ToString(), "tuv");
@@ -130,7 +130,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
 
         #endregion
 
-        private FixtureGraph fixture;
+        private FixtureStructure fixture;
         private FixtureTag fixtureTag;
 
         private GrammarTag grammarTagFor(string key)

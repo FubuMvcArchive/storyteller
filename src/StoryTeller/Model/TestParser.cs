@@ -8,7 +8,7 @@ namespace StoryTeller.Model
         void Tags(Tags tags);
         void Comment(Comment comment);
         void InvalidSection(Section section);
-        void StartSection(Section section, FixtureGraph fixture);
+        void StartSection(Section section, FixtureStructure fixture);
         void EndSection(Section section);
         void Sentence(Sentence sentence, IStep step);
         void InvalidGrammar(string grammarKey, IStep step);
@@ -26,7 +26,7 @@ namespace StoryTeller.Model
 
     public class TestParser : ITestVisitor, IGrammarVisitor
     {
-        private readonly Stack<FixtureGraph> _fixtureStack = new Stack<FixtureGraph>();
+        private readonly Stack<FixtureStructure> _fixtureStack = new Stack<FixtureStructure>();
         private readonly FixtureLibrary _library;
         private readonly ITestStream _stream;
         private readonly Test _test;
@@ -39,7 +39,7 @@ namespace StoryTeller.Model
             _library = library;
         }
 
-        private FixtureGraph currentFixture { get { return _fixtureStack.Peek(); } }
+        private FixtureStructure currentFixture { get { return _fixtureStack.Peek(); } }
 
         private bool isLatched { get { return _latchedSection != null; } }
 
@@ -130,7 +130,7 @@ namespace StoryTeller.Model
 
             if (_library.HasFixture(fixtureName))
             {
-                FixtureGraph fixture = _library.FixtureFor(fixtureName);
+                FixtureStructure fixture = _library.FixtureFor(fixtureName);
                 _fixtureStack.Push(fixture);
                 _stream.StartSection(section, fixture);
             }

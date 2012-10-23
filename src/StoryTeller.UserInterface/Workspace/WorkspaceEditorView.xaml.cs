@@ -33,7 +33,7 @@ namespace StoryTeller.UserInterface.Workspace
             selectors.Each(x => fixtureSelectors.Children.Add((UIElement)x));
         }
 
-        public void ShowFixtureUsage(IEnumerable<FixtureGraph> fixtures)
+        public void ShowFixtureUsage(IEnumerable<FixtureStructure> fixtures)
         {
             fixtureUsages.Children.Clear();
             fixtures.Each(x =>

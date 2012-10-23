@@ -44,29 +44,29 @@ namespace StoryTeller.Engine
         {
             sendMessage(fixtureName);
 
-            FixtureGraph fixtureGraph = _library.FixtureFor(fixtureName);
-            fixtureGraph.FixtureClassName = fixture.GetType().FullName;
-            fixtureGraph.FixtureNamespace = fixture.GetType().Namespace;
-            fixtureGraph.Policies = fixture.Policies;
-            fixtureGraph.Description = fixture.Description;
-            fixtureGraph.Label = fixture.Title.IsEmpty() ? fixtureName : fixture.Title;
+            FixtureStructure fixtureStructure = _library.FixtureFor(fixtureName);
+            fixtureStructure.FixtureClassName = fixture.GetType().FullName;
+            fixtureStructure.FixtureNamespace = fixture.GetType().Namespace;
+            fixtureStructure.Policies = fixture.Policies;
+            fixtureStructure.Description = fixture.Description;
+            fixtureStructure.Label = fixture.Title.IsEmpty() ? fixtureName : fixture.Title;
 
             fixture.Errors.Each(x =>
             {
-                x.Node = fixtureGraph;
-                fixtureGraph.LogError(x);
+                x.Node = fixtureStructure;
+                fixtureStructure.LogError(x);
             });
 
-            fixture.ForEachGrammar((key, grammar) => readGrammar(grammar, fixtureGraph, key));
+            fixture.ForEachGrammar((key, grammar) => readGrammar(grammar, fixtureStructure, key));
         }
 
         public void LogFixtureFailure(string fixtureName, Exception exception)
         {
             sendMessage(fixtureName);
 
-            FixtureGraph fixtureGraph = _library.FixtureFor(fixtureName);
+            FixtureStructure fixtureStructure = _library.FixtureFor(fixtureName);
             
-            fixtureGraph.LogError(exception);
+            fixtureStructure.LogError(exception);
         }
 
         #endregion
@@ -113,12 +113,12 @@ namespace StoryTeller.Engine
             }
         }
 
-        private void readGrammar(IGrammar grammar, FixtureGraph fixtureGraph, string key)
+        private void readGrammar(IGrammar grammar, FixtureStructure fixtureStructure, string key)
         {
             GrammarStructure structure = grammar.ToStructure(_library);
             structure.Description = grammar.Description;
 
-            fixtureGraph.AddStructure(key, structure);
+            fixtureStructure.AddStructure(key, structure);
         }
 
         private void sendMessage(string fixtureName)

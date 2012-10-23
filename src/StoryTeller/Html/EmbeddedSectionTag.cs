@@ -9,10 +9,10 @@ namespace StoryTeller.Html
     public class SectionTag : HtmlTag
     {
         private readonly Section _section;
-        private readonly FixtureGraph _fixture;
+        private readonly FixtureStructure _fixture;
         private readonly HtmlTag _body;
 
-        public SectionTag(Section section, FixtureGraph fixture)
+        public SectionTag(Section section, FixtureStructure fixture)
             : base("div")
         {
             _section = section;

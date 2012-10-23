@@ -18,8 +18,8 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            FixtureGraph fixtureGraph = TestRunnerBuilder.ForFixture<MathFixture>().Library.FixtureFor("Math");
-            section = fixtureGraph.CreateExample();
+            FixtureStructure fixtureStructure = TestRunnerBuilder.ForFixture<MathFixture>().Library.FixtureFor("Math");
+            section = fixtureStructure.CreateExample();
         }
 
         #endregion
@@ -75,7 +75,7 @@ namespace StoryTeller.Testing.Model
         [Test]
         public void combines_the_list_of_all_errors()
         {
-            var graph = new FixtureGraph("Math");
+            var graph = new FixtureStructure("Math");
             graph.AddStructure("key1", new StubGrammarStructure().AddError("error1"));
             graph.AddStructure("key2", new StubGrammarStructure().AddError("error1").AddError("error 2"));
 
@@ -91,7 +91,7 @@ namespace StoryTeller.Testing.Model
             section.AddStep("step2");
             section.AddStep("step3");
 
-            new FixtureGraph("Math").ModifyExampleTest(template);
+            new FixtureStructure("Math").ModifyExampleTest(template);
             template.Parts.Count.ShouldEqual(1);
             template.Parts[0].ShouldBeOfType<Section>();
         }
@@ -99,7 +99,7 @@ namespace StoryTeller.Testing.Model
         [Test]
         public void Title()
         {
-            new FixtureGraph("Math").Label.ShouldEqual("Math");
+            new FixtureStructure("Math").Label.ShouldEqual("Math");
         }
     }
 
@@ -112,7 +112,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            fixture = new FixtureGraph();
+            fixture = new FixtureStructure();
             fixture.AddStructure("Hidden1", new Sentence());
             fixture.AddStructure("Hidden2", new Sentence());
             fixture.AddStructure("NotHidden3", new Sentence());
@@ -127,7 +127,7 @@ namespace StoryTeller.Testing.Model
 
         #endregion
 
-        private FixtureGraph fixture;
+        private FixtureStructure fixture;
 
         [Test]
         public void the_possible_grammars_should_not_include_the_hidden_grammars()
@@ -154,21 +154,21 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            graph = new FixtureGraph("something");
+            fixtureStructure = new FixtureStructure("something");
             structure = new StubGrammarStructure();
 
-            graph.AddStructure("grammar1", structure);
+            fixtureStructure.AddStructure("grammar1", structure);
         }
 
         #endregion
 
-        private FixtureGraph graph;
+        private FixtureStructure fixtureStructure;
         private StubGrammarStructure structure;
 
         [Test]
         public void puts_the_graph_into_the_parent_property_of_the_grammar()
         {
-            structure.Parent.ShouldBeTheSameAs(graph);
+            structure.Parent.ShouldBeTheSameAs(fixtureStructure);
         }
 
         [Test]
@@ -195,7 +195,7 @@ namespace StoryTeller.Testing.Model
             var structure = new StubGrammarStructure
             {
                 Name = "MultiplyBy",
-                Parent = new FixtureGraph("Math")
+                Parent = new FixtureStructure("Math")
             };
             structure.ModifyExampleTest(test);
 
@@ -212,7 +212,7 @@ namespace StoryTeller.Testing.Model
             var structure = new StubGrammarStructure
             {
                 Name = "grammar1",
-                Parent = new FixtureGraph("fixture1")
+                Parent = new FixtureStructure("fixture1")
             };
             structure.GetPath().Locator.ShouldEqual("fixture1/grammar1");
         }
@@ -233,7 +233,7 @@ namespace StoryTeller.Testing.Model
             new StubGrammarStructure
             {
                 Name = "Grammar1",
-                Parent = new FixtureGraph("Math")
+                Parent = new FixtureStructure("Math")
             }.Label.ShouldEqual(
                 "Grammar1");
         }

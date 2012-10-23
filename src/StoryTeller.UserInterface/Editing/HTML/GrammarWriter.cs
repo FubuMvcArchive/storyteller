@@ -19,7 +19,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
         {
             _top = new DivTag(GrammarConstants.FIXTURE_SELECTOR).Hide();
 
-            FixtureGraph topFixture = _library.BuildTopLevelGraph();
+            FixtureStructure topFixture = _library.BuildTopLevelGraph();
             var topFixtureNode = writeFixture(topFixture);
             topFixtureNode.Children.Each(x => x.AddClass("top-node"));
 
@@ -28,7 +28,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
             return _top;
         }
 
-        private FixtureTag writeFixture(FixtureGraph fixture)
+        private FixtureTag writeFixture(FixtureStructure fixture)
         {
             _fixtureTag = new FixtureTag(fixture);
             _top.Append(_fixtureTag);

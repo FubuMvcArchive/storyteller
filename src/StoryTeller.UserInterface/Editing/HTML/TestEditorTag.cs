@@ -22,7 +22,7 @@ namespace StoryTeller.UserInterface.Editing.HTML
 
             _container = Add("div").AddClasses("container", HtmlClasses.SECTION, "test-editor");
 
-            FixtureGraph fixture = library.BuildTopLevelGraph();
+            FixtureStructure fixture = library.BuildTopLevelGraph();
 
             HtmlTag holder = new HolderTag(fixture).AddClass("top-level-holder");
             holder.Children.Last().Render(false);

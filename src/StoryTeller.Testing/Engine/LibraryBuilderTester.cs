@@ -109,7 +109,7 @@ namespace StoryTeller.Testing.Engine
             var exception = new NotImplementedException();
             builder.LogFixtureFailure("bad fixture", exception);
 
-            FixtureGraph fixture = builder.Library.FixtureFor("bad fixture");
+            FixtureStructure fixture = builder.Library.FixtureFor("bad fixture");
 
             fixture.AllErrors().Count().ShouldEqual(1);
 
@@ -150,10 +150,10 @@ namespace StoryTeller.Testing.Engine
 
             builder.ReadFixture("GrammarError", fixture);
 
-            FixtureGraph fixtureGraph = builder.Library.FixtureFor("GrammarError");
-            fixtureGraph.AllErrors().Count().ShouldEqual(2);
+            FixtureStructure fixtureStructure = builder.Library.FixtureFor("GrammarError");
+            fixtureStructure.AllErrors().Count().ShouldEqual(2);
 
-            fixtureGraph.AllErrors().Each(x => x.Node.ShouldEqual(fixtureGraph));
+            fixtureStructure.AllErrors().Each(x => x.Node.ShouldEqual(fixtureStructure));
         }
 
         [Test]
@@ -208,7 +208,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void fixture_graph_should_have_the_policies_from_the_original_fixture()
         {
-            FixtureGraph fixture = library.FixtureFor(typeof (FixtureWithHiddenGrammarsFixture).GetFixtureAlias());
+            FixtureStructure fixture = library.FixtureFor(typeof (FixtureWithHiddenGrammarsFixture).GetFixtureAlias());
 
             fixture.Policies.IsHidden("Hidden1").ShouldBeTrue();
             fixture.Policies.IsHidden("Hidden2").ShouldBeTrue();

@@ -227,7 +227,7 @@
     <Compile Include="IGrammar.cs" />
     <Compile Include="Domain\INamedItem.cs" />
     <Compile Include="Model\EmbeddedSection.cs" />
-    <Compile Include="Model\FixtureGraph.cs" />
+    <Compile Include="Model\FixtureStructure.cs" />
     <Compile Include="Model\FixtureLibrary.cs" />
     <Compile Include="Model\GrammarStructure.cs" />
     <Compile Include="Model\IStepEditor.cs" />

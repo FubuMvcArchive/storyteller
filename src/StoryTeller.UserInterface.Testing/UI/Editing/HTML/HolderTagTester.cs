@@ -20,7 +20,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void should_not_show_the_add_grammar_text_for_single_selection()
         {
-            var fixture = new FixtureGraph();
+            var fixture = new FixtureStructure();
             fixture.Policies.SelectionMode = SelectionMode.Single;
 
             new HolderTag(fixture).ToString().ShouldNotContain(fixture.Policies.AddGrammarText);
@@ -29,7 +29,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void should_not_show_the_add_grammar_text_for_mandatory_auto_selection()
         {
-            var fixture = new FixtureGraph();
+            var fixture = new FixtureStructure();
             fixture.Policies.SelectionMode = SelectionMode.MandatoryAutoSelect;
 
             new HolderTag(fixture).ToString().ShouldNotContain(fixture.Policies.AddGrammarText);
@@ -39,7 +39,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void should_show_the_add_grammar_text_for_non_single_selection()
         {
-            var fixture = new FixtureGraph();
+            var fixture = new FixtureStructure();
             fixture.Policies.SelectionMode = SelectionMode.Any;
 
             new HolderTag(fixture).ToString().ShouldContain(fixture.Policies.AddGrammarText);

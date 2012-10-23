@@ -95,7 +95,7 @@ namespace StoryTeller.Testing.Model
         #endregion
 
         private FixtureLibrary library;
-        private FixtureGraph topFixture;
+        private FixtureStructure topFixture;
         private EmbeddedSection mathSection;
 
         [Test]

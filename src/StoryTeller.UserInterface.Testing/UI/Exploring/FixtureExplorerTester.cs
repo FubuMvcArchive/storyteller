@@ -17,12 +17,12 @@ namespace StoryTeller.UserInterface.Testing.UI.Exploring
         public void SetUp()
         {
             library = new FixtureLibrary();
-            FixtureGraph fixture1 = library.FixtureFor("Math");
+            FixtureStructure fixture1 = library.FixtureFor("Math");
             fixture1.AddStructure("Grammar1", new Sentence());
             fixture1.AddStructure("Grammar2", new Sentence());
             fixture1.AddStructure("Grammar3", new Sentence());
 
-            FixtureGraph fixture2 = library.FixtureFor("Arithmetic");
+            FixtureStructure fixture2 = library.FixtureFor("Arithmetic");
             fixture2.AddStructure("Grammar4", new Sentence());
             fixture2.AddStructure("Grammar5", new Sentence());
         }
@@ -70,12 +70,12 @@ sentence:Math/Grammar3
 
 
             library = new FixtureLibrary();
-            FixtureGraph fixture1 = library.FixtureFor("Math");
+            FixtureStructure fixture1 = library.FixtureFor("Math");
             fixture1.AddStructure("Grammar1", new Sentence());
             fixture1.AddStructure("Grammar2", new Sentence());
             fixture1.AddStructure("Grammar3", new Sentence());
 
-            FixtureGraph fixture2 = library.FixtureFor("Arithmetic");
+            FixtureStructure fixture2 = library.FixtureFor("Arithmetic");
             fixture2.AddStructure("Grammar4", new Sentence());
             fixture2.AddStructure("Grammar5", new Sentence());
 

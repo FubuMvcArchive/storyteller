@@ -32,7 +32,7 @@ namespace StoryTeller.Model
             Name = Guid.NewGuid().ToString();
         }
 
-        public FixtureGraph Parent { get; set; }
+        public FixtureStructure Parent { get; set; }
         public virtual string Label { get { return Name; } }
 
         #region IFixtureNode Members

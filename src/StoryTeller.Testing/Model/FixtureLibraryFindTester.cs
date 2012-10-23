@@ -30,7 +30,7 @@ namespace StoryTeller.Testing.Model
         [Test]
         public void find_fixturegraph_by_path()
         {
-            library.Find(new TPath("Math")).ShouldBeOfType<FixtureGraph>().Name.ShouldEqual("Math");
+            library.Find(new TPath("Math")).ShouldBeOfType<FixtureStructure>().Name.ShouldEqual("Math");
         }
 
         [Test]

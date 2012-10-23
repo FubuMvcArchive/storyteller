@@ -14,8 +14,8 @@ namespace StoryTeller.UserInterface.Testing.UI.Examples
         [Test]
         public void matches_by_fixture_node()
         {
-            var fixture1 = new FixtureGraph("fixture1");
-            var fixture2 = new FixtureGraph("fixture2");
+            var fixture1 = new FixtureStructure("fixture1");
+            var fixture2 = new FixtureStructure("fixture2");
 
             var screen1 = new FixtureNodePresenter(null, fixture1);
             var screen2 = new FixtureNodePresenter(null, fixture2);
@@ -46,7 +46,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Examples
 
             factory = new ScreenFactory(container);
 
-            fixture = new FixtureGraph("fixture1");
+            fixture = new FixtureStructure("fixture1");
 
             subject = new FixtureNodeSubject(fixture);
 
@@ -56,7 +56,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Examples
         #endregion
 
         private Container container;
-        private FixtureGraph fixture;
+        private FixtureStructure fixture;
         private FixtureNodeSubject subject;
         private FixtureNodePresenter thePresenter;
         private ScreenFactory factory;

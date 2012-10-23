@@ -122,7 +122,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
     [TestFixture]
     public class when_adding_a_valid_section_to_the_outline : TestTreeBuilderContext
     {
-        private FixtureGraph fixture;
+        private FixtureStructure fixture;
         private Section section;
 
         protected override void theContextIs()
@@ -197,7 +197,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
             section = new Section("Math");
 
             treeBuilder.StartTest(theTest);
-            treeBuilder.StartSection(section, new FixtureGraph("Math"));
+            treeBuilder.StartSection(section, new FixtureStructure("Math"));
 
             treeBuilder.Sentence(sentence, step);
         }
@@ -242,7 +242,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
             section = new Section("Math");
 
             treeBuilder.StartTest(theTest);
-            treeBuilder.StartSection(section, new FixtureGraph("Math"));
+            treeBuilder.StartSection(section, new FixtureStructure("Math"));
 
             treeBuilder.InvalidGrammar("Adding", step);
         }
@@ -282,7 +282,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
             section = new Section("Math");
 
             treeBuilder.StartTest(theTest);
-            treeBuilder.StartSection(section, new FixtureGraph("Math"));
+            treeBuilder.StartSection(section, new FixtureStructure("Math"));
 
             table = new Table("the label of this grammar", "leaf1");
 
@@ -326,7 +326,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
             section = new Section("Math");
 
             treeBuilder.StartTest(theTest);
-            treeBuilder.StartSection(section, new FixtureGraph("Math"));
+            treeBuilder.StartSection(section, new FixtureStructure("Math"));
 
             set = new SetVerification("the label of this grammar", "leaf1");
 
@@ -368,7 +368,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
             section = new Section("Math");
 
             treeBuilder.StartTest(theTest);
-            treeBuilder.StartSection(section, new FixtureGraph("Math"));
+            treeBuilder.StartSection(section, new FixtureStructure("Math"));
 
             paragraph = new Paragraph("the label of this paragraph", new List<GrammarStructure>());
             treeBuilder.StartParagraph(paragraph, step);
@@ -416,7 +416,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
             section = new Section("Math");
 
             treeBuilder.StartTest(theTest);
-            treeBuilder.StartSection(section, new FixtureGraph("Math"));
+            treeBuilder.StartSection(section, new FixtureStructure("Math"));
 
             paragraph = new Paragraph("the label of this paragraph", new List<GrammarStructure>());
             treeBuilder.StartParagraph(paragraph, step);
@@ -443,7 +443,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
         [Test]
         public void adding_an_embedded_section_then_a_sentence_under_a_paragraph_should_still_have_adder_commands()
         {
-            var embedded = new EmbeddedSection(new FixtureGraph("Embed"), "the label", "embed");
+            var embedded = new EmbeddedSection(new FixtureStructure("Embed"), "the label", "embed");
             treeBuilder.StartEmbeddedSection(embedded, step);
 
             var sentence = new Sentence();
@@ -460,7 +460,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
         private Step step;
         private Section section;
         private EmbeddedSection embedded;
-        private FixtureGraph theFixture;
+        private FixtureStructure theFixture;
 
         protected override void theContextIs()
         {
@@ -471,9 +471,9 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
             section = new Section("Math");
 
             treeBuilder.StartTest(theTest);
-            treeBuilder.StartSection(section, new FixtureGraph("Math"));
+            treeBuilder.StartSection(section, new FixtureStructure("Math"));
 
-            theFixture = new FixtureGraph("new");
+            theFixture = new FixtureStructure("new");
             embedded = new EmbeddedSection(theFixture, "the label of embedded", "embedded");
             treeBuilder.StartEmbeddedSection(embedded, step);
         }

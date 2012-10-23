@@ -6,11 +6,11 @@ namespace StoryTeller.UserInterface.Editing.HTML
     public class RemoveLinkTag : LinkTag
     {
         public RemoveLinkTag()
-            : this(new FixtureGraph())
+            : this(new FixtureStructure())
         {
         }
 
-        public RemoveLinkTag(FixtureGraph fixture)
+        public RemoveLinkTag(FixtureStructure fixture)
             : base(fixture.IsSingleSelection() ? "change" : "delete", "#", GrammarConstants.DELETE_STEP)
         {
         }

@@ -45,13 +45,13 @@ namespace StoryTeller.Model
     [Serializable]
     public class FixtureLibrary : IFixtureNode
     {
-        private readonly Cache<string, FixtureGraph> _fixtures =
-            new Cache<string, FixtureGraph>(key => new FixtureGraph(key)
+        private readonly Cache<string, FixtureStructure> _fixtures =
+            new Cache<string, FixtureStructure>(key => new FixtureStructure(key)
             {
                 Description = key
             });
         
-        public FixtureLibrary Filter(Func<FixtureGraph, bool> filter)
+        public FixtureLibrary Filter(Func<FixtureStructure, bool> filter)
         {
             var library = new FixtureLibrary();
             ActiveFixtures.Where(filter).Each(f =>
@@ -63,7 +63,7 @@ namespace StoryTeller.Model
         }
 
         public FixtureDto[] AllFixtures { get; set; }
-        public IEnumerable<FixtureGraph> ActiveFixtures { get { return _fixtures.OrderBy(x => x.Name); } }
+        public IEnumerable<FixtureStructure> ActiveFixtures { get { return _fixtures.OrderBy(x => x.Name); } }
 
         #region IFixtureNode Members
 
@@ -103,7 +103,7 @@ namespace StoryTeller.Model
             return runner.Library;
         }
 
-        public FixtureGraph FixtureFor(string name)
+        public FixtureStructure FixtureFor(string name)
         {
             return _fixtures[name];
         }
@@ -115,19 +115,19 @@ namespace StoryTeller.Model
                 return this;
             }
 
-            FixtureGraph fixture = FixtureFor(path.Next);
+            FixtureStructure fixture = FixtureFor(path.Next);
 
             return path.IsEnd ? fixture : (IFixtureNode) fixture.GrammarFor(path.Pop().Next);
         }
 
-        public IEnumerable<FixtureGraph> PossibleFixturesFor(Test test)
+        public IEnumerable<FixtureStructure> PossibleFixturesFor(Test test)
         {
             return _fixtures.Where(x => x.CanChoose(test)).OrderBy(x => x.Name);
         }
 
         public bool HasErrors()
         {
-            foreach (FixtureGraph graph in _fixtures)
+            foreach (FixtureStructure graph in _fixtures)
             {
                 if (graph.AllErrors().Count() > 0)
                 {
@@ -143,9 +143,9 @@ namespace StoryTeller.Model
             return _fixtures.Has(fixtureName);
         }
 
-        public FixtureGraph BuildTopLevelGraph()
+        public FixtureStructure BuildTopLevelGraph()
         {
-            var fixture = new FixtureGraph("Test");
+            var fixture = new FixtureStructure("Test");
             fixture.Policies.SelectionMode = SelectionMode.OneOrMore;
             fixture.Policies.AddGrammarText = "Add Section";
 

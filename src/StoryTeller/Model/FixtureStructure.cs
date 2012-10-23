@@ -9,7 +9,7 @@ using StructureMap;
 
 namespace StoryTeller.Model
 {
-    public interface IFixtureGraph
+    public interface IFixtureStructure
     {
         string FixtureClassName { get; set; }
         string FixtureNamespace { get; set; }
@@ -24,7 +24,7 @@ namespace StoryTeller.Model
         IEnumerable<GrammarStructure> TopLevelGrammars();
         IEnumerable<GrammarStructure> PossibleGrammarsFor(IPartHolder holder);
         bool HasGrammar(string key);
-        bool Equals(FixtureGraph obj);
+        bool Equals(FixtureStructure obj);
         void LogError(Exception exception);
         void LogError(GrammarError error);
         bool CanChoose(Test test);
@@ -34,7 +34,7 @@ namespace StoryTeller.Model
     }
 
     [Serializable]
-    public class FixtureGraph : IFixtureNode, IFixtureGraph
+    public class FixtureStructure : IFixtureNode, IFixtureStructure
     {
         private readonly List<GrammarError> _errors = new List<GrammarError>();
         private readonly string _name;
@@ -42,13 +42,13 @@ namespace StoryTeller.Model
         private IPolicies _policies = new Policies();
 
         [DefaultConstructor]
-        public FixtureGraph()
+        public FixtureStructure()
             : this(Guid.NewGuid().ToString())
         {
             // TESTING ONLY
         }
 
-        public FixtureGraph(string name)
+        public FixtureStructure(string name)
         {
             _name = name;
             Label = name;
@@ -164,7 +164,7 @@ namespace StoryTeller.Model
             }
         }
 
-        public bool Equals(FixtureGraph obj)
+        public bool Equals(FixtureStructure obj)
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
@@ -175,8 +175,8 @@ namespace StoryTeller.Model
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (FixtureGraph)) return false;
-            return Equals((FixtureGraph) obj);
+            if (obj.GetType() != typeof (FixtureStructure)) return false;
+            return Equals((FixtureStructure) obj);
         }
 
         public override int GetHashCode()

@@ -73,7 +73,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         }
 
 
-        public void ConfigurePartAdders(OutlineNode node, FixtureGraph fixture, IPartHolder holder)
+        public void ConfigurePartAdders(OutlineNode node, FixtureStructure fixture, IPartHolder holder)
         {
             var selector = new OutlineGrammarSelector(node);
             var configurer = new GrammarSelectorConfigurer(holder, selector, _controller);
@@ -278,7 +278,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
             }
 
 
-            public void Configure(FixtureGraph fixture)
+            public void Configure(FixtureStructure fixture)
             {
                 _selector.Add(Icon.Comment, "Comment", () => _controller.AddComment(_holder), Key.C.ToGesture());
 

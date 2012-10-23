@@ -44,7 +44,7 @@ namespace StoryTeller.Html
             _document.Add(new InvalidFixtureTag(section.FixtureName));
         }
 
-        void ITestStream.StartSection(Section section, FixtureGraph fixture)
+        void ITestStream.StartSection(Section section, FixtureStructure fixture)
         {
             var sectionTag = new SectionTag(section, fixture);
 

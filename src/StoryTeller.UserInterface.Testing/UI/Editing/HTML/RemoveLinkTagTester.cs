@@ -20,13 +20,13 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void should_have_the_delete_step_class()
         {
-            new RemoveLinkTag(new FixtureGraph()).ShouldHaveClass(GrammarConstants.DELETE_STEP);
+            new RemoveLinkTag(new FixtureStructure()).ShouldHaveClass(GrammarConstants.DELETE_STEP);
         }
 
         [Test]
         public void text_for_multiple_selection_mode_should_be_delete()
         {
-            var fixture = new FixtureGraph();
+            var fixture = new FixtureStructure();
             fixture.Policies.SelectionMode = SelectionMode.Any;
 
             var tag = new RemoveLinkTag(fixture);
@@ -36,7 +36,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [Test]
         public void text_for_single_selection_fixture_should_be_change()
         {
-            var fixture = new FixtureGraph();
+            var fixture = new FixtureStructure();
             fixture.Policies.SelectionMode = SelectionMode.Single;
 
             var tag = new RemoveLinkTag(fixture);

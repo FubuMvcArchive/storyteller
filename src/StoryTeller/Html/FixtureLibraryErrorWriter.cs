@@ -24,7 +24,7 @@ namespace StoryTeller.Html
             return document;
         }
 
-        private void writeFailedFixture(HtmlDocument document, FixtureGraph fixture)
+        private void writeFailedFixture(HtmlDocument document, FixtureStructure fixture)
         {
             document.Add("h3").Text("Fixture:  " + fixture.Name);
 
@@ -36,7 +36,7 @@ namespace StoryTeller.Html
             document.Add("hr");
         }
 
-        private void writeGrammarErrorsFromFixture(HtmlDocument document, FixtureGraph fixture)
+        private void writeGrammarErrorsFromFixture(HtmlDocument document, FixtureStructure fixture)
         {
             document.Add("h3").Text("Fixture:  " + fixture.FixtureClassName);
             document.Add("ul").Modify(ul => fixture.Grammars.Each(g => writeGrammarErrors(ul, g)));

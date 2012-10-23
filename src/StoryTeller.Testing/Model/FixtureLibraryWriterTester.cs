@@ -16,29 +16,29 @@ namespace StoryTeller.Testing.Model
             var runner = TestRunnerBuilder.ForFixture<LinesOnlyFixture>();
             FixtureLibrary library = runner.Library;
 
-            fixtureGraph = library.FixtureFor("LinesOnly");
+            fixtureStructure = library.FixtureFor("LinesOnly");
         }
 
         #endregion
 
-        private FixtureGraph fixtureGraph;
+        private FixtureStructure fixtureStructure;
 
         [Test]
         public void should_create_a_sentence_for_the_go_method()
         {
-            fixtureGraph.GrammarFor("Go").ShouldBeOfType<Sentence>();
+            fixtureStructure.GrammarFor("Go").ShouldBeOfType<Sentence>();
         }
 
         [Test]
         public void should_create_a_sentence_for_the_WhoAmI_method()
         {
-            fixtureGraph.GrammarFor("WhoAmI").ShouldBeOfType<Sentence>();
+            fixtureStructure.GrammarFor("WhoAmI").ShouldBeOfType<Sentence>();
         }
 
         [Test]
         public void should_find_two_grammars_in_the_fixture()
         {
-            fixtureGraph.GrammarCount.ShouldEqual(2);
+            fixtureStructure.GrammarCount.ShouldEqual(2);
         }
     }
 
