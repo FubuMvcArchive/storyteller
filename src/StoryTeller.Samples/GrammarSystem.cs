@@ -22,32 +22,6 @@ namespace StoryTeller.Samples
             throw new NotImplementedException();
         }
 
-        public object Get(Type type)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public void Setup()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Teardown()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterFixtures(FixtureRegistry registry)
-        {
-            
-        }
-
-        public IObjectConverter BuildConverter()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Dispose()
         {
             throw new NotImplementedException();

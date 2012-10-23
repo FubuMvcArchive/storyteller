@@ -12,7 +12,7 @@ namespace StoryTeller.Engine
     public class FixtureGraph
     {
         private readonly Cache<string, Type> _fixtureTypes = new Cache<string,Type>(name => {
-            throw new ArgumentOutOfRangeException("No fixture exists with name '{0}'".ToFormat(name));
+            throw new NonExistentFixtureException(name);
         });
 
         private readonly IList<Type> _systemTypes = new List<Type>(); 
@@ -76,6 +76,7 @@ namespace StoryTeller.Engine
             return new FixtureGraph(assemblies);
         }
 
+        // TODO -- memoize this
         public static FixtureGraph ForAppDomain()
         {
             var list = new List<string>() {AppDomain.CurrentDomain.SetupInformation.ApplicationBase};

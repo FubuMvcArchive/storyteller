@@ -13,64 +13,6 @@ using TestContext = StoryTeller.Engine.TestContext;
 
 namespace StoryTeller.Testing.Engine
 {
-    [TestFixture]
-    public class when_building_a_library_with_a_non_inclusive_filter
-    {
-        
-
-        #region Setup/Teardown
-
-        [SetUp]
-        public void SetUp()
-        {
-            container = new Container();
-            var registry = new FixtureRegistry();
-            registry.AddFixturesFromThisAssembly();
-            registry.AddFixturesToContainer(container);
-
-            observer = MockRepository.GenerateMock<IFixtureObserver>();
-            var filter = new CompositeFilter<Type>();
-            filter.Includes += t => t.Name.StartsWith("M");
-
-
-            builder = new LibraryBuilder(observer);
-
-            library = builder.Build(new TestContext(container));
-        }
-
-        #endregion
-
-        private IContainer container;
-        private LibraryBuilder builder;
-        private IFixtureObserver observer;
-        private FixtureLibrary library;
-
-        [Test]
-        public void should_contain_fixtures_that_match_the_filter()
-        {
-            library.HasFixture("Missouri").ShouldBeTrue();
-            library.HasFixture("Michigan").ShouldBeTrue();
-            library.HasFixture("Montana").ShouldBeTrue();
-        }
-
-        [Test]
-        public void still_has_dtos_for_each_possible_fixture()
-        {
-            var allNames = library.AllFixtures.OrderBy(x => x.Name).Select(x => x.Name).ToList();
-            allNames.ShouldContain("Arkansas");
-            allNames.ShouldContain("Michigan");
-            allNames.ShouldContain("Missouri");
-            allNames.ShouldContain("Montana");
-        }
-
-        [Test]
-        public void fixture_dto_has_all_the_properties()
-        {
-            var dto = library.AllFixtures.FirstOrDefault(x => x.Name == "Arkansas");
-            dto.Namespace.ShouldEqual(typeof (ArkansasFixture).Namespace);
-            dto.Fullname.ShouldEqual(typeof (ArkansasFixture).FullName);
-        }
-    }
 
     public class MissouriFixture : Fixture{}
     public class ArkansasFixture : Fixture{}
@@ -181,11 +123,7 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            var container = new Container();
-            var registry = new FixtureRegistry();
-            registry.AddFixture<FixtureWithHiddenGrammarsFixture>();
-            registry.AddFixturesToContainer(container);
-            var context = new TestContext(container);
+            var context = new TestContext();
 
             var observer = MockRepository.GenerateMock<IFixtureObserver>();
             var builder = new LibraryBuilder(observer);

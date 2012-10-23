@@ -14,13 +14,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            var runner = TestRunnerBuilder.For(x =>
-            {
-                x.AddFixture<MathFixture>();
-                x.AddFixture<AnotherFixture>();
-                x.AddFixture<DoSomeMathFixture>();
-            });
-            library = runner.Library;
+            library = FixtureLibrary.ForAppDomain();
         }
 
         #endregion

@@ -99,8 +99,9 @@ namespace StoryTeller.Engine
 
     public class TestContext : ITestContext, ITestVisitor
     {
-        private readonly IContainer _container;
         private readonly Stack<IFixture> _fixtures = new Stack<IFixture>();
+        private readonly IExecutionContext _execution;
+        private readonly FixtureGraph _graph;
         private readonly Test _test;
 
         [Obsolete]
@@ -112,50 +113,16 @@ namespace StoryTeller.Engine
         private readonly Counts _counts = new Counts();
 
         public TestContext()
-            : this(new Container(), new Test("FAKE"), new TraceListener())
+            : this(new SimpleExecutionContext() ,FixtureGraph.ForAppDomain(), new Test("FAKE"), new TraceListener())
         {
         }
 
-        public TestContext(IContainer container, Test test, ITestObserver listener)
+        public TestContext(IExecutionContext execution, FixtureGraph graph, Test test, ITestObserver listener)
         {
-            _container = container;
+            _execution = execution;
+            _graph = graph;
             _test = test;
             _listener = listener;
-            _container.Inject<ITestContext>(this);
-            _container.Inject(test);
-
-            _container.Configure(x =>
-            {
-                x.For<IFixture>().AlwaysUnique();
-                x.For<ITestContext>().Use(this);
-                x.SetAllProperties(o => o.OfType<ITestContext>());
-
-                // This is a fallback mechanism.  If the IObjectConverter is not explicitly registered somewhere else, this will be the default
-                if (!_container.Model.HasDefaultImplementationFor(typeof(IObjectConverter)))
-                {
-                    x.For<IObjectConverter>().Use<ObjectConverter>();
-                }
-
-                x.For<IServiceLocator>().Use<StructureMapServiceLocator>();
-            });
-
-
-            BackupResolver = t =>
-            {
-                throw new ApplicationException("This service is not registered");
-            };
-        }
-
-        public Func<Type, object> BackupResolver { get; set; }
-
-        public TestContext(IContainer container)
-            : this(container, new Test("FAKE"), new TraceListener())
-        {
-        }
-
-        public IContainer Container
-        {
-            get { return _container; }
         }
 
         public string TraceText { get { return _traceWriter.GetStringBuilder().ToString(); } }
@@ -204,7 +171,7 @@ namespace StoryTeller.Engine
 
         public IFixture RetrieveFixture(string fixtureName)
         {
-            var fixture = _container.GetInstance<IFixture>(fixtureName);
+            var fixture = _graph.Build(fixtureName);
             fixture.Context = this;
 
             return fixture;
@@ -221,31 +188,16 @@ namespace StoryTeller.Engine
 
             try
             {
-                var fixture = _container.GetInstance<IFixture>(fixtureKey);
+                var fixture = _graph.Build(fixtureKey);
                 LoadFixture(fixture, part);
             }
-            catch (StructureMapException e)
+            catch (NonExistentFixtureException e)
             {
                 _fixtureIsInvalid = true;
                 _listener.Exception(e.ToString());
 
-                if (e.ErrorCode == 200)
-                {
-                    results.CaptureException("Unable to find a Fixture named '{0}'".ToFormat(fixtureKey));
-                    IncrementSyntaxErrors();
-                }
-                else
-                {
-                    IncrementExceptions();
-                    if (e.InnerException != null)
-                    {
-                        results.CaptureException(e.InnerException.ToString());
-                    }
-                    else
-                    {
-                        results.CaptureException(e.ToString());
-                    }
-                }
+                results.CaptureException("Unable to find a Fixture named '{0}'".ToFormat(fixtureKey));
+                IncrementSyntaxErrors();
             }
             catch (Exception e)
             {
@@ -292,30 +244,33 @@ namespace StoryTeller.Engine
             return Retrieve<Stringifier>().GetString(value);
         }
 
+        private readonly Cache<Type, object> _cache = new Cache<Type, object>(); 
+
         public virtual void Store<T>(T data)
         {
-            _container.Inject(data);
+            _cache[typeof (T)] = data;
         }
 
         public T Retrieve<T>()
         {
-            if (typeof(T).IsConcrete())
+            if (_cache.Has(typeof(T)))
             {
-                return _container.GetInstance<T>();
+                return (T)_cache[typeof (T)];
             }
 
-            return _container.Model.HasDefaultImplementationFor<T>()
-                ? _container.GetInstance<T>()
-                : (T)BackupResolver(typeof(T));
+            return _execution.Services.GetInstance<T>();
 
         }
 
 
         public object Retrieve(Type type)
         {
-            if (type.IsConcrete()) return _container.GetInstance(type);
+            if (_cache.Has(type))
+            {
+                return _cache[type];
+            }
 
-            return _container.TryGetInstance(type) ?? BackupResolver(type);
+            return _execution.Services.GetInstance(type);
         }
 
         public void IncrementRights()

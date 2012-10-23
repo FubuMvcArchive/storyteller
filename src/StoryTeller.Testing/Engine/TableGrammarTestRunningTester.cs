@@ -61,7 +61,7 @@ namespace StoryTeller.Testing.Engine
 ");
 
 
-            runner = TestRunnerBuilder.For(x => x.AddFixturesFromThisAssembly());
+            runner = TestUtility.GetRunner();
         }
 
         #endregion

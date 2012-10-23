@@ -82,20 +82,20 @@ namespace StoryTeller.Engine
         private void readFixtures(TestContext context)
         {
             _observer.RecordStatus("Discovering and filtering fixtures");
-
-            var fixtureConfiguration = context.Container.Model.For<IFixture>();
-            var instanceRefs = fixtureConfiguration.Instances;
-
-            FixtureCount = instanceRefs.Count();
-
-
-            instanceRefs.Each(readInstance);
-            _library.AllFixtures = fixtureConfiguration.Instances.Select(x => new FixtureDto
-            {
-                Fullname = x.ConcreteType.FullName,
-                Name = x.ConcreteType.GetFixtureAlias(),
-                Namespace = x.ConcreteType.Namespace
-            }).ToArray();
+            throw new NotImplementedException();
+//            var fixtureConfiguration = context.Container.Model.For<IFixture>();
+//            var instanceRefs = fixtureConfiguration.Instances;
+//
+//            FixtureCount = instanceRefs.Count();
+//
+//
+//            instanceRefs.Each(readInstance);
+//            _library.AllFixtures = fixtureConfiguration.Instances.Select(x => new FixtureDto
+//            {
+//                Fullname = x.ConcreteType.FullName,
+//                Name = x.ConcreteType.GetFixtureAlias(),
+//                Namespace = x.ConcreteType.Namespace
+//            }).ToArray();
         }
 
         private void readInstance(InstanceRef instance)

@@ -134,7 +134,6 @@
     <Compile Include="Engine\EmbeddedSectionsTester.cs" />
     <Compile Include="Engine\EquivalenceCheckerTester.cs" />
     <Compile Include="Engine\FactGrammarTester.cs" />
-    <Compile Include="Engine\FixtureExtenderTester.cs" />
     <Compile Include="Engine\FixtureGraphTester.cs" />
     <Compile Include="Engine\FixtureRegistryTester.cs" />
     <Compile Include="Engine\FixtureTester.cs" />
@@ -179,7 +178,7 @@
     <Compile Include="Integration\ProjectIntegratedTester.cs" />
     <Compile Include="Model\DoGrammarStructureTester.cs" />
     <Compile Include="Model\EmbeddedSectionTester.cs" />
-    <Compile Include="Model\FixtureGraphTester.cs" />
+    <Compile Include="Model\FixtureStructureTester.cs" />
     <Compile Include="Model\FixtureLibraryFindTester.cs" />
     <Compile Include="Model\FixtureLibraryTester.cs" />
     <Compile Include="Model\ParagraphTester.cs" />

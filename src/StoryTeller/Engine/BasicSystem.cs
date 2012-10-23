@@ -19,16 +19,6 @@ namespace StoryTeller.Engine
             throw new NotImplementedException();
         }
 
-        public virtual object Get(Type type)
-        {
-            if (type.IsConcreteWithDefaultCtor())
-            {
-                return Activator.CreateInstance(type);
-            }
-
-            throw new NotSupportedException("Get<T> is not supported by this ISystem:  " + GetType().FullName);
-        }
-
         public virtual void Setup()
         {
         }
@@ -36,29 +26,6 @@ namespace StoryTeller.Engine
         public virtual void Teardown()
         {
         }
-
-        public virtual void RegisterFixtures(FixtureRegistry registry)
-        {
-            Assembly assembly = GetType().Assembly;
-            registry.AddFixturesFromAssembly(assembly);
-        }
-      
-        public IObjectConverter BuildConverter()
-        {
-            var library = Get(typeof (ConverterLibrary)).As<ConverterLibrary>();
-            _converterRegistrations.Each(x => x(library));
-
-            return new ObjectConverter(new DelegatingServiceLocator(Get), library);
-        }
-
-
-        private readonly IList<Action<ConverterLibrary>> _converterRegistrations = new List<Action<ConverterLibrary>>();
-
-        public void Converters(Action<ConverterLibrary> configuration)
-        {
-            _converterRegistrations.Add(configuration);
-        }
-
 
         public void Dispose()
         {

@@ -12,25 +12,30 @@ namespace StoryTeller.Engine
         BindingRegistry BindingRegistry { get; }
     }
 
+    public class SimpleExecutionContext : IExecutionContext
+    {
+        public SimpleExecutionContext()
+        {
+            Services = new InMemoryServiceLocator();
+            BindingRegistry = new BindingRegistry();
+        }
+
+        void IDisposable.Dispose()
+        {
+            
+        }
+
+        IServiceLocator IExecutionContext.Services { get { return Services; } }
+
+        public InMemoryServiceLocator Services { get; private set; }
+
+
+        public BindingRegistry BindingRegistry { get; private set; }
+    }
+
     public interface ISystem : IDisposable
     {
         IExecutionContext CreateContext();
         void Recycle();
-
-        object Get(Type type);
-        void Setup();
-        void Teardown();
-
-        void RegisterFixtures(FixtureRegistry registry);
-
-        IObjectConverter BuildConverter();
-    }
-
-    public static class SystemExtensions
-    {
-        public static T Get<T>(this ISystem system)
-        {
-            return (T)system.Get(typeof (T));
-        }
     }
 }

@@ -40,36 +40,6 @@ namespace StoryTeller.Testing.Model
     }
 
     [TestFixture]
-    public class when_testing_the_is_mandatory_auto_select_grammar
-    {
-        private FixtureLibrary library;
-
-        [SetUp]
-        public void SetUp()
-        {
-            library = FixtureLibrary.For(x =>
-            {
-                x.AddFixture<SentenceFixture>();
-                x.AddFixture<MandatorySelectionFixture>();
-            });
-        }
-
-        [Test]
-        public void negative_case()
-        {
-            var fixture = library.FixtureFor("Sentence");
-            fixture.IsMandatoryAutoSelectGrammar(fixture.GrammarFor("StartWithTheNumber")).ShouldBeFalse();
-        }
-
-        [Test]
-        public void positive_case()
-        {
-            var fixture = library.FixtureFor("MandatorySelection");
-            fixture.IsMandatoryAutoSelectGrammar(fixture.GrammarFor("StartWithTheNumber")).ShouldBeTrue();
-        }
-    }
-
-    [TestFixture]
     public class FixtureStructure_implementation_of_FixtureNode
     {
         [Test]

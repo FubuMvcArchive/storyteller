@@ -47,12 +47,31 @@ namespace StoryTeller.Testing.Engine
     [TestFixture]
     public class TestContextTester
     {
+        [Test]
+        public void can_retrieve_its_own_test()
+        {
+            Assert.Fail("Do.");
+        }
+
+        [Test]
+        public void can_retrieve_its_own_execution_context()
+        {
+            Assert.Fail("Do.");
+        }
+
 
         [Test]
         public void get_string_for_null()
         {
             var context = new TestContext();
             context.GetDisplay(null).ShouldEqual(Step.NULL);
+        }
+
+        [Test]
+        public void retrieving_ITestContext_always_returns_itself()
+        {
+            var context = new TestContext();
+            context.Retrieve<ITestContext>().ShouldBeTheSameAs(context);
         }
 
         [Test]
@@ -95,44 +114,44 @@ namespace StoryTeller.Testing.Engine
         public void calls_listener_end_section()
         {
             var container = new Container();
-            var registry = new FixtureRegistry();
-            registry.AddFixture<MathFixture>();
-            registry.AddFixturesToContainer(container);
-
-            var context = new TestContext(container);
-
-            var listener = MockRepository.GenerateMock<ITestObserver>();
-
-            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
-
-            context.Listener = listener;
-
-
-            var section = new Section("Math");
-            context.CallOn<ITestVisitor>(x => x.StartSection(section));
-            context.CallOn<ITestVisitor>(x => x.EndSection(section));
-
-            listener.AssertWasCalled(x => x.FinishSection(section));
+            Assert.Fail("NWO");
+//            var context = new TestContext(container);
+//
+//            var listener = MockRepository.GenerateMock<ITestObserver>();
+//
+//            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
+//
+//            context.Listener = listener;
+//
+//
+//            var section = new Section("Math");
+//            context.CallOn<ITestVisitor>(x => x.StartSection(section));
+//            context.CallOn<ITestVisitor>(x => x.EndSection(section));
+//
+//            listener.AssertWasCalled(x => x.FinishSection(section));
         }
 
         [Test]
         public void calls_listener_start_section()
         {
-            var container = new Container();
-            var registry = new FixtureRegistry();
-            registry.AddFixture<MathFixture>();
-            registry.AddFixturesToContainer(container);
+            Assert.Fail("NWO");
 
-            var context = new TestContext(container);
-            var listener = MockRepository.GenerateMock<ITestObserver>();
-            context.Listener = listener;
 
-            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
-
-            var section = new Section("Math");
-            context.CallOn<ITestVisitor>(x => x.StartSection(section));
-
-            listener.AssertWasCalled(x => x.StartSection(section));
+//            var container = new Container();
+//            var registry = new FixtureRegistry();
+//            registry.AddFixture<MathFixture>();
+//            registry.AddFixturesToContainer(container);
+//
+//            var context = new TestContext(container);
+//            var listener = MockRepository.GenerateMock<ITestObserver>();
+//            context.Listener = listener;
+//
+//            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
+//
+//            var section = new Section("Math");
+//            context.CallOn<ITestVisitor>(x => x.StartSection(section));
+//
+//            listener.AssertWasCalled(x => x.StartSection(section));
         }
 
         [Test]
@@ -213,7 +232,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_exceptions()
         {
             var test = new Test("some test");
-            var context = new TestContext(new Container(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
 
             context.IncrementExceptions();
 
@@ -224,7 +243,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_rights()
         {
             var test = new Test("some test");
-            var context = new TestContext(new Container(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
 
             context.IncrementRights();
 
@@ -236,7 +255,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_syntax_errors()
         {
             var test = new Test("some test");
-            var context = new TestContext(new Container(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
 
             context.IncrementSyntaxErrors();
 
@@ -247,7 +266,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_wrongs()
         {
             var test = new Test("some test");
-            var context = new TestContext(new Container(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
 
             context.IncrementWrongs();
 
@@ -343,7 +362,7 @@ namespace StoryTeller.Testing.Engine
             listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
 
 
-            var context = new TestContext(new Container(), new Test("Fake"), listener);
+            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(),new Test("Fake"), listener);
             IGrammar grammar = context.SetupMockGrammar(step.GrammarKey);
 
             context.RunStep(step);
@@ -372,7 +391,7 @@ namespace StoryTeller.Testing.Engine
             {
                 StepsAllowed = 3
             };
-            var context = new TestContext(new Container(), test, observer);
+            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, observer);
             context.Execute();
 
             observer.StepsRun.ShouldEqual(3);
@@ -407,15 +426,7 @@ namespace StoryTeller.Testing.Engine
         {
             var returnValue = new SomethingThatDoesNotExist();
 
-            var context = new TestContext()
-            {
-                BackupResolver = t =>
-                {
-                    if (t == typeof(ISomethingThatDoesNotExist)) return returnValue;
-
-                    throw new ApplicationException("Unexpected Type:  " + t.FullName);
-                }
-            };
+            var context = new TestContext();
 
             context.Retrieve(typeof (ISomethingThatDoesNotExist)).ShouldBeTheSameAs(returnValue);
             context.Retrieve<ISomethingThatDoesNotExist>().ShouldBeTheSameAs(returnValue);
@@ -424,10 +435,11 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void the_test_is_available_in_the_test_context()
         {
+            Assert.Fail("NWO");
             var test = new Test("some test");
-            var context = new TestContext(new Container(), test, new ConsoleListener());
+            //var context = new TestContext(new Container(), test, new ConsoleListener());
 
-            context.Retrieve<Test>().ShouldBeTheSameAs(test);
+            //context.Retrieve<Test>().ShouldBeTheSameAs(test);
         }
 
         [Test, ExpectedException(typeof(ArgumentNullException))]
@@ -455,7 +467,7 @@ namespace StoryTeller.Testing.Engine
             test.DebugMessage("debug2");
 
 
-            var context = new TestContext(new Container(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
             context.Execute();
 
             context.TraceText.ShouldContain("console1");

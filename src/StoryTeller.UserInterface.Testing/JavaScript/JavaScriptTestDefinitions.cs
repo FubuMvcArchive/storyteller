@@ -51,10 +51,10 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         public JavaScriptTestFile TestEditor()
         {
             JavaScriptTestFile file = new JavaScriptTestFile("Test Editor Tester").TestFile("TestEditorTester.js")
-                .Fixtures(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>());
+                .Fixtures(FixtureLibrary.ForAppDomain());
 
             var testEditor =
-                new TestEditorTag(FixtureLibrary.For(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>()));
+                new TestEditorTag(FixtureLibrary.ForAppDomain());
             file.Html(x => x.Add("div").Append(testEditor));
 
             Project project = StoryTeller.Testing.DataMother.GrammarProject();
@@ -77,13 +77,13 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         public JavaScriptTestFile SingleSelectionMode()
         {
             return new JavaScriptTestFile("Single Selection Mode Tester")
-                .Fixtures(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>())
+                .Fixtures(FixtureLibrary.ForAppDomain())
                 .TestFile("SingleSelectionModeTester.js")
                 .AddTest("singleTest", new Test("single", x => x.Add(new Section("SingleSelection"))))
                 .Html(x =>
                 {
                     var testEditor =
-                        new TestEditorTag(FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>()));
+                        new TestEditorTag(FixtureLibrary.ForAppDomain());
                     x.Add("div").Append(testEditor);
                 });
         }
@@ -92,13 +92,13 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         public JavaScriptTestFile OneOrMoreSelectionMode()
         {
             return new JavaScriptTestFile("One Or More Selection Mode Tester")
-                .Fixtures(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>())
+                .Fixtures(FixtureLibrary.ForAppDomain())
                 .TestFile("OneOrMoreSelectionModeTester.js")
                 .AddTest("singleTest", new Test("single", x => x.Add(new Section("OneOrMoreSelection"))))
                 .Html(x =>
                 {
                     var testEditor =
-                        new TestEditorTag(FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>()));
+                        new TestEditorTag(FixtureLibrary.ForAppDomain());
                     x.Add("div").Append(testEditor);
                 });
         }
@@ -106,13 +106,13 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         public JavaScriptTestFile MandatoryAutoSelect()
         {
             return new JavaScriptTestFile("Mandatory Auto Selection Behavior")
-                .Fixtures(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>())
+                .Fixtures(FixtureLibrary.ForAppDomain())
                 .TestFile("MandatorySelectionTester.js")
                 .AddTest("mandatoryTest", new Test("madatoryTest", x => x.Add(new Section("MandatorySelection"))))
                 .Html(x =>
                 {
                     var testEditor =
-                        new TestEditorTag(FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>()));
+                        new TestEditorTag(FixtureLibrary.ForAppDomain());
                     x.Add("div").Append(testEditor);
                 });
 
@@ -126,14 +126,14 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         public JavaScriptTestFile CellInput()
         {
             return new JavaScriptTestFile("Cell Input Tester")
-                .Fixtures(x => x.AddFixture<SentenceGrammarFixture>())
+                .Fixtures(FixtureLibrary.ForAppDomain())
                 .TestFile("CellInputTester.js");
         }
 
         public JavaScriptTestFile Sentence()
         {
             return new JavaScriptTestFile("Sentence Tester")
-                .Fixtures(x => x.AddFixture<SentenceGrammarFixture>())
+                .Fixtures(FixtureLibrary.ForAppDomain())
                 .TestFile("SentenceTester.js");
         }
 
@@ -142,10 +142,9 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
             return new JavaScriptTestFile("Section Editor Tester")
                 .TestFile("SectionEditorTester.js")
                 .AddTest("blank", new Test("blank"))
-                .Html(x =>
-                {
+                .Html(x => {
                     FixtureLibrary library =
-                        FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>());
+                        FixtureLibrary.ForAppDomain();
                     x.Add("div").Append(new TestEditorTag(library));
 
                     x.Add("Div").AddClass(GrammarConstants.SECTION).AddClass(GrammarConstants.EMBEDDED).Id("section1").
@@ -165,7 +164,7 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
                     x.Add("Div").AddClass(GrammarConstants.SECTION).AddClass(GrammarConstants.EMBEDDED).Id("section8").
                         Add("div").AddClass(GrammarConstants.STEP_HOLDER);
                 })
-                .Fixtures(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>());
+                .Fixtures(FixtureLibrary.ForAppDomain());
         }
 
         public JavaScriptTestFile SelectorTester()
@@ -179,7 +178,7 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
                 .Html(x =>
                 {
                     FixtureLibrary library =
-                        FixtureLibrary.For(o => o.AddFixturesFromAssemblyContaining<SentenceFixture>());
+                        FixtureLibrary.ForAppDomain();
                     x.Add("div").Append(new TestEditorTag(library));
 
                     x.Add("Div").AddClass(GrammarConstants.EMBEDDED).Id("section1").Add("div").AddClass(
@@ -199,13 +198,13 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
                     x.Add("Div").AddClass(GrammarConstants.EMBEDDED).Id("section8").Add("div").AddClass(
                         GrammarConstants.STEP_HOLDER).AddClass(GrammarConstants.SECTION);
                 })
-                .Fixtures(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>());
+                .Fixtures(FixtureLibrary.ForAppDomain());
         }
 
         public JavaScriptTestFile EmbeddedSectionTester()
         {
             return new JavaScriptTestFile("Embedded Section Tester")
-                .Fixtures(x => x.AddFixturesFromAssemblyContaining<EmbeddedFixture>())
+                .Fixtures(FixtureLibrary.ForAppDomain())
                 .Html(x =>
                 {
                     x.Add("div").Id("section1").AddClass("embedded").Add("div").AddClass("step-holder");
@@ -224,7 +223,7 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         public JavaScriptTestFile Paragraph()
         {
             return new JavaScriptTestFile("Paragraph Tester")
-                .Fixtures(x => x.AddFixture<ParagraphGrammarFixture>())
+                .Fixtures(FixtureLibrary.ForAppDomain())
                 .TestFile("ParagraphTester.js");
         }
 
@@ -294,10 +293,10 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         public TableEditorTester()
             : base("Table Editor Tester")
         {
-            Fixtures(x => x.AddFixturesFromThisAssembly());
+            Fixtures(FixtureLibrary.ForAppDomain());
             TestFile("TableEditorTester.js");
 
-            var library = FixtureLibrary.For(x => x.AddFixture<SampleTableFixture>());
+            var library = FixtureLibrary.ForAppDomain();
 
             Add(new TestEditorTag(library).Id("testEditor1"));
             Add(new TestEditorTag(library).Id("testEditor2"));

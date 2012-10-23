@@ -7,24 +7,16 @@ namespace StoryTeller.Engine
 {
     public class TestRunner : ITestRunner
     {
+        private readonly ISystem _system;
         private readonly FixtureLibrary _library;
-        private readonly IFixtureContainerSource _source;
         private TestRun _currentRun;
         private ITestObserver _listener = new TraceListener();
-        private readonly SystemLifecycle _lifecycle;
 
 
-        public TestRunner(ISystem system, FixtureLibrary library, IFixtureContainerSource source)
-            : this(new SystemLifecycle(system), library, source)
+        public TestRunner(ISystem system, FixtureLibrary library)
         {
-
-        }
-
-        public TestRunner(SystemLifecycle lifecycle, FixtureLibrary library, IFixtureContainerSource source)
-        {
-            _lifecycle = lifecycle;
+            _system = system;
             _library = library;
-            _source = source; 
         }
 
         #region ITestRunner Members
@@ -32,11 +24,6 @@ namespace StoryTeller.Engine
         public FixtureLibrary Library
         {
             get { return _library; }
-        }
-
-        public SystemLifecycle Lifecycle
-        {
-            get { return _lifecycle; }
         }
 
         public ITestObserver Listener
@@ -55,7 +42,7 @@ namespace StoryTeller.Engine
         {
             try
             {
-                _currentRun = new TestRun(request, _source, _listener, _library, _lifecycle);
+                _currentRun = new TestRun(request, _listener, _library, _system);
                 
                 // Setting the LastResult on the test here is just a convenience
                 // for testing
@@ -72,7 +59,7 @@ namespace StoryTeller.Engine
 
         public void Dispose()
         {
-            _lifecycle.Dispose();
+            _system.Dispose();
         }
 
         public void Abort()

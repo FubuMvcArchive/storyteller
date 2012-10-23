@@ -12,7 +12,6 @@ namespace StoryTeller.Execution
     public class TestRunnerProxy : MarshalByRefObject
     {
         private TestRunner _runner;
-        private SystemLifecycle _lifecycle;
         private IEventPublisher _publisher;
         private ISystem _system;
         private ITestObserver _listener;
@@ -33,7 +32,7 @@ namespace StoryTeller.Execution
         {
             try
             {
-                if (_runner != null) _lifecycle.RecycleEnvironment();
+                if (_runner != null) _system.Recycle();
             }
             catch (TestEngineFailureException)
             {
@@ -77,22 +76,13 @@ namespace StoryTeller.Execution
             // TODO -- if fails, do a Thread.Sleep and try again
             _system = fixtureAssembly.System;
 
-            _lifecycle = new SystemLifecycle(_system);
-
             // TODO -- make this be async
             observer.RecordStatus("Setting up the environment");
 
             try
             {
-                var container = TestRunnerBuilder.BuildFixtureContainer(_system);
-                var registry = new FixtureRegistry();
-                _system.RegisterFixtures(registry);
-                registry.AddFixturesToContainer(container);
-
-                
-                var library = TestRunnerBuilder.BuildLibrary(_lifecycle, observer, container);
-                var source = new FixtureContainerSource(container);
-                _runner = new TestRunner(_lifecycle, library, source);
+                var library = TestRunnerBuilder.BuildLibrary(_system, observer);
+                _runner = new TestRunner(_system, library);
                 if (_listener != null)
                 {
                     _runner.Listener = _listener;

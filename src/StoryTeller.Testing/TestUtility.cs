@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,7 +19,7 @@ namespace StoryTeller.Testing
     {
         public static ITestRunner GetRunner()
         {
-            return TestRunnerBuilder.For(x => x.AddFixturesFromThisAssembly());
+            throw new NotImplementedException("Need to build one with a nullo system for this entire app domain");
         }
 
         public static Test RunTest(string xml)

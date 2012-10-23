@@ -196,7 +196,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [SetUp]
         public void SetUp()
         {
-            FixtureLibrary library = FixtureLibrary.For(x => x.AddFixture<SentenceTargetFixture>());
+            FixtureLibrary library = FixtureLibrary.ForAppDomain();
             grammarTag =
                 new GrammarTag(library.FixtureFor(typeof(SentenceTargetFixture).GetFixtureAlias()).GrammarFor("Go"));
             var writer = new SentenceWriter(grammarTag, new CellBuilderLibrary());

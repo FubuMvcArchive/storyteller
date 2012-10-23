@@ -12,24 +12,22 @@ namespace StoryTeller.Engine
 {
     public class TestRun : ITestRun
     {
-        private readonly IFixtureContainerSource _fetchContainer;
         private readonly FixtureLibrary _library;
-        private readonly SystemLifecycle _lifecycle;
+        private readonly ISystem _system;
         private readonly ITestObserver _listener;
         private readonly TestExecutionRequest _request;
         private readonly TestResult _result;
         private TestContext _context;
         private ManualResetEvent _reset;
         private Thread _testThread;
+        private IExecutionContext _execution;
 
-        internal TestRun(TestExecutionRequest request, IFixtureContainerSource fetchContainer, ITestObserver listener,
-                         FixtureLibrary library, SystemLifecycle lifecycle)
+        internal TestRun(TestExecutionRequest request, ITestObserver listener, FixtureLibrary library, ISystem system)
         {
             _request = request;
-            _fetchContainer = fetchContainer;
             _listener = listener;
             _library = library;
-            _lifecycle = lifecycle;
+            _system = system;
 
             _result = new TestResult();
         }
@@ -64,13 +62,8 @@ namespace StoryTeller.Engine
 
             Stopwatch timer = Stopwatch.StartNew();
 
-            var container = _fetchContainer.Build();
-            container.Inject(_lifecycle.BuildConverter());
-
-            _context = new TestContext(container, _request.Test, _listener)
-            {
-                BackupResolver = _lifecycle.Resolver
-            };
+            _execution = _system.CreateContext();
+            _context = new TestContext(_execution, FixtureGraph.ForAppDomain(), _request.Test, _listener);
 
             _reset = new ManualResetEvent(false);
 
@@ -103,7 +96,7 @@ namespace StoryTeller.Engine
             {
                 try
                 {
-                    _lifecycle.ExecuteContext(_context, executeContext);
+                    _context.Execute();
                 }
                 catch (Exception e)
                 {
@@ -111,6 +104,7 @@ namespace StoryTeller.Engine
                 }
                 finally
                 {
+                    _execution.Dispose();
                     _reset.Set();
                 }
             });
@@ -143,22 +137,6 @@ namespace StoryTeller.Engine
             _result.Html = writeResults();
 
             _request.Test.LastResult = _result;
-        }
-
-        private void executeContext()
-        {
-            try
-            {
-                _context.Execute();
-            }
-            catch (ThreadAbortException)
-            {
-                // do nothing, it's logged elsewhere
-            }
-            catch (Exception e)
-            {
-                captureException(e);
-            }
         }
 
         private string writeResults()

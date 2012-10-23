@@ -79,12 +79,6 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
             return this;
         }
 
-        public JavaScriptTestFile Fixtures(Action<FixtureRegistry> configure)
-        {
-            FixtureLibrary fixtureLibrary = FixtureLibrary.For(configure);
-            return Fixtures(fixtureLibrary);
-        }
-
         public JavaScriptTestFile Fixtures(FixtureLibrary fixtureLibrary)
         {
             _library = fixtureLibrary;

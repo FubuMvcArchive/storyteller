@@ -18,7 +18,7 @@ namespace StoryTeller.Testing.Integration
         [TestFixtureSetUp]
         public void SetUp()
         {
-            runner = TestRunnerBuilder.For(x => x.AddFixturesFromAssemblyContaining<GrammarMarker>());
+            runner = TestUtility.GetRunner();
             hierarchy = DataMother.GrammarProject().LoadTests();
         }
 
@@ -185,7 +185,7 @@ namespace StoryTeller.Testing.Integration
         [TestFixtureSetUp]
         public void SetUp()
         {
-            runner = TestRunnerBuilder.For(x => x.AddFixturesFromAssemblyContaining<GrammarMarker>());
+            runner = TestUtility.GetRunner();
             hierarchy = DataMother.GrammarProject().LoadTests();
         }
 

@@ -53,7 +53,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         public void do_not_write_remove_link_for_the_mandatory_autoselect_grammar()
         {
             var fixture =
-                FixtureLibrary.For(x => x.AddFixture<MandatorySelectionFixture>()).FixtureFor("MandatorySelection");
+                FixtureLibrary.ForAppDomain().FixtureFor("MandatorySelection");
 
             var fixtureTag = new FixtureTag(fixture);
             fixtureTag.Children.First(x => x.HasClass("StartWithTheNumber")).Children.Any(x => x is RemoveLinkTag).
@@ -121,7 +121,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         public void SetUp()
         {
             FixtureLibrary library =
-                FixtureLibrary.For(x => x.AddFixturesFromAssemblyContaining<EmbeddedChoicesFixture>());
+                FixtureLibrary.ForAppDomain();
 
             // Look for the EmbeddedChoicesFixture
             fixture = library.FixtureFor("EmbeddedChoices");

@@ -14,7 +14,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [SetUp]
         public void SetUp()
         {
-            library = FixtureLibrary.For(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>());
+            library = FixtureLibrary.ForAppDomain();
             tag = new TestEditorTag(library);
         }
 

@@ -22,29 +22,6 @@ namespace Examples
             throw new NotImplementedException();
         }
 
-        public object Get(Type type)
-        {
-            return null;
-        }
-
-        public void Setup()
-        {
-        }
-
-        public void Teardown()
-        {
-        }
-
-        public void RegisterFixtures(FixtureRegistry registry)
-        {
-            
-        }
-
-        public IObjectConverter BuildConverter()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Dispose()
         {
             throw new NotImplementedException();

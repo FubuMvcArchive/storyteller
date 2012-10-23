@@ -2,6 +2,7 @@
 using Examples;
 using Examples.Fixtures.Example;
 using FubuCore.Conversion;
+using FubuTestingSupport;
 using NUnit.Framework;
 using StoryTeller.Engine;
 
@@ -10,6 +11,14 @@ namespace StoryTeller.Testing.Engine
     [TestFixture]
     public class FixtureGraphTester
     {
+        [Test]
+        public void throws_exception_for_non_existent_fixture()
+        {
+            Exception<NonExistentFixtureException>.ShouldBeThrownBy(() => {
+                FixtureGraph.ForAppDomain().Build(Guid.NewGuid().ToString());
+            });
+        }
+
         [Test]
         public void build_by_assembly()
         {
@@ -51,31 +60,6 @@ namespace StoryTeller.Testing.Engine
         }
 
         public void Recycle()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Get(Type type)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Setup()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Teardown()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterFixtures(FixtureRegistry registry)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IObjectConverter BuildConverter()
         {
             throw new NotImplementedException();
         }

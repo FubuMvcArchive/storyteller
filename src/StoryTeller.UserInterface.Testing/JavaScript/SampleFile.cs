@@ -16,7 +16,7 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         {
             TestFile("SampleTestEditor.js");
 
-            Fixtures(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>());
+            Fixtures(FixtureLibrary.ForAppDomain());
         }
 
         public void Open()
@@ -50,7 +50,7 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
 
             Add("hr");
 
-            FixtureLibrary library = FixtureLibrary.For(x => x.AddFixturesFromAssemblyContaining<SentenceFixture>());
+            FixtureLibrary library = FixtureLibrary.ForAppDomain();
             Add("div").Append(new TestEditorTag(library));
         }
     }

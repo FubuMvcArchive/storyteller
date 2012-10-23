@@ -37,8 +37,7 @@ namespace StoryTeller.Execution
 
             if (_systemTypeName.IsEmpty())
             {
-                _assembly = Assembly.Load(_fixtureAssembly);
-                _system = new NulloSystem(_assembly);
+                _system = new NulloSystem();
             }
             else
             {

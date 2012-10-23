@@ -86,12 +86,6 @@ namespace StoryTeller.Model
 
         #endregion
 
-        public static FixtureLibrary For(Action<FixtureRegistry> configure)
-        {
-            var runner = TestRunnerBuilder.For(configure);
-            return runner.Library;
-        }
-
         public FixtureStructure FixtureFor(string name)
         {
             return _fixtures[name];
@@ -146,6 +140,11 @@ namespace StoryTeller.Model
             });
 
             return fixture;
+        }
+
+        public static FixtureLibrary ForAppDomain()
+        {
+            throw new NotImplementedException();
         }
     }
 }

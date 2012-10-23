@@ -23,12 +23,9 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [SetUp]
         public void SetUp()
         {
-            var runner = TestRunnerBuilder.For(fixturesAre);
-            library = runner.Library;
+            Assert.Fail("need to build FixtureLibrary somehow");
             templates = new GrammarWriter(library).Build();
         }
-
-        protected abstract void fixturesAre(FixtureRegistry registry);
     }
 
     public static class TagExtensions
@@ -48,14 +45,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
     [TestFixture]
     public class when_writing_fixtures : GrammarWriterContext
     {
-        protected override void fixturesAre(FixtureRegistry registry)
-        {
-            registry.AddFixture<SentenceFixture>();
-            registry.AddFixture<SetsFixture>();
-            registry.AddFixture<TableFixture>();
-            registry.AddFixture<MathFixture>();
-        }
-
         [Test]
         public void has_all_of_the_fixtures()
         {
@@ -69,11 +58,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
     [TestFixture]
     public class when_writing_a_sentence_grammar : GrammarWriterContext
     {
-        protected override void fixturesAre(FixtureRegistry registry)
-        {
-            registry.AddFixture<SentenceGrammarFixture>();
-        }
-
         [Test]
         public void the_sentence_has_all_of_its_parts()
         {
@@ -89,11 +73,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
     [TestFixture]
     public class when_writing_a_paragraph : GrammarWriterContext
     {
-        protected override void fixturesAre(FixtureRegistry registry)
-        {
-            registry.AddFixture<ParagraphGrammarFixture>();
-        }
-
 
         [Test]
         public void the_children_underneath_paragraph_should_not_have_remove_link()
@@ -116,11 +95,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
     [TestFixture]
     public class when_writing_a_single_fixture : GrammarWriterContext
     {
-        protected override void fixturesAre(FixtureRegistry registry)
-        {
-            registry.AddFixture<SentenceGrammarFixture>();
-        }
-
         [Test]
         public void has_named_grammars()
         {
@@ -232,11 +206,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
     [TestFixture]
     public class when_writing_an_embedded_section : GrammarWriterContext
     {
-        protected override void fixturesAre(FixtureRegistry registry)
-        {
-            registry.AddFixture<EmbeddedFixture>();
-        }
-
         private HtmlTag theSectionNode { get { return templates.GrammarNode<EmbeddedFixture>("EmbeddedMath"); } }
 
         [Test]
@@ -274,17 +243,5 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
                 new EmbeddedFixture().Policies.SelectionMode.ToString());
         }
 
-    }
-
-    [TestFixture]
-    public class write_it_out
-    {
-        [Test]
-        public void TESTNAME()
-        {
-            var writer =
-                new GrammarWriter(FixtureLibrary.For(x => x.AddFixture<SentenceFixture>()));
-            Debug.WriteLine(writer.Build().ToString());
-        }
     }
 }

@@ -84,7 +84,7 @@ namespace StoryTeller.Testing.Engine
             });
 
 
-            var runner = TestRunnerBuilder.For(x => x.AddFixturesFromThisAssembly());
+            var runner = TestUtility.GetRunner();
 
             runner.RunTest(test);
         }
