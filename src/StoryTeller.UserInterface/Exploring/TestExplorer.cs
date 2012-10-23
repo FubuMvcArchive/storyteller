@@ -24,8 +24,6 @@ namespace StoryTeller.UserInterface.Exploring
                                 , IListener<DeleteTestMessage>
                                 , IListener<TestRenamed>
                                 , IListener<SuiteAddedMessage>
-                                , IListener<ProjectLoaded>
-                                , IListener<WorkflowFiltersChanged>
                                 , IListener<TestResultsLoaded>
                                 , IListener<RunAllRequested>
     {
@@ -73,15 +71,6 @@ namespace StoryTeller.UserInterface.Exploring
         {
             TreeNode testNode = _testNodes[message.Test];
             _suiteNodes[message.Parent].Remove(testNode);
-        }
-
-        #endregion
-
-        #region IListener<ProjectLoaded> Members
-
-        public void Handle(ProjectLoaded message)
-        {
-            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
         }
 
         #endregion
@@ -167,15 +156,6 @@ namespace StoryTeller.UserInterface.Exploring
 
         #endregion
 
-        #region IListener<WorkflowFiltersChanged> Members
-
-        public void Handle(WorkflowFiltersChanged message)
-        {
-            _filter.Workspaces = message.Project.SelectedWorkspaceNames;
-            ResetFilter();
-        }
-
-        #endregion
 
         #region ITestExplorer Members
 

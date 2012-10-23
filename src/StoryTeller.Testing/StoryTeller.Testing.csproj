@@ -218,7 +218,6 @@
     <Compile Include="Model\FixtureLibraryWriterTester.cs" />
     <Compile Include="Model\SentenceTester.cs" />
     <Compile Include="Usages\UsageGraphIntegratedTester.cs" />
-    <Compile Include="Workspace\FixtureFilterTester.cs" />
     <Compile Include="Workspace\LazyTestXmlReaderTester.cs" />
     <Compile Include="Workspace\ProjectTester.cs" />
     <Compile Include="Workspace\FileSystemTester.cs" />

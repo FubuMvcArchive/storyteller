@@ -223,33 +223,6 @@ s9/t18,Success
         }
     }
 
-    public class when_test_explorer_responds_to_workflow_filters_changed : InteractionContext<TestExplorer>
-    {
-        private string[] workspaces;
-
-        protected override void beforeEach()
-        {
-            workspaces = new string[] {"a", "b", "c"};
-            MockFor<IProject>().Expect(x => x.SelectedWorkspaceNames).Return(workspaces);
-
-            Services.PartialMockTheClassUnderTest();
-            ClassUnderTest.Expect(x => x.ResetFilter());
-
-            ClassUnderTest.HandleMessage(new WorkflowFiltersChanged(MockFor<IProject>()));
-        }
-
-        [Test]
-        public void should_apply_the_workspaces_selected_from_the_project_to_the_test_filter()
-        {
-            MockFor<ITestFilter>().AssertWasCalled(x => x.Workspaces = workspaces);
-        }
-
-        [Test]
-        public void should_reset_the_filter()
-        {
-            ClassUnderTest.AssertWasCalled(x => x.ResetFilter());
-        }
-    }
 
     [TestFixture]
     public class when_test_explorer_responds_to_TestAdded_event

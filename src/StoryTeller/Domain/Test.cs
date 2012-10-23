@@ -124,7 +124,7 @@ namespace StoryTeller.Domain
 
         public TPath GetPath()
         {
-            if (Parent.IsSuite())
+            if (Parent is Suite)
             {
                 return Parent.GetPath().Append(Name);
             }
@@ -334,12 +334,6 @@ namespace StoryTeller.Domain
         {
             if (Parent == null) return false;
             return GetPath().Workspace == workspace;
-        }
-
-        public WorkspaceFilter GetWorkspace()
-        {
-            if (Parent == null) return new WorkspaceFilter();
-            return Parent.GetWorkspace();
         }
     }
 }

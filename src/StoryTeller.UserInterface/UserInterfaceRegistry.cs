@@ -80,7 +80,6 @@ namespace StoryTeller.UserInterface
             For<SetVerification>().Use(c => new SetVerification());
             For<FixtureStructure>().Use(c => new FixtureStructure());
             For<ITestFilter>().Use<TestFilter>();
-            For<WorkspaceSuite>().Use(c => new WorkspaceSuite("something"));
 
             IfTypeMatches(x => x.CanBeCastTo(typeof(Window))).InterceptWith((c, dialog) =>
             {
@@ -131,7 +130,6 @@ namespace StoryTeller.UserInterface
             makeSingleton<ITestEditorBuilder>();
             makeSingleton<ProjectContext>();
 
-            makeSingleton<WorkspaceSelector>();
         }
 
         private void fakeValidDefaultsForExplicitArguments()

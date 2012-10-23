@@ -21,15 +21,13 @@ namespace StoryTeller.Engine
     public class LibraryBuilder : IFixtureVisitor
     {
         private readonly IFixtureObserver _observer;
-        private readonly CompositeFilter<Type> _filter;
         private FixtureLibrary _library;
         private int _number = 1;
         private int _total;
         
-        public LibraryBuilder(IFixtureObserver observer, CompositeFilter<Type> filter)
+        public LibraryBuilder(IFixtureObserver observer)
         {
             _observer = observer;
-            _filter = filter;
 
             _library = new FixtureLibrary();
         }
@@ -86,7 +84,7 @@ namespace StoryTeller.Engine
             _observer.RecordStatus("Discovering and filtering fixtures");
 
             var fixtureConfiguration = context.Container.Model.For<IFixture>();
-            var instanceRefs = fixtureConfiguration.Instances.Where(i => _filter.Matches(i.ConcreteType));
+            var instanceRefs = fixtureConfiguration.Instances;
 
             FixtureCount = instanceRefs.Count();
 

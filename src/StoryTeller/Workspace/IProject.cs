@@ -15,7 +15,6 @@ namespace StoryTeller.Workspace
         string SystemTypeName { get; set; }
         int TimeoutInSeconds { get; set; }
         string FixtureAssembly { get; set; }
-        IEnumerable<WorkspaceFilter> SelectedWorkspaces { get; }
         string GetBinaryFolder();
         Hierarchy LoadTests();
         void Save(Test test);
@@ -24,11 +23,6 @@ namespace StoryTeller.Workspace
 
         ITestRunner LocalRunner();
         void CreateDirectory(Suite suite);
-        WorkspaceFilter CurrentFixtureFilter();
-        void SelectWorkspaces(IEnumerable<string > workspaceNames);
-        WorkspaceFilter WorkspaceFor(string workspaceName);
-
-        string[] SelectedWorkspaceNames { get; }
 
         CodegenOptions Options { get; }
 

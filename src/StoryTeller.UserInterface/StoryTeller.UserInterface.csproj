@@ -154,9 +154,6 @@
     <Compile Include="Dialogs\AddTest.xaml.cs">
       <DependentUpon>AddTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\AddWorkspace.xaml.cs">
-      <DependentUpon>AddWorkspace.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\TagSuite.xaml.cs">
       <DependentUpon>TagSuite.xaml</DependentUpon>
     </Compile>
@@ -217,29 +214,7 @@
       <DependentUpon>XmlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIElementShortcutExtensions.cs" />
-    <Compile Include="Workspace\FixtureSelector.cs" />
-    <Compile Include="Workspace\FixtureSelectorOrganizer.cs" />
-    <Compile Include="Workspace\IFixtureSelector.cs" />
-    <Compile Include="Workspace\IFixtureSelectorOrganizer.cs" />
-    <Compile Include="Workspace\IWorkspaceEditorView.cs" />
-    <Compile Include="Workspace\IWorkspaceSelectionDialog.cs" />
-    <Compile Include="Workspace\IWorkspaceSelectorMenu.cs" />
-    <Compile Include="Workspace\NamespaceSelector.xaml.cs">
-      <DependentUpon>NamespaceSelector.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Workspace\TestResultHandler.cs" />
-    <Compile Include="Workspace\WorkspaceEditor.cs" />
-    <Compile Include="Workspace\WorkspaceEditorView.xaml.cs">
-      <DependentUpon>WorkspaceEditorView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Workspace\WorkspaceItem.cs" />
-    <Compile Include="Workspace\WorkspaceSelectionDialog.xaml.cs">
-      <DependentUpon>WorkspaceSelectionDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Workspace\WorkspaceSelector.cs" />
-    <Compile Include="Workspace\WorkspaceSelectorMenu.xaml.cs">
-      <DependentUpon>WorkspaceSelectorMenu.xaml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Editing\Scripts\Controls\tableEditor.js" />
     <Compile Include="Editing\Scripts\Embeds.cs" />
     <Compile Include="Editing\TestEditorBuilder.cs" />
@@ -418,10 +393,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\AddWorkspace.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Dialogs\TagSuite.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -535,22 +506,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Tests\XmlView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Workspace\NamespaceSelector.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Workspace\WorkspaceEditorView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Workspace\WorkspaceSelectionDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Workspace\WorkspaceSelectorMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

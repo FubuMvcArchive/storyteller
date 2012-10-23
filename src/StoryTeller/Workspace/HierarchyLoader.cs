@@ -206,8 +206,8 @@ namespace StoryTeller.Workspace
             foreach (string subFolder in _system.GetSubFolders(folder))
             {
                 string name = Path.GetFileName(subFolder);
-                var child = parent is Hierarchy ? new WorkspaceSuite(name){Filter = _project.WorkspaceFor(name)} : new Suite(name);
-                child.Parent = parent;
+                var child = new Suite(name) {Parent = parent};
+
                 parent.AddSuite(child);
                 loadTestsInFolder(subFolder, child);
             }

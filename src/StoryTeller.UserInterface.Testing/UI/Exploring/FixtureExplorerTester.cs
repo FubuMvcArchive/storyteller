@@ -34,10 +34,10 @@ namespace StoryTeller.UserInterface.Testing.UI.Exploring
         private readonly TreeNodeSpecification specification =
             new TreeNodeSpecification(
                 @"
-fixturegraph:Arithmetic
+fixturestructure:Arithmetic
 sentence:Arithmetic/Grammar4
 sentence:Arithmetic/Grammar5
-fixturegraph:Math
+fixturestructure:Math
 sentence:Math/Grammar1
 sentence:Math/Grammar2
 sentence:Math/Grammar3
@@ -91,10 +91,10 @@ sentence:Math/Grammar3
         private readonly TreeNodeSpecification specification =
             new TreeNodeSpecification(
                 @"
-fixturegraph:Arithmetic
+fixturestructure:Arithmetic
 sentence:Arithmetic/Grammar4
 sentence:Arithmetic/Grammar5
-fixturegraph:Math
+fixturestructure:Math
 sentence:Math/Grammar1
 sentence:Math/Grammar2
 sentence:Math/Grammar3

@@ -99,7 +99,6 @@
     <Compile Include="UI\Commands\ActionMenuItemTester.cs" />
     <Compile Include="UI\Commands\AddSuiteCommandTester.cs" />
     <Compile Include="UI\Commands\AddTestCommandTester.cs" />
-    <Compile Include="UI\Commands\AddWorkspaceCommandTester.cs" />
     <Compile Include="UI\Commands\CloneTestCommandTester.cs" />
     <Compile Include="UI\Commands\DeleteTestCommandTester.cs" />
     <Compile Include="UI\Commands\MarkAcceptanceCommandTester.cs" />
@@ -188,12 +187,7 @@
     <Compile Include="UI\Tests\TestScreenTester.cs" />
     <Compile Include="UI\Tests\TestStateManagerTester.cs" />
     <Compile Include="UI\Tests\XmlModeTester.cs" />
-    <Compile Include="UI\Workspace\FixtureSelectorTester.cs" />
-    <Compile Include="UI\Workspace\NamespaceSelectorTester.cs" />
     <Compile Include="UI\Workspace\TestResultHandlerTester.cs" />
-    <Compile Include="UI\Workspace\WorkspaceEditorTester.cs" />
-    <Compile Include="UI\Workspace\WorkspaceItemTester.cs" />
-    <Compile Include="UI\Workspace\WorkspaceSelectorDialogTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

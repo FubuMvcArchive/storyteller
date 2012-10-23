@@ -16,12 +16,6 @@ namespace StoryTeller.Workspace
         private string _fileName;
         private string _projectFolder;
         private int _timeoutInSeconds;
-        private readonly Cache<string, WorkspaceFilter> _workspaces = new Cache<string, WorkspaceFilter>(name => new WorkspaceFilter()
-        {
-            Name = name
-        });
-
-        private IEnumerable<WorkspaceFilter> _selectedWorkspaces = new WorkspaceFilter[0];
 
         public Project()
         {
@@ -38,35 +32,10 @@ namespace StoryTeller.Workspace
             FileName = filename;
         }
 
-        public WorkspaceFilter WorkspaceFor(string workspaceName)
-        {
-            return _workspaces[workspaceName];
-        }
-
-        public string[] SelectedWorkspaceNames
-        {
-            get { return _selectedWorkspaces.Select(x => x.Name).ToArray(); }
-        }
-
         public CodegenOptions Options { get; set; }
         public string GetTargetFile()
         {
             return getCorrectPath(Options.TargetFile);
-        }
-
-        public WorkspaceFilter[] Workspaces
-        {
-            get
-            {
-                return _workspaces.GetAll();
-            }
-            set
-            {
-                value.Each(w =>
-                {
-                    _workspaces[w.Name] = w;
-                });
-            }
         }
 
 
@@ -236,22 +205,6 @@ namespace StoryTeller.Workspace
             string fileName = test.FileName;
             return Path.Combine(GetTestFolder(), fileName);
         }
-
-        public WorkspaceFilter CurrentFixtureFilter()
-        {
-            return new WorkspaceFilter(_selectedWorkspaces);
-        }
-
-        public void SelectWorkspaces(IEnumerable<string > workspaceNames)
-        {
-            _selectedWorkspaces = workspaceNames.Select(x => WorkspaceFor(x)).ToList();
-        }
-
-        public IEnumerable<WorkspaceFilter> SelectedWorkspaces
-        {
-            get { return _selectedWorkspaces; }
-        }
-
 
         public ProjectValidationMessages Validate()
         {

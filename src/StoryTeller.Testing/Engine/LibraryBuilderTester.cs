@@ -33,7 +33,7 @@ namespace StoryTeller.Testing.Engine
             filter.Includes += t => t.Name.StartsWith("M");
 
 
-            builder = new LibraryBuilder(observer, filter);
+            builder = new LibraryBuilder(observer);
 
             library = builder.Build(new TestContext(container));
         }
@@ -51,12 +51,6 @@ namespace StoryTeller.Testing.Engine
             library.HasFixture("Missouri").ShouldBeTrue();
             library.HasFixture("Michigan").ShouldBeTrue();
             library.HasFixture("Montana").ShouldBeTrue();
-        }
-
-        [Test]
-        public void should_exclude_fixtures_present_in_the_container_that_do_not_match_the_filter()
-        {
-            library.HasFixture("Arkansas").ShouldBeFalse();
         }
 
         [Test]
@@ -93,7 +87,7 @@ namespace StoryTeller.Testing.Engine
         public void SetUp()
         {
             observer = MockRepository.GenerateMock<IFixtureObserver>();
-            builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
+            builder = new LibraryBuilder(observer);
 
             builder.FixtureCount = 23;
         }
@@ -194,7 +188,7 @@ namespace StoryTeller.Testing.Engine
             var context = new TestContext(container);
 
             var observer = MockRepository.GenerateMock<IFixtureObserver>();
-            var builder = new LibraryBuilder(observer, new CompositeFilter<Type>());
+            var builder = new LibraryBuilder(observer);
             
             builder.Build(context);
 

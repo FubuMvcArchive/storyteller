@@ -18,7 +18,6 @@ namespace StoryTeller.Domain
     {
         ResultStatus ResultStatus { get; set; }
         Lifecycle Lifecycle { get; set; }
-        IEnumerable<string> Workspaces { get; set; }
         bool Matches(Test test);
         bool Matches(Suite suite);
         bool ShowEmptySuites();
@@ -36,11 +35,9 @@ namespace StoryTeller.Domain
 
         private Predicate<Test> _lifecycleMatch;
         private Predicate<Test> _resultMatch;
-        private Predicate<Test> _workspaceMatch = t => true;
         private Predicate<Test> _tagsMatch = t => true;
 
         private ResultStatus _resultStatus;
-        private IEnumerable<string> _workspaces = new string[0];
 
         private string _Tags;
         public string Tags
@@ -97,39 +94,15 @@ namespace StoryTeller.Domain
             }
         }
 
-        public IEnumerable<string> Workspaces
-        {
-            get { return _workspaces; }
-            set
-            {
-                if (value.Any())
-                {
-                    _workspaceMatch = t => value.Any(w => t.IsInWorkspace(w));
-                }
-                else
-                {
-                    _workspaceMatch = t => true;
-                }
-
-                _workspaces = value;
-            }
-        }
 
         public bool Matches(Test test)
         {
-            return _resultMatch(test) && _lifecycleMatch(test) && _workspaceMatch(test) && _tagsMatch(test);
+            return _resultMatch(test) && _lifecycleMatch(test) && _tagsMatch(test);
         }
 
         public bool Matches(Suite suite)
         {
             if (!baselineSuiteMatch(suite)) return false;
-
-            if (suite is WorkspaceSuite)
-            {
-                return _workspaces.Any()
-                           ? _workspaces.Contains(suite.Name)
-                           : true;
-            }
 
             return true;
         }

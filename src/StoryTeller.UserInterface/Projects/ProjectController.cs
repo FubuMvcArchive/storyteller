@@ -27,7 +27,6 @@ namespace StoryTeller.UserInterface.Projects
                                         , IListener<RenameTestRequest>
                                         , IListener<SuiteAddedMessage>
                                         , IListener<RemoveProjectFromHistoryMessage>
-                                        , IListener<WorkflowFiltersChanged>
                                     
     {
         private readonly IScreenConductor _conductor;
@@ -115,8 +114,6 @@ namespace StoryTeller.UserInterface.Projects
 
                 token.Name = project.Name;
 
-                project.SelectWorkspaces(token.SelectedWorkspaces ?? new string[0]);
-
                 ActivateProject(project);
                 _history.MarkAsLastAccessed(token);
                 _persistor.SaveHistory(_history);
@@ -202,12 +199,6 @@ namespace StoryTeller.UserInterface.Projects
             }
         }
 
-        public void SaveWorkspace(WorkspaceSuite suite)
-        {
-            _persistor.SaveProject(_project);
-            _events.SendMessage(new WorkflowFiltersChanged(_project));
-        }
-
         public void SaveProject(IProject project)
         {
             _persistor.SaveProject(project);
@@ -255,20 +246,6 @@ namespace StoryTeller.UserInterface.Projects
         {
             _view.ShowProjects(_history.Projects);
             
-        }
-
-        public void Handle(WorkflowFiltersChanged message)
-        {
-            _history.MarkAsLastAccessed(new ProjectToken()
-            {
-                Name = Project.Name,
-                Filename = Project.FileName,
-                SelectedWorkspaces = Project.SelectedWorkspaceNames
-            });
-
-            _persistor.SaveHistory(_history);
-
-            _events.SendMessage(new ForceBinaryRecycle());
         }
     }
 }

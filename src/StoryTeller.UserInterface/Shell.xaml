@@ -13,7 +13,6 @@
                         <Image Source="Icons/runAll.png"></Image>
                     </Button>
                 </DockPanel>
-                <Workspace:WorkspaceSelectorMenu x:Name="workspaces" DockPanel.Dock="Left" Height="30" Margin="20 5 2 5"></Workspace:WorkspaceSelectorMenu>
                 <Controls:OptionsMenu x:Name="options" DockPanel.Dock="Right" Margin="30 0 0 0"></Controls:OptionsMenu>
                 <DockPanel Name="commandPanel" DockPanel.Dock="Top" Background="{DynamicResource SelectedBackgroundBrush}">
                     <Controls:CommandBar x:Name="commandBar" DockPanel.Dock="Right"></Controls:CommandBar>

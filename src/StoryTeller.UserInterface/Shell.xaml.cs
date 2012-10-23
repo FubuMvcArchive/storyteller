@@ -105,7 +105,6 @@ namespace StoryTeller.UserInterface
             registry.For<IOptionsMenu>().Use(options);
             registry.For<TestStopConditionsView>().Use(settings.TestStopConditionsView);
             registry.For<IProjectExplorerView>().Use(settings);
-            registry.For<IWorkspaceSelectorMenu>().Use(workspaces);
 
             registry.For<TreeView>().AddInstances(x =>
             {

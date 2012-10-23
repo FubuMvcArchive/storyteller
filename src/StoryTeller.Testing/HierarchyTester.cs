@@ -116,7 +116,7 @@ s9/t18,Failure
 ");
 
             var project = new Project();
-            hierarchy.FindAllWorkspaces(project).Select(x => x.Name).ShouldHaveTheSameElementsAs("s1", "s5", "s9");
+            hierarchy.ChildSuites.Select(x => x.Name).ShouldHaveTheSameElementsAs("s1", "s5", "s9");
 
         }
     }

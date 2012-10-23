@@ -47,7 +47,7 @@ namespace StoryTeller.Domain
         {
             var path = new TPath(Name);
             Suite parent = Parent;
-            while (parent.IsSuite())
+            while (parent != null && !(parent is Hierarchy))
             {
                 path = path.Push(parent.Name);
                 parent = parent.Parent;
@@ -256,10 +256,5 @@ namespace StoryTeller.Domain
 
         #endregion
 
-        public virtual WorkspaceFilter GetWorkspace()
-        {
-            if (Parent == null) return new WorkspaceFilter();
-            return Parent.GetWorkspace();
-        }
     }
 }

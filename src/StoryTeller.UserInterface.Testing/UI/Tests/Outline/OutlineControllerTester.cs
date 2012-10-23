@@ -263,8 +263,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Tests.Outline
 
             theProjectContext = new ProjectContext()
             {
-                Library = new FixtureLibrary(),
-                WorkspaceFilter = new WorkspaceFilter()
+                Library = new FixtureLibrary()
             };
 
             Services.Inject(theProjectContext);

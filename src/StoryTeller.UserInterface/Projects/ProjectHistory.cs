@@ -76,14 +76,10 @@ namespace StoryTeller.UserInterface.Projects
     {
         public ProjectToken()
         {
-            SelectedWorkspaces = new string[0];
         }
 
         public string Name { get; set; }
         public string Filename { get; set; }
-
-        [XmlArray("Workspace")]
-        public string[] SelectedWorkspaces { get; set; }
 
         public bool Equals(ProjectToken obj)
         {

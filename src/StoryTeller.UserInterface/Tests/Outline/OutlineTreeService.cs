@@ -29,8 +29,7 @@ namespace StoryTeller.UserInterface.Tests.Outline
         private OutlineTreeBuilder builder(IOutlineController controller, Test test)
         {
             var configurer = new OutlineConfigurer(controller);
-            var filter = test.GetWorkspace().CreateFixtureFilter();
-            var filteredLibrary = _context.Library.Filter(filter.Matches);
+            var filteredLibrary = _context.Library;
             
             return new OutlineTreeBuilder(test, filteredLibrary, configurer);
         }

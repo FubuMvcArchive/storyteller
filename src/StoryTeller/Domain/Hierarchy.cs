@@ -54,9 +54,5 @@ namespace StoryTeller.Domain
             GetAllTests().Each(x => x.Reset());
         }
 
-        public IEnumerable<WorkspaceFilter> FindAllWorkspaces(IProject project)
-        {
-            return ChildSuites.Select(x => project.WorkspaceFor(x.Name));
-        }
     }
 }

@@ -90,7 +90,7 @@ namespace StoryTeller.Execution
                 registry.AddFixturesToContainer(container);
 
                 
-                var library = TestRunnerBuilder.BuildLibrary(_lifecycle, observer, container, fixtureAssembly.Filter.CreateTypeFilter());
+                var library = TestRunnerBuilder.BuildLibrary(_lifecycle, observer, container);
                 var source = new FixtureContainerSource(container);
                 _runner = new TestRunner(_lifecycle, library, source);
                 if (_listener != null)

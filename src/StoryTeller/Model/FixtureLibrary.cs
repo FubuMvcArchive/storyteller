@@ -50,17 +50,6 @@ namespace StoryTeller.Model
             {
                 Description = key
             });
-        
-        public FixtureLibrary Filter(Func<FixtureStructure, bool> filter)
-        {
-            var library = new FixtureLibrary();
-            ActiveFixtures.Where(filter).Each(f =>
-            {
-                library._fixtures[f.Name] = f;
-            });
-
-            return library;
-        }
 
         public FixtureDto[] AllFixtures { get; set; }
         public IEnumerable<FixtureStructure> ActiveFixtures { get { return _fixtures.OrderBy(x => x.Name); } }

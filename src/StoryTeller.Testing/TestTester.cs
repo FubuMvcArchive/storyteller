@@ -40,53 +40,6 @@ namespace StoryTeller.Testing
 
 
         [Test]
-        public void return_a_blank_workspace_if_test_has_no_parent()
-        {
-            var test = new Test("something");
-            var workspace = test.GetWorkspace();
-            workspace.ShouldNotBeNull();
-            workspace.Filters.ShouldHaveTheSameElementsAs(FixtureFilter.All());
-        }
-
-        [Test]
-        public void return_the_workspace_filter_from_parent_suite()
-        {
-            var workspaceSuite = new WorkspaceSuite("suite")
-            {
-                Filter = new WorkspaceFilter()
-                {
-                    Filters = new FixtureFilter[] {FixtureFilter.Namespace("NS1")}
-                }
-            };
-
-            var test = new Test("something");
-            workspaceSuite.AddTest(test);
-
-            test.GetWorkspace().ShouldBeTheSameAs(workspaceSuite.Filter);
-        }
-
-
-        [Test]
-        public void return_the_workspace_filter_from_the_ultimate_parent_suite()
-        {
-            var workspaceSuite = new WorkspaceSuite("suite")
-            {
-                Filter = new WorkspaceFilter()
-                {
-                    Filters = new FixtureFilter[] { FixtureFilter.Namespace("NS1") }
-                }
-            };
-
-            var test = new Test("something");
-            var suite = new Suite("a suite");
-            suite.AddTest(test);
-
-            workspaceSuite.AddSuite(suite);
-
-            test.GetWorkspace().ShouldBeTheSameAs(workspaceSuite.Filter);
-        }
-
-        [Test]
         public void add_comment()
         {
             var test = new Test("some test");

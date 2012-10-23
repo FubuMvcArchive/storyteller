@@ -24,31 +24,6 @@ namespace StoryTeller.Testing.Execution
             var fa2 = (FixtureAssembly)formatter.Deserialize(stream);
         }
 
-        [Test]
-        public void pulls_the_current_filter_from_the_project()
-        {
-            var project = new Project
-            {
-                FixtureAssembly = typeof (GrammarMarker).Assembly.GetName().Name
-            };
-
-            project.WorkspaceFor("1").AddFilter(new FixtureFilter()
-            {
-                Name = "North", Type = FilterType.Fixture
-            });
-
-            project.WorkspaceFor("2").AddFilter(new FixtureFilter()
-            {
-                Name = "South",
-                Type = FilterType.Fixture
-            });
-
-            project.SelectWorkspaces(new string[]{"1", "2"});
-
-            var fa = new FixtureAssembly(project);
-
-            fa.Filter.Filters.ShouldHaveTheSameElementsAs(project.CurrentFixtureFilter().Filters);
-        }
     }
 
     [TestFixture]

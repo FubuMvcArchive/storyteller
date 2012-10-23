@@ -13,93 +13,6 @@ using Is = Rhino.Mocks.Constraints.Is;
 namespace StoryTeller.UserInterface.Testing.UI.Projects
 {
 
-    [TestFixture]
-    public class when_responding_to_the_workspace_filters_changed_message : InteractionContext<ProjectController>
-    {
-        private IProject theProject;
-
-        protected override void beforeEach()
-        {
-            theProject = new Project()
-            {
-                Name = "something",
-                FileName = "something.xml"
-            };
-
-            theProject.SelectWorkspaces(new string[]{"a", "b"});
-            ClassUnderTest.Project = theProject;
-
-            ClassUnderTest.HandleMessage(new WorkflowFiltersChanged(theProject));
-        }
-
-        [Test]
-        public void should_mark_this_project_as_the_most_recent_in_the_history()
-        {
-            MockFor<IProjectHistory>().AssertWasCalled(x => x.MarkAsLastAccessed(new ProjectToken()
-            {
-                Name = theProject.Name,
-                Filename = theProject.FileName
-            }));
-        }
-
-        [Test]
-        public void should_mark_the_selected_workspaces_in_the_project_token()
-        {
-            string[] workspaces = null;
-            MockFor<IProjectHistory>().AssertWasCalled(x => x.MarkAsLastAccessed(null), x =>
-            {
-                x.Constraints(Is.Matching<ProjectToken>(t =>
-                {
-                    workspaces = t.SelectedWorkspaces;
-                    return true;
-                }));
-            });
-        }
-
-        [Test]
-        public void should_persist_the_project_history()
-        {
-            MockFor<IProjectPersistor>().AssertWasCalled(x => x.SaveHistory(MockFor<IProjectHistory>()));
-        }
-
-        [Test]
-        public void needs_to_publish_a_binary_recycle_message()
-        {
-            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(new ForceBinaryRecycle()));
-        }
-    }
-
-
-    [TestFixture]
-    public class when_saving_workspace_filters_for_the_project : InteractionContext<ProjectController>
-    {
-        private IProject theProject;
-
-        protected override void beforeEach()
-        {
-            ClassUnderTest.Project = theProject = MockFor<IProject>();
-            ClassUnderTest.SaveWorkspace(new WorkspaceSuite("some name"));
-
-        }
-
-        [Test]
-        public void should_save_the_project_file()
-        {
-            MockFor<IProjectPersistor>().AssertWasCalled(x => x.SaveProject(theProject));
-        }
-
-        [Test]
-        public void has_to_issue_a_binary_recycle_request()
-        {
-            MockFor<IEventAggregator>().SendMessage(new ForceBinaryRecycle());
-        }
-
-        [Test]
-        public void should_publish_a_workspace_filters_changed_message()
-        {
-            MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(new WorkflowFiltersChanged(theProject)));
-        }
-    }
 
     [TestFixture]
     public class when_responding_to_a_new_suite : InteractionContext<ProjectController>
@@ -423,7 +336,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Projects
             theProjectToken = new ProjectToken
             {
                 Filename = _theFileName,
-                SelectedWorkspaces = new string[]{"a", "b", "c"},
                 Name = _theProjectName
             };
             ClassUnderTest.LoadProject(theProjectToken);
@@ -433,12 +345,6 @@ namespace StoryTeller.UserInterface.Testing.UI.Projects
         public void cancels_all_test_runs_in_the_queue()
         {
             MockFor<IEventAggregator>().AssertWasCalled(x => x.SendMessage(new ProjectLoaded(_project)));
-        }
-
-        [Test]
-        public void should_apply_the_persisted_workspace_filters_to_the_project()
-        {
-            _project.AssertWasCalled(x => x.SelectWorkspaces(theProjectToken.SelectedWorkspaces));
         }
 
         [Test]
