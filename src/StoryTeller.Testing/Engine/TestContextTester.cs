@@ -232,7 +232,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_exceptions()
         {
             var test = new Test("some test");
-            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), test, new ConsoleListener());
 
             context.IncrementExceptions();
 
@@ -243,7 +243,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_rights()
         {
             var test = new Test("some test");
-            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), test, new ConsoleListener());
 
             context.IncrementRights();
 
@@ -255,7 +255,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_syntax_errors()
         {
             var test = new Test("some test");
-            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), test, new ConsoleListener());
 
             context.IncrementSyntaxErrors();
 
@@ -266,7 +266,7 @@ namespace StoryTeller.Testing.Engine
         public void increment_wrongs()
         {
             var test = new Test("some test");
-            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), test, new ConsoleListener());
 
             context.IncrementWrongs();
 
@@ -362,7 +362,7 @@ namespace StoryTeller.Testing.Engine
             listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
 
 
-            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(),new Test("Fake"), listener);
+            var context = new TestContext(new SimpleExecutionContext(),new Test("Fake"), listener);
             IGrammar grammar = context.SetupMockGrammar(step.GrammarKey);
 
             context.RunStep(step);
@@ -391,7 +391,7 @@ namespace StoryTeller.Testing.Engine
             {
                 StepsAllowed = 3
             };
-            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, observer);
+            var context = new TestContext(new SimpleExecutionContext(), test, observer);
             context.Execute();
 
             observer.StepsRun.ShouldEqual(3);
@@ -467,7 +467,7 @@ namespace StoryTeller.Testing.Engine
             test.DebugMessage("debug2");
 
 
-            var context = new TestContext(new SimpleExecutionContext(), FixtureGraph.ForAppDomain(), test, new ConsoleListener());
+            var context = new TestContext(new SimpleExecutionContext(), test, new ConsoleListener());
             context.Execute();
 
             context.TraceText.ShouldContain("console1");

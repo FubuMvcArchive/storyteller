@@ -28,8 +28,7 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            observer = MockRepository.GenerateMock<IFixtureObserver>();
-            builder = new LibraryBuilder(observer);
+            builder = new LibraryBuilder();
 
             builder.FixtureCount = 23;
         }
@@ -37,7 +36,6 @@ namespace StoryTeller.Testing.Engine
         #endregion
 
         private LibraryBuilder builder;
-        private IFixtureObserver observer;
 
         [Test]
         public void read_a_fixture_failure()
@@ -92,26 +90,6 @@ namespace StoryTeller.Testing.Engine
             fixtureStructure.AllErrors().Each(x => x.Node.ShouldEqual(fixtureStructure));
         }
 
-        [Test]
-        public void reading_a_fixture_failure_will_send_a_reading_fixture_message()
-        {
-            var exception = new NotImplementedException();
-            builder.LogFixtureFailure("bad fixture", exception);
-
-            observer.AssertWasCalled(x => x.ReadingFixture(23, 1, "bad fixture"));
-        }
-
-        [Test]
-        public void reading_a_fixture_will_send_a_message_to_the_observer()
-        {
-            builder.ReadFixture("Good", new StubFixture());
-
-            observer.AssertWasCalled(x => x.ReadingFixture(23, 1, "Good"));
-
-            builder.ReadFixture("Good2", new StubFixture());
-
-            observer.AssertWasCalled(x => x.ReadingFixture(23, 2, "Good2"));
-        }
     }
 
 
@@ -125,8 +103,7 @@ namespace StoryTeller.Testing.Engine
         {
             var context = new TestContext();
 
-            var observer = MockRepository.GenerateMock<IFixtureObserver>();
-            var builder = new LibraryBuilder(observer);
+            var builder = new LibraryBuilder();
             
             builder.Build(context);
 

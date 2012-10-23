@@ -15,7 +15,7 @@ namespace StoryTeller.Testing.Engine
         public void throws_exception_for_non_existent_fixture()
         {
             Exception<NonExistentFixtureException>.ShouldBeThrownBy(() => {
-                FixtureGraph.ForAppDomain().Build(Guid.NewGuid().ToString());
+                FixtureGraph.Current.Build(Guid.NewGuid().ToString());
             });
         }
 
@@ -33,7 +33,7 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void build_for_app_domain()
         {
-            var graph = FixtureGraph.ForAppDomain();
+            var graph = FixtureGraph.Current;
 
             graph.Build(typeof(Calculator2Fixture).GetFixtureAlias())
                 .ShouldBeOfType<Calculator2Fixture>();

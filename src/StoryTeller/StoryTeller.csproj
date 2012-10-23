@@ -98,7 +98,6 @@
     <Compile Include="Engine\ISystem.cs" />
     <Compile Include="Engine\LibraryLifecycle.cs" />
     <Compile Include="Engine\NonExistentFixtureException.cs" />
-    <Compile Include="Engine\NulloFixtureObserver.cs" />
     <Compile Include="Engine\NulloSystem.cs" />
     <Compile Include="Execution\FixtureAssembly.cs" />
     <Compile Include="Execution\OpenHtmlOption.cs" />
@@ -150,7 +149,6 @@
     <Compile Include="Engine\TestRunnerExtensions.cs" />
     <Compile Include="Execution\DirectoryRunner.cs" />
     <Compile Include="Execution\FixtureLibraryWatcher.cs" />
-    <Compile Include="Execution\FixtureObserver.cs" />
     <Compile Include="Execution\InProcessTestEngine.cs" />
     <Compile Include="Execution\ITestRunnerDomain.cs" />
     <Compile Include="Execution\NulloEventAggregator.cs" />

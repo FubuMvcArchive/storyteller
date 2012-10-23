@@ -99,7 +99,6 @@ namespace StoryTeller.Engine
     {
         private readonly Stack<IFixture> _fixtures = new Stack<IFixture>();
         private readonly IExecutionContext _execution;
-        private readonly FixtureGraph _graph;
         private readonly Test _test;
 
         [Obsolete]
@@ -111,14 +110,13 @@ namespace StoryTeller.Engine
         private readonly Counts _counts = new Counts();
 
         public TestContext()
-            : this(new SimpleExecutionContext() ,FixtureGraph.ForAppDomain(), new Test("FAKE"), new TraceListener())
+            : this(new SimpleExecutionContext(), new Test("FAKE"), new TraceListener())
         {
         }
 
-        public TestContext(IExecutionContext execution, FixtureGraph graph, Test test, ITestObserver listener)
+        public TestContext(IExecutionContext execution, Test test, ITestObserver listener)
         {
             _execution = execution;
-            _graph = graph;
             _test = test;
             _listener = listener;
         }
@@ -169,7 +167,7 @@ namespace StoryTeller.Engine
 
         public IFixture RetrieveFixture(string fixtureName)
         {
-            var fixture = _graph.Build(fixtureName);
+            var fixture = FixtureGraph.Current.Build(fixtureName);
             fixture.Context = this;
 
             return fixture;
@@ -186,7 +184,7 @@ namespace StoryTeller.Engine
 
             try
             {
-                var fixture = _graph.Build(fixtureKey);
+                var fixture = FixtureGraph.Current.Build(fixtureKey);
                 LoadFixture(fixture, part);
             }
             catch (NonExistentFixtureException e)

@@ -71,17 +71,13 @@ namespace StoryTeller.Execution
         public FixtureLibrary StartSystem(FixtureAssembly fixtureAssembly, MarshalByRefObject remotePublisher)
         {
             _publisher = (IEventPublisher)remotePublisher;
-            var observer = new FixtureObserver(_publisher);
 
             // TODO -- if fails, do a Thread.Sleep and try again
             _system = fixtureAssembly.System;
 
-            // TODO -- make this be async
-            observer.RecordStatus("Setting up the environment");
-
             try
             {
-                var library = TestRunnerBuilder.BuildLibrary(_system, observer);
+                var library = TestRunnerBuilder.BuildLibrary(_system);
                 _runner = new TestRunner(_system, library);
                 if (_listener != null)
                 {

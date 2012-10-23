@@ -63,7 +63,7 @@ namespace StoryTeller.Engine
             Stopwatch timer = Stopwatch.StartNew();
 
             _execution = _system.CreateContext();
-            _context = new TestContext(_execution, FixtureGraph.ForAppDomain(), _request.Test, _listener);
+            _context = new TestContext(_execution, _request.Test, _listener);
 
             _reset = new ManualResetEvent(false);
 

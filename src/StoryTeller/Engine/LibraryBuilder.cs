@@ -5,23 +5,14 @@ using StoryTeller.Model;
 
 namespace StoryTeller.Engine
 {
-    public interface IFixtureObserver
-    {
-        void ReadingFixture(int total, int number, string fixtureName);
-        void RecordStatus(string statusMessage);
-    }
-
     public class LibraryBuilder : IFixtureVisitor
     {
-        private readonly IFixtureObserver _observer;
         private FixtureLibrary _library;
         private int _number = 1;
         private int _total;
 
-        public LibraryBuilder(IFixtureObserver observer)
+        public LibraryBuilder()
         {
-            _observer = observer;
-
             _library = new FixtureLibrary();
         }
 
@@ -39,8 +30,6 @@ namespace StoryTeller.Engine
 
         public void ReadFixture(string fixtureName, IFixture fixture)
         {
-            sendMessage(fixtureName);
-
             FixtureStructure fixtureStructure = _library.FixtureFor(fixtureName);
             fixtureStructure.FixtureClassName = fixture.GetType().FullName;
             fixtureStructure.FixtureNamespace = fixture.GetType().Namespace;
@@ -58,8 +47,6 @@ namespace StoryTeller.Engine
 
         public void LogFixtureFailure(string fixtureName, Exception exception)
         {
-            sendMessage(fixtureName);
-
             FixtureStructure fixtureStructure = _library.FixtureFor(fixtureName);
 
             fixtureStructure.LogError(exception);
@@ -79,7 +66,6 @@ namespace StoryTeller.Engine
 
         private void readFixtures(TestContext context)
         {
-            _observer.RecordStatus("Discovering and filtering fixtures");
             throw new NotImplementedException();
 //            var fixtureConfiguration = context.Container.Model.For<IFixture>();
 //            var instanceRefs = fixtureConfiguration.Instances;
@@ -102,11 +88,6 @@ namespace StoryTeller.Engine
             structure.Description = grammar.Description;
 
             fixtureStructure.AddStructure(key, structure);
-        }
-
-        private void sendMessage(string fixtureName)
-        {
-            _observer.ReadingFixture(_total, _number++, fixtureName);
         }
     }
 }

@@ -5,13 +5,11 @@ namespace StoryTeller.Engine
 {
     public class TestRunnerBuilder
     {
-        private readonly IFixtureObserver _observer;
         private readonly ISystem _system;
 
-        public TestRunnerBuilder(ISystem system, IFixtureObserver observer)
+        public TestRunnerBuilder(ISystem system)
         {
             _system = system;
-            _observer = observer;
         }
 
         public static ITestRunner ForSystem<T>() where T : ISystem, new()
@@ -22,7 +20,7 @@ namespace StoryTeller.Engine
 
         private static ITestRunner ForSystem(ISystem system)
         {
-            var builder = new TestRunnerBuilder(system, new NulloFixtureObserver());
+            var builder = new TestRunnerBuilder(system);
             return builder.Build();
         }
 
@@ -43,7 +41,7 @@ namespace StoryTeller.Engine
         }
 
         // TODO -- remove the composite filter thing
-        public static FixtureLibrary BuildLibrary(ISystem lifeCycle, IFixtureObserver observer)
+        public static FixtureLibrary BuildLibrary(ISystem lifeCycle)
         {
             throw new NotImplementedException();
 //            try

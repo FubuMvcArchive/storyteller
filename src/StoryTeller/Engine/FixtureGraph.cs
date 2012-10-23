@@ -11,11 +11,18 @@ namespace StoryTeller.Engine
 {
     public class FixtureGraph
     {
+        private static readonly Lazy<FixtureGraph> _current = new Lazy<FixtureGraph>(FixtureGraph.forAppDomain);
+
         private readonly Cache<string, Type> _fixtureTypes = new Cache<string,Type>(name => {
             throw new NonExistentFixtureException(name);
         });
 
         private readonly IList<Type> _systemTypes = new List<Type>(); 
+
+        public static FixtureGraph Current
+        {
+            get { return _current.Value; }
+        }
 
         private FixtureGraph(IEnumerable<Assembly> assemblies)
         {
@@ -76,8 +83,7 @@ namespace StoryTeller.Engine
             return new FixtureGraph(assemblies);
         }
 
-        // TODO -- memoize this
-        public static FixtureGraph ForAppDomain()
+        private static FixtureGraph forAppDomain()
         {
             var list = new List<string>() {AppDomain.CurrentDomain.SetupInformation.ApplicationBase};
 
