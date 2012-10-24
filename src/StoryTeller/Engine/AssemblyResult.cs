@@ -16,8 +16,8 @@ namespace StoryTeller.Engine
             {
                 var types = assembly.GetExportedTypes();
 
-                FixtureTypes = types.Where(x => FubuCore.TypeExtensions.IsConcreteWithDefaultCtor(x) && FubuCore.TypeExtensions.IsConcreteTypeOf<IFixture>(x));
-                SystemTypes = types.Where(x => x.IsConcreteTypeOf<ISystem>() && x.IsConcreteWithDefaultCtor());
+                FixtureTypes = types.Where(IsFixture);
+                SystemTypes = types.Where(IsSystem);
 
                 WasAbleToScan = true;
             }
@@ -33,5 +33,36 @@ namespace StoryTeller.Engine
 
         public IEnumerable<Type> FixtureTypes = new Type[0];
         public IEnumerable<Type> SystemTypes = new Type[0];
+
+        public static bool IsSystem(Type type)
+        {
+            if (!type.IsConcreteTypeOf<ISystem>())
+            {
+                return false;
+            }
+
+            try
+            {
+                return type.IsConcreteWithDefaultCtor();
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+        }
+
+        public static bool IsFixture(Type type)
+        {
+            if (!type.IsConcreteTypeOf<IFixture>()) return false;
+
+            try
+            {
+                return type.IsConcreteWithDefaultCtor();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

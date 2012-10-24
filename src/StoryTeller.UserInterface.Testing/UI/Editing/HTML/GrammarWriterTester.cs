@@ -23,7 +23,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [SetUp]
         public void SetUp()
         {
-            Assert.Fail("need to build FixtureLibrary somehow");
+            library = FixtureGraph.Library;
             templates = new GrammarWriter(library).Build();
         }
     }
