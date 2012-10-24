@@ -100,7 +100,7 @@ namespace StoryTeller.Testing.Engine
             section.Add(step);
             test.Add(section);
 
-            var runner = TestRunnerBuilder.ForFixture<ActionsFixture>();
+            var runner = new TestRunner();
             return runner.RunTest(new TestExecutionRequest(test, new TestStopConditions()));
         }
 

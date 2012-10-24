@@ -101,6 +101,11 @@ namespace StoryTeller.Execution
 
         public TestResult RunTest(TestExecutionRequest request)
         {
+            if (_proxy == null)
+            {
+                throw new InvalidOperationException("Cannot execute a test unless a project has been loaded");
+            }
+
             lock (_locker)
             {
                 return _proxy.RunTest(request);

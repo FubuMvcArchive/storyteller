@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FubuCore;
 using StoryTeller.Domain;
 using StoryTeller.Execution;
 using StoryTeller.Model;
@@ -12,6 +13,21 @@ namespace StoryTeller.Engine
         private TestRun _currentRun;
         private ITestObserver _listener = new TraceListener();
 
+        public static ITestRunner ForSystem<T>() where T : ISystem, new()
+        {
+            var system = new T();
+            return ForSystem(system);
+        }
+
+        public static ITestRunner ForSystem(ISystem system)
+        {
+            return new TestRunner(system, FixtureGraph.Library);
+        }
+
+        public TestRunner() : this(new NulloSystem(), FixtureGraph.Library)
+        {
+            
+        }
 
         public TestRunner(ISystem system, FixtureLibrary library)
         {
@@ -59,7 +75,7 @@ namespace StoryTeller.Engine
 
         public void Dispose()
         {
-            _system.Dispose();
+            _system.SafeDispose();
         }
 
         public void Abort()

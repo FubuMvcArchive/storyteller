@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using NUnit.Framework;
+using StoryTeller.Engine;
 using StoryTeller.Model;
 using StoryTeller.Samples.Grammars;
 using StoryTeller.Testing;
@@ -53,7 +54,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         public void do_not_write_remove_link_for_the_mandatory_autoselect_grammar()
         {
             var fixture =
-                FixtureLibrary.ForAppDomain().FixtureFor("MandatorySelection");
+                FixtureGraph.Library.FixtureFor("MandatorySelection");
 
             var fixtureTag = new FixtureTag(fixture);
             fixtureTag.Children.First(x => x.HasClass("StartWithTheNumber")).Children.Any(x => x is RemoveLinkTag).
@@ -121,7 +122,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         public void SetUp()
         {
             FixtureLibrary library =
-                FixtureLibrary.ForAppDomain();
+                FixtureGraph.Library;
 
             // Look for the EmbeddedChoicesFixture
             fixture = library.FixtureFor("EmbeddedChoices");

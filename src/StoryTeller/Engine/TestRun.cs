@@ -4,6 +4,7 @@ using System.Threading;
 using System.Web;
 using FubuCore;
 using FubuCore.Conversion;
+using HtmlTags;
 using StoryTeller.Execution;
 using StoryTeller.Html;
 using StoryTeller.Model;
@@ -62,7 +63,31 @@ namespace StoryTeller.Engine
 
             Stopwatch timer = Stopwatch.StartNew();
 
-            _execution = _system.CreateContext();
+            try
+            {
+                _execution = _system.CreateContext();
+            }
+            catch (Exception e)
+            {
+                var document = new HtmlDocument();
+                document.Title = "Catastrophic Failure!";
+                document.Add("pre").Text(e.ToString());
+
+                var result = new TestResult
+                {
+                    Counts = new Counts(0, 0, 1, 0),
+                    ExceptionText = e.ToString(),
+                    Html = document.ToString(),
+                    Locator = _request.Test.LocatorPath(),
+                    ExecutionTime = 0,
+                    FullExceptionText = e.ToString(),
+                    WasCancelled = false
+                };
+
+                _request.Test.LastResult = result;
+
+                return result;
+            }
             _context = new TestContext(_execution, _request.Test, _listener);
 
             _reset = new ManualResetEvent(false);

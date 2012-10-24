@@ -95,27 +95,31 @@ namespace StoryTeller.Testing.Engine
 
 
     [TestFixture]
-    public class when_executing_the_composite_grammar : InteractionContext<ParagraphGrammar>
+    public class when_executing_the_composite_grammar
     {
         private IGrammar[] grammars;
         private IStep step;
         private ITestContext context;
         private Counts counts;
+        private ParagraphGrammar ClassUnderTest;
 
-        public when_executing_the_composite_grammar()
-            : base(MockMode.RecordAndReplay)
+        [SetUp]
+        public void SetUp()
         {
-        }
-
-        protected override void beforeEach()
-        {
-            grammars = Services.CreateMockArrayFor<IGrammar>(3);
+            grammars = new IGrammar[]
+            {
+                MockRepository.GenerateMock<IGrammar>(),
+                MockRepository.GenerateMock<IGrammar>(),
+                MockRepository.GenerateMock<IGrammar>()
+            };
+            ClassUnderTest = new ParagraphGrammar(grammars);
 
             step = MockRepository.GenerateMock<IStep>();
 
             context = MockRepository.GenerateMock<AutoPerformingTestContext>();
             counts = new Counts();
         }
+
 
         [Test]
         public void calls_a_do_grammar()

@@ -1,4 +1,5 @@
 using FubuCore;
+using StoryTeller.Model;
 
 namespace StoryTeller.Engine.Importing
 {
@@ -39,6 +40,11 @@ namespace StoryTeller.Engine.Importing
                 FixtureName = typeof(T).GetFixtureAlias(),
                 GrammarKey = grammarKey
             };
+        }
+
+        public GrammarStructure FindStructure(FixtureLibrary library)
+        {
+            return library.FixtureFor(FixtureName).GrammarFor(GrammarKey);
         }
     }
 }

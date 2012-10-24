@@ -50,13 +50,23 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void can_retrieve_its_own_test()
         {
-            Assert.Fail("Do.");
+            var execution = new SimpleExecutionContext();
+            var test = new Test("soemthing");
+            var context = new TestContext(execution, test, new ConsoleListener());
+
+
+            context.Retrieve(typeof (Test)).ShouldBeTheSameAs(test);
+            context.Retrieve<Test>().ShouldBeTheSameAs(test);
         }
 
         [Test]
         public void can_retrieve_its_own_execution_context()
         {
-            Assert.Fail("Do.");
+            var execution = new SimpleExecutionContext();
+            var context = new TestContext(execution, new Test("soemthing"), new ConsoleListener());
+
+            context.Retrieve<IExecutionContext>().ShouldBeTheSameAs(execution);
+            context.Retrieve(typeof (IExecutionContext)).ShouldBeTheSameAs(execution);
         }
 
 
@@ -113,45 +123,35 @@ namespace StoryTeller.Testing.Engine
         [Test]
         public void calls_listener_end_section()
         {
-            var container = new Container();
-            Assert.Fail("NWO");
-//            var context = new TestContext(container);
-//
-//            var listener = MockRepository.GenerateMock<ITestObserver>();
-//
-//            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
-//
-//            context.Listener = listener;
-//
-//
-//            var section = new Section("Math");
-//            context.CallOn<ITestVisitor>(x => x.StartSection(section));
-//            context.CallOn<ITestVisitor>(x => x.EndSection(section));
-//
-//            listener.AssertWasCalled(x => x.FinishSection(section));
+            var context = new TestContext();
+
+            var listener = MockRepository.GenerateMock<ITestObserver>();
+
+            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
+
+            context.Listener = listener;
+
+
+            var section = new Section("Math");
+            context.CallOn<ITestVisitor>(x => x.StartSection(section));
+            context.CallOn<ITestVisitor>(x => x.EndSection(section));
+
+            listener.AssertWasCalled(x => x.FinishSection(section));
         }
 
         [Test]
         public void calls_listener_start_section()
         {
-            Assert.Fail("NWO");
+            var context = new TestContext();
+            var listener = MockRepository.GenerateMock<ITestObserver>();
+            context.Listener = listener;
 
+            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
 
-//            var container = new Container();
-//            var registry = new FixtureRegistry();
-//            registry.AddFixture<MathFixture>();
-//            registry.AddFixturesToContainer(container);
-//
-//            var context = new TestContext(container);
-//            var listener = MockRepository.GenerateMock<ITestObserver>();
-//            context.Listener = listener;
-//
-//            listener.Expect(x => x.CanContinue(null)).Return(true).IgnoreArguments().Repeat.Any();
-//
-//            var section = new Section("Math");
-//            context.CallOn<ITestVisitor>(x => x.StartSection(section));
-//
-//            listener.AssertWasCalled(x => x.StartSection(section));
+            var section = new Section("Math");
+            context.CallOn<ITestVisitor>(x => x.StartSection(section));
+
+            listener.AssertWasCalled(x => x.StartSection(section));
         }
 
         [Test]
@@ -426,20 +426,12 @@ namespace StoryTeller.Testing.Engine
         {
             var returnValue = new SomethingThatDoesNotExist();
 
-            var context = new TestContext();
+            var execution = new SimpleExecutionContext();
+            execution.Services.Add<ISomethingThatDoesNotExist>(returnValue);
+            var context = new TestContext(execution, new Test("a"), new ConsoleListener());
 
             context.Retrieve(typeof (ISomethingThatDoesNotExist)).ShouldBeTheSameAs(returnValue);
             context.Retrieve<ISomethingThatDoesNotExist>().ShouldBeTheSameAs(returnValue);
-        }
-
-        [Test]
-        public void the_test_is_available_in_the_test_context()
-        {
-            Assert.Fail("NWO");
-            var test = new Test("some test");
-            //var context = new TestContext(new Container(), test, new ConsoleListener());
-
-            //context.Retrieve<Test>().ShouldBeTheSameAs(test);
         }
 
         [Test, ExpectedException(typeof(ArgumentNullException))]

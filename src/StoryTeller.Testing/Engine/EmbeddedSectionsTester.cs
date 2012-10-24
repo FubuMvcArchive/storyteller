@@ -56,7 +56,7 @@ namespace StoryTeller.Testing.Engine
 
 ");
 
-            runner = TestUtility.GetRunner();
+            runner = new TestRunner();
                 
         }
 

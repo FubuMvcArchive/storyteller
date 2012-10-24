@@ -14,7 +14,7 @@ namespace StoryTeller.Testing.Execution
         [Test]
         public void can_serialize_the_fixture_assembly_class()
         {
-            var fa = new FixtureAssembly(null, "StoryTeller.Testing");
+            var fa = new FixtureAssembly((string) null);
             var stream = new MemoryStream();
             var formatter = new BinaryFormatter();
             formatter.Serialize(stream, fa);
@@ -34,19 +34,13 @@ namespace StoryTeller.Testing.Execution
         [SetUp]
         public void SetUp()
         {
-            fa = new FixtureAssembly(null, GetType().Assembly.GetName().Name);
+            fa = new FixtureAssembly((string) null);
         }
 
         [Test]
         public void the_system_should_be_nullo_system()
         {
             fa.System.ShouldBeOfType<NulloSystem>();
-        }
-
-        [Test]
-        public void the_assembly_should_be_the_configured_fixture_assembly()
-        {
-            fa.Assembly.ShouldEqual(GetType().Assembly);
         }
     }
 
@@ -58,19 +52,13 @@ namespace StoryTeller.Testing.Execution
         [SetUp]
         public void SetUp()
         {
-            fa = new FixtureAssembly(typeof (GrammarSystem).AssemblyQualifiedName, null);
+            fa = new FixtureAssembly(typeof (GrammarSystem).AssemblyQualifiedName);
         }
 
         [Test]
         public void the_system_type_should_be_the_type_specified()
         {
             fa.System.ShouldBeOfType<GrammarSystem>();
-        }
-
-        [Test]
-        public void the_assembly_should_be_the_assembly_containing_the_system_specified()
-        {
-            fa.Assembly.ShouldEqual(typeof (GrammarSystem).Assembly);
         }
     }
 }

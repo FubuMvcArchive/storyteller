@@ -141,10 +141,5 @@ namespace StoryTeller.Model
 
             return fixture;
         }
-
-        public static FixtureLibrary ForAppDomain()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

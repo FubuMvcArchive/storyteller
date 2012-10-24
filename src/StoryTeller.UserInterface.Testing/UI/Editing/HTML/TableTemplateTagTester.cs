@@ -17,7 +17,7 @@ namespace StoryTeller.UserInterface.Testing.UI.Editing.HTML
         [SetUp]
         public void SetUp()
         {
-            var library = FixtureLibrary.ForAppDomain();
+            var library = FixtureGraph.Library;
             table = (Table)library.FixtureFor("SampleTable").GrammarFor("Table1");
 
             tag = new TableTemplateTag(table, new CellBuilderLibrary());

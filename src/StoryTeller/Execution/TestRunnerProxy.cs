@@ -77,7 +77,7 @@ namespace StoryTeller.Execution
 
             try
             {
-                var library = TestRunnerBuilder.BuildLibrary(_system);
+                var library = FixtureGraph.Library;
                 _runner = new TestRunner(_system, library);
                 if (_listener != null)
                 {

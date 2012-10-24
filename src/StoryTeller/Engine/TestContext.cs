@@ -88,18 +88,16 @@ namespace StoryTeller.Engine
     }
 
 
-    public interface IFixtureVisitor
-    {
-        int FixtureCount { set; }
-        void ReadFixture(string fixtureName, IFixture fixture);
-        void LogFixtureFailure(string fixtureName, Exception exception);
-    }
-
     public class TestContext : ITestContext, ITestVisitor
     {
         private readonly Stack<IFixture> _fixtures = new Stack<IFixture>();
         private readonly IExecutionContext _execution;
         private readonly Test _test;
+        private readonly Lazy<IObjectConverter> _converter;
+
+
+
+
 
         [Obsolete]
         private bool _fixtureIsInvalid;
@@ -119,6 +117,13 @@ namespace StoryTeller.Engine
             _execution = execution;
             _test = test;
             _listener = listener;
+
+            _cache[typeof (IExecutionContext)] = execution;
+            _cache[typeof (Test)] = test;
+
+            _converter = new Lazy<IObjectConverter>(() => {
+                return new ObjectConverter(_execution.Services, _execution.BindingRegistry.Converters);
+            });
         }
 
         public string TraceText { get { return _traceWriter.GetStringBuilder().ToString(); } }
@@ -249,18 +254,38 @@ namespace StoryTeller.Engine
 
         public T Retrieve<T>()
         {
+            if (typeof(T) == typeof(ITestContext))
+            {
+                return (T)(this.As<object>());
+            }
+
             if (_cache.Has(typeof(T)))
             {
                 return (T)_cache[typeof (T)];
             }
 
-            return _execution.Services.GetInstance<T>();
+            try
+            {
+                return _execution.Services.GetInstance<T>();
+            }
+            catch (Exception)
+            {
+                if (typeof(T).IsConcreteWithDefaultCtor())
+                {
+                    return (T) Activator.CreateInstance(typeof (T));
+                }
+
+                throw;
+            }
 
         }
 
 
         public object Retrieve(Type type)
         {
+            // backwards compatibility
+            if (type == typeof(ITestContext)) return this;
+
             if (_cache.Has(type))
             {
                 return _cache[type];
@@ -333,13 +358,10 @@ namespace StoryTeller.Engine
             return _results[part];
         }
 
+
         public IObjectConverter Finder
         {
-            get
-            {
-                throw new NotImplementedException("REDO");
-                //return Retrieve<IObjectConverter>();
-            }
+            get { return _converter.Value; }
         }
 
         #endregion

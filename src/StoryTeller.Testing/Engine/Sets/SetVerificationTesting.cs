@@ -25,7 +25,7 @@ namespace StoryTeller.Testing.Engine.Sets
         private HtmlDocument writePreview(string xml)
         {
             Test test = TestUtility.ReadTest(xml);
-            var runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
+            var runner = new TestRunner();
 
             return runner.WritePreview(test);
         }
@@ -33,7 +33,7 @@ namespace StoryTeller.Testing.Engine.Sets
         private string writeResults(string xml)
         {
             Test test = TestUtility.ReadTest(xml);
-            var runner = TestRunnerBuilder.ForFixture<AddressCheckFixture>();
+            var runner = new TestRunner();
 
             runner.RunTest(test);
 

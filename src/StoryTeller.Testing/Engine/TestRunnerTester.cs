@@ -72,22 +72,11 @@ namespace StoryTeller.Testing.Engine
     [TestFixture]
     public class TestRunnerTester : AAAMockingContext<TestContext>
     {
-        [Test]
-        public void just_redo_all_of_TestRunner_tests()
-        {
-            Assert.Fail("NWO");
-        }
-
-        [Test]
-        public void should_dispose_the_system_when_disposing()
-        {
-            Assert.Fail("Do.");
-        }
 
         [Test]
         public void run_a_test_when_setup_blows_up_do_not_rethrow_exception_and_log_the_exception_to_the_test()
         {
-            var runner = TestRunnerBuilder.ForSystem<SystemThatBlowsUpInSetup>();
+            var runner = TestRunner.ForSystem<SystemThatBlowsUpInSetup>();
 
             var test = new Test("Some test");
 
@@ -96,29 +85,6 @@ namespace StoryTeller.Testing.Engine
             test.LastResult.ExceptionText.ShouldContain("NotImplementedException");
         }
 
-        [Test]
-        public void run_a_test_when_teardown_blows_up_do_not_rethrow_exception_and_log_the_exception_to_the_test()
-        {
-            Assert.Fail("REDO");
-
-//            var system = MockRepository.GenerateMock<ISystem>();
-//            system.Stub(x => x.BuildConverter()).Return(new ObjectConverter());
-//
-//            var fixtureContainerSource = new FixtureContainerSource(new Container(x =>
-//            {
-//                x.For<IFixture>().Add<RecordingFixture>().Named("Recording");
-//            }));
-//            var runner = new TestRunner(system, new FixtureLibrary());
-//
-//            system.Expect(x => x.Teardown()).Throw(new NotImplementedException());
-
-//            var test = new Test("something");
-//            runner.RunTest(test);
-//
-//            test.LastResult.ExceptionText.ShouldContain("NotImplementedException");
-
-
-        }
     }
 
 

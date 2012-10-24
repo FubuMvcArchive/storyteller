@@ -17,11 +17,6 @@ namespace StoryTeller.Testing
 {
     public static class TestUtility
     {
-        public static ITestRunner GetRunner()
-        {
-            throw new NotImplementedException("Need to build one with a nullo system for this entire app domain");
-        }
-
         public static Test RunTest(string xml)
         {
             Test test = ReadTest(xml);
@@ -30,7 +25,7 @@ namespace StoryTeller.Testing
 
         public static Test RunTest(Test test)
         {
-            ITestRunner runner = GetRunner();
+            ITestRunner runner = new TestRunner();
 
             test.LastResult = runner.RunTest(test);
 
@@ -40,7 +35,7 @@ namespace StoryTeller.Testing
         public static HtmlDocument WritePreview(string xml)
         {
             Test test = ReadTest(xml);
-            return GetRunner().WritePreview(test);
+            return new TestRunner().WritePreview(test);
         }
 
 

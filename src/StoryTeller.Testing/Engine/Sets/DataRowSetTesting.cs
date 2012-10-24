@@ -16,7 +16,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 TestUtility.RunTest(
                     @"
 <Test name='something'>
-    <DataTable>
+    <DataTable2>
         <CheckData1>
             <Rows>
                 <Row City = 'Austin' StateOrProvince = 'TX' Distance='16'/>
@@ -25,7 +25,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 <Row City = 'Grove' StateOrProvince = 'OK' Distance='540' />
             </Rows>
         </CheckData1>
-    </DataTable>
+    </DataTable2>
 </Test>
 ");
 
@@ -41,7 +41,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 TestUtility.RunTest(
                     @"
 <Test name='something'>
-    <DataTable>
+    <DataTable2>
         <CheckData1>
             <Rows>
                 <Row City = 'Austin' StateOrProvince = 'TX' Distance='16'/>
@@ -51,7 +51,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 <Row City = 'Miami' StateOrProvince = 'OK' Distance='545' />
             </Rows>
         </CheckData1>
-    </DataTable>
+    </DataTable2>
 </Test>
 ");
             test.LastResult.Counts.ShouldEqual(3, 4, 0, 0);
@@ -64,7 +64,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 TestUtility.RunTest(
                     @"
 <Test name='something'>
-    <DataTable>
+    <DataTable2>
         <CheckData1>
             <Rows>
                 <Row City = 'Austin' StateOrProvince = 'TX' Distance='16'/>
@@ -74,7 +74,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 <Row City = 'Georgetown' StateOrProvince = 'TX' Distance='32' />
             </Rows>
         </CheckData1>
-    </DataTable>
+    </DataTable2>
 </Test>
 ");
 
@@ -88,7 +88,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 TestUtility.RunTest(
                     @"
 <Test name='something'>
-    <DataTable>
+    <DataTable2>
         <CheckData1>
             <Rows>
                 <Row City = 'Austin' StateOrProvince = 'TX' Distance='16'/>
@@ -98,7 +98,7 @@ namespace StoryTeller.Testing.Engine.Sets
                 <Row City = 'Georgetown' StateOrProvince = 'TX' Distance='32' />
             </Rows>
         </CheckData1>
-    </DataTable>
+    </DataTable2>
 </Test>
 ");
 
@@ -106,14 +106,13 @@ namespace StoryTeller.Testing.Engine.Sets
         }
     }
 
-    public class DataTableFixture : Fixture
+    public class DataTable2Fixture : Fixture
     {
-        public DataTableFixture()
+        public DataTable2Fixture()
         {
             this["CheckData1"] = VerifyDataTable(c => LoadData())
                 .Titled("Check the address data")
-                .Columns(x =>
-                {
+                .Columns(x => {
                     x.MatchOn<string>("City");
                     x.MatchOn<string>("StateOrProvince");
                     x.MatchOn<int>("Distance");
@@ -123,9 +122,9 @@ namespace StoryTeller.Testing.Engine.Sets
         public DataTable LoadData()
         {
             var table = new DataTable();
-            table.Columns.Add("City", typeof(string));
-            table.Columns.Add("StateOrProvince", typeof(string));
-            table.Columns.Add("Distance", typeof(int));
+            table.Columns.Add("City", typeof (string));
+            table.Columns.Add("StateOrProvince", typeof (string));
+            table.Columns.Add("Distance", typeof (int));
 
             table.Rows.Add("Austin", "TX", 16);
             table.Rows.Add("Jasper", "MO", 589);

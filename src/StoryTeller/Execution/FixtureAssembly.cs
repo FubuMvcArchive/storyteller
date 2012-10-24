@@ -10,25 +10,21 @@ namespace StoryTeller.Execution
     public class FixtureAssembly
     {
         private string _systemTypeName;
-        private string _fixtureAssembly;
         private bool _hasFound = false;
 
-        [NonSerialized] private Assembly _assembly;
         [NonSerialized] private ISystem _system;
 
         // For serialization
         public FixtureAssembly(){}
 
-        public FixtureAssembly(string systemTypeName, string fixtureAssembly)
+        public FixtureAssembly(string systemTypeName)
         {
             _systemTypeName = systemTypeName;
-            _fixtureAssembly = fixtureAssembly;
         }
 
         public FixtureAssembly(IProject project)
         {
             _systemTypeName = project.SystemTypeName;
-            _fixtureAssembly = project.FixtureAssembly;
         }
 
         private void find()
@@ -43,19 +39,9 @@ namespace StoryTeller.Execution
             {
                 Type type = Type.GetType(_systemTypeName);
                 _system = (ISystem)Activator.CreateInstance(type);
-                _assembly = type.Assembly;
             }
 
             _hasFound = true;
-        }
-
-        public Assembly Assembly
-        {
-            get
-            {
-                find();
-                return _assembly;
-            }
         }
 
         public ISystem System

@@ -141,7 +141,7 @@
     <Compile Include="Engine\Importing\GrammarImportTester.cs" />
     <Compile Include="Engine\Importing\ImportGrammarIntegrationTester.cs" />
     <Compile Include="Engine\Importing\ProxyGrammarTester.cs" />
-    <Compile Include="Engine\LibraryBuilderTester.cs" />
+    <Compile Include="Engine\Library_building_in_FixtureGraph_Tester.cs" />
     <Compile Include="Engine\SelectionListTester.cs" />
     <Compile Include="Engine\SelectionValueAttributeTester.cs" />
     <Compile Include="Engine\Sets\SetRowMatcherTester.cs" />
@@ -217,7 +217,6 @@
     <Compile Include="TestUtility.cs" />
     <Compile Include="Model\FixtureLibraryWriterTester.cs" />
     <Compile Include="Model\SentenceTester.cs" />
-    <Compile Include="Usages\UsageGraphIntegratedTester.cs" />
     <Compile Include="Workspace\LazyTestXmlReaderTester.cs" />
     <Compile Include="Workspace\ProjectTester.cs" />
     <Compile Include="Workspace\FileSystemTester.cs" />

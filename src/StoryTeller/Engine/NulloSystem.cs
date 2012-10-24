@@ -1,4 +1,6 @@
 ﻿using System;
+using FubuCore;
+using FubuCore.Binding;
 
 namespace StoryTeller.Engine
 {
@@ -8,7 +10,7 @@ namespace StoryTeller.Engine
 
         public IExecutionContext CreateContext()
         {
-            throw new NotImplementedException();
+            return new SimpleExecutionContext();
         }
 
         public void Recycle()
@@ -17,9 +19,10 @@ namespace StoryTeller.Engine
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
 
         #endregion
     }
+
+
 }

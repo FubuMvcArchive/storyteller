@@ -14,7 +14,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            library = FixtureLibrary.ForAppDomain();
+            library = FixtureGraph.Library;
         }
 
         #endregion

@@ -31,7 +31,7 @@ namespace StoryTeller.Testing.Engine
             });
 
 
-            var runner = TestRunnerBuilder.ForFixture<ArithmeticFixture>();
+            var runner = new TestRunner();
             HtmlDocument html = runner.WritePreview(test);
         }
 
@@ -55,7 +55,7 @@ namespace StoryTeller.Testing.Engine
 </Test>";
 
             Test test = TestUtility.ReadTest(xml);
-            ITestRunner runner = TestRunnerBuilder.ForFixture<MathFixture>();
+            ITestRunner runner = new TestRunner();
             runner.RunTest(test);
         }
     }
@@ -84,7 +84,7 @@ namespace StoryTeller.Testing.Engine
             });
 
 
-            var runner = TestUtility.GetRunner();
+            var runner = new TestRunner();
 
             runner.RunTest(test);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using FubuCore;
 using FubuCore.Binding;
+using FubuCore.Formatting;
 
 
 namespace StoryTeller.Engine
@@ -17,6 +18,9 @@ namespace StoryTeller.Engine
         {
             Services = new InMemoryServiceLocator();
             BindingRegistry = new BindingRegistry();
+
+            var stringifier = new Stringifier();
+            Services.Add(stringifier);
         }
 
         void IDisposable.Dispose()

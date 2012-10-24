@@ -13,7 +13,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            var runner = TestRunnerBuilder.ForFixture<LinesOnlyFixture>();
+            var runner = new TestRunner();
             FixtureLibrary library = runner.Library;
 
             fixtureStructure = library.FixtureFor("LinesOnly");
@@ -50,8 +50,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            var runner = TestRunnerBuilder.ForFixture<TableOnlyFixture>();
-            FixtureLibrary library = runner.Library;
+            FixtureLibrary library = FixtureGraph.Library;
 
             table = library.FixtureFor("TableOnly").GrammarFor("Go").ShouldBeOfType<Table>();
         }
@@ -96,9 +95,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            var runner = TestRunnerBuilder.ForFixture<VerificationFixture>();
-
-            FixtureLibrary library = runner.Library;
+            FixtureLibrary library = FixtureGraph.Library;
 
             verification =
                 library.FixtureFor("Verification").GrammarFor("theStates").ShouldBeOfType<SetVerification>();
@@ -152,9 +149,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            var runner = TestRunnerBuilder.ForFixture<LinesOnlyFixture>();
-
-            FixtureLibrary library = runner.Library;
+            FixtureLibrary library = FixtureGraph.Library;
 
             sentence = library.FixtureFor("LinesOnly").GrammarFor("Go").ShouldBeOfType<Sentence>();
         }

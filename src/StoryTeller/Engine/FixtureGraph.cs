@@ -6,18 +6,49 @@ using System.Reflection;
 using System.Threading.Tasks;
 using FubuCore.Util;
 using FubuCore;
+using StoryTeller.Model;
 
 namespace StoryTeller.Engine
 {
     public class FixtureGraph
     {
-        private static readonly Lazy<FixtureGraph> _current = new Lazy<FixtureGraph>(FixtureGraph.forAppDomain);
+        private static readonly Lazy<FixtureGraph> _current = new Lazy<FixtureGraph>(forAppDomain);
 
         private readonly Cache<string, Type> _fixtureTypes = new Cache<string,Type>(name => {
             throw new NonExistentFixtureException(name);
         });
 
-        private readonly IList<Type> _systemTypes = new List<Type>(); 
+        private readonly IList<Type> _systemTypes = new List<Type>();
+        private static readonly Lazy<FixtureLibrary> _library ;
+
+        static FixtureGraph()
+        {
+            _library = new Lazy<FixtureLibrary>(() => {
+                var library = new FixtureLibrary();
+
+                _current.Value._fixtureTypes.Each((key, type) => {
+                    var fixtureStructure = library.FixtureFor(key);
+
+                    try
+                    {
+                        var fixture = (IFixture)Activator.CreateInstance(type);
+                        fixtureStructure.ReadFrom(fixture, library);    
+                    }
+                    catch (Exception ex)
+                    {
+                        fixtureStructure.LogError(ex);
+                    }
+                    
+                });
+
+                return library;
+            });
+        }
+
+        public static FixtureLibrary Library
+        {
+            get { return _library.Value; }
+        }
 
         public static FixtureGraph Current
         {

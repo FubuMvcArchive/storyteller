@@ -18,7 +18,7 @@ namespace StoryTeller.Testing.Integration
         [TestFixtureSetUp]
         public void SetUp()
         {
-            runner = TestUtility.GetRunner();
+            runner = new TestRunner();
             hierarchy = DataMother.GrammarProject().LoadTests();
         }
 
@@ -185,7 +185,7 @@ namespace StoryTeller.Testing.Integration
         [TestFixtureSetUp]
         public void SetUp()
         {
-            runner = TestUtility.GetRunner();
+            runner = new TestRunner();
             hierarchy = DataMother.GrammarProject().LoadTests();
         }
 

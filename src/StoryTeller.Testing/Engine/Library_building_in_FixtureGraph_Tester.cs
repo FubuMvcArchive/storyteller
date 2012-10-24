@@ -21,75 +21,46 @@ namespace StoryTeller.Testing.Engine
 
 
     [TestFixture]
-    public class LibraryBuilderTester
+    public class Library_building_in_FixtureGraph_Tester
     {
-        #region Setup/Teardown
-
-        [SetUp]
-        public void SetUp()
-        {
-            builder = new LibraryBuilder();
-
-            builder.FixtureCount = 23;
-        }
-
-        #endregion
-
-        private LibraryBuilder builder;
-
         [Test]
         public void read_a_fixture_failure()
         {
-            var exception = new NotImplementedException();
-            builder.LogFixtureFailure("bad fixture", exception);
+            FixtureStructure fixture = FixtureGraph.Library.FixtureFor("BlowsUp");
 
-            FixtureStructure fixture = builder.Library.FixtureFor("bad fixture");
-
-            fixture.AllErrors().Count().ShouldEqual(1);
-
-            GrammarError error = fixture.AllErrors().First();
-            error.Message.ShouldEqual("Fixture 'bad fixture' could not be loaded");
-            error.ErrorText.ShouldEqual(exception.ToString());
+            fixture.AllErrors().Select(x => x.Message)
+                .ShouldContain("Fixture 'BlowsUp' could not be loaded");
         }
 
         [Test]
         public void read_a_fixture_will_record_the_Title_of_the_fixture_if_it_is_explicitly_set()
         {
-            var fixture = new GrammarErrorFixture
-            {
-                Title = "the bad grammars"
-            };
-
-            builder.ReadFixture("GrammarError", fixture);
-
-            builder.Library.FixtureFor("GrammarError").Label.ShouldEqual("the bad grammars");
+            FixtureGraph.Library.FixtureFor("GrammarError").Label.ShouldEqual("the bad grammars");
         }
 
         [Test]
         public void read_a_fixture_will_use_the_fixture_name_for_the_title_if_the_fixture_title_is_empty()
         {
-            var fixture = new GrammarErrorFixture();
-
-
-            builder.ReadFixture("GrammarError", fixture);
-
-            builder.Library.FixtureFor("GrammarError").Label.ShouldEqual("GrammarError");
+            FixtureGraph.Library.FixtureFor("Tags").Label.ShouldEqual("Tags");
         }
 
         [Test]
         public void read_a_fixture_with_grammar_errors()
         {
-            var fixture = new GrammarErrorFixture();
-            fixture.Errors.Count().ShouldEqual(2);
-
-            builder.ReadFixture("GrammarError", fixture);
-
-            FixtureStructure fixtureStructure = builder.Library.FixtureFor("GrammarError");
+            FixtureStructure fixtureStructure = FixtureGraph.Library.FixtureFor("GrammarError");
             fixtureStructure.AllErrors().Count().ShouldEqual(2);
 
             fixtureStructure.AllErrors().Each(x => x.Node.ShouldEqual(fixtureStructure));
         }
 
+    }
+
+    public class BlowsUpFixture : Fixture
+    {
+        public BlowsUpFixture()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
@@ -101,13 +72,7 @@ namespace StoryTeller.Testing.Engine
         [SetUp]
         public void SetUp()
         {
-            var context = new TestContext();
-
-            var builder = new LibraryBuilder();
-            
-            builder.Build(context);
-
-            library = builder.Library;
+            library = FixtureGraph.Library;
         }
 
         #endregion
@@ -187,6 +152,11 @@ namespace StoryTeller.Testing.Engine
 
     public class GrammarErrorFixture : Fixture
     {
+        public GrammarErrorFixture()
+        {
+            Title = "the bad grammars";
+        }
+
         public IGrammar Bad1()
         {
             throw new NotImplementedException();

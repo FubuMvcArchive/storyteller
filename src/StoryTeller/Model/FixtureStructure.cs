@@ -54,6 +54,31 @@ namespace StoryTeller.Model
             Label = name;
         }
 
+        public void ReadFrom(IFixture fixture, FixtureLibrary library)
+        {
+            FixtureClassName = fixture.GetType().FullName;
+            FixtureNamespace = fixture.GetType().Namespace;
+            Policies = fixture.Policies;
+            Description = fixture.Description;
+            Label = fixture.Title.IsEmpty() ? Name : fixture.Title;
+
+            fixture.Errors.Each(x =>
+            {
+                x.Node = this;
+                LogError(x);
+            });
+
+            fixture.ForEachGrammar((key, grammar) => readGrammar(grammar, key, library));   
+        }
+
+        private void readGrammar(IGrammar grammar, string key, FixtureLibrary library)
+        {
+            GrammarStructure structure = grammar.ToStructure(library);
+            structure.Description = grammar.Description;
+
+            AddStructure(key, structure);
+        }
+
         public string FixtureClassName { get; set; }
         public string FixtureNamespace { get; set; }
         public int GrammarCount { get { return _structures.Count; } }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using HtmlTags;
 using StoryTeller.Domain;
+using StoryTeller.Engine;
 using StoryTeller.Execution;
 using StoryTeller.Model;
 using StoryTeller.Samples.Grammars;
@@ -16,7 +17,7 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
         {
             TestFile("SampleTestEditor.js");
 
-            Fixtures(FixtureLibrary.ForAppDomain());
+            Fixtures(FixtureGraph.Library);
         }
 
         public void Open()
@@ -50,7 +51,7 @@ namespace StoryTeller.UserInterface.Testing.JavaScript
 
             Add("hr");
 
-            FixtureLibrary library = FixtureLibrary.ForAppDomain();
+            FixtureLibrary library = FixtureGraph.Library;
             Add("div").Append(new TestEditorTag(library));
         }
     }

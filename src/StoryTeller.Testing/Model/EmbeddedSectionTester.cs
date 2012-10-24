@@ -16,7 +16,7 @@ namespace StoryTeller.Testing.Model
         [SetUp]
         public void SetUp()
         {
-            FixtureLibrary library = TestRunnerBuilder.ForFixture<MathFixture>().Library;
+            FixtureLibrary library = FixtureGraph.Library;
             FixtureStructure fixture = library.FixtureFor("Math");
 
             embeddedSection =

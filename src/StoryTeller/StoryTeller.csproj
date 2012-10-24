@@ -104,9 +104,6 @@
     <Compile Include="Execution\ProjectTestRunner.cs" />
     <Compile Include="Html\TableContainerTag.cs" />
     <Compile Include="Html\TagExtensions.cs" />
-    <Compile Include="Usages\FixtureUsage.cs" />
-    <Compile Include="Usages\IUsageGraphListener.cs" />
-    <Compile Include="Usages\UsageGraph.cs" />
     <Compile Include="Workspace\IResultPersistor.cs" />
     <Compile Include="Workspace\ResultHistory.cs" />
     <Compile Include="Engine\Sets\RowValueMatcher.cs" />
@@ -131,7 +128,6 @@
     <Compile Include="Engine\DecisionTableGrammar.cs" />
     <Compile Include="Engine\EquivalenceChecker.cs" />
     <Compile Include="Engine\ITestRunner.cs" />
-    <Compile Include="Engine\LibraryBuilder.cs" />
     <Compile Include="Engine\SelectionValuesAttribute.cs" />
     <Compile Include="Engine\Sets\DataRowComparer.cs" />
     <Compile Include="Engine\Sets\ISetColumn.cs" />
@@ -145,7 +141,6 @@
     <Compile Include="Engine\Sets\StringSetComparer.cs" />
     <Compile Include="Engine\TestResult.cs" />
     <Compile Include="Engine\TestRun.cs" />
-    <Compile Include="Engine\TestRunnerBuilder.cs" />
     <Compile Include="Engine\TestRunnerExtensions.cs" />
     <Compile Include="Execution\DirectoryRunner.cs" />
     <Compile Include="Execution\FixtureLibraryWatcher.cs" />

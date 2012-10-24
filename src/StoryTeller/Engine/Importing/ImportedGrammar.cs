@@ -41,7 +41,7 @@ namespace StoryTeller.Engine.Importing
 
         public GrammarStructure ToStructure(FixtureLibrary library)
         {
-            return inner(null).ToStructure(library);
+            return _import.FindStructure(library);
         }
 
         public ImportedGrammar Curry(CurryAction curryAction)
