@@ -82,6 +82,7 @@ namespace StoryTeller.Persistence
         {
             _root["name"] = _test.Name;
             _root["lifecycle"] = _test.Lifecycle.ToString();
+            _root["attemptnumber"] = _test.AttemptNumber.ToString();
 
             _nodes.Push(_root);
 
