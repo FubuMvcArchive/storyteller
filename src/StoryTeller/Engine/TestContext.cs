@@ -360,7 +360,7 @@ namespace StoryTeller.Engine
             get { return StartupActionNames.Select(x => GetStartupType(x)); }
         }
 
-        public int AttemptNumber { get { return Test.AtemptNumber; } }
+        public int AttemptNumber { get { return Test.AttemptNumber; } }
 
         public object CurrentObject { get; set; }
 
