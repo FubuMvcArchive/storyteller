@@ -36,6 +36,7 @@ namespace StoryTeller.Engine
     public interface ITestContext
     {
         IEnumerable<Type> StartupActionTypes { get; }
+        int AttemptNumber { get; }
 
         object CurrentObject { get; set; }
         IObjectConverter Finder { get; }
@@ -358,6 +359,8 @@ namespace StoryTeller.Engine
         {
             get { return StartupActionNames.Select(x => GetStartupType(x)); }
         }
+
+        public int AttemptNumber { get { return Test.AtemptNumber; } }
 
         public object CurrentObject { get; set; }
 

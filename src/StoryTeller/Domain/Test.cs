@@ -47,6 +47,7 @@ namespace StoryTeller.Domain
         public string SuiteName { get; set; }
         public Suite Parent { get; private set; }
         public int NumberOfRetries { get; set; }
+        public int AtemptNumber { get; set; }
         public void SetParent(Suite parent)
         {
             Parent = parent;
