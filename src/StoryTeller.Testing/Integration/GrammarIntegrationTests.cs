@@ -24,7 +24,7 @@ namespace StoryTeller.Testing.Integration
 
         private Counts running(string name)
         {
-            Test test = hierarchy.GetAllTests().FirstOrDefault(x => x.Name == name);
+            Test test = hierarchy.FindFirstTestWithName(name);
             test.ShouldNotBeNull();
             test.LastResult = runner.RunTest(test);
 
@@ -191,7 +191,7 @@ namespace StoryTeller.Testing.Integration
 
         private Counts running(string name)
         {
-            Test test = hierarchy.GetAllTests().FirstOrDefault(x => x.Name == name);
+            Test test = hierarchy.FindFirstTestWithName(name);
 
             string json = new TestWriter().WriteToJson(test);
             Test test2 = new TestReader().ReadFromJson(json);

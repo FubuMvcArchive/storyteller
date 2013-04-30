@@ -230,7 +230,7 @@ namespace StoryTeller.Testing.Xml
         [Test]
         public void should_have_read_the_name_from_the_top_root()
         {
-            test.Name.ShouldEqual("the test name");
+            test.Name.ShouldEqual("the_test_name");
         }
 
         [Test]

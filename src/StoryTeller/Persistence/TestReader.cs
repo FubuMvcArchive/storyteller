@@ -67,6 +67,7 @@ namespace StoryTeller.Persistence
             
             var test = new Test(name, suiteName, parts);
             readLifecycle(test, element);
+            readAttemptNumber(test, element);
             return test;
         }
 
@@ -95,6 +96,16 @@ namespace StoryTeller.Persistence
             var lifecycle = (Lifecycle) Enum.Parse(typeof (Lifecycle), lifecycleString, true);
 
             test.Lifecycle = lifecycle;
+        }
+
+        private static void readAttemptNumber(Test test, INode element)
+        {
+            string attemptNumberString = element["attemptnumber"];
+            if (attemptNumberString.IsEmpty()) return;
+
+            var attemptNumber = int.Parse(attemptNumberString);
+
+            test.AttemptNumber = attemptNumber;
         }
 
         public ITestPart ReadPart(INode node)

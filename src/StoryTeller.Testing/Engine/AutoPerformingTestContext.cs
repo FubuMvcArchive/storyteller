@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using FubuCore;
 using FubuCore.Conversion;
 using FubuCore.Formatting;
 using FubuCore.Util;
@@ -14,6 +13,11 @@ namespace StoryTeller.Testing.Engine
         #region ITestContext Members
 
         public IEnumerable<Type> StartupActionTypes
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public int AttemptNumber
         {
             get { throw new NotImplementedException(); }
         }

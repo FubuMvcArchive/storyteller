@@ -53,7 +53,7 @@ ws1/suite1/test1 is good,Success
         [Test]
         public void the_method_test_should_embed_the_test_name()
         {
-            methodText.ShouldContain("runner.RunAndAssertTest(\"ws1/suite1/test1 is good\");");
+            methodText.ShouldContain("runner.RunAndAssertTest(\"ws1/suite1/test1_is_good\");");
         }
 
         [Test]
@@ -85,7 +85,7 @@ ws1/suite1/test1 is good,Success
 ws1/suite1/test1 is good,Success
 ");
 
-            theTest = hierarchy.FindTest("ws1/suite1/test1 is good");
+            theTest = hierarchy.FindTest("ws1/suite1/test1_is_good");
 
             classText = _service.GenerateClass(theTest);          
         }

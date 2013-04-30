@@ -20,7 +20,8 @@ namespace StoryTeller.Domain
         public Test(string name, string suiteName, ITestPartCollection parts)
         {
             _parts = parts;
-            _name = name;
+            Name = name;
+
             SuiteName = suiteName;
             NumberOfRetries = 5;
         }
@@ -47,6 +48,7 @@ namespace StoryTeller.Domain
         public string SuiteName { get; set; }
         public Suite Parent { get; private set; }
         public int NumberOfRetries { get; set; }
+        public int AttemptNumber { get; set; }
         public void SetParent(Suite parent)
         {
             Parent = parent;
@@ -119,6 +121,7 @@ namespace StoryTeller.Domain
                 _name = value;
 
                 Path.GetInvalidFileNameChars().Each(x => { _name = _name.Replace(x, ' '); });
+                _name = _name.Replace(' ', '_');
             }
         }
 

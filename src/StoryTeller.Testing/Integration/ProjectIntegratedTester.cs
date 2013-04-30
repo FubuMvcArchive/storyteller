@@ -43,14 +43,14 @@ namespace StoryTeller.Testing.Integration
         [Test]
         public void child_suite_has_its_child_suites()
         {
-            hierarchy.FindSuite("Mixed").FindSuite("SubMixed").Tests.ShouldHaveTestNames("Sub Mixed 1", "Sub Mixed 2",
+            hierarchy.FindSuite("Mixed").FindSuite("SubMixed").Tests.ShouldHaveTestNames("Sub_Mixed_1", "Sub_Mixed_2",
                                                                                          "SubMixedThatThrows");
         }
 
         [Test]
         public void child_suite_has_its_tests()
         {
-            hierarchy.FindSuite("Adding").Tests.ShouldHaveTestNames("Bad Add 1", "Good Add 1", "Good Add 2");
+            hierarchy.FindSuite("Adding").Tests.ShouldHaveTestNames("Bad_Add_1", "Good_Add_1", "Good_Add_2");
         }
 
         [Test, Explicit]
@@ -69,7 +69,7 @@ namespace StoryTeller.Testing.Integration
         [Test]
         public void loads_the_tests_in_the_root_level()
         {
-            hierarchy.Tests.ShouldHaveTestNames("Bad Add at Top", "Good Add at Top");
+            hierarchy.Tests.ShouldHaveTestNames("Bad_Add_at_Top", "Good_Add_at_Top");
         }
 
         [Test]

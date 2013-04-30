@@ -201,7 +201,7 @@ s1/s2/t3,Success
         [Test]
         public void the_new_test_name_should_be_set()
         {
-            test.Name.ShouldEqual("New Name");
+            test.Name.ShouldEqual("New_Name");
         }
 
         [Test]
