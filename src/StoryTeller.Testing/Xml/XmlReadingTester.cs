@@ -59,7 +59,7 @@ namespace StoryTeller.Testing.Xml
                         });
                     });
 
-            step = (IStep) new TestReader().ReadPart(element);
+            step = (IStep)new TestReader().ReadPart(element);
         }
 
         #endregion
@@ -168,9 +168,9 @@ namespace StoryTeller.Testing.Xml
         }
 
         [Test]
-        public void lifecycle_is_acceptance_by_default()
+        public void lifecycle_is_regression_by_default()
         {
-            readTestWhenLifecycleIs(string.Empty).Lifecycle.ShouldEqual(Lifecycle.Acceptance);
+            readTestWhenLifecycleIs(string.Empty).Lifecycle.ShouldEqual(Lifecycle.Regression);
         }
 
         [Test]
