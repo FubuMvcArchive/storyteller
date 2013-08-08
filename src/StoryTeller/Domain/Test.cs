@@ -14,7 +14,7 @@ namespace StoryTeller.Domain
     {
         protected readonly ITestPartCollection _parts;
         private string _fileName;
-        private Lifecycle _lifecycle = Lifecycle.Acceptance;
+        private Lifecycle _lifecycle = Lifecycle.Regression;
         private string _name;
 
         public Test(string name, string suiteName, ITestPartCollection parts)
@@ -26,7 +26,8 @@ namespace StoryTeller.Domain
             NumberOfRetries = 5;
         }
 
-        public Test(string name) : this(name, string.Empty, new DefaultTestPartcollection())
+        public Test(string name)
+            : this(name, string.Empty, new DefaultTestPartcollection())
         {
         }
 
@@ -52,8 +53,8 @@ namespace StoryTeller.Domain
         public void SetParent(Suite parent)
         {
             Parent = parent;
-            SuiteName = parent == null ? string.Empty : 
-                string.Format("{0}/{1}", parent.GetProjectName(), 
+            SuiteName = parent == null ? string.Empty :
+                string.Format("{0}/{1}", parent.GetProjectName(),
                             parent.GetPath().Locator);
             SuiteName = SuiteName.Trim('/');
         }
@@ -80,7 +81,7 @@ namespace StoryTeller.Domain
 
             string filename = Name + ".xml";
 
-            if(filename.Contains(" "))
+            if (filename.Contains(" "))
             {
                 filename = filename.Replace(' ', '_');
             }
@@ -112,7 +113,7 @@ namespace StoryTeller.Domain
         {
             return 0;
         }
-        
+
         public string Name
         {
             get { return _name; }
@@ -166,7 +167,7 @@ namespace StoryTeller.Domain
         {
             var tags = _parts.GetList().OfType<Tags>();
             List<string> list = new List<string>();
-            foreach(Tags setOfTags in tags)
+            foreach (Tags setOfTags in tags)
             {
                 list.AddRange(setOfTags.AllTags);
             }
@@ -208,7 +209,7 @@ namespace StoryTeller.Domain
 
         public Test WithCounts(int rights, int wrongs, int syntaxErrors, int exceptions)
         {
-            if (LastResult == null) LastResult = new TestResult {Counts = new Counts()};
+            if (LastResult == null) LastResult = new TestResult { Counts = new Counts() };
             LastResult.Counts.Rights = rights;
             LastResult.Counts.Wrongs = wrongs;
             LastResult.Counts.SyntaxErrors = syntaxErrors;
@@ -239,15 +240,15 @@ namespace StoryTeller.Domain
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (Test)) return false;
-            return Equals((Test) obj);
+            if (obj.GetType() != typeof(Test)) return false;
+            return Equals((Test)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((Name != null ? Name.GetHashCode() : 0)*397) ^
+                return ((Name != null ? Name.GetHashCode() : 0) * 397) ^
                        (SuiteName != null ? SuiteName.GetHashCode() : 0);
             }
         }

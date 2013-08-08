@@ -1,4 +1,3 @@
-using System;
 using FubuCore;
 using NUnit.Framework;
 using StoryTeller.Domain;
@@ -55,7 +54,7 @@ namespace StoryTeller.Testing
             {
                 Filter = new WorkspaceFilter()
                 {
-                    Filters = new FixtureFilter[] {FixtureFilter.Namespace("NS1")}
+                    Filters = new FixtureFilter[] { FixtureFilter.Namespace("NS1") }
                 }
             };
 
@@ -222,9 +221,9 @@ namespace StoryTeller.Testing
         }
 
         [Test]
-        public void lifecycle_is_acceptance_by_default()
+        public void lifecycle_is_regression_by_default()
         {
-            new Test("name").Lifecycle.ShouldEqual(Lifecycle.Acceptance);
+            new Test("name").Lifecycle.ShouldEqual(Lifecycle.Regression);
         }
 
         [Test]
@@ -268,7 +267,7 @@ namespace StoryTeller.Testing
             var test = new Test("some test");
             test.Toggle();
 
-            test.Lifecycle.ShouldEqual(Lifecycle.Regression);
+            test.Lifecycle.ShouldEqual(Lifecycle.Acceptance);
         }
 
         [Test]
