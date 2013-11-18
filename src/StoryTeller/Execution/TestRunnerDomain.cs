@@ -124,8 +124,10 @@ namespace StoryTeller.Execution
 
         public void MarkTestFinalStatus(Test test)
         {
-            if (_listener != null)
-                _listener.FinishTestRetries(test);
+          if (_listener == null)
+            _listener = new TeamCityTestListener();
+
+          _listener.FinishTestRetries(test);
         }
 
         public FixtureLibrary Library

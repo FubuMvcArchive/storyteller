@@ -4,6 +4,7 @@ using FubuCore;
 using StoryTeller.Assertions;
 using StoryTeller.Domain;
 using StoryTeller.Engine;
+using StoryTeller.Engine.TeamCity;
 using StoryTeller.Model;
 using StoryTeller.Workspace;
 using System.Linq;
@@ -145,7 +146,11 @@ namespace StoryTeller.Execution
                 {
                     if (numberOfRetries != 0)
                     {
-                        Console.WriteLine("$$$$$$$$$$$$$$$$Previous pass failed -- retrying: {0}".ToFormat(t.GetStatus()));
+                      // Fixes reporting Hiearchy on test retry fails
+                      Console.WriteLine("##teamcity[message text='{0}']", 
+                                        "$$$$$$$$$$$$$$$$Previous pass failed -- retrying: {0}".ToFormat(t.GetStatus()));
+                      Console.WriteLine("##teamcity[testFinished name='{0}' duration='{1}']", t.Name.Escape(), t.LastResult.ExecutionTime);
+                      t.Reset();
                     }
                     t.AttemptNumber = numberOfRetries;
                     _engine.RunTest(t);
