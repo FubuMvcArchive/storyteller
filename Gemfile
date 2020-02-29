@@ -1,6 +1,6 @@
 source :rubygems
 
 gem "albacore"
-gem "rake", "0.9.2.2"
+gem "rake", "12.3.3"
 gem "rubyzip"
 gem "zip"
